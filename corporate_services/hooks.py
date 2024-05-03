@@ -229,5 +229,6 @@ app_license = "mit"
 
 fixtures = [
     "Job Requisition",
-    "Employee"
+    "Employee",
+    "Job Applicant"
 ]
