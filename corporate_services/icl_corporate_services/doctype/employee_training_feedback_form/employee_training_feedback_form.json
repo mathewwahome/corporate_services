@@ -1,0 +1,127 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2024-05-06 18:07:45.665363",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "section_break_2ycd",
+  "custom_employee_name",
+  "custom_department",
+  "column_break_krvs",
+  "custom_course_name",
+  "custom_course_start_date",
+  "custom_course_end_date",
+  "section_break_ssnp",
+  "custom_course_benefits",
+  "skills_obtained_that_will_improve_performance",
+  "column_break_qdlw",
+  "custom_improvement",
+  "custom_cascading_timeline"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_break_2ycd",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "custom_employee_name",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Employee Name",
+   "options": "Employee",
+   "reqd": 1
+  },
+  {
+   "fieldname": "custom_department",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Department",
+   "options": "Department",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_krvs",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "custom_course_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Name of the Course",
+   "reqd": 1
+  },
+  {
+   "fieldname": "custom_course_end_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Course End Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "custom_course_start_date",
+   "fieldtype": "Date",
+   "label": "Course Start Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "section_break_ssnp",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "custom_course_benefits",
+   "fieldtype": "Text",
+   "label": "Course Benefits to Employee and Organization",
+   "reqd": 1
+  },
+  {
+   "fieldname": "skills_obtained_that_will_improve_performance",
+   "fieldtype": "Text",
+   "label": "Skills Obtained that will Improve Performance",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_qdlw",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "custom_improvement",
+   "fieldtype": "Text",
+   "label": "Areas for Improvement",
+   "reqd": 1
+  },
+  {
+   "fieldname": "custom_cascading_timeline",
+   "fieldtype": "Duration",
+   "hide_seconds": 1,
+   "label": "Timeline for Cascading Skills",
+   "reqd": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2024-05-06 18:20:25.068482",
+ "modified_by": "Administrator",
+ "module": "ICL Corporate Services",
+ "name": "Employee Training Feedback Form",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
