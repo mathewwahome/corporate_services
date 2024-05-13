@@ -13,7 +13,7 @@
  "is_hidden": 0,
  "label": "ICL HR Admin",
  "links": [],
- "modified": "2024-05-13 10:59:07.322808",
+ "modified": "2024-05-13 11:00:13.368453",
  "modified_by": "Administrator",
  "module": "ICL Corporate Services",
  "name": "ICL HR Admin",
@@ -37,6 +37,12 @@
    "doc_view": "List",
    "label": "IntelliSOFT Staff",
    "link_to": "Employee",
+   "type": "DocType"
+  },
+  {
+   "doc_view": "List",
+   "label": "Job Requisitions",
+   "link_to": "Job Requisition",
    "type": "DocType"
   }
  ],
