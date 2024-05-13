@@ -1,0 +1,50 @@
+{
+ "charts": [],
+ "content": "[{\"id\":\"dytQqx35FX\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">ICL HR Admin</span>\",\"col\":12}},{\"id\":\"0OUo74HiZt\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Job Applicants\",\"col\":3}}]",
+ "creation": "2024-05-13 10:56:40.201205",
+ "custom_blocks": [],
+ "docstatus": 0,
+ "doctype": "Workspace",
+ "for_user": "",
+ "hide_custom": 0,
+ "icon": "hr",
+ "idx": 0,
+ "indicator_color": "green",
+ "is_hidden": 0,
+ "label": "ICL HR Admin",
+ "links": [],
+ "modified": "2024-05-13 11:00:13.368453",
+ "modified_by": "Administrator",
+ "module": "ICL Corporate Services",
+ "name": "ICL HR Admin",
+ "number_cards": [],
+ "owner": "Administrator",
+ "parent_page": "",
+ "public": 1,
+ "quick_lists": [],
+ "roles": [],
+ "sequence_id": 40.0,
+ "shortcuts": [
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Job Applicants",
+   "link_to": "Job Applicant",
+   "stats_filter": "[]",
+   "type": "DocType"
+  },
+  {
+   "doc_view": "List",
+   "label": "IntelliSOFT Staff",
+   "link_to": "Employee",
+   "type": "DocType"
+  },
+  {
+   "doc_view": "List",
+   "label": "Job Requisitions",
+   "link_to": "Job Requisition",
+   "type": "DocType"
+  }
+ ],
+ "title": "ICL HR Admin"
+}
