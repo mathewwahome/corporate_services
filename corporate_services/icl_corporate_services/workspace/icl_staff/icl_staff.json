@@ -1,6 +1,6 @@
 {
  "charts": [],
- "content": "[{\"id\":\"Z2mdKLq3ER\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">ICL Staff</span>\",\"col\":12}},{\"id\":\"XmTygOwb2b\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Job Requisition\",\"col\":3}}]",
+ "content": "[{\"id\":\"Z2mdKLq3ER\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">ICL Staff</span>\",\"col\":12}},{\"id\":\"IdgZ6q9gxD\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Travel Request\",\"col\":3}},{\"id\":\"l9bGRRI0DM\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Leave Application\",\"col\":3}}]",
  "creation": "2024-04-25 10:29:01.515574",
  "custom_blocks": [],
  "docstatus": 0,
@@ -12,7 +12,7 @@
  "is_hidden": 0,
  "label": "ICL Staff",
  "links": [],
- "modified": "2024-05-13 11:01:28.073406",
+ "modified": "2024-05-13 11:37:21.183252",
  "modified_by": "Administrator",
  "module": "ICL Corporate Services",
  "name": "ICL Staff",
@@ -25,15 +25,19 @@
  "sequence_id": 39.0,
  "shortcuts": [
   {
-   "doc_view": "",
-   "label": "Leave Application",
-   "link_to": "Leave Application",
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Travel Request",
+   "link_to": "Travel Request",
+   "stats_filter": "[]",
    "type": "DocType"
   },
   {
-   "doc_view": "",
-   "label": "Timesheet",
-   "link_to": "Timesheet",
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Leave Application",
+   "link_to": "Leave Application",
+   "stats_filter": "[]",
    "type": "DocType"
   }
  ],
