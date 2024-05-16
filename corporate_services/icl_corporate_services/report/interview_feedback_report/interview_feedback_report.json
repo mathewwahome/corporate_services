@@ -1,0 +1,33 @@
+{
+ "add_total_row": 0,
+ "columns": [],
+ "creation": "2024-05-16 05:43:30.847700",
+ "disabled": 0,
+ "docstatus": 0,
+ "doctype": "Report",
+ "filters": [],
+ "idx": 0,
+ "is_standard": "Yes",
+ "json": "{}",
+ "letterhead": null,
+ "modified": "2024-05-16 05:43:30.847700",
+ "modified_by": "Administrator",
+ "module": "ICL Corporate Services",
+ "name": "Interview Feedback Report",
+ "owner": "Administrator",
+ "prepared_report": 0,
+ "ref_doctype": "Interview Feedback",
+ "report_name": "Interview Feedback Report",
+ "report_type": "Report Builder",
+ "roles": [
+  {
+   "role": "HR Manager"
+  },
+  {
+   "role": "Interviewer"
+  },
+  {
+   "role": "HR User"
+  }
+ ]
+}
