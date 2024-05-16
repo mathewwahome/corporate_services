@@ -1,0 +1,27 @@
+{
+ "add_total_row": 0,
+ "columns": [],
+ "creation": "2024-05-13 12:52:51.944686",
+ "disabled": 0,
+ "docstatus": 0,
+ "doctype": "Report",
+ "filters": [],
+ "idx": 0,
+ "is_standard": "Yes",
+ "json": "{\"filters\":[],\"fields\":[[\"name\",\"Training Application Request\"],[\"docstatus\",\"Training Application Request\"],[\"name_of_the_training\",\"Training Application Request\"],[\"facilitator\",\"Training Application Request\"],[\"nature_of_training\",\"Training Application Request\"],[\"type_of_training__course\",\"Training Application Request\"]],\"order_by\":\"`tabTraining Application Request`.`modified` desc\",\"add_totals_row\":0,\"page_length\":20,\"column_widths\":{\"name\":120,\"docstatus\":120,\"name_of_the_training\":120,\"facilitator\":120,\"nature_of_training\":120,\"type_of_training__course\":120},\"group_by\":null}",
+ "letterhead": null,
+ "modified": "2024-05-16 04:36:34.656703",
+ "modified_by": "Administrator",
+ "module": "ICL Corporate Services",
+ "name": "Report: Training Application Requests",
+ "owner": "Administrator",
+ "prepared_report": 0,
+ "ref_doctype": "Training Application Request",
+ "report_name": "Report: Training Application Requests",
+ "report_type": "Report Builder",
+ "roles": [
+  {
+   "role": "System Manager"
+  }
+ ]
+}
