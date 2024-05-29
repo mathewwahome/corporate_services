@@ -130,7 +130,10 @@ doc_events = {
 	# },
     "Travel Request":{
         "on_submit": "corporate_services.api.notifications.alert_supervisor"
-    }
+    },
+    "":{
+        
+    },
 }
 
 # Scheduled Tasks
@@ -233,5 +236,6 @@ doc_events = {
 fixtures = [
     "Job Requisition",
     "Employee",
-    "Job Applicant"
+    "Job Applicant",
+    "Leave Type"
 ]
