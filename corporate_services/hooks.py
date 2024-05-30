@@ -129,10 +129,10 @@ doc_events = {
 	# 	"on_trash": "method"
 	# },
     "Travel Request":{
-        "on_submit": "corporate_services.api.notifications.alert_supervisor"
+        "on_submit": "corporate_services.api.notifications.alert_supervisor_travel_request"
     },
-    "":{
-        
+    "Leave Application":{
+        "on_submit": "corporate_services.api.notifications.alert_supervisor_leave_application"
     },
 }
 
