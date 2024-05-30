@@ -237,5 +237,6 @@ fixtures = [
     "Job Requisition",
     "Employee",
     "Job Applicant",
-    "Leave Type"
+    "Leave Type",
+    "Leave Application"
 ]
