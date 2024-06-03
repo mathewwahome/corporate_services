@@ -238,5 +238,6 @@ fixtures = [
     "Employee",
     "Job Applicant",
     "Leave Type",
-    "Leave Application"
+    "Leave Application",
+    "Employee Training Feedback Form"
 ]
