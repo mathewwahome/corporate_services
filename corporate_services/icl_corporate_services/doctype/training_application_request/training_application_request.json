@@ -8,13 +8,13 @@
   "section_break_zosg",
   "name_of_the_training",
   "facilitator",
-  "nature_of_training",
   "type_of_training__course",
   "column_break_zorn",
   "training_description",
   "start_date",
   "end_date",
-  "cost"
+  "cost",
+  "amended_from"
  ],
  "fields": [
   {
@@ -33,14 +33,6 @@
    "fieldtype": "Data",
    "in_list_view": 1,
    "label": "Facilitator",
-   "reqd": 1
-  },
-  {
-   "fieldname": "nature_of_training",
-   "fieldtype": "Select",
-   "in_list_view": 1,
-   "label": "Nature of Training",
-   "options": "Internal\nExternal",
    "reqd": 1
   },
   {
@@ -74,12 +66,22 @@
    "fieldname": "cost",
    "fieldtype": "Currency",
    "label": "Cost"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Training Application Request",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-05-08 10:11:51.964507",
+ "modified": "2024-06-03 15:43:25.095809",
  "modified_by": "Administrator",
  "module": "ICL Corporate Services",
  "name": "Training Application Request",
