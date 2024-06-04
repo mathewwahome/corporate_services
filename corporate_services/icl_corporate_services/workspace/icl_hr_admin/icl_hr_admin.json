@@ -1,6 +1,6 @@
 {
  "charts": [],
- "content": "[{\"id\":\"dytQqx35FX\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">ICL HR Admin</span>\",\"col\":12}},{\"id\":\"IyjCUtl89j\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h3\\\">Your Shortcuts</span>\",\"col\":12}},{\"id\":\"wEaObfSplL\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Job Requisition\",\"col\":3}},{\"id\":\"0OUo74HiZt\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Job Applicants\",\"col\":3}},{\"id\":\"338RGJxR93\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Employee\",\"col\":3}},{\"id\":\"A3ipoOyE4b\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Exit Interview\",\"col\":3}},{\"id\":\"KEwFHrqrON\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Employee Appraisal\",\"col\":3}},{\"id\":\"ZA2FOUVi_5\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Grievance Type\",\"col\":3}}]",
+ "content": "[{\"id\":\"dytQqx35FX\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">ICL HR Admin</span>\",\"col\":12}},{\"id\":\"IyjCUtl89j\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h3\\\">Your Shortcuts</span>\",\"col\":12}},{\"id\":\"wEaObfSplL\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Job Requisition\",\"col\":3}},{\"id\":\"0OUo74HiZt\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Job Applicants\",\"col\":3}},{\"id\":\"338RGJxR93\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Employee\",\"col\":3}},{\"id\":\"A3ipoOyE4b\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Exit Interview\",\"col\":3}},{\"id\":\"KEwFHrqrON\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Employee Appraisal\",\"col\":3}},{\"id\":\"sN8sIg2tKW\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Reports <br></b></span>\",\"col\":12}},{\"id\":\"nQmHjYPndW\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Employee\",\"col\":3}},{\"id\":\"XBafLLGcSe\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Employee Leave Balance\",\"col\":3}},{\"id\":\"TjSvCK71Xa\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Employee Exits\",\"col\":3}},{\"id\":\"tf7egvsEW3\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Job Applicants\",\"col\":3}},{\"id\":\"ZA2FOUVi_5\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Grievance Type\",\"col\":3}}]",
  "creation": "2024-05-13 10:56:40.201205",
  "custom_blocks": [],
  "docstatus": 0,
@@ -13,7 +13,7 @@
  "is_hidden": 0,
  "label": "ICL HR Admin",
  "links": [],
- "modified": "2024-06-04 11:20:03.797475",
+ "modified": "2024-06-04 11:41:33.422615",
  "modified_by": "Administrator",
  "module": "ICL Corporate Services",
  "name": "ICL HR Admin",
@@ -28,14 +28,6 @@
   {
    "color": "Grey",
    "doc_view": "List",
-   "label": "Employee",
-   "link_to": "Employee",
-   "stats_filter": "[]",
-   "type": "DocType"
-  },
-  {
-   "color": "Grey",
-   "doc_view": "List",
    "label": "Exit Interview",
    "link_to": "Exit Interview",
    "stats_filter": "[]",
@@ -44,10 +36,23 @@
   {
    "color": "Grey",
    "doc_view": "List",
-   "label": "Job Applicants",
-   "link_to": "Job Applicant",
-   "stats_filter": "[]",
-   "type": "DocType"
+   "label": "Employee",
+   "link_to": "Employee Information",
+   "type": "Report"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Employee Exits",
+   "link_to": "Employee Exits",
+   "type": "Report"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Employee Leave Balance",
+   "link_to": "Employee Leave Balance",
+   "type": "Report"
   },
   {
    "color": "Grey",
@@ -56,6 +61,13 @@
    "link_to": "Appraisal",
    "stats_filter": "[]",
    "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Job Applicants",
+   "link_to": "Job Applicants Report",
+   "type": "Report"
   },
   {
    "color": "Grey",
