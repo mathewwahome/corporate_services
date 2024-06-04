@@ -1,18 +1,19 @@
 {
  "charts": [],
- "content": "[{\"id\":\"Z2mdKLq3ER\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">ICL Staff</span>\",\"col\":12}},{\"id\":\"IdgZ6q9gxD\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Travel Request\",\"col\":3}},{\"id\":\"l9bGRRI0DM\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Leave Application\",\"col\":3}}]",
+ "content": "[{\"id\":\"Z2mdKLq3ER\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">ICL Staff</span>\",\"col\":12}},{\"id\":\"IdgZ6q9gxD\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Travel Request\",\"col\":3}},{\"id\":\"OKngcBiDHZ\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Timesheet\",\"col\":3}},{\"id\":\"l9bGRRI0DM\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Leave Application\",\"col\":3}},{\"id\":\"4DF69seFh8\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Grievance\",\"col\":3}}]",
  "creation": "2024-04-25 10:29:01.515574",
  "custom_blocks": [],
  "docstatus": 0,
  "doctype": "Workspace",
  "for_user": "",
  "hide_custom": 0,
+ "icon": "users",
  "idx": 0,
  "indicator_color": "cyan",
  "is_hidden": 0,
  "label": "ICL Staff",
  "links": [],
- "modified": "2024-05-13 11:37:21.183252",
+ "modified": "2024-06-04 11:58:27.272900",
  "modified_by": "Administrator",
  "module": "ICL Corporate Services",
  "name": "ICL Staff",
@@ -24,6 +25,22 @@
  "roles": [],
  "sequence_id": 39.0,
  "shortcuts": [
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Timesheet",
+   "link_to": "Timesheet",
+   "stats_filter": "[]",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Grievance",
+   "link_to": "Employee Grievance",
+   "stats_filter": "[]",
+   "type": "DocType"
+  },
   {
    "color": "Grey",
    "doc_view": "List",
