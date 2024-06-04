@@ -240,5 +240,8 @@ fixtures = [
     "Leave Type",
     "Leave Application",
     "Employee Training Feedback Form",
-    "Training Application Request"
+    "Training Application Request",
+    "Travel Request",
+    "Overnight Stay",
+    "Place of travel"
 ]
