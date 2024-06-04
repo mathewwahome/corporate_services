@@ -1,0 +1,54 @@
+{
+ "actions": [],
+ "creation": "2024-06-04 09:10:55.682176",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "city",
+  "column_break_vhzw",
+  "number_of_days",
+  "column_break_libv",
+  "special_information"
+ ],
+ "fields": [
+  {
+   "fieldname": "city",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "CITY"
+  },
+  {
+   "fieldname": "column_break_vhzw",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "number_of_days",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "NUMBER OF DAYS"
+  },
+  {
+   "fieldname": "column_break_libv",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "special_information",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "SPECIAL INFORMATION"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2024-06-04 09:16:50.465018",
+ "modified_by": "Administrator",
+ "module": "ICL Corporate Services",
+ "name": "Place of travel",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
