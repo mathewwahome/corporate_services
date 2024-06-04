@@ -13,7 +13,7 @@
  "is_hidden": 0,
  "label": "ICL HR Admin",
  "links": [],
- "modified": "2024-06-04 11:41:33.422615",
+ "modified": "2024-06-04 14:52:16.051493",
  "modified_by": "Administrator",
  "module": "ICL Corporate Services",
  "name": "ICL HR Admin",
@@ -57,6 +57,20 @@
   {
    "color": "Grey",
    "doc_view": "List",
+   "label": "Leave Management",
+   "link_to": "Leave Management",
+   "type": "Report"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "HR Dashboard",
+   "link_to": "Human Resource",
+   "type": "Dashboard"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
    "label": "Employee Appraisal",
    "link_to": "Appraisal",
    "stats_filter": "[]",
@@ -80,10 +94,24 @@
   {
    "color": "Grey",
    "doc_view": "List",
+   "label": "Recruitment",
+   "link_to": "Recruitment",
+   "type": "Dashboard"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
    "label": "Grievance Type",
    "link_to": "Grievance Type",
    "stats_filter": "[]",
    "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Employee Lifecycle",
+   "link_to": "Employee Lifecycle",
+   "type": "Dashboard"
   }
  ],
  "title": "ICL HR Admin"
