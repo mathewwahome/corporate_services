@@ -1,0 +1,111 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2024-05-06 15:21:51.459069",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "section_break_xf03",
+  "custom_course",
+  "custom_department",
+  "custom_participants",
+  "custom_quarter",
+  "column_break_tvmk",
+  "custom_approval",
+  "custom_remarks",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_break_xf03",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "custom_course",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Course",
+   "reqd": 1
+  },
+  {
+   "fieldname": "custom_department",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Department",
+   "options": "Human Resource\nOperations\nSoftware Development\nCRM - BD\nProject Management\nFinance",
+   "reqd": 1
+  },
+  {
+   "fieldname": "custom_participants",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Participants",
+   "options": "Employee",
+   "reqd": 1
+  },
+  {
+   "description": "Select the quarter when the course is offered",
+   "fieldname": "custom_quarter",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Quarter",
+   "options": "Quarter 1\nQuarter 2\nQuarter 3\nQuarter 4",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_tvmk",
+   "fieldtype": "Column Break"
+  },
+  {
+   "allow_on_submit": 1,
+   "description": "Approval Status by CEO",
+   "fieldname": "custom_approval",
+   "fieldtype": "Select",
+   "label": "Approval Status",
+   "options": "Approved\nPending",
+   "reqd": 1
+  },
+  {
+   "description": "Enter any additional remarks",
+   "fieldname": "custom_remarks",
+   "fieldtype": "Small Text",
+   "label": "Remarks"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Training Needs Analysis",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2024-05-13 14:14:25.293674",
+ "modified_by": "Administrator",
+ "module": "ICL Corporate Services",
+ "name": "Training Needs Analysis",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

@@ -68,7 +68,7 @@ app_license = "mit"
 # ------------
 
 # before_install = "corporate_services.install.before_install"
-# after_install = "corporate_services.install.after_install"
+after_install = "corporate_services.api.setup_utils.post_install"
 
 # Uninstallation
 # ------------
@@ -122,13 +122,21 @@ app_license = "mit"
 # ---------------
 # Hook on document methods and events
 
-# doc_events = {
-# 	"*": {
-# 		"on_update": "method",
-# 		"on_cancel": "method",
-# 		"on_trash": "method"
-# 	}
-# }
+doc_events = {
+	# "*": {
+	# 	"on_update": "method",
+	# 	"on_cancel": "method",
+	# 	"on_trash": "method"
+	# },
+    "Travel Request":{
+        "on_submit": "corporate_services.api.notifications.alert_supervisor_travel_request",
+        "on_update": "corporate_services.api.notifications.alert_supervisor_travel_request",
+    },
+    "Leave Application":{
+        "on_submit": "corporate_services.api.notifications.alert_supervisor_leave_application",
+        "on_update": "corporate_services.api.notifications.alert_supervisor_leave_application",
+    },
+}
 
 # Scheduled Tasks
 # ---------------
@@ -227,3 +235,17 @@ app_license = "mit"
 # 	"Logging DocType Name": 30  # days to retain logs
 # }
 
+fixtures = [
+    "Job Requisition",
+    "Employee",
+    "Job Applicant",
+    "Leave Type",
+    "Leave Application",
+    "Employee Training Feedback Form",
+    "Training Application Request",
+    "Travel Request",
+    "Overnight Stay",
+    "Place of travel"
+    "Employee Grievance",
+    "Workflow State"
+]
