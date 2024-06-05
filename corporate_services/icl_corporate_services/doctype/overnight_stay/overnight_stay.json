@@ -1,0 +1,54 @@
+{
+ "actions": [],
+ "creation": "2024-06-03 16:21:45.083779",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "dates",
+  "column_break_duij",
+  "city",
+  "column_break_xtlj",
+  "special_information"
+ ],
+ "fields": [
+  {
+   "fieldname": "city",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "CITY"
+  },
+  {
+   "fieldname": "dates",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "DATE(S)"
+  },
+  {
+   "fieldname": "special_information",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "SPECIAL INFORMATION"
+  },
+  {
+   "fieldname": "column_break_duij",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_xtlj",
+   "fieldtype": "Column Break"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2024-06-04 08:58:58.013801",
+ "modified_by": "Administrator",
+ "module": "ICL Corporate Services",
+ "name": "Overnight Stay",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

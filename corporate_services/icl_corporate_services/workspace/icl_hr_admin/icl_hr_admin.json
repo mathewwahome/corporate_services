@@ -28,10 +28,60 @@
   {
    "color": "Grey",
    "doc_view": "List",
-   "label": "Job Applicants",
-   "link_to": "Job Applicant",
+   "label": "Exit Interview",
+   "link_to": "Exit Interview",
    "stats_filter": "[]",
    "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Employee",
+   "link_to": "Employee Information",
+   "type": "Report"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Employee Exits",
+   "link_to": "Employee Exits",
+   "type": "Report"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Employee Leave Balance",
+   "link_to": "Employee Leave Balance",
+   "type": "Report"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Leave Management",
+   "link_to": "Leave Management",
+   "type": "Report"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "HR Dashboard",
+   "link_to": "Human Resource",
+   "type": "Dashboard"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Employee Appraisal",
+   "link_to": "Appraisal",
+   "stats_filter": "[]",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Job Applicants",
+   "link_to": "Job Applicants Report",
+   "type": "Report"
   },
   {
    "color": "Grey",
@@ -43,11 +93,25 @@
   },
   {
    "color": "Grey",
-   "doc_view": "New",
-   "label": "New Job Offer",
-   "link_to": "Job Offer",
+   "doc_view": "List",
+   "label": "Recruitment",
+   "link_to": "Recruitment",
+   "type": "Dashboard"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Grievance Type",
+   "link_to": "Grievance Type",
    "stats_filter": "[]",
    "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Employee Lifecycle",
+   "link_to": "Employee Lifecycle",
+   "type": "Dashboard"
   }
  ],
  "title": "ICL HR Admin"
