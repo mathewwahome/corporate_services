@@ -68,7 +68,7 @@ app_license = "mit"
 # ------------
 
 # before_install = "corporate_services.install.before_install"
-after_install = "corporate_services.api.setup_utils.post_install"
+# after_install = "corporate_services.api.setup_utils.post_install"
 
 # Uninstallation
 # ------------
@@ -130,11 +130,11 @@ doc_events = {
 	# },
     "Travel Request":{
         "on_submit": "corporate_services.api.notifications.alert_supervisor_travel_request",
-        "on_update": "corporate_services.api.notifications.alert_supervisor_travel_request",
+        # "on_update": "corporate_services.api.notifications.alert_supervisor_travel_request",
     },
     "Leave Application":{
-        "on_submit": "corporate_services.api.notifications.alert_supervisor_leave_application",
-        "on_update": "corporate_services.api.notifications.alert_supervisor_leave_application",
+        # "on_submit": "corporate_services.api.notifications.alert_supervisor_leave_application",
+        # "on_update": "corporate_services.api.notifications.alert_supervisor_leave_application",
     },
 }
 
@@ -247,5 +247,9 @@ fixtures = [
     "Overnight Stay",
     "Place of travel"
     "Employee Grievance",
-    "Workflow State"
+    "Workflow State",
+    "Travel Request",
+    "Role Profile",
+    "Role",
+    "HR Settings"
 ]
