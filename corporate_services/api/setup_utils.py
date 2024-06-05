@@ -8,6 +8,7 @@ def clear_workspaces():
     workspaces_to_delete = frappe.get_list("Workspace", filters={"module":[ "!=", "ICL Corporate Services"]})
     for workspace in workspaces_to_delete:
         res = delete_doc("Workspace", workspace)
+        frappe.db.commit()
         print(res)
     frappe.db.commit()
     return
