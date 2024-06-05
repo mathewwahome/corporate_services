@@ -245,5 +245,6 @@ fixtures = [
     "Overnight Stay",
     "Place of travel",
     "Employee Grievance",
-    "Workflow State"
+    "Workflow State",
+    "Workflow"
 ]
