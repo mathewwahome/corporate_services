@@ -258,5 +258,7 @@ fixtures = [
     "Asset Movement Item",
     "Asset Movement",
     "Work Continuity Plan",
-    "Work Continuity Plan Form"
+    "Work Continuity Plan Form",
+    "Employee Evaluation",
+    "Employee Evaluation Form Characteristics"
 ]
