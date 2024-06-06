@@ -1,6 +1,6 @@
 {
  "charts": [],
- "content": "[{\"id\":\"dytQqx35FX\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">ICL HR Admin</span>\",\"col\":12}},{\"id\":\"0OUo74HiZt\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Job Applicants\",\"col\":3}},{\"id\":\"b_eJTFJrQr\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"New Job Offer\",\"col\":3}},{\"id\":\"wEaObfSplL\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Job Requisition\",\"col\":3}}]",
+ "content": "[{\"id\":\"dytQqx35FX\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">ICL HR Admin</span>\",\"col\":12}},{\"id\":\"ZcPeKTBXAT\",\"type\":\"onboarding\",\"data\":{\"onboarding_name\":\"Human Resource\",\"col\":12}},{\"id\":\"IyjCUtl89j\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h3\\\">Your Shortcuts</span>\",\"col\":12}},{\"id\":\"wEaObfSplL\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Job Requisition\",\"col\":3}},{\"id\":\"0OUo74HiZt\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Job Applicants\",\"col\":3}},{\"id\":\"338RGJxR93\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Employee\",\"col\":3}},{\"id\":\"A3ipoOyE4b\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Exit Interview\",\"col\":3}},{\"id\":\"KEwFHrqrON\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Employee Appraisal\",\"col\":3}},{\"id\":\"t6gUudBr_W\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"sN8sIg2tKW\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Reports <br></b></span>\",\"col\":12}},{\"id\":\"nQmHjYPndW\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Employee\",\"col\":3}},{\"id\":\"XBafLLGcSe\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Employee Leave Balance\",\"col\":3}},{\"id\":\"TjSvCK71Xa\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Employee Exits\",\"col\":3}},{\"id\":\"tf7egvsEW3\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Job Applicants\",\"col\":3}},{\"id\":\"ZA2FOUVi_5\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Grievance Type\",\"col\":3}},{\"id\":\"luoAevjjEQ\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Leave Management\",\"col\":3}},{\"id\":\"fDJpwKk83-\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"xeGLRIAPXP\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Dashboards</span>\",\"col\":11}},{\"id\":\"6llzGi28fO\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"fIk2rpXSFw\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"HR Dashboard\",\"col\":3}},{\"id\":\"yZ-5lj-bqk\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Recruitment\",\"col\":3}},{\"id\":\"8BKlF8mjhe\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Employee Lifecycle\",\"col\":3}},{\"id\":\"b66Oq5A-d6\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"0PFf8MGMZi\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Forms<br></b></span>\",\"col\":12}},{\"id\":\"HbRFp9WIIu\",\"type\":\"paragraph\",\"data\":{\"text\":\"These are just placeholders to help on the customization of the shortcuts.<br>\",\"col\":12}},{\"id\":\"kZyM7Ilwko\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Asset Custodianship Requisition\",\"col\":3}}]",
  "creation": "2024-05-13 10:56:40.201205",
  "custom_blocks": [],
  "docstatus": 0,
@@ -13,7 +13,7 @@
  "is_hidden": 0,
  "label": "ICL HR Admin",
  "links": [],
- "modified": "2024-06-03 16:44:48.530868",
+ "modified": "2024-06-06 11:45:53.243680",
  "modified_by": "Administrator",
  "module": "ICL Corporate Services",
  "name": "ICL HR Admin",
@@ -67,6 +67,14 @@
    "label": "HR Dashboard",
    "link_to": "Human Resource",
    "type": "Dashboard"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Asset Custodianship Requisition",
+   "link_to": "Asset Custodianship Requisition",
+   "stats_filter": "[]",
+   "type": "DocType"
   },
   {
    "color": "Grey",
