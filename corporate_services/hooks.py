@@ -256,5 +256,7 @@ fixtures = [
     "Asset Custodianship Requisition",
     "Asset Requisition - Equipment Description",
     "Asset Movement Item",
-    "Asset Movement"
+    "Asset Movement",
+    "Work Continuity Plan",
+    "Work Continuity Plan Form"
 ]
