@@ -252,5 +252,7 @@ fixtures = [
     "Travel Request",
     "Role Profile",
     "Role",
-    "HR Settings"
+    "HR Settings",
+    "Asset Custodianship Requisition",
+    "Asset Requisition - Equipment Description"
 ]
