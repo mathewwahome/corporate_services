@@ -254,5 +254,7 @@ fixtures = [
     "Role",
     "HR Settings",
     "Asset Custodianship Requisition",
-    "Asset Requisition - Equipment Description"
+    "Asset Requisition - Equipment Description",
+    "Asset Movement Item",
+    "Asset Movement"
 ]
