@@ -1,6 +1,6 @@
 {
  "charts": [],
- "content": "[{\"id\":\"_fAakpizW-\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">ICL Supervisor</span>\",\"col\":12}},{\"id\":\"WMSAue7aAI\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Appraisal\",\"col\":3}},{\"id\":\"AUj1ODbnWi\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Leave Application\",\"col\":3}},{\"id\":\"L28Sh8mRWo\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Timesheet\",\"col\":3}},{\"id\":\"-btVD_s3F3\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Asset Handover\",\"col\":3}},{\"id\":\"_qXuOaoVTe\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"At8zW2AKHs\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Reports <br></b></span>\",\"col\":12}},{\"id\":\"cl3lWkq65S\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Daily Timesheet Summary\",\"col\":3}}]",
+ "content": "[{\"id\":\"_fAakpizW-\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">ICL Supervisor</span>\",\"col\":12}},{\"id\":\"WMSAue7aAI\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Appraisal\",\"col\":3}},{\"id\":\"AUj1ODbnWi\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Leave Application\",\"col\":3}},{\"id\":\"L28Sh8mRWo\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Timesheet\",\"col\":3}},{\"id\":\"-btVD_s3F3\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Asset Handover\",\"col\":3}},{\"id\":\"_qXuOaoVTe\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"At8zW2AKHs\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Reports <br></b></span>\",\"col\":12}},{\"id\":\"b_JWatGDnr\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Asset Replacement Request\",\"col\":3}},{\"id\":\"cl3lWkq65S\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Daily Timesheet Summary\",\"col\":3}}]",
  "creation": "2024-05-13 11:11:59.629039",
  "custom_blocks": [],
  "docstatus": 0,
@@ -13,7 +13,7 @@
  "is_hidden": 0,
  "label": "ICL Supervisor",
  "links": [],
- "modified": "2024-06-07 08:26:14.539217",
+ "modified": "2024-06-07 12:23:35.939725",
  "modified_by": "Administrator",
  "module": "ICL Corporate Services",
  "name": "ICL Supervisor",
@@ -54,6 +54,14 @@
    "doc_view": "List",
    "label": "Asset Handover",
    "link_to": "Asset Movement",
+   "stats_filter": "[]",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Asset Replacement Request",
+   "link_to": "Asset replacement request",
    "stats_filter": "[]",
    "type": "DocType"
   },
