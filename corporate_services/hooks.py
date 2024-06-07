@@ -260,5 +260,8 @@ fixtures = [
     "Work Continuity Plan",
     "Work Continuity Plan Form",
     "Employee Evaluation",
-    "Employee Evaluation Form Characteristics"
+    "Employee Evaluation Form Characteristics",
+    "Report",
+    "Asset replacement request",
+    "Asset Replacement Description"
 ]
