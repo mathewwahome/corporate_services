@@ -130,11 +130,11 @@ doc_events = {
 	# },
     "Travel Request":{
         "on_submit": "corporate_services.api.notifications.alert_supervisor_travel_request",
-        # "on_update": "corporate_services.api.notifications.alert_supervisor_travel_request",
+        "on_update": "corporate_services.api.notifications.alert_supervisor_travel_request",
     },
     "Leave Application":{
-        # "on_submit": "corporate_services.api.notifications.alert_supervisor_leave_application",
-        # "on_update": "corporate_services.api.notifications.alert_supervisor_leave_application",
+        "on_submit": "corporate_services.api.notifications.alert_supervisor_leave_application",
+        "on_update": "corporate_services.api.notifications.alert_supervisor_leave_application",
     },
 }
 
@@ -256,5 +256,12 @@ fixtures = [
     "Asset Custodianship Requisition",
     "Asset Requisition - Equipment Description",
     "Asset Movement Item",
-    "Asset Movement"
+    "Asset Movement",
+    "Work Continuity Plan",
+    "Work Continuity Plan Form",
+    "Employee Evaluation",
+    "Employee Evaluation Form Characteristics",
+    "Report",
+    "Asset replacement request",
+    "Asset Replacement Description"
 ]
