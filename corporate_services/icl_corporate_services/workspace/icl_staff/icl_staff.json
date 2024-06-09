@@ -1,6 +1,6 @@
 {
  "charts": [],
- "content": "[{\"id\":\"Z2mdKLq3ER\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">ICL Staff</span>\",\"col\":12}},{\"id\":\"IdgZ6q9gxD\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Travel Request\",\"col\":3}},{\"id\":\"c3jUP1PURo\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Asset Requisition\",\"col\":3}},{\"id\":\"OKngcBiDHZ\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Timesheet\",\"col\":3}},{\"id\":\"l9bGRRI0DM\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Leave Application\",\"col\":3}},{\"id\":\"4DF69seFh8\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Grievance\",\"col\":3}},{\"id\":\"d233qIYZ3s\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Asset Handover\",\"col\":3}},{\"id\":\"SMujVI_Rlf\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Asset Replacement Request\",\"col\":3}}]",
+ "content": "[{\"id\":\"Z2mdKLq3ER\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">ICL Staff</span>\",\"col\":12}},{\"id\":\"IdgZ6q9gxD\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Travel Request\",\"col\":3}},{\"id\":\"OKngcBiDHZ\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Timesheet\",\"col\":3}},{\"id\":\"l9bGRRI0DM\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Leave Application\",\"col\":3}},{\"id\":\"4DF69seFh8\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Grievance\",\"col\":3}},{\"id\":\"at_XggGXRp\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"-T48Ex34Hp\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b></b></span>\",\"col\":12}},{\"id\":\"k8ZxhDM6Fh\",\"type\":\"paragraph\",\"data\":{\"text\":\"IntelliSOFT Asset Requisition.\",\"col\":12}},{\"id\":\"c3jUP1PURo\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Asset Requisition\",\"col\":3}},{\"id\":\"d233qIYZ3s\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Asset Handover\",\"col\":3}},{\"id\":\"WAdpAJsJVJ\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Asset Custodianship Requisition\",\"col\":3}}]",
  "creation": "2024-04-25 10:29:01.515574",
  "custom_blocks": [],
  "docstatus": 0,
@@ -13,7 +13,7 @@
  "is_hidden": 0,
  "label": "ICL Staff",
  "links": [],
- "modified": "2024-06-09 11:45:31.893114",
+ "modified": "2024-06-09 12:15:20.131316",
  "modified_by": "Administrator",
  "module": "ICL Corporate Services",
  "name": "ICL Staff",
@@ -43,6 +43,14 @@
   {
    "color": "Grey",
    "doc_view": "List",
+   "label": "Asset Custodianship Requisition",
+   "link_to": "Asset Custodianship Requisition",
+   "stats_filter": "[]",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
    "label": "Grievance",
    "link_to": "Employee Grievance",
    "stats_filter": "[]",
@@ -61,14 +69,6 @@
    "doc_view": "List",
    "label": "Asset Requisition",
    "link_to": "Asset Custodianship Requisition",
-   "stats_filter": "[]",
-   "type": "DocType"
-  },
-  {
-   "color": "Grey",
-   "doc_view": "List",
-   "label": "Asset Replacement Request",
-   "link_to": "Asset replacement request",
    "stats_filter": "[]",
    "type": "DocType"
   },
