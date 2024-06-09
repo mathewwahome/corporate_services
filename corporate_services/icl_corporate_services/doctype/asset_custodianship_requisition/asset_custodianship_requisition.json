@@ -1,0 +1,118 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2024-06-06 10:10:02.845979",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "title_section",
+  "asset_requisition_application_form",
+  "personal_info_section",
+  "requested_by",
+  "projectdepartment",
+  "column_break_lkof",
+  "phone",
+  "email",
+  "description_of_the_equipment_section",
+  "table_mesb",
+  "terms_and_conditions_section",
+  "accept"
+ ],
+ "fields": [
+  {
+   "bold": 1,
+   "fieldname": "asset_requisition_application_form",
+   "fieldtype": "Heading",
+   "label": "ASSET REQUISITION APPLICATION FORM"
+  },
+  {
+   "fieldname": "title_section",
+   "fieldtype": "Section Break",
+   "label": "Title"
+  },
+  {
+   "fieldname": "personal_info_section",
+   "fieldtype": "Section Break",
+   "label": "Personal Info"
+  },
+  {
+   "fieldname": "requested_by",
+   "fieldtype": "Link",
+   "in_global_search": 1,
+   "in_list_view": 1,
+   "label": "Requested By",
+   "options": "Employee",
+   "reqd": 1
+  },
+  {
+   "fieldname": "projectdepartment",
+   "fieldtype": "Data",
+   "label": "Project/Department"
+  },
+  {
+   "fetch_from": "requested_by.cell_number",
+   "fieldname": "phone",
+   "fieldtype": "Data",
+   "label": "Phone",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "requested_by.company_email",
+   "fieldname": "email",
+   "fieldtype": "Data",
+   "label": "Email",
+   "reqd": 1
+  },
+  {
+   "fieldname": "description_of_the_equipment_section",
+   "fieldtype": "Section Break",
+   "label": "Description Of The Equipment"
+  },
+  {
+   "fieldname": "column_break_lkof",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "terms_and_conditions_section",
+   "fieldtype": "Section Break",
+   "label": "Terms and Conditions"
+  },
+  {
+   "bold": 1,
+   "default": "0",
+   "fieldname": "accept",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "Accept"
+  },
+  {
+   "fieldname": "table_mesb",
+   "fieldtype": "Table",
+   "options": "Asset Requisition - Equipment Description"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2024-06-09 18:27:27.498780",
+ "modified_by": "Administrator",
+ "module": "ICL Corporate Services",
+ "name": "Asset Custodianship Requisition",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

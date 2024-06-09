@@ -1,0 +1,33 @@
+{
+ "charts": [],
+ "content": "[{\"id\":\"kb3XPLg8lb\",\"type\":\"header\",\"data\":{\"text\":\"<span style=\\\"font-size: 18px; letter-spacing: 0.18px;\\\"><b>IntelliSOFT Consulting Limited</b></span>\",\"col\":12}},{\"id\":\"k7SM_ab1j3\",\"type\":\"paragraph\",\"data\":{\"text\":\"This platform is designed to streamline and simplify various administrative and operational processes, ensuring a more efficient and organized work environment.&nbsp;\",\"col\":12}},{\"id\":\"tqNxO30sCx\",\"type\":\"paragraph\",\"data\":{\"text\":\"Head over to your ICL Staff workspace on the sidebar to get started\",\"col\":12}},{\"id\":\"d_KVM1gsf9\",\"type\":\"spacer\",\"data\":{\"col\":12}}]",
+ "creation": "2020-01-23 13:46:38.833076",
+ "custom_blocks": [],
+ "docstatus": 0,
+ "doctype": "Workspace",
+ "for_user": "",
+ "hide_custom": 0,
+ "icon": "getting-started",
+ "idx": 0,
+ "is_hidden": 0,
+ "label": "Home",
+ "links": [],
+ "modified": "2024-06-09 12:42:12.358836",
+ "modified_by": "Administrator",
+ "module": "ICL Corporate Services",
+ "name": "Home",
+ "number_cards": [],
+ "owner": "Administrator",
+ "parent_page": "",
+ "public": 1,
+ "quick_lists": [],
+ "restrict_to_domain": "",
+ "roles": [
+  {
+   "role": "Employee Self Service"
+  }
+ ],
+ "sequence_id": 1.0,
+ "shortcuts": [],
+ "title": "Home"
+}

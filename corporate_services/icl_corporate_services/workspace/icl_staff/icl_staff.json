@@ -1,6 +1,6 @@
 {
  "charts": [],
- "content": "[{\"id\":\"Z2mdKLq3ER\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">ICL Staff</span>\",\"col\":12}},{\"id\":\"IdgZ6q9gxD\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Travel Request\",\"col\":3}},{\"id\":\"OKngcBiDHZ\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Timesheet\",\"col\":3}},{\"id\":\"l9bGRRI0DM\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Leave Application\",\"col\":3}},{\"id\":\"4DF69seFh8\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Grievance\",\"col\":3}}]",
+ "content": "[{\"id\":\"Zy1RNftbwL\",\"type\":\"paragraph\",\"data\":{\"text\":\"Travel\",\"col\":12}},{\"id\":\"IdgZ6q9gxD\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Travel Request\",\"col\":3}},{\"id\":\"OKngcBiDHZ\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Timesheet\",\"col\":3}},{\"id\":\"l9bGRRI0DM\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Leave Application\",\"col\":3}},{\"id\":\"4DF69seFh8\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Grievance\",\"col\":3}},{\"id\":\"-T48Ex34Hp\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b></b></span>\",\"col\":12}},{\"id\":\"k8ZxhDM6Fh\",\"type\":\"paragraph\",\"data\":{\"text\":\"Asset Requisition.\",\"col\":12}},{\"id\":\"c3jUP1PURo\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Asset Requisition\",\"col\":3}},{\"id\":\"d233qIYZ3s\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Asset Handover\",\"col\":3}},{\"id\":\"WAdpAJsJVJ\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Asset Custodianship Requisition\",\"col\":3}}]",
  "creation": "2024-04-25 10:29:01.515574",
  "custom_blocks": [],
  "docstatus": 0,
@@ -9,11 +9,11 @@
  "hide_custom": 0,
  "icon": "users",
  "idx": 0,
- "indicator_color": "cyan",
+ "indicator_color": "",
  "is_hidden": 0,
  "label": "ICL Staff",
  "links": [],
- "modified": "2024-06-04 11:58:27.272900",
+ "modified": "2024-06-09 12:32:26.842961",
  "modified_by": "Administrator",
  "module": "ICL Corporate Services",
  "name": "ICL Staff",
@@ -22,7 +22,14 @@
  "parent_page": "",
  "public": 1,
  "quick_lists": [],
- "roles": [],
+ "roles": [
+  {
+   "role": "Employee"
+  },
+  {
+   "role": "Employee Self Service"
+  }
+ ],
  "sequence_id": 39.0,
  "shortcuts": [
   {
@@ -30,6 +37,14 @@
    "doc_view": "List",
    "label": "Timesheet",
    "link_to": "Timesheet",
+   "stats_filter": "[]",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Asset Custodianship Requisition",
+   "link_to": "Asset Custodianship Requisition",
    "stats_filter": "[]",
    "type": "DocType"
   },
@@ -52,8 +67,24 @@
   {
    "color": "Grey",
    "doc_view": "List",
+   "label": "Asset Requisition",
+   "link_to": "Asset Custodianship Requisition",
+   "stats_filter": "[]",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
    "label": "Leave Application",
    "link_to": "Leave Application",
+   "stats_filter": "[]",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Asset Handover",
+   "link_to": "Asset Movement",
    "stats_filter": "[]",
    "type": "DocType"
   }

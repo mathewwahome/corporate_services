@@ -68,7 +68,7 @@ app_license = "mit"
 # ------------
 
 # before_install = "corporate_services.install.before_install"
-after_install = "corporate_services.api.setup_utils.post_install"
+# after_install = "corporate_services.api.setup_utils.post_install"
 
 # Uninstallation
 # ------------
@@ -83,6 +83,10 @@ after_install = "corporate_services.api.setup_utils.post_install"
 
 # before_app_install = "corporate_services.utils.before_app_install"
 # after_app_install = "corporate_services.utils.after_app_install"
+
+
+after_migrate = "corporate_services.api.setup_utils.post_install"
+
 
 # Integration Cleanup
 # -------------------
@@ -236,6 +240,7 @@ doc_events = {
 # }
 
 fixtures = [
+    "Appraisal",
     "Job Requisition",
     "Employee",
     "Job Applicant",
@@ -245,7 +250,26 @@ fixtures = [
     "Training Application Request",
     "Travel Request",
     "Overnight Stay",
-    "Place of travel"
+    "Place of travel",
     "Employee Grievance",
-    "Workflow State"
+    "Workflow",
+    "Workflow State",
+    "Travel Request",
+    "Role",
+    "HR Settings",
+    "Asset Custodianship Requisition",
+    "Asset Requisition - Equipment Description",
+    "Asset Movement Item",
+    "Asset Movement",
+    "Work Continuity Plan",
+    "Work Continuity Plan Form",
+    "Employee Evaluation",
+    "Employee Evaluation Form Characteristics",
+    "Report",
+    "Asset replacement request",
+    "Asset Replacement Description",
+    "Navbar Settings",
+    "HR Settings",
+    "Designation",
+    "Department"
 ]

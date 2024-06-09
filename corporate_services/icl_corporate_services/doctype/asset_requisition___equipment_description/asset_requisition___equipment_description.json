@@ -1,0 +1,60 @@
+{
+ "actions": [],
+ "creation": "2024-06-06 10:33:26.316340",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "description_of_the_equipment_section",
+  "name_of_item",
+  "column_break_lhei",
+  "serialidentifying_number",
+  "column_break_aaoy",
+  "date_of_issue"
+ ],
+ "fields": [
+  {
+   "fieldname": "name_of_item",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Name of Item"
+  },
+  {
+   "fieldname": "column_break_lhei",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "serialidentifying_number",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Serial/Identifying Number"
+  },
+  {
+   "fieldname": "column_break_aaoy",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "date_of_issue",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Date of Issue"
+  },
+  {
+   "fieldname": "description_of_the_equipment_section",
+   "fieldtype": "Section Break",
+   "label": "DESCRIPTION OF THE EQUIPMENT"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2024-06-09 14:42:27.467225",
+ "modified_by": "Administrator",
+ "module": "ICL Corporate Services",
+ "name": "Asset Requisition - Equipment Description",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
