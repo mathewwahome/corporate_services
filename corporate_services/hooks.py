@@ -270,5 +270,6 @@ fixtures = [
     "Asset Replacement Description",
     "Navbar Settings",
     "HR Settings",
-    "Designation"
+    "Designation",
+    "Department"
 ]
