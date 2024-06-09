@@ -262,6 +262,8 @@ fixtures = [
     "Navbar Settings",
     "HR Settings",
     "Designation",
+    "Department"
+    "Designation",
     "Client Script",
     "Department"
 ]

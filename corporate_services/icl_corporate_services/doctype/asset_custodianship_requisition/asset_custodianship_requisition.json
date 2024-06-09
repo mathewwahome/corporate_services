@@ -50,18 +50,18 @@
    "label": "Project/Department"
   },
   {
-   "fetch_from": "requested_by.employee_number",
+   "fetch_from": "requested_by.cell_number",
    "fieldname": "phone",
-   "fieldtype": "Link",
+   "fieldtype": "Data",
    "label": "Phone",
-   "options": "Employee"
+   "reqd": 1
   },
   {
    "fetch_from": "requested_by.company_email",
    "fieldname": "email",
-   "fieldtype": "Link",
+   "fieldtype": "Data",
    "label": "Email",
-   "options": "Employee"
+   "reqd": 1
   },
   {
    "fieldname": "description_of_the_equipment_section",
@@ -93,7 +93,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-06-09 14:44:11.909492",
+ "modified": "2024-06-09 18:27:27.498780",
  "modified_by": "Administrator",
  "module": "ICL Corporate Services",
  "name": "Asset Custodianship Requisition",
