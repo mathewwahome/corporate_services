@@ -9,5 +9,16 @@
   "name": "Travel Request Actions",
   "script": "frappe.ui.form.on('Travel Request', {\r\n    refresh: function(frm) {\r\n        // Insert HTML using jQuery\r\n        frm.dashboard.add_section(`<br>\r\n        <h3>Instructions</h3>\r\n        <ol>\r\n            <li>Please fill out the Travel Authorization Form below.</li>\r\n            <li>Obtain approval from your direct supervisor and HR/Operations and Finance Office prior to making reservations.</li>\r\n            <li>Attach a detailed travel budget using the ICL travel budget template.</li>\r\n        </ol>\r\n        `);\r\n    }\r\n});\r\n",
   "view": "Form"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
+  "dt": "Travel Request",
+  "enabled": 1,
+  "modified": "2024-06-09 15:33:58.624431",
+  "module": "ICL Corporate Services",
+  "name": "Travel Request Filters",
+  "script": "frappe.ui.form.on('Travel Request', {\n\trefresh(frm) {\n\t\t// your code here\n\t\t\n\t\tfrm.set_query('employee', function() {\n            return {\n                filters: {\n                    user_id: frappe.session.user\n                }\n            };\n        });\n\t}\n})",
+  "view": "Form"
  }
 ]

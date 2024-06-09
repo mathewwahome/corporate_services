@@ -240,20 +240,12 @@ doc_events = {
 # }
 
 fixtures = [
-    "Job Requisition",
-    "Employee",
-    "Job Applicant",
     "Leave Type",
     "Leave Application",
     "Employee Training Feedback Form",
-    "Training Application Request",
-    "Travel Request",
     "Overnight Stay",
-    "Place of travel",
-    "Employee Grievance",
     "Workflow",
     "Workflow State",
-    "Travel Request",
     "Role",
     "HR Settings",
     "Asset Custodianship Requisition",
@@ -270,5 +262,6 @@ fixtures = [
     "Navbar Settings",
     "HR Settings",
     "Designation",
-    "Client Script"
+    "Client Script",
+    "Department"
 ]

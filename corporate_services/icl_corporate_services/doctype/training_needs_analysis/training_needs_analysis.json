@@ -7,13 +7,13 @@
  "field_order": [
   "section_break_xf03",
   "custom_course",
-  "custom_department",
-  "custom_participants",
   "custom_quarter",
   "column_break_tvmk",
-  "custom_approval",
-  "custom_remarks",
-  "amended_from"
+  "custom_department",
+  "participants_section",
+  "custom_participants",
+  "section_break_xela",
+  "custom_remarks"
  ],
  "fields": [
   {
@@ -37,10 +37,9 @@
   },
   {
    "fieldname": "custom_participants",
-   "fieldtype": "Link",
-   "in_list_view": 1,
+   "fieldtype": "Table",
    "label": "Participants",
-   "options": "Employee",
+   "options": "Employee List",
    "reqd": 1
   },
   {
@@ -57,35 +56,25 @@
    "fieldtype": "Column Break"
   },
   {
-   "allow_on_submit": 1,
-   "description": "Approval Status by CEO",
-   "fieldname": "custom_approval",
-   "fieldtype": "Select",
-   "label": "Approval Status",
-   "options": "Approved\nPending",
-   "reqd": 1
-  },
-  {
    "description": "Enter any additional remarks",
    "fieldname": "custom_remarks",
    "fieldtype": "Small Text",
    "label": "Remarks"
   },
   {
-   "fieldname": "amended_from",
-   "fieldtype": "Link",
-   "label": "Amended From",
-   "no_copy": 1,
-   "options": "Training Needs Analysis",
-   "print_hide": 1,
-   "read_only": 1,
-   "search_index": 1
+   "fieldname": "participants_section",
+   "fieldtype": "Section Break",
+   "label": "Participants"
+  },
+  {
+   "fieldname": "section_break_xela",
+   "fieldtype": "Section Break"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-05-13 14:14:25.293674",
+ "modified": "2024-06-09 16:16:40.483671",
  "modified_by": "Administrator",
  "module": "ICL Corporate Services",
  "name": "Training Needs Analysis",
