@@ -2,6 +2,92 @@
  {
   "docstatus": 0,
   "doctype": "Workflow",
+  "document_type": "Travel Request",
+  "is_active": 1,
+  "modified": "2024-06-03 16:20:14.634852",
+  "name": "Travel Request HR Workflow",
+  "override_status": 0,
+  "send_email_alert": 0,
+  "states": [
+   {
+    "allow_edit": "All",
+    "avoid_status_override": 0,
+    "doc_status": "0",
+    "is_optional_state": 0,
+    "message": null,
+    "next_action_email_template": null,
+    "parent": "Travel Request HR Workflow",
+    "parentfield": "states",
+    "parenttype": "Workflow",
+    "state": "Submitted to Supervisor",
+    "update_field": null,
+    "update_value": null,
+    "workflow_builder_id": "1"
+   },
+   {
+    "allow_edit": "All",
+    "avoid_status_override": 0,
+    "doc_status": "0",
+    "is_optional_state": 0,
+    "message": null,
+    "next_action_email_template": null,
+    "parent": "Travel Request HR Workflow",
+    "parentfield": "states",
+    "parenttype": "Workflow",
+    "state": "Approved by Supervisor",
+    "update_field": null,
+    "update_value": null,
+    "workflow_builder_id": "2"
+   },
+   {
+    "allow_edit": "All",
+    "avoid_status_override": 0,
+    "doc_status": "0",
+    "is_optional_state": 0,
+    "message": null,
+    "next_action_email_template": null,
+    "parent": "Travel Request HR Workflow",
+    "parentfield": "states",
+    "parenttype": "Workflow",
+    "state": "Submitted to Finance",
+    "update_field": null,
+    "update_value": null,
+    "workflow_builder_id": "3"
+   }
+  ],
+  "transitions": [
+   {
+    "action": "Approve",
+    "allow_self_approval": 1,
+    "allowed": "All",
+    "condition": null,
+    "next_state": "Approved by Supervisor",
+    "parent": "Travel Request HR Workflow",
+    "parentfield": "transitions",
+    "parenttype": "Workflow",
+    "state": "Submitted to Supervisor",
+    "workflow_builder_id": "action-1"
+   },
+   {
+    "action": "Approve",
+    "allow_self_approval": 1,
+    "allowed": "Website Manager",
+    "condition": null,
+    "next_state": "Submitted to Finance",
+    "parent": "Travel Request HR Workflow",
+    "parentfield": "transitions",
+    "parenttype": "Workflow",
+    "state": "Approved by Supervisor",
+    "workflow_builder_id": "action-2"
+   }
+  ],
+  "workflow_data": "[{\"type\":\"state\",\"dimensions\":{\"width\":161,\"height\":73},\"handleBounds\":{\"source\":[{\"id\":\"top\",\"position\":\"top\",\"x\":77.16668686361642,\"y\":-11.333348884887526,\"width\":7,\"height\":7},{\"id\":\"right\",\"position\":\"right\",\"x\":165.6668136586361,\"y\":33.166667547187636,\"width\":7,\"height\":7},{\"id\":\"bottom\",\"position\":\"bottom\",\"x\":77.16668686361642,\"y\":77.66671432810138,\"width\":7,\"height\":7},{\"id\":\"left\",\"position\":\"left\",\"x\":-11.333348884887526,\"y\":33.166667547187636,\"width\":7,\"height\":7}]},\"computedPosition\":{\"x\":77.82857522886965,\"y\":67.6540584640239,\"z\":0},\"id\":\"1\",\"position\":{\"x\":77.82857522886965,\"y\":67.6540584640239}},{\"type\":\"state\",\"dimensions\":{\"width\":161,\"height\":73},\"handleBounds\":{\"source\":[{\"id\":\"top\",\"position\":\"top\",\"x\":77.16665651477784,\"y\":-11.333348884887526,\"width\":7,\"height\":7},{\"id\":\"right\",\"position\":\"right\",\"x\":165.66678330979752,\"y\":33.166667547187636,\"width\":7,\"height\":7},{\"id\":\"bottom\",\"position\":\"bottom\",\"x\":77.16665651477784,\"y\":77.66671432810138,\"width\":7,\"height\":7},{\"id\":\"left\",\"position\":\"left\",\"x\":-11.333348884887526,\"y\":33.166667547187636,\"width\":7,\"height\":7}]},\"computedPosition\":{\"x\":360.2581031320625,\"y\":70.63746897004353,\"z\":0},\"id\":\"2\",\"position\":{\"x\":360.2581031320625,\"y\":70.63746897004353}},{\"type\":\"state\",\"dimensions\":{\"width\":161,\"height\":73},\"handleBounds\":{\"source\":[{\"id\":\"top\",\"position\":\"top\",\"x\":77.16677791013217,\"y\":-11.333348884887526,\"width\":7,\"height\":7},{\"id\":\"right\",\"position\":\"right\",\"x\":165.66690470515186,\"y\":33.166682721606925,\"width\":7,\"height\":7},{\"id\":\"bottom\",\"position\":\"bottom\",\"x\":77.16677791013217,\"y\":77.66671432810138,\"width\":7,\"height\":7},{\"id\":\"left\",\"position\":\"left\",\"x\":-11.333348884887526,\"y\":33.166682721606925,\"width\":7,\"height\":7}]},\"computedPosition\":{\"x\":631.7484591798499,\"y\":68.64852863269718,\"z\":0},\"id\":\"3\",\"position\":{\"x\":631.7484591798499,\"y\":68.64852863269718}},{\"type\":\"action\",\"dimensions\":{\"width\":78,\"height\":32},\"handleBounds\":{\"source\":[{\"id\":\"top\",\"position\":\"top\",\"x\":35.79172068921795,\"y\":-2.3333401055755,\"width\":6,\"height\":6},{\"id\":\"right\",\"position\":\"right\",\"x\":73.91672078633422,\"y\":13.166691874816644,\"width\":6,\"height\":6},{\"id\":\"bottom\",\"position\":\"bottom\",\"x\":35.79172068921795,\"y\":28.666693506370205,\"width\":6,\"height\":6},{\"id\":\"left\",\"position\":\"left\",\"x\":-2.333279407898335,\"y\":13.166691874816644,\"width\":6,\"height\":6}]},\"computedPosition\":{\"x\":259.5433391804661,\"y\":88.1540584640239,\"z\":0},\"id\":\"action-1\",\"position\":{\"x\":259.5433391804661,\"y\":88.1540584640239},\"data\":{\"from_id\":\"1\",\"to_id\":\"2\"}},{\"type\":\"action\",\"dimensions\":{\"width\":78,\"height\":32},\"handleBounds\":{\"source\":[{\"id\":\"top\",\"position\":\"top\",\"x\":35.79172068921795,\"y\":-2.3333401055755,\"width\":6,\"height\":6},{\"id\":\"right\",\"position\":\"right\",\"x\":73.91666008865707,\"y\":13.166691874816644,\"width\":6,\"height\":6},{\"id\":\"bottom\",\"position\":\"bottom\",\"x\":35.79172068921795,\"y\":28.666693506370205,\"width\":6,\"height\":6},{\"id\":\"left\",\"position\":\"left\",\"x\":-2.3333401055755,\"y\":13.166691874816644,\"width\":6,\"height\":6}]},\"computedPosition\":{\"x\":536.5032811559562,\"y\":91.13746897004353,\"z\":0},\"id\":\"action-2\",\"position\":{\"x\":536.5032811559562,\"y\":91.13746897004353},\"data\":{\"from_id\":\"2\",\"to_id\":\"3\"}},{\"sourceHandle\":\"right\",\"targetHandle\":\"left\",\"type\":\"transition\",\"source\":\"1\",\"target\":\"action-1\",\"updatable\":true,\"animated\":true,\"id\":\"vueflow__edge-1right-action-1left\",\"sourceX\":250.49538888750575,\"sourceY\":104.32072601121155,\"targetX\":257.2100597725678,\"targetY\":104.32075033884055},{\"sourceHandle\":\"right\",\"targetHandle\":\"left\",\"type\":\"transition\",\"source\":\"action-1\",\"target\":\"2\",\"updatable\":true,\"animated\":true,\"id\":\"vueflow__edge-action-1right-2left\",\"sourceX\":339.4600599668003,\"sourceY\":104.32075033884055,\"targetX\":348.924754247175,\"targetY\":107.30413651723117,\"markerEnd\":{\"type\":\"arrow\",\"width\":15,\"height\":15,\"strokeWidth\":1.5,\"color\":\"#687178\"}},{\"sourceHandle\":\"right\",\"targetHandle\":\"left\",\"type\":\"transition\",\"source\":\"2\",\"target\":\"action-2\",\"updatable\":true,\"animated\":true,\"id\":\"vueflow__edge-2right-action-2left\",\"sourceX\":532.92488644186,\"sourceY\":107.30413651723117,\"targetX\":534.1699410503807,\"targetY\":107.30416084486018},{\"sourceHandle\":\"right\",\"targetHandle\":\"left\",\"type\":\"transition\",\"source\":\"action-2\",\"target\":\"3\",\"updatable\":true,\"animated\":true,\"id\":\"vueflow__edge-action-2right-3left\",\"sourceX\":616.4199412446133,\"sourceY\":107.30416084486018,\"targetX\":620.4151102949623,\"targetY\":105.3152113543041,\"markerEnd\":{\"type\":\"arrow\",\"width\":15,\"height\":15,\"strokeWidth\":1.5,\"color\":\"#687178\"}}]",
+  "workflow_name": "Travel Request HR Workflow",
+  "workflow_state_field": "workflow_state"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow",
   "document_type": "Leave Application",
   "is_active": 0,
   "modified": "2024-06-05 15:45:19.432246",
