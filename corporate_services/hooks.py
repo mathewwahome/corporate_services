@@ -263,5 +263,7 @@ fixtures = [
     "Employee Evaluation Form Characteristics",
     "Report",
     "Asset replacement request",
-    "Asset Replacement Description"
+    "Asset Replacement Description",
+    "Navbar Settings",
+    "HR Settings"
 ]
