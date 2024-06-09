@@ -50,12 +50,14 @@
    "label": "Project/Department"
   },
   {
+   "fetch_from": "requested_by.employee_number",
    "fieldname": "phone",
    "fieldtype": "Link",
    "label": "Phone",
    "options": "Employee"
   },
   {
+   "fetch_from": "requested_by.company_email",
    "fieldname": "email",
    "fieldtype": "Link",
    "label": "Email",
@@ -91,7 +93,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-06-06 10:44:48.443035",
+ "modified": "2024-06-09 14:44:11.909492",
  "modified_by": "Administrator",
  "module": "ICL Corporate Services",
  "name": "Asset Custodianship Requisition",
