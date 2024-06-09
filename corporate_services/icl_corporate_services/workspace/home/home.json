@@ -224,7 +224,7 @@
    "type": "Link"
   }
  ],
- "modified": "2024-06-03 16:43:30.422563",
+ "modified": "2024-06-09 11:44:39.419077",
  "modified_by": "Administrator",
  "module": "ICL Corporate Services",
  "name": "Home",
@@ -234,7 +234,14 @@
  "public": 1,
  "quick_lists": [],
  "restrict_to_domain": "",
- "roles": [],
+ "roles": [
+  {
+   "role": "Employee"
+  },
+  {
+   "role": "Employee Self Service"
+  }
+ ],
  "sequence_id": 1.0,
  "shortcuts": [
   {

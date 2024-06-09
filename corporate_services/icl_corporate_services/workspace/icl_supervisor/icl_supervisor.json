@@ -13,7 +13,7 @@
  "is_hidden": 0,
  "label": "ICL Supervisor",
  "links": [],
- "modified": "2024-06-07 12:23:35.939725",
+ "modified": "2024-06-09 11:43:51.372442",
  "modified_by": "Administrator",
  "module": "ICL Corporate Services",
  "name": "ICL Supervisor",
@@ -22,7 +22,11 @@
  "parent_page": "",
  "public": 1,
  "quick_lists": [],
- "roles": [],
+ "roles": [
+  {
+   "role": "Supervisor"
+  }
+ ],
  "sequence_id": 42.0,
  "shortcuts": [
   {
