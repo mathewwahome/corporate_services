@@ -240,6 +240,7 @@ doc_events = {
 # }
 
 fixtures = [
+    "Appraisal",
     "Job Requisition",
     "Employee",
     "Job Applicant",
