@@ -250,7 +250,6 @@ fixtures = [
     "Workflow",
     "Workflow State",
     "Travel Request",
-    "Role Profile",
     "Role",
     "HR Settings",
     "Asset Custodianship Requisition",
@@ -265,5 +264,6 @@ fixtures = [
     "Asset replacement request",
     "Asset Replacement Description",
     "Navbar Settings",
-    "HR Settings"
+    "HR Settings",
+    "Designation"
 ]
