@@ -84,6 +84,10 @@ app_license = "mit"
 # before_app_install = "corporate_services.utils.before_app_install"
 # after_app_install = "corporate_services.utils.after_app_install"
 
+
+after_migrate = "corporate_services.api.setup_utils.post_install"
+
+
 # Integration Cleanup
 # -------------------
 # To clean up dependencies/integrations with other apps
