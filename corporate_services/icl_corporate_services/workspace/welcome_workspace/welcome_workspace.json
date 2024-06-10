@@ -13,7 +13,7 @@
  "is_hidden": 0,
  "label": "Welcome Workspace",
  "links": [],
- "modified": "2024-06-09 14:14:07.474465",
+ "modified": "2024-06-09 14:36:33.917574",
  "modified_by": "Administrator",
  "module": "ICL Corporate Services",
  "name": "Welcome Workspace",
@@ -22,6 +22,7 @@
  "parent_page": "",
  "public": 1,
  "quick_lists": [],
+ "restrict_to_domain": "",
  "roles": [
   {
    "role": "Employee Self Service"
