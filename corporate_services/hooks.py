@@ -1,6 +1,6 @@
 app_name = "corporate_services"
 app_title = "ICL Corporate Services"
-app_publisher = "ICL"
+app_publisher = "IntelliSOFT Consulting"
 app_description = "IntelliSOFT Corporate Services ERPNext Customizations"
 app_email = "dev@intellisoftkenya.com"
 app_license = "mit"
@@ -257,13 +257,8 @@ fixtures = [
     "Employee Evaluation",
     "Employee Evaluation Form Characteristics",
     "Report",
-    "Asset replacement request",
-    "Asset Replacement Description",
     "Navbar Settings",
     "HR Settings",
     "Designation",
-    "Department"
-    "Designation",
-    "Client Script",
-    "Department"
+    "Client Script"
 ]
