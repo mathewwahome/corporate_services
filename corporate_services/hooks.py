@@ -136,10 +136,6 @@ doc_events = {
         "on_submit": "corporate_services.api.notifications.alert_supervisor_travel_request",
         "on_update": "corporate_services.api.notifications.alert_supervisor_travel_request",
     },
-    "Leave Application":{
-        "on_submit": "corporate_services.api.notifications.alert_supervisor_leave_application",
-        "on_update": "corporate_services.api.notifications.alert_supervisor_leave_application",
-    },
 }
 
 # Scheduled Tasks
