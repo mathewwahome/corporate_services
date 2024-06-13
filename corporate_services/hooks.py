@@ -132,10 +132,6 @@ doc_events = {
 	# 	"on_cancel": "method",
 	# 	"on_trash": "method"
 	# },
-    "Travel Request":{
-        "on_submit": "corporate_services.api.notifications.alert_supervisor_travel_request",
-        "on_update": "corporate_services.api.notifications.alert_supervisor_travel_request",
-    },
 }
 
 # Scheduled Tasks
