@@ -31,5 +31,16 @@
   "name": "Travel Request Actions",
   "script": "frappe.ui.form.on('Travel Request', {\r\n    refresh: function(frm) {\r\n        // Insert HTML using jQuery\r\n        frm.dashboard.add_section(`<br>\r\n        <h2>IntelliSOFT CONSULTING TRAVEL AUTHORIZATION FORM <h2>\r\n        <br>\r\n        <h3>Instructions</h3>\r\n        <ol>\r\n            <li>Please fill out the Travel Authorization Form below.</li>\r\n            <li>Obtain approval from your direct supervisor and HR/Operations and Finance Office prior to making reservations.</li>\r\n            <li>Attach a detailed travel budget using the ICL travel budget template.</li>\r\n        </ol>\r\n        `);\r\n    }\r\n});\r\n",
   "view": "Form"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
+  "dt": "Asset Custodianship Requisition",
+  "enabled": 1,
+  "modified": "2024-06-13 11:08:00.666723",
+  "module": "ICL Corporate Services",
+  "name": "Asset Custodianship Requisition Terms",
+  "script": "frappe.ui.form.on('Asset Custodianship Requisition', {\n\trefresh(frm) {\n        frm.dashboard.add_section(`\n        <h2>Asset Requisition Application Form</h2>\n            <br>\n            <p>In acceptance of this asset for usage, I agree to the terms and conditions stated below:</p>\n            <ul>\n                <li>I understand that I am responsible for the asset whilst in my possession, regardless of whether the asset is used in the office, at my place of residence, or in any other location such as a hotel, conference room, car or airport.</li>\n                <li>I am responsible for keeping the asset in good condition while using it and until the time of return.</li>\n                <li>I should be the only authorized person to have access to and use this asset, any unauthorized access to this asset is a violation of this company's policy and employment regulation and employment/consultant contract.</li>\n                <li>In the event of loss, theft, or damage, this must be reported to the police within 24-48 hours, and a copy of a Police report or incident report must be submitted to the company for verification purposes.</li>\n                <li>I understand that any violation of these policies shall lead to a disciplinary action by the company.</li>\n            </ul>\n        `);\t\n    }\n});",
+  "view": "Form"
  }
 ]
