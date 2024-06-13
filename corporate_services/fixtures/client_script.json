@@ -4,10 +4,21 @@
   "doctype": "Client Script",
   "dt": "Travel Request",
   "enabled": 1,
-  "modified": "2024-06-09 14:57:26.242100",
+  "modified": "2024-06-11 09:06:09.449940",
   "module": "ICL Corporate Services",
-  "name": "Travel Request Actions",
-  "script": "frappe.ui.form.on('Travel Request', {\r\n    refresh: function(frm) {\r\n        // Insert HTML using jQuery\r\n        frm.dashboard.add_section(`<br>\r\n        <h3>Instructions</h3>\r\n        <ol>\r\n            <li>Please fill out the Travel Authorization Form below.</li>\r\n            <li>Obtain approval from your direct supervisor and HR/Operations and Finance Office prior to making reservations.</li>\r\n            <li>Attach a detailed travel budget using the ICL travel budget template.</li>\r\n        </ol>\r\n        `);\r\n    }\r\n});\r\n",
+  "name": "Travel Request Filters",
+  "script": "frappe.ui.form.on('Travel Request', {\n\trefresh(frm) {\n\t\tfrm.set_query('employee', function() {\n            return {\n                filters: {\n                    user_id: frappe.session.user\n                }\n            };\n        });\n\t}\n})",
+  "view": "Form"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
+  "dt": "Work Continuity Plan",
+  "enabled": 1,
+  "modified": "2024-06-11 08:34:52.784625",
+  "module": "ICL Corporate Services",
+  "name": "Work Continuity Plan leave Checklist",
+  "script": "frappe.ui.form.on('Work Continuity Plan', {\n\trefresh(frm) {\n     // Insert HTML using jQuery\n        frm.dashboard.add_section(`\n        <h2>IntelliSOFT CONSULTING Work Continuity Plan</h2>\n            <br>\n            <h3>Leave Checklist</h3>\n            <ol>\n                <li>Set out-of-office Autoresponder.</li>\n                <li>Set out-of-office calender.</li>\n                <li>Log off email & work docs.</li>\n            </ol>\n        `);\t\n    }\n});",
   "view": "Form"
  },
  {
@@ -15,10 +26,10 @@
   "doctype": "Client Script",
   "dt": "Travel Request",
   "enabled": 1,
-  "modified": "2024-06-09 15:33:58.624431",
+  "modified": "2024-06-11 08:23:59.003398",
   "module": "ICL Corporate Services",
-  "name": "Travel Request Filters",
-  "script": "frappe.ui.form.on('Travel Request', {\n\trefresh(frm) {\n\t\t// your code here\n\t\t\n\t\tfrm.set_query('employee', function() {\n            return {\n                filters: {\n                    user_id: frappe.session.user\n                }\n            };\n        });\n\t}\n})",
+  "name": "Travel Request Actions",
+  "script": "frappe.ui.form.on('Travel Request', {\r\n    refresh: function(frm) {\r\n        // Insert HTML using jQuery\r\n        frm.dashboard.add_section(`<br>\r\n        <h2>IntelliSOFT CONSULTING TRAVEL AUTHORIZATION FORM <h2>\r\n        <br>\r\n        <h3>Instructions</h3>\r\n        <ol>\r\n            <li>Please fill out the Travel Authorization Form below.</li>\r\n            <li>Obtain approval from your direct supervisor and HR/Operations and Finance Office prior to making reservations.</li>\r\n            <li>Attach a detailed travel budget using the ICL travel budget template.</li>\r\n        </ol>\r\n        `);\r\n    }\r\n});\r\n",
   "view": "Form"
  }
 ]
