@@ -260,6 +260,10 @@ fixtures = [
     "Navbar Settings",
     "HR Settings",
     "Designation",
-    # "Department",
-    "Asset Handover Form"
+    "Department",
+    "Asset Handover Form",
+    "Client Script",
+    "Workflow Action Master",
+    "Employee Grievance",
+    "Employee List"
 ]
