@@ -239,7 +239,6 @@ fixtures = [
     "Workflow",
     "Workflow State",
     "Role",
-    "HR Settings",
     "Asset Custodianship Requisition",
     "Asset Requisition - Equipment Description",
     "Asset Movement Item",
@@ -257,5 +256,6 @@ fixtures = [
     "Client Script",
     "Workflow Action Master",
     "Employee Grievance",
-    "Employee List"
+    "Employee List",
+    "Employee"
 ]
