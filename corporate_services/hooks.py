@@ -264,6 +264,4 @@ fixtures = [
     "Asset Handover Form",
     "Client Script",
     "Workflow Action Master",
-    "Employee Grievance",
-    "Employee List"
 ]
