@@ -13,11 +13,15 @@
  "is_hidden": 0,
  "label": "ICL Supervisor",
  "links": [],
- "modified": "2024-06-19 09:00:48.337696",
+ "modified": "2024-06-19 14:37:39.656662",
  "modified_by": "Administrator",
  "module": "ICL Corporate Services",
  "name": "ICL Supervisor",
- "number_cards": [],
+ "number_cards": [
+  {
+   "number_card_name": "Trainings Event"
+  }
+ ],
  "owner": "Administrator",
  "parent_page": "",
  "public": 1,
