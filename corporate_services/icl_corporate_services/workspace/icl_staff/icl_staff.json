@@ -13,7 +13,7 @@
  "is_hidden": 0,
  "label": "ICL Staff",
  "links": [],
- "modified": "2024-06-09 15:44:29.624398",
+ "modified": "2024-06-19 14:39:49.667060",
  "modified_by": "Administrator",
  "module": "ICL Corporate Services",
  "name": "ICL Staff",
@@ -28,6 +28,12 @@
   },
   {
    "role": "Employee Self Service"
+  },
+  {
+   "role": "HR Manager"
+  },
+  {
+   "role": "HR User"
   }
  ],
  "sequence_id": 39.0,
