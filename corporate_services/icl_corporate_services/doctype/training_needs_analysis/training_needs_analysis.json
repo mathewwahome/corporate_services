@@ -13,7 +13,8 @@
   "participants_section",
   "custom_participants",
   "section_break_xela",
-  "custom_remarks"
+  "custom_remarks",
+  "amended_from"
  ],
  "fields": [
   {
@@ -22,17 +23,18 @@
   },
   {
    "fieldname": "custom_course",
-   "fieldtype": "Data",
+   "fieldtype": "Link",
    "in_list_view": 1,
    "label": "Course",
+   "options": "Training Application Request",
    "reqd": 1
   },
   {
    "fieldname": "custom_department",
-   "fieldtype": "Select",
+   "fieldtype": "Link",
    "in_list_view": 1,
    "label": "Department",
-   "options": "Human Resource\nOperations\nSoftware Development\nCRM - BD\nProject Management\nFinance",
+   "options": "Department",
    "reqd": 1
   },
   {
@@ -69,12 +71,22 @@
   {
    "fieldname": "section_break_xela",
    "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Training Needs Analysis",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-06-09 16:16:40.483671",
+ "modified": "2024-06-24 09:40:29.836878",
  "modified_by": "Administrator",
  "module": "ICL Corporate Services",
  "name": "Training Needs Analysis",
