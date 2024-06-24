@@ -132,14 +132,6 @@ doc_events = {
 	# 	"on_cancel": "method",
 	# 	"on_trash": "method"
 	# },
-    "Travel Request":{
-        "on_submit": "corporate_services.api.notifications.alert_supervisor_travel_request",
-        "on_update": "corporate_services.api.notifications.alert_supervisor_travel_request",
-    },
-    "Leave Application":{
-        "on_submit": "corporate_services.api.notifications.alert_supervisor_leave_application",
-        "on_update": "corporate_services.api.notifications.alert_supervisor_leave_application",
-    },
 }
 
 # Scheduled Tasks
@@ -247,7 +239,6 @@ fixtures = [
     "Workflow",
     "Workflow State",
     "Role",
-    "HR Settings",
     "Asset Custodianship Requisition",
     "Asset Requisition - Equipment Description",
     "Asset Movement Item",
@@ -265,5 +256,6 @@ fixtures = [
     "Client Script",
     "Workflow Action Master",
     "Employee Grievance",
-    "Employee List"
+    "Employee List",
+    "Employee"
 ]
