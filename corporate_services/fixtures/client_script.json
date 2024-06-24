@@ -42,5 +42,16 @@
   "name": "Asset Custodianship Requisition Terms",
   "script": "frappe.ui.form.on('Asset Custodianship Requisition', {\n\trefresh(frm) {\n        frm.dashboard.add_section(`\n        <h2>Asset Requisition Application Form</h2>\n            <br>\n            <p>In acceptance of this asset for usage, I agree to the terms and conditions stated below:</p>\n            <ul>\n                <li>I understand that I am responsible for the asset whilst in my possession, regardless of whether the asset is used in the office, at my place of residence, or in any other location such as a hotel, conference room, car or airport.</li>\n                <li>I am responsible for keeping the asset in good condition while using it and until the time of return.</li>\n                <li>I should be the only authorized person to have access to and use this asset, any unauthorized access to this asset is a violation of this company's policy and employment regulation and employment/consultant contract.</li>\n                <li>In the event of loss, theft, or damage, this must be reported to the police within 24-48 hours, and a copy of a Police report or incident report must be submitted to the company for verification purposes.</li>\n                <li>I understand that any violation of these policies shall lead to a disciplinary action by the company.</li>\n            </ul>\n        `);\t\n    }\n});",
   "view": "Form"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
+  "dt": "Employee Grievance",
+  "enabled": 1,
+  "modified": "2024-06-24 10:56:42.597912",
+  "module": "ICL Corporate Services",
+  "name": "Grievance Script",
+  "script": "frappe.ui.form.on('Employee Grievance', {\n    refresh: function(frm) {\n        function toggle_fields() {\n            if (frappe.user.has_role('Employee')) {\n                if (frm.doc.workflow_state === 'Draft') {\n                    frm.toggle_display(['investigation_details_section','resolution_details_section','custom_actions_taken'], false);\n                }\n            }\n            if (frappe.user.has_role('HR Manager')) {\n                if (frm.doc.workflow_state === 'Submitted to HR') {\n                    frm.toggle_display(['investigation_details_section','resolution_details_section','custom_actions_taken'], true);\n                }\n            }\n        }\n\n        toggle_fields();\n\n        frm.fields_dict.workflow_state.$input.on('change', function() {\n            toggle_fields();\n        });\n    },\n    before_save: function(frm) {\n        if (frappe.user.has_role('Employee')) {\n            frm.toggle_display(['investigation_details_section','resolution_details_section','custom_actions_taken'], false);\n        }\n    }\n});\n",
+  "view": "Form"
  }
 ]
