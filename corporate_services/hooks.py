@@ -258,5 +258,6 @@ fixtures = [
     "Employee Grievance",
     "Employee List",
     "Employee",
+    "Dashboard",
     "Number Card"
 ]
