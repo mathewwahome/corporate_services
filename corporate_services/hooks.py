@@ -1,6 +1,6 @@
 app_name = "corporate_services"
 app_title = "ICL Corporate Services"
-app_publisher = "ICL"
+app_publisher = "IntelliSOFT Consulting"
 app_description = "IntelliSOFT Corporate Services ERPNext Customizations"
 app_email = "dev@intellisoftkenya.com"
 app_license = "mit"
@@ -132,14 +132,6 @@ doc_events = {
 	# 	"on_cancel": "method",
 	# 	"on_trash": "method"
 	# },
-    "Travel Request":{
-        "on_submit": "corporate_services.api.notifications.alert_supervisor_travel_request",
-        "on_update": "corporate_services.api.notifications.alert_supervisor_travel_request",
-    },
-    "Leave Application":{
-        "on_submit": "corporate_services.api.notifications.alert_supervisor_leave_application",
-        "on_update": "corporate_services.api.notifications.alert_supervisor_leave_application",
-    },
 }
 
 # Scheduled Tasks
@@ -240,23 +232,13 @@ doc_events = {
 # }
 
 fixtures = [
-    "Appraisal",
-    "Job Requisition",
-    "Employee",
-    "Job Applicant",
     "Leave Type",
     "Leave Application",
     "Employee Training Feedback Form",
-    "Training Application Request",
-    "Travel Request",
     "Overnight Stay",
-    "Place of travel",
-    "Employee Grievance",
     "Workflow",
     "Workflow State",
-    "Travel Request",
     "Role",
-    "HR Settings",
     "Asset Custodianship Requisition",
     "Asset Requisition - Equipment Description",
     "Asset Movement Item",
@@ -266,10 +248,14 @@ fixtures = [
     "Employee Evaluation",
     "Employee Evaluation Form Characteristics",
     "Report",
-    "Asset replacement request",
-    "Asset Replacement Description",
     "Navbar Settings",
     "HR Settings",
     "Designation",
-    "Department"
+    "Department",
+    "Asset Handover Form",
+    "Client Script",
+    "Workflow Action Master",
+    "Employee Grievance",
+    "Employee List",
+    "Employee"
 ]

@@ -495,7 +495,7 @@
   "designation_name": "Associate Business Analyst",
   "docstatus": 0,
   "doctype": "Designation",
-  "modified": "2024-06-09 16:54:43.556155",
+  "modified": "2024-06-09 19:42:59.230511",
   "name": "Associate Business Analyst",
   "skills": []
  },
@@ -505,7 +505,7 @@
   "designation_name": "Data Analyst/Engineer",
   "docstatus": 0,
   "doctype": "Designation",
-  "modified": "2024-06-09 16:54:43.577975",
+  "modified": "2024-06-09 19:42:59.278712",
   "name": "Data Analyst/Engineer",
   "skills": []
  },
@@ -515,7 +515,7 @@
   "designation_name": "Senior Technical Project Manager and Head of Project Management and Delivery",
   "docstatus": 0,
   "doctype": "Designation",
-  "modified": "2024-06-09 16:54:43.593668",
+  "modified": "2024-06-09 19:42:59.295712",
   "name": "Senior Technical Project Manager and Head of Project Management and Delivery",
   "skills": []
  },
@@ -525,7 +525,7 @@
   "designation_name": "Head of Digital Health Products and Services",
   "docstatus": 0,
   "doctype": "Designation",
-  "modified": "2024-06-09 16:54:43.604420",
+  "modified": "2024-06-09 19:42:59.324016",
   "name": "Head of Digital Health Products and Services",
   "skills": []
  },
@@ -535,7 +535,7 @@
   "designation_name": "Finance Associate",
   "docstatus": 0,
   "doctype": "Designation",
-  "modified": "2024-06-09 16:54:43.617011",
+  "modified": "2024-06-09 19:42:59.345158",
   "name": "Finance Associate",
   "skills": []
  },
@@ -545,7 +545,7 @@
   "designation_name": "Senior finance Associate",
   "docstatus": 0,
   "doctype": "Designation",
-  "modified": "2024-06-09 16:54:43.630022",
+  "modified": "2024-06-09 19:42:59.360205",
   "name": "Senior finance Associate",
   "skills": []
  },
@@ -555,7 +555,7 @@
   "designation_name": "Operations Coordinator",
   "docstatus": 0,
   "doctype": "Designation",
-  "modified": "2024-06-09 16:54:43.642682",
+  "modified": "2024-06-09 19:42:59.374142",
   "name": "Operations Coordinator",
   "skills": []
  },
@@ -565,7 +565,7 @@
   "designation_name": "Head of Corporate Service Dept",
   "docstatus": 0,
   "doctype": "Designation",
-  "modified": "2024-06-09 16:54:43.652364",
+  "modified": "2024-06-09 19:42:59.382454",
   "name": "Head of Corporate Service Dept",
   "skills": []
  },
@@ -575,7 +575,7 @@
   "designation_name": "Lead Quality Assurance Engineer",
   "docstatus": 0,
   "doctype": "Designation",
-  "modified": "2024-06-09 16:54:43.663044",
+  "modified": "2024-06-09 19:42:59.394666",
   "name": "Lead Quality Assurance Engineer",
   "skills": []
  },
@@ -585,7 +585,7 @@
   "designation_name": "Quality Assurance Engineer",
   "docstatus": 0,
   "doctype": "Designation",
-  "modified": "2024-06-09 16:54:43.674594",
+  "modified": "2024-06-09 19:42:59.406172",
   "name": "Quality Assurance Engineer",
   "skills": []
  },
@@ -595,16 +595,9 @@
   "designation_name": "Technical Project Manager",
   "docstatus": 0,
   "doctype": "Designation",
-  "modified": "2024-06-09 16:54:43.690238",
+  "modified": "2024-06-09 19:42:59.424606",
   "name": "Technical Project Manager",
-  "skills": [
-   {
-    "parent": "Technical Project Manager",
-    "parentfield": "skills",
-    "parenttype": "Designation",
-    "skill": null
-   }
-  ]
+  "skills": []
  },
  {
   "appraisal_template": null,
@@ -612,7 +605,7 @@
   "designation_name": "HOD",
   "docstatus": 0,
   "doctype": "Designation",
-  "modified": "2024-06-09 16:54:43.702841",
+  "modified": "2024-06-09 19:42:59.437352",
   "name": "HOD",
   "skills": []
  },
@@ -622,7 +615,7 @@
   "designation_name": "Junior Quality Assurance Engineer",
   "docstatus": 0,
   "doctype": "Designation",
-  "modified": "2024-06-09 16:54:43.713991",
+  "modified": "2024-06-09 19:42:59.448720",
   "name": "Junior Quality Assurance Engineer",
   "skills": []
  }

@@ -7,11 +7,12 @@
  "field_order": [
   "section_break_xf03",
   "custom_course",
-  "custom_department",
-  "custom_participants",
   "custom_quarter",
   "column_break_tvmk",
-  "custom_approval",
+  "custom_department",
+  "participants_section",
+  "custom_participants",
+  "section_break_xela",
   "custom_remarks",
   "amended_from"
  ],
@@ -22,25 +23,25 @@
   },
   {
    "fieldname": "custom_course",
-   "fieldtype": "Data",
+   "fieldtype": "Link",
    "in_list_view": 1,
    "label": "Course",
+   "options": "Training Application Request",
    "reqd": 1
   },
   {
    "fieldname": "custom_department",
-   "fieldtype": "Select",
+   "fieldtype": "Link",
    "in_list_view": 1,
    "label": "Department",
-   "options": "Human Resource\nOperations\nSoftware Development\nCRM - BD\nProject Management\nFinance",
+   "options": "Department",
    "reqd": 1
   },
   {
    "fieldname": "custom_participants",
-   "fieldtype": "Link",
-   "in_list_view": 1,
+   "fieldtype": "Table",
    "label": "Participants",
-   "options": "Employee",
+   "options": "Employee List",
    "reqd": 1
   },
   {
@@ -57,19 +58,19 @@
    "fieldtype": "Column Break"
   },
   {
-   "allow_on_submit": 1,
-   "description": "Approval Status by CEO",
-   "fieldname": "custom_approval",
-   "fieldtype": "Select",
-   "label": "Approval Status",
-   "options": "Approved\nPending",
-   "reqd": 1
-  },
-  {
    "description": "Enter any additional remarks",
    "fieldname": "custom_remarks",
    "fieldtype": "Small Text",
    "label": "Remarks"
+  },
+  {
+   "fieldname": "participants_section",
+   "fieldtype": "Section Break",
+   "label": "Participants"
+  },
+  {
+   "fieldname": "section_break_xela",
+   "fieldtype": "Section Break"
   },
   {
    "fieldname": "amended_from",
@@ -85,7 +86,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-05-13 14:14:25.293674",
+ "modified": "2024-06-24 09:40:29.836878",
  "modified_by": "Administrator",
  "module": "ICL Corporate Services",
  "name": "Training Needs Analysis",
