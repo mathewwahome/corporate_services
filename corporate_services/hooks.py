@@ -257,5 +257,7 @@ fixtures = [
     "Workflow Action Master",
     "Employee Grievance",
     "Employee List",
-    "Employee"
+    "Employee",
+    "Dashboard",
+    "Number Card"
 ]
