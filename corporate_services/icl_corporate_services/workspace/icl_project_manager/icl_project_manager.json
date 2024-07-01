@@ -13,7 +13,7 @@
  "is_hidden": 0,
  "label": "ICL Project Manager",
  "links": [],
- "modified": "2024-06-19 14:42:23.204643",
+ "modified": "2024-07-01 09:10:23.638995",
  "modified_by": "Administrator",
  "module": "ICL Corporate Services",
  "name": "ICL Project Manager",
@@ -25,6 +25,9 @@
  "roles": [
   {
    "role": "Projects Manager"
+  },
+  {
+   "role": "Projects User"
   }
  ],
  "sequence_id": 41.0,
