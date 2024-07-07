@@ -7,6 +7,7 @@
  "field_order": [
   "month",
   "employee",
+  "column_break_vgiq",
   "timesheet"
  ],
  "fields": [
@@ -25,11 +26,15 @@
    "fieldname": "timesheet",
    "fieldtype": "Attach",
    "label": "Timesheet"
+  },
+  {
+   "fieldname": "column_break_vgiq",
+   "fieldtype": "Column Break"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-07-02 14:49:17.736097",
+ "modified": "2024-07-05 15:30:49.306231",
  "modified_by": "Administrator",
  "module": "ICL Corporate Services",
  "name": "Timesheet Submission",
