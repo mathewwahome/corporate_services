@@ -1,7 +1,7 @@
 {
  "charts": [],
- "content": "[{\"id\":\"Zy1RNftbwL\",\"type\":\"paragraph\",\"data\":{\"text\":\"\ud83d\ude80 Travel Process\",\"col\":12}},{\"id\":\"IdgZ6q9gxD\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Travel Request\",\"col\":3}},{\"id\":\"qRnKV0Lpp3\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"-T48Ex34Hp\",\"type\":\"header\",\"data\":{\"text\":\"\ud83d\udec5 Leave Process<span class=\\\"h4\\\"><b></b></span>\",\"col\":12}},{\"id\":\"l9bGRRI0DM\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Leave Application\",\"col\":3}},{\"id\":\"hKzu7AOX8d\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"k8ZxhDM6Fh\",\"type\":\"paragraph\",\"data\":{\"text\":\"\ud83d\udd10 Asset Requisition Process.\",\"col\":12}},{\"id\":\"c3jUP1PURo\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Asset Requisition\",\"col\":3}},{\"id\":\"d233qIYZ3s\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Asset Handover\",\"col\":3}},{\"id\":\"0OltzLxocq\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Asset Replacement Request\",\"col\":3}},{\"id\":\"jZAainiwMN\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"PeZzs3q2im\",\"type\":\"paragraph\",\"data\":{\"text\":\"\ud83d\udc68\u200d\ud83d\udc69\u200d\ud83d\udc67\u200d\ud83d\udc67 Staff Welfare\",\"col\":12}},{\"id\":\"4DF69seFh8\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Grievance\",\"col\":3}},{\"id\":\"2MBpqa7hii\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Employee Training Feedback Form\",\"col\":3}},{\"id\":\"Ymp0VFX7lb\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Appraisal\",\"col\":3}},{\"id\":\"VzNB3U18N0\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Training Application Request\",\"col\":3}},{\"id\":\"1d76x63uS6\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"jFpLZKzUX9\",\"type\":\"paragraph\",\"data\":{\"text\":\"Projects\",\"col\":12}},{\"id\":\"o7fE8Xojvd\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Timesheet\",\"col\":3}}]",
- "creation": "2024-04-25 10:29:01.515574",
+ "content": "[{\"id\":\"Zy1RNftbwL\",\"type\":\"paragraph\",\"data\":{\"text\":\"\ud83d\ude80 Travel Process\",\"col\":12}},{\"id\":\"IdgZ6q9gxD\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Travel Request\",\"col\":3}},{\"id\":\"qRnKV0Lpp3\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"-T48Ex34Hp\",\"type\":\"header\",\"data\":{\"text\":\"\ud83d\udec5 Leave Process<span class=\\\"h4\\\"><b></b></span>\",\"col\":12}},{\"id\":\"l9bGRRI0DM\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Leave Application\",\"col\":3}},{\"id\":\"hKzu7AOX8d\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"k8ZxhDM6Fh\",\"type\":\"paragraph\",\"data\":{\"text\":\"\ud83d\udd10 Asset Requisition Process.\",\"col\":12}},{\"id\":\"c3jUP1PURo\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Asset Requisition\",\"col\":3}},{\"id\":\"d233qIYZ3s\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Asset Handover\",\"col\":3}},{\"id\":\"0OltzLxocq\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Asset Replacement Request\",\"col\":3}},{\"id\":\"iqV71vCSkz\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Employee Performance Feedback\",\"col\":3}},{\"id\":\"kuNR4oK4Jc\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Appraisal\",\"col\":3}},{\"id\":\"jZAainiwMN\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"PeZzs3q2im\",\"type\":\"paragraph\",\"data\":{\"text\":\"\ud83d\udc68\u200d\ud83d\udc69\u200d\ud83d\udc67\u200d\ud83d\udc67 Staff Welfare\",\"col\":12}},{\"id\":\"4DF69seFh8\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Grievance\",\"col\":3}},{\"id\":\"2MBpqa7hii\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Employee Training Feedback Form\",\"col\":3}},{\"id\":\"Ymp0VFX7lb\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Appraisal\",\"col\":3}},{\"id\":\"VzNB3U18N0\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Training Application Request\",\"col\":3}},{\"id\":\"x8gJflm2z2\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Training Feedback\",\"col\":3}},{\"id\":\"RdHS47BYR1\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Employee Advance\",\"col\":3}},{\"id\":\"mfthWbPiyz\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Goal\",\"col\":3}},{\"id\":\"1d76x63uS6\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"jFpLZKzUX9\",\"type\":\"paragraph\",\"data\":{\"text\":\"Projects\",\"col\":12}},{\"id\":\"o7fE8Xojvd\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Timesheet\",\"col\":3}},{\"id\":\"D5AsDLenTV\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Employee Timesheet\",\"col\":3}}]",
+ "creation": "2024-07-03 12:56:59.201567",
  "custom_blocks": [],
  "docstatus": 0,
  "doctype": "Workspace",
@@ -13,12 +13,12 @@
  "is_hidden": 0,
  "label": "ICL Staff",
  "links": [],
- "modified": "2024-07-01 19:55:30.181547",
+ "modified": "2024-07-03 15:32:07.022280",
  "modified_by": "Administrator",
  "module": "ICL Corporate Services",
  "name": "ICL Staff",
  "number_cards": [],
- "owner": "railamolo@gmail.com",
+ "owner": "Administrator",
  "parent_page": "",
  "public": 1,
  "quick_lists": [],
@@ -40,6 +40,38 @@
   {
    "color": "Grey",
    "doc_view": "List",
+   "label": "Employee Timesheet",
+   "link_to": "Employee Timesheet",
+   "stats_filter": "[]",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Employee Performance Feedback",
+   "link_to": "Employee Performance Feedback",
+   "stats_filter": "[]",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Employee Advance",
+   "link_to": "Employee Advance",
+   "stats_filter": "[]",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Goal",
+   "link_to": "Goal",
+   "stats_filter": "[]",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
    "label": "Asset Handover",
    "link_to": "Asset Handover Form",
    "stats_filter": "[]",
@@ -50,6 +82,14 @@
    "doc_view": "List",
    "label": "Appraisal",
    "link_to": "Appraisal",
+   "stats_filter": "[]",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Training Feedback",
+   "link_to": "Training Feedback",
    "stats_filter": "[]",
    "type": "DocType"
   },
