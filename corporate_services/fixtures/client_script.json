@@ -2,6 +2,28 @@
  {
   "docstatus": 0,
   "doctype": "Client Script",
+  "dt": "Timesheet Submission",
+  "enabled": 1,
+  "modified": "2024-07-04 15:09:44.548186",
+  "module": "ICL Corporate Services",
+  "name": "Timesheet Import",
+  "script": "frappe.ui.form.on('Timesheet Submission', {\n    on_submit: function(frm) {\n        if (frm.doc.timesheet) {\n            frappe.call({\n                method: 'corporate_services.api.timesheet.timesheet_import.timesheet_import',\n                args: {\n                    docname: frm.doc.name\n                },\n                callback: function(response) {\n                    if (response.message === 'success') {\n                        frappe.msgprint(__('Employees timesheet created successfully'));\n                    } else {\n                        frappe.msgprint(__('There was an error creating employees timesheet'));\n                    }\n                }\n            });\n        } else {\n            frappe.msgprint(__('Please upload a CSV file'));\n        }\n    }\n});",
+  "view": "Form"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
+  "dt": "Timesheet Submission",
+  "enabled": 1,
+  "modified": "2024-07-04 16:59:26.209612",
+  "module": "ICL Corporate Services",
+  "name": "Timesheet Template Generation",
+  "script": "frappe.ui.form.on('Timesheet Submission', {\n    refresh: function(frm) {\n        frm.fields_dict.download_template.$input.on('click', function() {\n            frappe.call({\n                method: \"corporate_services.api.timesheet.timesheet_generation_export.timesheet_generation_export\",\n                args: {\n                    docname: frm.doc.name\n                },\n                callback: function(r) {\n                    if (r.message && typeof r.message === 'string' && r.message !== \"error\") {\n                        var download_url = r.message;\n                        window.open(download_url, '_blank');\n                        \n                    } else if (r.message && typeof r.message === 'object') {\n                        var download_url = r.message.file_url;\n                        window.open(download_url, '_blank');\n                        \n                    } else {\n                        frappe.msgprint(__(\"Failed to generate CSV file. Please check logs for details.\"));\n                    }\n                }\n            });\n        });\n    }\n});",
+  "view": "Form"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
   "dt": "Travel Request",
   "enabled": 1,
   "modified": "2024-06-11 09:06:09.449940",
