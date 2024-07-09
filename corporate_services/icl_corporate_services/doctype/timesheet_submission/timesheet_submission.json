@@ -8,8 +8,6 @@
   "naming_series",
   "employee",
   "month",
-  "start_date",
-  "end_date",
   "column_break_icgi",
   "download_template",
   "timesheet",
@@ -57,20 +55,6 @@
    "search_index": 1
   },
   {
-   "fieldname": "start_date",
-   "fieldtype": "Date",
-   "in_list_view": 1,
-   "label": "Start Date",
-   "reqd": 1
-  },
-  {
-   "fieldname": "end_date",
-   "fieldtype": "Date",
-   "in_list_view": 1,
-   "label": "End Date",
-   "reqd": 1
-  },
-  {
    "fieldname": "column_break_icgi",
    "fieldtype": "Column Break"
   },
@@ -93,7 +77,7 @@
  ],
  "is_submittable": 1,
  "links": [],
- "modified": "2024-07-04 15:38:48.423033",
+ "modified": "2024-07-09 10:07:53.052215",
  "modified_by": "Administrator",
  "module": "ICL Corporate Services",
  "name": "Timesheet Submission",
