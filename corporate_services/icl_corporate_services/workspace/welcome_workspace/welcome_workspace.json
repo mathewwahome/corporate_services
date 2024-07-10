@@ -13,7 +13,7 @@
  "is_hidden": 0,
  "label": "Welcome Workspace",
  "links": [],
- "modified": "2024-06-19 14:49:13.095362",
+ "modified": "2024-07-01 09:09:20.837283",
  "modified_by": "Administrator",
  "module": "ICL Corporate Services",
  "name": "Welcome Workspace",
@@ -25,19 +25,7 @@
  "restrict_to_domain": "",
  "roles": [
   {
-   "role": "Employee Self Service"
-  },
-  {
-   "role": "Employee"
-  },
-  {
-   "role": "HR Manager"
-  },
-  {
-   "role": "HR User"
-  },
-  {
-   "role": "Supervisor"
+   "role": "All"
   }
  ],
  "sequence_id": 22.0,
