@@ -30,16 +30,24 @@ def timesheet_generation_export(docname):
         while start_date <= end_date:
             dates.append(start_date.strftime('%d'))
             start_date += timedelta(days=1)
-
-        #get the user linked to the specific employee
-        user =  frappe.db.get_value('User', employee, 'user')
-        # get the projects allocated to the specific employee
-        projects = frappe.db.get_value('Project', user, 'project_name')
         
-             
+        
+        user_id = frappe.db.get_value('Employee', employee, 'user_id')
+        projects_list = []
+        if user_id:
+            projects = frappe.get_all('Project', fields=['name', 'project_name'])
+            if projects:
+                for project in projects:
+                    projects_user = frappe.get_all('Project User', filters={'parent': project['name'], 'user': user_id})
+                    if projects_user:
+                        projects_list.append(project['project_name'])
+                if projects_list:
+                    frappe.log_error(f"Projects found for User ID {user_id}: {projects_list}")
+
+
         data = [
             ["Projects", "Tasks"] + dates,
-            [projects],
+            projects_list,
             ["Meetings"],
             ["Proposals"],
             ["Recurring Tasks"],
