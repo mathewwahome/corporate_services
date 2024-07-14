@@ -26,11 +26,9 @@ def timesheet_import(docname):
         project = None
         
         for row in reader:
-            # Skip empty rows
             if not row:
                 continue
 
-            # Ensure row has at least 2 columns (Project and Task)
             if len(row) < 2:
                 frappe.log_error(f"Row has insufficient columns: {row}", "timesheet_import")
                 continue
@@ -40,7 +38,6 @@ def timesheet_import(docname):
                 project = None
                 continue
 
-            # Set project only if activity type is Projects
             if activity_type == "Projects":
                 project = row[0]
             task = row[1]
@@ -84,7 +81,6 @@ def create_timesheet_detail_entry(timesheet, activity_type, task, date, hours, p
     if project:
         timesheet_detail.project = project
 
-    # Set the appropriate custom field based on the activity type
     if activity_type == "Projects":
         timesheet_detail.custom_tasks = task
     elif activity_type == "Meetings":
