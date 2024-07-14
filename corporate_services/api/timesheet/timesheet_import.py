@@ -2,7 +2,6 @@ import frappe
 import csv
 import io
 from frappe.utils.file_manager import get_file
-from datetime import datetime
 
 @frappe.whitelist()
 def timesheet_import(docname):
@@ -15,38 +14,44 @@ def timesheet_import(docname):
         file_content = get_file(_file.file_url)[1]
         
         csvfile = io.StringIO(file_content)
-        
         reader = csv.reader(csvfile)
-
         header = next(reader)
 
         timesheet = frappe.new_doc("Timesheet")
         timesheet.employee = doc.employee
         timesheet.custom_month = doc.month
-        timesheet.start_date = doc.start_date
-        timesheet.end_date = doc.end_date
         timesheet.insert()
-
-        current_activity_type = None
-        # project = None
+        
+        activity_type = "Projects"
+        project = None
         
         for row in reader:
-            task_name = row[1]
-            activity_type = row[0]
-            project = row[0]
+            # Skip empty rows
+            if not row:
+                continue
 
-            if activity_type:
-                
-                if activity_type in ['Projects','Meetings', 'Proposals', 'Recurring Tasks', 'Other Tasks/Activities', 'Training/Workshops/Connectathons']: 
-                    # latter on create the fonction that will pull the activity_types from the Doctype Activity Type - mathew
-                    current_activity_type = activity_type
-                if activity_type == 'Projects':
-                    project = row[0]
-            
-            if not task_name or task_name in ['Actvity Type', 'Tasks']:
+            # Ensure row has at least 2 columns (Project and Task)
+            if len(row) < 2:
+                frappe.log_error(f"Row has insufficient columns: {row}", "timesheet_import")
+                continue
+
+            if row[0] in ['Projects', 'Meetings', 'Proposals', 'Recurring Tasks', 'Other Tasks/Activities', 'Training/Workshops/Connectathons']:
+                activity_type = row[0]
+                project = None
+                continue
+
+            # Set project only if activity type is Projects
+            if activity_type == "Projects":
+                project = row[0]
+            task = row[1]
+
+            if not task or task in ['Projects', 'Tasks']:
                 continue
 
             for idx in range(2, len(header)):
+                if idx >= len(row):
+                    continue
+
                 date_str = header[idx]
 
                 if row[idx]:
@@ -54,17 +59,7 @@ def timesheet_import(docname):
                         hours = float(row[idx])
                         date = int(date_str)
                         
-                        # day_number = int(date_str)
-                        # if doc.start_date:
-                        #     date = doc.start_date.replace(day=day_number)
-                        # elif doc.end_date:
-                        #     date = doc.end_date.replace(day=day_number)
-                        # else:
-                        #     date = int(date_str)
-
-                        
-                        
-                        create_timesheet_detail_entry(timesheet, current_activity_type, task_name, date, hours, project)
+                        create_timesheet_detail_entry(timesheet, activity_type, task, date, hours, project)
                     except ValueError:
                         pass
 
@@ -75,7 +70,7 @@ def timesheet_import(docname):
         frappe.log_error(frappe.get_traceback(), "timesheet_import")
         return "error"
 
-def create_timesheet_detail_entry(timesheet, activity_type, task_name, date, hours, project):
+def create_timesheet_detail_entry(timesheet, activity_type, task, date, hours, project):
     timesheet_detail = frappe.new_doc("Timesheet Detail")
     
     timesheet_detail.parent = timesheet.name
@@ -85,10 +80,23 @@ def create_timesheet_detail_entry(timesheet, activity_type, task_name, date, hou
     timesheet_detail.activity_type = activity_type
     timesheet_detail.hours = hours
     timesheet_detail.custom_date = date
-    timesheet_detail.custom_tasks = task_name
     
     if project:
         timesheet_detail.project = project
-        
+
+    # Set the appropriate custom field based on the activity type
+    if activity_type == "Projects":
+        timesheet_detail.custom_tasks = task
+    elif activity_type == "Meetings":
+        timesheet_detail.custom_meetings = task
+    elif activity_type == "Training/Workshops/Connectathons":
+        timesheet_detail.custom_trainingworkshopsconnectathons = task
+    elif activity_type == "Proposals":
+        timesheet_detail.custom_proposals = task
+    elif activity_type == "Recurring Tasks":
+        timesheet_detail.custom_recurring_tasks = task
+    elif activity_type == "Other Tasks/Activities":
+        timesheet_detail.custom_other_tasksactivities = task
+
     timesheet.append("time_logs", timesheet_detail)
     timesheet.save()
