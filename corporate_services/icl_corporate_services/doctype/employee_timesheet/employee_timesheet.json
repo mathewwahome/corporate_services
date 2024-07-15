@@ -9,7 +9,7 @@
   "column_break_tkrt",
   "month",
   "section_break_hpjn",
-  "timesheet"
+  "timesheet_table_element"
  ],
  "fields": [
   {
@@ -24,23 +24,23 @@
    "label": "Month"
   },
   {
-   "fieldname": "timesheet",
-   "fieldtype": "Table",
-   "label": "Timesheet",
-   "options": "Timesheet Table Element"
-  },
-  {
    "fieldname": "column_break_tkrt",
    "fieldtype": "Column Break"
   },
   {
    "fieldname": "section_break_hpjn",
    "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "timesheet_table_element",
+   "fieldtype": "Table",
+   "label": "Timesheet Table Element",
+   "options": "Timesheet Table Element"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-07-02 13:20:22.123441",
+ "modified": "2024-07-03 21:02:50.734454",
  "modified_by": "Administrator",
  "module": "ICL Corporate Services",
  "name": "Employee Timesheet",

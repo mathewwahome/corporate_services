@@ -12,7 +12,7 @@
   "is_hidden": 0,
   "label": "Home",
   "links": [],
-  "modified": "2024-07-01 08:36:32.505851",
+  "modified": "2024-07-09 15:16:44.297122",
   "module": "ICL Corporate Services",
   "name": "Home",
   "number_cards": [],
@@ -20,20 +20,7 @@
   "public": 1,
   "quick_lists": [],
   "restrict_to_domain": "",
-  "roles": [
-   {
-    "parent": "Home",
-    "parentfield": "roles",
-    "parenttype": "Workspace",
-    "role": "All"
-   },
-   {
-    "parent": "Home",
-    "parentfield": "roles",
-    "parenttype": "Workspace",
-    "role": "Employee"
-   }
-  ],
+  "roles": [],
   "sequence_id": 1.0,
   "shortcuts": [],
   "title": "Home"
@@ -967,7 +954,7 @@
   "is_hidden": 0,
   "label": "Welcome Workspace",
   "links": [],
-  "modified": "2024-07-01 09:09:20.837283",
+  "modified": "2024-07-09 14:33:06.827432",
   "module": "ICL Corporate Services",
   "name": "Welcome Workspace",
   "number_cards": [],
@@ -975,14 +962,7 @@
   "public": 1,
   "quick_lists": [],
   "restrict_to_domain": "",
-  "roles": [
-   {
-    "parent": "Welcome Workspace",
-    "parentfield": "roles",
-    "parenttype": "Workspace",
-    "role": "All"
-   }
-  ],
+  "roles": [],
   "sequence_id": 22.0,
   "shortcuts": [],
   "title": "Welcome Workspace"
