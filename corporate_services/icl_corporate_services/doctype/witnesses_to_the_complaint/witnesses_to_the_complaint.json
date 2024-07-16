@@ -1,0 +1,32 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2024-07-15 16:02:47.004555",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "employee_name"
+ ],
+ "fields": [
+  {
+   "fieldname": "employee_name",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Employee Name",
+   "options": "Employee"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2024-07-15 16:03:45.788568",
+ "modified_by": "Administrator",
+ "module": "ICL Corporate Services",
+ "name": "Witnesses to the Complaint",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

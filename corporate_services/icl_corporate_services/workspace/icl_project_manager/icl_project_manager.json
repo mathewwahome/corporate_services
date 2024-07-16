@@ -1,7 +1,7 @@
 {
  "charts": [],
- "content": "[{\"id\":\"Luo6h-vTm_\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">ICL Project Manager</span>\",\"col\":12}},{\"id\":\"JKO-8U2h6P\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Timesheet\",\"col\":3}}]",
- "creation": "2024-05-13 11:11:22.792309",
+ "content": "[{\"id\":\"Luo6h-vTm_\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">ICL Project Manager</span>\",\"col\":12}},{\"id\":\"5Y4qDrXUoT\",\"type\":\"paragraph\",\"data\":{\"text\":\"Hi! Welcome to the ICL Project Management workspace.\",\"col\":12}},{\"id\":\"rQUQ_bliVA\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"SzDwPXw_TA\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Project\",\"col\":3}},{\"id\":\"JKO-8U2h6P\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Timesheet\",\"col\":3}},{\"id\":\"j6weDuThio\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"d7P9-SOxUE\",\"type\":\"paragraph\",\"data\":{\"text\":\"Reports\",\"col\":12}},{\"id\":\"_a4cBcFcc2\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Project Summary\",\"col\":3}}]",
+ "creation": "2024-07-14 15:34:20.794351",
  "custom_blocks": [],
  "docstatus": 0,
  "doctype": "Workspace",
@@ -13,7 +13,7 @@
  "is_hidden": 0,
  "label": "ICL Project Manager",
  "links": [],
- "modified": "2024-07-01 09:10:23.638995",
+ "modified": "2024-07-15 09:01:59.713980",
  "modified_by": "Administrator",
  "module": "ICL Corporate Services",
  "name": "ICL Project Manager",
@@ -39,6 +39,22 @@
    "link_to": "Timesheet",
    "stats_filter": "[]",
    "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "format": "{}",
+   "label": "Project",
+   "link_to": "Project",
+   "stats_filter": "[]",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Project Summary",
+   "link_to": "Project Summary",
+   "type": "Report"
   }
  ],
  "title": "ICL Project Manager"
