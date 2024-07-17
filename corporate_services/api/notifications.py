@@ -1,70 +1,155 @@
 import frappe
 
 
-import frappe
-
 def alert_supervisor_travel_request(doc, method):
-    # Get the employee
-    employee_id = doc.employee
-    employee = frappe.get_doc("Employee", employee_id)
-    
-    # Get the supervisor (Report To)
-    if employee.reports_to:
-        supervisor_id = employee.reports_to
-        supervisor = frappe.get_doc("Employee", supervisor_id)
+    if doc.workflow_state == "Submitted to Supervisor":
         
-        # Determine supervisor email
-        supervisor_email = supervisor.company_email or supervisor.personal_email
-        message = """
-            Dear {},
-
-            I have submitted my {} for your review and approval.
+        employee_id = doc.employee
+        employee = frappe.get_doc("Employee", employee_id)
         
-            Best regards,
+        if employee.reports_to:
+            supervisor_id = employee.reports_to
+            supervisor = frappe.get_doc("Employee", supervisor_id)
             
-            The Example Team
-            """.format(supervisor.employee_name, doc.doctype)
-        
-        # Send email
-        response = frappe.sendmail(
-            recipients=[supervisor_email],
-            subject=frappe._('Travel Request Submission from {}'.format(employee.employee_name)),
-            message=message,
-            sender="apps@intellisoftkenya.com",
-            is_html=False
-        )
-        return response
+            supervisor_email = supervisor.company_email or supervisor.personal_email
+            message = """
+                Dear {},\n\n
+    
+                I have submitted my {} for your review and approval.\n\n
+            
+                Kind regards,
+                
+                {}
+                """.format(supervisor.employee_name, doc.doctype, employee.employee_name)
+            
+            frappe.sendmail(
+                recipients=[supervisor_email],
+                subject=frappe._('Travel Request Submission from {}'.format(employee.employee_name)),
+                message=message,
+            )
 
 
 
 
-# The leave application notification
 def alert_supervisor_leave_application(doc, method):
     
-    # get the employee
-    employee_id = doc['employee']
-    employee = frappe.get_doc("Employee", employee_id)
-    
-    # get the supervisor (Report To)
-    supervisor_id = employee['reports_to']
-    supervisor = frappe.get_doc("Employee", supervisor_id)
-    
-    supervisor_email = supervisor['company_email'] or supervisor['personal_email']
-    message = """
-        Dear {},
+    if doc.workflow_state == "Submitted to Supervisor":
+        employee = frappe.get_doc("Employee", doc.employee)
 
-        I have applied for leave starting from {} to {}. Please review and approve it accordingly.
+        supervisor_id = employee.reports_to
+
+        if supervisor_id:
+            supervisor = frappe.get_doc("Employee", supervisor_id)
+            supervisor_email = frappe.db.get_value("User", supervisor.user_id, "email")
+
+            subject = "Leave Application Submitted"
+            message = f"""
+                Dear {supervisor.employee_name},\n\n
+
+                I have applied for leave starting from {doc.from_date} to {doc.to_date}. Please review and approve it accordingly.\n\n
+
+                Kind regards,
+
+                {employee.employee_name}
+                """
+
+            frappe.sendmail(
+                recipients=[supervisor_email],
+                subject=subject,
+                message=message
+            )
+
+   
+
     
-        Kind regards,
+
+def employee_grievance(doc, method):
+    if doc.workflow_state == "Approved by HR":
+
+        owner_email = frappe.db.get_value("User", doc.owner, "email")
         
-        {}
-        """.format(supervisor['employee_name'], doc["from_date"], doc["to_date"], employee["employee_name"])
+        subject = "Your document has been approved by HR"
+        message = f"Hello,\n\nYour Grievance {doc.name} has been received and approved by HR.\n\nBest Regards,\n\n HR"
+        
+        frappe.sendmail(
+            recipients=[owner_email],
+            subject=subject,
+            message=message
+        )
+        
+        
+def alert_supervisor_asset_requisition(doc, method):
     
-    response = frappe.sendmail(
-        recipients=[supervisor_email],
-        subject=frappe._('Leave Application Submission from {}'.format(employee['employee_name'])),
-        message=message,
-        sender="apps@intellisoftkenya.com",
-        is_html=False
-    )
-    return response
+    if doc.workflow_state == "Submitted to Supervisor":
+        
+        employee_id = doc.requested_by
+        employee = frappe.get_doc("Employee", employee_id)
+        
+        if employee.reports_to:
+            supervisor_id = employee.reports_to
+            supervisor = frappe.get_doc("Employee", supervisor_id)
+            
+            supervisor_email = supervisor.company_email or supervisor.personal_email
+            message = """
+                Dear {},\n\n
+    
+                I have submitted my {} for your review and approval.\n\n
+            
+                Kind regards,
+                
+                {}
+                """.format(supervisor.employee_name, doc.doctype, employee.employee_name)
+            
+            frappe.sendmail(
+                recipients=[supervisor_email],
+                subject=frappe._('Asset Custodianship Requisition Submission from {}'.format(employee.employee_name)),
+                message=message,
+            )
+            
+def alert_supervisor_timesheet_submission(doc, method):
+    if doc.workflow_state == "Submitted to Supervisor": 
+                   
+        employee_id = doc.employee
+        employee = frappe.get_doc("Employee", employee_id)
+        
+        if employee.reports_to:
+            supervisor_id = employee.reports_to
+            supervisor = frappe.get_doc("Employee", supervisor_id)
+            
+            supervisor_email = supervisor.company_email or supervisor.personal_email
+            message = """
+                Dear {},\n\n
+    
+                I have submitted my {} for your review and approval.\n\n
+            
+            
+            
+                Kind regards,
+                
+                {}
+                """.format(supervisor.employee_name, doc.doctype, employee.employee_name)
+            
+            frappe.sendmail(
+                recipients=[supervisor_email],
+                subject=frappe._('Timesheet Submission from {}'.format(employee.employee_name)),
+                message=message,
+            )
+            
+            # 
+doc_events = {
+    "Employee Grievance": {
+        "on_update": employee_grievance
+    },
+    "Travel Request": {
+        "on_update": alert_supervisor_travel_request
+    },
+    "Leave Application":{
+        "on_update": alert_supervisor_leave_application
+    },
+    "Asset Custodianship Requisition":{
+        "on_update": alert_supervisor_asset_requisition
+    },
+    "Timesheet":{
+        "on_update": alert_supervisor_timesheet_submission
+    }
+}
