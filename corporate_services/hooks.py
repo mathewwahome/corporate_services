@@ -252,7 +252,6 @@ fixtures = [
     "HR Settings",
     "Designation",
     "Department",
-    "Asset Handover Form",
     "Client Script",
     "Workflow Action Master",
     "Employee Grievance",
