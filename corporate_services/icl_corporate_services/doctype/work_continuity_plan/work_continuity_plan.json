@@ -1,24 +1,55 @@
 {
+ "_comments": "[{\"comment\": \"Action Failed<br><br><pre><code>Traceback (most recent call last):\\n  File \\\"apps/frappe/frappe/mod...\", \"by\": \"Administrator\", \"name\": \"cqsurio66d\"}]",
  "actions": [],
  "allow_rename": 1,
- "creation": "2024-06-06 14:25:11.548645",
+ "autoname": "naming_series:",
+ "creation": "2024-07-19 13:13:49.125803",
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
-  "section_break_dqwb"
+  "naming_series",
+  "employee",
+  "reports_to",
+  "work_continuity"
  ],
  "fields": [
   {
-   "fieldname": "section_break_dqwb",
-   "fieldtype": "Section Break"
+   "fieldname": "employee",
+   "fieldtype": "Link",
+   "label": "Employee",
+   "options": "Employee",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "employee.reports_to",
+   "fieldname": "reports_to",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Reports To",
+   "read_only": 1
+  },
+  {
+   "fieldname": "work_continuity",
+   "fieldtype": "Table",
+   "label": "Work Continuity",
+   "options": "Work Continuity Plan Form"
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Series",
+   "options": "WCP-",
+   "reqd": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-06-06 14:25:11.548645",
+ "modified": "2024-07-19 14:47:58.774392",
  "modified_by": "Administrator",
  "module": "ICL Corporate Services",
  "name": "Work Continuity Plan",
+ "naming_rule": "By \"Naming Series\" field",
  "owner": "Administrator",
  "permissions": [
   {

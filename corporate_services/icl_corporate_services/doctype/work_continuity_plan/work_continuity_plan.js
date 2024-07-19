@@ -1,7 +1,7 @@
-// Copyright (c) 2024, ICL and contributors
+// Copyright (c) 2024, IntelliSOFT Consulting and contributors
 // For license information, please see license.txt
 
-// frappe.ui.form.on("Work Continuity Plan", {
+// frappe.ui.form.on("work Continuity Plan", {
 // 	refresh(frm) {
 
 // 	},
