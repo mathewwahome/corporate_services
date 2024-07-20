@@ -144,6 +144,9 @@ doc_events = {
     "Asset Custodianship Requisition":{
         "on_update": "corporate_services.api.notifications.alert_supervisor_asset_requisition"
     },
+    "Work Continuity Plan":{
+        "on_update": "corporate_services.api.notifications.alert_supervisor_work_continuity_plan_submission"
+    }
     # "Timesheet":{
     #     "on_update": "corporate_services.api.notifications.alert_supervisor_timesheet_submission"
     # }
