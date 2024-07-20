@@ -1,0 +1,31 @@
+{
+ "attach_print": 0,
+ "channel": "Email",
+ "condition": "doc.workflow_state == \"Submitted to HR\"",
+ "creation": "2024-07-20 12:57:25.386308",
+ "days_in_advance": 0,
+ "docstatus": 0,
+ "doctype": "Notification",
+ "document_type": "Work Continuity Plan",
+ "enabled": 1,
+ "event": "Method",
+ "idx": 0,
+ "is_standard": 1,
+ "message": "<p>Dear {{ supervisor_name }},</p>\n\n<p>I have submitted my {{ doc.doctype }} for your review and approval.</p>\n\n<p>Kind regards,</p>\n\n<p>{{ employee_name }}</p>\n",
+ "message_type": "Markdown",
+ "method": "on_update",
+ "modified": "2024-07-20 16:12:04.473869",
+ "modified_by": "Administrator",
+ "module": "ICL Corporate Services",
+ "name": "Work Continuity Plan",
+ "owner": "Administrator",
+ "recipients": [
+  {
+   "receiver_by_document_field": "owner",
+   "receiver_by_role": "HR Manager"
+  }
+ ],
+ "send_system_notification": 0,
+ "send_to_all_assignees": 1,
+ "subject": "Work Continuity Plan "
+}
