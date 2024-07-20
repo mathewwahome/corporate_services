@@ -1,0 +1,33 @@
+{
+ "attach_print": 0,
+ "channel": "Email",
+ "condition": "doc.status==\"Submitted to Supervisor\"",
+ "creation": "2024-07-15 12:10:30.028158",
+ "days_in_advance": 0,
+ "docstatus": 0,
+ "doctype": "Notification",
+ "document_type": "Asset Custodianship Requisition",
+ "enabled": 1,
+ "event": "Submit",
+ "idx": 0,
+ "is_standard": 1,
+ "message": "<p>An asset requisition has been submitted by {{ doc.owner }}. Please review it.</p>\n",
+ "message_type": "Markdown",
+ "modified": "2024-07-15 15:54:15.865787",
+ "modified_by": "Administrator",
+ "module": "ICL Corporate Services",
+ "name": "Asset custodianship requisition Supervisor",
+ "owner": "Administrator",
+ "recipients": [
+  {
+   "condition": "doc.status==\"Submitted to Supervisor\"",
+   "receiver_by_role": "Supervisor"
+  }
+ ],
+ "send_system_notification": 1,
+ "send_to_all_assignees": 1,
+ "sender": "",
+ "sender_email": "",
+ "set_property_after_alert": "",
+ "subject": "{{ doc.name }} has been received"
+}
