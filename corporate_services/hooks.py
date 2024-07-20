@@ -277,6 +277,7 @@ fixtures = [
     "Employee",
     "Dashboard",
     "Number Card",
+    "Letter Head",
     "Workspace",
     "Notification"
 ]

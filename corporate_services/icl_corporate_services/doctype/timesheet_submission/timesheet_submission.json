@@ -33,51 +33,16 @@
    "depends_on": "eval:!doc.__islocal",
    "fieldname": "timesheet",
    "fieldtype": "Attach",
-   "in_list_view": 1,
-   "label": "Timesheet",
-   "read_only_depends_on": "eval:doc.docstatus == 1"
+   "label": "Timesheet"
   },
   {
-   "fieldname": "naming_series",
-   "fieldtype": "Select",
-   "label": "Series",
-   "options": "TS-.YYYY.-",
-   "set_only_once": 1
-  },
-  {
-   "fieldname": "amended_from",
-   "fieldtype": "Link",
-   "label": "Amended From",
-   "no_copy": 1,
-   "options": "Timesheet Submission",
-   "print_hide": 1,
-   "read_only": 1,
-   "search_index": 1
-  },
-  {
-   "fieldname": "column_break_icgi",
+   "fieldname": "column_break_vgiq",
    "fieldtype": "Column Break"
-  },
-  {
-   "depends_on": "eval:!doc.__islocal",
-   "fieldname": "download_template",
-   "fieldtype": "Button",
-   "label": "Download Template"
-  },
-  {
-   "default": "Pending",
-   "fieldname": "status",
-   "fieldtype": "Select",
-   "hidden": 1,
-   "label": "Status",
-   "no_copy": 1,
-   "options": "Pending\nSuccess\nPartial Success\nError\nTimed Out",
-   "read_only": 1
   }
  ],
  "is_submittable": 1,
  "links": [],
- "modified": "2024-07-09 10:07:53.052215",
+ "modified": "2024-07-05 15:30:49.306231",
  "modified_by": "Administrator",
  "module": "ICL Corporate Services",
  "name": "Timesheet Submission",
