@@ -2,6 +2,7 @@ import frappe
 import csv
 import io
 from frappe.utils.file_manager import get_file
+from datetime import datetime, timedelta
 
 @frappe.whitelist()
 def timesheet_import(docname):
@@ -9,7 +10,6 @@ def timesheet_import(docname):
         doc = frappe.get_doc('Timesheet Submission', docname)
         
         file_url = doc.timesheet
-
         _file = frappe.get_doc("File", {"file_url": file_url})
         file_content = get_file(_file.file_url)[1]
         
@@ -24,7 +24,10 @@ def timesheet_import(docname):
         
         activity_type = "Projects"
         project = None
-        
+
+        # Create a dictionary to track from_time for each date
+        from_time_tracker = {}
+
         for row in reader:
             if not row:
                 continue
@@ -55,8 +58,21 @@ def timesheet_import(docname):
                     try:
                         hours = float(row[idx])
                         date = int(date_str)
-                        
-                        create_timesheet_detail_entry(timesheet, activity_type, task, date, hours, project)
+
+                        # Initialize from_time for a new date with the current year
+                        if date not in from_time_tracker:
+                            current_year = datetime.now().year
+                            start_of_day = f"{current_year} {date} 08:00:00"
+                            from_time_tracker[date] = datetime.strptime(start_of_day, '%d %H:%M:%S')
+
+                        from_time = from_time_tracker[date]
+                        to_time = from_time + timedelta(hours=hours)
+
+                        create_timesheet_detail_entry(timesheet, from_time, to_time, activity_type, task, date, hours, project)
+
+                        # Update the from_time for the next entry on the same date
+                        from_time_tracker[date] = to_time
+                   
                     except ValueError:
                         pass
 
@@ -67,20 +83,24 @@ def timesheet_import(docname):
         frappe.log_error(frappe.get_traceback(), "timesheet_import")
         return "error"
 
-def create_timesheet_detail_entry(timesheet, activity_type, task, date, hours, project):
+def create_timesheet_detail_entry(timesheet, from_time, to_time, activity_type, task, date, hours, project):
     timesheet_detail = frappe.new_doc("Timesheet Detail")
     
+    # Set parent details
     timesheet_detail.parent = timesheet.name
     timesheet_detail.parenttype = timesheet.doctype
     timesheet_detail.parentfield = "time_logs"
-    
+
+    # Set activity details
     timesheet_detail.activity_type = activity_type
     timesheet_detail.hours = hours
     timesheet_detail.custom_date = date
-    
+    timesheet_detail.from_time = from_time
+    timesheet_detail.to_time = to_time
+
     if project:
         timesheet_detail.project = project
-
+        
     if activity_type == "Projects":
         timesheet_detail.custom_tasks = task
     elif activity_type == "Meetings":
