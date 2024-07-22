@@ -147,6 +147,6 @@ def alert(doc, method):
 
 doc_events = {
     "Timesheet Submission": {
-        "on_update": alert_supervisor_timesheet_submission
+        "on_update": alert
     }
 }
