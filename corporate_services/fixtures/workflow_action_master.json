@@ -1,1 +1,58 @@
-[]
+[
+ {
+  "docstatus": 0,
+  "doctype": "Workflow Action Master",
+  "modified": "2024-07-12 12:27:58.974091",
+  "name": "submit",
+  "workflow_action_name": "submit"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow Action Master",
+  "modified": "2024-07-20 12:25:48.324424",
+  "name": "Save",
+  "workflow_action_name": "Save"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow Action Master",
+  "modified": "2024-07-03 14:55:44.739038",
+  "name": "Review",
+  "workflow_action_name": "Review"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow Action Master",
+  "modified": "2024-07-12 12:26:57.716557",
+  "name": "Submit to HR",
+  "workflow_action_name": "Submit to HR"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow Action Master",
+  "modified": "2024-07-12 12:27:08.478000",
+  "name": "Submit to Finance",
+  "workflow_action_name": "Submit to Finance"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow Action Master",
+  "modified": "2024-07-12 15:02:17.346668",
+  "name": "Submit To supervisor",
+  "workflow_action_name": "Submit To supervisor"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow Action Master",
+  "modified": "2024-07-03 14:55:44.738015",
+  "name": "Reject",
+  "workflow_action_name": "Reject"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow Action Master",
+  "modified": "2024-07-03 14:55:44.736613",
+  "name": "Approve",
+  "workflow_action_name": "Approve"
+ }
+]
