@@ -1,7 +1,7 @@
 {
  "charts": [],
- "content": "[{\"id\":\"Zy1RNftbwL\",\"type\":\"paragraph\",\"data\":{\"text\":\"\ud83d\ude80 Travel Process\",\"col\":12}},{\"id\":\"IdgZ6q9gxD\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Travel Request\",\"col\":3}},{\"id\":\"qRnKV0Lpp3\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"-T48Ex34Hp\",\"type\":\"header\",\"data\":{\"text\":\"\ud83d\udec5 Leave Process<span class=\\\"h4\\\"><b></b></span>\",\"col\":12}},{\"id\":\"l9bGRRI0DM\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Leave Application\",\"col\":3}},{\"id\":\"hKzu7AOX8d\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"k8ZxhDM6Fh\",\"type\":\"paragraph\",\"data\":{\"text\":\"\ud83d\udd10 Asset Requisition Process.\",\"col\":12}},{\"id\":\"c3jUP1PURo\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Asset Requisition\",\"col\":3}},{\"id\":\"0OltzLxocq\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Asset Replacement Request\",\"col\":3}},{\"id\":\"jZAainiwMN\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"PeZzs3q2im\",\"type\":\"paragraph\",\"data\":{\"text\":\"\ud83d\udc68\u200d\ud83d\udc69\u200d\ud83d\udc67\u200d\ud83d\udc67 Staff Welfare\",\"col\":12}},{\"id\":\"4DF69seFh8\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Grievance\",\"col\":3}},{\"id\":\"2MBpqa7hii\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Employee Training Feedback Form\",\"col\":3}},{\"id\":\"Ymp0VFX7lb\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Appraisal\",\"col\":3}},{\"id\":\"VzNB3U18N0\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Training Application Request\",\"col\":3}},{\"id\":\"1d76x63uS6\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"jFpLZKzUX9\",\"type\":\"paragraph\",\"data\":{\"text\":\"Projects\",\"col\":12}},{\"id\":\"o7fE8Xojvd\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Timesheet\",\"col\":3}}]",
- "creation": "2024-07-19 10:58:55.694999",
+ "content": "[{\"id\":\"Zy1RNftbwL\",\"type\":\"paragraph\",\"data\":{\"text\":\"\ud83d\ude80 Travel Process\",\"col\":12}},{\"id\":\"IdgZ6q9gxD\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Travel Request\",\"col\":3}},{\"id\":\"qRnKV0Lpp3\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"-T48Ex34Hp\",\"type\":\"header\",\"data\":{\"text\":\"\ud83d\udec5 Leave Process<span class=\\\"h4\\\"><b></b></span>\",\"col\":12}},{\"id\":\"l9bGRRI0DM\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Leave Application\",\"col\":3}},{\"id\":\"hKzu7AOX8d\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"r-ASq8U5mJ\",\"type\":\"card\",\"data\":{\"card_name\":\"\ud83d\udd10Asset Process\",\"col\":4}},{\"id\":\"jZAainiwMN\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"PeZzs3q2im\",\"type\":\"paragraph\",\"data\":{\"text\":\"\ud83d\udc68\u200d\ud83d\udc69\u200d\ud83d\udc67\u200d\ud83d\udc67 Staff Welfare\",\"col\":12}},{\"id\":\"4DF69seFh8\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Grievance\",\"col\":3}},{\"id\":\"2MBpqa7hii\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Employee Training Feedback Form\",\"col\":3}},{\"id\":\"Ymp0VFX7lb\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Appraisal\",\"col\":3}},{\"id\":\"VzNB3U18N0\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Training Application Request\",\"col\":3}},{\"id\":\"1d76x63uS6\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"jFpLZKzUX9\",\"type\":\"paragraph\",\"data\":{\"text\":\"Projects\",\"col\":12}},{\"id\":\"o7fE8Xojvd\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Timesheet\",\"col\":3}}]",
+ "creation": "2024-07-23 09:46:03.936473",
  "custom_blocks": [],
  "docstatus": 0,
  "doctype": "Workspace",
@@ -12,8 +12,58 @@
  "indicator_color": "",
  "is_hidden": 0,
  "label": "ICL Staff",
- "links": [],
- "modified": "2024-07-20 11:56:06.144227",
+ "links": [
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "\ud83d\udd10Asset Process",
+   "link_count": 4,
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Asset Requisition",
+   "link_count": 0,
+   "link_to": "Asset Requisition",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Asset Custodianship Requisition",
+   "link_count": 0,
+   "link_to": "Asset Custodianship Requisition",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Asset replacement request",
+   "link_count": 0,
+   "link_to": "Asset replacement request",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Asset Handover",
+   "link_count": 0,
+   "link_to": "Asset Movement",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  }
+ ],
+ "modified": "2024-07-25 14:18:53.812065",
  "modified_by": "Administrator",
  "module": "ICL Corporate Services",
  "name": "ICL Staff",
@@ -29,14 +79,6 @@
  ],
  "sequence_id": 39.0,
  "shortcuts": [
-  {
-   "color": "Grey",
-   "doc_view": "List",
-   "label": "Asset Replacement Request",
-   "link_to": "Asset replacement request",
-   "stats_filter": "[]",
-   "type": "DocType"
-  },
   {
    "color": "Grey",
    "doc_view": "List",
@@ -82,14 +124,6 @@
    "doc_view": "List",
    "label": "Travel Request",
    "link_to": "Travel Request",
-   "stats_filter": "[]",
-   "type": "DocType"
-  },
-  {
-   "color": "Grey",
-   "doc_view": "List",
-   "label": "Asset Requisition",
-   "link_to": "Asset Custodianship Requisition",
    "stats_filter": "[]",
    "type": "DocType"
   },

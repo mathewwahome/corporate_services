@@ -162,19 +162,34 @@ def generate_doc_events(event_maps):
 
 on_update_map = {
     "Employee Grievance": "corporate_services.api.notification.notifications.employee_grievance",
+    
     "Travel Request": "corporate_services.api.notification.notifications.alert_supervisor_travel_request",
+        
     "Leave Application": "corporate_services.api.notification.notifications.alert_supervisor_leave_application",
-    "Asset Custodianship Requisition": "corporate_services.api.notification.notifications.alert_supervisor_asset_requisition",
+        
     "Work Continuity Plan": "corporate_services.api.notification.notifications.alert_supervisor_work_continuity_plan_submission",
-    "Timesheet Submission": "corporate_services.api.notification.timesheet.alert",
-    "Asset Custodianship Requisition": "corporate_services.api.notification.asset_custotianship_requisition.alert"
+    
+    "Asset Custodianship Requisition": "corporate_services.api.notification.asset_custotianship_requisition.alert",
+    
+    "Asset Requisition": "corporate_services.api.notification.asset_requisition.alert",
+
 }
-on_cancel_map = {
-    # "Travel Request": "corporate_services.api.notifications.cancel_travel_request",
+before_submit_map = {
+    "Timesheet Submission":"corporate_services.api.timesheet.timesheet_submission.before_save"
 }
+# after_insert_map = {
+    
+    # "Timesheet": "corporate_services.api.notification.timesheet.alert",
+# }
+
+# on_cancel_map = {
+#    "Travel Request": "corporate_services.api.notifications.cancel_travel_request",
+# }
 
 event_maps = {
     "on_update": on_update_map,
+    # "after_insert":after_insert_map,
+    "before_save":before_submit_map
     # "on_cancel": on_cancel_map
 }
 
