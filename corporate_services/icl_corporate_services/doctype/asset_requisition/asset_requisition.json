@@ -8,6 +8,7 @@
  "field_order": [
   "naming_series",
   "requested_by",
+  "requisition_date",
   "employee_name",
   "asset_requisition_table"
  ],
@@ -39,11 +40,18 @@
    "label": "Series",
    "options": "AR-.YYYY.-",
    "reqd": 1
+  },
+  {
+   "fieldname": "requisition_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Requisition Date",
+   "reqd": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-07-25 14:09:14.154246",
+ "modified": "2024-07-25 14:27:29.880825",
  "modified_by": "Administrator",
  "module": "ICL Corporate Services",
  "name": "Asset Requisition",
