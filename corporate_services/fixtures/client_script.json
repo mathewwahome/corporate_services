@@ -2,6 +2,28 @@
  {
   "docstatus": 0,
   "doctype": "Client Script",
+  "dt": "Asset Requisition",
+  "enabled": 1,
+  "modified": "2024-07-25 10:41:42.951383",
+  "module": "ICL Corporate Services",
+  "name": "Asset Requisition",
+  "script": "frappe.ui.form.on('Asset Requisition', {\n\trefresh(frm) {\n        frm.dashboard.add_section(`\n            <h2>IntelliSOFT Consulting Limited Requisition form</h2>\n        `);\n    }\n});",
+  "view": "Form"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
+  "dt": "Timesheet Submission",
+  "enabled": 1,
+  "modified": "2024-07-26 09:29:14.840912",
+  "module": "ICL Corporate Services",
+  "name": "Timesheet Submission List",
+  "script": "frappe.ui.form.on('Timesheet Submission', {\n    refresh: function (frm) {\n        if (frm.doc.employee) {\n            frappe.call({\n                method: 'corporate_services.api.timesheet.timesheet_fetch.fetch_timesheets_for_employee',\n                args: {\n                    employee_id: frm.doc.employee\n                },\n                callback: function (r) {\n                    if (!r.exc) {\n                        frm.clear_table('timesheet_submission_list');\n                        if (r.message) {\n                            r.message.forEach(function (timesheet) {\n                                let child = frm.add_child('timesheet_submission_list');\n                                child.total_hours = timesheet.total_hours;\n                                child.naming_series = timesheet.naming_series;\n                                child.month = timesheet.custom_month;\n                                child.status = timesheet.status;\n                            });\n                        }\n                        frm.refresh_field('timesheet_submission_list');\n                    }\n                }\n            });\n        }\n    }\n});\n",
+  "view": "Form"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
   "dt": "Job Requisition",
   "enabled": 1,
   "modified": "2024-06-11 11:53:27.263078",
@@ -15,7 +37,7 @@
   "doctype": "Client Script",
   "dt": "Timesheet Submission",
   "enabled": 1,
-  "modified": "2024-07-04 15:09:44.548186",
+  "modified": "2024-07-29 09:13:10.978970",
   "module": "ICL Corporate Services",
   "name": "Timesheet Import",
   "script": "frappe.ui.form.on('Timesheet Submission', {\n    on_submit: function(frm) {\n        if (frm.doc.timesheet) {\n            frappe.call({\n                method: 'corporate_services.api.timesheet.timesheet_import.timesheet_import',\n                args: {\n                    docname: frm.doc.name\n                },\n                callback: function(response) {\n                    if (response.message === 'success') {\n                        frappe.msgprint(__('Employees timesheet created successfully'));\n                    } else {\n                        frappe.msgprint(__('There was an error creating employees timesheet'));\n                    }\n                }\n            });\n        } else {\n            frappe.msgprint(__('Please upload a CSV file'));\n        }\n    }\n});",
@@ -96,6 +118,17 @@
   "module": null,
   "name": "Annual leave 7 days notice period",
   "script": "frappe.ui.form.on('Leave Application', {\n    from_date: function(frm) {\n        // Check if the leave type is Annual Leave\n        if (frm.doc.leave_type === 'Annual Leave') {\n            const noticePeriod = frm.doc.annual_leave_notice_period || 7;\n            const minDate = frappe.datetime.add_days(frappe.datetime.get_today(), noticePeriod);\n            if (frm.doc.from_date < minDate) {\n                frappe.msgprint(\"You must apply for Annual Leave at least \" + noticePeriod + \" days in advance.\");\n                frm.set_value('from_date', '')\n                frappe.validated = false;\n            }\n        }\n    }\n});",
+  "view": "Form"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
+  "dt": "Asset Movement",
+  "enabled": 1,
+  "modified": "2024-07-29 15:04:11.232485",
+  "module": "ICL Corporate Services",
+  "name": "Finance Members Filter",
+  "script": "frappe.ui.form.on('Asset Movement', {\n    refresh: function(frm) {\n        frappe.call({\n            method: 'corporate_services.api.role.user.get_finance_employees',\n            callback: function(response) {\n                if (response.message) {\n                    let employees = response.message;\n                    frm.set_query('custom_receiver', function() {\n                        return {\n                            filters: {\n                                'name': ['in', employees]\n                            }\n                        };\n                    });\n                }\n            }\n        });\n    }\n});",
   "view": "Form"
  }
 ]
