@@ -9,6 +9,300 @@
   "is_standard": "Yes",
   "javascript": null,
   "json": null,
+  "letter_head": null,
+  "modified": "2020-02-25 07:16:47.696994",
+  "module": "Loan Management",
+  "name": "Loan Repayment and Closure",
+  "prepared_report": 0,
+  "query": null,
+  "ref_doctype": "Loan Repayment",
+  "reference_report": null,
+  "report_name": "Loan Repayment and Closure",
+  "report_script": null,
+  "report_type": "Script Report",
+  "roles": [
+   {
+    "parent": "Loan Repayment and Closure",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "System Manager"
+   },
+   {
+    "parent": "Loan Repayment and Closure",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Loan Manager"
+   }
+  ]
+ },
+ {
+  "add_total_row": 1,
+  "columns": [],
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [],
+  "is_standard": "Yes",
+  "javascript": null,
+  "json": null,
+  "letter_head": null,
+  "modified": "2019-10-07 13:45:46.793949",
+  "module": "Loan Management",
+  "name": "Loan Security Status",
+  "prepared_report": 0,
+  "query": null,
+  "ref_doctype": "Loan Security",
+  "reference_report": null,
+  "report_name": "Loan Security Status",
+  "report_script": null,
+  "report_type": "Script Report",
+  "roles": [
+   {
+    "parent": "Loan Security Status",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "System Manager"
+   },
+   {
+    "parent": "Loan Security Status",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Loan Manager"
+   }
+  ]
+ },
+ {
+  "add_total_row": 1,
+  "columns": [],
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [],
+  "is_standard": "Yes",
+  "javascript": null,
+  "json": null,
+  "letter_head": null,
+  "modified": "2021-01-10 02:03:26.742693",
+  "module": "Loan Management",
+  "name": "Loan Interest Report",
+  "prepared_report": 0,
+  "query": null,
+  "ref_doctype": "Loan Interest Accrual",
+  "reference_report": null,
+  "report_name": "Loan Interest Report",
+  "report_script": null,
+  "report_type": "Script Report",
+  "roles": [
+   {
+    "parent": "Loan Interest Report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "System Manager"
+   },
+   {
+    "parent": "Loan Interest Report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Loan Manager"
+   }
+  ]
+ },
+ {
+  "add_total_row": 0,
+  "columns": [],
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [],
+  "is_standard": "Yes",
+  "javascript": null,
+  "json": null,
+  "letter_head": null,
+  "modified": "2021-01-15 23:48:38.913514",
+  "module": "Loan Management",
+  "name": "Applicant-Wise Loan Security Exposure",
+  "prepared_report": 0,
+  "query": null,
+  "ref_doctype": "Loan Security",
+  "reference_report": null,
+  "report_name": "Applicant-Wise Loan Security Exposure",
+  "report_script": null,
+  "report_type": "Script Report",
+  "roles": [
+   {
+    "parent": "Applicant-Wise Loan Security Exposure",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "System Manager"
+   },
+   {
+    "parent": "Applicant-Wise Loan Security Exposure",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Loan Manager"
+   }
+  ]
+ },
+ {
+  "add_total_row": 0,
+  "columns": [],
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [],
+  "is_standard": "Yes",
+  "javascript": null,
+  "json": null,
+  "letter_head": null,
+  "modified": "2021-01-16 08:08:01.694583",
+  "module": "Loan Management",
+  "name": "Loan Security Exposure",
+  "prepared_report": 0,
+  "query": null,
+  "ref_doctype": "Loan Security",
+  "reference_report": null,
+  "report_name": "Loan Security Exposure",
+  "report_script": null,
+  "report_type": "Script Report",
+  "roles": [
+   {
+    "parent": "Loan Security Exposure",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "System Manager"
+   },
+   {
+    "parent": "Loan Security Exposure",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Loan Manager"
+   }
+  ]
+ },
+ {
+  "add_total_row": 1,
+  "columns": [],
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [],
+  "is_standard": "Yes",
+  "javascript": null,
+  "json": "{}",
+  "letter_head": "",
+  "modified": "2024-04-23 17:18:19.779036",
+  "module": "Stock",
+  "name": "Available Batch Report",
+  "prepared_report": 0,
+  "query": null,
+  "ref_doctype": "Stock Ledger Entry",
+  "reference_report": null,
+  "report_name": "Available Batch Report",
+  "report_script": null,
+  "report_type": "Script Report",
+  "roles": [
+   {
+    "parent": "Available Batch Report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Stock User"
+   },
+   {
+    "parent": "Available Batch Report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Accounts Manager"
+   }
+  ]
+ },
+ {
+  "add_total_row": 0,
+  "columns": [],
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [],
+  "is_standard": "Yes",
+  "javascript": null,
+  "json": "{}",
+  "letter_head": null,
+  "modified": "2024-06-20 15:24:34.366357",
+  "module": "ICL Corporate Services",
+  "name": "Job Requsition",
+  "prepared_report": 0,
+  "query": null,
+  "ref_doctype": "Job Requisition",
+  "reference_report": null,
+  "report_name": "Job Requsition",
+  "report_script": null,
+  "report_type": "Report Builder",
+  "roles": [
+   {
+    "parent": "Job Requsition",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "System Manager"
+   }
+  ]
+ },
+ {
+  "add_total_row": 0,
+  "columns": [],
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [],
+  "is_standard": "Yes",
+  "javascript": null,
+  "json": "{}",
+  "letter_head": null,
+  "modified": "2024-07-04 09:58:41.057806",
+  "module": "ICL Corporate Services",
+  "name": "Timesheet Submission",
+  "prepared_report": 0,
+  "query": null,
+  "ref_doctype": "Timesheet Submission",
+  "reference_report": null,
+  "report_name": "Timesheet Submission",
+  "report_script": null,
+  "report_type": "Report Builder",
+  "roles": [
+   {
+    "parent": "Timesheet Submission",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "System Manager"
+   },
+   {
+    "parent": "Timesheet Submission",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Employee"
+   },
+   {
+    "parent": "Timesheet Submission",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "HR Manager"
+   },
+   {
+    "parent": "Timesheet Submission",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "HR User"
+   }
+  ]
+ },
+ {
+  "add_total_row": 0,
+  "columns": [],
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [],
+  "is_standard": "Yes",
+  "javascript": null,
+  "json": null,
   "letter_head": "",
   "modified": "2017-06-23 04:46:43.209008",
   "module": "Manufacturing",

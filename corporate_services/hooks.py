@@ -126,13 +126,76 @@ after_migrate = "corporate_services.api.setup_utils.post_install"
 # ---------------
 # Hook on document methods and events
 
-doc_events = {
-	# "*": {
-	# 	"on_update": "method",
-	# 	"on_cancel": "method",
-	# 	"on_trash": "method"
-	# },
+# doc_events = {
+# 	# "*": {
+# 	# 	"on_update": "method",
+# 	# 	"on_cancel": "method",
+# 	# 	"on_trash": "method"
+# 	# },
+#     "Employee Grievance":{
+#         "on_update": "corporate_services.api.notifications.employee_grievance"
+#     },
+#     "Travel Request":{
+#         "on_update": "corporate_services.api.notifications.alert_supervisor_travel_request"
+#     },
+#     "Leave Application":{
+#         "on_update": "corporate_services.api.notifications.alert_supervisor_leave_application"
+#     },
+#     "Asset Custodianship Requisition":{
+#         "on_update": "corporate_services.api.notifications.alert_supervisor_asset_requisition"
+#     },
+#     "Work Continuity Plan":{
+#         "on_update": "corporate_services.api.notifications.alert_supervisor_work_continuity_plan_submission"
+#     }
+# }
+
+
+
+def generate_doc_events(event_maps):
+    doc_events = {}
+    for event_type, event_map in event_maps.items():
+        for doctype, method in event_map.items():
+            if doctype not in doc_events:
+                doc_events[doctype] = {}
+            doc_events[doctype][event_type] = method
+    return doc_events
+
+on_update_map = {
+    "Employee Grievance": "corporate_services.api.notification.notifications.employee_grievance",
+    
+    "Travel Request": "corporate_services.api.notification.notifications.alert_supervisor_travel_request",
+        
+    "Leave Application": "corporate_services.api.notification.notifications.alert_supervisor_leave_application",
+        
+    "Work Continuity Plan": "corporate_services.api.notification.notifications.alert_supervisor_work_continuity_plan_submission",
+    
+    "Asset Custodianship Requisition": "corporate_services.api.notification.asset_custotianship_requisition.alert",
+    
+    "Asset Requisition": "corporate_services.api.notification.asset_requisition.alert",
+
 }
+before_submit_map = {
+    "Timesheet Submission":"corporate_services.api.timesheet.timesheet_submission.before_save"
+}
+# after_insert_map = {
+    
+    # "Timesheet": "corporate_services.api.notification.timesheet.alert",
+# }
+
+# on_cancel_map = {
+#    "Travel Request": "corporate_services.api.notifications.cancel_travel_request",
+# }
+
+event_maps = {
+    "on_update": on_update_map,
+    # "after_insert":after_insert_map,
+    "before_save":before_submit_map
+    # "on_cancel": on_cancel_map
+}
+
+doc_events = generate_doc_events(event_maps)
+
+
 
 # Scheduled Tasks
 # ---------------
@@ -252,7 +315,6 @@ fixtures = [
     "HR Settings",
     "Designation",
     "Department",
-    "Asset Handover Form",
     "Client Script",
     "Workflow Action Master",
     "Employee Grievance",
@@ -260,5 +322,7 @@ fixtures = [
     "Employee",
     "Dashboard",
     "Number Card",
-    "Workspace"
+    "Letter Head",
+    "Workspace",
+    "Notification"
 ]

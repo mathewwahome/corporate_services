@@ -1,6 +1,7 @@
 {
  "actions": [],
  "allow_rename": 1,
+ "autoname": "naming_series:",
  "creation": "2024-06-06 10:10:02.845979",
  "doctype": "DocType",
  "engine": "InnoDB",
@@ -8,11 +9,13 @@
   "title_section",
   "asset_requisition_application_form",
   "personal_info_section",
+  "naming_series",
   "requested_by",
   "projectdepartment",
   "column_break_lkof",
   "phone",
   "email",
+  "reports_to",
   "description_of_the_equipment_section",
   "table_mesb",
   "terms_and_conditions_section",
@@ -89,14 +92,31 @@
    "fieldname": "table_mesb",
    "fieldtype": "Table",
    "options": "Asset Requisition - Equipment Description"
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Series",
+   "options": "AR-.YYYY.-",
+   "set_only_once": 1
+  },
+  {
+   "fetch_from": "requested_by.reports_to",
+   "fieldname": "reports_to",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Reports To",
+   "read_only": 1,
+   "reqd": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-06-09 18:27:27.498780",
+ "modified": "2024-07-15 14:44:19.965714",
  "modified_by": "Administrator",
  "module": "ICL Corporate Services",
  "name": "Asset Custodianship Requisition",
+ "naming_rule": "By \"Naming Series\" field",
  "owner": "Administrator",
  "permissions": [
   {

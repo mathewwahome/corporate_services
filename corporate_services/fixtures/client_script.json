@@ -2,6 +2,61 @@
  {
   "docstatus": 0,
   "doctype": "Client Script",
+  "dt": "Asset Requisition",
+  "enabled": 1,
+  "modified": "2024-07-25 10:41:42.951383",
+  "module": "ICL Corporate Services",
+  "name": "Asset Requisition",
+  "script": "frappe.ui.form.on('Asset Requisition', {\n\trefresh(frm) {\n        frm.dashboard.add_section(`\n            <h2>IntelliSOFT Consulting Limited Requisition form</h2>\n        `);\n    }\n});",
+  "view": "Form"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
+  "dt": "Timesheet Submission",
+  "enabled": 1,
+  "modified": "2024-07-26 09:29:14.840912",
+  "module": "ICL Corporate Services",
+  "name": "Timesheet Submission List",
+  "script": "frappe.ui.form.on('Timesheet Submission', {\n    refresh: function (frm) {\n        if (frm.doc.employee) {\n            frappe.call({\n                method: 'corporate_services.api.timesheet.timesheet_fetch.fetch_timesheets_for_employee',\n                args: {\n                    employee_id: frm.doc.employee\n                },\n                callback: function (r) {\n                    if (!r.exc) {\n                        frm.clear_table('timesheet_submission_list');\n                        if (r.message) {\n                            r.message.forEach(function (timesheet) {\n                                let child = frm.add_child('timesheet_submission_list');\n                                child.total_hours = timesheet.total_hours;\n                                child.naming_series = timesheet.naming_series;\n                                child.month = timesheet.custom_month;\n                                child.status = timesheet.status;\n                            });\n                        }\n                        frm.refresh_field('timesheet_submission_list');\n                    }\n                }\n            });\n        }\n    }\n});\n",
+  "view": "Form"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
+  "dt": "Job Requisition",
+  "enabled": 1,
+  "modified": "2024-06-11 11:53:27.263078",
+  "module": null,
+  "name": "Job Requisition Notify HR",
+  "script": "frappe.ui.form.on(\"Job Requisition\", {\r\n    after_save: function(frm) {\r\n        // Function to send email notification\r\n        console.log({ frm })\r\n        function sendEmailNotification(subject, message, recipients) {\r\n            console.log({ subject, message, recipients })\r\n            // frappe.call({\r\n            //     method: \"your_custom_app.module_name.script_name.send_email_notification\",\r\n            //     args: {\r\n            //         subject: subject,\r\n            //         message: message,\r\n            //         recipients: recipients\r\n            //     },\r\n            //     callback: function(response) {\r\n            //         if (response.message) {\r\n            //             frappe.show_alert(\"Email notification sent successfully\", 5);\r\n            //         } else {\r\n            //             frappe.show_alert(\"Failed to send email notification\", 5, \"error\");\r\n            //         }\r\n            //     }\r\n            // });\r\n        }\r\n\r\n        // Function to send Frappe notification\r\n        function sendFrappeNotification(message, user) {\r\n            frappe.publish_realtime(\"msgprint\", {\r\n                message: message\r\n            }, user);\r\n        }\r\n\r\n        // Get HR emails\r\n        frappe.call({\r\n            method: \"get_hr_emails\",\r\n            callback: function(response) {\r\n                console.log({ response })\r\n                // var hrEmails = response.message;\r\n                // if (hrEmails && hrEmails.length > 0) {\r\n                //     var subject = \"New Job Requisition Created\";\r\n                //     var message = \"A new job requisition (\" + frm.doc.name + \") has been created.\\n\\nPlease take necessary action.\";\r\n                //     sendEmailNotification(subject, message, hrEmails);\r\n                //     sendFrappeNotification(\"New job requisition '\" + frm.doc.name + \"' created\", frappe.session.user);\r\n                // }\r\n            }\r\n        });\r\n    }\r\n});\r\n",
+  "view": "Form"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
+  "dt": "Timesheet Submission",
+  "enabled": 1,
+  "modified": "2024-07-29 09:13:10.978970",
+  "module": "ICL Corporate Services",
+  "name": "Timesheet Import",
+  "script": "frappe.ui.form.on('Timesheet Submission', {\n    on_submit: function(frm) {\n        if (frm.doc.timesheet) {\n            frappe.call({\n                method: 'corporate_services.api.timesheet.timesheet_import.timesheet_import',\n                args: {\n                    docname: frm.doc.name\n                },\n                callback: function(response) {\n                    if (response.message === 'success') {\n                        frappe.msgprint(__('Employees timesheet created successfully'));\n                    } else {\n                        frappe.msgprint(__('There was an error creating employees timesheet'));\n                    }\n                }\n            });\n        } else {\n            frappe.msgprint(__('Please upload a CSV file'));\n        }\n    }\n});",
+  "view": "Form"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
+  "dt": "Timesheet Submission",
+  "enabled": 1,
+  "modified": "2024-07-04 16:59:26.209612",
+  "module": "ICL Corporate Services",
+  "name": "Timesheet Template Generation",
+  "script": "frappe.ui.form.on('Timesheet Submission', {\n    refresh: function(frm) {\n        frm.fields_dict.download_template.$input.on('click', function() {\n            frappe.call({\n                method: \"corporate_services.api.timesheet.timesheet_generation_export.timesheet_generation_export\",\n                args: {\n                    docname: frm.doc.name\n                },\n                callback: function(r) {\n                    if (r.message && typeof r.message === 'string' && r.message !== \"error\") {\n                        var download_url = r.message;\n                        window.open(download_url, '_blank');\n                        \n                    } else if (r.message && typeof r.message === 'object') {\n                        var download_url = r.message.file_url;\n                        window.open(download_url, '_blank');\n                        \n                    } else {\n                        frappe.msgprint(__(\"Failed to generate CSV file. Please check logs for details.\"));\n                    }\n                }\n            });\n        });\n    }\n});",
+  "view": "Form"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
   "dt": "Travel Request",
   "enabled": 1,
   "modified": "2024-06-11 09:06:09.449940",
@@ -52,6 +107,28 @@
   "module": "ICL Corporate Services",
   "name": "Grievance Script",
   "script": "frappe.ui.form.on('Employee Grievance', {\n    refresh: function(frm) {\n        function toggle_fields() {\n            if (frappe.user.has_role('Employee')) {\n                if (frm.doc.workflow_state === 'Draft') {\n                    frm.toggle_display(['investigation_details_section','resolution_details_section','custom_actions_taken'], false);\n                }\n            }\n            if (frappe.user.has_role('HR Manager')) {\n                if (frm.doc.workflow_state === 'Submitted to HR') {\n                    frm.toggle_display(['investigation_details_section','resolution_details_section','custom_actions_taken'], true);\n                }\n            }\n        }\n\n        toggle_fields();\n\n        frm.fields_dict.workflow_state.$input.on('change', function() {\n            toggle_fields();\n        });\n    },\n    before_save: function(frm) {\n        if (frappe.user.has_role('Employee')) {\n            frm.toggle_display(['investigation_details_section','resolution_details_section','custom_actions_taken'], false);\n        }\n    }\n});\n",
+  "view": "Form"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
+  "dt": "Leave Application",
+  "enabled": 1,
+  "modified": "2024-07-22 12:48:02.431673",
+  "module": null,
+  "name": "Annual leave 7 days notice period",
+  "script": "frappe.ui.form.on('Leave Application', {\n    from_date: function(frm) {\n        // Check if the leave type is Annual Leave\n        if (frm.doc.leave_type === 'Annual Leave') {\n            const noticePeriod = frm.doc.annual_leave_notice_period || 7;\n            const minDate = frappe.datetime.add_days(frappe.datetime.get_today(), noticePeriod);\n            if (frm.doc.from_date < minDate) {\n                frappe.msgprint(\"You must apply for Annual Leave at least \" + noticePeriod + \" days in advance.\");\n                frm.set_value('from_date', '')\n                frappe.validated = false;\n            }\n        }\n    }\n});",
+  "view": "Form"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
+  "dt": "Asset Movement",
+  "enabled": 1,
+  "modified": "2024-07-29 15:04:11.232485",
+  "module": "ICL Corporate Services",
+  "name": "Finance Members Filter",
+  "script": "frappe.ui.form.on('Asset Movement', {\n    refresh: function(frm) {\n        frappe.call({\n            method: 'corporate_services.api.role.user.get_finance_employees',\n            callback: function(response) {\n                if (response.message) {\n                    let employees = response.message;\n                    frm.set_query('custom_receiver', function() {\n                        return {\n                            filters: {\n                                'name': ['in', employees]\n                            }\n                        };\n                    });\n                }\n            }\n        });\n    }\n});",
   "view": "Form"
  }
 ]
