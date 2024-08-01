@@ -172,25 +172,26 @@ on_update_map = {
     "Asset Custodianship Requisition": "corporate_services.api.notification.asset_custotianship_requisition.alert",
     
     "Asset Requisition": "corporate_services.api.notification.asset_requisition.alert",
-
+    
+    
+    
 }
 before_submit_map = {
-    "Timesheet Submission":"corporate_services.api.timesheet.timesheet_submission.before_save"
+    # "Timesheet Submission":"corporate_services.api.timesheet.timesheet_submission.before_save"
 }
-# after_insert_map = {
+
+after_insert_map = {
     
     # "Timesheet": "corporate_services.api.notification.timesheet.alert",
-# }
+    # "Timesheet Submission":"corporate_services.api.timesheet.task_import"
+    
+}
 
-# on_cancel_map = {
-#    "Travel Request": "corporate_services.api.notifications.cancel_travel_request",
-# }
 
 event_maps = {
     "on_update": on_update_map,
-    # "after_insert":after_insert_map,
-    "before_save":before_submit_map
-    # "on_cancel": on_cancel_map
+    "after_insert":after_insert_map,
+    # "before_save":before_submit_map
 }
 
 doc_events = generate_doc_events(event_maps)

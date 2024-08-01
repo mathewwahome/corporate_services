@@ -10,7 +10,8 @@
   "month",
   "download_template",
   "timesheet",
-  "amended_from"
+  "amended_from",
+  "import_status"
  ],
  "fields": [
   {
@@ -56,11 +57,19 @@
    "fieldname": "download_template",
    "fieldtype": "Button",
    "label": "Download Template"
+  },
+  {
+   "default": "pending",
+   "fieldname": "import_status",
+   "fieldtype": "Select",
+   "hidden": 1,
+   "label": "Import status",
+   "options": "pending\nCompleted"
   }
  ],
  "is_submittable": 1,
  "links": [],
- "modified": "2024-07-22 10:14:33.250613",
+ "modified": "2024-07-29 15:44:33.581681",
  "modified_by": "Administrator",
  "module": "ICL Corporate Services",
  "name": "Timesheet Submission",
