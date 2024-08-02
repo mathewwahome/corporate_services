@@ -163,7 +163,7 @@ def generate_doc_events(event_maps):
 on_update_map = {
     "Employee Grievance": "corporate_services.api.notification.notifications.employee_grievance",
     
-    "Travel Request": "corporate_services.api.notification.notifications.alert_supervisor_travel_request",
+    "Travel Request": "corporate_services.api.notification.travel_request.alert",
         
     "Leave Application": "corporate_services.api.notification.notifications.alert_supervisor_leave_application",
         
@@ -325,5 +325,7 @@ fixtures = [
     "Number Card",
     "Letter Head",
     "Workspace",
-    "Notification"
+    "Notification",
+    "Dashboard Chart",
+    "Dashboard"
 ]
