@@ -11,7 +11,12 @@
   "download_template",
   "timesheet",
   "amended_from",
-  "import_status"
+  "import_status",
+  "timesheet_details",
+  "column_break_fbtd",
+  "internal_monthly_timesheet",
+  "timesheet_per_project",
+  "total_working_hours"
  ],
  "fields": [
   {
@@ -65,11 +70,38 @@
    "hidden": 1,
    "label": "Import status",
    "options": "pending\nCompleted"
+  },
+  {
+   "fieldname": "timesheet_per_project",
+   "fieldtype": "Table",
+   "label": "Timesheet Per project",
+   "options": "Timesheet Submission List"
+  },
+  {
+   "fieldname": "internal_monthly_timesheet",
+   "fieldtype": "Table",
+   "label": "Internal Monthly Timesheet",
+   "options": "Internal Monthly Timesheet"
+  },
+  {
+   "fieldname": "timesheet_details",
+   "fieldtype": "Section Break",
+   "label": "Timesheet Details",
+   "read_only": 1
+  },
+  {
+   "fieldname": "total_working_hours",
+   "fieldtype": "Float",
+   "label": "Total Working Hours"
+  },
+  {
+   "fieldname": "column_break_fbtd",
+   "fieldtype": "Column Break"
   }
  ],
  "is_submittable": 1,
  "links": [],
- "modified": "2024-07-29 15:44:33.581681",
+ "modified": "2024-08-05 10:30:12.223824",
  "modified_by": "Administrator",
  "module": "ICL Corporate Services",
  "name": "Timesheet Submission",

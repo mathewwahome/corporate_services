@@ -1,18 +1,19 @@
 {
  "actions": [],
  "allow_rename": 1,
- "autoname": "naming_series:",
  "creation": "2024-07-24 09:52:37.786015",
  "doctype": "DocType",
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
+  "column_break_faid",
   "timesheet",
-  "naming_series",
-  "title",
+  "project_name",
   "month",
+  "total_hours",
   "status",
-  "total_hours"
+  "section_break_mulj",
+  "placeholder_table"
  ],
  "fields": [
   {
@@ -31,42 +32,50 @@
    "read_only": 1
   },
   {
-   "fieldname": "title",
-   "fieldtype": "Data",
-   "in_list_view": 1,
-   "label": "Title",
-   "no_copy": 1,
-   "print_hide": 1,
-   "read_only": 1
-  },
-  {
-   "fieldname": "naming_series",
-   "fieldtype": "Data",
-   "in_list_view": 1,
-   "label": "Series"
-  },
-  {
    "fieldname": "status",
-   "fieldtype": "Link",
+   "fieldtype": "Data",
    "in_list_view": 1,
    "label": "Status",
-   "options": "Timesheet",
    "read_only": 1
   },
   {
    "fieldname": "total_hours",
    "fieldtype": "Data",
-   "label": "Hrs"
+   "in_list_view": 1,
+   "label": "Hrs",
+   "read_only": 1
+  },
+  {
+   "fieldname": "placeholder_table",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Placeholder Table"
+  },
+  {
+   "fieldname": "section_break_mulj",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_faid",
+   "fieldtype": "Column Break",
+   "read_only": 1
+  },
+  {
+   "fieldname": "project_name",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Project",
+   "options": "Project",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2024-07-24 13:40:38.762683",
+ "modified": "2024-08-05 17:31:22.218849",
  "modified_by": "Administrator",
  "module": "ICL Corporate Services",
  "name": "Timesheet Submission List",
- "naming_rule": "By \"Naming Series\" field",
  "owner": "Administrator",
  "permissions": [],
  "sort_field": "modified",

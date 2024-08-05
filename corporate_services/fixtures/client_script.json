@@ -14,11 +14,11 @@
   "docstatus": 0,
   "doctype": "Client Script",
   "dt": "Timesheet Submission",
-  "enabled": 1,
-  "modified": "2024-07-26 09:29:14.840912",
+  "enabled": 0,
+  "modified": "2024-08-05 11:06:24.615837",
   "module": "ICL Corporate Services",
   "name": "Timesheet Submission List",
-  "script": "frappe.ui.form.on('Timesheet Submission', {\n    refresh: function (frm) {\n        if (frm.doc.employee) {\n            frappe.call({\n                method: 'corporate_services.api.timesheet.timesheet_fetch.fetch_timesheets_for_employee',\n                args: {\n                    employee_id: frm.doc.employee\n                },\n                callback: function (r) {\n                    if (!r.exc) {\n                        frm.clear_table('timesheet_submission_list');\n                        if (r.message) {\n                            r.message.forEach(function (timesheet) {\n                                let child = frm.add_child('timesheet_submission_list');\n                                child.total_hours = timesheet.total_hours;\n                                child.naming_series = timesheet.naming_series;\n                                child.month = timesheet.custom_month;\n                                child.status = timesheet.status;\n                            });\n                        }\n                        frm.refresh_field('timesheet_submission_list');\n                    }\n                }\n            });\n        }\n    }\n});\n",
+  "script": "frappe.ui.form.on('Timesheet Submission', {\n    refresh: function (frm) {\n        fetch_and_update_timesheets(frm);\n    },\n    onload: function (frm) {\n        fetch_and_update_timesheets(frm);\n    }\n});\n\nfunction fetch_and_update_timesheets(frm) {\n    if (frm.doc.employee && frm.doc.month) {\n        console.error(\"Employee ID:\", frm.doc.employee);\n        console.error(\"Month:\", frm.doc.month);\n\n        frappe.call({\n            method: 'corporate_services.api.timesheet.timesheet_fetch.fetch_timesheets_for_employee',\n            args: {\n                // employee_id: frm.doc.employee,\n                month: frm.doc.month\n            },\n            callback: function(r) {\n                if (!r.exc) {\n                    frm.clear_table('timesheet_submission_list');\n                    if (r.message) {\n                        r.message.forEach(function(timesheet) {\n                            let child = frm.add_child('timesheet_submission_list');\n                            child.total_hours = timesheet.total_hours;\n                            child.naming_series = timesheet.naming_series;\n                            child.month = timesheet.custom_month;\n                            child.status = timesheet.status;\n                        });\n                    }\n                    frm.refresh_field('timesheet_submission_list');\n                }\n            }\n        });\n    } else {\n        console.error(\"Employee or month is missing.\");\n    }\n}",
   "view": "Form"
  },
  {
@@ -37,10 +37,10 @@
   "doctype": "Client Script",
   "dt": "Timesheet Submission",
   "enabled": 1,
-  "modified": "2024-07-29 09:13:10.978970",
+  "modified": "2024-08-05 17:38:10.007157",
   "module": "ICL Corporate Services",
   "name": "Timesheet Import",
-  "script": "frappe.ui.form.on('Timesheet Submission', {\n    on_submit: function(frm) {\n        if (frm.doc.timesheet) {\n            frappe.call({\n                method: 'corporate_services.api.timesheet.timesheet_import.timesheet_import',\n                args: {\n                    docname: frm.doc.name\n                },\n                callback: function(response) {\n                    if (response.message === 'success') {\n                        frappe.msgprint(__('Employees timesheet created successfully'));\n                    } else {\n                        frappe.msgprint(__('There was an error creating employees timesheet'));\n                    }\n                }\n            });\n        } else {\n            frappe.msgprint(__('Please upload a CSV file'));\n        }\n    }\n});",
+  "script": "frappe.ui.form.on('Timesheet Submission', {\n    refresh: function(frm) {\n        if (frm.doc.timesheet) {\n            fetch_timesheets_for_employee(frm);\n        }\n    },\n    after_save: function(frm) {\n        if (frm.doc.timesheet) {\n            frappe.call({\n                method: 'corporate_services.api.timesheet.timesheet_import.timesheet_import',\n                args: {\n                    docname: frm.doc.name\n                },\n                callback: function(response) {\n                    if (response.message === 'success') {\n                        frappe.msgprint(__('Employee timesheet created successfully'));\n                        // Proceed with creating the single timesheet after import is successful\n                        internal_single_timesheet(frm);\n                    } else {\n                        frappe.msgprint(__('There was an error creating the employee timesheet'));\n                    }\n                }\n            });\n        } else {\n            frm.set_value('workflow_state', 'Draft');\n            frm.save().then(() => {\n                frappe.msgprint(__('Timesheet input is empty. Workflow state has been reset to Draft.'));\n            }).catch((err) => {\n                frappe.msgprint(__('There was an error resetting the workflow state.'));\n            });\n        }\n    }\n});\n\nfunction internal_single_timesheet(frm) {\n    frappe.call({\n        method: 'corporate_services.api.timesheet.internal_timesheet.internal_single_timesheet',\n        args: {\n            docname: frm.doc.name\n        },\n        callback: function(response) {\n            if (response.message === 'success') {\n                frappe.msgprint(__('The single employee timesheet was created successfully'));\n                frm.reload_doc();\n                fetch_timesheets_for_employee(frm);\n            } else {\n                frappe.msgprint(__('There was an error creating the single employee timesheet'));\n            }\n        }\n    });\n}\n\nfunction fetch_timesheets_for_employee(frm) {\n    // Fetch external timesheets\n    frappe.call({\n        method: 'corporate_services.api.timesheet.timesheet_fetch.fetch_timesheets_for_employee',\n        args: {\n            employee_id: frm.doc.employee,\n            month: frm.doc.month\n        },\n        callback: function(r) {\n            if (!r.exc) {\n                frm.clear_table('timesheet_per_project');\n                if (r.message && r.message.length > 0) {\n                    r.message.forEach(function(timesheet) {\n                        let child = frm.add_child('timesheet_per_project');\n                        child.timesheet = timesheet.name;\n                        child.total_hours = timesheet.total_hours;\n                        child.project_name = timesheet.custom_project_name;\n                        child.month = timesheet.custom_month;\n                        child.status = timesheet.status;\n                    });\n                    frm.refresh_field('timesheet_per_project');\n                    console.log(`${r.message.length} timesheet(s) fetched successfully`);\n                } else {\n                    console.log('No timesheets found for the selected employee and month');\n                }\n            } else {\n                frappe.msgprint(__('There was an error fetching timesheets'));\n                console.error('Error fetching timesheets:', r.exc);\n            }\n        }\n    });\n\n    // Fetch internal timesheet\n    frappe.call({\n        method: 'corporate_services.api.timesheet.timesheet_fetch.fetch_internal_timesheet',\n        args: {\n            employee_id: frm.doc.employee,\n            month: frm.doc.month\n        },\n        callback: function(r) {\n            if (!r.exc) {\n                frm.clear_table('internal_monthly_timesheet');\n                if (r.message) {\n                    let child = frm.add_child('internal_monthly_timesheet');\n                    child.timesheet = r.message.name;\n                    child.hours = r.message.total_hours;\n                    child.month = r.message.month;\n                    child.status = r.message.status;\n                    \n                    frm.refresh_field('internal_monthly_timesheet');\n                } else {\n                    console.log('No internal timesheet found for the selected employee and month');\n                }\n            } else {\n                frappe.msgprint(__('There was an error fetching the internal timesheet'));\n                console.error('Error fetching internal timesheet:', r.exc);\n            }\n        }\n    });\n}\n",
   "view": "Form"
  },
  {
@@ -58,11 +58,11 @@
   "docstatus": 0,
   "doctype": "Client Script",
   "dt": "Travel Request",
-  "enabled": 1,
-  "modified": "2024-06-11 09:06:09.449940",
+  "enabled": 0,
+  "modified": "2024-08-02 08:06:55.658472",
   "module": "ICL Corporate Services",
   "name": "Travel Request Filters",
-  "script": "frappe.ui.form.on('Travel Request', {\n\trefresh(frm) {\n\t\tfrm.set_query('employee', function() {\n            return {\n                filters: {\n                    user_id: frappe.session.user\n                }\n            };\n        });\n\t}\n})",
+  "script": "frappe.ui.form.on('Travel Request', {\n\trefresh(frm) {\n\t\tfrm.set_query('employee', function() {\n            return {\n                filters: {\n                    user_id: frappe.session.user\n                }\n            };\n        });\n\t}\n});",
   "view": "Form"
  },
  {
@@ -103,10 +103,10 @@
   "doctype": "Client Script",
   "dt": "Employee Grievance",
   "enabled": 1,
-  "modified": "2024-06-24 10:56:42.597912",
+  "modified": "2024-08-05 10:27:56.017352",
   "module": "ICL Corporate Services",
   "name": "Grievance Script",
-  "script": "frappe.ui.form.on('Employee Grievance', {\n    refresh: function(frm) {\n        function toggle_fields() {\n            if (frappe.user.has_role('Employee')) {\n                if (frm.doc.workflow_state === 'Draft') {\n                    frm.toggle_display(['investigation_details_section','resolution_details_section','custom_actions_taken'], false);\n                }\n            }\n            if (frappe.user.has_role('HR Manager')) {\n                if (frm.doc.workflow_state === 'Submitted to HR') {\n                    frm.toggle_display(['investigation_details_section','resolution_details_section','custom_actions_taken'], true);\n                }\n            }\n        }\n\n        toggle_fields();\n\n        frm.fields_dict.workflow_state.$input.on('change', function() {\n            toggle_fields();\n        });\n    },\n    before_save: function(frm) {\n        if (frappe.user.has_role('Employee')) {\n            frm.toggle_display(['investigation_details_section','resolution_details_section','custom_actions_taken'], false);\n        }\n    }\n});\n",
+  "script": "frappe.ui.form.on('Employee Grievance', {\n    refresh: function(frm) {\n        function toggle_fields() {\n            if (frappe.user.has_role('Employee')) {\n                if (frm.doc.workflow_state === 'Draft') {\n                    frm.toggle_display(['investigation_details_section','resolution_details_section','custom_actions_taken'], true);\n                }\n            }\n            if (frappe.user.has_role('HR Manager')) {\n                if (frm.doc.workflow_state === 'Submitted to HR') {\n                    frm.toggle_display(['investigation_details_section','resolution_details_section','custom_actions_taken'], true);\n                }\n            }\n        }\n\n        toggle_fields();\n\n        frm.fields_dict.workflow_state.$input.on('change', function() {\n            toggle_fields();\n        });\n    },\n    before_save: function(frm) {\n        if (frappe.user.has_role('Employee')) {\n            frm.toggle_display(['investigation_details_section','resolution_details_section','custom_actions_taken'], false);\n        }\n    }\n});\n",
   "view": "Form"
  },
  {
@@ -129,6 +129,28 @@
   "module": "ICL Corporate Services",
   "name": "Finance Members Filter",
   "script": "frappe.ui.form.on('Asset Movement', {\n    refresh: function(frm) {\n        frappe.call({\n            method: 'corporate_services.api.role.user.get_finance_employees',\n            callback: function(response) {\n                if (response.message) {\n                    let employees = response.message;\n                    frm.set_query('custom_receiver', function() {\n                        return {\n                            filters: {\n                                'name': ['in', employees]\n                            }\n                        };\n                    });\n                }\n            }\n        });\n    }\n});",
+  "view": "Form"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
+  "dt": "Timesheet Submission",
+  "enabled": 0,
+  "modified": "2024-08-02 10:11:52.571997",
+  "module": "ICL Corporate Services",
+  "name": "Workflow state change",
+  "script": "frappe.ui.form.on('Timesheet Submission', {\n    validate: function(frm) {\n        if (frm.doc.workflow_state === 'Submitted to Supervisor' && !frm.doc.timesheet) {\n            frm.set_value('workflow_state', 'Draft');\n            frappe.msgprint(__('Timesheet input is empty. Workflow state has been reset to Draft.'));\n        }\n    }\n});\n",
+  "view": "Form"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
+  "dt": "Timesheet Submission",
+  "enabled": 1,
+  "modified": "2024-08-05 10:29:39.969902",
+  "module": "ICL Corporate Services",
+  "name": "Timesheet Submission Details",
+  "script": "frappe.ui.form.on('Timesheet Submission', {\n    refresh: function(frm) {\n        function toggle_fields() {\n            if (frappe.user.has_role('Employee')) {\n                if (frm.doc.workflow_state === 'Draft') {\n                    frm.toggle_display(['internal_monthly_timesheet','timesheet_per_project'], true);\n                }else {\n                    frm.toggle_display(['internal_monthly_timesheet','timesheet_per_project'], true);\n                }\n            }\n            if (frappe.user.has_role('Finance')) {\n                if (frm.doc.workflow_state === 'Submitted to HR') {\n                    frm.toggle_display(['internal_monthly_timesheet','timesheet_per_project'], true);\n                }\n            }\n        }\n\n        toggle_fields();\n\n        frm.fields_dict.workflow_state.$input.on('change', function() {\n            toggle_fields();\n        });\n    },\n    before_save: function(frm) {\n        if (frappe.user.has_role('Employee')) {\n            frm.toggle_display(['internal_monthly_timesheet','timesheet_per_project'], false);\n        }\n    }\n});\n",
   "view": "Form"
  }
 ]
