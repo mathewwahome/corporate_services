@@ -165,7 +165,7 @@ on_update_map = {
     
     "Travel Request": "corporate_services.api.notification.travel_request.alert",
         
-    "Leave Application": "corporate_services.api.notification.notifications.alert_supervisor_leave_application",
+    "Leave Application": "corporate_services.api.notification.leave_application.alert",
         
     "Work Continuity Plan": "corporate_services.api.notification.work_continuity_plan.alert",
     

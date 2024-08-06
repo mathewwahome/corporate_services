@@ -1,33 +1,6 @@
 import frappe
 from frappe.utils import get_url_to_form
 
-def alert_supervisor_leave_application(doc, method):
-    
-    if doc.workflow_state == "Submitted to Supervisor":
-        employee = frappe.get_doc("Employee", doc.employee)
-
-        supervisor_id = employee.reports_to
-
-        if supervisor_id:
-            supervisor = frappe.get_doc("Employee", supervisor_id)
-            supervisor_email = frappe.db.get_value("User", supervisor.user_id, "email")
-
-            subject = "Leave Application Submitted"
-            message = f"""
-                Dear {supervisor.employee_name},\n\n
-
-                I have applied for leave starting from {doc.from_date} to {doc.to_date}. Please review and approve it accordingly.\n\n
-
-                Kind regards,
-
-                {employee.employee_name}
-                """
-
-            frappe.sendmail(
-                recipients=[supervisor_email],
-                subject=subject,
-                message=message
-            )
 
    
 
