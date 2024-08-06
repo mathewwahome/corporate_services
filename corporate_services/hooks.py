@@ -324,7 +324,7 @@ fixtures = [
     "Dashboard",
     "Number Card",
     "Letter Head",
-    "Workspace",
+    "Workspace"
     # "Notification",
     # "Dashboard Chart",
     # "Dashboard"
