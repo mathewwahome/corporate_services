@@ -53,6 +53,7 @@ def generate_message(doc, employee_name, email_type):
             HR Department
         """.format(employee_name, doc.doctype, doctype_url)
     }
+    
     return messages[email_type]
 
 def alert(doc, method):
