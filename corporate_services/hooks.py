@@ -165,15 +165,13 @@ on_update_map = {
     
     "Travel Request": "corporate_services.api.notification.travel_request.alert",
         
-    "Leave Application": "corporate_services.api.notification.notifications.alert_supervisor_leave_application",
+    "Leave Application": "corporate_services.api.notification.leave_application.alert",
         
-    "Work Continuity Plan": "corporate_services.api.notification.notifications.alert_supervisor_work_continuity_plan_submission",
+    "Work Continuity Plan": "corporate_services.api.notification.work_continuity_plan.alert",
     
     "Asset Custodianship Requisition": "corporate_services.api.notification.asset_custotianship_requisition.alert",
     
     "Asset Requisition": "corporate_services.api.notification.asset_requisition.alert",
-    
-    
     
 }
 before_submit_map = {
@@ -187,10 +185,9 @@ after_insert_map = {
     
 }
 
-
 event_maps = {
     "on_update": on_update_map,
-    "after_insert":after_insert_map,
+    # "after_insert":after_insert_map,
     # "before_save":before_submit_map
 }
 
