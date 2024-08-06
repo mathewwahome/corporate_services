@@ -1,0 +1,219 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2024-08-05 15:21:59.222580",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "activity_type",
+  "from_time",
+  "description",
+  "column_break_yckh",
+  "expected_hrs",
+  "to_time",
+  "hours",
+  "completed",
+  "section_break_dcbu",
+  "project",
+  "project_name",
+  "column_break_cbdr",
+  "task",
+  "section_break_zpsg",
+  "is_billable",
+  "sales_invoice",
+  "column_break_ksvo",
+  "billing_hours",
+  "section_break_hcla",
+  "base_billing_rate",
+  "base_billing_amount",
+  "base_costing_rate",
+  "base_costing_amount",
+  "column_break_ykfd",
+  "billing_rate",
+  "billing_amount",
+  "costing_rate",
+  "costing_amount"
+ ],
+ "fields": [
+  {
+   "fieldname": "activity_type",
+   "fieldtype": "Link",
+   "label": "Activity Type",
+   "options": "Activity Type"
+  },
+  {
+   "fieldname": "from_time",
+   "fieldtype": "Datetime",
+   "label": "From Time"
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Small Text",
+   "label": "Description"
+  },
+  {
+   "fieldname": "expected_hrs",
+   "fieldtype": "Float",
+   "label": "Expected Hrs"
+  },
+  {
+   "fieldname": "to_time",
+   "fieldtype": "Datetime",
+   "label": "To Time"
+  },
+  {
+   "fieldname": "hours",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Hrs"
+  },
+  {
+   "default": "0",
+   "fieldname": "completed",
+   "fieldtype": "Check",
+   "label": "Completed"
+  },
+  {
+   "fieldname": "column_break_yckh",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_dcbu",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "project",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Project",
+   "mandatory_depends_on": "eval: parent.parent_project",
+   "options": "Project",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "project.project_name",
+   "fieldname": "project_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Project Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_cbdr",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "task",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Task",
+   "options": "Task"
+  },
+  {
+   "fieldname": "section_break_zpsg",
+   "fieldtype": "Section Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_billable",
+   "fieldtype": "Check",
+   "label": "Is Billable"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "sales_invoice",
+   "fieldtype": "Link",
+   "label": "Sales Invoice",
+   "no_copy": 1,
+   "options": "Sales Invoice",
+   "print_hide": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_ksvo",
+   "fieldtype": "Column Break"
+  },
+  {
+   "allow_on_submit": 1,
+   "depends_on": "is_billable",
+   "fieldname": "billing_hours",
+   "fieldtype": "Float",
+   "label": "Billing Hours"
+  },
+  {
+   "fieldname": "section_break_hcla",
+   "fieldtype": "Section Break"
+  },
+  {
+   "depends_on": "is_billable",
+   "fieldname": "base_billing_rate",
+   "fieldtype": "Currency",
+   "label": "Billing Rate",
+   "print_hide": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "base_billing_amount",
+   "fieldtype": "Currency",
+   "label": "Billing Amount",
+   "print_hide": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "base_costing_rate",
+   "fieldtype": "Currency",
+   "label": "Costing Rate",
+   "print_hide": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "base_costing_amount",
+   "fieldtype": "Currency",
+   "label": "Costing Amount",
+   "print_hide": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_ykfd",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "billing_rate",
+   "fieldtype": "Currency",
+   "label": "Billing Rate"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "billing_amount",
+   "fieldtype": "Currency",
+   "label": "Billing Amount",
+   "read_only": 1
+  },
+  {
+   "fieldname": "costing_rate",
+   "fieldtype": "Currency",
+   "label": "Costing Rate"
+  },
+  {
+   "allow_on_submit": 1,
+   "depends_on": "is_billable",
+   "fieldname": "costing_amount",
+   "fieldtype": "Currency",
+   "label": "Costing Amount",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2024-08-05 16:05:49.280666",
+ "modified_by": "Administrator",
+ "module": "ICL Corporate Services",
+ "name": "Internal Timesheet Details",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

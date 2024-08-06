@@ -22,6 +22,12 @@ def generate_message(doc, employee_name, email_type):
             Kind regards,<br>
             {}
         """.format(employee_name, doc.doctype, doctype_url, employee_name),
+        "employee_approve_supervisor": """
+            Dear {},<br><br>
+            Your {} has been reviewed and unfortunately, it has been rejected. You can view the details <a href="{}">here</a>.<br><br>
+            Kind regards,<br>
+            Supervisor
+        """.format(employee_name, doc.doctype, doctype_url),
         "employee_rejected_supervisor": """
             Dear {},<br><br>
             Your {} has been reviewed and unfortunately, it has been rejected. You can view the details <a href="{}">here</a>.<br><br>
@@ -63,7 +69,7 @@ def generate_message(doc, employee_name, email_type):
 
 def alert(doc, method):
     if doc.workflow_state in [
-        "Submitted to Supervisor", "Submitted to HR", "Rejected By HR", "Approved by HR",
+        "Submitted to Supervisor","Approved by Supervisor", "Submitted to HR", "Rejected By HR", "Approved by HR",
         "Rejected By Supervisor", "Rejected by Finance", "Approved by Finance"
     ]:
         employee_id = doc.employee
@@ -87,6 +93,15 @@ def alert(doc, method):
                     pdf_content=pdf_content,
                     doc_name=doc.name
                 )
+        elif doc.workflow_state == "Approved by Supervisor":
+            message_to_employee = generate_message(doc, employee.employee_name, "employee_approve_supervisor")
+            send_email(
+                recipients=[employee_email],
+                subject=frappe._('Your Timesheet Submission has been Approved'),
+                message=message_to_employee,
+                pdf_content=pdf_content,
+                doc_name=doc.name
+            )
         elif doc.workflow_state == "Rejected By Supervisor":
             message_to_employee = generate_message(doc, employee.employee_name, "employee_rejected_supervisor")
             send_email(

@@ -1,36 +1,6 @@
 import frappe
 from frappe.utils import get_url_to_form
 
-def alert_supervisor_travel_request(doc, method):
-    if doc.workflow_state == "Submitted to Supervisor":
-        
-        employee_id = doc.employee
-        employee = frappe.get_doc("Employee", employee_id)
-        
-        if employee.reports_to:
-            supervisor_id = employee.reports_to
-            supervisor = frappe.get_doc("Employee", supervisor_id)
-            
-            supervisor_email = supervisor.company_email or supervisor.personal_email
-            message = """
-                Dear {},\n\n
-    
-                I have submitted my {} for your review and approval.\n\n
-            
-                Kind regards,
-                
-                {}
-                """.format(supervisor.employee_name, doc.doctype, employee.employee_name)
-            
-            frappe.sendmail(
-                recipients=[supervisor_email],
-                subject=frappe._('Travel Request Submission from {}'.format(employee.employee_name)),
-                message=message,
-            )
-
-
-
-
 def alert_supervisor_leave_application(doc, method):
     
     if doc.workflow_state == "Submitted to Supervisor":
@@ -232,9 +202,7 @@ doc_events = {
     "Employee Grievance": {
         "on_update": employee_grievance
     },
-    "Travel Request": {
-        "on_update": alert_supervisor_travel_request
-    },
+   
     "Leave Application":{
         "on_update": alert_supervisor_leave_application
     },
