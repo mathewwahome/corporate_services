@@ -7,14 +7,14 @@ def fetch_timesheets_for_employee(employee_id, month):
     try:
         timesheets = frappe.get_all('Timesheet', 
                                     filters={'employee': employee_id, 'custom_month': month}, 
-                                    fields=['name', 'custom_project_name', 'custom_month', 'total_hours','custom_timesheet_type', 'status'])
+                                    fields=['name', 'custom_project_name','parent_project', 'custom_month', 'total_hours','custom_timesheet_type', 'status'])
         
         total_hours_for_month = sum(flt(timesheet.total_hours) for timesheet in timesheets)
         
         employee = frappe.get_doc('Employee', employee_id)
         ctc = flt(employee.ctc)
         
-        monthly_gross_pay = ctc # /12
+        monthly_gross_pay = ctc 
         
         for timesheet in timesheets:
             project_hours = flt(timesheet.total_hours)
@@ -44,7 +44,6 @@ def fetch_internal_timesheet(employee_id, month):
                                     filters={'employee': employee_id, 'month': month}, 
                                     fields=['name', 'month', 'status'],
                                     limit=1)
-        # frappe.log_error(f"internal timesheet for employee {timesheet}", "fetch_internal_timesheet")
         
         return timesheet[0] if timesheet else None
     except Exception as e:

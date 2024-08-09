@@ -11,7 +11,7 @@
   "download_template",
   "timesheet",
   "amended_from",
-  "import_status",
+  "timesheet_imported",
   "timesheet_details",
   "column_break_fbtd",
   "timesheet_per_project",
@@ -64,14 +64,6 @@
    "label": "Download Template"
   },
   {
-   "default": "pending",
-   "fieldname": "import_status",
-   "fieldtype": "Select",
-   "hidden": 1,
-   "label": "Import status",
-   "options": "pending\nCompleted"
-  },
-  {
    "fieldname": "timesheet_per_project",
    "fieldtype": "Table",
    "label": "Timesheet Per project",
@@ -97,11 +89,18 @@
    "fieldtype": "Table",
    "label": "Other Activities",
    "options": "Other Timesheet Activities"
+  },
+  {
+   "default": "0",
+   "fieldname": "timesheet_imported",
+   "fieldtype": "Check",
+   "hidden": 1,
+   "label": "Timesheet Imported"
   }
  ],
  "is_submittable": 1,
  "links": [],
- "modified": "2024-08-07 14:43:35.360707",
+ "modified": "2024-08-09 13:27:53.389976",
  "modified_by": "Administrator",
  "module": "ICL Corporate Services",
  "name": "Timesheet Submission",
