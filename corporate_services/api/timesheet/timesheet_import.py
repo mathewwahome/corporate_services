@@ -142,8 +142,11 @@ def create_timesheet(doc, project=None, activity_type=None):
     
     if project:
         timesheet.parent_project = project
+        timesheet.custom_timesheet_type = "Project Based"
     if activity_type:
         timesheet.custom_activity_type = activity_type
+        timesheet.custom_timesheet_type = "Other Activities"
+        
     timesheet.insert()
     return timesheet
 
@@ -181,6 +184,7 @@ def create_timesheet_detail_entry(timesheet, from_time, to_time, activity_type, 
             "custom_date": day,
             "from_time": from_time,
             "to_time": to_time,
+            "is_billable": 1,
         }
         if activity_type == "Projects":
             existing_projects = {p["project_name"]: p["name"] for p in frappe.get_all("Project", fields=["project_name", "name"])}
