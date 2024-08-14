@@ -56,24 +56,30 @@
    "fetch_from": "project.project_name",
    "fieldname": "project_name",
    "fieldtype": "Data",
-   "label": "Project Name"
+   "in_list_view": 1,
+   "label": "Project Name",
+   "read_only": 1
   },
   {
    "fieldname": "pay",
    "fieldtype": "Currency",
    "in_list_view": 1,
-   "label": "Pay"
+   "label": "Pay",
+   "read_only": 1
   },
   {
    "fieldname": "percent",
    "fieldtype": "Percent",
    "in_list_view": 1,
-   "label": "Percent"
+   "label": "Percent",
+   "read_only": 1
   },
   {
    "fieldname": "timesheet_type",
    "fieldtype": "Data",
-   "label": "Timesheet Type"
+   "in_list_view": 1,
+   "label": "Timesheet Type",
+   "read_only": 1
   },
   {
    "fieldname": "project",
@@ -87,7 +93,7 @@
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2024-08-09 13:23:36.202353",
+ "modified": "2024-08-14 10:28:47.093420",
  "modified_by": "Administrator",
  "module": "ICL Corporate Services",
  "name": "Timesheet Submission List",

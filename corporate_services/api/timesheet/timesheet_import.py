@@ -4,6 +4,13 @@ import io
 from frappe.utils.file_manager import get_file
 from datetime import datetime, timedelta
 
+def calculate_total_hours(project_timesheets, activity_timesheets):
+    total_hours = 0
+    for timesheet in list(project_timesheets.values()) + list(activity_timesheets.values()):
+        for time_log in timesheet.time_logs:
+            total_hours += time_log.hours
+    return total_hours
+
 @frappe.whitelist()
 def timesheet_import(docname):
     try:
@@ -126,6 +133,15 @@ def timesheet_import(docname):
                         except ValueError as e:
                             frappe.log_error(f"Invalid value in row: {row[idx]} - {e}", "timesheet_import")
 
+        # Calculate total hours
+        total_hours = calculate_total_hours(project_timesheets, activity_timesheets)
+
+        # Check if total hours are less than 160
+        if total_hours < 160:
+            frappe.log_error(f"Total hours ({total_hours}) are less than 160. Timesheet not uploaded.", "timesheet_import")
+            return "error: Total hours are less than 160"
+
+        # If total hours are 160 or more, proceed with saving
         save_timesheets(project_timesheets)
         save_timesheets(activity_timesheets)
 
@@ -135,10 +151,11 @@ def timesheet_import(docname):
         frappe.log_error(frappe.get_traceback(), "timesheet_import")
         return "error"
 
-def create_timesheet(doc, project=None, activity_type=None):
+def create_timesheet(doc, project=None, activity_type=None, total_hours=0):
     timesheet = frappe.new_doc("Timesheet")
     timesheet.employee = doc.employee
     timesheet.custom_month = doc.month
+    timesheet.total_working_hours=total_hours
     
     if project:
         timesheet.parent_project = project
