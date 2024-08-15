@@ -318,7 +318,8 @@ fixtures = [
     "Dashboard",
     "Number Card",
     "Letter Head",
-    "Workspace"
+    "Workspace",
+    "Print Format"
     # "Notification",
     # "Dashboard Chart",
     # "Dashboard"
