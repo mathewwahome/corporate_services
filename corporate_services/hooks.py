@@ -126,28 +126,6 @@ after_migrate = "corporate_services.api.setup_utils.post_install"
 # ---------------
 # Hook on document methods and events
 
-# doc_events = {
-# 	# "*": {
-# 	# 	"on_update": "method",
-# 	# 	"on_cancel": "method",
-# 	# 	"on_trash": "method"
-# 	# },
-#     "Employee Grievance":{
-#         "on_update": "corporate_services.api.notifications.employee_grievance"
-#     },
-#     "Travel Request":{
-#         "on_update": "corporate_services.api.notifications.alert_supervisor_travel_request"
-#     },
-#     "Leave Application":{
-#         "on_update": "corporate_services.api.notifications.alert_supervisor_leave_application"
-#     },
-#     "Asset Custodianship Requisition":{
-#         "on_update": "corporate_services.api.notifications.alert_supervisor_asset_requisition"
-#     },
-#     "Work Continuity Plan":{
-#         "on_update": "corporate_services.api.notifications.alert_supervisor_work_continuity_plan_submission"
-#     }
-# }
 
 
 
@@ -162,27 +140,17 @@ def generate_doc_events(event_maps):
 
 on_update_map = {
     "Employee Grievance": "corporate_services.api.notification.notifications.employee_grievance",
-    
     "Travel Request": "corporate_services.api.notification.travel_request.alert",
-        
     "Leave Application": "corporate_services.api.notification.leave_application.alert",
-        
     "Work Continuity Plan": "corporate_services.api.notification.work_continuity_plan.alert",
-    
     "Asset Custodianship Requisition": "corporate_services.api.notification.asset_custotianship_requisition.alert",
-    
     "Asset Requisition": "corporate_services.api.notification.asset_requisition.alert",
+    "Timesheet Submission":"corporate_services.api.notification.timesheet.alert",
+    "Timesheet Submission":"corporate_services.api.timesheet.before_workflow_action.before_workflow_action_timesheet_submission",
+    "Timesheet Submission":"corporate_services.api.timesheet.finance_timesheet_submission.finance_timesheet_submission",
     
-    
-    # timesheet submission
-    "Timesheet Submission":"corporate_services.api.notification.timesheet.alert"
-
+    "Project":"corporate_services.api.notification.project.project_manager.alert"
 }
-
-#  "Timesheet Submission":"corporate_services.api.notification.timesheet.alert",
-    
-#     "Timesheet Submission":"corporate_services.api.timesheet.timesheet_workflow.update_timesheet_workflow"
-
 
 event_maps = {
     "on_update": on_update_map,
@@ -318,7 +286,9 @@ fixtures = [
     "Dashboard",
     "Number Card",
     "Letter Head",
-    "Workspace"
+    "Workspace",
+    "Web Page",
+    "Web Form"
     # "Notification",
     # "Dashboard Chart",
     # "Dashboard"
