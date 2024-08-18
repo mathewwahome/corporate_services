@@ -283,7 +283,9 @@ fixtures = [
     "Dashboard",
     "Number Card",
     "Letter Head",
-    "Workspace"
+    "Workspace",
+    "Web Page",
+    "Web Form"
     # "Notification",
     # "Dashboard Chart",
     # "Dashboard"
