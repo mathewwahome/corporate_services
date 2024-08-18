@@ -146,6 +146,8 @@ on_update_map = {
     "Asset Custodianship Requisition": "corporate_services.api.notification.asset_custotianship_requisition.alert",
     "Asset Requisition": "corporate_services.api.notification.asset_requisition.alert",
     "Timesheet Submission":"corporate_services.api.notification.timesheet.alert",
+    "Timesheet Submission":"corporate_services.api.timesheet.before_workflow_action.before_workflow_action_timesheet_submission",
+    
     "Project":"corporate_services.api.notification.project.project_manager.alert"
 }
 
