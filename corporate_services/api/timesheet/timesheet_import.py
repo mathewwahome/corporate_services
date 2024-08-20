@@ -88,7 +88,7 @@ def timesheet_import(docname):
 
             if current_project:
                 project_name = existing_projects[current_project]
-                
+            
                 if project_name not in project_timesheets:
                     project_timesheets[project_name] = create_timesheet(doc, project_name)
                 target_timesheet = project_timesheets[project_name]
@@ -137,7 +137,7 @@ def timesheet_import(docname):
 
         if total_hours < 160:
             frappe.log_error(f"Total hours ({total_hours}) are less than 160. Timesheet not uploaded.", "timesheet_import")
-            return "error: Total hours b are less than 160"
+            return "error: Total hours are less than 160"
 
         if total_hours > 160:
             save_timesheets(project_timesheets)
@@ -153,7 +153,7 @@ def create_timesheet(doc, project=None, activity_type=None, total_hours=0):
     timesheet = frappe.new_doc("Timesheet")
     timesheet.employee = doc.employee
     timesheet.custom_month = doc.month
-    timesheet.total_working_hours=total_hours
+    timesheet.total_working_hours = total_hours
     
     if project:
         timesheet.parent_project = project
@@ -161,15 +161,18 @@ def create_timesheet(doc, project=None, activity_type=None, total_hours=0):
     if activity_type:
         timesheet.custom_activity_type = activity_type
         timesheet.custom_timesheet_type = "Other Activities"
-        
-    timesheet.insert()
+    
     return timesheet
 
 def save_timesheets(timesheets):
     for timesheet in timesheets.values():
         try:
-            timesheet.save()
-            frappe.db.commit()
+            if timesheet.time_logs:
+                timesheet.insert()
+                timesheet.save()
+                frappe.db.commit()
+            else:
+                frappe.log_error(f"Timesheet for {timesheet.employee} has no time logs. Skipping.", "timesheet_import")
         except Exception as e:
             frappe.log_error(f"Error saving timesheet: {str(e)}", "timesheet_import")
 
