@@ -288,7 +288,9 @@ fixtures = [
     "Letter Head",
     "Workspace",
     "Web Page",
-    "Web Form"
+    "Web Form",
+    "Print Format"
+
     # "Notification",
     # "Dashboard Chart",
     # "Dashboard"
