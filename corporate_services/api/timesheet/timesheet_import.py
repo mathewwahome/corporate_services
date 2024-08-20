@@ -133,19 +133,17 @@ def timesheet_import(docname):
                         except ValueError as e:
                             frappe.log_error(f"Invalid value in row: {row[idx]} - {e}", "timesheet_import")
 
-        # Calculate total hours
         total_hours = calculate_total_hours(project_timesheets, activity_timesheets)
 
-        # Check if total hours are less than 160
         if total_hours < 160:
             frappe.log_error(f"Total hours ({total_hours}) are less than 160. Timesheet not uploaded.", "timesheet_import")
-            return "error: Total hours are less than 160"
+            return "error: Total hours b are less than 160"
 
-        # If total hours are 160 or more, proceed with saving
-        save_timesheets(project_timesheets)
-        save_timesheets(activity_timesheets)
-
-        return "success"
+        if total_hours > 160:
+            save_timesheets(project_timesheets)
+            save_timesheets(activity_timesheets)
+            
+            return "success"
     
     except Exception as e:
         frappe.log_error(frappe.get_traceback(), "timesheet_import")
