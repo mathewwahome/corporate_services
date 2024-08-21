@@ -68,7 +68,7 @@ def timesheet_generation_export(docname):
         csv_writer.writerows(data)
 
         csv_content = output.getvalue().encode('utf-8')
-        file_name = f"{employee_name}-{month_name}{current_year}-{"Timesheet"}-.xlsx" #xlsx
+        file_name = f"{employee_name}-{month_name}{current_year}-Timesheet-.xlsx"
 
         file_url = save_file(file_name, csv_content, "Timesheet Submission", docname, is_private=0)
 
