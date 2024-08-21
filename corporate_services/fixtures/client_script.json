@@ -135,11 +135,11 @@
   "docstatus": 0,
   "doctype": "Client Script",
   "dt": "Timesheet Submission",
-  "enabled": 0,
-  "modified": "2024-08-02 10:11:52.571997",
+  "enabled": 1,
+  "modified": "2024-08-21 08:38:45.782833",
   "module": "ICL Corporate Services",
   "name": "Workflow state change",
-  "script": "frappe.ui.form.on('Timesheet Submission', {\n    validate: function(frm) {\n        if (frm.doc.workflow_state === 'Submitted to Supervisor' && !frm.doc.timesheet) {\n            frm.set_value('workflow_state', 'Draft');\n            frappe.msgprint(__('Timesheet input is empty. Workflow state has been reset to Draft.'));\n        }\n    }\n});\n",
+  "script": "frappe.ui.form.on('Timesheet Submission', {\n    validate: function(frm) {\n        if (frm.doc.workflow_state === 'Submitted to Supervisor' && !frm.doc.timesheet) {\n            // Reset the workflow state to Draft\n            frm.set_value('workflow_state', 'Draft');\n\n            // Display a message to the user\n            frappe.msgprint(__('You must upload a timesheet before submitting to the supervisor. Workflow state has been reset to Draft.'));\n        }\n    }\n});\n",
   "view": "Form"
  },
  {
