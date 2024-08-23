@@ -10,8 +10,10 @@
   "work_continuity_plan",
   "naming_series",
   "employee",
+  "employee_name",
   "supervisor_email",
-  "work_continuity"
+  "work_continuity",
+  "amended_from"
  ],
  "fields": [
   {
@@ -28,35 +30,50 @@
   {
    "fieldname": "naming_series",
    "fieldtype": "Select",
-   "in_list_view": 1,
    "label": "Series",
-   "options": "WCP-",
+   "options": "WCP-.YYYY.-",
    "reqd": 1
   },
   {
    "fieldname": "employee",
    "fieldtype": "Link",
-   "in_list_view": 1,
    "label": "Employee",
    "options": "Employee",
-   "reqd": 1,
-   "search_index": 1
+   "reqd": 1
   },
   {
-   "fetch_from": "employee.reports_to",
    "fetch_if_empty": 1,
    "fieldname": "supervisor_email",
    "fieldtype": "Data",
    "hidden": 1,
+   "label": "Supervisor email",
+   "no_copy": 1,
+   "print_hide": 1
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Work Continuity Plan",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "employee_name",
+   "fieldtype": "Data",
    "in_list_view": 1,
-   "label": "Supervisor email"
+   "in_standard_filter": 1,
+   "label": "Employee Name",
+   "read_only": 1
   }
  ],
  "icon": "fa fa-calendar",
  "is_submittable": 1,
  "links": [],
  "max_attachments": 3,
- "modified": "2024-08-06 12:55:38.736540",
+ "modified": "2024-08-23 12:21:13.677914",
  "modified_by": "Administrator",
  "module": "ICL Corporate Services",
  "name": "Work Continuity Plan",
