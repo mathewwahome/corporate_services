@@ -14,11 +14,11 @@
   "docstatus": 0,
   "doctype": "Client Script",
   "dt": "Timesheet Submission",
-  "enabled": 0,
-  "modified": "2024-08-05 11:06:24.615837",
+  "enabled": 1,
+  "modified": "2024-08-26 08:41:14.182544",
   "module": "ICL Corporate Services",
   "name": "Timesheet Submission List",
-  "script": "frappe.ui.form.on('Timesheet Submission', {\n    refresh: function (frm) {\n        fetch_and_update_timesheets(frm);\n    },\n    onload: function (frm) {\n        fetch_and_update_timesheets(frm);\n    }\n});\n\nfunction fetch_and_update_timesheets(frm) {\n    if (frm.doc.employee && frm.doc.month) {\n        console.error(\"Employee ID:\", frm.doc.employee);\n        console.error(\"Month:\", frm.doc.month);\n\n        frappe.call({\n            method: 'corporate_services.api.timesheet.timesheet_fetch.fetch_timesheets_for_employee',\n            args: {\n                // employee_id: frm.doc.employee,\n                month: frm.doc.month\n            },\n            callback: function(r) {\n                if (!r.exc) {\n                    frm.clear_table('timesheet_submission_list');\n                    if (r.message) {\n                        r.message.forEach(function(timesheet) {\n                            let child = frm.add_child('timesheet_submission_list');\n                            child.total_hours = timesheet.total_hours;\n                            child.naming_series = timesheet.naming_series;\n                            child.month = timesheet.custom_month;\n                            child.status = timesheet.status;\n                        });\n                    }\n                    frm.refresh_field('timesheet_submission_list');\n                }\n            }\n        });\n    } else {\n        console.error(\"Employee or month is missing.\");\n    }\n}",
+  "script": "frappe.ui.form.on('Timesheet Submission', {\n    refresh: function (frm) {\n        if (frm.is_new()) {\n            frm.set_df_property('download_template', 'hidden', 1);\n            frm.set_df_property('timesheet', 'hidden', 1);\n        } else {\n            frm.set_df_property('download_template', 'hidden', 0);\n            frm.set_df_property('timesheet', 'hidden', 0);\n        }\n    }\n});\n",
   "view": "Form"
  },
  {
