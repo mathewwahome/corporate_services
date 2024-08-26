@@ -35,7 +35,6 @@
    "reqd": 1
   },
   {
-   "depends_on": "eval:!doc.__islocal",
    "fieldname": "timesheet",
    "fieldtype": "Attach",
    "label": "Timesheet"
@@ -57,7 +56,6 @@
    "search_index": 1
   },
   {
-   "depends_on": "eval:!doc.__islocal",
    "fieldname": "download_template",
    "fieldtype": "Button",
    "label": "Download Template"
@@ -95,7 +93,7 @@
  ],
  "is_submittable": 1,
  "links": [],
- "modified": "2024-08-14 10:26:35.836734",
+ "modified": "2024-08-26 08:40:25.415552",
  "modified_by": "Administrator",
  "module": "ICL Corporate Services",
  "name": "Timesheet Submission",
