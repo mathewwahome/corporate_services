@@ -1,7 +1,7 @@
 {
  "add_total_row": 1,
  "columns": [],
- "creation": "2024-08-22 12:26:19.772714",
+ "creation": "2024-08-26 09:46:11.571849",
  "disabled": 0,
  "docstatus": 0,
  "doctype": "Report",
@@ -9,31 +9,32 @@
  "idx": 0,
  "is_standard": "Yes",
  "json": "{}",
+ "letter_head": "IntelliSOFT Consulting Limited",
  "letterhead": null,
- "modified": "2024-08-26 10:03:16.116415",
+ "modified": "2024-08-26 09:50:57.220850",
  "modified_by": "Administrator",
  "module": "ICL Corporate Services",
- "name": "Timesheet Submission",
+ "name": "Timesheet",
  "owner": "Administrator",
  "prepared_report": 0,
- "ref_doctype": "Timesheet Submission",
- "report_name": "Timesheet Submission",
+ "ref_doctype": "Timesheet",
+ "report_name": "Timesheet",
  "report_type": "Report Builder",
  "roles": [
   {
-   "role": "System Manager"
+   "role": "Projects User"
   },
   {
-   "role": "Employee"
+   "role": "HR User"
   },
   {
-   "role": "HR Manager"
+   "role": "Accounts User"
   },
   {
    "role": "Finance"
   },
   {
-   "role": "Supervisor"
+   "role": "Employee"
   }
  ]
 }
