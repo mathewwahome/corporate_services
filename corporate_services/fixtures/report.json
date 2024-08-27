@@ -246,7 +246,7 @@
   ]
  },
  {
-  "add_total_row": 0,
+  "add_total_row": 1,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -256,7 +256,7 @@
   "javascript": null,
   "json": "{}",
   "letter_head": null,
-  "modified": "2024-07-04 09:58:41.057806",
+  "modified": "2024-08-26 10:03:16.116415",
   "module": "ICL Corporate Services",
   "name": "Timesheet Submission",
   "prepared_report": 0,
@@ -289,7 +289,13 @@
     "parent": "Timesheet Submission",
     "parentfield": "roles",
     "parenttype": "Report",
-    "role": "HR User"
+    "role": "Finance"
+   },
+   {
+    "parent": "Timesheet Submission",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Supervisor"
    }
   ]
  },
@@ -9263,6 +9269,60 @@
     "parentfield": "roles",
     "parenttype": "Report",
     "role": "Accounts User"
+   }
+  ]
+ },
+ {
+  "add_total_row": 1,
+  "columns": [],
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [],
+  "is_standard": "Yes",
+  "javascript": null,
+  "json": "{}",
+  "letter_head": "IntelliSOFT Consulting Limited",
+  "modified": "2024-08-26 09:50:57.220850",
+  "module": "ICL Corporate Services",
+  "name": "Timesheet",
+  "prepared_report": 0,
+  "query": null,
+  "ref_doctype": "Timesheet",
+  "reference_report": null,
+  "report_name": "Timesheet",
+  "report_script": null,
+  "report_type": "Report Builder",
+  "roles": [
+   {
+    "parent": "Timesheet",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Projects User"
+   },
+   {
+    "parent": "Timesheet",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "HR User"
+   },
+   {
+    "parent": "Timesheet",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Accounts User"
+   },
+   {
+    "parent": "Timesheet",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Finance"
+   },
+   {
+    "parent": "Timesheet",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Employee"
    }
   ]
  }
