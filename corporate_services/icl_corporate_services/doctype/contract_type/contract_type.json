@@ -1,6 +1,7 @@
 {
  "actions": [],
  "allow_rename": 1,
+ "autoname": "HR-CTP-.YYYY.-.#####",
  "creation": "2024-08-19 07:59:30.432729",
  "doctype": "DocType",
  "editable_grid": 1,
@@ -17,10 +18,11 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-08-19 08:00:11.747274",
+ "modified": "2024-08-22 09:54:01.982773",
  "modified_by": "Administrator",
  "module": "ICL Corporate Services",
  "name": "Contract Type",
+ "naming_rule": "Expression (old style)",
  "owner": "Administrator",
  "permissions": [
   {
