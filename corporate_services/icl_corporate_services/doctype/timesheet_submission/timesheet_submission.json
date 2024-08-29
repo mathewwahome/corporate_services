@@ -15,7 +15,8 @@
   "timesheet_details",
   "column_break_fbtd",
   "timesheet_per_project",
-  "total_working_hours"
+  "total_working_hours",
+  "status"
  ],
  "fields": [
   {
@@ -87,11 +88,21 @@
    "fieldtype": "Data",
    "label": "Month-Year",
    "reqd": 1
+  },
+  {
+   "allow_on_submit": 1,
+   "default": "Open",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Open\nApproved\nRejected\nCancelled",
+   "read_only": 1,
+   "reqd": 1
   }
  ],
  "is_submittable": 1,
  "links": [],
- "modified": "2024-08-26 09:38:06.110685",
+ "modified": "2024-08-28 08:44:37.094718",
  "modified_by": "Administrator",
  "module": "ICL Corporate Services",
  "name": "Timesheet Submission",

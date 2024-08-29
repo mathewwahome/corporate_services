@@ -62,8 +62,10 @@
    "search_index": 1
   },
   {
+   "fetch_from": "employee.employee_name",
    "fieldname": "employee_name",
    "fieldtype": "Data",
+   "in_global_search": 1,
    "in_list_view": 1,
    "in_standard_filter": 1,
    "label": "Employee Name",
@@ -75,7 +77,7 @@
    "fieldtype": "Select",
    "label": "Status",
    "options": "Open\nApproved\nRejected\nCancelled",
-   "read_only": 1,
+   "permlevel": 3,
    "reqd": 1
   }
  ],
@@ -83,7 +85,7 @@
  "is_submittable": 1,
  "links": [],
  "max_attachments": 3,
- "modified": "2024-08-23 13:04:33.577186",
+ "modified": "2024-08-28 12:34:41.241572",
  "modified_by": "Administrator",
  "module": "ICL Corporate Services",
  "name": "Work Continuity Plan",
