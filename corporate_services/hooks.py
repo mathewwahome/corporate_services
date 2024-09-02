@@ -2,7 +2,7 @@ app_name = "corporate_services"
 app_title = "ICL Corporate Services"
 app_publisher = "IntelliSOFT Consulting"
 app_description = "IntelliSOFT Corporate Services ERPNext Customizations"
-app_email = "dev@intellisoftkenya.com"
+app_email = "bamolo@intellisoftkenya.com"
 app_license = "mit"
 # required_apps = []
 
