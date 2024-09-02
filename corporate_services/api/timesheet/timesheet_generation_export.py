@@ -1,8 +1,8 @@
 import frappe
-import csv
-from io import StringIO
 from frappe.utils.file_manager import save_file
 from datetime import datetime, timedelta
+from openpyxl import Workbook
+from io import BytesIO
 
 @frappe.whitelist()
 def timesheet_generation_export(docname):
@@ -34,7 +34,6 @@ def timesheet_generation_export(docname):
             dates.append(start_date.strftime('%d'))
             start_date += timedelta(days=1)
         
-        
         user_id = frappe.db.get_value('Employee', employee, 'user_id')
         projects_list = []
         
@@ -56,20 +55,25 @@ def timesheet_generation_export(docname):
             additional_rows.append([activity['name']])
             additional_rows.append([])
         
+        wb = Workbook()
+        ws = wb.active
+        ws.title = "Timesheet"
         
-       
-        data = [header] + projects_list + additional_rows
+        ws.append(header)
+        
+        for row in projects_list:
+            ws.append(row)
+        
+        for row in additional_rows:
+            ws.append(row)
+        
+        output = BytesIO()
+        wb.save(output)
+        output.seek(0)
+        
+        file_name = f"{employee_name}-{month_name}{year}-Timesheet.xlsx"
 
-        output = StringIO()
-        csv_writer = csv.writer(output)
-        csv_writer.writerows(data)
-
-        csv_content = output.getvalue().encode('utf-8')
-
-        file_name = f"{employee_name}-{month_name}{year}-Timesheet-.xlsx"
-
-
-        file_url = save_file(file_name, csv_content, "Timesheet Submission", docname, is_private=0)
+        file_url = save_file(file_name, output.read(), "Timesheet Submission", docname, is_private=0)
 
         return file_url
 
