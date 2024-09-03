@@ -167,23 +167,26 @@ doc_events = generate_doc_events(event_maps)
 # Scheduled Tasks
 # ---------------
 
-# scheduler_events = {
-# 	"all": [
-# 		"corporate_services.tasks.all"
-# 	],
-# 	"daily": [
-# 		"corporate_services.tasks.daily"
-# 	],
-# 	"hourly": [
-# 		"corporate_services.tasks.hourly"
-# 	],
-# 	"weekly": [
-# 		"corporate_services.tasks.weekly"
-# 	],
-# 	"monthly": [
-# 		"corporate_services.tasks.monthly"
-# 	],
-# }
+# in your_custom_app/hooks.py
+
+
+scheduler_events = {
+	# "all": [
+	# 	"corporate_services.tasks.all"
+	# ],
+	# "daily": [
+	# 	"corporate_services.tasks.daily"
+	# ],
+	# "hourly": [
+	# 	"corporate_services.tasks.hourly"
+	# ],
+	# "weekly": [
+	# 	"corporate_services.tasks.weekly"
+	# ],
+	"monthly": [
+		"corporate_services.api.leave.update_annual_leave_allocations.update_annual_leave_allocations"
+	],
+}
 
 # Testing
 # -------
