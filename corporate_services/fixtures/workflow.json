@@ -392,7 +392,7 @@
   "doctype": "Workflow",
   "document_type": "Leave Application",
   "is_active": 1,
-  "modified": "2024-08-23 14:01:15.147137",
+  "modified": "2024-09-03 10:14:30.153738",
   "name": "Leave Application Workflow",
   "override_status": 0,
   "send_email_alert": 0,
@@ -438,8 +438,8 @@
     "parentfield": "states",
     "parenttype": "Workflow",
     "state": "Submitted to HR",
-    "update_field": null,
-    "update_value": null,
+    "update_field": "custom_approval_stage",
+    "update_value": "HR",
     "workflow_builder_id": "3"
    },
    {
@@ -1674,13 +1674,13 @@
   "doctype": "Workflow",
   "document_type": "Timesheet Submission",
   "is_active": 1,
-  "modified": "2024-08-28 08:46:04.675824",
+  "modified": "2024-09-03 10:11:34.522018",
   "name": "Timesheet submission",
   "override_status": 0,
   "send_email_alert": 0,
   "states": [
    {
-    "allow_edit": "Employee",
+    "allow_edit": "All",
     "avoid_status_override": 0,
     "doc_status": "0",
     "is_optional_state": 0,
@@ -1695,7 +1695,7 @@
     "workflow_builder_id": "1"
    },
    {
-    "allow_edit": "Supervisor",
+    "allow_edit": "All",
     "avoid_status_override": 0,
     "doc_status": "0",
     "is_optional_state": 0,
@@ -1710,7 +1710,7 @@
     "workflow_builder_id": "2"
    },
    {
-    "allow_edit": "Supervisor",
+    "allow_edit": "All",
     "avoid_status_override": 0,
     "doc_status": "0",
     "is_optional_state": 0,
@@ -1725,7 +1725,7 @@
     "workflow_builder_id": "8"
    },
    {
-    "allow_edit": "Supervisor",
+    "allow_edit": "All",
     "avoid_status_override": 0,
     "doc_status": "0",
     "is_optional_state": 0,
@@ -1740,7 +1740,7 @@
     "workflow_builder_id": "3"
    },
    {
-    "allow_edit": "Finance",
+    "allow_edit": "All",
     "avoid_status_override": 0,
     "doc_status": "0",
     "is_optional_state": 0,
@@ -1755,7 +1755,7 @@
     "workflow_builder_id": "4"
    },
    {
-    "allow_edit": "Finance",
+    "allow_edit": "All",
     "avoid_status_override": 0,
     "doc_status": "1",
     "is_optional_state": 0,
@@ -1770,7 +1770,7 @@
     "workflow_builder_id": "6"
    },
    {
-    "allow_edit": "Employee",
+    "allow_edit": "All",
     "avoid_status_override": 0,
     "doc_status": "1",
     "is_optional_state": 0,

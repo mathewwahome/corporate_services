@@ -15,10 +15,10 @@
   "doctype": "Client Script",
   "dt": "Timesheet Submission",
   "enabled": 1,
-  "modified": "2024-08-26 08:41:14.182544",
+  "modified": "2024-09-03 10:03:20.926555",
   "module": "ICL Corporate Services",
   "name": "Timesheet Submission List",
-  "script": "frappe.ui.form.on('Timesheet Submission', {\n    refresh: function (frm) {\n        if (frm.is_new()) {\n            frm.set_df_property('download_template', 'hidden', 1);\n            frm.set_df_property('timesheet', 'hidden', 1);\n        } else {\n            frm.set_df_property('download_template', 'hidden', 0);\n            frm.set_df_property('timesheet', 'hidden', 0);\n        }\n    }\n});\n",
+  "script": "frappe.ui.form.on('Timesheet Submission', {\n    refresh: function (frm) {\n        // Fetch the roles for the current user\n        frappe.call({\n            method: \"frappe.core.doctype.user.user.get_roles\",\n            args: {\n                uid: frappe.session.user\n            },\n            callback: function (response) {\n                var roles = response.message;\n                \n                if (frm.is_new()) {\n                    frm.set_df_property('download_template', 'hidden', 1);\n                    frm.set_df_property('timesheet', 'hidden', 1);\n                } else {\n                    var showFields = roles.includes('Administrator') || roles.includes('HR');\n                    frm.set_df_property('download_template', 'hidden', !showFields);\n                    frm.set_df_property('timesheet', 'hidden', !showFields);\n                }\n            }\n        });\n    }\n});\n",
   "view": "Form"
  },
  {
