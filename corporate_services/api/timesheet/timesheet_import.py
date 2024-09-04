@@ -38,7 +38,10 @@ def timesheet_import(docname):
         file_extension = _file.file_name.split('.')[-1].lower()
         data = None
         if file_extension == 'csv':
-            csvfile = io.StringIO(file_content.decode('utf-8'))
+            if isinstance(file_content, bytes):
+                csvfile = io.StringIO(file_content.decode('utf-8'))
+            else:
+                csvfile = io.StringIO(file_content)
             reader = csv.reader(csvfile)
             data = list(reader)
         elif file_extension in ['xls', 'xlsx']:
