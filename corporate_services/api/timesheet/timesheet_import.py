@@ -1,9 +1,12 @@
 import frappe
 import csv
 import io
+import os
+import tempfile
 from frappe.utils.file_manager import get_file
 from datetime import datetime, timedelta
 from frappe import _
+import openpyxl
 
 def calculate_total_hours(project_timesheets, activity_timesheets):
     total_hours = 0
@@ -12,6 +15,7 @@ def calculate_total_hours(project_timesheets, activity_timesheets):
             total_hours += time_log.hours
     return total_hours
 
+@frappe.whitelist()
 @frappe.whitelist()
 def timesheet_import(docname):
     """Imports timesheet data from a file."""
@@ -31,9 +35,30 @@ def timesheet_import(docname):
             frappe.log_error(f"No content retrieved from file: {file_url}", "timesheet_import")
             return "error"
         
-        csvfile = io.StringIO(file_content)
-        reader = csv.reader(csvfile)
-        header = next(reader)
+        file_extension = _file.file_name.split('.')[-1].lower()
+        data = None
+        if file_extension == 'csv':
+            csvfile = io.StringIO(file_content.decode('utf-8'))
+            reader = csv.reader(csvfile)
+            data = list(reader)
+        elif file_extension in ['xls', 'xlsx']:
+            with tempfile.NamedTemporaryFile(delete=False, suffix=f".{file_extension}") as temp_file:
+                temp_file.write(file_content)
+                temp_file_path = temp_file.name
+
+            try:
+                workbook = openpyxl.load_workbook(temp_file_path, data_only=True)
+                sheet = workbook.active
+                data = [[cell.value for cell in row] for row in sheet.iter_rows()]
+            finally:
+                os.unlink(temp_file_path) 
+        else:
+            frappe.throw(_("Unsupported file format. Please upload a CSV or Excel file."))
+        
+        if not data:
+            frappe.throw(_("No data found in the uploaded file."))
+
+        header = data[0]
 
         existing_projects = {p["project_name"]: p["name"] for p in frappe.get_all("Project", fields=["project_name", "name"])}
         activity_types = frappe.get_all('Activity Type', fields=['name'])
@@ -57,7 +82,8 @@ def timesheet_import(docname):
 
         minimum_hours = frappe.db.get_value('Employee', employee, 'custom_hrs_per_month')
         
-        for row in reader:
+        # First pass to determine non-empty activities
+        for row in data[1:]:  # Skip header
             if not row or len(row) < 2:
                 continue
 
@@ -77,10 +103,8 @@ def timesheet_import(docname):
                 else:
                     non_empty_activities.add(("activity", current_activity))
 
-        csvfile.seek(0)
-        next(reader)
-
-        for row in reader:
+        # Second pass to process data
+        for row in data[1:]:  # Skip header
             if not row or len(row) < 2:
                 continue
 
