@@ -195,6 +195,7 @@ def create_timesheet(doc, project=None, activity_type=None, month_name=None, tot
     timesheet.employee = doc.employee
     timesheet.custom_month = month_name
     timesheet.total_working_hours = total_hours
+    timesheet.custom_timesheet_submission = doc.name
     
     if project:
         timesheet.parent_project = project

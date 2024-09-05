@@ -2,11 +2,15 @@ import frappe
 from frappe.utils import flt
 
 @frappe.whitelist()
-def fetch_timesheets_for_employee(employee_id, month):
+def fetch_timesheets_for_employee(employee_id, month, docname):
     try:
         timesheets = frappe.get_all('Timesheet', 
-                                    filters={'employee': employee_id, 'custom_month': month}, 
-                                    fields=['name', 'custom_project_name', 'parent_project', 'custom_month', 'total_hours', 'custom_timesheet_type', 'status'])
+                                     filters={'employee': employee_id, 
+                                               'custom_month': month, 
+                                               'custom_timesheet_submission': docname},
+                                     fields=['name', 'custom_project_name', 'parent_project', 
+                                             'custom_month', 'total_hours', 
+                                             'custom_timesheet_type', 'status'])
         
         total_hours_for_month = sum(flt(timesheet.total_hours) for timesheet in timesheets)
         
