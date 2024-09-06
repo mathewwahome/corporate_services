@@ -86,7 +86,7 @@ def timesheet_import(docname):
         minimum_hours = frappe.db.get_value('Employee', employee, 'custom_hrs_per_month')
         
         # First pass to determine non-empty activities
-        for row in data[1:]:  # Skip header
+        for row in data[1:]:
             if not row or len(row) < 2:
                 continue
 
@@ -107,7 +107,7 @@ def timesheet_import(docname):
                     non_empty_activities.add(("activity", current_activity))
 
         # Second pass to process data
-        for row in data[1:]:  # Skip header
+        for row in data[1:]:
             if not row or len(row) < 2:
                 continue
 
@@ -177,8 +177,7 @@ def timesheet_import(docname):
         total_hours = calculate_total_hours(project_timesheets, activity_timesheets)
 
         if total_hours < minimum_hours:
-            frappe.log_error(f"Total hours ({total_hours}) are less than {minimum_hours}. Timesheet not uploaded.", "timesheet_import")
-            return "error: Total hours are less than {}".format(minimum_hours)
+            frappe.throw(_("Total hours are less than {} minimum hours.".format(minimum_hours)))
 
         if total_hours >= minimum_hours:
             save_timesheets(project_timesheets)
