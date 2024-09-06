@@ -138,6 +138,10 @@ def generate_doc_events(event_maps):
             doc_events[doctype][event_type] = method
     return doc_events
 
+before_workflow_action_map = {
+    "Timesheet Submission":"corporate_services.api.timesheet.before_workflow_action.before_workflow_action_timesheet_submission",
+}
+
 on_update_map = {
     "Employee Grievance": "corporate_services.api.notification.notifications.employee_grievance",
     "Travel Request": "corporate_services.api.notification.travel_request.alert",
@@ -145,19 +149,17 @@ on_update_map = {
     "Work Continuity Plan": "corporate_services.api.notification.work_continuity_plan.alert",
     "Asset Custodianship Requisition": "corporate_services.api.notification.asset_custotianship_requisition.alert",
     "Asset Requisition": "corporate_services.api.notification.asset_requisition.alert",
-    "Timesheet Submission":"corporate_services.api.notification.timesheet.alert",
     "Timesheet Submission":"corporate_services.api.timesheet.finance_timesheet_submission.finance_timesheet_submission",
-    
     "Project":"corporate_services.api.notification.project.project_manager.alert"
 }
-before_workflow_action_map = {
-    "Timesheet Submission":"corporate_services.api.timesheet.before_workflow_action.before_workflow_action_timesheet_submission",
+timesheet_notifications ={
+    "Timesheet Submission":"corporate_services.api.notification.timesheet.alert",
 }
-  
   
 event_maps = {
     "on_update": on_update_map,
-    "before_workflow_action" : before_workflow_action_map
+    "on_update" : before_workflow_action_map,
+    "on_update" : timesheet_notifications,
 }
 
 doc_events = generate_doc_events(event_maps)
