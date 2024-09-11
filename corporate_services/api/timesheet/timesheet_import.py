@@ -61,7 +61,7 @@ def timesheet_import(docname):
         if not data:
             frappe.throw(_("No data found in the uploaded file."))
 
-        header = data[0]
+        header = data[1]
 
         existing_projects = {p["project_name"]: p["name"] for p in frappe.get_all("Project", fields=["project_name", "name"])}
         activity_types = frappe.get_all('Activity Type', fields=['name'])
@@ -86,7 +86,7 @@ def timesheet_import(docname):
         minimum_hours = frappe.db.get_value('Employee', employee, 'custom_hrs_per_month')
         
         # First pass to determine non-empty activities
-        for row in data[1:]:
+        for row in data[2:]:
             if not row or len(row) < 2:
                 continue
 
@@ -107,7 +107,7 @@ def timesheet_import(docname):
                     non_empty_activities.add(("activity", current_activity))
 
         # Second pass to process data
-        for row in data[1:]:
+        for row in data[2:]:
             if not row or len(row) < 2:
                 continue
 
