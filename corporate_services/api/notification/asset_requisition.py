@@ -1,5 +1,6 @@
 import frappe
 from frappe.utils import get_url_to_form
+from frappe import _
 
 def send_email(recipients, subject, message, pdf_content, doc_name):
     frappe.sendmail(
@@ -72,8 +73,9 @@ def generate_message(doc, employee_name, email_type, supervisor_name=None):
     return messages[email_type]
 
 def alert(doc, method):
+    
     if doc.workflow_state in [
-        "Submitted to Supervisor", "Rejected By Supervisor", "Submitted to Finance", "Approved by Finance" , "Rejected by Finance"
+        "Submitted to Supervisor", "Approved by Supervisor", "Rejected By Supervisor", "Submitted to Finance", "Approved by Finance" , "Rejected by Finance"
     ]:
         employee_id = doc.requested_by
         employee = frappe.get_doc("Employee", employee_id)
@@ -100,13 +102,12 @@ def alert(doc, method):
                     pdf_content=pdf_content,
                     doc_name=doc.name
                 )
-            #  approved_by_supervisor
              
         elif doc.workflow_state == "Approved by Supervisor":
             message_to_employee = generate_message(doc, employee.employee_name, "approved_by_supervisor", supervisor_name)
             send_email(
                 recipients=[employee_email],
-                subject=frappe._('Your Asset Requisition has been Approved by the supervisor'),
+                subject=frappe._('Asset Requisition Approval by the supervisor'),
                 message=message_to_employee,
                 pdf_content=pdf_content,
                 doc_name=doc.name
@@ -156,7 +157,7 @@ def alert(doc, method):
                 pdf_content=pdf_content,
                 doc_name=doc.name
             )
-            # sending email to the HR.
+
             hr_managers = frappe.get_all('Has Role', filters={'role': 'HR Manager'}, fields=['parent'])
             hr_manager_emails = [frappe.get_value('User', hr_manager.parent, 'email') for hr_manager in hr_managers]
             message_to_hr = generate_message(doc, employee.employee_name, "hr_finance_rejected")

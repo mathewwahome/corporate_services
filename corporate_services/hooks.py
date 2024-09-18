@@ -138,9 +138,7 @@ def generate_doc_events(event_maps):
             doc_events[doctype][event_type] = method
     return doc_events
 
-before_workflow_action_map = {
-    "Timesheet Submission":"corporate_services.api.timesheet.before_workflow_action.before_workflow_action_timesheet_submission",
-}
+
 
 on_update_map = {
     "Employee Grievance": "corporate_services.api.notification.notifications.employee_grievance",
@@ -155,12 +153,24 @@ on_update_map = {
 timesheet_notifications ={
     "Timesheet Submission":"corporate_services.api.notification.timesheet.alert",
 }
-  
+
+before_workflow_action_map = {
+    "Timesheet Submission":"corporate_services.api.timesheet.before_workflow_action.before_workflow_action_timesheet_submission",
+} 
+
 event_maps = {
-    "on_update": on_update_map,
-    "on_update" : before_workflow_action_map,
-    "on_update" : timesheet_notifications,
+    "on_update": {
+        **on_update_map,
+        **before_workflow_action_map,
+        **timesheet_notifications,
+        "Timesheet Submission": [
+            on_update_map["Timesheet Submission"],
+            before_workflow_action_map["Timesheet Submission"],
+            timesheet_notifications["Timesheet Submission"]
+        ]
+    }
 }
+
 
 doc_events = generate_doc_events(event_maps)
 

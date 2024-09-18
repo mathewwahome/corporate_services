@@ -90,7 +90,7 @@ def generate_message(doc, employee_name, email_type, supervisor_name=None):
 
 def alert(doc, method):
     if doc.workflow_state in [
-        "Submitted to Supervisor", "Rejected By Supervisor", "Submitted to Finance", "Approved by Finance" , "Rejected by Finance"
+        "Submitted to Supervisor", "Approved by Supervisor", "Rejected By Supervisor", "Submitted to Finance", "Approved by Finance" , "Rejected by Finance"
     ]:
         employee_id = doc.employee
         
