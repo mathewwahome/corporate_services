@@ -13,7 +13,6 @@ def update_annual_leave_allocations():
     employees = frappe.get_all("Employee", fields=["name"])
 
     for employee in employees:
-        # Check if there is an existing leave allocation for the current month
         allocation = frappe.get_all("Leave Allocation", filters={
             "employee": employee["name"],
             "leave_type": leave_type,
@@ -22,13 +21,11 @@ def update_annual_leave_allocations():
         }, fields=["name"])
 
         if allocation:
-            # If allocation exists, update it
             allocation_doc = frappe.get_doc("Leave Allocation", allocation[0]["name"])
             allocation_doc.new_leaves_allocated += leave_days
             allocation_doc.total_leaves_allocated += leave_days
             allocation_doc.save(ignore_permissions=True)
         else:
-            # If allocation does not exist, create a new one
             leave_allocation = frappe.get_doc({
                 "doctype": "Leave Allocation",
                 "employee": employee["name"],

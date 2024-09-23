@@ -70,10 +70,6 @@ doc_events = {
     "Employee Grievance": {
         "on_update": employee_grievance
     },
-   
-    "Leave Application":{
-        "on_update": alert_supervisor_leave_application
-    },
     "Asset Custodianship Requisition":{
         "on_update": alert_supervisor_asset_requisition
     },

@@ -148,7 +148,13 @@ on_update_map = {
     "Asset Custodianship Requisition": "corporate_services.api.notification.asset_custotianship_requisition.alert",
     "Asset Requisition": "corporate_services.api.notification.asset_requisition.alert",
     "Timesheet Submission":"corporate_services.api.timesheet.finance_timesheet_submission.finance_timesheet_submission",
-    "Project":"corporate_services.api.notification.project.project_manager.alert"
+    "Project":"corporate_services.api.notification.project.project_manager.alert",
+    "Supplier Quote Submission": "corporate_services.api.supplier.vat_calc.calc"
+  
+    # "Supplier Quote Submission": [
+    #     "corporate_services.api.supplier.finance_alert.alert",
+    #     "corporate_services.api.supplier.vat_calc.calc"
+    # ]
 }
 timesheet_notifications ={
     "Timesheet Submission":"corporate_services.api.notification.timesheet.alert",
@@ -308,7 +314,8 @@ fixtures = [
     "Workspace",
     "Web Page",
     "Web Form",
-    "Print Format"
+    "Print Format",
+    "Email Template"
 
     # "Notification",
     # "Dashboard Chart",
