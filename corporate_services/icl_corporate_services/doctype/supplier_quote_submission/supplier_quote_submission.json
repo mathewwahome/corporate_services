@@ -7,13 +7,32 @@
  "engine": "InnoDB",
  "field_order": [
   "section_break_gnjv",
+  "appendix_vendor_rfq_submission_form",
   "naming_series",
-  "amended_from",
   "suppliers_name",
   "phone_number",
   "email",
+  "organization_type",
   "attach_quotation",
-  "items"
+  "currency",
+  "items",
+  "total_amount",
+  "section_break_zrjp",
+  "vat_type",
+  "vat_amount",
+  "column_break_itzs",
+  "vat_rate",
+  "grand_total",
+  "section_break_ybea",
+  "more_description",
+  "terms_conditions_section",
+  "delivery",
+  "payment",
+  "warranty",
+  "return_policy",
+  "amended_from",
+  "internal_use_only_section",
+  "vendor_id"
  ],
  "fields": [
   {
@@ -66,12 +85,113 @@
    "fieldtype": "Data",
    "label": "Email",
    "reqd": 1
+  },
+  {
+   "fieldname": "appendix_vendor_rfq_submission_form",
+   "fieldtype": "Heading",
+   "label": "APPENDIX: VENDOR RFQ SUBMISSION FORM"
+  },
+  {
+   "description": "Please specify your delivery timeline, and any associated delivery Cost ",
+   "fieldname": "delivery",
+   "fieldtype": "Small Text",
+   "label": "Delivery"
+  },
+  {
+   "description": "Please specify your warranty period and any after sales services offered",
+   "fieldname": "warranty",
+   "fieldtype": "Small Text",
+   "label": "Warranty"
+  },
+  {
+   "description": "Please specify the terms of return and the allowed timeline for return",
+   "fieldname": "return_policy",
+   "fieldtype": "Small Text",
+   "label": "Return Policy"
+  },
+  {
+   "description": "Please specify your payment terms e.g. if a down-payment is required, Credit terms if any",
+   "fieldname": "payment",
+   "fieldtype": "Small Text",
+   "label": "Payment"
+  },
+  {
+   "fieldname": "organization_type",
+   "fieldtype": "Select",
+   "label": "Organization Type",
+   "options": "Corporation\nIndividual/Sole Proprietor\nNon-profit",
+   "reqd": 1
+  },
+  {
+   "fieldname": "currency",
+   "fieldtype": "Link",
+   "label": "Currency",
+   "options": "Currency",
+   "reqd": 1
+  },
+  {
+   "fieldname": "more_description",
+   "fieldtype": "Small Text",
+   "label": "More Description"
+  },
+  {
+   "fieldname": "section_break_zrjp",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_itzs",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_ybea",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "terms_conditions_section",
+   "fieldtype": "Section Break",
+   "label": "Terms & Conditions Description"
+  },
+  {
+   "fieldname": "total_amount",
+   "fieldtype": "Data",
+   "label": "Total Amount"
+  },
+  {
+   "fieldname": "vat_rate",
+   "fieldtype": "Percent",
+   "label": "VAT Rate (%)"
+  },
+  {
+   "fieldname": "vat_type",
+   "fieldtype": "Select",
+   "label": "VAT - Inclusive/Exclusive",
+   "options": "Inclusive of VAT\nExclusive of VAT"
+  },
+  {
+   "fieldname": "internal_use_only_section",
+   "fieldtype": "Section Break",
+   "label": "INTERNAL USE ONLY"
+  },
+  {
+   "fieldname": "vendor_id",
+   "fieldtype": "Table",
+   "options": "Suppliers Quotation Internal Use"
+  },
+  {
+   "fieldname": "grand_total",
+   "fieldtype": "Data",
+   "label": "Grand Total"
+  },
+  {
+   "fieldname": "vat_amount",
+   "fieldtype": "Data",
+   "label": "VAT"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-09-19 08:34:24.701064",
+ "modified": "2024-09-23 09:10:30.067633",
  "modified_by": "Administrator",
  "module": "ICL Corporate Services",
  "name": "Supplier Quote Submission",

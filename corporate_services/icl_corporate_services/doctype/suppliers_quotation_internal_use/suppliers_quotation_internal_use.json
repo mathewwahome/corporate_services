@@ -1,49 +1,49 @@
 {
  "actions": [],
  "allow_rename": 1,
- "creation": "2024-09-18 13:40:32.528708",
+ "creation": "2024-09-20 15:29:24.809996",
  "doctype": "DocType",
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
-  "item_name",
-  "units",
-  "description",
-  "price"
+  "vendor_id",
+  "date_received",
+  "approved_by",
+  "approval_date"
  ],
  "fields": [
   {
-   "fieldname": "item_name",
+   "fieldname": "vendor_id",
    "fieldtype": "Data",
    "in_list_view": 1,
-   "label": "Item Name"
+   "label": "Vendor ID"
   },
   {
-   "fieldname": "description",
+   "fieldname": "date_received",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Date Received"
+  },
+  {
+   "fieldname": "approved_by",
    "fieldtype": "Data",
    "in_list_view": 1,
-   "label": "Description"
+   "label": "Approved By"
   },
   {
-   "fieldname": "price",
-   "fieldtype": "Float",
+   "fieldname": "approval_date",
+   "fieldtype": "Date",
    "in_list_view": 1,
-   "label": "Price"
-  },
-  {
-   "fieldname": "units",
-   "fieldtype": "Int",
-   "in_list_view": 1,
-   "label": "Units"
+   "label": "Approval Date"
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2024-09-20 12:42:15.233096",
+ "modified": "2024-09-20 15:31:59.797741",
  "modified_by": "Administrator",
  "module": "ICL Corporate Services",
- "name": "Supplier Quote Submission Items",
+ "name": "Suppliers Quotation Internal Use",
  "owner": "Administrator",
  "permissions": [],
  "sort_field": "modified",
