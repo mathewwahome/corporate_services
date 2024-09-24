@@ -1,7 +1,14 @@
 {
- "charts": [],
- "content": "[{\"id\":\"pGDIKaB3sp\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">ICL Finance</span>\",\"col\":12}},{\"id\":\"J7vPhqvR5k\",\"type\":\"paragraph\",\"data\":{\"text\":\"<b>IntelliSOFT Consulting Limited</b>\",\"col\":12}},{\"id\":\"Q6nv3ukJ_0\",\"type\":\"card\",\"data\":{\"card_name\":\"Timesheet\",\"col\":4}},{\"id\":\"Bu53a4s5pU\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Shortcuts</b></span>\",\"col\":12}},{\"id\":\"ig1g1wBMZt\",\"type\":\"card\",\"data\":{\"card_name\":\"Projects\",\"col\":4}},{\"id\":\"TBV1hg88lO\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Reports</b></span>\",\"col\":12}},{\"id\":\"ln-NV1WRW6\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Payroll Report\",\"col\":3}}]",
- "creation": "2024-09-03 08:15:34.165878",
+
+ "charts": [
+  {
+   "chart_name": "Pay Pie Chart",
+   "label": "Department Pay Share"
+  }
+ ],
+ "content": "[{\"id\":\"pGDIKaB3sp\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">ICL Finance</span>\",\"col\":12}},{\"id\":\"tmo2I1tgbe\",\"type\":\"chart\",\"data\":{\"chart_name\":\"Department Pay Share\",\"col\":12}},{\"id\":\"VCs0h1uIXC\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Outgoing Pay\",\"col\":4}},{\"id\":\"Ojk3f7EuYP\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Net Pay\",\"col\":4}},{\"id\":\"rFyNKCSpAs\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Tax Deductions\",\"col\":4}},{\"id\":\"J7vPhqvR5k\",\"type\":\"paragraph\",\"data\":{\"text\":\"<b>Asset Procurement &amp; Management</b>\",\"col\":12}},{\"id\":\"0yItwBzkIC\",\"type\":\"card\",\"data\":{\"card_name\":\"Asset Management\",\"col\":4}},{\"id\":\"znLE9Nmv2U\",\"type\":\"card\",\"data\":{\"card_name\":\"Procurement and Requests\",\"col\":4}},{\"id\":\"qvkUj9HXB5\",\"type\":\"card\",\"data\":{\"card_name\":\"Lifecycle and Tracking\",\"col\":4}},{\"id\":\"Bu53a4s5pU\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Shortcuts</b></span>\",\"col\":12}},{\"id\":\"Q6nv3ukJ_0\",\"type\":\"card\",\"data\":{\"card_name\":\"Timesheet\",\"col\":4}},{\"id\":\"ig1g1wBMZt\",\"type\":\"card\",\"data\":{\"card_name\":\"Projects\",\"col\":4}},{\"id\":\"5BbPUVgU-T\",\"type\":\"card\",\"data\":{\"card_name\":\"Payroll\",\"col\":4}},{\"id\":\"TBV1hg88lO\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Reports</b></span>\",\"col\":12}}]",
+ "creation": "2024-09-18 11:09:03.443926",
+
  "custom_blocks": [],
  "docstatus": 0,
  "doctype": "Workspace",
@@ -99,13 +106,232 @@
    "link_type": "DocType",
    "onboard": 0,
    "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Payroll",
+   "link_count": 5,
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Payroll Entry",
+   "link_count": 0,
+   "link_to": "Payroll Entry",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Salary Component",
+   "link_count": 0,
+   "link_to": "Salary Component",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Salary Structure",
+   "link_count": 0,
+   "link_to": "Salary Structure",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Salary Structure Assignment",
+   "link_count": 0,
+   "link_to": "Salary Structure Assignment",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Salary Slip",
+   "link_count": 0,
+   "link_to": "Salary Slip",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Asset Management",
+   "link_count": 5,
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Asset",
+   "link_count": 0,
+   "link_to": "Asset",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Asset Movement",
+   "link_count": 0,
+   "link_to": "Asset Movement",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Asset Custodianship Requisition",
+   "link_count": 0,
+   "link_to": "Asset Custodianship Requisition",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Asset Maintenance",
+   "link_count": 0,
+   "link_to": "Asset Maintenance",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Asset Depreciation Schedule",
+   "link_count": 0,
+   "link_to": "Asset Depreciation Schedule",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Procurement and Requests",
+   "link_count": 5,
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Asset Requisition",
+   "link_count": 0,
+   "link_to": "Asset Requisition",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Asset replacement request",
+   "link_count": 0,
+   "link_to": "Asset replacement request",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Purchase Invoice",
+   "link_count": 0,
+   "link_to": "Purchase Invoice",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Purchase Order",
+   "link_count": 0,
+   "link_to": "Purchase Order",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Supplier",
+   "link_count": 0,
+   "link_to": "Supplier",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Lifecycle and Tracking",
+   "link_count": 2,
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Asset Depreciation Ledger",
+   "link_count": 0,
+   "link_to": "Asset Depreciation Ledger",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Asset Maintenance",
+   "link_count": 0,
+   "link_to": "Asset Maintenance",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
   }
  ],
  "modified": "2024-09-24 09:53:11.921278",
  "modified_by": "Administrator",
  "module": "ICL Corporate Services",
  "name": "ICL Finance",
- "number_cards": [],
+ "number_cards": [
+  {
+   "label": "Tax Deductions",
+   "number_card_name": "Total Deductions"
+  },
+  {
+   "label": "Net Pay",
+   "number_card_name": "Net Pay"
+  },
+  {
+   "label": "Outgoing Pay",
+   "number_card_name": "Outgoing Salaries"
+  }
+ ],
  "owner": "Administrator",
  "parent_page": "",
  "public": 1,
