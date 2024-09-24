@@ -18,11 +18,13 @@ def calc(doc, method):
     if doc.vat_type == "Inclusive of VAT":
         vat = total_price - (total_price / (1 + (vat_rate / 100)))
         grand_total = total_price
-        doc.vat_amount = vat
+        doc.vat_amount = round(vat, 2)
+
     elif doc.vat_type == "Exclusive of VAT":
         vat = total_price * vat_rate / 100
         grand_total = total_price + vat
-        doc.vat_amount = vat
+        doc.vat_amount = round(vat, 2)
+
     else:
         frappe.throw(_("Invalid VAT type."))
         
