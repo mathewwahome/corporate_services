@@ -1,7 +1,7 @@
 {
  "charts": [],
- "content": "[{\"id\":\"pGDIKaB3sp\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">ICL Finance</span>\",\"col\":12}},{\"id\":\"J7vPhqvR5k\",\"type\":\"paragraph\",\"data\":{\"text\":\"<b>IntelliSOFT Consulting Limited</b>\",\"col\":12}},{\"id\":\"Q6nv3ukJ_0\",\"type\":\"card\",\"data\":{\"card_name\":\"Timesheet\",\"col\":4}},{\"id\":\"Bu53a4s5pU\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Shortcuts</b></span>\",\"col\":12}},{\"id\":\"ig1g1wBMZt\",\"type\":\"card\",\"data\":{\"card_name\":\"Projects\",\"col\":4}},{\"id\":\"TBV1hg88lO\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Reports</b></span>\",\"col\":12}}]",
- "creation": "2024-08-21 08:19:22.105139",
+ "content": "[{\"id\":\"pGDIKaB3sp\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">ICL Finance</span>\",\"col\":12}},{\"id\":\"J7vPhqvR5k\",\"type\":\"paragraph\",\"data\":{\"text\":\"<b>IntelliSOFT Consulting Limited</b>\",\"col\":12}},{\"id\":\"Q6nv3ukJ_0\",\"type\":\"card\",\"data\":{\"card_name\":\"Timesheet\",\"col\":4}},{\"id\":\"Bu53a4s5pU\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Shortcuts</b></span>\",\"col\":12}},{\"id\":\"ig1g1wBMZt\",\"type\":\"card\",\"data\":{\"card_name\":\"Projects\",\"col\":4}},{\"id\":\"TBV1hg88lO\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Reports</b></span>\",\"col\":12}},{\"id\":\"ln-NV1WRW6\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Payroll Report\",\"col\":3}}]",
+ "creation": "2024-09-03 08:15:34.165878",
  "custom_blocks": [],
  "docstatus": 0,
  "doctype": "Workspace",
@@ -101,7 +101,7 @@
    "type": "Link"
   }
  ],
- "modified": "2024-08-30 10:25:15.313454",
+ "modified": "2024-09-24 09:53:11.921278",
  "modified_by": "Administrator",
  "module": "ICL Corporate Services",
  "name": "ICL Finance",
@@ -112,6 +112,14 @@
  "quick_lists": [],
  "roles": [],
  "sequence_id": 43.0,
- "shortcuts": [],
+ "shortcuts": [
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Payroll Report",
+   "link_to": "Payroll Report",
+   "type": "Report"
+  }
+ ],
  "title": "ICL Finance"
 }

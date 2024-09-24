@@ -1,0 +1,193 @@
+{
+ "charts": [],
+ "content": "[{\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Your Shortcuts</b></span>\",\"col\":12}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Employee Tax Exemption Declaration\",\"col\":3}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Additional Salary\",\"col\":3}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Income Tax Computation\",\"col\":3}},{\"type\":\"spacer\",\"data\":{\"col\":12}},{\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Masters &amp; Reports</b></span>\",\"col\":12}},{\"type\":\"card\",\"data\":{\"card_name\":\"Tax Setup\",\"col\":4}},{\"type\":\"card\",\"data\":{\"card_name\":\"Exemption\",\"col\":4}},{\"type\":\"card\",\"data\":{\"card_name\":\"Benefits\",\"col\":4}},{\"type\":\"card\",\"data\":{\"card_name\":\"Reports\",\"col\":4}}]",
+ "creation": "2024-09-17 10:23:17.823250",
+ "custom_blocks": [],
+ "docstatus": 0,
+ "doctype": "Workspace",
+ "for_user": "",
+ "hide_custom": 0,
+ "icon": "crm",
+ "idx": 0,
+ "indicator_color": "green",
+ "is_hidden": 0,
+ "label": "Tax & Benefits",
+ "links": [
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Benefits",
+   "link_count": 2,
+   "link_type": "DocType",
+   "onboard": 0,
+   "only_for": "Kenya",
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Employee Benefit Application",
+   "link_count": 0,
+   "link_to": "Employee Benefit Application",
+   "link_type": "DocType",
+   "onboard": 0,
+   "only_for": "Kenya",
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Employee Benefit Claim",
+   "link_count": 0,
+   "link_to": "Employee Benefit Claim",
+   "link_type": "DocType",
+   "onboard": 0,
+   "only_for": "Kenya",
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Tax Setup",
+   "link_count": 3,
+   "link_type": "DocType",
+   "onboard": 0,
+   "only_for": "Kenya",
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Income Tax Slab",
+   "link_count": 0,
+   "link_to": "Income Tax Slab",
+   "link_type": "DocType",
+   "onboard": 0,
+   "only_for": "Kenya",
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Employee Tax Exemption Declaration Category",
+   "link_count": 0,
+   "link_to": "Employee Tax Exemption Declaration Category",
+   "link_type": "DocType",
+   "onboard": 0,
+   "only_for": "Kenya",
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Employee Tax Exemption Sub Category",
+   "link_count": 0,
+   "link_to": "Employee Tax Exemption Sub Category",
+   "link_type": "DocType",
+   "onboard": 0,
+   "only_for": "Kenya",
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Exemption",
+   "link_count": 2,
+   "link_type": "DocType",
+   "onboard": 0,
+   "only_for": "Kenya",
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Employee Tax Exemption Declaration",
+   "link_count": 0,
+   "link_to": "Employee Tax Exemption Declaration",
+   "link_type": "DocType",
+   "onboard": 0,
+   "only_for": "Kenya",
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Employee Tax Exemption Proof Submission",
+   "link_count": 0,
+   "link_to": "Employee Tax Exemption Proof Submission",
+   "link_type": "DocType",
+   "onboard": 0,
+   "only_for": "Kenya",
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Reports",
+   "link_count": 2,
+   "link_type": "DocType",
+   "onboard": 0,
+   "only_for": "Kenya",
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Income Tax Computation",
+   "link_count": 0,
+   "link_to": "Income Tax Computation",
+   "link_type": "Report",
+   "onboard": 0,
+   "only_for": "Kenya",
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Income Tax Deductions",
+   "link_count": 0,
+   "link_to": "Income Tax Deductions",
+   "link_type": "Report",
+   "onboard": 0,
+   "only_for": "Kenya",
+   "type": "Link"
+  }
+ ],
+ "modified": "2024-09-24 09:58:12.830135",
+ "modified_by": "Administrator",
+ "module": "ICL Corporate Services",
+ "name": "Tax & Benefits",
+ "number_cards": [],
+ "owner": "Administrator",
+ "parent_page": "Payroll",
+ "public": 1,
+ "quick_lists": [],
+ "roles": [],
+ "sequence_id": 38.0,
+ "shortcuts": [
+  {
+   "color": "Red",
+   "doc_view": "List",
+   "format": "{} Draft",
+   "label": "Employee Tax Exemption Declaration",
+   "link_to": "Employee Tax Exemption Declaration",
+   "stats_filter": "{\"docstatus\":[\"=\",\"0\"]}",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Additional Salary",
+   "link_to": "Additional Salary",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Income Tax Computation",
+   "link_to": "Income Tax Computation",
+   "type": "Report"
+  }
+ ],
+ "title": "Tax & Benefits"
+}
