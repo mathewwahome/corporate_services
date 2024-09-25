@@ -1,7 +1,7 @@
 {
  "actions": [],
  "allow_rename": 1,
- "autoname": "HR-CTP-.YYYY.-.#####",
+ "autoname": "field:contract_type",
  "creation": "2024-08-19 07:59:30.432729",
  "doctype": "DocType",
  "editable_grid": 1,
@@ -13,16 +13,18 @@
   {
    "fieldname": "contract_type",
    "fieldtype": "Data",
-   "label": "Contract Type"
+   "in_list_view": 1,
+   "label": "Contract Type",
+   "reqd": 1,
+   "unique": 1
   }
  ],
- "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-08-22 09:54:01.982773",
+ "modified": "2024-09-25 08:32:41.756531",
  "modified_by": "Administrator",
  "module": "ICL Corporate Services",
  "name": "Contract Type",
- "naming_rule": "Expression (old style)",
+ "naming_rule": "By fieldname",
  "owner": "Administrator",
  "permissions": [
   {
@@ -38,6 +40,7 @@
    "write": 1
   }
  ],
+ "quick_entry": 1,
  "sort_field": "modified",
  "sort_order": "DESC",
  "states": []
