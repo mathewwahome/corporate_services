@@ -126,9 +126,6 @@ after_migrate = "corporate_services.api.setup_utils.post_install"
 # ---------------
 # Hook on document methods and events
 
-
-
-
 def generate_doc_events(event_maps):
     doc_events = {}
     for event_type, event_map in event_maps.items():
@@ -315,8 +312,8 @@ fixtures = [
     "Web Page",
     "Web Form",
     "Print Format",
-    "Email Template"
-
+    "Email Template",
+    "Dashboard Chart",
     # "Notification",
     # "Dashboard Chart",
     # "Dashboard"
