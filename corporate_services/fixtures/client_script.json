@@ -163,5 +163,16 @@
   "name": "Timesheet Month Year",
   "script": "frappe.ui.form.on('Timesheet Submission', {\n    month_year: function(frm) {\n        const monthYear = frm.doc.month_year;\n        const monthYearPattern = /^(0[1-9]|1[0-2])-(\\d{4})$/;\n        if (monthYear && !monthYearPattern.test(monthYear)) {\n            frappe.show_alert({\n                message: __('Please enter Month-Year in MM-YYYY format.'),\n                indicator: 'orange'\n            });\n        }\n    },\n    onload: function(frm) {\n        if (!frm.doc.month_year) {\n            frm.set_value('month_year', moment().format('MM-YYYY'));\n        }\n    },\n    before_save: function(frm) {\n        const monthYear = frm.doc.month_year;\n        const monthYearPattern = /^(0[1-9]|1[0-2])-(\\d{4})$/;\n        if (monthYear && !monthYearPattern.test(monthYear)) {\n            frappe.msgprint(__('Please enter Month-Year in MM-YYYY format.'));\n            frappe.validated = false;  // Prevent form from being saved\n        }\n    }\n});",
   "view": "Form"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
+  "dt": "Employee",
+  "enabled": 1,
+  "modified": "2024-09-27 08:33:20.971080",
+  "module": "ICL Corporate Services",
+  "name": "Employee Permission Role Manager",
+  "script": "frappe.ui.form.on('Employee', {\n    refresh: function(frm) {\n        frappe.call({\n            method: 'corporate_services.api.role.get_role.get_user_roles',\n            args: {\n                user: frappe.session.user\n            },\n            callback: function(response) {\n                const roles = response.message || [];\n                console.log('User Roles:', roles);\n\n                const isHRUser = roles.includes('HR');\n                const isCurrentUser = frappe.session.user === frm.doc.user_id;\n\n                const fieldsToToggle = [\n                    'ctc', 'salary_currency', 'salary_mode', 'payroll_cost_center', \n                    'bank_name', 'bank_ac_no', 'iban', 'marital_status', \n                    'family_background', 'blood_group', 'health_details', \n                    'custom_pwds', 'custom_specify_the_pwds', \n                    'health_insurance_provider', 'health_insurance_no', \n                    'passport_number', 'valid_upto', 'date_of_issue', \n                    'place_of_issue', 'custom_name_of_the_body', \n                    'custom_membership_status', 'custom_date_of_membership',\n                    \n                    'custom_membership_no',\n                    'custom_employee_confidential_information',\n                    'custom_attache_documents',\n                    'custom_next_of_kin',\n                    'custom_beneficiary',\n                    'custom_beneficiary_relation',\n                    'address_section',\n                    'custom_contract_terms_section'\n                ];\n\n                const visibility = isHRUser || isCurrentUser;\n\n                fieldsToToggle.forEach(field => {\n                    frm.set_df_property(field, 'hidden', !visibility);\n                });\n            },\n            error: function(err) {\n                console.error(\"Error fetching roles:\", err);\n            }\n        });\n    }\n});\n",
+  "view": "Form"
  }
 ]
