@@ -2,7 +2,7 @@ app_name = "corporate_services"
 app_title = "ICL Corporate Services"
 app_publisher = "IntelliSOFT Consulting"
 app_description = "IntelliSOFT Corporate Services ERPNext Customizations"
-app_email = "dev@intellisoftkenya.com"
+app_email = "bamolo@intellisoftkenya.com"
 app_license = "mit"
 # required_apps = []
 
@@ -126,31 +126,6 @@ after_migrate = "corporate_services.api.setup_utils.post_install"
 # ---------------
 # Hook on document methods and events
 
-# doc_events = {
-# 	# "*": {
-# 	# 	"on_update": "method",
-# 	# 	"on_cancel": "method",
-# 	# 	"on_trash": "method"
-# 	# },
-#     "Employee Grievance":{
-#         "on_update": "corporate_services.api.notifications.employee_grievance"
-#     },
-#     "Travel Request":{
-#         "on_update": "corporate_services.api.notifications.alert_supervisor_travel_request"
-#     },
-#     "Leave Application":{
-#         "on_update": "corporate_services.api.notifications.alert_supervisor_leave_application"
-#     },
-#     "Asset Custodianship Requisition":{
-#         "on_update": "corporate_services.api.notifications.alert_supervisor_asset_requisition"
-#     },
-#     "Work Continuity Plan":{
-#         "on_update": "corporate_services.api.notifications.alert_supervisor_work_continuity_plan_submission"
-#     }
-# }
-
-
-
 def generate_doc_events(event_maps):
     doc_events = {}
     for event_type, event_map in event_maps.items():
@@ -160,38 +135,45 @@ def generate_doc_events(event_maps):
             doc_events[doctype][event_type] = method
     return doc_events
 
+
+
 on_update_map = {
     "Employee Grievance": "corporate_services.api.notification.notifications.employee_grievance",
-    
-    "Travel Request": "corporate_services.api.notification.notifications.alert_supervisor_travel_request",
-        
-    "Leave Application": "corporate_services.api.notification.notifications.alert_supervisor_leave_application",
-        
-    "Work Continuity Plan": "corporate_services.api.notification.notifications.alert_supervisor_work_continuity_plan_submission",
-    
+    "Travel Request": "corporate_services.api.notification.travel_request.alert",
+    "Leave Application": "corporate_services.api.notification.leave_application.alert",
+    "Work Continuity Plan": "corporate_services.api.notification.work_continuity_plan.alert",
     "Asset Custodianship Requisition": "corporate_services.api.notification.asset_custotianship_requisition.alert",
-    
     "Asset Requisition": "corporate_services.api.notification.asset_requisition.alert",
-
+    "Timesheet Submission":"corporate_services.api.timesheet.finance_timesheet_submission.finance_timesheet_submission",
+    "Project":"corporate_services.api.notification.project.project_manager.alert",
+    "Supplier Quote Submission": "corporate_services.api.supplier.vat_calc.calc"
+  
+    # "Supplier Quote Submission": [
+    #     "corporate_services.api.supplier.finance_alert.alert",
+    #     "corporate_services.api.supplier.vat_calc.calc"
+    # ]
 }
-before_submit_map = {
-    "Timesheet Submission":"corporate_services.api.timesheet.timesheet_submission.before_save"
+timesheet_notifications ={
+    "Timesheet Submission":"corporate_services.api.notification.timesheet.alert",
 }
-# after_insert_map = {
-    
-    # "Timesheet": "corporate_services.api.notification.timesheet.alert",
-# }
 
-# on_cancel_map = {
-#    "Travel Request": "corporate_services.api.notifications.cancel_travel_request",
-# }
+before_workflow_action_map = {
+    "Timesheet Submission":"corporate_services.api.timesheet.before_workflow_action.before_workflow_action_timesheet_submission",
+} 
 
 event_maps = {
-    "on_update": on_update_map,
-    # "after_insert":after_insert_map,
-    "before_save":before_submit_map
-    # "on_cancel": on_cancel_map
+    "on_update": {
+        **on_update_map,
+        **before_workflow_action_map,
+        **timesheet_notifications,
+        "Timesheet Submission": [
+            on_update_map["Timesheet Submission"],
+            before_workflow_action_map["Timesheet Submission"],
+            timesheet_notifications["Timesheet Submission"]
+        ]
+    }
 }
+
 
 doc_events = generate_doc_events(event_maps)
 
@@ -200,23 +182,26 @@ doc_events = generate_doc_events(event_maps)
 # Scheduled Tasks
 # ---------------
 
-# scheduler_events = {
-# 	"all": [
-# 		"corporate_services.tasks.all"
-# 	],
-# 	"daily": [
-# 		"corporate_services.tasks.daily"
-# 	],
-# 	"hourly": [
-# 		"corporate_services.tasks.hourly"
-# 	],
-# 	"weekly": [
-# 		"corporate_services.tasks.weekly"
-# 	],
-# 	"monthly": [
-# 		"corporate_services.tasks.monthly"
-# 	],
-# }
+# in your_custom_app/hooks.py
+
+
+scheduler_events = {
+	# "all": [
+	# 	"corporate_services.tasks.all"
+	# ],
+	# "daily": [
+	# 	"corporate_services.tasks.daily"
+	# ],
+	# "hourly": [
+	# 	"corporate_services.tasks.hourly"
+	# ],
+	# "weekly": [
+	# 	"corporate_services.tasks.weekly"
+	# ],
+	"monthly": [
+		"corporate_services.api.leave.update_annual_leave_allocations.update_annual_leave_allocations"
+	],
+}
 
 # Testing
 # -------
@@ -324,5 +309,12 @@ fixtures = [
     "Number Card",
     "Letter Head",
     "Workspace",
-    "Notification"
+    "Web Page",
+    "Web Form",
+    "Print Format",
+    "Email Template",
+    "Dashboard Chart",
+    # "Notification",
+    # "Dashboard Chart",
+    # "Dashboard"
 ]

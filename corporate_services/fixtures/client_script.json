@@ -4,10 +4,10 @@
   "doctype": "Client Script",
   "dt": "Asset Requisition",
   "enabled": 1,
-  "modified": "2024-07-25 10:41:42.951383",
+  "modified": "2024-08-07 08:53:11.294025",
   "module": "ICL Corporate Services",
   "name": "Asset Requisition",
-  "script": "frappe.ui.form.on('Asset Requisition', {\n\trefresh(frm) {\n        frm.dashboard.add_section(`\n            <h2>IntelliSOFT Consulting Limited Requisition form</h2>\n        `);\n    }\n});",
+  "script": "frappe.ui.form.on('Asset Requisition', {\n\trefresh(frm) {\n        frm.dashboard.add_section(`\n            <h2>IntelliSOFT Consulting Limited Asset Requisition form</h2>\n        `);\n    }\n});",
   "view": "Form"
  },
  {
@@ -15,10 +15,10 @@
   "doctype": "Client Script",
   "dt": "Timesheet Submission",
   "enabled": 1,
-  "modified": "2024-07-26 09:29:14.840912",
+  "modified": "2024-09-05 11:12:54.562486",
   "module": "ICL Corporate Services",
   "name": "Timesheet Submission List",
-  "script": "frappe.ui.form.on('Timesheet Submission', {\n    refresh: function (frm) {\n        if (frm.doc.employee) {\n            frappe.call({\n                method: 'corporate_services.api.timesheet.timesheet_fetch.fetch_timesheets_for_employee',\n                args: {\n                    employee_id: frm.doc.employee\n                },\n                callback: function (r) {\n                    if (!r.exc) {\n                        frm.clear_table('timesheet_submission_list');\n                        if (r.message) {\n                            r.message.forEach(function (timesheet) {\n                                let child = frm.add_child('timesheet_submission_list');\n                                child.total_hours = timesheet.total_hours;\n                                child.naming_series = timesheet.naming_series;\n                                child.month = timesheet.custom_month;\n                                child.status = timesheet.status;\n                            });\n                        }\n                        frm.refresh_field('timesheet_submission_list');\n                    }\n                }\n            });\n        }\n    }\n});\n",
+  "script": "frappe.ui.form.on('Timesheet Submission', {\n    onload_post_render: function (frm) {\n        frm.set_df_property('download_template', 'hidden', 1);\n        frm.set_df_property('timesheet', 'hidden', 1);\n    },\n    \n    employee: function (frm) {\n        toggle_fields_visibility(frm);\n    },\n\n    month_year: function (frm) {\n        toggle_fields_visibility(frm);\n    },\n\n    after_save: function (frm) {\n        toggle_fields_visibility(frm);\n    }\n});\n\nfunction toggle_fields_visibility(frm) {\n    if (frm.doc.employee && frm.doc.month_year && !frm.is_new()) {\n        frm.set_df_property('download_template', 'hidden', 0);\n        frm.set_df_property('timesheet', 'hidden', 0);\n    } else {\n        frm.set_df_property('download_template', 'hidden', 1);\n        frm.set_df_property('timesheet', 'hidden', 1);\n    }\n}\n",
   "view": "Form"
  },
  {
@@ -37,10 +37,10 @@
   "doctype": "Client Script",
   "dt": "Timesheet Submission",
   "enabled": 1,
-  "modified": "2024-07-29 09:13:10.978970",
+  "modified": "2024-09-11 09:02:31.641403",
   "module": "ICL Corporate Services",
   "name": "Timesheet Import",
-  "script": "frappe.ui.form.on('Timesheet Submission', {\n    on_submit: function(frm) {\n        if (frm.doc.timesheet) {\n            frappe.call({\n                method: 'corporate_services.api.timesheet.timesheet_import.timesheet_import',\n                args: {\n                    docname: frm.doc.name\n                },\n                callback: function(response) {\n                    if (response.message === 'success') {\n                        frappe.msgprint(__('Employees timesheet created successfully'));\n                    } else {\n                        frappe.msgprint(__('There was an error creating employees timesheet'));\n                    }\n                }\n            });\n        } else {\n            frappe.msgprint(__('Please upload a CSV file'));\n        }\n    }\n});",
+  "script": "frappe.ui.form.on('Timesheet Submission', {\n    refresh: function(frm) {\n        frm.add_custom_button(__('Import Timesheet'), function() {\n            if (frm.doc.timesheet) {\n                if (!frm.doc.timesheet_imported) {\n                    frappe.call({\n                        method: 'corporate_services.api.timesheet.timesheet_import.timesheet_import',\n                        args: {\n                            docname: frm.doc.name\n                        },\n                        callback: function(response) {\n                            if (response.message === 'success') {\n                                frappe.msgprint(__('Employee timesheet created successfully'));\n                                frm.set_value('timesheet_imported', 1); \n                                fetch_timesheets_for_employee(frm);\n                                frm.save();\n                            } else {\n                                frappe.msgprint(__('There was an error creating the employee timesheet'));\n                            }\n                        }\n                    });\n                } else {\n                    frappe.msgprint(__('Timesheet has already been imported.'));\n                    fetch_timesheets_for_employee(frm);\n                }\n            } else {\n                frappe.msgprint(__('Please upload a timesheet file before importing.'));\n            }\n        }, __('Actions'));\n    }\n});\n\nfunction fetch_timesheets_for_employee(frm) {\n    frappe.call({\n        method: 'corporate_services.api.timesheet.timesheet_fetch.fetch_timesheets_for_employee',\n        args: {\n            employee_id: frm.doc.employee,\n            month: frm.doc.month_year,\n            docname: frm.doc.name\n        },\n        callback: function(r) {\n            if (!r.exc) {\n                frm.clear_table('timesheet_per_project');\n                if (r.message && r.message.timesheets && r.message.timesheets.length > 0) {\n                    r.message.timesheets.forEach(function(timesheet) {\n                        let child = frm.add_child('timesheet_per_project');\n                        child.timesheet = timesheet.name;\n                        child.total_hours = timesheet.total_hours;\n                        child.project = timesheet.parent_project;\n                        child.month = timesheet.custom_month;\n                        child.percent = timesheet.percent_pay;\n                        child.pay = timesheet.pay_for_project;\n                        child.timesheet_type = timesheet.custom_timesheet_type;\n                        child.status = timesheet.status;\n                    });\n                    frm.refresh_field('timesheet_per_project');\n                    \n                    frm.set_value('total_working_hours', r.message.total_working_hours);\n                    \n                    console.log(`${r.message.timesheets.length} timesheet(s) fetched successfully`);\n                } else {\n                    console.log('No timesheets found for the selected employee and month');\n                }\n            } else {\n                frappe.msgprint(__('There was an error fetching timesheets'));\n                console.error('Error fetching timesheets:', r.exc);\n            }\n        }\n    });\n}",
   "view": "Form"
  },
  {
@@ -58,11 +58,11 @@
   "docstatus": 0,
   "doctype": "Client Script",
   "dt": "Travel Request",
-  "enabled": 1,
-  "modified": "2024-06-11 09:06:09.449940",
+  "enabled": 0,
+  "modified": "2024-08-02 08:06:55.658472",
   "module": "ICL Corporate Services",
   "name": "Travel Request Filters",
-  "script": "frappe.ui.form.on('Travel Request', {\n\trefresh(frm) {\n\t\tfrm.set_query('employee', function() {\n            return {\n                filters: {\n                    user_id: frappe.session.user\n                }\n            };\n        });\n\t}\n})",
+  "script": "frappe.ui.form.on('Travel Request', {\n\trefresh(frm) {\n\t\tfrm.set_query('employee', function() {\n            return {\n                filters: {\n                    user_id: frappe.session.user\n                }\n            };\n        });\n\t}\n});",
   "view": "Form"
  },
  {
@@ -92,10 +92,10 @@
   "doctype": "Client Script",
   "dt": "Asset Custodianship Requisition",
   "enabled": 1,
-  "modified": "2024-06-13 11:08:00.666723",
+  "modified": "2024-09-02 10:52:59.803004",
   "module": "ICL Corporate Services",
   "name": "Asset Custodianship Requisition Terms",
-  "script": "frappe.ui.form.on('Asset Custodianship Requisition', {\n\trefresh(frm) {\n        frm.dashboard.add_section(`\n        <h2>Asset Requisition Application Form</h2>\n            <br>\n            <p>In acceptance of this asset for usage, I agree to the terms and conditions stated below:</p>\n            <ul>\n                <li>I understand that I am responsible for the asset whilst in my possession, regardless of whether the asset is used in the office, at my place of residence, or in any other location such as a hotel, conference room, car or airport.</li>\n                <li>I am responsible for keeping the asset in good condition while using it and until the time of return.</li>\n                <li>I should be the only authorized person to have access to and use this asset, any unauthorized access to this asset is a violation of this company's policy and employment regulation and employment/consultant contract.</li>\n                <li>In the event of loss, theft, or damage, this must be reported to the police within 24-48 hours, and a copy of a Police report or incident report must be submitted to the company for verification purposes.</li>\n                <li>I understand that any violation of these policies shall lead to a disciplinary action by the company.</li>\n            </ul>\n        `);\t\n    }\n});",
+  "script": "frappe.ui.form.on('Asset Custodianship Requisition', {\n\trefresh(frm) {\n        frm.dashboard.add_section(`\n        <h2>Asset Custodianship Requisition Application Form</h2>\n            <br>\n            <p>In acceptance of this asset for usage, I agree to the terms and conditions stated below:</p>\n            <ul>\n                <li>I understand that I am responsible for the asset whilst in my possession, regardless of whether the asset is used in the office, at my place of residence, or in any other location such as a hotel, conference room, car or airport.</li>\n                <li>I am responsible for keeping the asset in good condition while using it and until the time of return.</li>\n                <li>I should be the only authorized person to have access to and use this asset, any unauthorized access to this asset is a violation of this company's policy and employment regulation and employment/consultant contract.</li>\n                <li>In the event of loss, theft, or damage, this must be reported to the police within 24-48 hours, and a copy of a Police report or incident report must be submitted to the company for verification purposes.</li>\n                <li>I understand that any violation of these policies shall lead to a disciplinary action by the company.</li>\n            </ul>\n        `);\t\n    }\n});",
   "view": "Form"
  },
  {
@@ -103,10 +103,10 @@
   "doctype": "Client Script",
   "dt": "Employee Grievance",
   "enabled": 1,
-  "modified": "2024-06-24 10:56:42.597912",
+  "modified": "2024-08-05 10:27:56.017352",
   "module": "ICL Corporate Services",
   "name": "Grievance Script",
-  "script": "frappe.ui.form.on('Employee Grievance', {\n    refresh: function(frm) {\n        function toggle_fields() {\n            if (frappe.user.has_role('Employee')) {\n                if (frm.doc.workflow_state === 'Draft') {\n                    frm.toggle_display(['investigation_details_section','resolution_details_section','custom_actions_taken'], false);\n                }\n            }\n            if (frappe.user.has_role('HR Manager')) {\n                if (frm.doc.workflow_state === 'Submitted to HR') {\n                    frm.toggle_display(['investigation_details_section','resolution_details_section','custom_actions_taken'], true);\n                }\n            }\n        }\n\n        toggle_fields();\n\n        frm.fields_dict.workflow_state.$input.on('change', function() {\n            toggle_fields();\n        });\n    },\n    before_save: function(frm) {\n        if (frappe.user.has_role('Employee')) {\n            frm.toggle_display(['investigation_details_section','resolution_details_section','custom_actions_taken'], false);\n        }\n    }\n});\n",
+  "script": "frappe.ui.form.on('Employee Grievance', {\n    refresh: function(frm) {\n        function toggle_fields() {\n            if (frappe.user.has_role('Employee')) {\n                if (frm.doc.workflow_state === 'Draft') {\n                    frm.toggle_display(['investigation_details_section','resolution_details_section','custom_actions_taken'], true);\n                }\n            }\n            if (frappe.user.has_role('HR Manager')) {\n                if (frm.doc.workflow_state === 'Submitted to HR') {\n                    frm.toggle_display(['investigation_details_section','resolution_details_section','custom_actions_taken'], true);\n                }\n            }\n        }\n\n        toggle_fields();\n\n        frm.fields_dict.workflow_state.$input.on('change', function() {\n            toggle_fields();\n        });\n    },\n    before_save: function(frm) {\n        if (frappe.user.has_role('Employee')) {\n            frm.toggle_display(['investigation_details_section','resolution_details_section','custom_actions_taken'], false);\n        }\n    }\n});\n",
   "view": "Form"
  },
  {
@@ -129,6 +129,50 @@
   "module": "ICL Corporate Services",
   "name": "Finance Members Filter",
   "script": "frappe.ui.form.on('Asset Movement', {\n    refresh: function(frm) {\n        frappe.call({\n            method: 'corporate_services.api.role.user.get_finance_employees',\n            callback: function(response) {\n                if (response.message) {\n                    let employees = response.message;\n                    frm.set_query('custom_receiver', function() {\n                        return {\n                            filters: {\n                                'name': ['in', employees]\n                            }\n                        };\n                    });\n                }\n            }\n        });\n    }\n});",
+  "view": "Form"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
+  "dt": "Timesheet Submission",
+  "enabled": 1,
+  "modified": "2024-08-21 08:38:45.782833",
+  "module": "ICL Corporate Services",
+  "name": "Workflow state change",
+  "script": "frappe.ui.form.on('Timesheet Submission', {\n    validate: function(frm) {\n        if (frm.doc.workflow_state === 'Submitted to Supervisor' && !frm.doc.timesheet) {\n            // Reset the workflow state to Draft\n            frm.set_value('workflow_state', 'Draft');\n\n            // Display a message to the user\n            frappe.msgprint(__('You must upload a timesheet before submitting to the supervisor. Workflow state has been reset to Draft.'));\n        }\n    }\n});\n",
+  "view": "Form"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
+  "dt": "Timesheet Submission",
+  "enabled": 1,
+  "modified": "2024-08-05 10:29:39.969902",
+  "module": "ICL Corporate Services",
+  "name": "Timesheet Submission Details",
+  "script": "frappe.ui.form.on('Timesheet Submission', {\n    refresh: function(frm) {\n        function toggle_fields() {\n            if (frappe.user.has_role('Employee')) {\n                if (frm.doc.workflow_state === 'Draft') {\n                    frm.toggle_display(['internal_monthly_timesheet','timesheet_per_project'], true);\n                }else {\n                    frm.toggle_display(['internal_monthly_timesheet','timesheet_per_project'], true);\n                }\n            }\n            if (frappe.user.has_role('Finance')) {\n                if (frm.doc.workflow_state === 'Submitted to HR') {\n                    frm.toggle_display(['internal_monthly_timesheet','timesheet_per_project'], true);\n                }\n            }\n        }\n\n        toggle_fields();\n\n        frm.fields_dict.workflow_state.$input.on('change', function() {\n            toggle_fields();\n        });\n    },\n    before_save: function(frm) {\n        if (frappe.user.has_role('Employee')) {\n            frm.toggle_display(['internal_monthly_timesheet','timesheet_per_project'], false);\n        }\n    }\n});\n",
+  "view": "Form"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
+  "dt": "Timesheet Submission",
+  "enabled": 1,
+  "modified": "2024-08-28 09:14:44.026261",
+  "module": "ICL Corporate Services",
+  "name": "Timesheet Month Year",
+  "script": "frappe.ui.form.on('Timesheet Submission', {\n    month_year: function(frm) {\n        const monthYear = frm.doc.month_year;\n        const monthYearPattern = /^(0[1-9]|1[0-2])-(\\d{4})$/;\n        if (monthYear && !monthYearPattern.test(monthYear)) {\n            frappe.show_alert({\n                message: __('Please enter Month-Year in MM-YYYY format.'),\n                indicator: 'orange'\n            });\n        }\n    },\n    onload: function(frm) {\n        if (!frm.doc.month_year) {\n            frm.set_value('month_year', moment().format('MM-YYYY'));\n        }\n    },\n    before_save: function(frm) {\n        const monthYear = frm.doc.month_year;\n        const monthYearPattern = /^(0[1-9]|1[0-2])-(\\d{4})$/;\n        if (monthYear && !monthYearPattern.test(monthYear)) {\n            frappe.msgprint(__('Please enter Month-Year in MM-YYYY format.'));\n            frappe.validated = false;  // Prevent form from being saved\n        }\n    }\n});",
+  "view": "Form"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
+  "dt": "Employee",
+  "enabled": 1,
+  "modified": "2024-09-27 08:58:31.204905",
+  "module": "ICL Corporate Services",
+  "name": "Employee Permission Role Manager",
+  "script": "frappe.ui.form.on('Employee', {\n    refresh: function(frm) {\n        frappe.call({\n            method: 'corporate_services.api.role.get_role.get_user_roles',\n            args: {\n                user: frappe.session.user\n            },\n            callback: function(response) {\n                const roles = response.message || [];\n                console.log('User Roles:', roles);\n\n                const isHRUser = roles.includes('HR');\n                const isFinanceUser = roles.includes('Finance');\n                const isCurrentUser = frappe.session.user === frm.doc.user_id;\n\n                const fieldsToToggle = [\n                    'marital_status',\n                    'family_background', 'blood_group', 'health_details', \n                    'custom_pwds', 'custom_specify_the_pwds',\n                    'health_insurance_provider', 'health_insurance_no',\n                    'passport_number', 'valid_upto', 'date_of_issue',\n                    'place_of_issue', 'custom_name_of_the_body',\n                    'custom_membership_status', 'custom_date_of_membership',\n                    'custom_membership_no',\n                    'custom_employee_confidential_information',\n                    'custom_attache_documents',\n                    'custom_next_of_kin',\n                    'custom_beneficiary',\n                    'custom_beneficiary_relation',\n                    'address_section'\n                ];\n\n                const sectionsToToggle = [\n                    'custom_salary_section', \n                    'bank_details_section', \n                    'custom_contract_terms_section'\n                ];\n\n                // Helper function to toggle visibility\n                const toggleFieldVisibility = (fields, visibility) => {\n                    fields.forEach(field => {\n                        frm.set_df_property(field, 'hidden', !visibility);\n                    });\n                };\n\n                // Toggle sections based on HR, Finance, or current user\n                const canViewSalaryAndBankDetails = isHRUser || isFinanceUser || isCurrentUser;\n                toggleFieldVisibility(sectionsToToggle, canViewSalaryAndBankDetails);\n\n                // Toggle other fields based on HR or current user\n                const canViewFields = isHRUser || isCurrentUser;\n                toggleFieldVisibility(fieldsToToggle, canViewFields);\n            },\n            error: function(err) {\n                console.error(\"Error fetching roles:\", err);\n            }\n        });\n    }\n});\n",
   "view": "Form"
  }
 ]

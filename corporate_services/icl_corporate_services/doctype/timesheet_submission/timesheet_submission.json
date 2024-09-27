@@ -7,20 +7,18 @@
  "field_order": [
   "naming_series",
   "employee",
-  "month",
+  "month_year",
   "download_template",
   "timesheet",
-  "amended_from"
+  "amended_from",
+  "timesheet_imported",
+  "timesheet_details",
+  "column_break_fbtd",
+  "timesheet_per_project",
+  "total_working_hours",
+  "status"
  ],
  "fields": [
-  {
-   "fieldname": "month",
-   "fieldtype": "Select",
-   "in_list_view": 1,
-   "label": "Month",
-   "options": "January\nFebruary\nMarch\nApril\nMay\nJune\nJuly\nAugust\nSeptember\nOctober\nNovember\nDecember",
-   "reqd": 1
-  },
   {
    "fieldname": "employee",
    "fieldtype": "Link",
@@ -30,7 +28,6 @@
    "reqd": 1
   },
   {
-   "depends_on": "eval:!doc.__islocal",
    "fieldname": "timesheet",
    "fieldtype": "Attach",
    "label": "Timesheet"
@@ -52,15 +49,60 @@
    "search_index": 1
   },
   {
-   "depends_on": "eval:!doc.__islocal",
    "fieldname": "download_template",
    "fieldtype": "Button",
    "label": "Download Template"
+  },
+  {
+   "fieldname": "timesheet_per_project",
+   "fieldtype": "Table",
+   "label": "Timesheet Per project",
+   "options": "Timesheet Submission List",
+   "read_only": 1
+  },
+  {
+   "fieldname": "timesheet_details",
+   "fieldtype": "Section Break",
+   "label": "Timesheet Details",
+   "read_only": 1
+  },
+  {
+   "fieldname": "total_working_hours",
+   "fieldtype": "Float",
+   "label": "Total Working Hours",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_fbtd",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "timesheet_imported",
+   "fieldtype": "Check",
+   "hidden": 1,
+   "label": "Timesheet Imported"
+  },
+  {
+   "fieldname": "month_year",
+   "fieldtype": "Data",
+   "label": "Month-Year",
+   "reqd": 1
+  },
+  {
+   "allow_on_submit": 1,
+   "default": "Open",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Open\nApproved\nRejected\nCancelled",
+   "read_only": 1,
+   "reqd": 1
   }
  ],
  "is_submittable": 1,
  "links": [],
- "modified": "2024-07-22 10:14:33.250613",
+ "modified": "2024-08-28 08:44:37.094718",
  "modified_by": "Administrator",
  "module": "ICL Corporate Services",
  "name": "Timesheet Submission",
