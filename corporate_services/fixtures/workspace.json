@@ -993,7 +993,7 @@
     "type": "Link"
    }
   ],
-  "modified": "2024-09-24 09:53:11.921278",
+  "modified": "2024-09-30 09:04:42.082956",
   "module": "ICL Corporate Services",
   "name": "ICL Finance",
   "number_cards": [],
@@ -1001,7 +1001,14 @@
   "public": 1,
   "quick_lists": [],
   "restrict_to_domain": null,
-  "roles": [],
+  "roles": [
+   {
+    "parent": "ICL Finance",
+    "parentfield": "roles",
+    "parenttype": "Workspace",
+    "role": "Finance"
+   }
+  ],
   "sequence_id": 43.0,
   "shortcuts": [
    {
@@ -1694,7 +1701,7 @@
     "type": "Link"
    }
   ],
-  "modified": "2024-09-24 09:56:41.287839",
+  "modified": "2024-09-30 09:06:27.993286",
   "module": "ICL Corporate Services",
   "name": "Financial Reports",
   "number_cards": [],
@@ -1702,7 +1709,14 @@
   "public": 1,
   "quick_lists": [],
   "restrict_to_domain": "",
-  "roles": [],
+  "roles": [
+   {
+    "parent": "Financial Reports",
+    "parentfield": "roles",
+    "parenttype": "Workspace",
+    "role": "Finance"
+   }
+  ],
   "sequence_id": 5.0,
   "shortcuts": [],
   "title": "Financial Reports"
@@ -2027,7 +2041,7 @@
     "type": "Link"
    }
   ],
-  "modified": "2024-09-24 09:56:56.015197",
+  "modified": "2024-09-30 09:06:14.985802",
   "module": "ICL Corporate Services",
   "name": "Receivables",
   "number_cards": [],
@@ -2035,7 +2049,14 @@
   "public": 1,
   "quick_lists": [],
   "restrict_to_domain": "",
-  "roles": [],
+  "roles": [
+   {
+    "parent": "Receivables",
+    "parentfield": "roles",
+    "parenttype": "Workspace",
+    "role": "Finance"
+   }
+  ],
   "sequence_id": 4.0,
   "shortcuts": [
    {
@@ -2406,7 +2427,7 @@
     "type": "Link"
    }
   ],
-  "modified": "2024-09-24 09:58:34.095262",
+  "modified": "2024-09-30 09:05:06.595144",
   "module": "ICL Corporate Services",
   "name": "Payables",
   "number_cards": [],
@@ -2414,7 +2435,14 @@
   "public": 1,
   "quick_lists": [],
   "restrict_to_domain": "",
-  "roles": [],
+  "roles": [
+   {
+    "parent": "Payables",
+    "parentfield": "roles",
+    "parenttype": "Workspace",
+    "role": "Finance"
+   }
+  ],
   "sequence_id": 3.0,
   "shortcuts": [
    {
@@ -3424,7 +3452,7 @@
     "type": "Link"
    }
   ],
-  "modified": "2024-09-24 09:58:24.507471",
+  "modified": "2024-09-30 09:05:18.482960",
   "module": "ICL Corporate Services",
   "name": "Accounting",
   "number_cards": [
@@ -3461,7 +3489,14 @@
   "public": 1,
   "quick_lists": [],
   "restrict_to_domain": "",
-  "roles": [],
+  "roles": [
+   {
+    "parent": "Accounting",
+    "parentfield": "roles",
+    "parenttype": "Workspace",
+    "role": "Finance"
+   }
+  ],
   "sequence_id": 2.0,
   "shortcuts": [
    {
@@ -3862,7 +3897,7 @@
     "type": "Link"
    }
   ],
-  "modified": "2024-09-24 09:58:12.830135",
+  "modified": "2024-09-30 09:05:31.673564",
   "module": "ICL Corporate Services",
   "name": "Tax & Benefits",
   "number_cards": [],
@@ -3870,7 +3905,14 @@
   "public": 1,
   "quick_lists": [],
   "restrict_to_domain": null,
-  "roles": [],
+  "roles": [
+   {
+    "parent": "Tax & Benefits",
+    "parentfield": "roles",
+    "parenttype": "Workspace",
+    "role": "Finance"
+   }
+  ],
   "sequence_id": 38.0,
   "shortcuts": [
    {
@@ -4550,7 +4592,7 @@
     "type": "Link"
    }
   ],
-  "modified": "2024-09-24 09:57:58.680418",
+  "modified": "2024-09-30 09:05:46.834717",
   "module": "ICL Corporate Services",
   "name": "Salary Payout",
   "number_cards": [],
@@ -4558,7 +4600,14 @@
   "public": 1,
   "quick_lists": [],
   "restrict_to_domain": null,
-  "roles": [],
+  "roles": [
+   {
+    "parent": "Salary Payout",
+    "parentfield": "roles",
+    "parenttype": "Workspace",
+    "role": "Finance"
+   }
+  ],
   "sequence_id": 10.0,
   "shortcuts": [
    {
@@ -4719,7 +4768,7 @@
     "type": "Link"
    }
   ],
-  "modified": "2024-09-24 09:57:10.352673",
+  "modified": "2024-09-30 09:05:59.288285",
   "module": "ICL Corporate Services",
   "name": "Payroll",
   "number_cards": [],
@@ -4727,7 +4776,14 @@
   "public": 1,
   "quick_lists": [],
   "restrict_to_domain": "",
-  "roles": [],
+  "roles": [
+   {
+    "parent": "Payroll",
+    "parentfield": "roles",
+    "parenttype": "Workspace",
+    "role": "Finance"
+   }
+  ],
   "sequence_id": 15.0,
   "shortcuts": [
    {
