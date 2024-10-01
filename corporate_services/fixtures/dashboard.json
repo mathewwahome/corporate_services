@@ -1,5 +1,33 @@
 [
  {
+  "cards": [],
+  "chart_options": null,
+  "charts": [
+   {
+    "chart": "Project Summary",
+    "parent": "Project",
+    "parentfield": "charts",
+    "parenttype": "Dashboard",
+    "width": "Full"
+   },
+   {
+    "chart": "new",
+    "parent": "Project",
+    "parentfield": "charts",
+    "parenttype": "Dashboard",
+    "width": "Half"
+   }
+  ],
+  "dashboard_name": "Project",
+  "docstatus": 0,
+  "doctype": "Dashboard",
+  "is_default": 0,
+  "is_standard": 1,
+  "modified": "2024-08-14 11:54:49.525835",
+  "module": "Projects",
+  "name": "Project"
+ },
+ {
   "cards": [
    {
     "card": "Monthly Total Work Order",
@@ -323,27 +351,6 @@
   "modified": "2020-07-21 18:56:47.230053",
   "module": "CRM",
   "name": "CRM"
- },
- {
-  "cards": [],
-  "chart_options": null,
-  "charts": [
-   {
-    "chart": "Project Summary",
-    "parent": "Project",
-    "parentfield": "charts",
-    "parenttype": "Dashboard",
-    "width": "Full"
-   }
-  ],
-  "dashboard_name": "Project",
-  "docstatus": 0,
-  "doctype": "Dashboard",
-  "is_default": 0,
-  "is_standard": 1,
-  "modified": "2020-07-22 17:17:03.780625",
-  "module": "Projects",
-  "name": "Project"
  },
  {
   "cards": [
