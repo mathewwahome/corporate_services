@@ -281,30 +281,19 @@ scheduler_events = {
 
 fixtures = [
     "Leave Type",
-    "Leave Application",
-    "Employee Training Feedback Form",
-    "Overnight Stay",
     "Workflow",
     "Workflow State",
+    "Workflow Action Master",
     "Role",
-    "Asset Custodianship Requisition",
-    "Asset Requisition - Equipment Description",
-    "Asset Movement Item",
-    "Asset Movement",
-    "Work Continuity Plan",
-    "Work Continuity Plan Form",
-    "Employee Evaluation",
-    "Employee Evaluation Form Characteristics",
+    
+    
     "Report",
     "Navbar Settings",
     "HR Settings",
     "Designation",
-    "Department",
+    # "Department",
     "Client Script",
-    "Workflow Action Master",
-    "Employee Grievance",
-    "Employee List",
-    "Employee",
+    
     "Dashboard",
     "Number Card",
     "Letter Head",
@@ -314,6 +303,7 @@ fixtures = [
     "Print Format",
     "Email Template",
     "Dashboard Chart",
+    
     # "Notification",
     # "Dashboard Chart",
     # "Dashboard"
