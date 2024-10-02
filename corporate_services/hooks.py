@@ -295,7 +295,7 @@ fixtures = [
     # "Department",
     "Client Script",
     
-    "Dashboard",
+    # "Dashboard",
     "Number Card",
     "Letter Head",
     "Workspace",
@@ -303,7 +303,7 @@ fixtures = [
     "Web Form",
     "Print Format",
     "Email Template",
-    "Dashboard Chart",
+    # "Dashboard Chart",
     
     # "Notification",
     # "Dashboard Chart",
