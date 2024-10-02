@@ -1,7 +1,7 @@
 {
  "charts": [],
  "content": "[{\"id\":\"nKKr6fjgjb\",\"type\":\"card\",\"data\":{\"card_name\":\"Ledgers\",\"col\":4}},{\"id\":\"p7NY6MHe2Y\",\"type\":\"card\",\"data\":{\"card_name\":\"Financial Statements\",\"col\":4}},{\"id\":\"3AK1Zf0oew\",\"type\":\"card\",\"data\":{\"card_name\":\"Profitability\",\"col\":4}},{\"id\":\"Q_hBCnSeJY\",\"type\":\"card\",\"data\":{\"card_name\":\"Other Reports\",\"col\":4}}]",
- "creation": "2024-09-17 10:20:59.472406",
+ "creation": "2024-09-27 07:26:02.062861",
  "custom_blocks": [],
  "docstatus": 0,
  "doctype": "Workspace",
@@ -282,7 +282,7 @@
    "type": "Link"
   }
  ],
- "modified": "2024-09-24 09:56:41.287839",
+ "modified": "2024-09-30 09:06:27.993286",
  "modified_by": "Administrator",
  "module": "ICL Corporate Services",
  "name": "Financial Reports",
@@ -292,7 +292,11 @@
  "public": 1,
  "quick_lists": [],
  "restrict_to_domain": "",
- "roles": [],
+ "roles": [
+  {
+   "role": "Finance"
+  }
+ ],
  "sequence_id": 5.0,
  "shortcuts": [],
  "title": "Financial Reports"

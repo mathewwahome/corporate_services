@@ -146,6 +146,7 @@ on_update_map = {
     "Asset Requisition": "corporate_services.api.notification.asset_requisition.alert",
     "Timesheet Submission":"corporate_services.api.timesheet.finance_timesheet_submission.finance_timesheet_submission",
     "Project":"corporate_services.api.notification.project.project_manager.alert",
+    "Employee Grievance":"corporate_services.api.notification.grievance.grievance.alert",
     "Supplier Quote Submission": "corporate_services.api.supplier.vat_calc.calc"
   
     # "Supplier Quote Submission": [
@@ -281,30 +282,19 @@ scheduler_events = {
 
 fixtures = [
     "Leave Type",
-    "Leave Application",
-    "Employee Training Feedback Form",
-    "Overnight Stay",
     "Workflow",
     "Workflow State",
+    "Workflow Action Master",
     "Role",
-    "Asset Custodianship Requisition",
-    "Asset Requisition - Equipment Description",
-    "Asset Movement Item",
-    "Asset Movement",
-    "Work Continuity Plan",
-    "Work Continuity Plan Form",
-    "Employee Evaluation",
-    "Employee Evaluation Form Characteristics",
+    
+    
     "Report",
     "Navbar Settings",
     "HR Settings",
     "Designation",
-    "Department",
+    # "Department",
     "Client Script",
-    "Workflow Action Master",
-    "Employee Grievance",
-    "Employee List",
-    "Employee",
+    
     "Dashboard",
     "Number Card",
     "Letter Head",
@@ -314,6 +304,7 @@ fixtures = [
     "Print Format",
     "Email Template",
     "Dashboard Chart",
+    
     # "Notification",
     # "Dashboard Chart",
     # "Dashboard"
