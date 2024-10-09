@@ -172,6 +172,9 @@ event_maps = {
             before_workflow_action_map["Timesheet Submission"],
             timesheet_notifications["Timesheet Submission"]
         ]
+    },
+    "on_save": {
+        # "Supplier Quote Submission": "corporate_services.api.supplier.vat_calc.calc"
     }
 }
 
@@ -281,13 +284,11 @@ scheduler_events = {
 # }
 
 fixtures = [
-    "Leave Type",
+    # "Leave Type",
     "Workflow",
     "Workflow State",
     "Workflow Action Master",
     "Role",
-    
-    
     "Report",
     "Navbar Settings",
     "HR Settings",
