@@ -11,7 +11,8 @@ def calc(doc, method):
     
     doc.total_amount = total_price
     
-    vat_rate = doc.vat_rate
+    vat_rate = int(float(doc.vat_rate))
+
     if doc.total_amount is None or vat_rate is None:
         frappe.throw(_("Total Amount or VAT Rate is missing."))
     
@@ -30,3 +31,5 @@ def calc(doc, method):
         
     doc.grand_total = grand_total
 
+    if not doc.docstatus == 1:
+        doc.submit()
