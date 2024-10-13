@@ -1,0 +1,165 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2024-10-13 20:13:01.090601",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "reported_by_section",
+  "employee_name",
+  "position",
+  "contact",
+  "title",
+  "incident_information_section",
+  "incident_date",
+  "reported_on",
+  "supervisorproject_manager",
+  "project",
+  "specific_location",
+  "equipment_information_section",
+  "equipment_id_no",
+  "list_of_equipment_damaged__lost__stolen",
+  "how_was_the_equipment_damaged__lost_stolen",
+  "description_of_damage_to_equipment",
+  "estimated_cost_of_repair__replacement",
+  "person_responsible_for_equipment",
+  "acknoledgement_agreement",
+  "supervisor"
+ ],
+ "fields": [
+  {
+   "fieldname": "reported_by_section",
+   "fieldtype": "Section Break",
+   "label": "Reported By"
+  },
+  {
+   "fetch_from": "employee_name.designation",
+   "fieldname": "position",
+   "fieldtype": "Read Only",
+   "label": "Position"
+  },
+  {
+   "fetch_from": "employee_name.employee_number",
+   "fieldname": "contact",
+   "fieldtype": "Read Only",
+   "label": "Contact"
+  },
+  {
+   "fetch_from": "employee_name.custom_contract_type",
+   "fieldname": "title",
+   "fieldtype": "Read Only",
+   "label": "Title"
+  },
+  {
+   "fieldname": "incident_information_section",
+   "fieldtype": "Section Break",
+   "label": "Incident Information"
+  },
+  {
+   "fieldname": "incident_date",
+   "fieldtype": "Date",
+   "label": "Incident Date"
+  },
+  {
+   "fieldname": "reported_on",
+   "fieldtype": "Date",
+   "label": "Reported On"
+  },
+  {
+   "fieldname": "supervisorproject_manager",
+   "fieldtype": "Link",
+   "label": "Supervisor/Project Manager",
+   "options": "Employee"
+  },
+  {
+   "fieldname": "project",
+   "fieldtype": "Link",
+   "label": "Project",
+   "options": "Project"
+  },
+  {
+   "fieldname": "specific_location",
+   "fieldtype": "Data",
+   "label": "Specific Location"
+  },
+  {
+   "fieldname": "equipment_information_section",
+   "fieldtype": "Section Break",
+   "label": "Equipment Information"
+  },
+  {
+   "fieldname": "equipment_id_no",
+   "fieldtype": "Data",
+   "label": "Equipment I.D. No."
+  },
+  {
+   "description": "(Please Specify)",
+   "fieldname": "list_of_equipment_damaged__lost__stolen",
+   "fieldtype": "Data",
+   "label": "List Of Equipment Damaged / Lost / Stolen "
+  },
+  {
+   "description": "(Description)",
+   "fieldname": "how_was_the_equipment_damaged__lost_stolen",
+   "fieldtype": "Data",
+   "label": "How was the Equipment Damaged / Lost/ Stolen"
+  },
+  {
+   "fieldname": "description_of_damage_to_equipment",
+   "fieldtype": "Small Text",
+   "label": "Description of Damage to Equipment"
+  },
+  {
+   "fieldname": "estimated_cost_of_repair__replacement",
+   "fieldtype": "Float",
+   "label": "Estimated Cost of Repair / Replacement"
+  },
+  {
+   "fieldname": "person_responsible_for_equipment",
+   "fieldtype": "Link",
+   "label": "Person Responsible for Equipment",
+   "options": "Employee"
+  },
+  {
+   "fieldname": "acknoledgement_agreement",
+   "fieldtype": "Section Break",
+   "label": "Acknoledgement & Agreement"
+  },
+  {
+   "fieldname": "supervisor",
+   "fieldtype": "Link",
+   "label": "Supervisor",
+   "options": "Employee"
+  },
+  {
+   "fieldname": "employee_name",
+   "fieldtype": "Link",
+   "label": "Name",
+   "options": "Employee"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2024-10-13 20:26:00.947617",
+ "modified_by": "Administrator",
+ "module": "ICL Corporate Services",
+ "name": "Asset Damage Loss Theft Report Form",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
