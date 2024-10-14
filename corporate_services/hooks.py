@@ -148,7 +148,7 @@ on_update_map = {
     "Project":"corporate_services.api.notification.project.project_manager.alert",
     "Employee Grievance":"corporate_services.api.notification.grievance.grievance.alert",
     "Supplier Quote Submission": "corporate_services.api.supplier.vat_calc.calc",
-    "Asset Damage Loss Theft Report Form": "corporate_services.api.notification."
+    "Asset Damage Loss Theft Report Form": "corporate_services.api.notification.assets.loss_damage_loss_report.alert"
   
     # "Supplier Quote Submission": [
     #     "corporate_services.api.supplier.finance_alert.alert",

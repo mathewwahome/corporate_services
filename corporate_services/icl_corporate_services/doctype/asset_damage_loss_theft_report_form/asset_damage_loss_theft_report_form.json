@@ -7,19 +7,23 @@
  "field_order": [
   "reported_by_section",
   "employee_name",
+  "employee",
+  "column_break_rmlg",
   "position",
   "contact",
   "title",
   "incident_information_section",
   "incident_date",
   "reported_on",
+  "specific_location",
+  "column_break_rprv",
   "supervisorproject_manager",
   "project",
-  "specific_location",
   "equipment_information_section",
   "equipment_id_no",
   "list_of_equipment_damaged__lost__stolen",
   "how_was_the_equipment_damaged__lost_stolen",
+  "column_break_welj",
   "description_of_damage_to_equipment",
   "estimated_cost_of_repair__replacement",
   "person_responsible_for_equipment",
@@ -134,13 +138,31 @@
   {
    "fieldname": "employee_name",
    "fieldtype": "Link",
-   "label": "Name",
+   "label": "Employee",
    "options": "Employee"
+  },
+  {
+   "fetch_from": "employee_name.employee_name",
+   "fieldname": "employee",
+   "fieldtype": "Read Only",
+   "label": "Employee Name"
+  },
+  {
+   "fieldname": "column_break_rmlg",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_rprv",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_welj",
+   "fieldtype": "Column Break"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-10-13 20:26:00.947617",
+ "modified": "2024-10-14 07:42:12.243843",
  "modified_by": "Administrator",
  "module": "ICL Corporate Services",
  "name": "Asset Damage Loss Theft Report Form",

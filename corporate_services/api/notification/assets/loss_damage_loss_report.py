@@ -77,7 +77,7 @@ def alert(doc, method):
     if doc.workflow_state in [
         "Submitted to Supervisor", "Approved by Supervisor", "Rejected By Supervisor", "Submitted to Finance", "Approved by Finance" , "Rejected by Finance"
     ]:
-        employee_id = doc.requested_by
+        employee_id = doc.employee_name
         employee = frappe.get_doc("Employee", employee_id)
         employee_email = employee.company_email or employee.personal_email
 
