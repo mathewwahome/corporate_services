@@ -1,11 +1,13 @@
 {
  "actions": [],
  "allow_rename": 1,
+ "autoname": "naming_series:",
  "creation": "2024-10-13 20:13:01.090601",
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
   "reported_by_section",
+  "naming_series",
   "employee_name",
   "employee",
   "column_break_rmlg",
@@ -95,6 +97,7 @@
   {
    "fieldname": "equipment_id_no",
    "fieldtype": "Data",
+   "in_list_view": 1,
    "label": "Equipment I.D. No."
   },
   {
@@ -146,6 +149,8 @@
    "fetch_from": "employee_name.employee_name",
    "fieldname": "employee",
    "fieldtype": "Read Only",
+   "in_filter": 1,
+   "in_list_view": 1,
    "label": "Employee Name"
   },
   {
@@ -159,14 +164,22 @@
   {
    "fieldname": "column_break_welj",
    "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Series",
+   "options": "ASSET-IN-RE-.YYYY.-",
+   "reqd": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-10-14 07:48:57.545646",
+ "modified": "2024-10-14 11:44:11.393791",
  "modified_by": "Administrator",
  "module": "ICL Corporate Services",
  "name": "Asset Damage Loss Theft Report Form",
+ "naming_rule": "By \"Naming Series\" field",
  "owner": "Administrator",
  "permissions": [
   {
