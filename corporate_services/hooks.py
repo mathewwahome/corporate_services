@@ -147,7 +147,8 @@ on_update_map = {
     "Timesheet Submission":"corporate_services.api.timesheet.finance_timesheet_submission.finance_timesheet_submission",
     "Project":"corporate_services.api.notification.project.project_manager.alert",
     "Employee Grievance":"corporate_services.api.notification.grievance.grievance.alert",
-    "Supplier Quote Submission": "corporate_services.api.supplier.vat_calc.calc"
+    "Supplier Quote Submission": "corporate_services.api.supplier.vat_calc.calc",
+    "Asset Damage Loss Theft Report Form": "corporate_services.api.notification.assets.loss_damage_loss_report.alert"
   
     # "Supplier Quote Submission": [
     #     "corporate_services.api.supplier.finance_alert.alert",
@@ -172,6 +173,9 @@ event_maps = {
             before_workflow_action_map["Timesheet Submission"],
             timesheet_notifications["Timesheet Submission"]
         ]
+    },
+    "on_save": {
+        # "Supplier Quote Submission": "corporate_services.api.supplier.vat_calc.calc"
     }
 }
 
@@ -281,13 +285,11 @@ scheduler_events = {
 # }
 
 fixtures = [
-    "Leave Type",
+    # "Leave Type",
     "Workflow",
     "Workflow State",
     "Workflow Action Master",
     "Role",
-    
-    
     "Report",
     "Navbar Settings",
     "HR Settings",
