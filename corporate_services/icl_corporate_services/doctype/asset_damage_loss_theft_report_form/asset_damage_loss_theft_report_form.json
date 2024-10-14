@@ -130,10 +130,10 @@
    "label": "Acknoledgement & Agreement"
   },
   {
+   "fetch_from": "employee_name.custom_reports_to_name",
    "fieldname": "supervisor",
-   "fieldtype": "Link",
-   "label": "Supervisor",
-   "options": "Employee"
+   "fieldtype": "Read Only",
+   "label": "Supervisor"
   },
   {
    "fieldname": "employee_name",
@@ -162,7 +162,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-10-14 07:42:12.243843",
+ "modified": "2024-10-14 07:45:52.389794",
  "modified_by": "Administrator",
  "module": "ICL Corporate Services",
  "name": "Asset Damage Loss Theft Report Form",
