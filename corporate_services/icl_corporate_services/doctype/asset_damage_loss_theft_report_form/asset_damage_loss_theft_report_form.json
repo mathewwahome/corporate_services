@@ -72,6 +72,7 @@
   {
    "fieldname": "supervisorproject_manager",
    "fieldtype": "Link",
+   "ignore_user_permissions": 1,
    "label": "Supervisor/Project Manager",
    "options": "Employee"
   },
@@ -162,7 +163,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-10-14 07:45:52.389794",
+ "modified": "2024-10-14 07:48:57.545646",
  "modified_by": "Administrator",
  "module": "ICL Corporate Services",
  "name": "Asset Damage Loss Theft Report Form",
