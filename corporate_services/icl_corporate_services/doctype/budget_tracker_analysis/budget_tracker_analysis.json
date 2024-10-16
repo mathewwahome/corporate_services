@@ -1,0 +1,98 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2024-10-04 09:42:38.743111",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "budget_tracker_analysis_section",
+  "rate",
+  "daysunits",
+  "cost",
+  "amount_received",
+  "actual_expenses",
+  "column_break_jlyi",
+  "total_amount_received",
+  "burn_rate_from_funds_received",
+  "overall_budget_balance",
+  "overall_project_burn_rate"
+ ],
+ "fields": [
+  {
+   "fieldname": "budget_tracker_analysis_section",
+   "fieldtype": "Section Break",
+   "label": "Budget Tracker Analysis"
+  },
+  {
+   "fieldname": "rate",
+   "fieldtype": "Percent",
+   "in_list_view": 1,
+   "label": "Rate"
+  },
+  {
+   "fieldname": "daysunits",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Days/Units"
+  },
+  {
+   "fieldname": "cost",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Cost"
+  },
+  {
+   "fieldname": "amount_received",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Amount Received"
+  },
+  {
+   "fieldname": "actual_expenses",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Actual Expenses"
+  },
+  {
+   "fieldname": "column_break_jlyi",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "total_amount_received",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Total Amount Received"
+  },
+  {
+   "fieldname": "burn_rate_from_funds_received",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Burn Rate from funds Received"
+  },
+  {
+   "fieldname": "overall_budget_balance",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Overall Budget Balance"
+  },
+  {
+   "fieldname": "overall_project_burn_rate",
+   "fieldtype": "Percent",
+   "in_list_view": 1,
+   "label": "Overall Project Burn Rate"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2024-10-04 10:30:54.534632",
+ "modified_by": "Administrator",
+ "module": "ICL Corporate Services",
+ "name": "Budget Tracker Analysis",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
