@@ -1,9 +1,9 @@
 {
   "name": "Consultancy Fee",
-  "owner": "Administrator",
+  "owner": "mwahome@intellisoftkenya.com",
   "creation": "2024-10-15 11:55:51.584164",
   "modified": "2024-10-15 11:56:57.109119",
-  "modified_by": "Administrator",
+  "modified_by": "mwahome@intellisoftkenya.com",
   "docstatus": 1,
   "idx": 2,
   "company": "IntelliSOFT Consulting Limited",
@@ -22,10 +22,10 @@
   "deductions": [
     {
       "name": "rjnges1q3l",
-      "owner": "Administrator",
+      "owner": "mwahome@intellisoftkenya.com",
       "creation": "2024-10-15 11:55:51.584164",
       "modified": "2024-10-15 11:56:57.109119",
-      "modified_by": "Administrator",
+      "modified_by": "mwahome@intellisoftkenya.com",
       "docstatus": 1,
       "idx": 1,
       "salary_component": "Witholding Tax (Resident)",
@@ -57,10 +57,10 @@
   "earnings": [
     {
       "name": "rj7bdlhfc3",
-      "owner": "Administrator",
+      "owner": "mwahome@intellisoftkenya.com",
       "creation": "2024-10-15 11:55:51.584164",
       "modified": "2024-10-15 11:56:57.109119",
-      "modified_by": "Administrator",
+      "modified_by": "mwahome@intellisoftkenya.com",
       "docstatus": 1,
       "idx": 1,
       "salary_component": "Consultancy fees",
