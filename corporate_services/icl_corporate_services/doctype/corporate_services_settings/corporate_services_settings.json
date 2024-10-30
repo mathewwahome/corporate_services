@@ -1,0 +1,47 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2024-10-30 08:21:41.199147",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "budget_line_settings_section",
+  "table_cjks"
+ ],
+ "fields": [
+  {
+   "fieldname": "budget_line_settings_section",
+   "fieldtype": "Section Break",
+   "label": "Budget Line Settings"
+  },
+  {
+   "fieldname": "table_cjks",
+   "fieldtype": "Table",
+   "options": "Payment Entry Budget Line"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2024-10-30 11:12:55.224344",
+ "modified_by": "Administrator",
+ "module": "ICL Corporate Services",
+ "name": "Corporate Services Settings",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

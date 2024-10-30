@@ -1,7 +1,7 @@
 {
  "charts": [],
- "content": "[{\"id\":\"pGDIKaB3sp\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">ICL Finance</span>\",\"col\":12}},{\"id\":\"J7vPhqvR5k\",\"type\":\"paragraph\",\"data\":{\"text\":\"<b>IntelliSOFT Consulting Limited</b>\",\"col\":12}},{\"id\":\"Q6nv3ukJ_0\",\"type\":\"card\",\"data\":{\"card_name\":\"Timesheet\",\"col\":4}},{\"id\":\"Bu53a4s5pU\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Shortcuts</b></span>\",\"col\":12}},{\"id\":\"ig1g1wBMZt\",\"type\":\"card\",\"data\":{\"card_name\":\"Projects\",\"col\":4}},{\"id\":\"TBV1hg88lO\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Reports</b></span>\",\"col\":12}},{\"id\":\"ln-NV1WRW6\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Payroll Report\",\"col\":3}}]",
- "creation": "2024-09-27 07:26:01.743837",
+ "content": "[{\"id\":\"pGDIKaB3sp\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">ICL Finance</span>\",\"col\":12}},{\"id\":\"J7vPhqvR5k\",\"type\":\"paragraph\",\"data\":{\"text\":\"<b>IntelliSOFT Consulting Limited</b>\",\"col\":12}},{\"id\":\"Q6nv3ukJ_0\",\"type\":\"card\",\"data\":{\"card_name\":\"Timesheet\",\"col\":4}},{\"id\":\"Bu53a4s5pU\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Shortcuts</b></span>\",\"col\":12}},{\"id\":\"ig1g1wBMZt\",\"type\":\"card\",\"data\":{\"card_name\":\"Projects\",\"col\":4}},{\"id\":\"yW_hT1yVnY\",\"type\":\"card\",\"data\":{\"card_name\":\"Project Based Accounting\",\"col\":4}},{\"id\":\"TBV1hg88lO\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Reports</b></span>\",\"col\":12}},{\"id\":\"ln-NV1WRW6\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Payroll Report\",\"col\":3}}]",
+ "creation": "2024-10-15 10:48:51.533854",
  "custom_blocks": [],
  "docstatus": 0,
  "doctype": "Workspace",
@@ -99,9 +99,28 @@
    "link_type": "DocType",
    "onboard": 0,
    "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Project Based Accounting",
+   "link_count": 1,
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Corporate Services Settings",
+   "link_count": 0,
+   "link_to": "Corporate Services Settings",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
   }
  ],
- "modified": "2024-09-30 09:04:42.082956",
+ "modified": "2024-10-30 08:31:07.567189",
  "modified_by": "Administrator",
  "module": "ICL Corporate Services",
  "name": "ICL Finance",
