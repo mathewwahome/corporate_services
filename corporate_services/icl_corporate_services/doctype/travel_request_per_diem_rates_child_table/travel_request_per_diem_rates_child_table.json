@@ -1,8 +1,7 @@
 {
  "actions": [],
  "allow_rename": 1,
- "autoname": "field:place_of_travel",
- "creation": "2024-11-06 14:25:25.185375",
+ "creation": "2024-11-06 20:17:35.794693",
  "doctype": "DocType",
  "editable_grid": 1,
  "engine": "InnoDB",
@@ -18,34 +17,29 @@
    "fieldname": "place_of_travel",
    "fieldtype": "Data",
    "in_list_view": 1,
-   "label": "Place of travel",
-   "unique": 1
+   "label": "Place of travel"
   },
   {
-   "description": "where there are no contracted vendors",
    "fieldname": "accommodation_max",
-   "fieldtype": "Currency",
+   "fieldtype": "Data",
    "in_list_view": 1,
    "label": "Accommodation (max)"
   },
   {
-   "description": "where there are no contracted vendors",
    "fieldname": "accommodation_min",
-   "fieldtype": "Currency",
+   "fieldtype": "Data",
    "in_list_view": 1,
    "label": "Accommodation (min)"
   },
   {
-   "description": "Per Diem",
    "fieldname": "meal_incidentals_expenses_max",
-   "fieldtype": "Currency",
+   "fieldtype": "Data",
    "in_list_view": 1,
    "label": "Meal Incidentals Expenses (max)"
   },
   {
-   "description": "Per Diem",
    "fieldname": "meal_incidentals_expenses_min",
-   "fieldtype": "Currency",
+   "fieldtype": "Data",
    "in_list_view": 1,
    "label": "Meal Incidentals Expenses (min)"
   }
@@ -53,11 +47,10 @@
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2024-11-06 20:22:49.168928",
+ "modified": "2024-11-06 20:20:15.631762",
  "modified_by": "Administrator",
  "module": "ICL Corporate Services",
- "name": "Per Diem Rates Child Table",
- "naming_rule": "By fieldname",
+ "name": "Travel Request Per Diem Rates Child Table",
  "owner": "Administrator",
  "permissions": [],
  "sort_field": "modified",
