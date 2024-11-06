@@ -37,14 +37,6 @@ def generate_message(doc, employee_name, email_type, supervisor_name=None):
             {}
         """.format(employee_name, doc.doctype, doctype_url, supervisor_name),
 
-        "submitted_to_hr": """
-            Dear HR,<br><br>
-            {}, {} has been reviewed and approved by {}. You can view the details <a href="{}">here</a>.<br><br>
-            Kind regards,<br>
-            {}
-        """.format(employee_name, doc.doctype, supervisor_name, doctype_url, supervisor_name),
-
-
         "submitted_to_finance": """
             Dear Finance,<br><br>
             {}, {} has been reviewed and, it has been Approved by HR. You can view the details <a href="{}">here</a>.<br><br>
@@ -58,11 +50,7 @@ def generate_message(doc, employee_name, email_type, supervisor_name=None):
             Kind regards,<br>
             Finance Department
         """.format(employee_name, doc.doctype, doctype_url),
-        
-        
-        
-        
-        
+
         "finance_rejected": """
             Dear {},<br><br>
             Your {} has been reviewed and, it has been Rejected by Finance. You can view the details <a href="{}">here</a>.<br><br>
@@ -81,7 +69,7 @@ def generate_message(doc, employee_name, email_type, supervisor_name=None):
 
 def alert(doc, method):
     if doc.workflow_state in [
-        "Submitted to Supervisor","Approved by Supervisor", "Rejected By Supervisor", "Submitted to HR",  "Approved by HR", "Submitted to Finance", "Approved by Finance" , "Rejected by Finance"
+        "Submitted to Supervisor","Approved by Supervisor", "Rejected By Supervisor",  "Approved by HR", "Submitted to Finance", "Approved by Finance" , "Rejected by Finance"
     ]:
         employee_id = doc.employee
         employee = frappe.get_doc("Employee", employee_id)
@@ -133,37 +121,7 @@ def alert(doc, method):
                 pdf_content=pdf_content,
                 doc_name=doc.name
             )
-            
-                    
-             
-             
-            #  Submitted to HR
-        elif doc.workflow_state == "Submitted to HR":
-            message_to_hr = generate_message(doc, employee.employee_name, "submitted_to_hr", supervisor_name)
-            send_email(
-                recipients=hr_manager_emails,
-                subject=frappe._('Travel Request from {}'.format(employee.employee_name)),
-                message=message_to_hr,
-                pdf_content=pdf_content,
-                doc_name=doc.name
-            )
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-                 
-            
+          
         elif doc.workflow_state == "Submitted to Finance":
             
             message_to_finance = generate_message(doc, employee.employee_name, "submitted_to_finance")
@@ -184,10 +142,7 @@ def alert(doc, method):
                 pdf_content=pdf_content,
                 doc_name=doc.name
             )
-            
-            
-            
-            
+          
         elif doc.workflow_state == "Rejected by Finance":
             message_to_employee = generate_message(doc, employee.employee_name, "finance_rejected")
             send_email(
@@ -198,8 +153,6 @@ def alert(doc, method):
                 doc_name=doc.name
             )
 
-
-           
             message_to_hr = generate_message(doc, employee.employee_name, "hr_finance_rejected")
             send_email(
                 recipients= hr_manager_emails,
