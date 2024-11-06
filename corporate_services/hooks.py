@@ -174,8 +174,8 @@ event_maps = {
             timesheet_notifications["Timesheet Submission"]
         ]
     },
-    "on_save": {
-        # "Supplier Quote Submission": "corporate_services.api.supplier.vat_calc.calc"
+    "onload": {
+        "Project": "corporate_services.api.project.payment_entry.fetch_payments"
     }
 }
 

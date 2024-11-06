@@ -2,6 +2,7 @@ import frappe
 from frappe.utils import getdate, add_months
 from datetime import timedelta
 
+@frappe.whitelist()
 def update_annual_leave_allocations():
     leave_type = "Annual Leave"
     leave_days = 2
@@ -38,3 +39,4 @@ def update_annual_leave_allocations():
             leave_allocation.insert(ignore_permissions=True)
 
     frappe.db.commit()
+    return "Annual leave allocations updated successfully."
