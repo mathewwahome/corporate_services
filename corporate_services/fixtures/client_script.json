@@ -207,5 +207,27 @@
   "name": "Annual Leave allocation - HR Settings",
   "script": "frappe.ui.form.on('HR Settings', {\n    refresh: function(frm) {\n        frm.add_custom_button(__('Annual Leave Allocation'), function() {\n            // Call the function when the button is clicked\n            frappe.call({\n                method: \"corporate_services.api.leave.update_annual_leave_allocations.update_annual_leave_allocations\",\n                args: {\n                    // Pass any necessary arguments here\n                },\n                callback: function(response) {\n                    if(response.message) {\n                        frappe.msgprint(__(response.message));\n                    }\n                }\n            });\n        });\n    }\n});\n",
   "view": "Form"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
+  "dt": "Salary Structure Assignment",
+  "enabled": 0,
+  "modified": "2024-11-06 08:48:24.803886",
+  "module": "ICL Corporate Services",
+  "name": "Salary Structure Assignment (Preview)",
+  "script": "frappe.ui.form.on('Salary Structure Assignment', {\n    preview: function(frm) {\n        // Call a server-side function or trigger salary slip calculations\n        frappe.call({\n            method: \"erpnext.payroll.doctype.salary_slip.salary_slip.calculate_net_pay\",\n            args: {\n                'salary_structure_assignment': frm.doc.name\n            },\n            callback: function(response) {\n                // Display the fully calculated preview\n                frm.refresh_fields();\n            }\n        });\n    }\n});",
+  "view": "Form"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
+  "dt": "Travel Request",
+  "enabled": 1,
+  "modified": "2024-11-06 15:37:13.284749",
+  "module": "ICL Corporate Services",
+  "name": "Per Diem Rates Place of Travel Preview",
+  "script": "frappe.ui.form.on('Travel Request', {\n    custom_place_of_travel_per_diem: function(frm) {\n        if (frm.doc.custom_place_of_travel_per_diem) {\n            frm.set_df_property(\"custom_per_diem_rates\", \"hidden\", 0);\n\n            frappe.call({\n                method: \"corporate_services.api.travel_request.travel_request.get_per_diem_rates\",\n                args: {\n                    place: frm.doc.custom_place_of_travel_per_diem\n                },\n                callback: function(r) {\n                    if (r.message) {\n                        frm.clear_table(\"custom_per_diem_rates\");\n\n                        r.message.forEach(item => {\n                            let row = frm.add_child(\"custom_per_diem_rates\");\n                            row.place_of_travel = item.place_of_travel;\n                            row.accommodation_max = item.accommodation_max;\n                            row.accommodation_min = item.accommodation_min;\n                            row.meal_incidentals_expenses_max = item.meal_incidentals_expenses_max;\n                            row.meal_incidentals_expenses_min = item.meal_incidentals_expenses_min;\n                        });\n\n                        frm.refresh_field(\"custom_per_diem_rates\");\n                    }\n                }\n            });\n        } else {\n            frm.set_df_property(\"custom_per_diem_rates\", \"hidden\", 1);\n            frm.clear_table(\"custom_per_diem_rates\");\n            frm.refresh_field(\"custom_per_diem_rates\");\n        }\n    }\n});\n",
+  "view": "Form"
  }
 ]
