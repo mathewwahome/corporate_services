@@ -51,15 +51,37 @@
   }
  ],
  "index_web_pages_for_search": 1,
- "istable": 1,
  "links": [],
- "modified": "2024-11-06 20:22:49.168928",
+ "modified": "2024-11-08 08:50:35.987704",
  "modified_by": "Administrator",
  "module": "ICL Corporate Services",
- "name": "Per Diem Rates Child Table",
+ "name": "Per Diem Rates",
  "naming_rule": "By fieldname",
  "owner": "Administrator",
- "permissions": [],
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Employee",
+   "select": 1,
+   "share": 1
+  }
+ ],
  "sort_field": "modified",
  "sort_order": "DESC",
  "states": []

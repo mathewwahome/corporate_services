@@ -5,5 +5,5 @@
 from frappe.tests.utils import FrappeTestCase
 
 
-class TestTravelPerDiemRates(FrappeTestCase):
+class TestTravelRequestPerDiemRatesChildTable(FrappeTestCase):
 	pass

@@ -5,5 +5,5 @@
 from frappe.model.document import Document
 
 
-class TravelPerDiemRates(Document):
+class PerDiemRates(Document):
 	pass
