@@ -19,6 +19,8 @@
   "travel_request",
   "section_break_rmbi",
   "activity_participants_reconciliation",
+  "total_spent",
+  "total_balance",
   "section_break_xdco",
   "table_hstb",
   "total_per_diem"
@@ -118,11 +120,21 @@
    "fieldtype": "Table",
    "label": "Activity Participants Reconciliation",
    "options": "Activity Participants Reconciliation"
+  },
+  {
+   "fieldname": "total_spent",
+   "fieldtype": "Float",
+   "label": "Total Spent"
+  },
+  {
+   "fieldname": "total_balance",
+   "fieldtype": "Float",
+   "label": "Total Balance"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-11-06 23:49:10.490778",
+ "modified": "2024-11-08 10:24:35.669338",
  "modified_by": "Administrator",
  "module": "ICL Corporate Services",
  "name": "Travel Request Reconciliation",
