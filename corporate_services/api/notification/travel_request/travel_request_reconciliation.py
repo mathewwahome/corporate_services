@@ -10,32 +10,17 @@ def send_email(recipients, subject, message, pdf_content, doc_name):
             'fname': '{}.pdf'.format(doc_name),
             'fcontent': pdf_content
         }],
-        header=("Travel Request", "text/html")
+        header=("Travel Request Reconciliation", "text/html")
     )
 
 def generate_message(doc, employee_name, email_type, supervisor_name=None):
     doctype_url = get_url_to_form(doc.doctype, doc.name)
     messages = {
-        "supervisor": """
+        "supervisor_update": """
             Dear {},<br><br>
-            I have submitted my {} for your review and approval. You can view it <a href="{}">here</a>.<br><br>
-            Kind regards,<br>
-            {}
-        """.format(supervisor_name, doc.doctype, doctype_url, employee_name),
-        
-        "approved_by_supervisor": """
-            Dear {},<br><br>
-            Your {} has been reviewed and Approved by your supervisor. You can view the details <a href="{}">here</a>.<br><br>
-            Kind regards,<br>
-            {}
-        """.format(employee_name, doc.doctype, doctype_url, supervisor_name),
-
-        "supervisor_rejected": """
-            Dear {},<br><br>
-            Your {} has been reviewed and unfortunately, it has been rejected. You can view the reason and details <a href="{}">here</a>.<br><br>
-            Kind regards,<br>
-            {}
-        """.format(employee_name, doc.doctype, doctype_url, supervisor_name),
+            {}, has submitted the Travel Request Reconciliation, for the recent travel. <br><br> Thank you.
+            
+        """.format(supervisor_name, employee_name),
 
         "submitted_to_finance": """
             Dear Finance,<br><br>
@@ -69,12 +54,16 @@ def generate_message(doc, employee_name, email_type, supervisor_name=None):
 
 def alert(doc, method):
     if doc.workflow_state in [
-        "Submitted to Supervisor","Approved by Supervisor", "Rejected By Supervisor",  "Approved by HR", "Submitted to Finance", "Approved by Finance" , "Rejected by Finance"
+        "Submitted to Finance", "Approved by Finance" , "Rejected by Finance"
     ]:
-        employee_id = doc.employee
-        employee = frappe.get_doc("Employee", employee_id)
-        employee_email = employee.company_email or employee.personal_email
+        
+        travel_request_doc = frappe.get_doc("Travel Request", doc.travel_request)
 
+        employee_id = travel_request_doc.employee
+        
+        employee = frappe.get_doc("Employee", employee_id)
+        
+        employee_email = employee.company_email or employee.personal_email
 
         supervisor_id = employee.reports_to
         supervisor = frappe.get_doc("Employee", supervisor_id)
@@ -90,54 +79,31 @@ def alert(doc, method):
         print_format = "Standard"
         pdf_content = frappe.get_print(doc.doctype, doc.name, print_format, as_pdf=True)
 
-        if doc.workflow_state == "Submitted to Supervisor":
-            if employee.reports_to:
-                
-                message_to_supervisor = generate_message(doc, employee.employee_name, "supervisor", supervisor_name )
-                send_email(
-                    recipients=[supervisor_email],
-                    subject=frappe._('Travel Request from {}'.format(employee.employee_name)),
-                    message=message_to_supervisor,
-                    pdf_content=pdf_content,
-                    doc_name=doc.name
-                )
-             
-        elif doc.workflow_state == "Approved by Supervisor":
-            message_to_employee = generate_message(doc, employee.employee_name, "approved_by_supervisor", supervisor_name)
-            send_email(
-                recipients=[employee_email],
-                subject=frappe._('Your Travel Request has been Approved by the supervisor'),
-                message=message_to_employee,
-                pdf_content=pdf_content,
-                doc_name=doc.name
-            )     
-
-        elif doc.workflow_state == "Rejected By Supervisor":
-            message_to_employee = generate_message(doc, employee.employee_name, "supervisor_rejected", supervisor_name)
-            send_email(
-                recipients=[employee_email],
-                subject=frappe._('Your Travel Request has been Rejected'),
-                message=message_to_employee,
-                pdf_content=pdf_content,
-                doc_name=doc.name
-            )
-          
-        elif doc.workflow_state == "Submitted to Finance":
+        if doc.workflow_state == "Submitted to Finance":
             
             message_to_finance = generate_message(doc, employee.employee_name, "submitted_to_finance")
             send_email(
                 recipients=finance_team_emails,
-                subject=frappe._('Travel Request from {}'.format(employee.employee_name)),
+                subject=frappe._('Travel Request Reconciliation from {}'.format(employee.employee_name)),
                 message=message_to_finance,
                 pdf_content=pdf_content,
                 doc_name=doc.name
             )
+            
+            message_to_supervisor = generate_message(doc, employee.employee_name, "supervisor", supervisor_name )
+            send_email(
+                recipients=[supervisor_email],
+                subject=frappe._('Submission of Travel Request Reconciliation for {}'.format(employee.employee_name)),
+                message=message_to_supervisor,
+                pdf_content=pdf_content,
+                doc_name=doc.name
+                )
        
         elif doc.workflow_state == "Approved by Finance":
             message_to_employee = generate_message(doc, employee.employee_name, "finance_approved")
             send_email(
                 recipients=[employee_email],
-                subject=frappe._('Your Travel Request has been Approved by Finance'),
+                subject=frappe._('Your Travel Request Reconciliation has been Approved by Finance'),
                 message=message_to_employee,
                 pdf_content=pdf_content,
                 doc_name=doc.name
@@ -147,7 +113,7 @@ def alert(doc, method):
             message_to_employee = generate_message(doc, employee.employee_name, "finance_rejected")
             send_email(
                 recipients=[employee_email],
-                subject=frappe._('Your Travel Request has been Rejected by Finance'),
+                subject=frappe._('Your Travel Request Reconciliation has been Rejected by Finance'),
                 message=message_to_employee,
                 pdf_content=pdf_content,
                 doc_name=doc.name
@@ -156,14 +122,14 @@ def alert(doc, method):
             message_to_hr = generate_message(doc, employee.employee_name, "hr_finance_rejected")
             send_email(
                 recipients= hr_manager_emails,
-                subject=frappe._('Travel Request Rejected by Finance'),
+                subject=frappe._('Travel Request Reconciliation Rejected by Finance'),
                 message=message_to_hr,
                 pdf_content=pdf_content,
                 doc_name=doc.name
             )
 
 doc_events = {
-    "Travel Request": {
+    "Travel Request Reconciliation": {
         "on_update": alert
     }
 }

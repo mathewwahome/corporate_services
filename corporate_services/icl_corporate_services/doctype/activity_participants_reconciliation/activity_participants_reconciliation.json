@@ -8,7 +8,6 @@
  "field_order": [
   "description_travel_costs",
   "units",
-  "pax",
   "total_paid",
   "fx_rate",
   "amount_in_local_currency",
@@ -16,42 +15,43 @@
  ],
  "fields": [
   {
+   "columns": 2,
    "fieldname": "description_travel_costs",
    "fieldtype": "Data",
    "in_list_view": 1,
    "label": "Expence description"
   },
   {
+   "columns": 2,
    "fieldname": "units",
    "fieldtype": "Date",
    "in_list_view": 1,
    "label": "Date"
   },
   {
-   "fieldname": "pax",
-   "fieldtype": "Int",
-   "in_list_view": 1,
-   "label": "Unit"
-  },
-  {
+   "columns": 2,
    "fieldname": "attach_receipt",
    "fieldtype": "Attach",
    "in_list_view": 1,
    "label": "Attach Receipt"
   },
   {
+   "columns": 2,
    "fieldname": "amount_in_local_currency",
    "fieldtype": "Float",
    "in_list_view": 1,
-   "label": "Amount in local Currency"
+   "label": "Amount in local Currency",
+   "read_only": 1
   },
   {
+   "columns": 1,
    "fieldname": "total_paid",
    "fieldtype": "Float",
    "in_list_view": 1,
    "label": "Total Paid"
   },
   {
+   "columns": 1,
    "fieldname": "fx_rate",
    "fieldtype": "Float",
    "in_list_view": 1,
@@ -61,7 +61,7 @@
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2024-11-12 08:08:30.231346",
+ "modified": "2024-11-12 13:05:02.144583",
  "modified_by": "Administrator",
  "module": "ICL Corporate Services",
  "name": "Activity Participants Reconciliation",

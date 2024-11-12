@@ -19,9 +19,12 @@
   "section_break_rmbi",
   "currency",
   "activity_participants_reconciliation",
+  "section_break_iixw",
   "total_advance",
   "total_spent",
   "total_balance",
+  "column_break_zkad",
+  "total_local_amount",
   "section_break_oxho",
   "trip_report"
  ],
@@ -74,7 +77,7 @@
    "fieldname": "trip_dates_from",
    "fieldtype": "Date",
    "label": "Trip Dates (From)",
-   "reqd": 1
+   "read_only": 1
   },
   {
    "fieldname": "trip_datesto",
@@ -96,13 +99,13 @@
   },
   {
    "fieldname": "total_spent",
-   "fieldtype": "Float",
+   "fieldtype": "Data",
    "label": "Total Spent",
    "read_only": 1
   },
   {
    "fieldname": "total_balance",
-   "fieldtype": "Float",
+   "fieldtype": "Data",
    "label": "Total Balance",
    "read_only": 1
   },
@@ -128,8 +131,9 @@
   {
    "fetch_from": "travel_request.custom_expected_support",
    "fieldname": "total_advance",
-   "fieldtype": "Float",
+   "fieldtype": "Data",
    "label": "Total Advance",
+   "precision": "2",
    "read_only": 1
   },
   {
@@ -139,15 +143,32 @@
    "options": "Activity Participants Reconciliation"
   },
   {
+   "fetch_from": "travel_request.custom_currency",
    "fieldname": "currency",
-   "fieldtype": "Currency",
+   "fieldtype": "Link",
    "in_list_view": 1,
-   "label": "Currency"
+   "label": "Currency",
+   "options": "Currency",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_iixw",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_zkad",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "total_local_amount",
+   "fieldtype": "Currency",
+   "label": "Total Local Amount",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-11-12 08:35:28.923016",
+ "modified": "2024-11-12 13:32:12.555982",
  "modified_by": "Administrator",
  "module": "ICL Corporate Services",
  "name": "Travel Request Reconciliation",
