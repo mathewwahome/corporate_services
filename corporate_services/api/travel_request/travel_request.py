@@ -10,6 +10,15 @@ def get_per_diem_rates(place):
                       fields=["place_of_travel", "accommodation_max", "accommodation_min", 
                               "meal_incidentals_expenses_max", "meal_incidentals_expenses_min"])
 
+@frappe.whitelist()
+def get_local_per_diem_rates():
+    if not frappe.has_permission("Local Per Diem Rates", "read"):
+        frappe.throw("You do not have permission to access this resource.")
+    
+    return frappe.get_all("Local Per Diem Rates", 
+                          fields=["from", "to_countries", "province", 
+                                  "transport_means_of_travel", "fares", 
+                                  "m_i", "accommodation"])
 
 @frappe.whitelist()
 def get_travel_request_costs(travel_request):

@@ -1,0 +1,88 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2024-11-13 18:48:50.192563",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "from",
+  "to_countries",
+  "province",
+  "transport_means_of_travel",
+  "column_break_pjzx",
+  "fares",
+  "m_i",
+  "accommodation"
+ ],
+ "fields": [
+  {
+   "fieldname": "from",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "From"
+  },
+  {
+   "fieldname": "province",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Province"
+  },
+  {
+   "fieldname": "fares",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Fares"
+  },
+  {
+   "fieldname": "m_i",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "M & I"
+  },
+  {
+   "fieldname": "transport_means_of_travel",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Transport / Means of travel"
+  },
+  {
+   "fieldname": "to_countries",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "To (Counties)"
+  },
+  {
+   "fieldname": "accommodation",
+   "fieldtype": "Currency",
+   "label": "Accommodation"
+  },
+  {
+   "fieldname": "column_break_pjzx",
+   "fieldtype": "Column Break"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2024-11-13 20:22:21.717896",
+ "modified_by": "Administrator",
+ "module": "ICL Corporate Services",
+ "name": "Local Per Diem Rates",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
