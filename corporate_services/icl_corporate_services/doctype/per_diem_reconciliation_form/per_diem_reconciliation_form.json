@@ -1,0 +1,81 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2024-11-06 22:57:05.561575",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "region_facility",
+  "reciept_no",
+  "hotel_accommodation",
+  "breakfast",
+  "lunch",
+  "dinner",
+  "fx_currency",
+  "amount_local_currency"
+ ],
+ "fields": [
+  {
+   "fieldname": "region_facility",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Region/ Facility"
+  },
+  {
+   "fieldname": "reciept_no",
+   "fieldtype": "Attach",
+   "in_list_view": 1,
+   "label": "Reciept No."
+  },
+  {
+   "description": " Max Ksh 10,000",
+   "fieldname": "hotel_accommodation",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Hotel Accommodation"
+  },
+  {
+   "fieldname": "breakfast",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Breakfast"
+  },
+  {
+   "fieldname": "lunch",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Lunch"
+  },
+  {
+   "fieldname": "dinner",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Dinner"
+  },
+  {
+   "fieldname": "fx_currency",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Fx Currency"
+  },
+  {
+   "fieldname": "amount_local_currency",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Amount local currency"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2024-11-06 23:12:31.314442",
+ "modified_by": "Administrator",
+ "module": "ICL Corporate Services",
+ "name": "Per Diem Reconciliation Form",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

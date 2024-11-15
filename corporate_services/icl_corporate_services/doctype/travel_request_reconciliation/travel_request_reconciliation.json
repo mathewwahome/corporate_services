@@ -1,0 +1,194 @@
+{
+ "actions": [],
+ "autoname": "field:travel_request",
+ "creation": "2024-11-06 22:47:18.144713",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "travel_request",
+  "travelers_name",
+  "actual_departure_time",
+  "actual_arrival_time",
+  "date_advance_taken",
+  "date_of_reconciliation",
+  "column_break_pfyo",
+  "project_budget_codes",
+  "activity_description",
+  "trip_dates_from",
+  "trip_datesto",
+  "section_break_rmbi",
+  "currency",
+  "activity_participants_reconciliation",
+  "section_break_iixw",
+  "total_advance",
+  "total_spent",
+  "total_balance",
+  "column_break_zkad",
+  "total_local_amount",
+  "section_break_oxho",
+  "trip_report"
+ ],
+ "fields": [
+  {
+   "fieldname": "date_advance_taken",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Date Advance Taken",
+   "reqd": 1
+  },
+  {
+   "fieldname": "date_of_reconciliation",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Date of Reconciliation",
+   "reqd": 1
+  },
+  {
+   "fieldname": "actual_departure_time",
+   "fieldtype": "Time",
+   "in_list_view": 1,
+   "label": "Actual Departure Time",
+   "reqd": 1
+  },
+  {
+   "fieldname": "actual_arrival_time",
+   "fieldtype": "Time",
+   "label": "Actual Arrival Time",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_pfyo",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "project_budget_codes",
+   "fieldtype": "Data",
+   "label": "Project Budget Code(s)",
+   "reqd": 1
+  },
+  {
+   "fieldname": "activity_description",
+   "fieldtype": "Small Text",
+   "label": "Activity Description",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "travel_request.custom_travel_date",
+   "fieldname": "trip_dates_from",
+   "fieldtype": "Date",
+   "label": "Trip Dates (From)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "trip_datesto",
+   "fieldtype": "Date",
+   "label": "Trip Dates(To)",
+   "reqd": 1
+  },
+  {
+   "fieldname": "travel_request",
+   "fieldtype": "Link",
+   "label": "Travel Request",
+   "options": "Travel Request",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "section_break_rmbi",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "total_spent",
+   "fieldtype": "Data",
+   "label": "Total Spent",
+   "read_only": 1
+  },
+  {
+   "fieldname": "total_balance",
+   "fieldtype": "Data",
+   "label": "Total Balance",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "travel_request.employee_name",
+   "fieldname": "travelers_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Travelers Name",
+   "options": "Travel Request",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_oxho",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "trip_report",
+   "fieldtype": "Attach",
+   "label": "Trip Report",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "travel_request.custom_expected_support",
+   "fieldname": "total_advance",
+   "fieldtype": "Data",
+   "label": "Total Advance",
+   "precision": "2",
+   "read_only": 1
+  },
+  {
+   "fieldname": "activity_participants_reconciliation",
+   "fieldtype": "Table",
+   "label": "Activity Participants Reconciliation",
+   "options": "Activity Participants Reconciliation"
+  },
+  {
+   "fetch_from": "travel_request.custom_currency",
+   "fieldname": "currency",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Currency",
+   "options": "Currency",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_iixw",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_zkad",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "total_local_amount",
+   "fieldtype": "Currency",
+   "label": "Total Local Amount",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2024-11-12 13:32:12.555982",
+ "modified_by": "Administrator",
+ "module": "ICL Corporate Services",
+ "name": "Travel Request Reconciliation",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

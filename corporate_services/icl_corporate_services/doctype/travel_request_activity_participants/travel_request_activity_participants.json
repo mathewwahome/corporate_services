@@ -1,0 +1,82 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2024-11-06 16:15:07.172731",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "description_travel_costs",
+  "date",
+  "hotel_accomodation",
+  "meals_incedentals",
+  "fx_rate",
+  "total",
+  "local_currency"
+ ],
+ "fields": [
+  {
+   "columns": 2,
+   "fieldname": "description_travel_costs",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Description (Travel Costs)"
+  },
+  {
+   "columns": 1,
+   "fieldname": "total",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Total",
+   "read_only": 1
+  },
+  {
+   "columns": 1,
+   "fieldname": "date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Date"
+  },
+  {
+   "columns": 2,
+   "fieldname": "hotel_accomodation",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Hotel Accomodation (Max Ksh 10,000)"
+  },
+  {
+   "columns": 1,
+   "fieldname": "local_currency",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Amount Local Currency",
+   "read_only": 1
+  },
+  {
+   "columns": 1,
+   "fieldname": "meals_incedentals",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Meals and Incidentals"
+  },
+  {
+   "columns": 1,
+   "fieldname": "fx_rate",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Fx (Rate)"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2024-11-12 10:57:16.648266",
+ "modified_by": "Administrator",
+ "module": "ICL Corporate Services",
+ "name": "Travel Request Activity Participants",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
