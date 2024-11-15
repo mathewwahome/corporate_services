@@ -7,6 +7,8 @@
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
+  "naming_series",
+  "currency",
   "place_of_travel",
   "accommodation_max",
   "accommodation_min",
@@ -24,35 +26,53 @@
   {
    "description": "where there are no contracted vendors",
    "fieldname": "accommodation_max",
-   "fieldtype": "Currency",
+   "fieldtype": "Float",
    "in_list_view": 1,
-   "label": "Accommodation (max)"
+   "label": "Accommodation (max)",
+   "precision": "2"
   },
   {
    "description": "where there are no contracted vendors",
    "fieldname": "accommodation_min",
-   "fieldtype": "Currency",
+   "fieldtype": "Float",
    "in_list_view": 1,
-   "label": "Accommodation (min)"
+   "label": "Accommodation (min)",
+   "precision": "2"
   },
   {
    "description": "Per Diem",
    "fieldname": "meal_incidentals_expenses_max",
-   "fieldtype": "Currency",
+   "fieldtype": "Float",
    "in_list_view": 1,
-   "label": "Meal Incidentals Expenses (max)"
+   "label": "Meal Incidentals Expenses (max)",
+   "precision": "2"
   },
   {
    "description": "Per Diem",
    "fieldname": "meal_incidentals_expenses_min",
-   "fieldtype": "Currency",
+   "fieldtype": "Float",
    "in_list_view": 1,
-   "label": "Meal Incidentals Expenses (min)"
+   "label": "Meal Incidentals Expenses (min)",
+   "precision": "2"
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Series",
+   "options": "PD-R-.YYYY.-",
+   "reqd": 1
+  },
+  {
+   "fieldname": "currency",
+   "fieldtype": "Link",
+   "label": "Currency",
+   "options": "Currency",
+   "reqd": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-11-08 08:50:35.987704",
+ "modified": "2024-11-15 09:03:32.978047",
  "modified_by": "Administrator",
  "module": "ICL Corporate Services",
  "name": "Per Diem Rates",

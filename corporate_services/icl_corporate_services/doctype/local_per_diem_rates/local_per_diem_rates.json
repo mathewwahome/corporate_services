@@ -1,21 +1,25 @@
 {
  "actions": [],
  "allow_rename": 1,
+ "autoname": "naming_series:",
  "creation": "2024-11-13 18:48:50.192563",
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
+  "naming_series",
+  "currency",
   "from",
   "to_countries",
   "province",
-  "transport_means_of_travel",
   "column_break_pjzx",
+  "transport_means_of_travel",
   "fares",
   "m_i",
   "accommodation"
  ],
  "fields": [
   {
+   "columns": 1,
    "fieldname": "from",
    "fieldtype": "Data",
    "in_list_view": 1,
@@ -28,12 +32,14 @@
    "label": "Province"
   },
   {
+   "columns": 1,
    "fieldname": "fares",
    "fieldtype": "Currency",
    "in_list_view": 1,
    "label": "Fares"
   },
   {
+   "columns": 1,
    "fieldname": "m_i",
    "fieldtype": "Currency",
    "in_list_view": 1,
@@ -46,12 +52,14 @@
    "label": "Transport / Means of travel"
   },
   {
+   "columns": 1,
    "fieldname": "to_countries",
    "fieldtype": "Data",
    "in_list_view": 1,
    "label": "To (Counties)"
   },
   {
+   "columns": 1,
    "fieldname": "accommodation",
    "fieldtype": "Currency",
    "label": "Accommodation"
@@ -59,14 +67,31 @@
   {
    "fieldname": "column_break_pjzx",
    "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Series",
+   "options": "LP-R-.YYYY.-",
+   "reqd": 1
+  },
+  {
+   "columns": 1,
+   "fieldname": "currency",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Currency",
+   "options": "Currency",
+   "reqd": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-11-13 20:22:21.717896",
+ "modified": "2024-11-15 08:56:58.029733",
  "modified_by": "Administrator",
  "module": "ICL Corporate Services",
  "name": "Local Per Diem Rates",
+ "naming_rule": "By \"Naming Series\" field",
  "owner": "Administrator",
  "permissions": [
   {
