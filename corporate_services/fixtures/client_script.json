@@ -246,10 +246,10 @@
   "doctype": "Client Script",
   "dt": "Local Per Diem Rates",
   "enabled": 1,
-  "modified": "2024-11-15 08:48:12.019020",
+  "modified": "2024-11-15 09:20:21.041384",
   "module": "ICL Corporate Services",
   "name": "Local Per Diem Rates",
-  "script": "frappe.ui.form.on('Local Per Diem Rates', {\n    currency: function(frm) {\n        // Get the selected currency\n        let selected_currency = frm.doc.currency;\n\n        // Fetch the currency symbol from the system using a frappe call\n        if (selected_currency) {\n            frappe.call({\n                method: \"frappe.client.get_value\",\n                args: {\n                    doctype: \"Currency\",\n                    filters: { \"currency_name\": selected_currency },\n                    fieldname: \"symbol\"\n                },\n                callback: function(response) {\n                    if (response.message) {\n                        let currency_symbol = response.message.symbol;\n                        // Set the currency symbol in the amount field\n                        frm.set_value('fares', currency_symbol);\n                    } else {\n                        // If no symbol found, you can clear or set a default value\n                        frm.set_value('fares', '');\n                    }\n                }\n            });\n        }\n    }\n});\n",
+  "script": "frappe.ui.form.on('Local Per Diem Rates', {\n    currency: function(frm) {\n        let selected_currency = frm.doc.currency;\n\n        if (selected_currency) {\n            frappe.call({\n                method: \"frappe.client.get_value\",\n                args: {\n                    doctype: \"Currency\",\n                    filters: { \"currency_name\": selected_currency },\n                    fieldname: \"symbol\"\n                },\n                callback: function(response) {\n                    if (response.message) {\n                        let currency_symbol = response.message.symbol;\n                        frm.set_value('fares', currency_symbol);\n                    } else {\n                        frm.set_value('fares', '');\n                    }\n                }\n            });\n        }\n    }\n});\n",
   "view": "Form"
  }
 ]
