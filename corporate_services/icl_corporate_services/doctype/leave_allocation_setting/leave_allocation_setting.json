@@ -1,0 +1,61 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2024-11-15 10:03:08.533743",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "leave_type",
+  "days_to_add",
+  "enabled",
+  "hr_email"
+ ],
+ "fields": [
+  {
+   "fieldname": "leave_type",
+   "fieldtype": "Link",
+   "label": "Leave Type",
+   "options": "Leave Type"
+  },
+  {
+   "fieldname": "days_to_add",
+   "fieldtype": "Int",
+   "label": "Days To Add"
+  },
+  {
+   "default": "0",
+   "fieldname": "enabled",
+   "fieldtype": "Check",
+   "label": "Enabled"
+  },
+  {
+   "fieldname": "hr_email",
+   "fieldtype": "Link",
+   "label": "HR Email",
+   "options": "User"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "issingle": 1,
+ "links": [],
+ "modified": "2024-11-15 12:02:31.748036",
+ "modified_by": "Administrator",
+ "module": "ICL Corporate Services",
+ "name": "Leave Allocation Setting",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
