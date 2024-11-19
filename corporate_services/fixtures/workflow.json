@@ -2844,7 +2844,7 @@
   "doctype": "Workflow",
   "document_type": "Travel Request Reconciliation",
   "is_active": 1,
-  "modified": "2024-11-12 13:15:50.500676",
+  "modified": "2024-11-18 11:42:22.033068",
   "name": "Travel Request Reconciliation Workflow",
   "override_status": 0,
   "send_email_alert": 0,
@@ -2882,7 +2882,7 @@
    {
     "allow_edit": "All",
     "avoid_status_override": 0,
-    "doc_status": "0",
+    "doc_status": "1",
     "is_optional_state": 0,
     "message": null,
     "next_action_email_template": null,
@@ -2897,7 +2897,7 @@
    {
     "allow_edit": "All",
     "avoid_status_override": 0,
-    "doc_status": "0",
+    "doc_status": "1",
     "is_optional_state": 0,
     "message": null,
     "next_action_email_template": null,
@@ -2926,7 +2926,7 @@
    {
     "action": "Approve",
     "allow_self_approval": 0,
-    "allowed": "All",
+    "allowed": "Finance",
     "condition": null,
     "next_state": "Approved by Finance",
     "parent": "Travel Request Reconciliation Workflow",
@@ -2938,7 +2938,7 @@
    {
     "action": "Reject",
     "allow_self_approval": 0,
-    "allowed": "All",
+    "allowed": "Finance",
     "condition": null,
     "next_state": "Rejected by Finance",
     "parent": "Travel Request Reconciliation Workflow",

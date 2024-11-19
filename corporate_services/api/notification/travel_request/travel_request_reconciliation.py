@@ -19,7 +19,6 @@ def generate_message(doc, employee_name, email_type, supervisor_name=None):
         "supervisor_update": """
             Dear {},<br><br>
             {}, has submitted the Travel Request Reconciliation, for the recent travel. <br><br> Thank you.
-            
         """.format(supervisor_name, employee_name),
 
         "submitted_to_finance": """
@@ -27,7 +26,7 @@ def generate_message(doc, employee_name, email_type, supervisor_name=None):
             {}, {} has been reviewed and, it has been Approved by HR. You can view the details <a href="{}">here</a>.<br><br>
             Kind regards,<br>
             HR
-        """.format(employee_name, doc.doctype, doctype_url ),
+        """.format(employee_name, doc.doctype, doctype_url),
 
         "finance_approved": """
             Dear {},<br><br>
@@ -49,6 +48,11 @@ def generate_message(doc, employee_name, email_type, supervisor_name=None):
             Kind regards,<br>
             Finance Department
         """.format(employee_name, doc.doctype, doctype_url),
+
+        "supervisor": """
+            Dear {},<br><br>
+            {}, has submitted the Travel Request Reconciliation, for the recent travel. <br><br> Thank you.
+        """.format(supervisor_name, employee_name)
     }
     return messages[email_type]
 
