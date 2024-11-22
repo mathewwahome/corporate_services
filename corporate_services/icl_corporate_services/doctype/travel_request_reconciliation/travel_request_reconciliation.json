@@ -21,6 +21,7 @@
   "activity_participants_reconciliation",
   "section_break_iixw",
   "total_advance",
+  "local_total_advance",
   "total_spent",
   "total_balance",
   "column_break_zkad",
@@ -163,11 +164,18 @@
    "fieldtype": "Currency",
    "label": "Total Local Amount",
    "read_only": 1
+  },
+  {
+   "fetch_from": "travel_request.custom_amount_in_local_currency",
+   "fieldname": "local_total_advance",
+   "fieldtype": "Currency",
+   "label": "Local Total Advance",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-11-18 12:43:48.918417",
+ "modified": "2024-11-22 10:03:38.817225",
  "modified_by": "Administrator",
  "module": "ICL Corporate Services",
  "name": "Travel Request Reconciliation",
