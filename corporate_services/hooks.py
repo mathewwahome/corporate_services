@@ -177,8 +177,17 @@ event_maps = {
     },
     "onload": {
         "Project": "corporate_services.api.project.payment_entry.fetch_payments"
+    },
+    "after_insert": {
+        # Handling the creation of a folder for Opportunity
+        "Opportunity": "corporate_services.api.project.opportunity_handlers.create_folder_for_opportunity",
+    },
+    "before_save": {
+        # Save the bid document to the opportunity folder
+        "Opportunity": "corporate_services.api.project.opportunity_handlers.save_bid_document_to_opportunity_folder"
     }
 }
+
 
 
 doc_events = generate_doc_events(event_maps)
