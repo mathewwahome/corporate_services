@@ -176,9 +176,9 @@ event_maps = {
             timesheet_notifications["Timesheet Submission"]
         ]
     },
-    "onload": {
-        "Project": "corporate_services.api.project.payment_entry.fetch_payments"
-    },
+    # "onload": {
+    #     "Project": "corporate_services.api.project.payment_entry.fetch_payments"
+    # },
     "after_insert": {
         "Opportunity": "corporate_services.api.project.opportunity_handlers.create_folder_for_opportunity",
     },
