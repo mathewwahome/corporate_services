@@ -1,0 +1,63 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2024-11-23 11:14:20.912202",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "table_bqir",
+  "table_pmul",
+  "table_wkef",
+  "budget_template_summary"
+ ],
+ "fields": [
+  {
+   "fieldname": "table_pmul",
+   "fieldtype": "Table",
+   "label": "Budget Template Detailed",
+   "options": "Budget Line Template"
+  },
+  {
+   "fieldname": "table_wkef",
+   "fieldtype": "Table",
+   "label": "Budget Tracker Analysis",
+   "options": "Budget Tracker Analysis"
+  },
+  {
+   "fieldname": "table_bqir",
+   "fieldtype": "Table",
+   "label": "Payment Entry Budget Line",
+   "options": "Payment Entry Budget Line"
+  },
+  {
+   "fieldname": "budget_template_summary",
+   "fieldtype": "Table",
+   "label": "Budget Template Summary",
+   "options": "Budget Template Summary"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2024-11-23 11:38:25.631625",
+ "modified_by": "Administrator",
+ "module": "ICL Corporate Services",
+ "name": "Template",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
