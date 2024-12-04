@@ -223,5 +223,23 @@
   "name": "Approved by CEO",
   "style": "Success",
   "workflow_state_name": "Approved by CEO"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": "",
+  "modified": "2024-12-03 11:50:59.200860",
+  "name": "Approved by Opportunity Owner",
+  "style": "",
+  "workflow_state_name": "Approved by Opportunity Owner"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": "",
+  "modified": "2024-12-03 11:51:22.017458",
+  "name": "Rejected by Opportunity Owner",
+  "style": "",
+  "workflow_state_name": "Rejected by Opportunity Owner"
  }
 ]
