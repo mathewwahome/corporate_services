@@ -151,6 +151,7 @@ on_update_map = {
     "Supplier Quote Submission": "corporate_services.api.supplier.vat_calc.calc",
     "Asset Damage Loss Theft Report Form": "corporate_services.api.notification.assets.loss_damage_loss_report.alert",
     "Opportunity": "corporate_services.api.notification.project.bidding.alert",
+    "General Requisition Form": "corporate_services.api.notification.requisition.general_requisition.alert",
   
     # "Supplier Quote Submission": [
     #     "corporate_services.api.supplier.finance_alert.alert",

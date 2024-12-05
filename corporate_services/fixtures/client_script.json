@@ -273,5 +273,16 @@
   "name": "New Asset Damage Loss Theft Report Form",
   "script": "frappe.ui.form.on('Asset Damage Loss Theft Report Form', {\n  reported_on: function (frm) {\n        if (frm.doc.reported_on && frm.doc.incident_date) {\n            const reported_on_date = frappe.datetime.str_to_obj(frm.doc.reported_on);\n            const incident_date = frappe.datetime.str_to_obj(frm.doc.incident_date);\n\n            if (reported_on_date < incident_date) {\n                frappe.msgprint({\n                    title: __('Validation Error'),\n                    message: __('The \"Reported On\" date cannot be earlier than the \"Incident Date\".'),\n                    indicator: 'red'\n                });\n\n                frm.set_value('reported_on', null);\n            }\n        }\n    },\n\n    incident_date: function (frm) {\n        if (frm.doc.reported_on && frm.doc.incident_date) {\n            const reported_on_date = frappe.datetime.str_to_obj(frm.doc.reported_on);\n            const incident_date = frappe.datetime.str_to_obj(frm.doc.incident_date);\n\n            if (reported_on_date < incident_date) {\n                frappe.msgprint({\n                    title: __('Validation Error'),\n                    message: __('The \"Incident Date\" cannot be after the \"Reported On\" date.'),\n                    indicator: 'red'\n                });\n\n                frm.set_value('incident_date', null);\n            }\n        }\n    }\n});",
   "view": "Form"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
+  "dt": "General Requisition Form",
+  "enabled": 1,
+  "modified": "2024-12-05 09:32:22.454539",
+  "module": "ICL Corporate Services",
+  "name": "General Requisition Form",
+  "script": "frappe.ui.form.on('General Requisition Form', {\n    refresh: function(frm) {\n        calculate_total(frm);\n    },\n    table_pegz_add: function(frm) {\n        calculate_total(frm);\n    },\n    table_pegz_remove: function(frm) {\n        calculate_total(frm);\n    }\n});\n\n// Trigger recalculation when the amount_kes field is updated in the child table\nfrappe.ui.form.on('General requisition description form', {\n    amount_kes: function(frm, cdt, cdn) {\n        calculate_total(frm);\n    }\n});\n\n// Function to calculate the total for amount_kes in the child table\nfunction calculate_total(frm) {\n    let total = 0;\n    if (frm.doc.table_pegz) {\n        frm.doc.table_pegz.forEach(row => {\n            total += parseFloat(row.amount_kes) || 0; // Safeguard against null/undefined values\n        });\n    }\n    frm.set_value('total', total);\n}\n",
+  "view": "Form"
  }
 ]
