@@ -191,7 +191,7 @@
   "doctype": "Client Script",
   "dt": "Payment Entry",
   "enabled": 1,
-  "modified": "2024-10-30 14:47:16.936989",
+  "modified": "2024-12-04 11:37:54.034791",
   "module": "ICL Corporate Services",
   "name": "Payment Entry Budget Line",
   "script": "frappe.ui.form.on('Payment Entry', {\n   refresh: function(frm) {\n    }\n});\n\nfrappe.ui.form.on('Budget Line Template', {\n    unit: function(frm, cdt, cdn) {\n        calculate_cost(frm, cdt, cdn);\n    },\n    rate: function(frm, cdt, cdn) {\n        calculate_cost(frm, cdt, cdn);\n    },\n    budget_line_template_remove: function(frm, cdt, cdn) {\n        calculate_total_cost(frm);\n    },\n    budget_line_template_add: function(frm, cdt, cdn) {\n        calculate_total_cost(frm);\n    }\n});\n\nfunction calculate_cost(frm, cdt, cdn) {\n    let row = locals[cdt][cdn];\n    let unit_loe = flt(row.unit_loe) || 0;\n    let rate = flt(row.rate) || 0;\n    \n    frappe.model.set_value(cdt, cdn, 'cost', flt(unit_loe * rate))\n        .then(() => calculate_total_cost(frm));\n}\n\nfunction calculate_total_cost(frm) {\n    let custom_total_cost = 0;\n    if(frm.doc.custom_budget_line_details) {\n        custom_total_cost = frm.doc.custom_budget_line_details.reduce((total, row) => {\n            return total + (flt(row.cost) || 0);\n        }, 0);\n    }\n    \n    frm.set_value('custom_total_cost', flt(custom_total_cost));\n}",
