@@ -64,12 +64,14 @@
   {
    "fieldname": "incident_date",
    "fieldtype": "Date",
-   "label": "Incident Date"
+   "label": "Incident Date",
+   "reqd": 1
   },
   {
    "fieldname": "reported_on",
    "fieldtype": "Date",
-   "label": "Reported On"
+   "label": "Reported On",
+   "reqd": 1
   },
   {
    "fieldname": "supervisorproject_manager",
@@ -87,7 +89,8 @@
   {
    "fieldname": "specific_location",
    "fieldtype": "Data",
-   "label": "Specific Location"
+   "label": "Specific Location",
+   "reqd": 1
   },
   {
    "fieldname": "equipment_information_section",
@@ -143,7 +146,8 @@
    "fieldname": "employee_name",
    "fieldtype": "Link",
    "label": "Employee",
-   "options": "Employee"
+   "options": "Employee",
+   "reqd": 1
   },
   {
    "fetch_from": "employee_name.employee_name",
@@ -175,7 +179,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-10-14 11:44:11.393791",
+ "modified": "2024-11-29 11:21:29.613343",
  "modified_by": "Administrator",
  "module": "ICL Corporate Services",
  "name": "Asset Damage Loss Theft Report Form",
