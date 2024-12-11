@@ -149,13 +149,15 @@ on_update_map = {
     "Project":"corporate_services.api.notification.project.project_manager.alert",
     "Employee Grievance":"corporate_services.api.notification.grievance.grievance.alert",
     "Supplier Quote Submission": "corporate_services.api.supplier.vat_calc.calc",
-    "Asset Damage Loss Theft Report Form": "corporate_services.api.notification.assets.loss_damage_loss_report.alert"
+    "Asset Damage Loss Theft Report Form": "corporate_services.api.notification.assets.loss_damage_loss_report.alert",
+    "Chart of Accounts Utilities": "corporate_services.api.import_coa.import_accounts",
   
     # "Supplier Quote Submission": [
     #     "corporate_services.api.supplier.finance_alert.alert",
     #     "corporate_services.api.supplier.vat_calc.calc"
     # ]
 }
+
 timesheet_notifications ={
     "Timesheet Submission":"corporate_services.api.notification.timesheet.alert",
 }
