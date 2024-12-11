@@ -3,6 +3,17 @@ import pandas as pd
 import csv
 from typing import List, Dict, Any
 
+root_accounts = [ "Assets", "Liabilities", "Equity", "Income", "Expenses" ]
+
+def create_root_accounts(root_accounts):
+    try:
+        company = frappe.get_list("Company")
+        company = company[0]['name']
+        for account in root_accounts:
+            create_account_sql(account, company, is_group=1)
+    except Exception as e:
+        print(e)
+
 def delete_all_accounts():
     try:
         # Fetch all Account records
@@ -28,80 +39,6 @@ def delete_all_accounts():
         frappe.log_error(f"Error while deleting accounts: {str(e)}", "Delete All Accounts Error")
         print(f"An error occurred: {str(e)}")
 
-
-
-def import_accounts(doc, method=None):
-    # if doc.coa_template_file and doc.import_on_save:
-    if doc.coa_template_file:      
-        file_doc = frappe.get_list("File", filters={
-            'attached_to_name': "Chart of Accounts Utilities"
-        })
-        file_doc = frappe.get_doc("File", file_doc[0]['name'])
-        file_path = file_doc.get_full_path()
-       # Determine file type and read accordingly
-        if file_path.endswith('.csv'):
-            df = pd.read_csv(file_path)
-        elif file_path.endswith(('.xls', '.xlsx')):
-            df = pd.read_excel(file_path)
-        else:
-            raise ValueError("Unsupported file format. Use CSV or Excel.")
-    
-        # Validate required columns
-        required_columns = ['Account Name', 'Account Type', 'Parent Account']
-        for col in required_columns:
-            if col not in df.columns:
-                raise ValueError(f"Missing required column: {col}")
-    
-        # Prepare accounts for import
-        accounts_to_import = []
-        for _, row in df.iterrows():
-            account_doc = {
-                'doctype': 'Account',
-                'account_name': row['Account Name'],
-                'account_type': row['Account Type'],
-                'parent_account': "Expenses",
-                'company': "IntelliSOFT Consulting Limited",
-                # Optional additional fields
-                'is_group': row.get('is_group', 1),
-                # 'tax_rate': row.get('tax_rate', 0),
-                'root_type': row['Root Type']
-            }
-            accounts_to_import.append(account_doc)
-        
-        # Import accounts
-        successful_imports = []
-        failed_imports = []
-        
-        for account in accounts_to_import:
-            try:
-                # Begin a new database transaction
-                frappe.db.begin()
-                
-                # Create the account
-                new_account = frappe.get_doc(account)
-                new_account.insert()
-                
-                # Commit the transaction
-                frappe.db.commit()
-                
-                successful_imports.append(account['account_name'])
-            except Exception as e:
-                # Rollback the transaction in case of error
-                print(e)
-                frappe.db.rollback()
-                failed_imports.append({
-                    'account_name': account['account_name'],
-                    'error': str(e)
-                })
-        
-        # Generate import report
-        import_report = {
-            'total_accounts': len(accounts_to_import),
-            'successful_imports': successful_imports,
-            'failed_imports': failed_imports
-        }
-        
-        return import_report
 
 
 def import_accounts_v2(doc, method=None):
@@ -133,31 +70,17 @@ def import_accounts_v2(doc, method=None):
             if col not in df.columns:
                 raise ValueError(f"Missing required column: {col}")
     
+        create_root_accounts(root_accounts)
+
         # Prepare accounts for import
-        accounts_to_import = []
         company = frappe.get_list("Company")
         company = company[0]['name']
         for _, row in df.iterrows():
-            account_doc = {
-                'doctype': 'Account',
-                'account_name': row['Account Name'],
-                'account_type': row['Account Type'],
-                'parent_account': row['Parent Account'],
-                'company': company,
-                'is_group': row.get('is_group', 1),
-                # 'tax_rate': row.get('tax_rate', 0),
-                # 'description': row.get('description', 0)
-                'root_type': row['Root Type'],
-                'currency': row.get('Currency', "")
-            }
-            # accounts_to_import.append(account_doc)
-        
             create_account_sql(row['Account Name'], "IntelliSOFT Consulting Limited", 0, row['Root Type'], "Assets")
 
 
-# import frappe
 
-def create_account_sql(account_name, company,is_group=0, root_type=None, parent_account=None):
+def create_account_sql(account_name, company,is_group=0, root_type=None, parent_account=None, account_type=None):
     try:
         # SQL query to insert account
         if parent_account:
@@ -166,14 +89,14 @@ def create_account_sql(account_name, company,is_group=0, root_type=None, parent_
                 (`name`, `account_name`, `company`, `parent_account`, `is_group`, `account_type`, `lft`, `rgt`, `root_type`, `balance_must_be`, `docstatus`)
                 VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s);
             """
-            values = (account_name, account_name, company, parent_account, is_group, None, 0, 0, root_type, None, 0)
+            values = (account_name, account_name, company, parent_account, is_group, account_type, 0, 0, root_type, None, 0)
         else:
             sql_query = """
                 INSERT INTO `tabAccount` 
                 (`name`, `account_name`, `company`, `is_group`, `account_type`, `lft`, `rgt`, `root_type`, `balance_must_be`, `docstatus`)
                 VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s);
             """
-            values = (account_name, account_name, company, is_group, None, 0, 0, root_type, None, 0)
+            values = (account_name, account_name, company, is_group, account_type, 0, 0, root_type, None, 0)
 
         # Execute SQL
         frappe.db.sql(sql_query, values)
@@ -188,13 +111,3 @@ def create_account_sql(account_name, company,is_group=0, root_type=None, parent_
 # create_account_sql("Child Account", "Test Company", "Parent Account - Test Company")  # With parent
 
 
-root_accounts = [ "Assets", "Liabilities", "Equity", "Income", "Expenses" ]
-
-def create_root_accounts(root_accounts):
-    try:
-        company = frappe.get_list("Company")
-        company = company[0]['name']
-        for account in root_accounts:
-            create_account_sql(account, company, is_group=1)
-    except Exception as e:
-        print(e)
