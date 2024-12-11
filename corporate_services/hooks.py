@@ -150,7 +150,9 @@ on_update_map = {
     "Employee Grievance":"corporate_services.api.notification.grievance.grievance.alert",
     "Supplier Quote Submission": "corporate_services.api.supplier.vat_calc.calc",
     "Asset Damage Loss Theft Report Form": "corporate_services.api.notification.assets.loss_damage_loss_report.alert",
-    "Chart of Accounts Utilities": "corporate_services.api.import_coa.import_accounts",
+    "Chart of Accounts Utilities": "corporate_services.api.import_coa.import_accounts",,
+    "Opportunity": "corporate_services.api.notification.project.bidding.alert",
+    "General Requisition Form": "corporate_services.api.notification.requisition.general_requisition.alert",
   
     # "Supplier Quote Submission": [
     #     "corporate_services.api.supplier.finance_alert.alert",
@@ -177,10 +179,17 @@ event_maps = {
             timesheet_notifications["Timesheet Submission"]
         ]
     },
-    "onload": {
-        "Project": "corporate_services.api.project.payment_entry.fetch_payments"
+    # "onload": {
+    #     "Project": "corporate_services.api.project.payment_entry.fetch_payments"
+    # },
+    "after_insert": {
+        "Opportunity": "corporate_services.api.project.opportunity_handlers.create_folder_for_opportunity",
+    },
+    "before_save": {
+        "Opportunity": "corporate_services.api.project.opportunity_handlers.save_bid_document_to_opportunity_folder"
     }
 }
+
 
 
 doc_events = generate_doc_events(event_maps)
@@ -190,7 +199,6 @@ doc_events = generate_doc_events(event_maps)
 # Scheduled Tasks
 # ---------------
 
-# in your_custom_app/hooks.py
 
 
 scheduler_events = {

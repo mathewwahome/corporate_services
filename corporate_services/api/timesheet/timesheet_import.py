@@ -8,14 +8,137 @@ from datetime import datetime, timedelta
 from frappe import _
 import openpyxl
 
+def get_activity_field_mapping():
+    """
+    Dynamically generate activity field mapping based on custom fields 
+    associated with Timesheet doctype.
+    """
+    try:
+        custom_fields = frappe.get_all('Custom Field', 
+            filters={
+                'dt': 'Timesheet', 
+                'fieldname': ['like', 'custom_%']
+            }, 
+            fields=['fieldname', 'label']
+        )
+        
+        activity_field_mapping = {}
+        
+        activity_types = frappe.get_all('Activity Type', fields=['name'])
+        
+        for activity_type in activity_types:
+            name = activity_type['name']
+            matching_field = None
+            for field in custom_fields:
+                if (name.lower() in field['label'].lower() or 
+                    name.lower() in field['fieldname'].lower()):
+                    matching_field = field['fieldname']
+                    break
+            
+            if matching_field:
+                activity_field_mapping[name] = matching_field
+            else:
+                activity_field_mapping[name] = None
+        
+        return activity_field_mapping
+    except Exception as e:
+        frappe.log_error(f"Error in get_activity_field_mapping: {str(e)}")
+        return {}
+
 def calculate_total_hours(project_timesheets, activity_timesheets):
+    """Calculate total hours from project and activity timesheets."""
     total_hours = 0
     for timesheet in list(project_timesheets.values()) + list(activity_timesheets.values()):
         for time_log in timesheet.time_logs:
             total_hours += time_log.hours
     return total_hours
 
-@frappe.whitelist()
+def create_timesheet(doc, project=None, activity_type=None, month_name=None, total_hours=0):
+    """Create a new timesheet document."""
+    timesheet = frappe.new_doc("Timesheet")
+    timesheet.employee = doc.employee
+    timesheet.custom_month = month_name
+    timesheet.total_working_hours = total_hours
+    timesheet.custom_timesheet_submission = doc.name
+    
+    if project:
+        timesheet.parent_project = project
+        timesheet.custom_timesheet_type = "Project Based"
+    if activity_type:
+        timesheet.custom_activity_type = activity_type
+        timesheet.custom_timesheet_type = "Other Activities"
+    
+    return timesheet
+
+def is_time_overlap(employee, from_time, to_time):
+    """Check if the time entry overlaps with existing entries for the employee."""
+    try:
+        submissions = frappe.get_all("Timesheet Submission", 
+            filters={"employee": employee}, 
+            fields=["name"]
+        )
+        
+        for submission in submissions:
+            details = frappe.get_all("Timesheet Detail",
+                filters={
+                    "parent": submission.name,
+                    "from_time": ["<=", to_time],
+                    "to_time": [">=", from_time]
+                },
+                fields=["from_time", "to_time"]
+            )
+            
+            for entry in details:
+                if not (to_time <= entry["from_time"] or from_time >= entry["to_time"]):
+                    return True
+        
+        return False
+    except Exception as e:
+        frappe.log_error(f"Error checking time overlap: {str(e)}")
+        return False
+
+def create_timesheet_detail_entry(timesheet, from_time, to_time, activity_type, task, day, hours, project=None, activity_field_mapping=None):
+    """Create a timesheet detail entry."""
+    try:
+        timesheet_detail = {
+            "activity_type": activity_type,
+            "hours": hours,
+            "custom_date": day,
+            "from_time": from_time,
+            "to_time": to_time,
+            "is_billable": 1,
+        }
+        
+        if project:
+            existing_projects = {p["project_name"]: p["name"] for p in frappe.get_all("Project", fields=["project_name", "name"])}
+            project_id = existing_projects.get(project)
+            timesheet_detail["project"] = project_id
+            timesheet_detail["custom_tasks"] = task
+        else:
+            field_name = activity_field_mapping.get(activity_type, None)
+            if field_name:
+                timesheet_detail[field_name] = hours
+
+            timesheet_detail["custom_tasks"] = task
+        
+        timesheet.append("time_logs", timesheet_detail)
+        
+    except Exception as e:
+        frappe.log_error(f"Error creating timesheet detail entry: {str(e)}")
+
+def save_timesheets(timesheets):
+    """Save timesheets with time logs."""
+    for timesheet in timesheets.values():
+        try:
+            if timesheet.time_logs:
+                timesheet.insert()
+                timesheet.save()
+                frappe.db.commit()
+            else:
+                frappe.log_error(f"Timesheet for {timesheet.employee} has no time logs. Skipping.", "timesheet_import")
+        except Exception as e:
+            frappe.log_error(f"Error saving timesheet: {str(e)}", "timesheet_import")
+
 @frappe.whitelist()
 def timesheet_import(docname):
     """Imports timesheet data from a file."""
@@ -38,10 +161,7 @@ def timesheet_import(docname):
         file_extension = _file.file_name.split('.')[-1].lower()
         data = None
         if file_extension == 'csv':
-            if isinstance(file_content, bytes):
-                csvfile = io.StringIO(file_content.decode('utf-8'))
-            else:
-                csvfile = io.StringIO(file_content)
+            csvfile = io.StringIO(file_content.decode('utf-8') if isinstance(file_content, bytes) else file_content)
             reader = csv.reader(csvfile)
             data = list(reader)
         elif file_extension in ['xls', 'xlsx']:
@@ -62,30 +182,18 @@ def timesheet_import(docname):
             frappe.throw(_("No data found in the uploaded file."))
 
         header = data[1]
-
         existing_projects = {p["project_name"]: p["name"] for p in frappe.get_all("Project", fields=["project_name", "name"])}
         activity_types = frappe.get_all('Activity Type', fields=['name'])
+        
+        activity_field_mapping = get_activity_field_mapping()
 
         from_time_tracker = {}
         project_timesheets = {}
         activity_timesheets = {}
         non_empty_activities = set()
 
-        activity_field_mapping = {
-            "Meetings": "custom_meetings",
-            "Training/Workshops/Connectathons": "custom_trainingworkshopsconnectathons",
-            "Proposals": "custom_proposals",
-            "Recurring Tasks": "custom_recurring_tasks",
-            "Other Tasks/Activities": "custom_other_tasksactivities"
-        }
-
-        for activity_type in activity_types:
-            if activity_type['name'] not in activity_field_mapping:
-                activity_field_mapping[activity_type['name']] = None
-
         minimum_hours = frappe.db.get_value('Employee', employee, 'custom_hrs_per_month')
         
-        # First pass to determine non-empty activities
         for row in data[2:]:
             if not row or len(row) < 2:
                 continue
@@ -106,7 +214,6 @@ def timesheet_import(docname):
                 else:
                     non_empty_activities.add(("activity", current_activity))
 
-        # Second pass to process data
         for row in data[2:]:
             if not row or len(row) < 2:
                 continue
@@ -153,6 +260,13 @@ def timesheet_import(docname):
                         date_str = doc.month_year
                         month = int(date_str.split('-')[0])
                         year = int(date_str.split('-')[1])
+
+                        if day >= 28:
+                            month -= 1
+                            if month == 0:
+                                month = 12
+                                year -= 1
+
                         month_name = datetime(year, month, 1).strftime('%B')
                         month = datetime.strptime(month_name, "%B").month
 
@@ -168,7 +282,17 @@ def timesheet_import(docname):
                             frappe.log_error(f"Time entry overlaps with existing timesheet entries: {from_time} - {to_time}", "timesheet_import")
                             continue
 
-                        create_timesheet_detail_entry(target_timesheet, from_time, to_time, current_activity, task, day, hours, current_project, activity_field_mapping)
+                        create_timesheet_detail_entry(
+                            target_timesheet, 
+                            from_time, 
+                            to_time, 
+                            current_activity, 
+                            task, 
+                            day, 
+                            hours, 
+                            current_project, 
+                            activity_field_mapping
+                        )
                         from_time_tracker[day] = to_time
                        
                     except ValueError as e:
@@ -188,76 +312,4 @@ def timesheet_import(docname):
     except Exception as e:
         frappe.log_error(frappe.get_traceback(), "timesheet_import")
         return "error"
-
-def create_timesheet(doc, project=None, activity_type=None, month_name=None, total_hours=0):
-    timesheet = frappe.new_doc("Timesheet")
-    timesheet.employee = doc.employee
-    timesheet.custom_month = month_name
-    timesheet.total_working_hours = total_hours
-    timesheet.custom_timesheet_submission = doc.name
     
-    if project:
-        timesheet.parent_project = project
-        timesheet.custom_timesheet_type = "Project Based"
-    if activity_type:
-        timesheet.custom_activity_type = activity_type
-        timesheet.custom_timesheet_type = "Other Activities"
-    
-    return timesheet
-
-def save_timesheets(timesheets):
-    for timesheet in timesheets.values():
-        try:
-            if timesheet.time_logs:
-                timesheet.insert()
-                timesheet.save()
-                frappe.db.commit()
-            else:
-                frappe.log_error(f"Timesheet for {timesheet.employee} has no time logs. Skipping.", "timesheet_import")
-        except Exception as e:
-            frappe.log_error(f"Error saving timesheet: {str(e)}", "timesheet_import")
-
-def is_time_overlap(employee, from_time, to_time):
-    """Check if the time entry overlaps with existing entries for the employee."""
-    submissions = frappe.get_all("Timesheet Submission", filters={"employee": employee}, fields=["name"])
-    
-    for submission in submissions:
-        details = frappe.get_all("Timesheet Detail",
-            filters={"parent": submission.name,
-                     "from_time": ["<=", to_time],
-                     "to_time": [">=", from_time]},
-            fields=["from_time", "to_time"]
-        )
-        
-        for entry in details:
-            if not (to_time <= entry["from_time"] or from_time >= entry["to_time"]):
-                return True
-
-    return False
-
-def create_timesheet_detail_entry(timesheet, from_time, to_time, activity_type, task, day, hours, project=None, activity_field_mapping=None):
-    try:
-        timesheet_detail = {
-            "activity_type": activity_type,
-            "hours": hours,
-            "custom_date": day,
-            "from_time": from_time,
-            "to_time": to_time,
-            "is_billable": 1,
-        }
-        
-        if project:
-            existing_projects = {p["project_name"]: p["name"] for p in frappe.get_all("Project", fields=["project_name", "name"])}
-            project_id = existing_projects.get(project)
-            timesheet_detail["project"] = project_id
-            timesheet_detail["custom_tasks"] = task
-        else:
-            field_name = activity_field_mapping.get(activity_type, None)
-            if field_name:
-                timesheet_detail[field_name] = hours
-                timesheet_detail["custom_tasks"] = task
-        
-        timesheet.append("time_logs", timesheet_detail)
-        
-    except Exception as e:
-        frappe.log_error(f"Error creating timesheet detail entry: {str(e)}", "timesheet_import")
