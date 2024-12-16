@@ -153,6 +153,8 @@ on_update_map = {
     "Chart of Accounts Utilities": "corporate_services.api.import_coa.import_accounts_v2",
     "Opportunity": "corporate_services.api.notification.project.bidding.alert",
     "General Requisition Form": "corporate_services.api.notification.requisition.general_requisition.alert",
+    "Appraisal": "corporate_services.api.notification.appraisal.appraisal.alert",
+    "Asset Movement": "corporate_services.api.notification.assets.asset_handover.alert",
   
     # "Supplier Quote Submission": [
     #     "corporate_services.api.supplier.finance_alert.alert",
