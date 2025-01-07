@@ -23,10 +23,11 @@ def generate_message(doc, employee_name, email_type, supervisor_name=None):
 
         "submitted_to_finance": """
             Dear Finance,<br><br>
-            {}, {} has been reviewed and, it has been Approved by HR. You can view the details <a href="{}">here</a>.<br><br>
-            Kind regards,<br>
-            HR
-        """.format(employee_name, doc.doctype, doctype_url),
+            {}</b> Travel Request Reconciliation submitted by <b>{}</b> has been submitted to Finance for further review and approval. You can view the details by clicking <a href="{}">here</a>.<br><br>
+            Thank you for your prompt attention.<br><br>
+            Best regards,<br>
+            ERPNext Travel Module.
+        """.format(employee_name, employee_name, doc.doctype, doctype_url),
 
         "finance_approved": """
             Dear {},<br><br>
