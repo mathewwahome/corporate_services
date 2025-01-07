@@ -217,7 +217,8 @@ scheduler_events = {
 	# 	"corporate_services.tasks.weekly"
 	# ],
 	"monthly": [
-		"corporate_services.api.leave.update_annual_leave_allocations.update_annual_leave_allocations"
+		"corporate_services.api.leave.update_annual_leave_allocations.process_leave_allocations"
+		# "corporate_services.api.leave.update_annual_leave_allocations.update_annual_leave_allocations"
 	],
 }
 
