@@ -3,6 +3,7 @@ import pandas as pd
 import csv
 from typing import List, Dict, Any
 
+
 def delete_all_accounts():
     try:
         # Fetch all Account records
