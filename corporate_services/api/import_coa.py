@@ -49,7 +49,9 @@ def import_accounts_v2(doc, method=None):
     :param file_path: Path to the CSV or Excel file containing account data
     :param company: Name of the company to import accounts for
     """
-    
+    if doc.purge_existing_accounts:
+        delete_all_accounts()
+        return
     # if doc.coa_template_file and doc.import_on_save:
     if doc.coa_template_file:      
         file_doc = frappe.get_list("File", filters={
