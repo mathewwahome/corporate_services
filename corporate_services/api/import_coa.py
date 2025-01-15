@@ -3,6 +3,7 @@ import pandas as pd
 import csv
 from typing import List, Dict, Any
 
+
 root_accounts = [ "Assets", "Liabilities", "Equity", "Income", "Expenses" ]
 
 def create_root_accounts(root_accounts):
