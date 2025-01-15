@@ -4,7 +4,7 @@ import csv
 from typing import List, Dict, Any
 
 
-root_accounts = [ "Assets", "Liabilities", "Equity", "Income", "Expenses" ]
+root_accounts = [ "Asset", "Liability", "Equity", "Income", "Expenses" ]
 
 def create_root_accounts(root_accounts):
     try:
@@ -77,7 +77,7 @@ def import_accounts_v2(doc, method=None):
         company = frappe.get_list("Company")
         company = company[0]['name']
         for _, row in df.iterrows():
-            create_account_sql(row['Account Name'], "IntelliSOFT Consulting Limited", 0, row['Root Type'], "Assets")
+            create_account_sql(row['Account Name'], "IntelliSOFT Consulting Limited", 0, row['Root Type'], row['Parent Account'])
 
 
 
