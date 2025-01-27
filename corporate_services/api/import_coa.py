@@ -68,10 +68,10 @@ def import_accounts_v2(doc, method=None):
             raise ValueError("Unsupported file format. Use CSV or Excel.")
     
         # Validate required columns
-        required_columns = ['Account Name', 'Account Type', 'Parent Account']
+        required_columns = ['Account Name', 'Account Type', 'Root Type']
         for col in required_columns:
             if col not in df.columns:
-                raise ValueError(f"Missing required column: {col}")
+                raise ValueError(f"Missing required column: {col} in import file")
     
         create_root_accounts(root_accounts)
 
@@ -79,7 +79,7 @@ def import_accounts_v2(doc, method=None):
         company = frappe.get_list("Company")
         company = company[0]['name']
         for _, row in df.iterrows():
-            create_account_sql(row['Account Name'], "IntelliSOFT Consulting Limited", 0, row['Root Type'], row['Parent Account'])
+            create_account_sql(row['Account Name'], "IntelliSOFT Consulting Limited", 0, row['Root Type'], row['Root Type'], row['Account Type'])
 
 
 
