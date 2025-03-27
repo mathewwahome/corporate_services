@@ -4,6 +4,7 @@ from datetime import datetime, timedelta
 from openpyxl import Workbook
 from openpyxl.styles import PatternFill, Border, Side
 from io import BytesIO
+import calendar
 
 @frappe.whitelist()
 def timesheet_generation_export(docname):
@@ -25,8 +26,13 @@ def timesheet_generation_export(docname):
         else:
             previous_year = year
             previous_month = month - 1
+            
+        last_day = calendar.monthrange(previous_year, previous_month)[1]
 
-        start_date = datetime(previous_year, previous_month, 29).date()
+
+        # start_date = datetime(previous_year, previous_month, 29).date()
+        start_date = datetime(previous_year, previous_month, min(29, last_day)).date()
+
         end_date = datetime(year, month, 28).date()
         
         days = []
