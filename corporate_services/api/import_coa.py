@@ -4,7 +4,7 @@ import csv
 from typing import List, Dict, Any
 
 
-root_accounts = [ "Assets", "Liabilities", "Equity", "Income", "Expenses" ]
+root_accounts = [ "Asset", "Liability", "Equity", "Income", "Expenses" ]
 
 def create_root_accounts(root_accounts):
     try:
@@ -49,7 +49,9 @@ def import_accounts_v2(doc, method=None):
     :param file_path: Path to the CSV or Excel file containing account data
     :param company: Name of the company to import accounts for
     """
-    
+    if doc.purge_existing_accounts:
+        delete_all_accounts()
+        return
     # if doc.coa_template_file and doc.import_on_save:
     if doc.coa_template_file:      
         file_doc = frappe.get_list("File", filters={
@@ -66,10 +68,10 @@ def import_accounts_v2(doc, method=None):
             raise ValueError("Unsupported file format. Use CSV or Excel.")
     
         # Validate required columns
-        required_columns = ['Account Name', 'Account Type', 'Parent Account']
+        required_columns = ['Account Name', 'Account Type', 'Root Type']
         for col in required_columns:
             if col not in df.columns:
-                raise ValueError(f"Missing required column: {col}")
+                raise ValueError(f"Missing required column: {col} in import file")
     
         create_root_accounts(root_accounts)
 
@@ -77,7 +79,7 @@ def import_accounts_v2(doc, method=None):
         company = frappe.get_list("Company")
         company = company[0]['name']
         for _, row in df.iterrows():
-            create_account_sql(row['Account Name'], "IntelliSOFT Consulting Limited", 0, row['Root Type'], "Assets")
+            create_account_sql(row['Account Name'], "IntelliSOFT Consulting Limited", 0, row['Root Type'], row['Root Type'], row['Account Type'])
 
 
 
