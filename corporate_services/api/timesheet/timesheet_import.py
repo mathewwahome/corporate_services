@@ -194,7 +194,11 @@ def timesheet_import(docname):
 
         minimum_hours = frappe.db.get_value('Employee', employee, 'custom_hrs_per_month')
         
-        for row in data[2:]:
+        # Filter out any row that has 'TOTAL' in the first column
+        filtered_data = [row for row in data[2:] if row and row[0] != 'TOTAL']
+        
+        # First pass to identify non-empty activities/projects
+        for row in filtered_data:
             if not row or len(row) < 2:
                 continue
 
@@ -208,13 +212,14 @@ def timesheet_import(docname):
                 current_activity = "Projects"
                 continue
 
-            if any(cell and float(cell) > 0 for cell in row[2:]):
+            if any(cell and str(cell).strip() and (not isinstance(cell, str) or cell.lower() != 'total') and float(cell) > 0 if cell and str(cell).replace('.', '', 1).isdigit() else False for cell in row[2:]):
                 if current_project:
                     non_empty_activities.add(("project", current_project))
                 else:
                     non_empty_activities.add(("activity", current_activity))
 
-        for row in data[2:]:
+        # Second pass to process data
+        for row in filtered_data:
             if not row or len(row) < 2:
                 continue
 
