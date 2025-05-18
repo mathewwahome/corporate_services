@@ -30,8 +30,7 @@
    "fieldname": "month",
    "fieldtype": "Data",
    "in_list_view": 1,
-   "label": "Month",
-   "read_only": 1
+   "label": "Month"
   },
   {
    "fieldname": "status",
@@ -44,8 +43,7 @@
    "fieldname": "total_hours",
    "fieldtype": "Data",
    "in_list_view": 1,
-   "label": "Hrs",
-   "read_only": 1
+   "label": "Hrs"
   },
   {
    "fieldname": "column_break_faid",
@@ -86,19 +84,19 @@
    "fieldtype": "Link",
    "in_list_view": 1,
    "label": "Project",
-   "options": "Project",
-   "read_only": 1
+   "options": "Project"
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2024-08-14 10:28:47.093420",
+ "modified": "2025-05-18 09:13:41.069148",
  "modified_by": "Administrator",
  "module": "ICL Corporate Services",
  "name": "Timesheet Submission List",
  "owner": "Administrator",
  "permissions": [],
+ "row_format": "Dynamic",
  "sort_field": "modified",
  "sort_order": "DESC",
  "states": []
