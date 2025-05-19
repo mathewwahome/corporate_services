@@ -32,7 +32,7 @@ def timesheet_generation_export(docname):
 
         # start_date = datetime(previous_year, previous_month, 29).date()
         start_date = datetime(previous_year, previous_month, min(29, last_day)).date()
-
+        
         end_date = datetime(year, month, 28).date()
         
         days = []
@@ -64,8 +64,15 @@ def timesheet_generation_export(docname):
         ws.append(week)
         ws.append(header)
         
+        # Track project name row numbers
+        project_rows = []
+        current_row = 3
+        
         for row in projects_list:
             ws.append(row)
+            if row and row[0]:
+                project_rows.append(current_row)
+            current_row += 1
 
         blue_fill = PatternFill(start_color="87CEEB", end_color="87CEEB", fill_type="solid")
         yellow_fill = PatternFill(start_color="FFEB3B", end_color="FFEB3B", fill_type="solid")
@@ -77,10 +84,18 @@ def timesheet_generation_export(docname):
             bottom=Side(style='thin', color="000000")
         )
 
+        # Apply blue fill to header row
         for col_num in range(1, len(header) + 1):
             cell = ws.cell(row=2, column=col_num)
             cell.fill = blue_fill
             cell.border = thin_border
+
+        # Apply blue fill to project name rows
+        for row_num in project_rows:
+            for col_num in range(1, len(header) + 1):
+                cell = ws.cell(row=row_num, column=col_num)
+                cell.fill = blue_fill
+                cell.border = thin_border
 
         activity_types = frappe.get_all('Activity Type', fields=['name'])
         activity_types = [activity for activity in activity_types if activity['name'].lower() != "projects"]
@@ -94,6 +109,8 @@ def timesheet_generation_export(docname):
             activity_rows.append(row_num)
         
         max_row = ws.max_row
+        
+        # Apply blue fill to weekend columns
         for col_num, day in enumerate(days, start=3):
             if day in ('Saturday', 'Sunday'):
                 for row_num in range(1, max_row + 1):
@@ -101,15 +118,32 @@ def timesheet_generation_export(docname):
                     cell.fill = blue_fill
                     cell.border = thin_border
 
+        # Apply blue fill to activity type rows
         for row_num in activity_rows:
             for col_num in range(1, len(header) + 1):
                 cell = ws.cell(row=row_num, column=col_num)
-                # cell.fill = yellow_fill
+                cell.fill = blue_fill
                 cell.border = thin_border
 
+        # Apply borders to all cells
         for row in ws.iter_rows(min_row=1, max_row=max_row, min_col=1, max_col=len(header)):
             for cell in row:
                 cell.border = thin_border
+                
+        # Add total row at the bottom
+        total_row = max_row + 1
+        ws.cell(row=total_row, column=1, value="TOTAL")
+        ws.cell(row=total_row, column=1).fill = blue_fill
+        ws.cell(row=total_row, column=2).fill = blue_fill
+        
+        # Add SUM formulas for each day column
+        for col_num in range(3, len(header) + 1):
+            col_letter = ws.cell(row=1, column=col_num).column_letter
+            # Formula to sum all numeric values in the column excluding headers and the total row itself
+            formula = f"=SUM({col_letter}3:{col_letter}{max_row})"
+            ws.cell(row=total_row, column=col_num, value=formula)
+            ws.cell(row=total_row, column=col_num).fill = blue_fill
+            ws.cell(row=total_row, column=col_num).border = thin_border
 
         output = BytesIO()
         wb.save(output)

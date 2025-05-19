@@ -1,7 +1,7 @@
 {
  "charts": [],
  "content": "[{\"id\":\"pGDIKaB3sp\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">ICL Finance</span>\",\"col\":12}},{\"id\":\"J7vPhqvR5k\",\"type\":\"paragraph\",\"data\":{\"text\":\"<b>IntelliSOFT Consulting Limited</b>\",\"col\":12}},{\"id\":\"Q6nv3ukJ_0\",\"type\":\"card\",\"data\":{\"card_name\":\"Timesheet\",\"col\":4}},{\"id\":\"lTrGiXbvHA\",\"type\":\"quick_list\",\"data\":{\"quick_list_name\":\"Timesheet Submission\",\"col\":4}},{\"id\":\"Bu53a4s5pU\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Shortcuts</b></span>\",\"col\":12}},{\"id\":\"ig1g1wBMZt\",\"type\":\"card\",\"data\":{\"card_name\":\"Projects\",\"col\":4}},{\"id\":\"yW_hT1yVnY\",\"type\":\"card\",\"data\":{\"card_name\":\"Project Based Accounting\",\"col\":4}},{\"id\":\"bPMUldGueN\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"EHci6cezpl\",\"type\":\"card\",\"data\":{\"card_name\":\"Travel Process\",\"col\":4}},{\"id\":\"oaxbpvdAtq\",\"type\":\"quick_list\",\"data\":{\"quick_list_name\":\"Travel Request\",\"col\":4}},{\"id\":\"WCz7lGIPtN\",\"type\":\"quick_list\",\"data\":{\"quick_list_name\":\"Travel Request Reconciliation\",\"col\":4}}]",
- "creation": "2024-12-11 14:07:36.420968",
+ "creation": "2025-05-15 10:34:38.872910",
  "custom_blocks": [],
  "docstatus": 0,
  "doctype": "Workspace",
@@ -123,7 +123,7 @@
    "hidden": 0,
    "is_query_report": 0,
    "label": "Travel Process",
-   "link_count": 2,
+   "link_count": 4,
    "link_type": "DocType",
    "onboard": 0,
    "type": "Card Break"
@@ -147,9 +147,29 @@
    "link_type": "DocType",
    "onboard": 0,
    "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "International Per Diem Rates",
+   "link_count": 0,
+   "link_to": "Per Diem Rates",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Local Per Diem Rates",
+   "link_count": 0,
+   "link_to": "Local Per Diem Rates",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
   }
  ],
- "modified": "2024-12-18 08:48:29.917699",
+ "modified": "2025-05-17 20:06:21.886163",
  "modified_by": "Administrator",
  "module": "ICL Corporate Services",
  "name": "ICL Finance",
