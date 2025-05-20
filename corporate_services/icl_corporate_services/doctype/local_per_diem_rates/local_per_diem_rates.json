@@ -72,6 +72,7 @@
   {
    "fieldname": "naming_series",
    "fieldtype": "Select",
+   "in_list_view": 1,
    "label": "Series",
    "options": "LP-R-.YYYY.-",
    "reqd": 1
@@ -88,7 +89,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-11-18 12:56:31.425921",
+ "modified": "2025-05-19 08:15:45.324629",
  "modified_by": "Administrator",
  "module": "ICL Corporate Services",
  "name": "Local Per Diem Rates",
@@ -140,6 +141,7 @@
    "select": 1
   }
  ],
+ "row_format": "Dynamic",
  "sort_field": "modified",
  "sort_order": "DESC",
  "states": []
