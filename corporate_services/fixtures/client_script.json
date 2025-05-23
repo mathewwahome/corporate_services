@@ -306,5 +306,27 @@
   "name": "Asset Damage Theft Report Form",
   "script": "frappe.ui.form.on('Asset Damage Loss Theft Report Form', {\n    onload: function(frm) {\n        // Configure date picker to disable future dates for incident_date and reported_on\n        frm.set_df_property('incident_date', 'datepicker', {\n            maxDate: frappe.datetime.nowdate()\n        });\n\n        frm.set_df_property('reported_on', 'datepicker', {\n            maxDate: frappe.datetime.nowdate()\n        });\n    },\n\n    // Real-time validation for incident_date\n    incident_date: function(frm) {\n        // Check if incident_date is in the future\n        if (frm.doc.incident_date && frappe.datetime.get_diff(frm.doc.incident_date, frappe.datetime.nowdate()) > 0) {\n            frappe.throw(__('Incident Date cannot be a future date.'));\n        }\n    },\n\n    // Real-time validation for reported_on\n    reported_on: function(frm) {\n        // Check if reported_on is before incident_date\n        if (frm.doc.reported_on && frm.doc.incident_date && frappe.datetime.get_diff(frm.doc.reported_on, frm.doc.incident_date) < 0) {\n            frappe.throw(__('Reported On date cannot be before Incident Date.'));\n        }\n\n        // Check if reported_on is in the future\n        if (frm.doc.reported_on && frappe.datetime.get_diff(frm.doc.reported_on, frappe.datetime.nowdate()) > 0) {\n            frappe.throw(__('Reported On date cannot be a future date.'));\n        }\n    }\n});\n",
   "view": "Form"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
+  "dt": "Timesheet Submission",
+  "enabled": 0,
+  "modified": "2025-05-21 12:57:01.082437",
+  "module": "ICL Corporate Services",
+  "name": "Action confirmation",
+  "script": "frappe.ui.form.on('Timesheet Submission', {\n    before_workflow_action: function(frm) {\n        // Store the pending workflow action\n        if (!frm.confirmed_workflow_action) {\n            // Get the action that's being attempted\n            const action = frm.selected_workflow_action;\n            \n            // Show confirmation dialog\n            frappe.confirm(\n                `Aree you sure you want to perform this action: <strong>${action}</strong>?`,\n                () => {\n                    // If confirmed, set flag and trigger the action\n                    frm.confirmed_workflow_action = true;\n                    frm.selected_workflow_action = action;\n                    frm.workflow_action(action);\n                },\n                () => {\n                    // If cancelled, show message\n                    frappe.msgprint(\"Action cancelled.\");\n                }\n            );\n            \n            // Prevent default workflow action until confirmed\n            return false;\n        } else {\n            // Reset the confirmation flag for next time\n            frm.confirmed_workflow_action = false;\n            // Allow the workflow action to proceed\n            return true;\n        }\n    }\n});",
+  "view": "Form"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
+  "dt": "Opportunity",
+  "enabled": 1,
+  "modified": "2025-05-23 11:32:26.698620",
+  "module": "ICL Corporate Services",
+  "name": "Awarding Bid",
+  "script": "frappe.ui.form.on('Opportunity', {\n    refresh(frm) {\n        if (frm.doc.workflow_state === \"Approved by CEO\") {\n            frm.add_custom_button('Award', () => {\n                frappe.new_doc('Project', {\n                    project_name: frm.doc.title || frm.doc.customer_name,\n                    custom_bid: frm.doc.name\n                });\n            }, __('Create'));\n        }\n    }\n});\n",
+  "view": "Form"
  }
 ]
