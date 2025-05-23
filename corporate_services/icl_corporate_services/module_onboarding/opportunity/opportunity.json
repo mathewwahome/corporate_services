@@ -1,0 +1,92 @@
+{
+ "allow_roles": [
+  {
+   "role": "All"
+  },
+  {
+   "role": "Accounts Manager"
+  },
+  {
+   "role": "Academics User"
+  },
+  {
+   "role": "Accounts User"
+  },
+  {
+   "role": "Administrator"
+  },
+  {
+   "role": "Agriculture Manager"
+  },
+  {
+   "role": "Agriculture User"
+  },
+  {
+   "role": "Analytics"
+  },
+  {
+   "role": "Auditor"
+  },
+  {
+   "role": "Blogger"
+  },
+  {
+   "role": "CEO"
+  },
+  {
+   "role": "Workspace Manager"
+  },
+  {
+   "role": "Delivery Manager"
+  },
+  {
+   "role": "Customer"
+  },
+  {
+   "role": "Dashboard Manager"
+  },
+  {
+   "role": "Delivery User"
+  },
+  {
+   "role": "Employee"
+  },
+  {
+   "role": "Employee Self Service"
+  },
+  {
+   "role": "Finance"
+  },
+  {
+   "role": "HR User"
+  },
+  {
+   "role": "HR Manager"
+  },
+  {
+   "role": "Projects Manager"
+  },
+  {
+   "role": "Purchase User"
+  }
+ ],
+ "creation": "2025-05-19 09:44:43.760425",
+ "docstatus": 0,
+ "doctype": "Module Onboarding",
+ "documentation_url": "Opportunity",
+ "idx": 0,
+ "is_complete": 0,
+ "modified": "2025-05-19 09:44:43.760425",
+ "modified_by": "Administrator",
+ "module": "ICL Corporate Services",
+ "name": "Opportunity",
+ "owner": "Administrator",
+ "steps": [
+  {
+   "step": "Company Set Up"
+  }
+ ],
+ "subtitle": "Opportunity",
+ "success_message": "Opportunity",
+ "title": "Opportunity"
+}
