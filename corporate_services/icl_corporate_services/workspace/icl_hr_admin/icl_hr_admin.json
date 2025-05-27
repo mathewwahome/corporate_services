@@ -1,7 +1,7 @@
 {
  "charts": [],
  "content": "[{\"id\":\"nhZgXm1R7r\",\"type\":\"onboarding\",\"data\":{\"onboarding_name\":\"Human Resource\",\"col\":12}},{\"id\":\"2-aKS1Mc2W\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"EKCaqtUjf7\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Leave</b></span>\",\"col\":12}},{\"id\":\"TFAv64Vdjs\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Leave Type\",\"col\":3}},{\"id\":\"irr2b1Emmd\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Leave Allocation\",\"col\":3}},{\"id\":\"ajj84WWgYD\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Leave Policy\",\"col\":3}},{\"id\":\"bk8u3N2JJx\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Leave Application\",\"col\":3}},{\"id\":\"IyjCUtl89j\",\"type\":\"header\",\"data\":{\"text\":\"\ud83d\udd10 Asset<br>\",\"col\":12}},{\"id\":\"kZyM7Ilwko\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Asset Requisition\",\"col\":3}},{\"id\":\"u8zY9TlRro\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Asset Replacement Request\",\"col\":3}},{\"id\":\"A3ipoOyE4b\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Exit Interview\",\"col\":3}},{\"id\":\"KEwFHrqrON\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Employee Appraisal\",\"col\":3}},{\"id\":\"t6gUudBr_W\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"c-_tkUV0ak\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Job Process</b></span>\",\"col\":12}},{\"id\":\"wEaObfSplL\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Job Requisition\",\"col\":3}},{\"id\":\"0OUo74HiZt\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Job Applicants\",\"col\":3}},{\"id\":\"iujhSYC47u\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Job Card\",\"col\":3}},{\"id\":\"UooVJtM_UJ\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Job Opening\",\"col\":3}},{\"id\":\"uPuc3vc70H\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Job Offer\",\"col\":3}},{\"id\":\"guloWwBc-3\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"sN8sIg2tKW\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Employee<br></b></span>\",\"col\":12}},{\"id\":\"nQmHjYPndW\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Employee\",\"col\":3}},{\"id\":\"XBafLLGcSe\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Employee Leave Balance\",\"col\":3}},{\"id\":\"TjSvCK71Xa\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Employee Exits\",\"col\":3}},{\"id\":\"ZA2FOUVi_5\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Grievance Type\",\"col\":3}},{\"id\":\"luoAevjjEQ\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Leave Management\",\"col\":3}},{\"id\":\"5tJL53gIVy\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Holiday List\",\"col\":3}},{\"id\":\"WWyWTc4YPD\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Employee Onboarding Template\",\"col\":3}},{\"id\":\"TFSZoa7zme\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Employee Onboarding\",\"col\":3}},{\"id\":\"fDJpwKk83-\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"xeGLRIAPXP\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Dashboards</span>\",\"col\":11}},{\"id\":\"fIk2rpXSFw\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"HR Dashboard\",\"col\":3}},{\"id\":\"nwl2vt4vvV\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Leave Management\",\"col\":3}},{\"id\":\"vEol7JD4C5\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Training Management\",\"col\":3}},{\"id\":\"6llzGi28fO\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"Go-JZqo89b\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Reports</span>\",\"col\":12}},{\"id\":\"9ZKHj2I-x-\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Employee Information\",\"col\":3}},{\"id\":\"ZJSRLzuq1Q\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Employee Exits\",\"col\":3}},{\"id\":\"9NlxhXLvyo\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Employee Advance Summary\",\"col\":3}},{\"id\":\"-492DNgdst\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Employee Grievance Reports\",\"col\":3}},{\"id\":\"RJjl-pQ_LZ\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Employee Leave Balance\",\"col\":3}}]",
- "creation": "2024-07-26 08:34:06.393814",
+ "creation": "2025-05-20 10:04:07.857591",
  "custom_blocks": [],
  "docstatus": 0,
  "doctype": "Workspace",
@@ -13,7 +13,7 @@
  "is_hidden": 0,
  "label": "ICL HR Admin",
  "links": [],
- "modified": "2024-07-26 08:37:46.939494",
+ "modified": "2025-05-21 12:07:15.591900",
  "modified_by": "Administrator",
  "module": "ICL Corporate Services",
  "name": "ICL HR Admin",
@@ -30,7 +30,7 @@
    "role": "HR User"
   }
  ],
- "sequence_id": 40.0,
+ "sequence_id": 10.0,
  "shortcuts": [
   {
    "color": "Grey",
@@ -60,6 +60,7 @@
    "doc_view": "List",
    "label": "Employee Information",
    "link_to": "Employee Information",
+   "report_ref_doctype": "Employee",
    "type": "Report"
   },
   {
@@ -67,6 +68,7 @@
    "doc_view": "List",
    "label": "Employee Exits",
    "link_to": "Employee Exits",
+   "report_ref_doctype": "Exit Interview",
    "type": "Report"
   },
   {
@@ -129,6 +131,7 @@
    "doc_view": "List",
    "label": "Employee Advance Summary",
    "link_to": "Employee Advance Summary",
+   "report_ref_doctype": "Employee Advance",
    "type": "Report"
   },
   {
@@ -144,6 +147,7 @@
    "doc_view": "List",
    "label": "Employee",
    "link_to": "Employee Information",
+   "report_ref_doctype": "Employee",
    "type": "Report"
   },
   {
@@ -151,6 +155,7 @@
    "doc_view": "List",
    "label": "Employee Grievance Reports",
    "link_to": "Employee Grievance Reports",
+   "report_ref_doctype": "Employee Grievance",
    "type": "Report"
   },
   {
@@ -174,6 +179,7 @@
    "doc_view": "List",
    "label": "Employee Leave Balance",
    "link_to": "Employee Leave Balance",
+   "report_ref_doctype": "Employee",
    "type": "Report"
   },
   {
@@ -212,6 +218,7 @@
    "doc_view": "List",
    "label": "Job Applicants",
    "link_to": "Job Applicants Report",
+   "report_ref_doctype": "Job Applicant",
    "type": "Report"
   },
   {
