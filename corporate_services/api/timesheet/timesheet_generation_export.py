@@ -97,7 +97,8 @@ def timesheet_generation_export(docname):
                 cell.fill = blue_fill
                 cell.border = thin_border
 
-        activity_types = frappe.get_all('Activity Type', fields=['name'])
+        # Get only enabled activity types
+        activity_types = frappe.get_all('Activity Type', filters={'disabled': 0}, fields=['name'])
         activity_types = [activity for activity in activity_types if activity['name'].lower() != "projects"]
 
         activity_rows_start = len(projects_list) + 3
@@ -107,6 +108,14 @@ def timesheet_generation_export(docname):
             row_num = activity_rows_start + i * 2
             ws.cell(row=row_num, column=1, value=activity['name'])
             activity_rows.append(row_num)
+        
+        # Get current max row and add 3 empty rows
+        current_max_row = ws.max_row
+        for i in range(3):
+            empty_row_num = current_max_row + 1 + i
+            # Add empty cells to ensure the row exists
+            for col_num in range(1, len(header) + 1):
+                ws.cell(row=empty_row_num, column=col_num, value="")
         
         max_row = ws.max_row
         
@@ -144,6 +153,25 @@ def timesheet_generation_export(docname):
             ws.cell(row=total_row, column=col_num, value=formula)
             ws.cell(row=total_row, column=col_num).fill = blue_fill
             ws.cell(row=total_row, column=col_num).border = thin_border
+        
+        # Add total hours row at the bottom
+        total_hours_row = total_row + 1
+        ws.cell(row=total_hours_row, column=1, value="TOTAL HRS")
+        ws.cell(row=total_hours_row, column=1).fill = blue_fill
+        ws.cell(row=total_hours_row, column=2).fill = blue_fill
+        ws.cell(row=total_hours_row, column=2).border = thin_border
+        
+        # Calculate sum of all daily totals
+        start_col_letter = ws.cell(row=1, column=3).column_letter
+        end_col_letter = ws.cell(row=1, column=len(header)).column_letter
+        total_hours_formula = f"=SUM({start_col_letter}{total_row}:{end_col_letter}{total_row})"
+        ws.cell(row=total_hours_row, column=3, value=total_hours_formula)
+        ws.cell(row=total_hours_row, column=3).fill = blue_fill
+        ws.cell(row=total_hours_row, column=3).border = thin_border
+        
+        # Apply borders to total hours row
+        for col_num in range(1, len(header) + 1):
+            ws.cell(row=total_hours_row, column=col_num).border = thin_border
 
         output = BytesIO()
         wb.save(output)

@@ -194,8 +194,8 @@ def timesheet_import(docname):
 
         minimum_hours = frappe.db.get_value('Employee', employee, 'custom_hrs_per_month')
         
-        # Filter out any row that has 'TOTAL' in the first column
-        filtered_data = [row for row in data[2:] if row and row[0] != 'TOTAL']
+        # Filter out any row that has 'TOTAL' or 'TOTAL HRS' in the first column
+        filtered_data = [row for row in data[2:] if row and row[0] not in ['TOTAL', 'TOTAL HRS']]
         
         # First pass to identify non-empty activities/projects
         for row in filtered_data:
