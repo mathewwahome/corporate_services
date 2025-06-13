@@ -45,8 +45,7 @@
    "fieldtype": "Data",
    "in_list_view": 1,
    "in_preview": 1,
-   "label": "Units",
-   "length": 1
+   "label": "Units"
   },
   {
    "columns": 1,
@@ -58,10 +57,10 @@
   {
    "columns": 2,
    "fieldname": "project",
-   "fieldtype": "Data",
+   "fieldtype": "Link",
    "in_list_view": 1,
    "label": "Project",
-   "length": 2
+   "options": "Project"
   },
   {
    "columns": 2,
@@ -79,7 +78,7 @@
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2025-05-29 10:20:14.309462",
+ "modified": "2025-06-13 10:51:52.645173",
  "modified_by": "Administrator",
  "module": "ICL Corporate Services",
  "name": "Asset Requisition Table",
