@@ -12,6 +12,7 @@ app_license = "mit"
 # include js, css files in header of desk.html
 # app_include_css = "/assets/corporate_services/css/corporate_services.css"
 # app_include_js = "/assets/corporate_services/js/corporate_services.js"
+# app_include_js ="/assets/corporate_services/js/workflow_confirmation.js"
 
 # include js, css files in header of web template
 # web_include_css = "/assets/corporate_services/css/corporate_services.css"
@@ -189,6 +190,9 @@ event_maps = {
     },
     "before_save": {
         "Opportunity": "corporate_services.api.project.opportunity_handlers.save_bid_document_to_opportunity_folder"
+    },
+    "before_delete": {
+        "Timesheet Submission": "corporate_services.api.timesheet.overrides.timesheet_submission.prevent_default_delete"
     }
 }
 
