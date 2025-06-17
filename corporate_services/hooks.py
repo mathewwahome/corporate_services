@@ -156,6 +156,7 @@ on_update_map = {
     "General Requisition Form": "corporate_services.api.notification.requisition.general_requisition.alert",
     "Appraisal": "corporate_services.api.notification.appraisal.appraisal.alert",
     "Asset Movement": "corporate_services.api.notification.assets.asset_handover.alert",
+    "Task":"corporate_services.api.notification.project.project_task.task_on_update",
   
     # "Supplier Quote Submission": [
     #     "corporate_services.api.supplier.finance_alert.alert",
