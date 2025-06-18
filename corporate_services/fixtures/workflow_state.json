@@ -38,15 +38,6 @@
  {
   "docstatus": 0,
   "doctype": "Workflow State",
-  "icon": "question-sign",
-  "modified": "2024-04-23 13:29:34.276491",
-  "name": "Pending",
-  "style": "",
-  "workflow_state_name": "Pending"
- },
- {
-  "docstatus": 0,
-  "doctype": "Workflow State",
   "icon": "",
   "modified": "2024-06-03 15:39:43.540784",
   "name": "Request",
@@ -79,15 +70,6 @@
   "name": "save",
   "style": "",
   "workflow_state_name": "save"
- },
- {
-  "docstatus": 0,
-  "doctype": "Workflow State",
-  "icon": "remove",
-  "modified": "2024-04-23 13:29:34.280292",
-  "name": "Rejected",
-  "style": "Danger",
-  "workflow_state_name": "Rejected"
  },
  {
   "docstatus": 0,
@@ -138,24 +120,6 @@
   "docstatus": 0,
   "doctype": "Workflow State",
   "icon": "",
-  "modified": "2024-07-21 16:46:57.207082",
-  "name": "Rejected by Finance",
-  "style": "",
-  "workflow_state_name": "Rejected by Finance"
- },
- {
-  "docstatus": 0,
-  "doctype": "Workflow State",
-  "icon": "",
-  "modified": "2024-12-03 10:25:45.725844",
-  "name": "Rejected by CEO",
-  "style": "Danger",
-  "workflow_state_name": "Rejected by CEO"
- },
- {
-  "docstatus": 0,
-  "doctype": "Workflow State",
-  "icon": "",
   "modified": "2024-12-03 11:50:59.200860",
   "name": "Approved by Opportunity Owner",
   "style": "",
@@ -173,20 +137,29 @@
  {
   "docstatus": 0,
   "doctype": "Workflow State",
-  "icon": "",
-  "modified": "2024-06-03 15:39:43.630727",
-  "name": "Approved by Supervisor",
-  "style": "",
-  "workflow_state_name": "Approved by Supervisor"
+  "icon": "remove",
+  "modified": "2024-04-23 13:29:34.280292",
+  "name": "Rejected",
+  "style": "Danger",
+  "workflow_state_name": "Rejected"
  },
  {
   "docstatus": 0,
   "doctype": "Workflow State",
   "icon": "",
-  "modified": "2024-08-18 05:19:04.575989",
-  "name": "Approved by Finance",
-  "style": "Success",
-  "workflow_state_name": "Approved by Finance"
+  "modified": "2024-12-03 10:25:45.725844",
+  "name": "Rejected by CEO",
+  "style": "Danger",
+  "workflow_state_name": "Rejected by CEO"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": "",
+  "modified": "2024-06-03 15:39:43.630727",
+  "name": "Approved by Supervisor",
+  "style": "",
+  "workflow_state_name": "Approved by Supervisor"
  },
  {
   "docstatus": 0,
@@ -210,10 +183,10 @@
   "docstatus": 0,
   "doctype": "Workflow State",
   "icon": "",
-  "modified": "2024-12-03 10:20:26.249204",
-  "name": "Submitted to CEO",
+  "modified": "2024-07-21 16:46:57.207082",
+  "name": "Rejected by Finance",
   "style": "",
-  "workflow_state_name": "Submitted to CEO"
+  "workflow_state_name": "Rejected by Finance"
  },
  {
   "docstatus": 0,
@@ -232,6 +205,33 @@
   "name": "Approved by CEO",
   "style": "Success",
   "workflow_state_name": "Approved by CEO"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": "",
+  "modified": "2024-12-03 10:20:26.249204",
+  "name": "Submitted to CEO",
+  "style": "",
+  "workflow_state_name": "Submitted to CEO"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": "",
+  "modified": "2024-08-18 05:19:04.575989",
+  "name": "Approved by Finance",
+  "style": "Success",
+  "workflow_state_name": "Approved by Finance"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": "question-sign",
+  "modified": "2024-04-23 13:29:34.276491",
+  "name": "Pending",
+  "style": "",
+  "workflow_state_name": "Pending"
  },
  {
   "docstatus": 0,
