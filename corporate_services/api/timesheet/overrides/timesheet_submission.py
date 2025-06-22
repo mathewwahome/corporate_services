@@ -13,10 +13,12 @@ def delete_timesheet_submission_with_linked(timesheet_submission_name):
         if not frappe.db.exists("Timesheet Submission", timesheet_submission_name):
             frappe.throw(_("Timesheet Submission {0} does not exist").format(timesheet_submission_name))
         
-        # Set flag to allow custom deletion
         frappe.local.flags.custom_delete_in_progress = True
         frappe.local.flags.ignore_links = True
         frappe.local.flags.ignore_submit_comment = True
+        frappe.local.flags.ignore_validate = True
+        frappe.local.flags.ignore_mandatory = True
+        frappe.local.flags.force_delete = True
         
         frappe.db.begin()
         
@@ -33,15 +35,13 @@ def delete_timesheet_submission_with_linked(timesheet_submission_name):
         
         deleted_count = 0
         failed_deletions = []
-        
-        # Remove the links from the timesheet submission to avoid validation errors
+                # First, remove all link references to prevent validation errors
         for timesheet_row in linked_timesheets:
             try:
                 timesheet_name = timesheet_row.timesheet
                 if frappe.db.exists("Timesheet", timesheet_name):
-                    # Remove the reference from timesheet to timesheet submission
-                    frappe.db.set_value("Timesheet", timesheet_name, "custom_timesheet_submission", None)
-                    frappe.db.set_value("Timesheet", timesheet_name, "custom_timesheet_submission_name", None)
+                    frappe.db.set_value("Timesheet", timesheet_name, "custom_timesheet_submission", None, update_modified=False)
+                    frappe.db.set_value("Timesheet", timesheet_name, "custom_timesheet_submission_name", None, update_modified=False)
                     
             except Exception as e:
                 frappe.log_error(f"Error removing link for timesheet {timesheet_name}: {str(e)}", "Link Removal Error")
@@ -49,28 +49,11 @@ def delete_timesheet_submission_with_linked(timesheet_submission_name):
         
         frappe.db.delete("Timesheet Submission List", {"parent": timesheet_submission_name})
         
-        # Delete all linked timesheets
         for timesheet_row in linked_timesheets:
             try:
                 timesheet_name = timesheet_row.timesheet
                 if frappe.db.exists("Timesheet", timesheet_name):
-                    timesheet_doc = frappe.get_doc("Timesheet", timesheet_name)
-                    
-                    timesheet_doc.check_permission("delete")
-                    
-                    # Set flags to bypass validations
-                    timesheet_doc.flags.ignore_validate = True
-                    timesheet_doc.flags.ignore_mandatory = True
-                    timesheet_doc.flags.ignore_links = True
-                    timesheet_doc.flags.ignore_submit_comment = True
-                    
-                    # Check if timesheet is submitted - if so, cancel first
-                    if timesheet_doc.docstatus == 1:
-                        timesheet_doc.flags.ignore_validate_on_cancel = True
-                        timesheet_doc.cancel()
-                    
-                    # Delete the timesheet
-                    frappe.delete_doc("Timesheet", timesheet_name, force=True, ignore_permissions=False)
+                    force_delete_timesheet(timesheet_name)
                     deleted_count += 1
                     
             except Exception as e:
@@ -79,23 +62,11 @@ def delete_timesheet_submission_with_linked(timesheet_submission_name):
                 failed_deletions.append(timesheet_name)
                 continue
         
-        # Check if timesheet submission is submitted - if so, cancel first
-        if ts_submission.docstatus == 1:
-            ts_submission.flags.ignore_validate_on_cancel = True
-            ts_submission.cancel()
-        
-        # Set flags for timesheet submission deletion
-        ts_submission.flags.ignore_validate = True
-        ts_submission.flags.ignore_links = True
-        
-        # Now delete the timesheet submission
-        frappe.delete_doc("Timesheet Submission", timesheet_submission_name, force=True, ignore_permissions=False)
+        force_delete_timesheet_submission(ts_submission)
         
         frappe.db.commit()
         
-        frappe.local.flags.custom_delete_in_progress = False
-        frappe.local.flags.ignore_links = False
-        frappe.local.flags.ignore_submit_comment = False
+        clear_delete_flags()
         
         message = f"Successfully deleted Timesheet Submission {timesheet_submission_name} and {deleted_count} linked timesheets"
         if failed_deletions:
@@ -110,10 +81,7 @@ def delete_timesheet_submission_with_linked(timesheet_submission_name):
         
     except Exception as e:
         frappe.db.rollback()
-        
-        frappe.local.flags.custom_delete_in_progress = False
-        frappe.local.flags.ignore_links = False
-        frappe.local.flags.ignore_submit_comment = False
+        clear_delete_flags()
         
         error_msg = f"Error in delete_timesheet_submission_with_linked: {str(e)}"
         frappe.log_error(error_msg, "Timesheet Submission Deletion Error")
@@ -124,66 +92,100 @@ def delete_timesheet_submission_with_linked(timesheet_submission_name):
             "error": True
         }
 
-@frappe.whitelist()
-def force_delete_timesheet_with_links(timesheet_name):
+def force_delete_timesheet(timesheet_name):
     """
-    Force delete a timesheet even if it has links
+    Force delete a timesheet bypassing all validations
     """
     try:
-        if not frappe.db.exists("Timesheet", timesheet_name):
-            return {"success": False, "message": f"Timesheet {timesheet_name} does not exist"}
-        
-        frappe.local.flags.ignore_links = True
-        frappe.local.flags.ignore_submit_comment = True
-        
-        # Remove any references to this timesheet
-        frappe.db.delete("Timesheet Submission List", {"timesheet": timesheet_name})
-        
-        # Get and delete the timesheet
         timesheet_doc = frappe.get_doc("Timesheet", timesheet_name)
         
-        if timesheet_doc.docstatus == 1:
-            timesheet_doc.flags.ignore_validate_on_cancel = True
-            timesheet_doc.cancel()
-        
+        # Set all bypass flags
         timesheet_doc.flags.ignore_validate = True
+        timesheet_doc.flags.ignore_mandatory = True
         timesheet_doc.flags.ignore_links = True
+        timesheet_doc.flags.ignore_submit_comment = True
+        timesheet_doc.flags.ignore_validate_on_cancel = True
+        timesheet_doc.flags.ignore_permissions = True
         
-        frappe.delete_doc("Timesheet", timesheet_name, force=True)
+        # Cancel if submitted
+        if timesheet_doc.docstatus == 1:
+            frappe.db.set_value("Timesheet", timesheet_name, "docstatus", 2, update_modified=False)
         
-        frappe.local.flags.ignore_links = False
-        frappe.local.flags.ignore_submit_comment = False
-        
-        return {"success": True, "message": f"Successfully deleted timesheet {timesheet_name}"}
+        delete_timesheet_raw(timesheet_name)
         
     except Exception as e:
-        frappe.local.flags.ignore_links = False
-        frappe.local.flags.ignore_submit_comment = False
-        frappe.log_error(f"Error force deleting timesheet {timesheet_name}: {str(e)}", "Force Delete Error")
-        return {"success": False, "message": str(e)}
+        frappe.log_error(f"Error in force_delete_timesheet for {timesheet_name}: {str(e)}", "Force Delete Timesheet Error")
+        raise
+
+def force_delete_timesheet_submission(ts_submission):
+    """
+    Force delete timesheet submission bypassing all validations
+    """
+    try:
+        # Set all bypass flags
+        ts_submission.flags.ignore_validate = True
+        ts_submission.flags.ignore_links = True
+        ts_submission.flags.ignore_mandatory = True
+        ts_submission.flags.ignore_submit_comment = True
+        ts_submission.flags.ignore_validate_on_cancel = True
+        ts_submission.flags.ignore_permissions = True
+        
+        # Cancel if submitted
+        if ts_submission.docstatus == 1:
+            frappe.db.set_value("Timesheet Submission", ts_submission.name, "docstatus", 2, update_modified=False)
+        
+        delete_timesheet_submission_raw(ts_submission.name)
+        
+    except Exception as e:
+        frappe.log_error(f"Error in force_delete_timesheet_submission for {ts_submission.name}: {str(e)}", "Force Delete Submission Error")
+        raise
+
+def delete_timesheet_raw(timesheet_name):
+    """
+    Delete timesheet using raw database operations
+    """
+    frappe.db.sql("DELETE FROM `tabTimesheet Detail` WHERE parent = %s", timesheet_name)
+    
+    frappe.db.sql("DELETE FROM `tabTimesheet` WHERE name = %s", timesheet_name)
+
+def delete_timesheet_submission_raw(submission_name):
+    """
+    Delete timesheet submission using raw database operations
+    """
+    frappe.db.sql("DELETE FROM `tabTimesheet Submission List` WHERE parent = %s", submission_name)
+    
+    frappe.db.sql("DELETE FROM `tabTimesheet Submission` WHERE name = %s", submission_name)
+
+def clear_delete_flags():
+    """
+    Clear all delete-related flags
+    """
+    frappe.local.flags.custom_delete_in_progress = False
+    frappe.local.flags.ignore_links = False
+    frappe.local.flags.ignore_submit_comment = False
+    frappe.local.flags.ignore_validate = False
+    frappe.local.flags.ignore_mandatory = False
+    frappe.local.flags.force_delete = False
 
 def prevent_default_delete(doc, method):
     """
     Prevent default delete behavior for Timesheet Submission
+    This will be called by ERPNext's delete process
     """
-    if frappe.local.flags.get('custom_delete_in_progress') or frappe.local.flags.get('ignore_links'):
+    if frappe.local.flags.get('custom_delete_in_progress'):
         return
     
-    linked_count = frappe.db.count("Timesheet Submission List", {"parent": doc.name})
-    
-    if linked_count > 0:
-        frappe.throw(
-            _("Cannot delete Timesheet Submission {0} as it has {1} linked timesheet(s). Use the custom delete option instead.").format(
-                doc.name, linked_count
-            )
-        )
+    frappe.throw(
+        _("Please use the Delete option from the Actions menu to properly handle linked timesheets.")
+    )
 
 def prevent_timesheet_delete_if_linked(doc, method):
     """
     Prevent timesheet deletion if linked to submission (unless forced)
     """
     if (frappe.local.flags.get('custom_delete_in_progress') or 
-        frappe.local.flags.get('ignore_links')):
+        frappe.local.flags.get('ignore_links') or
+        frappe.local.flags.get('force_delete')):
         return
     
     linked_submissions = frappe.get_all(
@@ -199,3 +201,19 @@ def prevent_timesheet_delete_if_linked(doc, method):
                 doc.name, ", ".join(submission_names)
             )
         )
+
+def override_link_validation(doc, method):
+    """
+    Override ERPNext's link validation during delete
+    """
+    if (frappe.local.flags.get('custom_delete_in_progress') or 
+        frappe.local.flags.get('force_delete')):
+        return
+    
+
+def override_dashboard_data(data=None):
+    if (frappe.local.flags.get('custom_delete_in_progress') or 
+        frappe.local.flags.get('force_delete')):
+        return data or {}
+    
+    return data or {}

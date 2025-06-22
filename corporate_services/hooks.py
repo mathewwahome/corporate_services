@@ -157,7 +157,8 @@ on_update_map = {
     "Appraisal": "corporate_services.api.notification.appraisal.appraisal.alert",
     "Asset Movement": "corporate_services.api.notification.assets.asset_handover.alert",
     "Task":"corporate_services.api.notification.project.project_task.task_on_update",
-  
+    "Supplier Quote Submission":"corporate_services.api.supplier.finance_alert.alert",
+    
     # "Supplier Quote Submission": [
     #     "corporate_services.api.supplier.finance_alert.alert",
     #     "corporate_services.api.supplier.vat_calc.calc"
@@ -192,9 +193,14 @@ event_maps = {
     "before_save": {
         "Opportunity": "corporate_services.api.project.opportunity_handlers.save_bid_document_to_opportunity_folder"
     },
-    "before_delete": {
-        "Timesheet Submission": "corporate_services.api.timesheet.overrides.timesheet_submission.prevent_default_delete"
-    }
+   "before_delete": {
+        "Timesheet Submission": "corporate_services.api.timesheet.overrides.timesheet_submission.prevent_default_delete",
+        "Timesheet": "corporate_services.api.timesheet.overrides.timesheet_submission.prevent_timesheet_delete_if_linked",
+    },
+    "validate": {
+        "Timesheet Submission": "corporate_services.api.timesheet.overrides.timesheet_submission.override_link_validation",
+        "Timesheet": "corporate_services.api.timesheet.overrides.timesheet_submission.override_link_validation"
+    },
 }
 
 
@@ -242,9 +248,11 @@ scheduler_events = {
 # each overriding function accepts a `data` argument;
 # generated from the base implementation of the doctype dashboard,
 # along with any modifications made in other Frappe apps
-# override_doctype_dashboards = {
-# 	"Task": "corporate_services.task.get_dashboard_data"
-# }
+
+override_doctype_dashboards = {
+    "Timesheet Submission": "corporate_services.api.timesheet.overrides.timesheet_submission.override_dashboard_data",
+    "Timesheet": "corporate_services.api.timesheet.overrides.timesheet_submission.override_dashboard_data"
+}
 
 # exempt linked doctypes from being automatically cancelled
 #
