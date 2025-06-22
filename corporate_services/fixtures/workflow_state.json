@@ -155,24 +155,6 @@
  {
   "docstatus": 0,
   "doctype": "Workflow State",
-  "icon": "",
-  "modified": "2024-06-03 15:39:43.630727",
-  "name": "Approved by Supervisor",
-  "style": "",
-  "workflow_state_name": "Approved by Supervisor"
- },
- {
-  "docstatus": 0,
-  "doctype": "Workflow State",
-  "icon": "",
-  "modified": "2024-06-03 15:39:43.619304",
-  "name": "Submitted to Finance",
-  "style": "",
-  "workflow_state_name": "Submitted to Finance"
- },
- {
-  "docstatus": 0,
-  "doctype": "Workflow State",
   "icon": "ok-sign",
   "modified": "2024-04-23 13:29:34.278606",
   "name": "Approved",
@@ -187,15 +169,6 @@
   "name": "Rejected by Finance",
   "style": "",
   "workflow_state_name": "Rejected by Finance"
- },
- {
-  "docstatus": 0,
-  "doctype": "Workflow State",
-  "icon": "",
-  "modified": "2024-06-03 15:39:43.643271",
-  "name": "Submitted to Supervisor",
-  "style": "",
-  "workflow_state_name": "Submitted to Supervisor"
  },
  {
   "docstatus": 0,
@@ -237,9 +210,45 @@
   "docstatus": 0,
   "doctype": "Workflow State",
   "icon": "",
+  "modified": "2025-06-22 14:30:10.635589",
+  "name": "Submitted",
+  "style": "",
+  "workflow_state_name": "Submitted"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": "",
+  "modified": "2024-06-03 15:39:43.630727",
+  "name": "Approved by Supervisor",
+  "style": "",
+  "workflow_state_name": "Approved by Supervisor"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": "",
+  "modified": "2024-06-03 15:39:43.619304",
+  "name": "Submitted to Finance",
+  "style": "",
+  "workflow_state_name": "Submitted to Finance"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": "",
   "modified": "2024-06-03 15:39:43.484027",
   "name": "Draft",
   "style": "",
   "workflow_state_name": "Draft"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": "",
+  "modified": "2024-06-03 15:39:43.643271",
+  "name": "Submitted to Supervisor",
+  "style": "",
+  "workflow_state_name": "Submitted to Supervisor"
  }
 ]
