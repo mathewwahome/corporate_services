@@ -21,6 +21,7 @@
   "leave_status_notification_template": null,
   "modified": "2024-10-26 19:24:59.006239",
   "name": "HR Settings",
+  "prevent_self_leave_approval": 0,
   "remind_before": "00:15:00",
   "restrict_backdated_leave_application": 0,
   "retirement_age": null,
@@ -34,6 +35,7 @@
   "sender": null,
   "sender_email": null,
   "show_leaves_of_all_department_members_in_calendar": 0,
-  "standard_working_hours": 160.0
+  "standard_working_hours": 160.0,
+  "unlink_payment_on_cancellation_of_employee_advance": 0
  }
 ]
