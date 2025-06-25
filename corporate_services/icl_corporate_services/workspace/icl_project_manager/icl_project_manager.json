@@ -1,7 +1,7 @@
 {
  "charts": [],
- "content": "[{\"id\":\"Luo6h-vTm_\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">ICL Project Manager</span>\",\"col\":12}},{\"id\":\"5Y4qDrXUoT\",\"type\":\"paragraph\",\"data\":{\"text\":\"Hi! Welcome to the ICL Project Management workspace.\",\"col\":12}},{\"id\":\"rQUQ_bliVA\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"dQ9gIFnNSU\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Your Shortcuts</b></span>\",\"col\":12}},{\"id\":\"SzDwPXw_TA\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Project\",\"col\":3}},{\"id\":\"oYaUUEisrE\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Task\",\"col\":3}},{\"id\":\"xqwoGvhbUD\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Project Billing Summary\",\"col\":3}},{\"id\":\"j6weDuThio\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"d7P9-SOxUE\",\"type\":\"paragraph\",\"data\":{\"text\":\"Reports\",\"col\":12}},{\"id\":\"_a4cBcFcc2\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Project Summary\",\"col\":3}},{\"id\":\"1or-o0PVVu\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"cGf56UwBzR\",\"type\":\"card\",\"data\":{\"card_name\":\"Timesheet\",\"col\":4}},{\"id\":\"5SHWbgQ_vx\",\"type\":\"card\",\"data\":{\"card_name\":\"Projects\",\"col\":4}},{\"id\":\"X2tSHOIC0i\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"E48uKGSj1L\",\"type\":\"card\",\"data\":{\"card_name\":\"Bidding\",\"col\":4}},{\"id\":\"VV_WvzKaRz\",\"type\":\"quick_list\",\"data\":{\"quick_list_name\":\"Opportunity\",\"col\":4}}]",
- "creation": "2024-10-15 10:48:50.390194",
+ "content": "[{\"id\":\"Luo6h-vTm_\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">ICL Project Manager</span>\",\"col\":12}},{\"id\":\"5Y4qDrXUoT\",\"type\":\"paragraph\",\"data\":{\"text\":\"Hi! Welcome to the ICL Project Management workspace.\",\"col\":12}},{\"id\":\"rQUQ_bliVA\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"dQ9gIFnNSU\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Your Shortcuts</b></span>\",\"col\":12}},{\"id\":\"SzDwPXw_TA\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Project\",\"col\":3}},{\"id\":\"oYaUUEisrE\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Task\",\"col\":3}},{\"id\":\"j6weDuThio\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"d7P9-SOxUE\",\"type\":\"paragraph\",\"data\":{\"text\":\"Reports\",\"col\":12}},{\"id\":\"_a4cBcFcc2\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Project Summary\",\"col\":3}},{\"id\":\"1or-o0PVVu\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"cGf56UwBzR\",\"type\":\"card\",\"data\":{\"card_name\":\"Timesheet\",\"col\":4}},{\"id\":\"5SHWbgQ_vx\",\"type\":\"card\",\"data\":{\"card_name\":\"Projects\",\"col\":4}},{\"id\":\"X2tSHOIC0i\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"E48uKGSj1L\",\"type\":\"card\",\"data\":{\"card_name\":\"Bidding\",\"col\":4}},{\"id\":\"VV_WvzKaRz\",\"type\":\"quick_list\",\"data\":{\"quick_list_name\":\"Opportunity\",\"col\":4}}]",
+ "creation": "2025-05-20 10:04:07.676828",
  "custom_blocks": [],
  "docstatus": 0,
  "doctype": "Workspace",
@@ -55,8 +55,37 @@
   {
    "hidden": 0,
    "is_query_report": 0,
+   "label": "Bidding",
+   "link_count": 2,
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Opportunity",
+   "link_count": 0,
+   "link_to": "Opportunity",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Opportunity Type",
+   "link_count": 0,
+   "link_to": "Opportunity Type",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
    "label": "Projects",
-   "link_count": 5,
+   "link_count": 6,
    "link_type": "DocType",
    "onboard": 0,
    "type": "Card Break"
@@ -114,34 +143,15 @@
   {
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Bidding",
-   "link_count": 2,
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Card Break"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Opportunity",
+   "label": "Activity Type",
    "link_count": 0,
-   "link_to": "Opportunity",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Opportunity Type",
-   "link_count": 0,
-   "link_to": "Opportunity Type",
+   "link_to": "Activity Type",
    "link_type": "DocType",
    "onboard": 0,
    "type": "Link"
   }
  ],
- "modified": "2024-12-10 08:32:47.861476",
+ "modified": "2025-06-17 10:14:30.664403",
  "modified_by": "Administrator",
  "module": "ICL Corporate Services",
  "name": "ICL Project Manager",
@@ -164,7 +174,7 @@
    "role": "Projects User"
   }
  ],
- "sequence_id": 41.0,
+ "sequence_id": 11.0,
  "shortcuts": [
   {
    "color": "Grey",
@@ -173,13 +183,6 @@
    "link_to": "Task",
    "stats_filter": "[]",
    "type": "DocType"
-  },
-  {
-   "color": "Grey",
-   "doc_view": "List",
-   "label": "Project Billing Summary",
-   "link_to": "Project Billing Summary",
-   "type": "Report"
   },
   {
    "color": "Grey",
@@ -195,6 +198,7 @@
    "doc_view": "List",
    "label": "Project Summary",
    "link_to": "Project Summary",
+   "report_ref_doctype": "Project",
    "type": "Report"
   }
  ],

@@ -16,6 +16,7 @@
  ],
  "fields": [
   {
+   "columns": 1,
    "fieldname": "name1",
    "fieldtype": "Data",
    "in_list_view": 1,
@@ -23,13 +24,15 @@
    "reqd": 1
   },
   {
+   "columns": 2,
    "fieldname": "description",
-   "fieldtype": "Data",
+   "fieldtype": "Small Text",
    "in_list_view": 1,
    "label": "Description",
    "reqd": 1
   },
   {
+   "columns": 1,
    "fieldname": "qty",
    "fieldtype": "Data",
    "in_list_view": 1,
@@ -37,39 +40,51 @@
    "reqd": 1
   },
   {
+   "columns": 1,
    "fieldname": "units",
    "fieldtype": "Data",
    "in_list_view": 1,
+   "in_preview": 1,
    "label": "Units"
   },
   {
+   "columns": 1,
    "fieldname": "amount",
    "fieldtype": "Data",
    "in_list_view": 1,
    "label": "Amount"
   },
   {
+   "columns": 2,
    "fieldname": "project",
-   "fieldtype": "Data",
+   "fieldtype": "Link",
    "in_list_view": 1,
-   "label": "Project"
+   "label": "Project",
+   "options": "Project"
   },
   {
+   "columns": 2,
    "fieldname": "requisition_justification",
-   "fieldtype": "Data",
+   "fieldtype": "Small Text",
+   "in_filter": 1,
    "in_list_view": 1,
-   "label": "Requisition Justification"
+   "in_preview": 1,
+   "in_standard_filter": 1,
+   "label": "Requisition Justification",
+   "length": 2,
+   "width": "2"
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2024-07-25 10:47:36.584616",
+ "modified": "2025-06-13 10:51:52.645173",
  "modified_by": "Administrator",
  "module": "ICL Corporate Services",
  "name": "Asset Requisition Table",
  "owner": "Administrator",
  "permissions": [],
+ "row_format": "Dynamic",
  "sort_field": "modified",
  "sort_order": "DESC",
  "states": []

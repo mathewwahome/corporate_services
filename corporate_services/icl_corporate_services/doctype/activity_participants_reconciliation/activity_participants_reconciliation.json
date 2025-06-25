@@ -11,6 +11,7 @@
   "total_paid",
   "fx_rate",
   "amount_in_local_currency",
+  "currency",
   "attach_receipt"
  ],
  "fields": [
@@ -29,14 +30,14 @@
    "label": "Date"
   },
   {
-   "columns": 2,
+   "columns": 1,
    "fieldname": "attach_receipt",
    "fieldtype": "Attach",
    "in_list_view": 1,
    "label": "Attach Receipt"
   },
   {
-   "columns": 2,
+   "columns": 1,
    "fieldname": "amount_in_local_currency",
    "fieldtype": "Float",
    "in_list_view": 1,
@@ -56,17 +57,27 @@
    "fieldtype": "Float",
    "in_list_view": 1,
    "label": "Fx (Rate)"
+  },
+  {
+   "columns": 1,
+   "fieldname": "currency",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "label": "Currency",
+   "reqd": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2024-11-12 13:05:02.144583",
+ "modified": "2025-05-20 09:15:16.020405",
  "modified_by": "Administrator",
  "module": "ICL Corporate Services",
  "name": "Activity Participants Reconciliation",
  "owner": "Administrator",
  "permissions": [],
+ "row_format": "Dynamic",
  "sort_field": "modified",
  "sort_order": "DESC",
  "states": []
