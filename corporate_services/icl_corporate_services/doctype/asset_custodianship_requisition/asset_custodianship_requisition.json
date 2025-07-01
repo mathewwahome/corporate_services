@@ -19,7 +19,8 @@
   "description_of_the_equipment_section",
   "table_mesb",
   "terms_and_conditions_section",
-  "accept"
+  "accept",
+  "status"
  ],
  "fields": [
   {
@@ -108,11 +109,21 @@
    "label": "Reports To",
    "read_only": 1,
    "reqd": 1
+  },
+  {
+   "default": "Draft",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "hidden": 1,
+   "label": "Status",
+   "options": "Draft\nSubmitted\nCancelled",
+   "print_hide": 1,
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-07-15 14:44:19.965714",
+ "modified": "2025-06-13 11:00:25.885080",
  "modified_by": "Administrator",
  "module": "ICL Corporate Services",
  "name": "Asset Custodianship Requisition",
@@ -132,6 +143,7 @@
    "write": 1
   }
  ],
+ "row_format": "Dynamic",
  "sort_field": "modified",
  "sort_order": "DESC",
  "states": []

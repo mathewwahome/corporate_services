@@ -1,7 +1,7 @@
 {
  "charts": [],
- "content": "[{\"id\":\"pGDIKaB3sp\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">ICL Finance</span>\",\"col\":12}},{\"id\":\"J7vPhqvR5k\",\"type\":\"paragraph\",\"data\":{\"text\":\"<b>IntelliSOFT Consulting Limited</b>\",\"col\":12}},{\"id\":\"Q6nv3ukJ_0\",\"type\":\"card\",\"data\":{\"card_name\":\"Timesheet\",\"col\":4}},{\"id\":\"lTrGiXbvHA\",\"type\":\"quick_list\",\"data\":{\"quick_list_name\":\"Timesheet Submission\",\"col\":4}},{\"id\":\"Bu53a4s5pU\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Shortcuts</b></span>\",\"col\":12}},{\"id\":\"ig1g1wBMZt\",\"type\":\"card\",\"data\":{\"card_name\":\"Projects\",\"col\":4}},{\"id\":\"yW_hT1yVnY\",\"type\":\"card\",\"data\":{\"card_name\":\"Project Based Accounting\",\"col\":4}},{\"id\":\"bPMUldGueN\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"EHci6cezpl\",\"type\":\"card\",\"data\":{\"card_name\":\"Travel Process\",\"col\":4}},{\"id\":\"oaxbpvdAtq\",\"type\":\"quick_list\",\"data\":{\"quick_list_name\":\"Travel Request\",\"col\":4}},{\"id\":\"WCz7lGIPtN\",\"type\":\"quick_list\",\"data\":{\"quick_list_name\":\"Travel Request Reconciliation\",\"col\":4}}]",
- "creation": "2024-12-11 14:07:36.420968",
+ "content": "[{\"id\":\"pGDIKaB3sp\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\" _msttexthash=\\\"140504\\\" _msthash=\\\"772\\\" _mstvisible=\\\"5\\\">ICL Finance</span>\",\"col\":12}},{\"id\":\"J7vPhqvR5k\",\"type\":\"paragraph\",\"data\":{\"text\":\"<b _msttexthash=\\\"758810\\\" _msthash=\\\"773\\\" _mstvisible=\\\"4\\\">IntelliSOFT Consulting Limited</b>\",\"col\":12}},{\"id\":\"Q6nv3ukJ_0\",\"type\":\"card\",\"data\":{\"card_name\":\"Timesheet\",\"col\":4}},{\"id\":\"lTrGiXbvHA\",\"type\":\"quick_list\",\"data\":{\"quick_list_name\":\"Timesheet Submission\",\"col\":4}},{\"id\":\"Bu53a4s5pU\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\" _mstvisible=\\\"5\\\"><b _msttexthash=\\\"141518\\\" _msthash=\\\"780\\\" _mstvisible=\\\"6\\\">Shortcuts</b></span>\",\"col\":12}},{\"id\":\"ig1g1wBMZt\",\"type\":\"card\",\"data\":{\"card_name\":\"Projects\",\"col\":4}},{\"id\":\"yW_hT1yVnY\",\"type\":\"card\",\"data\":{\"card_name\":\"Project Based Accounting\",\"col\":4}},{\"id\":\"bPMUldGueN\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"EHci6cezpl\",\"type\":\"card\",\"data\":{\"card_name\":\"Travel Process\",\"col\":4}},{\"id\":\"oaxbpvdAtq\",\"type\":\"quick_list\",\"data\":{\"quick_list_name\":\"Travel Request\",\"col\":4}},{\"id\":\"WCz7lGIPtN\",\"type\":\"quick_list\",\"data\":{\"quick_list_name\":\"Travel Request Reconciliation\",\"col\":4}},{\"id\":\"_pEUUDkGXg\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"IrwJKaLJKa\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\" _mstvisible=\\\"5\\\"><b _msttexthash=\\\"829244\\\" _msthash=\\\"800\\\" _mstvisible=\\\"6\\\">Project Based Accounting Reports</b></span>\",\"col\":12}},{\"id\":\"9SrrfgL-Sq\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Project Billing Summary\",\"col\":3}},{\"id\":\"ZJrx7je_xB\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Daily Timesheet Summary\",\"col\":3}},{\"id\":\"IuFdREtK44\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Project Wise Stock Tracking\",\"col\":3}},{\"id\":\"dH_JaIwzYB\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"XUXkSYMGnQ\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\" _msttexthash=\\\"1324466\\\" _msthash=\\\"807\\\" _mstvisible=\\\"5\\\">Procurement and Asset lifecycle management<b _mstvisible=\\\"6\\\"></b></span>\",\"col\":12}},{\"id\":\"ObVzm9ASLO\",\"type\":\"card\",\"data\":{\"card_name\":\"\ud83d\udd10Asset Process\",\"col\":4}},{\"id\":\"XF7XTKT_UM\",\"type\":\"quick_list\",\"data\":{\"quick_list_name\":\"Asset Requisition\",\"col\":4}},{\"id\":\"ZjBpu46upp\",\"type\":\"quick_list\",\"data\":{\"quick_list_name\":\"Asset Movement\",\"col\":4}},{\"id\":\"6XShyKhGpY\",\"type\":\"quick_list\",\"data\":{\"quick_list_name\":\"Asset Custodianship Requisition\",\"col\":4}},{\"id\":\"lyFgUWw1mP\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"yw9nuXC-v6\",\"type\":\"card\",\"data\":{\"card_name\":\"Suppliers Processes\",\"col\":4}},{\"id\":\"g0as4eNtfs\",\"type\":\"quick_list\",\"data\":{\"quick_list_name\":\"Request for Quotation\",\"col\":4}},{\"id\":\"wbGGlfxAvv\",\"type\":\"quick_list\",\"data\":{\"quick_list_name\":\"Supplier Quote Submission\",\"col\":4}},{\"id\":\"bVHfdgb1nB\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"6bi1v3YsaT\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\" _msttexthash=\\\"1003483\\\" _msthash=\\\"831\\\" _mstvisible=\\\"5\\\">Purchase order management processes<b _mstvisible=\\\"6\\\"></b></span>\",\"col\":12}},{\"id\":\"kanDQplit-\",\"type\":\"card\",\"data\":{\"card_name\":\"Purchase Order Processes\",\"col\":4}}]",
+ "creation": "2025-06-25 12:00:08.172232",
  "custom_blocks": [],
  "docstatus": 0,
  "doctype": "Workspace",
@@ -12,35 +12,6 @@
  "is_hidden": 0,
  "label": "ICL Finance",
  "links": [
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Timesheet",
-   "link_count": 2,
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Card Break"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Timesheet Submission",
-   "link_count": 0,
-   "link_to": "Timesheet Submission",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Timesheet",
-   "link_count": 0,
-   "link_to": "Timesheet",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
   {
    "hidden": 0,
    "is_query_report": 0,
@@ -103,27 +74,8 @@
   {
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Project Based Accounting",
-   "link_count": 1,
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Card Break"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Corporate Services Settings",
-   "link_count": 0,
-   "link_to": "Corporate Services Settings",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
    "label": "Travel Process",
-   "link_count": 2,
+   "link_count": 4,
    "link_type": "DocType",
    "onboard": 0,
    "type": "Card Break"
@@ -147,9 +99,235 @@
    "link_type": "DocType",
    "onboard": 0,
    "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "International Per Diem Rates",
+   "link_count": 0,
+   "link_to": "Per Diem Rates",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Local Per Diem Rates",
+   "link_count": 0,
+   "link_to": "Local Per Diem Rates",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Project Based Accounting",
+   "link_count": 1,
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Activity Cost",
+   "link_count": 0,
+   "link_to": "Activity Cost",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "description": "<!DOCTYPE html>\n<body>\n   <p>\n        Procurement and Asset lifecycle management.\n    </p> \n</body>\n",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "\ud83d\udd10Asset Process",
+   "link_count": 8,
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Asset List",
+   "link_count": 0,
+   "link_to": "Asset",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Asset Requisition",
+   "link_count": 0,
+   "link_to": "Asset Requisition",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Asset Custodianship Requisition",
+   "link_count": 0,
+   "link_to": "Asset Custodianship Requisition",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Asset Handover",
+   "link_count": 0,
+   "link_to": "Asset Movement",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Asset Damage Loss Theft Report Form",
+   "link_count": 0,
+   "link_to": "Asset Damage Loss Theft Report Form",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Asset replacement request",
+   "link_count": 0,
+   "link_to": "Asset replacement request",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Asset Repair",
+   "link_count": 0,
+   "link_to": "Asset Repair",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Item",
+   "link_count": 0,
+   "link_to": "Item",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Purchase Order Processes",
+   "link_count": 3,
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Purchase Invoice",
+   "link_count": 0,
+   "link_to": "Purchase Invoice",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Purchase Order",
+   "link_count": 0,
+   "link_to": "Purchase Order",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Purchase Receipt",
+   "link_count": 0,
+   "link_to": "Purchase Receipt",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Suppliers Processes",
+   "link_count": 3,
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Supplier List",
+   "link_count": 0,
+   "link_to": "Supplier",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Request for Quotation",
+   "link_count": 0,
+   "link_to": "Request for Quotation",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Supplier Quote Submission",
+   "link_count": 0,
+   "link_to": "Supplier Quote Submission",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Timesheet",
+   "link_count": 1,
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Timesheet Submission",
+   "link_count": 0,
+   "link_to": "Timesheet Submission",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
   }
  ],
- "modified": "2024-12-18 08:48:29.917699",
+ "modified": "2025-06-25 12:03:49.470763",
  "modified_by": "Administrator",
  "module": "ICL Corporate Services",
  "name": "ICL Finance",
@@ -159,13 +337,38 @@
  "public": 1,
  "quick_lists": [
   {
+   "document_type": "Supplier Quote Submission",
+   "label": "Supplier Quote Submission",
+   "quick_list_filter": "[]"
+  },
+  {
    "document_type": "Travel Request",
    "label": "Travel Request",
    "quick_list_filter": "[]"
   },
   {
+   "document_type": "Asset Movement",
+   "label": "Asset Movement",
+   "quick_list_filter": "[]"
+  },
+  {
+   "document_type": "Request for Quotation",
+   "label": "Request for Quotation",
+   "quick_list_filter": "[]"
+  },
+  {
    "document_type": "Timesheet Submission",
    "label": "Timesheet Submission",
+   "quick_list_filter": "[]"
+  },
+  {
+   "document_type": "Asset Requisition",
+   "label": "Asset Requisition",
+   "quick_list_filter": "[]"
+  },
+  {
+   "document_type": "Asset Custodianship Requisition",
+   "label": "Asset Custodianship Requisition",
    "quick_list_filter": "[]"
   },
   {
@@ -179,7 +382,32 @@
    "role": "Finance"
   }
  ],
- "sequence_id": 43.0,
- "shortcuts": [],
+ "sequence_id": 13.0,
+ "shortcuts": [
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Project Wise Stock Tracking",
+   "link_to": "Project wise Stock Tracking",
+   "report_ref_doctype": "Project",
+   "type": "Report"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Project Billing Summary",
+   "link_to": "Project Billing Summary",
+   "report_ref_doctype": "Timesheet",
+   "type": "Report"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Daily Timesheet Summary",
+   "link_to": "Daily Timesheet Summary",
+   "report_ref_doctype": "Timesheet",
+   "type": "Report"
+  }
+ ],
  "title": "ICL Finance"
 }

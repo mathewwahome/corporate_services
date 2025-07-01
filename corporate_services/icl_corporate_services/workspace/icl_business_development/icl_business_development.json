@@ -1,0 +1,134 @@
+{
+ "charts": [],
+ "content": "[{\"id\":\"pfu6zgZBHE\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">ICL Business Development</span>\",\"col\":12}},{\"id\":\"keZGpQWkGv\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"-HinV4f9Cj\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Bidding Dashboard\",\"col\":3}},{\"id\":\"6au60Aefwf\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Lead\",\"col\":3}},{\"id\":\"-iRgxoP8j1\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"kdhJF3jAb0\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Your Shortcuts</b></span>\",\"col\":12}},{\"id\":\"1h06nZ73qk\",\"type\":\"card\",\"data\":{\"card_name\":\"Bidding\",\"col\":4}},{\"id\":\"tgFIeCDSb0\",\"type\":\"quick_list\",\"data\":{\"quick_list_name\":\"Bidding\",\"col\":4}},{\"id\":\"OGCHj8PGpk\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"HN5ZS0OZGu\",\"type\":\"card\",\"data\":{\"card_name\":\"Bid Preparation\",\"col\":4}},{\"id\":\"7BDu29GoNI\",\"type\":\"quick_list\",\"data\":{\"quick_list_name\":\"Lead\",\"col\":4}},{\"id\":\"PS8BEIh9IC\",\"type\":\"quick_list\",\"data\":{\"quick_list_name\":\"Customer\",\"col\":4}}]",
+ "creation": "2025-06-25 12:00:09.658251",
+ "custom_blocks": [],
+ "docstatus": 0,
+ "doctype": "Workspace",
+ "for_user": "",
+ "hide_custom": 0,
+ "icon": "organization",
+ "idx": 0,
+ "indicator_color": "green",
+ "is_hidden": 0,
+ "label": "ICL Business Development",
+ "links": [
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Bidding",
+   "link_count": 3,
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Bidding",
+   "link_count": 0,
+   "link_to": "Opportunity",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Bidding Type",
+   "link_count": 0,
+   "link_to": "Opportunity Type",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Opportunity Lost Reason",
+   "link_count": 0,
+   "link_to": "Opportunity Lost Reason",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Bid Preparation",
+   "link_count": 2,
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Lead",
+   "link_count": 0,
+   "link_to": "Lead",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Customer/Client",
+   "link_count": 0,
+   "link_to": "Customer",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  }
+ ],
+ "modified": "2025-06-25 12:05:27.817057",
+ "modified_by": "Administrator",
+ "module": "ICL Corporate Services",
+ "name": "ICL Business Development",
+ "number_cards": [],
+ "owner": "Administrator",
+ "parent_page": "",
+ "public": 1,
+ "quick_lists": [
+  {
+   "document_type": "Lead",
+   "label": "Lead",
+   "quick_list_filter": "[]"
+  },
+  {
+   "document_type": "Opportunity",
+   "label": "Bidding",
+   "quick_list_filter": "[]"
+  },
+  {
+   "document_type": "Customer",
+   "label": "Customer",
+   "quick_list_filter": "[]"
+  }
+ ],
+ "roles": [
+  {
+   "role": "Business Development"
+  }
+ ],
+ "sequence_id": 15.0,
+ "shortcuts": [
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Bidding Dashboard",
+   "link_to": "Bidding",
+   "type": "Dashboard"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Lead",
+   "link_to": "Lead",
+   "stats_filter": "[]",
+   "type": "DocType"
+  }
+ ],
+ "title": "ICL Business Development"
+}

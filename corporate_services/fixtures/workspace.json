@@ -1,7 +1,7 @@
 [
  {
   "charts": [],
-  "content": "[{\"id\":\"Luo6h-vTm_\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">ICL Project Manager</span>\",\"col\":12}},{\"id\":\"5Y4qDrXUoT\",\"type\":\"paragraph\",\"data\":{\"text\":\"Hi! Welcome to the ICL Project Management workspace.\",\"col\":12}},{\"id\":\"rQUQ_bliVA\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"dQ9gIFnNSU\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Your Shortcuts</b></span>\",\"col\":12}},{\"id\":\"SzDwPXw_TA\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Project\",\"col\":3}},{\"id\":\"oYaUUEisrE\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Task\",\"col\":3}},{\"id\":\"xqwoGvhbUD\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Project Billing Summary\",\"col\":3}},{\"id\":\"j6weDuThio\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"d7P9-SOxUE\",\"type\":\"paragraph\",\"data\":{\"text\":\"Reports\",\"col\":12}},{\"id\":\"_a4cBcFcc2\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Project Summary\",\"col\":3}},{\"id\":\"1or-o0PVVu\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"cGf56UwBzR\",\"type\":\"card\",\"data\":{\"card_name\":\"Timesheet\",\"col\":4}},{\"id\":\"5SHWbgQ_vx\",\"type\":\"card\",\"data\":{\"card_name\":\"Projects\",\"col\":4}},{\"id\":\"X2tSHOIC0i\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"E48uKGSj1L\",\"type\":\"card\",\"data\":{\"card_name\":\"Bidding\",\"col\":4}},{\"id\":\"VV_WvzKaRz\",\"type\":\"quick_list\",\"data\":{\"quick_list_name\":\"Opportunity\",\"col\":4}}]",
+  "content": "[{\"id\":\"Luo6h-vTm_\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">ICL Project Manager</span>\",\"col\":12}},{\"id\":\"5Y4qDrXUoT\",\"type\":\"paragraph\",\"data\":{\"text\":\"Hi! Welcome to the ICL Project Management workspace.\",\"col\":12}},{\"id\":\"rQUQ_bliVA\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"dQ9gIFnNSU\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Your Shortcuts</b></span>\",\"col\":12}},{\"id\":\"SzDwPXw_TA\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Project\",\"col\":3}},{\"id\":\"oYaUUEisrE\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Task\",\"col\":3}},{\"id\":\"j6weDuThio\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"S_ZIi0mf9N\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Project Management</b></span>\",\"col\":12}},{\"id\":\"ATADSODMfG\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Project Manager Billing\",\"col\":3}},{\"id\":\"NZx2cWwsqA\",\"type\":\"quick_list\",\"data\":{\"quick_list_name\":\"Project Manager Billing\",\"col\":4}},{\"id\":\"d7P9-SOxUE\",\"type\":\"paragraph\",\"data\":{\"text\":\"Reports\",\"col\":12}},{\"id\":\"_a4cBcFcc2\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Project Summary\",\"col\":3}},{\"id\":\"1or-o0PVVu\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"cGf56UwBzR\",\"type\":\"card\",\"data\":{\"card_name\":\"Timesheet\",\"col\":4}},{\"id\":\"5SHWbgQ_vx\",\"type\":\"card\",\"data\":{\"card_name\":\"Projects\",\"col\":4}},{\"id\":\"X2tSHOIC0i\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"E48uKGSj1L\",\"type\":\"card\",\"data\":{\"card_name\":\"Bidding\",\"col\":4}},{\"id\":\"VV_WvzKaRz\",\"type\":\"quick_list\",\"data\":{\"quick_list_name\":\"Opportunity\",\"col\":4}}]",
   "custom_blocks": [],
   "docstatus": 0,
   "doctype": "Workspace",
@@ -18,176 +18,6 @@
     "hidden": 0,
     "icon": null,
     "is_query_report": 0,
-    "label": "Timesheet",
-    "link_count": 3,
-    "link_to": null,
-    "link_type": "DocType",
-    "onboard": 0,
-    "only_for": null,
-    "parent": "ICL Project Manager",
-    "parentfield": "links",
-    "parenttype": "Workspace",
-    "type": "Card Break"
-   },
-   {
-    "dependencies": null,
-    "description": null,
-    "hidden": 0,
-    "icon": null,
-    "is_query_report": 0,
-    "label": "Timesheet",
-    "link_count": 0,
-    "link_to": "Timesheet",
-    "link_type": "DocType",
-    "onboard": 0,
-    "only_for": null,
-    "parent": "ICL Project Manager",
-    "parentfield": "links",
-    "parenttype": "Workspace",
-    "type": "Link"
-   },
-   {
-    "dependencies": null,
-    "description": null,
-    "hidden": 0,
-    "icon": null,
-    "is_query_report": 0,
-    "label": "Timesheet Submission",
-    "link_count": 0,
-    "link_to": "Timesheet Submission",
-    "link_type": "DocType",
-    "onboard": 0,
-    "only_for": null,
-    "parent": "ICL Project Manager",
-    "parentfield": "links",
-    "parenttype": "Workspace",
-    "type": "Link"
-   },
-   {
-    "dependencies": null,
-    "description": null,
-    "hidden": 0,
-    "icon": null,
-    "is_query_report": 0,
-    "label": "Employee Timesheet",
-    "link_count": 0,
-    "link_to": "Employee Timesheet",
-    "link_type": "DocType",
-    "onboard": 0,
-    "only_for": null,
-    "parent": "ICL Project Manager",
-    "parentfield": "links",
-    "parenttype": "Workspace",
-    "type": "Link"
-   },
-   {
-    "dependencies": null,
-    "description": null,
-    "hidden": 0,
-    "icon": null,
-    "is_query_report": 0,
-    "label": "Projects",
-    "link_count": 5,
-    "link_to": null,
-    "link_type": "DocType",
-    "onboard": 0,
-    "only_for": null,
-    "parent": "ICL Project Manager",
-    "parentfield": "links",
-    "parenttype": "Workspace",
-    "type": "Card Break"
-   },
-   {
-    "dependencies": null,
-    "description": null,
-    "hidden": 0,
-    "icon": null,
-    "is_query_report": 0,
-    "label": "Project",
-    "link_count": 0,
-    "link_to": "Project",
-    "link_type": "DocType",
-    "onboard": 0,
-    "only_for": null,
-    "parent": "ICL Project Manager",
-    "parentfield": "links",
-    "parenttype": "Workspace",
-    "type": "Link"
-   },
-   {
-    "dependencies": null,
-    "description": null,
-    "hidden": 0,
-    "icon": null,
-    "is_query_report": 0,
-    "label": "Project Template",
-    "link_count": 0,
-    "link_to": "Project Template",
-    "link_type": "DocType",
-    "onboard": 0,
-    "only_for": null,
-    "parent": "ICL Project Manager",
-    "parentfield": "links",
-    "parenttype": "Workspace",
-    "type": "Link"
-   },
-   {
-    "dependencies": null,
-    "description": null,
-    "hidden": 0,
-    "icon": null,
-    "is_query_report": 0,
-    "label": "Project Type",
-    "link_count": 0,
-    "link_to": "Project Type",
-    "link_type": "DocType",
-    "onboard": 0,
-    "only_for": null,
-    "parent": "ICL Project Manager",
-    "parentfield": "links",
-    "parenttype": "Workspace",
-    "type": "Link"
-   },
-   {
-    "dependencies": null,
-    "description": null,
-    "hidden": 0,
-    "icon": null,
-    "is_query_report": 0,
-    "label": "Project Update",
-    "link_count": 0,
-    "link_to": "Project Update",
-    "link_type": "DocType",
-    "onboard": 0,
-    "only_for": null,
-    "parent": "ICL Project Manager",
-    "parentfield": "links",
-    "parenttype": "Workspace",
-    "type": "Link"
-   },
-   {
-    "dependencies": null,
-    "description": null,
-    "hidden": 0,
-    "icon": null,
-    "is_query_report": 0,
-    "label": "Task",
-    "link_count": 0,
-    "link_to": "Task",
-    "link_type": "DocType",
-    "onboard": 0,
-    "only_for": null,
-    "parent": "ICL Project Manager",
-    "parentfield": "links",
-    "parenttype": "Workspace",
-    "type": "Link"
-   },
-   {
-    "dependencies": null,
-    "description": null,
-    "hidden": 0,
-    "icon": null,
-    "is_query_report": 0,
     "label": "Bidding",
     "link_count": 2,
     "link_to": null,
@@ -197,6 +27,7 @@
     "parent": "ICL Project Manager",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Card Break"
    },
    {
@@ -214,6 +45,7 @@
     "parent": "ICL Project Manager",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Link"
    },
    {
@@ -231,16 +63,187 @@
     "parent": "ICL Project Manager",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
+    "type": "Link"
+   },
+   {
+    "dependencies": null,
+    "description": null,
+    "hidden": 0,
+    "icon": null,
+    "is_query_report": 0,
+    "label": "Projects",
+    "link_count": 6,
+    "link_to": null,
+    "link_type": "DocType",
+    "onboard": 0,
+    "only_for": null,
+    "parent": "ICL Project Manager",
+    "parentfield": "links",
+    "parenttype": "Workspace",
+    "report_ref_doctype": null,
+    "type": "Card Break"
+   },
+   {
+    "dependencies": null,
+    "description": null,
+    "hidden": 0,
+    "icon": null,
+    "is_query_report": 0,
+    "label": "Project",
+    "link_count": 0,
+    "link_to": "Project",
+    "link_type": "DocType",
+    "onboard": 0,
+    "only_for": null,
+    "parent": "ICL Project Manager",
+    "parentfield": "links",
+    "parenttype": "Workspace",
+    "report_ref_doctype": null,
+    "type": "Link"
+   },
+   {
+    "dependencies": null,
+    "description": null,
+    "hidden": 0,
+    "icon": null,
+    "is_query_report": 0,
+    "label": "Project Template",
+    "link_count": 0,
+    "link_to": "Project Template",
+    "link_type": "DocType",
+    "onboard": 0,
+    "only_for": null,
+    "parent": "ICL Project Manager",
+    "parentfield": "links",
+    "parenttype": "Workspace",
+    "report_ref_doctype": null,
+    "type": "Link"
+   },
+   {
+    "dependencies": null,
+    "description": null,
+    "hidden": 0,
+    "icon": null,
+    "is_query_report": 0,
+    "label": "Project Type",
+    "link_count": 0,
+    "link_to": "Project Type",
+    "link_type": "DocType",
+    "onboard": 0,
+    "only_for": null,
+    "parent": "ICL Project Manager",
+    "parentfield": "links",
+    "parenttype": "Workspace",
+    "report_ref_doctype": null,
+    "type": "Link"
+   },
+   {
+    "dependencies": null,
+    "description": null,
+    "hidden": 0,
+    "icon": null,
+    "is_query_report": 0,
+    "label": "Project Update",
+    "link_count": 0,
+    "link_to": "Project Update",
+    "link_type": "DocType",
+    "onboard": 0,
+    "only_for": null,
+    "parent": "ICL Project Manager",
+    "parentfield": "links",
+    "parenttype": "Workspace",
+    "report_ref_doctype": null,
+    "type": "Link"
+   },
+   {
+    "dependencies": null,
+    "description": null,
+    "hidden": 0,
+    "icon": null,
+    "is_query_report": 0,
+    "label": "Task",
+    "link_count": 0,
+    "link_to": "Task",
+    "link_type": "DocType",
+    "onboard": 0,
+    "only_for": null,
+    "parent": "ICL Project Manager",
+    "parentfield": "links",
+    "parenttype": "Workspace",
+    "report_ref_doctype": null,
+    "type": "Link"
+   },
+   {
+    "dependencies": null,
+    "description": null,
+    "hidden": 0,
+    "icon": null,
+    "is_query_report": 0,
+    "label": "Activity Type",
+    "link_count": 0,
+    "link_to": "Activity Type",
+    "link_type": "DocType",
+    "onboard": 0,
+    "only_for": null,
+    "parent": "ICL Project Manager",
+    "parentfield": "links",
+    "parenttype": "Workspace",
+    "report_ref_doctype": null,
+    "type": "Link"
+   },
+   {
+    "dependencies": null,
+    "description": null,
+    "hidden": 0,
+    "icon": null,
+    "is_query_report": 0,
+    "label": "Timesheet",
+    "link_count": 1,
+    "link_to": null,
+    "link_type": "DocType",
+    "onboard": 0,
+    "only_for": null,
+    "parent": "ICL Project Manager",
+    "parentfield": "links",
+    "parenttype": "Workspace",
+    "report_ref_doctype": null,
+    "type": "Card Break"
+   },
+   {
+    "dependencies": null,
+    "description": null,
+    "hidden": 0,
+    "icon": null,
+    "is_query_report": 0,
+    "label": "Timesheet Submission",
+    "link_count": 0,
+    "link_to": "Timesheet Submission",
+    "link_type": "DocType",
+    "onboard": 0,
+    "only_for": null,
+    "parent": "ICL Project Manager",
+    "parentfield": "links",
+    "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Link"
    }
   ],
-  "modified": "2024-12-10 08:32:47.861476",
+  "modified": "2025-06-25 12:50:45.537943",
   "module": "ICL Corporate Services",
   "name": "ICL Project Manager",
   "number_cards": [],
   "parent_page": "",
   "public": 1,
   "quick_lists": [
+   {
+    "document_type": "Project Manager Billing",
+    "label": "Project Manager Billing",
+    "parent": "ICL Project Manager",
+    "parentfield": "quick_lists",
+    "parenttype": "Workspace",
+    "quick_list_filter": "[]"
+   },
    {
     "document_type": "Opportunity",
     "label": "Opportunity",
@@ -265,7 +268,7 @@
     "role": "Projects User"
    }
   ],
-  "sequence_id": 41.0,
+  "sequence_id": 11.0,
   "shortcuts": [
    {
     "color": "Grey",
@@ -273,11 +276,12 @@
     "format": null,
     "icon": null,
     "kanban_board": null,
-    "label": "Task",
-    "link_to": "Task",
+    "label": "Project Manager Billing",
+    "link_to": "Project Manager Billing",
     "parent": "ICL Project Manager",
     "parentfield": "shortcuts",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "restrict_to_domain": null,
     "stats_filter": "[]",
     "type": "DocType",
@@ -289,14 +293,15 @@
     "format": null,
     "icon": null,
     "kanban_board": null,
-    "label": "Project Billing Summary",
-    "link_to": "Project Billing Summary",
+    "label": "Task",
+    "link_to": "Task",
     "parent": "ICL Project Manager",
     "parentfield": "shortcuts",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "restrict_to_domain": null,
-    "stats_filter": null,
-    "type": "Report",
+    "stats_filter": "[]",
+    "type": "DocType",
     "url": null
    },
    {
@@ -310,6 +315,7 @@
     "parent": "ICL Project Manager",
     "parentfield": "shortcuts",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "restrict_to_domain": null,
     "stats_filter": "[]",
     "type": "DocType",
@@ -326,6 +332,7 @@
     "parent": "ICL Project Manager",
     "parentfield": "shortcuts",
     "parenttype": "Workspace",
+    "report_ref_doctype": "Project",
     "restrict_to_domain": null,
     "stats_filter": null,
     "type": "Report",
@@ -347,7 +354,7 @@
   "is_hidden": 0,
   "label": "ICL Supervisor",
   "links": [],
-  "modified": "2024-08-14 11:57:33.965638",
+  "modified": "2025-05-21 12:07:15.854525",
   "module": "ICL Corporate Services",
   "name": "ICL Supervisor",
   "number_cards": [],
@@ -363,7 +370,7 @@
     "role": "Supervisor"
    }
   ],
-  "sequence_id": 42.0,
+  "sequence_id": 12.0,
   "shortcuts": [
    {
     "color": "Grey",
@@ -376,6 +383,7 @@
     "parent": "ICL Supervisor",
     "parentfield": "shortcuts",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "restrict_to_domain": null,
     "stats_filter": "[]",
     "type": "DocType",
@@ -392,6 +400,7 @@
     "parent": "ICL Supervisor",
     "parentfield": "shortcuts",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "restrict_to_domain": null,
     "stats_filter": "[]",
     "type": "DocType",
@@ -408,6 +417,7 @@
     "parent": "ICL Supervisor",
     "parentfield": "shortcuts",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "restrict_to_domain": null,
     "stats_filter": "[]",
     "type": "DocType",
@@ -424,6 +434,7 @@
     "parent": "ICL Supervisor",
     "parentfield": "shortcuts",
     "parenttype": "Workspace",
+    "report_ref_doctype": "Asset replacement request",
     "restrict_to_domain": null,
     "stats_filter": "[]",
     "type": "Report",
@@ -440,6 +451,7 @@
     "parent": "ICL Supervisor",
     "parentfield": "shortcuts",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "restrict_to_domain": null,
     "stats_filter": "[]",
     "type": "DocType",
@@ -456,6 +468,7 @@
     "parent": "ICL Supervisor",
     "parentfield": "shortcuts",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "restrict_to_domain": null,
     "stats_filter": "[]",
     "type": "DocType",
@@ -472,6 +485,7 @@
     "parent": "ICL Supervisor",
     "parentfield": "shortcuts",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "restrict_to_domain": null,
     "stats_filter": "[]",
     "type": "DocType",
@@ -488,6 +502,7 @@
     "parent": "ICL Supervisor",
     "parentfield": "shortcuts",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "restrict_to_domain": null,
     "stats_filter": "[]",
     "type": "DocType",
@@ -509,7 +524,7 @@
   "is_hidden": 0,
   "label": "Home",
   "links": [],
-  "modified": "2024-07-09 15:16:44.297122",
+  "modified": "2025-05-21 12:07:14.367328",
   "module": "ICL Corporate Services",
   "name": "Home",
   "number_cards": [],
@@ -535,7 +550,7 @@
   "is_hidden": 0,
   "label": "ICL HR Admin",
   "links": [],
-  "modified": "2024-07-26 08:37:46.939494",
+  "modified": "2025-05-21 12:07:15.591900",
   "module": "ICL Corporate Services",
   "name": "ICL HR Admin",
   "number_cards": [],
@@ -557,7 +572,7 @@
     "role": "HR User"
    }
   ],
-  "sequence_id": 40.0,
+  "sequence_id": 10.0,
   "shortcuts": [
    {
     "color": "Grey",
@@ -570,6 +585,7 @@
     "parent": "ICL HR Admin",
     "parentfield": "shortcuts",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "restrict_to_domain": null,
     "stats_filter": null,
     "type": "Dashboard",
@@ -586,6 +602,7 @@
     "parent": "ICL HR Admin",
     "parentfield": "shortcuts",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "restrict_to_domain": null,
     "stats_filter": "[]",
     "type": "DocType",
@@ -602,6 +619,7 @@
     "parent": "ICL HR Admin",
     "parentfield": "shortcuts",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "restrict_to_domain": null,
     "stats_filter": "[]",
     "type": "DocType",
@@ -618,6 +636,7 @@
     "parent": "ICL HR Admin",
     "parentfield": "shortcuts",
     "parenttype": "Workspace",
+    "report_ref_doctype": "Employee",
     "restrict_to_domain": null,
     "stats_filter": null,
     "type": "Report",
@@ -634,6 +653,7 @@
     "parent": "ICL HR Admin",
     "parentfield": "shortcuts",
     "parenttype": "Workspace",
+    "report_ref_doctype": "Exit Interview",
     "restrict_to_domain": null,
     "stats_filter": null,
     "type": "Report",
@@ -650,6 +670,7 @@
     "parent": "ICL HR Admin",
     "parentfield": "shortcuts",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "restrict_to_domain": null,
     "stats_filter": "[]",
     "type": "DocType",
@@ -666,6 +687,7 @@
     "parent": "ICL HR Admin",
     "parentfield": "shortcuts",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "restrict_to_domain": null,
     "stats_filter": "[]",
     "type": "DocType",
@@ -682,6 +704,7 @@
     "parent": "ICL HR Admin",
     "parentfield": "shortcuts",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "restrict_to_domain": null,
     "stats_filter": "[]",
     "type": "DocType",
@@ -698,6 +721,7 @@
     "parent": "ICL HR Admin",
     "parentfield": "shortcuts",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "restrict_to_domain": null,
     "stats_filter": "[]",
     "type": "DocType",
@@ -714,6 +738,7 @@
     "parent": "ICL HR Admin",
     "parentfield": "shortcuts",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "restrict_to_domain": null,
     "stats_filter": null,
     "type": "Dashboard",
@@ -730,6 +755,7 @@
     "parent": "ICL HR Admin",
     "parentfield": "shortcuts",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "restrict_to_domain": null,
     "stats_filter": "[]",
     "type": "DocType",
@@ -746,6 +772,7 @@
     "parent": "ICL HR Admin",
     "parentfield": "shortcuts",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "restrict_to_domain": null,
     "stats_filter": "[]",
     "type": "DocType",
@@ -762,6 +789,7 @@
     "parent": "ICL HR Admin",
     "parentfield": "shortcuts",
     "parenttype": "Workspace",
+    "report_ref_doctype": "Employee Advance",
     "restrict_to_domain": null,
     "stats_filter": null,
     "type": "Report",
@@ -778,6 +806,7 @@
     "parent": "ICL HR Admin",
     "parentfield": "shortcuts",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "restrict_to_domain": null,
     "stats_filter": "[]",
     "type": "DocType",
@@ -794,6 +823,7 @@
     "parent": "ICL HR Admin",
     "parentfield": "shortcuts",
     "parenttype": "Workspace",
+    "report_ref_doctype": "Employee",
     "restrict_to_domain": null,
     "stats_filter": null,
     "type": "Report",
@@ -810,6 +840,7 @@
     "parent": "ICL HR Admin",
     "parentfield": "shortcuts",
     "parenttype": "Workspace",
+    "report_ref_doctype": "Employee Grievance",
     "restrict_to_domain": null,
     "stats_filter": null,
     "type": "Report",
@@ -826,6 +857,7 @@
     "parent": "ICL HR Admin",
     "parentfield": "shortcuts",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "restrict_to_domain": null,
     "stats_filter": "[]",
     "type": "DocType",
@@ -842,6 +874,7 @@
     "parent": "ICL HR Admin",
     "parentfield": "shortcuts",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "restrict_to_domain": null,
     "stats_filter": "[]",
     "type": "DocType",
@@ -858,6 +891,7 @@
     "parent": "ICL HR Admin",
     "parentfield": "shortcuts",
     "parenttype": "Workspace",
+    "report_ref_doctype": "Employee",
     "restrict_to_domain": null,
     "stats_filter": null,
     "type": "Report",
@@ -874,6 +908,7 @@
     "parent": "ICL HR Admin",
     "parentfield": "shortcuts",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "restrict_to_domain": null,
     "stats_filter": null,
     "type": "Dashboard",
@@ -890,6 +925,7 @@
     "parent": "ICL HR Admin",
     "parentfield": "shortcuts",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "restrict_to_domain": null,
     "stats_filter": "[]",
     "type": "DocType",
@@ -906,6 +942,7 @@
     "parent": "ICL HR Admin",
     "parentfield": "shortcuts",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "restrict_to_domain": null,
     "stats_filter": "[]",
     "type": "DocType",
@@ -922,6 +959,7 @@
     "parent": "ICL HR Admin",
     "parentfield": "shortcuts",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "restrict_to_domain": null,
     "stats_filter": "[]",
     "type": "DocType",
@@ -938,6 +976,7 @@
     "parent": "ICL HR Admin",
     "parentfield": "shortcuts",
     "parenttype": "Workspace",
+    "report_ref_doctype": "Job Applicant",
     "restrict_to_domain": null,
     "stats_filter": null,
     "type": "Report",
@@ -954,6 +993,7 @@
     "parent": "ICL HR Admin",
     "parentfield": "shortcuts",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "restrict_to_domain": null,
     "stats_filter": "[]",
     "type": "DocType",
@@ -970,6 +1010,7 @@
     "parent": "ICL HR Admin",
     "parentfield": "shortcuts",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "restrict_to_domain": null,
     "stats_filter": "[]",
     "type": "DocType",
@@ -1006,7 +1047,7 @@
  },
  {
   "charts": [],
-  "content": "[{\"id\":\"pGDIKaB3sp\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">ICL Finance</span>\",\"col\":12}},{\"id\":\"J7vPhqvR5k\",\"type\":\"paragraph\",\"data\":{\"text\":\"<b>IntelliSOFT Consulting Limited</b>\",\"col\":12}},{\"id\":\"Q6nv3ukJ_0\",\"type\":\"card\",\"data\":{\"card_name\":\"Timesheet\",\"col\":4}},{\"id\":\"lTrGiXbvHA\",\"type\":\"quick_list\",\"data\":{\"quick_list_name\":\"Timesheet Submission\",\"col\":4}},{\"id\":\"Bu53a4s5pU\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Shortcuts</b></span>\",\"col\":12}},{\"id\":\"ig1g1wBMZt\",\"type\":\"card\",\"data\":{\"card_name\":\"Projects\",\"col\":4}},{\"id\":\"yW_hT1yVnY\",\"type\":\"card\",\"data\":{\"card_name\":\"Project Based Accounting\",\"col\":4}},{\"id\":\"bPMUldGueN\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"EHci6cezpl\",\"type\":\"card\",\"data\":{\"card_name\":\"Travel Process\",\"col\":4}},{\"id\":\"oaxbpvdAtq\",\"type\":\"quick_list\",\"data\":{\"quick_list_name\":\"Travel Request\",\"col\":4}},{\"id\":\"WCz7lGIPtN\",\"type\":\"quick_list\",\"data\":{\"quick_list_name\":\"Travel Request Reconciliation\",\"col\":4}}]",
+  "content": "[{\"id\":\"pGDIKaB3sp\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\" _msttexthash=\\\"140504\\\" _msthash=\\\"772\\\" _mstvisible=\\\"5\\\">ICL Finance</span>\",\"col\":12}},{\"id\":\"J7vPhqvR5k\",\"type\":\"paragraph\",\"data\":{\"text\":\"<b _msttexthash=\\\"758810\\\" _msthash=\\\"773\\\" _mstvisible=\\\"4\\\">IntelliSOFT Consulting Limited</b>\",\"col\":12}},{\"id\":\"Q6nv3ukJ_0\",\"type\":\"card\",\"data\":{\"card_name\":\"Timesheet\",\"col\":4}},{\"id\":\"lTrGiXbvHA\",\"type\":\"quick_list\",\"data\":{\"quick_list_name\":\"Timesheet Submission\",\"col\":4}},{\"id\":\"Bu53a4s5pU\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\" _mstvisible=\\\"5\\\"><b _msttexthash=\\\"141518\\\" _msthash=\\\"780\\\" _mstvisible=\\\"6\\\">Shortcuts</b></span>\",\"col\":12}},{\"id\":\"ig1g1wBMZt\",\"type\":\"card\",\"data\":{\"card_name\":\"Projects\",\"col\":4}},{\"id\":\"yW_hT1yVnY\",\"type\":\"card\",\"data\":{\"card_name\":\"Project Based Accounting\",\"col\":4}},{\"id\":\"bPMUldGueN\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"EHci6cezpl\",\"type\":\"card\",\"data\":{\"card_name\":\"Travel Process\",\"col\":4}},{\"id\":\"oaxbpvdAtq\",\"type\":\"quick_list\",\"data\":{\"quick_list_name\":\"Travel Request\",\"col\":4}},{\"id\":\"WCz7lGIPtN\",\"type\":\"quick_list\",\"data\":{\"quick_list_name\":\"Travel Request Reconciliation\",\"col\":4}},{\"id\":\"_pEUUDkGXg\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"IrwJKaLJKa\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\" _mstvisible=\\\"5\\\"><b _msttexthash=\\\"829244\\\" _msthash=\\\"800\\\" _mstvisible=\\\"6\\\">Project Based Accounting Reports</b></span>\",\"col\":12}},{\"id\":\"9SrrfgL-Sq\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Project Billing Summary\",\"col\":3}},{\"id\":\"ZJrx7je_xB\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Daily Timesheet Summary\",\"col\":3}},{\"id\":\"IuFdREtK44\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Project Wise Stock Tracking\",\"col\":3}},{\"id\":\"dH_JaIwzYB\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"XUXkSYMGnQ\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\" _msttexthash=\\\"1324466\\\" _msthash=\\\"807\\\" _mstvisible=\\\"5\\\">Procurement and Asset lifecycle management<b _mstvisible=\\\"6\\\"></b></span>\",\"col\":12}},{\"id\":\"ObVzm9ASLO\",\"type\":\"card\",\"data\":{\"card_name\":\"🔐Asset Process\",\"col\":4}},{\"id\":\"XF7XTKT_UM\",\"type\":\"quick_list\",\"data\":{\"quick_list_name\":\"Asset Requisition\",\"col\":4}},{\"id\":\"ZjBpu46upp\",\"type\":\"quick_list\",\"data\":{\"quick_list_name\":\"Asset Movement\",\"col\":4}},{\"id\":\"6XShyKhGpY\",\"type\":\"quick_list\",\"data\":{\"quick_list_name\":\"Asset Custodianship Requisition\",\"col\":4}},{\"id\":\"lyFgUWw1mP\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"yw9nuXC-v6\",\"type\":\"card\",\"data\":{\"card_name\":\"Suppliers Processes\",\"col\":4}},{\"id\":\"g0as4eNtfs\",\"type\":\"quick_list\",\"data\":{\"quick_list_name\":\"Request for Quotation\",\"col\":4}},{\"id\":\"wbGGlfxAvv\",\"type\":\"quick_list\",\"data\":{\"quick_list_name\":\"Supplier Quote Submission\",\"col\":4}},{\"id\":\"bVHfdgb1nB\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"6bi1v3YsaT\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\" _msttexthash=\\\"1003483\\\" _msthash=\\\"831\\\" _mstvisible=\\\"5\\\">Purchase order management processes<b _mstvisible=\\\"6\\\"></b></span>\",\"col\":12}},{\"id\":\"kanDQplit-\",\"type\":\"card\",\"data\":{\"card_name\":\"Purchase Order Processes\",\"col\":4}}]",
   "custom_blocks": [],
   "docstatus": 0,
   "doctype": "Workspace",
@@ -1023,57 +1064,6 @@
     "hidden": 0,
     "icon": null,
     "is_query_report": 0,
-    "label": "Timesheet",
-    "link_count": 2,
-    "link_to": null,
-    "link_type": "DocType",
-    "onboard": 0,
-    "only_for": null,
-    "parent": "ICL Finance",
-    "parentfield": "links",
-    "parenttype": "Workspace",
-    "type": "Card Break"
-   },
-   {
-    "dependencies": null,
-    "description": null,
-    "hidden": 0,
-    "icon": null,
-    "is_query_report": 0,
-    "label": "Timesheet Submission",
-    "link_count": 0,
-    "link_to": "Timesheet Submission",
-    "link_type": "DocType",
-    "onboard": 0,
-    "only_for": null,
-    "parent": "ICL Finance",
-    "parentfield": "links",
-    "parenttype": "Workspace",
-    "type": "Link"
-   },
-   {
-    "dependencies": null,
-    "description": null,
-    "hidden": 0,
-    "icon": null,
-    "is_query_report": 0,
-    "label": "Timesheet",
-    "link_count": 0,
-    "link_to": "Timesheet",
-    "link_type": "DocType",
-    "onboard": 0,
-    "only_for": null,
-    "parent": "ICL Finance",
-    "parentfield": "links",
-    "parenttype": "Workspace",
-    "type": "Link"
-   },
-   {
-    "dependencies": null,
-    "description": null,
-    "hidden": 0,
-    "icon": null,
-    "is_query_report": 0,
     "label": "Projects",
     "link_count": 5,
     "link_to": null,
@@ -1083,6 +1073,7 @@
     "parent": "ICL Finance",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Card Break"
    },
    {
@@ -1100,6 +1091,7 @@
     "parent": "ICL Finance",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Link"
    },
    {
@@ -1117,6 +1109,7 @@
     "parent": "ICL Finance",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Link"
    },
    {
@@ -1134,6 +1127,7 @@
     "parent": "ICL Finance",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Link"
    },
    {
@@ -1151,6 +1145,7 @@
     "parent": "ICL Finance",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Link"
    },
    {
@@ -1168,40 +1163,7 @@
     "parent": "ICL Finance",
     "parentfield": "links",
     "parenttype": "Workspace",
-    "type": "Link"
-   },
-   {
-    "dependencies": null,
-    "description": null,
-    "hidden": 0,
-    "icon": null,
-    "is_query_report": 0,
-    "label": "Project Based Accounting",
-    "link_count": 1,
-    "link_to": null,
-    "link_type": "DocType",
-    "onboard": 0,
-    "only_for": null,
-    "parent": "ICL Finance",
-    "parentfield": "links",
-    "parenttype": "Workspace",
-    "type": "Card Break"
-   },
-   {
-    "dependencies": null,
-    "description": null,
-    "hidden": 0,
-    "icon": null,
-    "is_query_report": 0,
-    "label": "Corporate Services Settings",
-    "link_count": 0,
-    "link_to": "Corporate Services Settings",
-    "link_type": "DocType",
-    "onboard": 0,
-    "only_for": null,
-    "parent": "ICL Finance",
-    "parentfield": "links",
-    "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Link"
    },
    {
@@ -1211,7 +1173,7 @@
     "icon": null,
     "is_query_report": 0,
     "label": "Travel Process",
-    "link_count": 2,
+    "link_count": 4,
     "link_to": null,
     "link_type": "DocType",
     "onboard": 0,
@@ -1219,6 +1181,7 @@
     "parent": "ICL Finance",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Card Break"
    },
    {
@@ -1236,6 +1199,7 @@
     "parent": "ICL Finance",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Link"
    },
    {
@@ -1253,16 +1217,439 @@
     "parent": "ICL Finance",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
+    "type": "Link"
+   },
+   {
+    "dependencies": null,
+    "description": null,
+    "hidden": 0,
+    "icon": null,
+    "is_query_report": 0,
+    "label": "International Per Diem Rates",
+    "link_count": 0,
+    "link_to": "Per Diem Rates",
+    "link_type": "DocType",
+    "onboard": 0,
+    "only_for": null,
+    "parent": "ICL Finance",
+    "parentfield": "links",
+    "parenttype": "Workspace",
+    "report_ref_doctype": null,
+    "type": "Link"
+   },
+   {
+    "dependencies": null,
+    "description": null,
+    "hidden": 0,
+    "icon": null,
+    "is_query_report": 0,
+    "label": "Local Per Diem Rates",
+    "link_count": 0,
+    "link_to": "Local Per Diem Rates",
+    "link_type": "DocType",
+    "onboard": 0,
+    "only_for": null,
+    "parent": "ICL Finance",
+    "parentfield": "links",
+    "parenttype": "Workspace",
+    "report_ref_doctype": null,
+    "type": "Link"
+   },
+   {
+    "dependencies": null,
+    "description": null,
+    "hidden": 0,
+    "icon": null,
+    "is_query_report": 0,
+    "label": "Project Based Accounting",
+    "link_count": 1,
+    "link_to": null,
+    "link_type": "DocType",
+    "onboard": 0,
+    "only_for": null,
+    "parent": "ICL Finance",
+    "parentfield": "links",
+    "parenttype": "Workspace",
+    "report_ref_doctype": null,
+    "type": "Card Break"
+   },
+   {
+    "dependencies": null,
+    "description": null,
+    "hidden": 0,
+    "icon": null,
+    "is_query_report": 0,
+    "label": "Activity Cost",
+    "link_count": 0,
+    "link_to": "Activity Cost",
+    "link_type": "DocType",
+    "onboard": 0,
+    "only_for": null,
+    "parent": "ICL Finance",
+    "parentfield": "links",
+    "parenttype": "Workspace",
+    "report_ref_doctype": null,
+    "type": "Link"
+   },
+   {
+    "dependencies": null,
+    "description": "<!DOCTYPE html>\n<body>\n   <p>\n        Procurement and Asset lifecycle management.\n    </p> \n</body>\n",
+    "hidden": 0,
+    "icon": null,
+    "is_query_report": 0,
+    "label": "🔐Asset Process",
+    "link_count": 8,
+    "link_to": null,
+    "link_type": "DocType",
+    "onboard": 0,
+    "only_for": null,
+    "parent": "ICL Finance",
+    "parentfield": "links",
+    "parenttype": "Workspace",
+    "report_ref_doctype": null,
+    "type": "Card Break"
+   },
+   {
+    "dependencies": null,
+    "description": null,
+    "hidden": 0,
+    "icon": null,
+    "is_query_report": 0,
+    "label": "Asset List",
+    "link_count": 0,
+    "link_to": "Asset",
+    "link_type": "DocType",
+    "onboard": 0,
+    "only_for": null,
+    "parent": "ICL Finance",
+    "parentfield": "links",
+    "parenttype": "Workspace",
+    "report_ref_doctype": null,
+    "type": "Link"
+   },
+   {
+    "dependencies": null,
+    "description": null,
+    "hidden": 0,
+    "icon": null,
+    "is_query_report": 0,
+    "label": "Asset Requisition",
+    "link_count": 0,
+    "link_to": "Asset Requisition",
+    "link_type": "DocType",
+    "onboard": 0,
+    "only_for": null,
+    "parent": "ICL Finance",
+    "parentfield": "links",
+    "parenttype": "Workspace",
+    "report_ref_doctype": null,
+    "type": "Link"
+   },
+   {
+    "dependencies": null,
+    "description": null,
+    "hidden": 0,
+    "icon": null,
+    "is_query_report": 0,
+    "label": "Asset Custodianship Requisition",
+    "link_count": 0,
+    "link_to": "Asset Custodianship Requisition",
+    "link_type": "DocType",
+    "onboard": 0,
+    "only_for": null,
+    "parent": "ICL Finance",
+    "parentfield": "links",
+    "parenttype": "Workspace",
+    "report_ref_doctype": null,
+    "type": "Link"
+   },
+   {
+    "dependencies": null,
+    "description": null,
+    "hidden": 0,
+    "icon": null,
+    "is_query_report": 0,
+    "label": "Asset Handover",
+    "link_count": 0,
+    "link_to": "Asset Movement",
+    "link_type": "DocType",
+    "onboard": 0,
+    "only_for": null,
+    "parent": "ICL Finance",
+    "parentfield": "links",
+    "parenttype": "Workspace",
+    "report_ref_doctype": null,
+    "type": "Link"
+   },
+   {
+    "dependencies": null,
+    "description": null,
+    "hidden": 0,
+    "icon": null,
+    "is_query_report": 0,
+    "label": "Asset Damage Loss Theft Report Form",
+    "link_count": 0,
+    "link_to": "Asset Damage Loss Theft Report Form",
+    "link_type": "DocType",
+    "onboard": 0,
+    "only_for": null,
+    "parent": "ICL Finance",
+    "parentfield": "links",
+    "parenttype": "Workspace",
+    "report_ref_doctype": null,
+    "type": "Link"
+   },
+   {
+    "dependencies": null,
+    "description": null,
+    "hidden": 0,
+    "icon": null,
+    "is_query_report": 0,
+    "label": "Asset replacement request",
+    "link_count": 0,
+    "link_to": "Asset replacement request",
+    "link_type": "DocType",
+    "onboard": 0,
+    "only_for": null,
+    "parent": "ICL Finance",
+    "parentfield": "links",
+    "parenttype": "Workspace",
+    "report_ref_doctype": null,
+    "type": "Link"
+   },
+   {
+    "dependencies": null,
+    "description": null,
+    "hidden": 0,
+    "icon": null,
+    "is_query_report": 0,
+    "label": "Asset Repair",
+    "link_count": 0,
+    "link_to": "Asset Repair",
+    "link_type": "DocType",
+    "onboard": 0,
+    "only_for": null,
+    "parent": "ICL Finance",
+    "parentfield": "links",
+    "parenttype": "Workspace",
+    "report_ref_doctype": null,
+    "type": "Link"
+   },
+   {
+    "dependencies": null,
+    "description": null,
+    "hidden": 0,
+    "icon": null,
+    "is_query_report": 0,
+    "label": "Item",
+    "link_count": 0,
+    "link_to": "Item",
+    "link_type": "DocType",
+    "onboard": 0,
+    "only_for": null,
+    "parent": "ICL Finance",
+    "parentfield": "links",
+    "parenttype": "Workspace",
+    "report_ref_doctype": null,
+    "type": "Link"
+   },
+   {
+    "dependencies": null,
+    "description": null,
+    "hidden": 0,
+    "icon": null,
+    "is_query_report": 0,
+    "label": "Purchase Order Processes",
+    "link_count": 3,
+    "link_to": null,
+    "link_type": "DocType",
+    "onboard": 0,
+    "only_for": null,
+    "parent": "ICL Finance",
+    "parentfield": "links",
+    "parenttype": "Workspace",
+    "report_ref_doctype": null,
+    "type": "Card Break"
+   },
+   {
+    "dependencies": null,
+    "description": null,
+    "hidden": 0,
+    "icon": null,
+    "is_query_report": 0,
+    "label": "Purchase Invoice",
+    "link_count": 0,
+    "link_to": "Purchase Invoice",
+    "link_type": "DocType",
+    "onboard": 0,
+    "only_for": null,
+    "parent": "ICL Finance",
+    "parentfield": "links",
+    "parenttype": "Workspace",
+    "report_ref_doctype": null,
+    "type": "Link"
+   },
+   {
+    "dependencies": null,
+    "description": null,
+    "hidden": 0,
+    "icon": null,
+    "is_query_report": 0,
+    "label": "Purchase Order",
+    "link_count": 0,
+    "link_to": "Purchase Order",
+    "link_type": "DocType",
+    "onboard": 0,
+    "only_for": null,
+    "parent": "ICL Finance",
+    "parentfield": "links",
+    "parenttype": "Workspace",
+    "report_ref_doctype": null,
+    "type": "Link"
+   },
+   {
+    "dependencies": null,
+    "description": null,
+    "hidden": 0,
+    "icon": null,
+    "is_query_report": 0,
+    "label": "Purchase Receipt",
+    "link_count": 0,
+    "link_to": "Purchase Receipt",
+    "link_type": "DocType",
+    "onboard": 0,
+    "only_for": null,
+    "parent": "ICL Finance",
+    "parentfield": "links",
+    "parenttype": "Workspace",
+    "report_ref_doctype": null,
+    "type": "Link"
+   },
+   {
+    "dependencies": null,
+    "description": null,
+    "hidden": 0,
+    "icon": null,
+    "is_query_report": 0,
+    "label": "Suppliers Processes",
+    "link_count": 3,
+    "link_to": null,
+    "link_type": "DocType",
+    "onboard": 0,
+    "only_for": null,
+    "parent": "ICL Finance",
+    "parentfield": "links",
+    "parenttype": "Workspace",
+    "report_ref_doctype": null,
+    "type": "Card Break"
+   },
+   {
+    "dependencies": null,
+    "description": null,
+    "hidden": 0,
+    "icon": null,
+    "is_query_report": 0,
+    "label": "Supplier List",
+    "link_count": 0,
+    "link_to": "Supplier",
+    "link_type": "DocType",
+    "onboard": 0,
+    "only_for": null,
+    "parent": "ICL Finance",
+    "parentfield": "links",
+    "parenttype": "Workspace",
+    "report_ref_doctype": null,
+    "type": "Link"
+   },
+   {
+    "dependencies": null,
+    "description": null,
+    "hidden": 0,
+    "icon": null,
+    "is_query_report": 0,
+    "label": "Request for Quotation",
+    "link_count": 0,
+    "link_to": "Request for Quotation",
+    "link_type": "DocType",
+    "onboard": 0,
+    "only_for": null,
+    "parent": "ICL Finance",
+    "parentfield": "links",
+    "parenttype": "Workspace",
+    "report_ref_doctype": null,
+    "type": "Link"
+   },
+   {
+    "dependencies": null,
+    "description": null,
+    "hidden": 0,
+    "icon": null,
+    "is_query_report": 0,
+    "label": "Supplier Quote Submission",
+    "link_count": 0,
+    "link_to": "Supplier Quote Submission",
+    "link_type": "DocType",
+    "onboard": 0,
+    "only_for": null,
+    "parent": "ICL Finance",
+    "parentfield": "links",
+    "parenttype": "Workspace",
+    "report_ref_doctype": null,
+    "type": "Link"
+   },
+   {
+    "dependencies": null,
+    "description": null,
+    "hidden": 0,
+    "icon": null,
+    "is_query_report": 0,
+    "label": "Timesheet",
+    "link_count": 1,
+    "link_to": null,
+    "link_type": "DocType",
+    "onboard": 0,
+    "only_for": null,
+    "parent": "ICL Finance",
+    "parentfield": "links",
+    "parenttype": "Workspace",
+    "report_ref_doctype": null,
+    "type": "Card Break"
+   },
+   {
+    "dependencies": null,
+    "description": null,
+    "hidden": 0,
+    "icon": null,
+    "is_query_report": 0,
+    "label": "Timesheet Submission",
+    "link_count": 0,
+    "link_to": "Timesheet Submission",
+    "link_type": "DocType",
+    "onboard": 0,
+    "only_for": null,
+    "parent": "ICL Finance",
+    "parentfield": "links",
+    "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Link"
    }
   ],
-  "modified": "2024-12-18 08:48:29.917699",
+  "modified": "2025-06-25 12:03:49.470763",
   "module": "ICL Corporate Services",
   "name": "ICL Finance",
   "number_cards": [],
   "parent_page": "",
   "public": 1,
   "quick_lists": [
+   {
+    "document_type": "Supplier Quote Submission",
+    "label": "Supplier Quote Submission",
+    "parent": "ICL Finance",
+    "parentfield": "quick_lists",
+    "parenttype": "Workspace",
+    "quick_list_filter": "[]"
+   },
    {
     "document_type": "Travel Request",
     "label": "Travel Request",
@@ -1272,8 +1659,40 @@
     "quick_list_filter": "[]"
    },
    {
+    "document_type": "Asset Movement",
+    "label": "Asset Movement",
+    "parent": "ICL Finance",
+    "parentfield": "quick_lists",
+    "parenttype": "Workspace",
+    "quick_list_filter": "[]"
+   },
+   {
+    "document_type": "Request for Quotation",
+    "label": "Request for Quotation",
+    "parent": "ICL Finance",
+    "parentfield": "quick_lists",
+    "parenttype": "Workspace",
+    "quick_list_filter": "[]"
+   },
+   {
     "document_type": "Timesheet Submission",
     "label": "Timesheet Submission",
+    "parent": "ICL Finance",
+    "parentfield": "quick_lists",
+    "parenttype": "Workspace",
+    "quick_list_filter": "[]"
+   },
+   {
+    "document_type": "Asset Requisition",
+    "label": "Asset Requisition",
+    "parent": "ICL Finance",
+    "parentfield": "quick_lists",
+    "parenttype": "Workspace",
+    "quick_list_filter": "[]"
+   },
+   {
+    "document_type": "Asset Custodianship Requisition",
+    "label": "Asset Custodianship Requisition",
     "parent": "ICL Finance",
     "parentfield": "quick_lists",
     "parenttype": "Workspace",
@@ -1297,8 +1716,60 @@
     "role": "Finance"
    }
   ],
-  "sequence_id": 43.0,
-  "shortcuts": [],
+  "sequence_id": 13.0,
+  "shortcuts": [
+   {
+    "color": "Grey",
+    "doc_view": "List",
+    "format": null,
+    "icon": null,
+    "kanban_board": null,
+    "label": "Project Wise Stock Tracking",
+    "link_to": "Project wise Stock Tracking",
+    "parent": "ICL Finance",
+    "parentfield": "shortcuts",
+    "parenttype": "Workspace",
+    "report_ref_doctype": "Project",
+    "restrict_to_domain": null,
+    "stats_filter": null,
+    "type": "Report",
+    "url": null
+   },
+   {
+    "color": "Grey",
+    "doc_view": "List",
+    "format": null,
+    "icon": null,
+    "kanban_board": null,
+    "label": "Project Billing Summary",
+    "link_to": "Project Billing Summary",
+    "parent": "ICL Finance",
+    "parentfield": "shortcuts",
+    "parenttype": "Workspace",
+    "report_ref_doctype": "Timesheet",
+    "restrict_to_domain": null,
+    "stats_filter": null,
+    "type": "Report",
+    "url": null
+   },
+   {
+    "color": "Grey",
+    "doc_view": "List",
+    "format": null,
+    "icon": null,
+    "kanban_board": null,
+    "label": "Daily Timesheet Summary",
+    "link_to": "Daily Timesheet Summary",
+    "parent": "ICL Finance",
+    "parentfield": "shortcuts",
+    "parenttype": "Workspace",
+    "report_ref_doctype": "Timesheet",
+    "restrict_to_domain": null,
+    "stats_filter": null,
+    "type": "Report",
+    "url": null
+   }
+  ],
   "title": "ICL Finance"
  },
  {
@@ -1329,6 +1800,7 @@
     "parent": "ICL Staff",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Card Break"
    },
    {
@@ -1346,6 +1818,7 @@
     "parent": "ICL Staff",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Link"
    },
    {
@@ -1363,6 +1836,7 @@
     "parent": "ICL Staff",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Link"
    },
    {
@@ -1380,6 +1854,7 @@
     "parent": "ICL Staff",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Card Break"
    },
    {
@@ -1397,6 +1872,7 @@
     "parent": "ICL Staff",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Link"
    },
    {
@@ -1414,6 +1890,7 @@
     "parent": "ICL Staff",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Link"
    },
    {
@@ -1431,6 +1908,7 @@
     "parent": "ICL Staff",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Card Break"
    },
    {
@@ -1448,6 +1926,7 @@
     "parent": "ICL Staff",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Link"
    },
    {
@@ -1465,6 +1944,7 @@
     "parent": "ICL Staff",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Link"
    },
    {
@@ -1482,6 +1962,7 @@
     "parent": "ICL Staff",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Link"
    },
    {
@@ -1499,6 +1980,7 @@
     "parent": "ICL Staff",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Link"
    },
    {
@@ -1516,6 +1998,7 @@
     "parent": "ICL Staff",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Link"
    },
    {
@@ -1533,6 +2016,7 @@
     "parent": "ICL Staff",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Link"
    },
    {
@@ -1542,7 +2026,7 @@
     "icon": null,
     "is_query_report": 0,
     "label": "🔐Timesheet Process",
-    "link_count": 2,
+    "link_count": 1,
     "link_to": null,
     "link_type": "DocType",
     "onboard": 0,
@@ -1550,6 +2034,7 @@
     "parent": "ICL Staff",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Card Break"
    },
    {
@@ -1567,27 +2052,11 @@
     "parent": "ICL Staff",
     "parentfield": "links",
     "parenttype": "Workspace",
-    "type": "Link"
-   },
-   {
-    "dependencies": null,
-    "description": null,
-    "hidden": 0,
-    "icon": null,
-    "is_query_report": 0,
-    "label": "Timesheet",
-    "link_count": 0,
-    "link_to": "Timesheet",
-    "link_type": "DocType",
-    "onboard": 0,
-    "only_for": null,
-    "parent": "ICL Staff",
-    "parentfield": "links",
-    "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Link"
    }
   ],
-  "modified": "2024-12-13 10:42:59.275089",
+  "modified": "2025-06-09 11:03:43.982428",
   "module": "ICL Corporate Services",
   "name": "ICL Staff",
   "number_cards": [],
@@ -1652,7 +2121,7 @@
     "role": "Employee"
    }
   ],
-  "sequence_id": 39.0,
+  "sequence_id": 9.0,
   "shortcuts": [
    {
     "color": "Grey",
@@ -1665,6 +2134,7 @@
     "parent": "ICL Staff",
     "parentfield": "shortcuts",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "restrict_to_domain": null,
     "stats_filter": "[]",
     "type": "DocType",
@@ -1681,6 +2151,7 @@
     "parent": "ICL Staff",
     "parentfield": "shortcuts",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "restrict_to_domain": null,
     "stats_filter": "[]",
     "type": "DocType",
@@ -1697,6 +2168,7 @@
     "parent": "ICL Staff",
     "parentfield": "shortcuts",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "restrict_to_domain": null,
     "stats_filter": "[]",
     "type": "DocType",
@@ -1713,6 +2185,7 @@
     "parent": "ICL Staff",
     "parentfield": "shortcuts",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "restrict_to_domain": null,
     "stats_filter": "[]",
     "type": "DocType",
@@ -1749,6 +2222,7 @@
     "parent": "Financial Reports",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Card Break"
    },
    {
@@ -1766,6 +2240,7 @@
     "parent": "Financial Reports",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Link"
    },
    {
@@ -1783,6 +2258,7 @@
     "parent": "Financial Reports",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Link"
    },
    {
@@ -1800,6 +2276,7 @@
     "parent": "Financial Reports",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Link"
    },
    {
@@ -1817,6 +2294,7 @@
     "parent": "Financial Reports",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Link"
    },
    {
@@ -1834,6 +2312,7 @@
     "parent": "Financial Reports",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Card Break"
    },
    {
@@ -1851,6 +2330,7 @@
     "parent": "Financial Reports",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Link"
    },
    {
@@ -1868,6 +2348,7 @@
     "parent": "Financial Reports",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Link"
    },
    {
@@ -1885,6 +2366,7 @@
     "parent": "Financial Reports",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Link"
    },
    {
@@ -1902,6 +2384,7 @@
     "parent": "Financial Reports",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Link"
    },
    {
@@ -1919,6 +2402,7 @@
     "parent": "Financial Reports",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Link"
    },
    {
@@ -1936,6 +2420,7 @@
     "parent": "Financial Reports",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Card Break"
    },
    {
@@ -1953,6 +2438,7 @@
     "parent": "Financial Reports",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Link"
    },
    {
@@ -1970,6 +2456,7 @@
     "parent": "Financial Reports",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Link"
    },
    {
@@ -1987,6 +2474,7 @@
     "parent": "Financial Reports",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Link"
    },
    {
@@ -2004,6 +2492,7 @@
     "parent": "Financial Reports",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Card Break"
    },
    {
@@ -2021,6 +2510,7 @@
     "parent": "Financial Reports",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Link"
    },
    {
@@ -2038,6 +2528,7 @@
     "parent": "Financial Reports",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Link"
    },
    {
@@ -2055,6 +2546,7 @@
     "parent": "Financial Reports",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Link"
    },
    {
@@ -2072,6 +2564,7 @@
     "parent": "Financial Reports",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Link"
    },
    {
@@ -2089,6 +2582,7 @@
     "parent": "Financial Reports",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Link"
    },
    {
@@ -2106,6 +2600,7 @@
     "parent": "Financial Reports",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Link"
    },
    {
@@ -2123,10 +2618,11 @@
     "parent": "Financial Reports",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Link"
    }
   ],
-  "modified": "2024-09-30 09:06:27.993286",
+  "modified": "2025-05-21 12:07:14.938452",
   "module": "ICL Corporate Services",
   "name": "Financial Reports",
   "number_cards": [],
@@ -2174,6 +2670,7 @@
     "parent": "Receivables",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Card Break"
    },
    {
@@ -2191,6 +2688,7 @@
     "parent": "Receivables",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Link"
    },
    {
@@ -2208,6 +2706,7 @@
     "parent": "Receivables",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Link"
    },
    {
@@ -2225,6 +2724,7 @@
     "parent": "Receivables",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Card Break"
    },
    {
@@ -2242,6 +2742,7 @@
     "parent": "Receivables",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Link"
    },
    {
@@ -2259,6 +2760,7 @@
     "parent": "Receivables",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Link"
    },
    {
@@ -2276,6 +2778,7 @@
     "parent": "Receivables",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Link"
    },
    {
@@ -2293,6 +2796,7 @@
     "parent": "Receivables",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Link"
    },
    {
@@ -2310,6 +2814,7 @@
     "parent": "Receivables",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Card Break"
    },
    {
@@ -2327,6 +2832,7 @@
     "parent": "Receivables",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Link"
    },
    {
@@ -2344,6 +2850,7 @@
     "parent": "Receivables",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Link"
    },
    {
@@ -2361,6 +2868,7 @@
     "parent": "Receivables",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Card Break"
    },
    {
@@ -2378,6 +2886,7 @@
     "parent": "Receivables",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Link"
    },
    {
@@ -2395,6 +2904,7 @@
     "parent": "Receivables",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Link"
    },
    {
@@ -2412,6 +2922,7 @@
     "parent": "Receivables",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Link"
    },
    {
@@ -2429,6 +2940,7 @@
     "parent": "Receivables",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Link"
    },
    {
@@ -2446,6 +2958,7 @@
     "parent": "Receivables",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Link"
    },
    {
@@ -2463,10 +2976,11 @@
     "parent": "Receivables",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Link"
    }
   ],
-  "modified": "2024-09-30 09:06:14.985802",
+  "modified": "2025-05-21 12:07:14.800511",
   "module": "ICL Corporate Services",
   "name": "Receivables",
   "number_cards": [],
@@ -2495,6 +3009,7 @@
     "parent": "Receivables",
     "parentfield": "shortcuts",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "restrict_to_domain": null,
     "stats_filter": "[]",
     "type": "DocType",
@@ -2511,6 +3026,7 @@
     "parent": "Receivables",
     "parentfield": "shortcuts",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "restrict_to_domain": null,
     "stats_filter": null,
     "type": "DocType",
@@ -2527,6 +3043,7 @@
     "parent": "Receivables",
     "parentfield": "shortcuts",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "restrict_to_domain": null,
     "stats_filter": "[]",
     "type": "DocType",
@@ -2543,6 +3060,7 @@
     "parent": "Receivables",
     "parentfield": "shortcuts",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "restrict_to_domain": null,
     "stats_filter": null,
     "type": "DocType",
@@ -2559,6 +3077,7 @@
     "parent": "Receivables",
     "parentfield": "shortcuts",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "restrict_to_domain": null,
     "stats_filter": null,
     "type": "DocType",
@@ -2575,6 +3094,7 @@
     "parent": "Receivables",
     "parentfield": "shortcuts",
     "parenttype": "Workspace",
+    "report_ref_doctype": "Sales Invoice",
     "restrict_to_domain": null,
     "stats_filter": null,
     "type": "Report",
@@ -2611,6 +3131,7 @@
     "parent": "Payables",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Card Break"
    },
    {
@@ -2628,6 +3149,7 @@
     "parent": "Payables",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Link"
    },
    {
@@ -2645,6 +3167,7 @@
     "parent": "Payables",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Link"
    },
    {
@@ -2662,6 +3185,7 @@
     "parent": "Payables",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Card Break"
    },
    {
@@ -2679,6 +3203,7 @@
     "parent": "Payables",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Link"
    },
    {
@@ -2696,6 +3221,7 @@
     "parent": "Payables",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Link"
    },
    {
@@ -2713,6 +3239,7 @@
     "parent": "Payables",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Link"
    },
    {
@@ -2730,6 +3257,7 @@
     "parent": "Payables",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Card Break"
    },
    {
@@ -2747,6 +3275,7 @@
     "parent": "Payables",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": "Purchase Invoice",
     "type": "Link"
    },
    {
@@ -2764,6 +3293,7 @@
     "parent": "Payables",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": "Purchase Invoice",
     "type": "Link"
    },
    {
@@ -2781,6 +3311,7 @@
     "parent": "Payables",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": "Purchase Invoice",
     "type": "Link"
    },
    {
@@ -2798,6 +3329,7 @@
     "parent": "Payables",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": "Purchase Invoice",
     "type": "Link"
    },
    {
@@ -2815,6 +3347,7 @@
     "parent": "Payables",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": "Purchase Order",
     "type": "Link"
    },
    {
@@ -2832,6 +3365,7 @@
     "parent": "Payables",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": "Purchase Invoice",
     "type": "Link"
    },
    {
@@ -2849,10 +3383,11 @@
     "parent": "Payables",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": "Purchase Invoice",
     "type": "Link"
    }
   ],
-  "modified": "2024-09-30 09:05:06.595144",
+  "modified": "2025-05-21 12:07:14.693330",
   "module": "ICL Corporate Services",
   "name": "Payables",
   "number_cards": [],
@@ -2881,6 +3416,7 @@
     "parent": "Payables",
     "parentfield": "shortcuts",
     "parenttype": "Workspace",
+    "report_ref_doctype": "Purchase Invoice",
     "restrict_to_domain": null,
     "stats_filter": null,
     "type": "Report",
@@ -2897,6 +3433,7 @@
     "parent": "Payables",
     "parentfield": "shortcuts",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "restrict_to_domain": null,
     "stats_filter": null,
     "type": "DocType",
@@ -2913,6 +3450,7 @@
     "parent": "Payables",
     "parentfield": "shortcuts",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "restrict_to_domain": null,
     "stats_filter": null,
     "type": "DocType",
@@ -2929,6 +3467,7 @@
     "parent": "Payables",
     "parentfield": "shortcuts",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "restrict_to_domain": null,
     "stats_filter": null,
     "type": "DocType",
@@ -2973,6 +3512,7 @@
     "parent": "Accounting",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Card Break"
    },
    {
@@ -2990,6 +3530,7 @@
     "parent": "Accounting",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Link"
    },
    {
@@ -3007,6 +3548,7 @@
     "parent": "Accounting",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Link"
    },
    {
@@ -3024,6 +3566,7 @@
     "parent": "Accounting",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Link"
    },
    {
@@ -3041,6 +3584,7 @@
     "parent": "Accounting",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Card Break"
    },
    {
@@ -3058,6 +3602,7 @@
     "parent": "Accounting",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Link"
    },
    {
@@ -3075,6 +3620,7 @@
     "parent": "Accounting",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Link"
    },
    {
@@ -3092,6 +3638,7 @@
     "parent": "Accounting",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Link"
    },
    {
@@ -3109,6 +3656,7 @@
     "parent": "Accounting",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Card Break"
    },
    {
@@ -3126,6 +3674,7 @@
     "parent": "Accounting",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Link"
    },
    {
@@ -3143,6 +3692,7 @@
     "parent": "Accounting",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Link"
    },
    {
@@ -3160,6 +3710,7 @@
     "parent": "Accounting",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Link"
    },
    {
@@ -3177,6 +3728,7 @@
     "parent": "Accounting",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Link"
    },
    {
@@ -3194,6 +3746,7 @@
     "parent": "Accounting",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Card Break"
    },
    {
@@ -3211,6 +3764,7 @@
     "parent": "Accounting",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Link"
    },
    {
@@ -3228,6 +3782,7 @@
     "parent": "Accounting",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Link"
    },
    {
@@ -3245,6 +3800,7 @@
     "parent": "Accounting",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Link"
    },
    {
@@ -3262,6 +3818,7 @@
     "parent": "Accounting",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Link"
    },
    {
@@ -3279,6 +3836,7 @@
     "parent": "Accounting",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Link"
    },
    {
@@ -3296,6 +3854,7 @@
     "parent": "Accounting",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Link"
    },
    {
@@ -3313,6 +3872,7 @@
     "parent": "Accounting",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Card Break"
    },
    {
@@ -3330,6 +3890,7 @@
     "parent": "Accounting",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Link"
    },
    {
@@ -3347,6 +3908,7 @@
     "parent": "Accounting",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Link"
    },
    {
@@ -3364,6 +3926,7 @@
     "parent": "Accounting",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Link"
    },
    {
@@ -3381,6 +3944,7 @@
     "parent": "Accounting",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Card Break"
    },
    {
@@ -3398,6 +3962,7 @@
     "parent": "Accounting",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Link"
    },
    {
@@ -3415,6 +3980,7 @@
     "parent": "Accounting",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Link"
    },
    {
@@ -3432,6 +3998,7 @@
     "parent": "Accounting",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Link"
    },
    {
@@ -3449,6 +4016,7 @@
     "parent": "Accounting",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Link"
    },
    {
@@ -3466,6 +4034,7 @@
     "parent": "Accounting",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Link"
    },
    {
@@ -3483,6 +4052,7 @@
     "parent": "Accounting",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Link"
    },
    {
@@ -3500,6 +4070,7 @@
     "parent": "Accounting",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Card Break"
    },
    {
@@ -3517,6 +4088,7 @@
     "parent": "Accounting",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Link"
    },
    {
@@ -3534,6 +4106,7 @@
     "parent": "Accounting",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Link"
    },
    {
@@ -3551,6 +4124,7 @@
     "parent": "Accounting",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Link"
    },
    {
@@ -3568,6 +4142,7 @@
     "parent": "Accounting",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Link"
    },
    {
@@ -3585,6 +4160,7 @@
     "parent": "Accounting",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Link"
    },
    {
@@ -3602,6 +4178,7 @@
     "parent": "Accounting",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Link"
    },
    {
@@ -3619,6 +4196,7 @@
     "parent": "Accounting",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Link"
    },
    {
@@ -3636,6 +4214,7 @@
     "parent": "Accounting",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Card Break"
    },
    {
@@ -3653,6 +4232,7 @@
     "parent": "Accounting",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Link"
    },
    {
@@ -3670,6 +4250,7 @@
     "parent": "Accounting",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Link"
    },
    {
@@ -3687,6 +4268,7 @@
     "parent": "Accounting",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Link"
    },
    {
@@ -3704,6 +4286,7 @@
     "parent": "Accounting",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Link"
    },
    {
@@ -3721,6 +4304,7 @@
     "parent": "Accounting",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Link"
    },
    {
@@ -3738,6 +4322,7 @@
     "parent": "Accounting",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Link"
    },
    {
@@ -3755,6 +4340,7 @@
     "parent": "Accounting",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Link"
    },
    {
@@ -3772,6 +4358,7 @@
     "parent": "Accounting",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Link"
    },
    {
@@ -3789,6 +4376,7 @@
     "parent": "Accounting",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Card Break"
    },
    {
@@ -3806,6 +4394,7 @@
     "parent": "Accounting",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Link"
    },
    {
@@ -3823,6 +4412,7 @@
     "parent": "Accounting",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Link"
    },
    {
@@ -3840,6 +4430,7 @@
     "parent": "Accounting",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Link"
    },
    {
@@ -3857,6 +4448,7 @@
     "parent": "Accounting",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Link"
    },
    {
@@ -3874,10 +4466,11 @@
     "parent": "Accounting",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Link"
    }
   ],
-  "modified": "2024-09-30 09:05:18.482960",
+  "modified": "2025-05-21 12:07:14.464590",
   "module": "ICL Corporate Services",
   "name": "Accounting",
   "number_cards": [
@@ -3935,6 +4528,7 @@
     "parent": "Accounting",
     "parentfield": "shortcuts",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "restrict_to_domain": null,
     "stats_filter": null,
     "type": "URL",
@@ -3951,6 +4545,7 @@
     "parent": "Accounting",
     "parentfield": "shortcuts",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "restrict_to_domain": null,
     "stats_filter": null,
     "type": "DocType",
@@ -3967,6 +4562,7 @@
     "parent": "Accounting",
     "parentfield": "shortcuts",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "restrict_to_domain": null,
     "stats_filter": null,
     "type": "DocType",
@@ -3983,6 +4579,7 @@
     "parent": "Accounting",
     "parentfield": "shortcuts",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "restrict_to_domain": null,
     "stats_filter": null,
     "type": "DocType",
@@ -3999,6 +4596,7 @@
     "parent": "Accounting",
     "parentfield": "shortcuts",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "restrict_to_domain": null,
     "stats_filter": null,
     "type": "DocType",
@@ -4015,6 +4613,7 @@
     "parent": "Accounting",
     "parentfield": "shortcuts",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "restrict_to_domain": null,
     "stats_filter": null,
     "type": "DocType",
@@ -4031,6 +4630,7 @@
     "parent": "Accounting",
     "parentfield": "shortcuts",
     "parenttype": "Workspace",
+    "report_ref_doctype": "Sales Invoice",
     "restrict_to_domain": null,
     "stats_filter": null,
     "type": "Report",
@@ -4047,6 +4647,7 @@
     "parent": "Accounting",
     "parentfield": "shortcuts",
     "parenttype": "Workspace",
+    "report_ref_doctype": "GL Entry",
     "restrict_to_domain": null,
     "stats_filter": null,
     "type": "Report",
@@ -4063,6 +4664,7 @@
     "parent": "Accounting",
     "parentfield": "shortcuts",
     "parenttype": "Workspace",
+    "report_ref_doctype": "GL Entry",
     "restrict_to_domain": null,
     "stats_filter": null,
     "type": "Report",
@@ -4079,6 +4681,7 @@
     "parent": "Accounting",
     "parentfield": "shortcuts",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "restrict_to_domain": null,
     "stats_filter": null,
     "type": "Dashboard",
@@ -4115,6 +4718,7 @@
     "parent": "Tax & Benefits",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Card Break"
    },
    {
@@ -4132,6 +4736,7 @@
     "parent": "Tax & Benefits",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Link"
    },
    {
@@ -4149,6 +4754,7 @@
     "parent": "Tax & Benefits",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Link"
    },
    {
@@ -4166,6 +4772,7 @@
     "parent": "Tax & Benefits",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Card Break"
    },
    {
@@ -4183,6 +4790,7 @@
     "parent": "Tax & Benefits",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Link"
    },
    {
@@ -4200,6 +4808,7 @@
     "parent": "Tax & Benefits",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Link"
    },
    {
@@ -4217,6 +4826,7 @@
     "parent": "Tax & Benefits",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Link"
    },
    {
@@ -4234,6 +4844,7 @@
     "parent": "Tax & Benefits",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Card Break"
    },
    {
@@ -4251,6 +4862,7 @@
     "parent": "Tax & Benefits",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Link"
    },
    {
@@ -4268,6 +4880,7 @@
     "parent": "Tax & Benefits",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Link"
    },
    {
@@ -4285,6 +4898,7 @@
     "parent": "Tax & Benefits",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Card Break"
    },
    {
@@ -4302,6 +4916,7 @@
     "parent": "Tax & Benefits",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Link"
    },
    {
@@ -4319,10 +4934,11 @@
     "parent": "Tax & Benefits",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Link"
    }
   ],
-  "modified": "2024-09-30 09:05:31.673564",
+  "modified": "2025-05-21 12:07:15.347633",
   "module": "ICL Corporate Services",
   "name": "Tax & Benefits",
   "number_cards": [],
@@ -4338,7 +4954,7 @@
     "role": "Finance"
    }
   ],
-  "sequence_id": 38.0,
+  "sequence_id": 8.0,
   "shortcuts": [
    {
     "color": "Red",
@@ -4351,6 +4967,7 @@
     "parent": "Tax & Benefits",
     "parentfield": "shortcuts",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "restrict_to_domain": null,
     "stats_filter": "{\"docstatus\":[\"=\",\"0\"]}",
     "type": "DocType",
@@ -4367,6 +4984,7 @@
     "parent": "Tax & Benefits",
     "parentfield": "shortcuts",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "restrict_to_domain": null,
     "stats_filter": null,
     "type": "DocType",
@@ -4383,6 +5001,7 @@
     "parent": "Tax & Benefits",
     "parentfield": "shortcuts",
     "parenttype": "Workspace",
+    "report_ref_doctype": "Salary Slip",
     "restrict_to_domain": null,
     "stats_filter": null,
     "type": "Report",
@@ -4419,6 +5038,7 @@
     "parent": "Salary Payout",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Card Break"
    },
    {
@@ -4436,6 +5056,7 @@
     "parent": "Salary Payout",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Link"
    },
    {
@@ -4453,6 +5074,7 @@
     "parent": "Salary Payout",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Link"
    },
    {
@@ -4470,6 +5092,7 @@
     "parent": "Salary Payout",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Link"
    },
    {
@@ -4487,6 +5110,7 @@
     "parent": "Salary Payout",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Link"
    },
    {
@@ -4504,6 +5128,7 @@
     "parent": "Salary Payout",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Card Break"
    },
    {
@@ -4521,6 +5146,7 @@
     "parent": "Salary Payout",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Link"
    },
    {
@@ -4538,6 +5164,7 @@
     "parent": "Salary Payout",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Link"
    },
    {
@@ -4555,6 +5182,7 @@
     "parent": "Salary Payout",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Link"
    },
    {
@@ -4572,6 +5200,7 @@
     "parent": "Salary Payout",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Card Break"
    },
    {
@@ -4589,6 +5218,7 @@
     "parent": "Salary Payout",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Link"
    },
    {
@@ -4606,6 +5236,7 @@
     "parent": "Salary Payout",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Link"
    },
    {
@@ -4623,6 +5254,7 @@
     "parent": "Salary Payout",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Link"
    },
    {
@@ -4640,6 +5272,7 @@
     "parent": "Salary Payout",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Link"
    },
    {
@@ -4657,6 +5290,7 @@
     "parent": "Salary Payout",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Link"
    },
    {
@@ -4674,6 +5308,7 @@
     "parent": "Salary Payout",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Card Break"
    },
    {
@@ -4691,6 +5326,7 @@
     "parent": "Salary Payout",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Link"
    },
    {
@@ -4708,6 +5344,7 @@
     "parent": "Salary Payout",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Link"
    },
    {
@@ -4725,6 +5362,7 @@
     "parent": "Salary Payout",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Link"
    },
    {
@@ -4742,6 +5380,7 @@
     "parent": "Salary Payout",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Card Break"
    },
    {
@@ -4759,6 +5398,7 @@
     "parent": "Salary Payout",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Link"
    },
    {
@@ -4776,6 +5416,7 @@
     "parent": "Salary Payout",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Link"
    },
    {
@@ -4793,6 +5434,7 @@
     "parent": "Salary Payout",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Link"
    },
    {
@@ -4810,6 +5452,7 @@
     "parent": "Salary Payout",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Link"
    },
    {
@@ -4827,6 +5470,7 @@
     "parent": "Salary Payout",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Link"
    },
    {
@@ -4844,6 +5488,7 @@
     "parent": "Salary Payout",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Link"
    },
    {
@@ -4861,6 +5506,7 @@
     "parent": "Salary Payout",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Link"
    },
    {
@@ -4878,6 +5524,7 @@
     "parent": "Salary Payout",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Card Break"
    },
    {
@@ -4895,6 +5542,7 @@
     "parent": "Salary Payout",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": "GL Entry",
     "type": "Link"
    },
    {
@@ -4912,6 +5560,7 @@
     "parent": "Salary Payout",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": "Purchase Invoice",
     "type": "Link"
    },
    {
@@ -4929,6 +5578,7 @@
     "parent": "Salary Payout",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": "Sales Invoice",
     "type": "Link"
    },
    {
@@ -4946,6 +5596,7 @@
     "parent": "Salary Payout",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Card Break"
    },
    {
@@ -4963,6 +5614,7 @@
     "parent": "Salary Payout",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Link"
    },
    {
@@ -4980,6 +5632,7 @@
     "parent": "Salary Payout",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Link"
    },
    {
@@ -4997,6 +5650,7 @@
     "parent": "Salary Payout",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Link"
    },
    {
@@ -5014,10 +5668,11 @@
     "parent": "Salary Payout",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Link"
    }
   ],
-  "modified": "2024-09-30 09:05:46.834717",
+  "modified": "2025-05-21 12:07:15.188193",
   "module": "ICL Corporate Services",
   "name": "Salary Payout",
   "number_cards": [],
@@ -5033,7 +5688,7 @@
     "role": "Finance"
    }
   ],
-  "sequence_id": 10.0,
+  "sequence_id": 7.0,
   "shortcuts": [
    {
     "color": "Red",
@@ -5046,6 +5701,7 @@
     "parent": "Salary Payout",
     "parentfield": "shortcuts",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "restrict_to_domain": null,
     "stats_filter": "{\"status\":[\"=\",\"Draft\"]}",
     "type": "DocType",
@@ -5062,6 +5718,7 @@
     "parent": "Salary Payout",
     "parentfield": "shortcuts",
     "parenttype": "Workspace",
+    "report_ref_doctype": "Salary Slip",
     "restrict_to_domain": null,
     "stats_filter": null,
     "type": "Report",
@@ -5078,6 +5735,7 @@
     "parent": "Salary Payout",
     "parentfield": "shortcuts",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "restrict_to_domain": null,
     "stats_filter": "{\"status\":[\"=\",\"Draft\"]}",
     "type": "DocType",
@@ -5122,6 +5780,7 @@
     "parent": "Payroll",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Card Break"
    },
    {
@@ -5139,6 +5798,7 @@
     "parent": "Payroll",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Link"
    },
    {
@@ -5156,6 +5816,7 @@
     "parent": "Payroll",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Card Break"
    },
    {
@@ -5173,6 +5834,7 @@
     "parent": "Payroll",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Link"
    },
    {
@@ -5190,10 +5852,11 @@
     "parent": "Payroll",
     "parentfield": "links",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "type": "Link"
    }
   ],
-  "modified": "2024-09-30 09:05:59.288285",
+  "modified": "2025-05-21 12:07:15.069688",
   "module": "ICL Corporate Services",
   "name": "Payroll",
   "number_cards": [],
@@ -5209,7 +5872,7 @@
     "role": "Finance"
    }
   ],
-  "sequence_id": 15.0,
+  "sequence_id": 6.0,
   "shortcuts": [
    {
     "color": null,
@@ -5222,6 +5885,7 @@
     "parent": "Payroll",
     "parentfield": "shortcuts",
     "parenttype": "Workspace",
+    "report_ref_doctype": null,
     "restrict_to_domain": null,
     "stats_filter": null,
     "type": "Dashboard",
@@ -5238,6 +5902,7 @@
     "parent": "Payroll",
     "parentfield": "shortcuts",
     "parenttype": "Workspace",
+    "report_ref_doctype": "Salary Slip",
     "restrict_to_domain": null,
     "stats_filter": null,
     "type": "Report",
@@ -5245,5 +5910,225 @@
    }
   ],
   "title": "Payroll"
+ },
+ {
+  "charts": [],
+  "content": "[{\"id\":\"pfu6zgZBHE\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">ICL Business Development</span>\",\"col\":12}},{\"id\":\"keZGpQWkGv\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"-HinV4f9Cj\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Bidding Dashboard\",\"col\":3}},{\"id\":\"6au60Aefwf\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Lead\",\"col\":3}},{\"id\":\"-iRgxoP8j1\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"kdhJF3jAb0\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Your Shortcuts</b></span>\",\"col\":12}},{\"id\":\"1h06nZ73qk\",\"type\":\"card\",\"data\":{\"card_name\":\"Bidding\",\"col\":4}},{\"id\":\"tgFIeCDSb0\",\"type\":\"quick_list\",\"data\":{\"quick_list_name\":\"Bidding\",\"col\":4}},{\"id\":\"OGCHj8PGpk\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"HN5ZS0OZGu\",\"type\":\"card\",\"data\":{\"card_name\":\"Bid Preparation\",\"col\":4}},{\"id\":\"7BDu29GoNI\",\"type\":\"quick_list\",\"data\":{\"quick_list_name\":\"Lead\",\"col\":4}},{\"id\":\"PS8BEIh9IC\",\"type\":\"quick_list\",\"data\":{\"quick_list_name\":\"Customer\",\"col\":4}}]",
+  "custom_blocks": [],
+  "docstatus": 0,
+  "doctype": "Workspace",
+  "for_user": "",
+  "hide_custom": 0,
+  "icon": "organization",
+  "indicator_color": "green",
+  "is_hidden": 0,
+  "label": "ICL Business Development",
+  "links": [
+   {
+    "dependencies": null,
+    "description": null,
+    "hidden": 0,
+    "icon": null,
+    "is_query_report": 0,
+    "label": "Bidding",
+    "link_count": 3,
+    "link_to": null,
+    "link_type": "DocType",
+    "onboard": 0,
+    "only_for": null,
+    "parent": "ICL Business Development",
+    "parentfield": "links",
+    "parenttype": "Workspace",
+    "report_ref_doctype": null,
+    "type": "Card Break"
+   },
+   {
+    "dependencies": null,
+    "description": null,
+    "hidden": 0,
+    "icon": null,
+    "is_query_report": 0,
+    "label": "Bidding",
+    "link_count": 0,
+    "link_to": "Opportunity",
+    "link_type": "DocType",
+    "onboard": 0,
+    "only_for": null,
+    "parent": "ICL Business Development",
+    "parentfield": "links",
+    "parenttype": "Workspace",
+    "report_ref_doctype": null,
+    "type": "Link"
+   },
+   {
+    "dependencies": null,
+    "description": null,
+    "hidden": 0,
+    "icon": null,
+    "is_query_report": 0,
+    "label": "Bidding Type",
+    "link_count": 0,
+    "link_to": "Opportunity Type",
+    "link_type": "DocType",
+    "onboard": 0,
+    "only_for": null,
+    "parent": "ICL Business Development",
+    "parentfield": "links",
+    "parenttype": "Workspace",
+    "report_ref_doctype": null,
+    "type": "Link"
+   },
+   {
+    "dependencies": null,
+    "description": null,
+    "hidden": 0,
+    "icon": null,
+    "is_query_report": 0,
+    "label": "Opportunity Lost Reason",
+    "link_count": 0,
+    "link_to": "Opportunity Lost Reason",
+    "link_type": "DocType",
+    "onboard": 0,
+    "only_for": null,
+    "parent": "ICL Business Development",
+    "parentfield": "links",
+    "parenttype": "Workspace",
+    "report_ref_doctype": null,
+    "type": "Link"
+   },
+   {
+    "dependencies": null,
+    "description": null,
+    "hidden": 0,
+    "icon": null,
+    "is_query_report": 0,
+    "label": "Bid Preparation",
+    "link_count": 2,
+    "link_to": null,
+    "link_type": "DocType",
+    "onboard": 0,
+    "only_for": null,
+    "parent": "ICL Business Development",
+    "parentfield": "links",
+    "parenttype": "Workspace",
+    "report_ref_doctype": null,
+    "type": "Card Break"
+   },
+   {
+    "dependencies": null,
+    "description": null,
+    "hidden": 0,
+    "icon": null,
+    "is_query_report": 0,
+    "label": "Lead",
+    "link_count": 0,
+    "link_to": "Lead",
+    "link_type": "DocType",
+    "onboard": 0,
+    "only_for": null,
+    "parent": "ICL Business Development",
+    "parentfield": "links",
+    "parenttype": "Workspace",
+    "report_ref_doctype": null,
+    "type": "Link"
+   },
+   {
+    "dependencies": null,
+    "description": null,
+    "hidden": 0,
+    "icon": null,
+    "is_query_report": 0,
+    "label": "Customer/Client",
+    "link_count": 0,
+    "link_to": "Customer",
+    "link_type": "DocType",
+    "onboard": 0,
+    "only_for": null,
+    "parent": "ICL Business Development",
+    "parentfield": "links",
+    "parenttype": "Workspace",
+    "report_ref_doctype": null,
+    "type": "Link"
+   }
+  ],
+  "modified": "2025-06-25 12:05:27.817057",
+  "module": "ICL Corporate Services",
+  "name": "ICL Business Development",
+  "number_cards": [],
+  "parent_page": "",
+  "public": 1,
+  "quick_lists": [
+   {
+    "document_type": "Lead",
+    "label": "Lead",
+    "parent": "ICL Business Development",
+    "parentfield": "quick_lists",
+    "parenttype": "Workspace",
+    "quick_list_filter": "[]"
+   },
+   {
+    "document_type": "Opportunity",
+    "label": "Bidding",
+    "parent": "ICL Business Development",
+    "parentfield": "quick_lists",
+    "parenttype": "Workspace",
+    "quick_list_filter": "[]"
+   },
+   {
+    "document_type": "Customer",
+    "label": "Customer",
+    "parent": "ICL Business Development",
+    "parentfield": "quick_lists",
+    "parenttype": "Workspace",
+    "quick_list_filter": "[]"
+   }
+  ],
+  "restrict_to_domain": null,
+  "roles": [
+   {
+    "parent": "ICL Business Development",
+    "parentfield": "roles",
+    "parenttype": "Workspace",
+    "role": "Business Development"
+   }
+  ],
+  "sequence_id": 15.0,
+  "shortcuts": [
+   {
+    "color": "Grey",
+    "doc_view": "List",
+    "format": null,
+    "icon": null,
+    "kanban_board": null,
+    "label": "Bidding Dashboard",
+    "link_to": "Bidding",
+    "parent": "ICL Business Development",
+    "parentfield": "shortcuts",
+    "parenttype": "Workspace",
+    "report_ref_doctype": null,
+    "restrict_to_domain": null,
+    "stats_filter": null,
+    "type": "Dashboard",
+    "url": null
+   },
+   {
+    "color": "Grey",
+    "doc_view": "List",
+    "format": null,
+    "icon": null,
+    "kanban_board": null,
+    "label": "Lead",
+    "link_to": "Lead",
+    "parent": "ICL Business Development",
+    "parentfield": "shortcuts",
+    "parenttype": "Workspace",
+    "report_ref_doctype": null,
+    "restrict_to_domain": null,
+    "stats_filter": "[]",
+    "type": "DocType",
+    "url": null
+   }
+  ],
+  "title": "ICL Business Development"
  }
 ]
