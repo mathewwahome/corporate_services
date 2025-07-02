@@ -7,7 +7,8 @@
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
-  "contract_type"
+  "contract_type",
+  "accumulate_monthly_leave"
  ],
  "fields": [
   {
@@ -17,10 +18,18 @@
    "label": "Contract Type",
    "reqd": 1,
    "unique": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "accumulate_monthly_leave",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "label": "Accumulate monthly leave"
   }
  ],
  "links": [],
- "modified": "2024-09-25 08:32:41.756531",
+ "modified": "2025-07-02 11:49:52.580099",
  "modified_by": "Administrator",
  "module": "ICL Corporate Services",
  "name": "Contract Type",
@@ -41,6 +50,7 @@
   }
  ],
  "quick_entry": 1,
+ "row_format": "Dynamic",
  "sort_field": "modified",
  "sort_order": "DESC",
  "states": []
