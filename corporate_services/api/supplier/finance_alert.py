@@ -46,11 +46,12 @@ def generate_message(doc, email_type, employee_name=None, supplier_name=None):
         
         "quote_rejected": """
             Dear {},<br><br>
-            Thank you for taking the time to submit your quotation for <strong>{}</strong>.<br><br>
-            After careful consideration, we regret to inform you that we will not be proceeding with your proposal at this time. 
+            Thank you for submitting your quotation in response to our recent Request for Quotation <strong>{}</strong>.<br><br>
+            After careful consideration, we regret to inform you that we will not be proceeding with your quotation. 
+            This decision was primarily based on competitive pricing received from other vendors.
             Reference Number: <strong>{}</strong><br><br>
-            We appreciate your interest and encourage you to participate in future opportunities.<br><br>
-            Best regards,<br>
+            We appreciate your effort and welcome future collaboration opportunities.<br><br>
+            Kind regards,<br>
             Procurement Team
         """.format(supplier_name or "Valued Supplier", doc.get("title") or "your quotation", doc.name),
         

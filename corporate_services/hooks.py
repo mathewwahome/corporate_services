@@ -10,7 +10,30 @@ app_license = "mit"
 # ------------------
 
 # include js, css files in header of desk.html
-# app_include_css = "/assets/corporate_services/css/corporate_services.css"
+# app_include_css = ["/assets/corporate_services/css/modern_ui_theme.css"]
+
+# app_include_js = [
+#     "/assets/corporate_services/js/custom.js",
+#     "/assets/corporate_services/js/theme.js"
+# ]
+# # Website context - override home page
+# website_context = {
+#     "custom_theme_enabled": True
+# }
+
+# # Override home page template
+# website_route_rules = [
+#     {"from_route": "/", "to_route": "/welcome"},
+#     {"from_route": "/app/home", "to_route": "/welcome"},
+#     {"from_route": "/desk", "to_route": "/welcome"},
+# ]
+# home_page = "welcome"
+
+# after_login = "your_app_name.auth.after_login"
+
+# # Boot session - add custom settings
+# boot_session = "corporate_services.boot.boot_session"
+
 # app_include_js = "/assets/corporate_services/js/corporate_services.js"
 # app_include_js ="/assets/corporate_services/js/workflow_confirmation.js"
 
@@ -218,9 +241,10 @@ scheduler_events = {
 	# "all": [
 	# 	"corporate_services.tasks.all"
 	# ],
-	# "daily": [
-	# 	"corporate_services.tasks.daily"
-	# ],
+	"daily": [
+		# "corporate_services.tasks.daily"
+        "corporate_services.api.notification.project.scheduled_tasks.send_deliverable_notifications"
+	],
 	# "hourly": [
 	# 	"corporate_services.tasks.hourly"
 	# ],
@@ -242,8 +266,10 @@ scheduler_events = {
 # ------------------------------
 #
 # override_whitelisted_methods = {
-# 	"frappe.desk.doctype.event.event.get_events": "corporate_services.event.get_events"
+# # 	"frappe.desk.doctype.event.event.get_events": "corporate_services.event.get_events"
+#  "frappe.core.doctype.user.user.switch_theme": "corporate_services.overrides.switch_theme.switch_theme"
 # }
+
 #
 # each overriding function accepts a `data` argument;
 # generated from the base implementation of the doctype dashboard,
@@ -332,5 +358,8 @@ fixtures = [
     "Email Template",
     # "Dashboard Chart",
     # "Notification",
-    # "Dashboard"
+    # "Dashboard",
+    "Website Settings",
+    "Website Theme",
+    "Portal Settings"
 ]
