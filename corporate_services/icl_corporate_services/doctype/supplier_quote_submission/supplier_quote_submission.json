@@ -6,12 +6,10 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
-  "section_break_gnjv",
-  "appendix_vendor_rfq_submission_form",
   "naming_series",
   "rfq_number",
   "organization_type",
-  "column_break_pbeq",
+  "column_break_afrr",
   "suppliers_name",
   "phone_number",
   "email",
@@ -39,10 +37,6 @@
   "vendor_id"
  ],
  "fields": [
-  {
-   "fieldname": "section_break_gnjv",
-   "fieldtype": "Section Break"
-  },
   {
    "fieldname": "amended_from",
    "fieldtype": "Link",
@@ -77,6 +71,7 @@
    "fieldtype": "Select",
    "label": "Series",
    "options": "SQS-.YYYY.-",
+   "print_hide": 1,
    "read_only": 1,
    "reqd": 1
   },
@@ -91,11 +86,6 @@
    "fieldtype": "Data",
    "label": "Email",
    "reqd": 1
-  },
-  {
-   "fieldname": "appendix_vendor_rfq_submission_form",
-   "fieldtype": "Heading",
-   "label": "APPENDIX: VENDOR RFQ SUBMISSION FORM"
   },
   {
    "description": "Please specify your delivery timeline, and any associated delivery Cost ",
@@ -160,8 +150,7 @@
   {
    "fieldname": "vat_rate",
    "fieldtype": "Percent",
-   "label": "VAT Rate (%)",
-   "reqd": 1
+   "label": "VAT Rate (%)"
   },
   {
    "fieldname": "vat_type",
@@ -209,17 +198,17 @@
    "reqd": 1
   },
   {
-   "fieldname": "column_break_pbeq",
-   "fieldtype": "Column Break"
-  },
-  {
    "fieldname": "section_break_kgsc",
    "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_afrr",
+   "fieldtype": "Column Break"
   }
  ],
  "is_submittable": 1,
  "links": [],
- "modified": "2025-06-12 14:14:48.457870",
+ "modified": "2025-07-07 10:33:22.756239",
  "modified_by": "Administrator",
  "module": "ICL Corporate Services",
  "name": "Supplier Quote Submission",
