@@ -1,0 +1,155 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2025-11-14 02:54:58.072616",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "candidate_information_section",
+  "names",
+  "email_address",
+  "column_break_sdyg",
+  "phone",
+  "role",
+  "section_break_jmrr",
+  "cv",
+  "column_break_ibfo",
+  "cover_letter",
+  "section_break_btfe",
+  "minimum_requirements",
+  "preferred_attributes",
+  "section_break_ybhm",
+  "role_description"
+ ],
+ "fields": [
+  {
+   "fieldname": "names",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Names",
+   "reqd": 1
+  },
+  {
+   "fieldname": "email_address",
+   "fieldtype": "Data",
+   "label": "Email Address",
+   "reqd": 1
+  },
+  {
+   "fieldname": "phone",
+   "fieldtype": "Phone",
+   "label": "Phone"
+  },
+  {
+   "fieldname": "section_break_jmrr",
+   "fieldtype": "Section Break",
+   "label": "Qualification Documents"
+  },
+  {
+   "fieldname": "cv",
+   "fieldtype": "Attach",
+   "label": "Resume / CV",
+   "reqd": 1
+  },
+  {
+   "fieldname": "cover_letter",
+   "fieldtype": "Attach",
+   "label": "Cover Letter"
+  },
+  {
+   "fieldname": "column_break_sdyg",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_ibfo",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "candidate_information_section",
+   "fieldtype": "Section Break",
+   "label": "Candidate Information"
+  },
+  {
+   "fieldname": "section_break_btfe",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "minimum_requirements",
+   "fieldtype": "Table",
+   "label": "Minimum Requirements",
+   "options": "Job Candidate Minimum Requirements"
+  },
+  {
+   "fieldname": "preferred_attributes",
+   "fieldtype": "Table",
+   "label": "Preferred Attributes",
+   "options": "Job Candidate Preferred Attributes"
+  },
+  {
+   "fieldname": "role",
+   "fieldtype": "Data",
+   "label": "Role",
+   "reqd": 1
+  },
+  {
+   "fieldname": "section_break_ybhm",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "role_description",
+   "fieldtype": "Text",
+   "label": "Role Description"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2025-11-14 04:47:45.511533",
+ "modified_by": "Administrator",
+ "module": "ICL Corporate Services",
+ "name": "Job Candidate",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "HR Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "HR User",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

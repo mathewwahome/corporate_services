@@ -3,6 +3,37 @@ from frappe.utils import getdate, add_months, get_first_day, get_last_day
 from datetime import timedelta
 import traceback
 
+def get_eligible_employees():
+    """
+    Get employees who are eligible for leave allocation based on contract type
+    Returns list of employees whose contract type has accumulate_monthly_leave checked
+    """
+    contract_types_with_leave = frappe.get_all("Contract Type", 
+        filters={"accumulate_monthly_leave": 1}, 
+        fields=["name", "contract_type"])
+
+    if not contract_types_with_leave:
+        return [], []
+
+    eligible_contract_types = [ct["contract_type"] for ct in contract_types_with_leave]
+
+    # Get ALL active employees
+    all_active_employees = frappe.get_all("Employee", 
+        filters={"status": "Active"}, 
+        fields=["name", "employee_name", "custom_contract_type"])
+    
+    eligible_employees = []
+    for employee in all_active_employees:
+        contract_type = employee.get("custom_contract_type")
+        
+        # Only include if contract type is in eligible list and not empty
+        if contract_type and contract_type.strip() in eligible_contract_types:
+            eligible_employees.append(employee)
+
+    return eligible_employees, eligible_contract_types
+
+
+
 @frappe.whitelist()
 def process_leave_allocations():
     """
@@ -32,13 +63,19 @@ def process_leave_allocations():
         if not hr_email:
             raise ValueError("HR email must be specified in Leave Allocation Setting")
 
-        # Get active employees
-        employees = frappe.get_all("Employee", 
-            filters={"status": "Active"}, 
-            fields=["name", "employee_name"])
-        
+        # Get eligible employees based on contract type
+        employees, contract_types_with_leave = get_eligible_employees()
+
         if not employees:
-            raise ValueError("No active employees found")
+            if not contract_types_with_leave:
+                raise ValueError("No contract types found with 'accumulate_monthly_leave' checked")
+            else:
+                raise ValueError(f"No active employees found with contract types: {', '.join(contract_types_with_leave)}")
+
+        frappe.log_error(
+            f"Found {len(employees)} eligible employees with contract types: {', '.join(contract_types_with_leave)}",
+            "Leave Allocation Process - Employee Filter"
+        )
 
         # Check if new year allocations are needed
         needs_new_year_allocation = False
@@ -73,11 +110,18 @@ def process_leave_allocations():
             "Leave Allocation Process Error"
         )
         
-        send_email_notification(
-            error_message=error_message, 
-            error_traceback=error_traceback, 
-            hr_email=hr_email
-        )
+        # Try to get hr_email for error notification
+        try:
+            hr_email = frappe.get_doc("Leave Allocation Setting").hr_email
+        except:
+            hr_email = None
+            
+        if hr_email:
+            send_email_notification(
+                error_message=error_message, 
+                error_traceback=error_traceback, 
+                hr_email=hr_email
+            )
         
         raise
     
@@ -111,17 +155,21 @@ def update_annual_leave_allocations():
         if not hr_email:
             raise ValueError("HR email must be specified in Leave Allocation Setting")
 
-        employees = frappe.get_all("Employee", 
-            filters={"status": "Active"}, 
-            fields=["name", "employee_name"])
+        # Get eligible employees based on contract type (CORRECTED)
+        employees, contract_types_with_leave = get_eligible_employees()
             
         if not employees:
-            raise ValueError("No active employees found")
+            if not contract_types_with_leave:
+                raise ValueError("No contract types found with 'accumulate_monthly_leave' checked")
+            else:
+                raise ValueError(f"No active employees found with contract types: {', '.join(contract_types_with_leave)}")
 
         leave_allocation_settings_data = f"""
         <strong>Leave Type:</strong> {leave_type}<br>
         <strong>Days:</strong> {leave_days}<br>
-        <strong>Period:</strong> {start_date.strftime('%d-%m-%Y')} to {end_date.strftime('%d-%m-%Y')}
+        <strong>Period:</strong> {start_date.strftime('%d-%m-%Y')} to {end_date.strftime('%d-%m-%Y')}<br>
+        <strong>Eligible Contract Types:</strong> {', '.join(contract_types_with_leave)}<br>
+        <strong>Eligible Employees:</strong> {len(employees)}
         """
 
         allocation_count = 0
@@ -144,7 +192,7 @@ def update_annual_leave_allocations():
                 if monthly_allocation:
                     skipped_count += 1
                     frappe.log_error(
-                        f"Skipped leave allocation for employee {employee['employee_name']} - Already allocated this month",
+                        f"Skipped leave allocation for employee {employee['employee_name']} ({employee['custom_contract_type']}) - Already allocated this month",
                         "Leave Allocation Skip Log"
                     )
                     continue
@@ -174,7 +222,7 @@ def update_annual_leave_allocations():
                     update_count += 1
                     
                     frappe.log_error(
-                        f"Updated leave allocation for employee {employee['employee_name']}: "
+                        f"Updated leave allocation for employee {employee['employee_name']} ({employee['custom_contract_type']}): "
                         f"New leaves: {old_new_leaves} -> {allocation_doc.new_leaves_allocated}, "
                         f"Total leaves: {old_total_leaves} -> {allocation_doc.total_leaves_allocated}",
                         "Leave Allocation Update Log"
@@ -193,10 +241,16 @@ def update_annual_leave_allocations():
                     leave_allocation.insert(ignore_permissions=True)
                     leave_allocation.submit()
                     allocation_count += 1
+                    
+                    frappe.log_error(
+                        f"Created new leave allocation for employee {employee['employee_name']} ({employee['custom_contract_type']}): "
+                        f"Days allocated: {leave_days}",
+                        "Leave Allocation Create Log"
+                    )
 
             except Exception as e:
                 error_count += 1
-                error_details.append(f"Error for {employee['employee_name']}: {str(e)}")
+                error_details.append(f"Error for {employee['employee_name']} ({employee.get('custom_contract_type', 'N/A')}): {str(e)}")
                 frappe.log_error(
                     f"Error processing leave for employee {employee['name']}: {str(e)}", 
                     "Leave Allocation Error"
@@ -227,7 +281,9 @@ def update_annual_leave_allocations():
             "created": allocation_count,
             "updated": update_count,
             "skipped": skipped_count,
-            "failed": error_count
+            "failed": error_count,
+            "eligible_contract_types": contract_types_with_leave,
+            "total_eligible_employees": len(employees)
         }
 
     except Exception as e:
@@ -239,11 +295,18 @@ def update_annual_leave_allocations():
             "Leave Allocation Update Error"
         )
         
-        send_email_notification(
-            error_message=error_message, 
-            error_traceback=error_traceback, 
-            hr_email=hr_email
-        )
+        # Try to get hr_email for error notification
+        try:
+            hr_email = frappe.get_doc("Leave Allocation Setting").hr_email
+        except:
+            hr_email = None
+            
+        if hr_email:
+            send_email_notification(
+                error_message=error_message, 
+                error_traceback=error_traceback, 
+                hr_email=hr_email
+            )
         
         raise
 
@@ -274,17 +337,21 @@ def create_new_year_leave_allocations():
         if not hr_email:
             raise ValueError("HR email must be specified in Leave Allocation Setting")
 
-        employees = frappe.get_all("Employee", 
-            filters={"status": "Active"}, 
-            fields=["name", "employee_name"])
+        # Get eligible employees based on contract type (CORRECTED)
+        employees, contract_types_with_leave = get_eligible_employees()
         
         if not employees:
-            raise ValueError("No active employees found")
+            if not contract_types_with_leave:
+                raise ValueError("No contract types found with 'accumulate_monthly_leave' checked")
+            else:
+                raise ValueError(f"No active employees found with contract types: {', '.join(contract_types_with_leave)}")
 
         leave_allocation_settings_data = f"""
         <strong>Leave Type:</strong> {leave_type}<br>
         <strong>Annual Days:</strong> {leave_days}<br>
-        <strong>Period:</strong> {start_date.strftime('%d-%m-%Y')} to {end_date.strftime('%d-%m-%Y')}
+        <strong>Period:</strong> {start_date.strftime('%d-%m-%Y')} to {end_date.strftime('%d-%m-%Y')}<br>
+        <strong>Eligible Contract Types:</strong> {', '.join(contract_types_with_leave)}<br>
+        <strong>Eligible Employees:</strong> {len(employees)}
         """
 
         created_count = 0
@@ -306,6 +373,10 @@ def create_new_year_leave_allocations():
                 
                 if existing_allocation:
                     skipped_count += 1
+                    frappe.log_error(
+                        f"Skipped new year allocation for employee {employee['employee_name']} ({employee['custom_contract_type']}) - Already exists",
+                        "New Year Leave Allocation Skip Log"
+                    )
                     continue
 
                 # Create new allocation for the year
@@ -322,11 +393,17 @@ def create_new_year_leave_allocations():
                 leave_allocation.submit()
                 created_count += 1
                 
+                frappe.log_error(
+                    f"Created new year allocation for employee {employee['employee_name']} ({employee['custom_contract_type']}): "
+                    f"Days allocated: {leave_days}",
+                    "New Year Leave Allocation Create Log"
+                )
+                
                 frappe.db.commit()
 
             except Exception as e:
                 error_count += 1
-                error_details.append(f"Error for {employee['employee_name']}: {str(e)}")
+                error_details.append(f"Error for {employee['employee_name']} ({employee.get('custom_contract_type', 'N/A')}): {str(e)}")
                 frappe.log_error(
                     f"Error creating new year allocation for employee {employee['name']}: {str(e)}", 
                     "New Year Leave Allocation Error"
@@ -355,7 +432,9 @@ def create_new_year_leave_allocations():
             "message": f"Created {created_count} allocations, skipped {skipped_count}, failed {error_count}",
             "created": created_count,
             "skipped": skipped_count,
-            "failed": error_count
+            "failed": error_count,
+            "eligible_contract_types": contract_types_with_leave,
+            "total_eligible_employees": len(employees)
         }
 
     except Exception as e:
@@ -367,11 +446,18 @@ def create_new_year_leave_allocations():
             "New Year Leave Allocation Error"
         )
         
-        send_email_notification(
-            error_message=error_message, 
-            error_traceback=error_traceback, 
-            hr_email=hr_email
-        )
+        # Try to get hr_email for error notification
+        try:
+            hr_email = frappe.get_doc("Leave Allocation Setting").hr_email
+        except:
+            hr_email = None
+            
+        if hr_email:
+            send_email_notification(
+                error_message=error_message, 
+                error_traceback=error_traceback, 
+                hr_email=hr_email
+            )
         
         raise
 
@@ -398,7 +484,7 @@ def send_email_notification(leave_allocation_settings_data=None, success_message
                 <pre style="white-space: pre-wrap;">{error_traceback}</pre>
             </div>
             
-            <p>Best regards,<br>Your HR System</p>
+            <p>Best regards,<br>ERPNext HR Leave Allocation</p>
         </div>
         """
     else:
@@ -418,7 +504,7 @@ def send_email_notification(leave_allocation_settings_data=None, success_message
                 {leave_allocation_settings_data}
             </div>
             
-            <p>Best regards,<br>Your HR System</p>
+            <p>Best regards,<br>ERPNext HR Leave Allocation</p>
         </div>
         """
 
