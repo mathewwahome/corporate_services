@@ -32,16 +32,6 @@
  {
   "appraisal_template": null,
   "description": null,
-  "designation_name": "Analyst",
-  "docstatus": 0,
-  "doctype": "Designation",
-  "modified": "2024-04-23 11:01:58.893390",
-  "name": "Analyst",
-  "skills": []
- },
- {
-  "appraisal_template": null,
-  "description": null,
   "designation_name": "Associate",
   "docstatus": 0,
   "doctype": "Designation",
@@ -472,16 +462,6 @@
  {
   "appraisal_template": null,
   "description": null,
-  "designation_name": "Software Engineer",
-  "docstatus": 0,
-  "doctype": "Designation",
-  "modified": "2024-06-09 13:09:04.847203",
-  "name": "Software Engineer",
-  "skills": []
- },
- {
-  "appraisal_template": null,
-  "description": null,
   "designation_name": "Senior Software Engineer",
   "docstatus": 0,
   "doctype": "Designation",
@@ -617,6 +597,26 @@
   "doctype": "Designation",
   "modified": "2024-06-09 19:42:59.448720",
   "name": "Junior Quality Assurance Engineer",
+  "skills": []
+ },
+ {
+  "appraisal_template": null,
+  "description": null,
+  "designation_name": "Analyst",
+  "docstatus": 0,
+  "doctype": "Designation",
+  "modified": "2024-04-23 11:01:58.893390",
+  "name": "Analyst",
+  "skills": []
+ },
+ {
+  "appraisal_template": null,
+  "description": null,
+  "designation_name": "Software Engineer",
+  "docstatus": 0,
+  "doctype": "Designation",
+  "modified": "2024-06-09 13:09:04.847203",
+  "name": "Software Engineer",
   "skills": []
  }
 ]
