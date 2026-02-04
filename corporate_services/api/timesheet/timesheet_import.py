@@ -182,6 +182,14 @@ def timesheet_import(docname):
             frappe.throw(_("No data found in the uploaded file."))
 
         header = data[1]
+        
+        # Find the index of "Total Hours" column to exclude it
+        total_hours_col_index = None
+        for idx, col_name in enumerate(header):
+            if col_name and str(col_name).strip().lower() == "total hours":
+                total_hours_col_index = idx
+                break
+        
         existing_projects = {p["project_name"]: p["name"] for p in frappe.get_all("Project", fields=["project_name", "name"])}
         activity_types = frappe.get_all('Activity Type', fields=['name'])
         
@@ -212,11 +220,22 @@ def timesheet_import(docname):
                 current_activity = "Projects"
                 continue
 
-            if any(cell and str(cell).strip() and (not isinstance(cell, str) or cell.lower() != 'total') and float(cell) > 0 if cell and str(cell).replace('.', '', 1).isdigit() else False for cell in row[2:]):
-                if current_project:
-                    non_empty_activities.add(("project", current_project))
-                else:
-                    non_empty_activities.add(("activity", current_activity))
+            # Check cells but exclude Total Hours column
+            for idx, cell in enumerate(row[2:], start=2):
+                # Skip the Total Hours column
+                if total_hours_col_index is not None and idx == total_hours_col_index:
+                    continue
+                    
+                if cell and str(cell).strip() and (not isinstance(cell, str) or cell.lower() != 'total'):
+                    try:
+                        if float(cell) > 0:
+                            if current_project:
+                                non_empty_activities.add(("project", current_project))
+                            else:
+                                non_empty_activities.add(("activity", current_activity))
+                            break
+                    except (ValueError, TypeError):
+                        continue
 
         # Second pass to process data
         for row in filtered_data:
@@ -252,10 +271,17 @@ def timesheet_import(docname):
 
             if len(row) > 1:
                 for idx in range(2, len(header)):
+                    if total_hours_col_index is not None and idx == total_hours_col_index:
+                        continue
+                        
                     if idx >= len(row) or not row[idx]:
                         continue
 
                     day_str = header[idx]
+                    
+                    if day_str and str(day_str).strip().lower() == "total hours":
+                        continue
+                    
                     try:
                         hours = float(row[idx])
                         if hours == 0:
@@ -301,7 +327,7 @@ def timesheet_import(docname):
                         from_time_tracker[day] = to_time
                        
                     except ValueError as e:
-                        frappe.log_error(f"Invalid value in row: {row[idx]} - {e}", "timesheet_import")
+                        continue
 
         total_hours = calculate_total_hours(project_timesheets, activity_timesheets)
 
