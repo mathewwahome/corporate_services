@@ -1,0 +1,287 @@
+{
+ "actions": [],
+ "allow_import": 1,
+ "allow_rename": 1,
+ "autoname": "naming_series:",
+ "beta": 1,
+ "creation": "2026-02-02 12:52:56.454474",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "position_information_section",
+  "naming_series",
+  "title",
+  "department",
+  "requestor",
+  "supervisor_reporting_to",
+  "employment_type",
+  "column_break_lwsz",
+  "date_of_request",
+  "desired_start_date",
+  "term_of_engagement_service",
+  "replacementnew_position",
+  "previous_role_holder",
+  "rationale_for_the_role_section",
+  "rationale_for_the_role",
+  "role_objectives_section",
+  "primary_objective",
+  "secondary_objectives",
+  "column_break_kigg",
+  "performance_indicators_kpis",
+  "position_summary_job_description_section",
+  "key_duties_and_responsibilities",
+  "qualifications_and_skills_required_section",
+  "education_level",
+  "professional_certifications",
+  "years_of_experience",
+  "column_break_fmcq",
+  "technical_skills",
+  "soft_skills",
+  "section_break_jrui",
+  "rejection_reason",
+  "approval_log_section",
+  "staff_requisition_approval",
+  "status"
+ ],
+ "fields": [
+  {
+   "fieldname": "position_information_section",
+   "fieldtype": "Section Break",
+   "label": "Position Information"
+  },
+  {
+   "fieldname": "title",
+   "fieldtype": "Data",
+   "in_filter": 1,
+   "in_list_view": 1,
+   "in_preview": 1,
+   "in_standard_filter": 1,
+   "label": "Title",
+   "reqd": 1
+  },
+  {
+   "fieldname": "department",
+   "fieldtype": "Link",
+   "label": "Department",
+   "options": "Department",
+   "reqd": 1
+  },
+  {
+   "fieldname": "requestor",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Requestor",
+   "options": "Employee",
+   "reqd": 1
+  },
+  {
+   "fieldname": "supervisor_reporting_to",
+   "fieldtype": "Link",
+   "label": "Supervisor/Reporting To",
+   "options": "Employee",
+   "reqd": 1
+  },
+  {
+   "fieldname": "date_of_request",
+   "fieldtype": "Date",
+   "label": "Date of Request",
+   "reqd": 1
+  },
+  {
+   "fieldname": "desired_start_date",
+   "fieldtype": "Date",
+   "label": "Desired start date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "term_of_engagement_service",
+   "fieldtype": "Data",
+   "label": "Term of engagement / service",
+   "reqd": 1
+  },
+  {
+   "fieldname": "employment_type",
+   "fieldtype": "Link",
+   "label": "Employment Type",
+   "options": "Contract Type",
+   "reqd": 1
+  },
+  {
+   "fieldname": "replacementnew_position",
+   "fieldtype": "Select",
+   "label": "Replacement/New Position",
+   "options": "Replacement\nNew Position",
+   "reqd": 1
+  },
+  {
+   "fieldname": "previous_role_holder",
+   "fieldtype": "Link",
+   "ignore_user_permissions": 1,
+   "label": "Previous Role Holder",
+   "options": "Employee"
+  },
+  {
+   "fieldname": "column_break_lwsz",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "Clearly explain the need for this position. What organizational or operational gap does it fill? How does it align with current strategic goals or future growth areas for both the department and the organization as a whole?\nWhy: Confirms indicated project involvement and looks at alignment with ICL\u2019s strategic objectives.",
+   "fieldname": "rationale_for_the_role_section",
+   "fieldtype": "Section Break",
+   "label": "Rationale for the Role"
+  },
+  {
+   "fieldname": "rationale_for_the_role",
+   "fieldtype": "Long Text",
+   "label": "Rationale for the Role"
+  },
+  {
+   "description": "What: Including performance metrics/ This information will be given during onboarding.",
+   "fieldname": "role_objectives_section",
+   "fieldtype": "Section Break",
+   "label": "Role Objectives"
+  },
+  {
+   "description": "Describe the main goal(s) this role is expected to achieve.",
+   "fieldname": "primary_objective",
+   "fieldtype": "Long Text",
+   "label": "Primary Objective"
+  },
+  {
+   "fieldname": "column_break_kigg",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "List supporting objectives / strategies that contribute to the achievement of the goal(s).",
+   "fieldname": "secondary_objectives",
+   "fieldtype": "Long Text",
+   "label": "Secondary Objectives"
+  },
+  {
+   "description": "Specify measurable metrics of success.\nForm part of performance evaluation discussions.",
+   "fieldname": "performance_indicators_kpis",
+   "fieldtype": "Long Text",
+   "label": "Performance Indicators (KPIs)"
+  },
+  {
+   "fieldname": "key_duties_and_responsibilities",
+   "fieldtype": "Text Editor",
+   "label": "Key Duties and Responsibilities"
+  },
+  {
+   "fieldname": "position_summary_job_description_section",
+   "fieldtype": "Section Break",
+   "label": "Position Summary & Job Description"
+  },
+  {
+   "fieldname": "qualifications_and_skills_required_section",
+   "fieldtype": "Section Break",
+   "label": "Qualifications and Skills Required"
+  },
+  {
+   "description": "Minimum academic qualification required.",
+   "fieldname": "education_level",
+   "fieldtype": "Data",
+   "label": "Education Level",
+   "reqd": 1
+  },
+  {
+   "description": "Any necessary credentials or licenses.",
+   "fieldname": "professional_certifications",
+   "fieldtype": "Data",
+   "label": "Professional Certifications",
+   "reqd": 1
+  },
+  {
+   "description": "Total and relevant experience required.",
+   "fieldname": "years_of_experience",
+   "fieldtype": "Int",
+   "label": "Years of Experience",
+   "non_negative": 1,
+   "reqd": 1
+  },
+  {
+   "description": "List required hard skills (software, tools, technical knowledge).",
+   "fieldname": "technical_skills",
+   "fieldtype": "Data",
+   "label": "Technical Skills",
+   "reqd": 1
+  },
+  {
+   "description": "Communication, leadership, teamwork, etc.",
+   "fieldname": "soft_skills",
+   "fieldtype": "Data",
+   "label": "Soft Skills",
+   "reqd": 1
+  },
+  {
+   "fieldname": "approval_log_section",
+   "fieldtype": "Section Break",
+   "label": "Approval Log"
+  },
+  {
+   "fieldname": "section_break_jrui",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "rejection_reason",
+   "fieldtype": "Long Text",
+   "label": "Rejection Reason"
+  },
+  {
+   "fieldname": "column_break_fmcq",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "hidden": 1,
+   "label": "Series",
+   "options": "STR-.YYYY.-",
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "staff_requisition_approval",
+   "fieldtype": "Table",
+   "label": "Staff Requisition Approval",
+   "options": "Staff Requisition Approval",
+   "read_only": 1
+  },
+  {
+   "default": "DRAFT",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "DRAFT\nSUBMITTED\nSUBMITTED TO HR\nNEEDS CLARIFICATION\nHR APPROVED\nAPPROVED FOR RECRUITMENT\nREJECTED\nCANCELLED",
+   "print_hide": 1,
+   "read_only": 1
+  }
+ ],
+ "grid_page_length": 50,
+ "links": [],
+ "modified": "2026-02-04 06:10:45.365347",
+ "modified_by": "Administrator",
+ "module": "ICL Corporate Services",
+ "name": "Staff Requisition",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

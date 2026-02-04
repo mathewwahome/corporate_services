@@ -181,6 +181,7 @@ on_update_map = {
     "Asset Movement": "corporate_services.api.notification.assets.asset_handover.alert",
     "Task":"corporate_services.api.notification.project.project_task.task_on_update",
     "Supplier Quote Submission":"corporate_services.api.supplier.finance_alert.alert",
+    "Staff Requisition":"corporate_services.api.notification.staff_requisition.staff_requisition.alert",
     
     # "Supplier Quote Submission": [
     #     "corporate_services.api.supplier.finance_alert.alert",

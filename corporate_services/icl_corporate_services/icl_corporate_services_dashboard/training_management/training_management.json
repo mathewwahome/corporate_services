@@ -18,6 +18,7 @@
  ],
  "charts": [
   {
+   "chart": "Training Type",
    "width": "Half"
   }
  ],
@@ -28,7 +29,7 @@
  "idx": 0,
  "is_default": 0,
  "is_standard": 1,
- "modified": "2024-06-17 19:52:48.066207",
+ "modified": "2026-01-29 13:46:58.978693",
  "modified_by": "Administrator",
  "module": "ICL Corporate Services",
  "name": "Training Management",

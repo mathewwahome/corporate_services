@@ -23,6 +23,13 @@
  {
   "docstatus": 0,
   "doctype": "Workflow Action Master",
+  "modified": "2024-07-12 15:02:17.346668",
+  "name": "Submit To supervisor",
+  "workflow_action_name": "Submit To supervisor"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow Action Master",
   "modified": "2024-07-12 12:27:08.478000",
   "name": "Submit to Finance",
   "workflow_action_name": "Submit to Finance"
@@ -33,13 +40,6 @@
   "modified": "2024-07-12 12:26:57.716557",
   "name": "Submit to HR",
   "workflow_action_name": "Submit to HR"
- },
- {
-  "docstatus": 0,
-  "doctype": "Workflow Action Master",
-  "modified": "2024-07-12 15:02:17.346668",
-  "name": "Submit To supervisor",
-  "workflow_action_name": "Submit To supervisor"
  },
  {
   "docstatus": 0,
