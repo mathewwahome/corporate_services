@@ -253,14 +253,14 @@
    "fieldname": "status",
    "fieldtype": "Select",
    "label": "Status",
-   "options": "DRAFT\nSUBMITTED\nSUBMITTED TO HR\nNEEDS CLARIFICATION\nHR APPROVED\nAPPROVED FOR RECRUITMENT\nREJECTED\nCANCELLED",
+   "options": "DRAFT\nSUBMITTED\nSUBMITTED TO HR\nSUBMITTED TO CEO\nNEEDS CLARIFICATION\nHR APPROVED\nAPPROVED FOR RECRUITMENT\nREJECTED\nCANCELLED",
    "print_hide": 1,
    "read_only": 1
   }
  ],
  "grid_page_length": 50,
  "links": [],
- "modified": "2026-02-05 09:59:25.045705",
+ "modified": "2026-02-05 11:57:22.126244",
  "modified_by": "Administrator",
  "module": "ICL Corporate Services",
  "name": "Staff Requisition",
