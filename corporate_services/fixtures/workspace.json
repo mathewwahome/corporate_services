@@ -199,8 +199,16 @@
   "title": "ICL Project Manager"
  },
  {
-  "charts": [],
-  "content": "[{\"id\":\"_fAakpizW-\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">ICL Supervisor</span>\",\"col\":12}},{\"id\":\"WMSAue7aAI\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Appraisal\",\"col\":3}},{\"id\":\"AUj1ODbnWi\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Leave Application\",\"col\":3}},{\"id\":\"L28Sh8mRWo\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Timesheet\",\"col\":3}},{\"id\":\"vjNIfPb5yf\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Training Needs Analysis\",\"col\":3}},{\"id\":\"U1HsGLmj4Q\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Travel Request\",\"col\":3}},{\"id\":\"y42TImV7Y2\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Asset Requisition\",\"col\":3}},{\"id\":\"fgojuvCfaM\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Job Requisition\",\"col\":3}},{\"id\":\"_qXuOaoVTe\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"At8zW2AKHs\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Reports <br></b></span>\",\"col\":12}},{\"id\":\"b_JWatGDnr\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Asset Replacement Request\",\"col\":3}},{\"id\":\"cs3HXUpB_D\",\"type\":\"spacer\",\"data\":{\"col\":12}}]",
+  "charts": [
+   {
+    "chart_name": "Timesheet Submission",
+    "label": "Timesheet Submission",
+    "parent": "ICL Supervisor",
+    "parentfield": "charts",
+    "parenttype": "Workspace"
+   }
+  ],
+  "content": "[{\"id\":\"_fAakpizW-\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">ICL Supervisor</span>\",\"col\":12}},{\"id\":\"qCo5R2ywCS\",\"type\":\"chart\",\"data\":{\"chart_name\":\"Timesheet Submission\",\"col\":12}},{\"id\":\"n9u0Kb2NFK\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"WMSAue7aAI\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Appraisal\",\"col\":3}},{\"id\":\"AUj1ODbnWi\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Leave Application\",\"col\":3}},{\"id\":\"L28Sh8mRWo\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Timesheet\",\"col\":3}},{\"id\":\"vjNIfPb5yf\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Training Needs Analysis\",\"col\":3}},{\"id\":\"U1HsGLmj4Q\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Travel Request\",\"col\":3}},{\"id\":\"y42TImV7Y2\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Asset Requisition\",\"col\":3}},{\"id\":\"fgojuvCfaM\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Job Requisition\",\"col\":3}},{\"id\":\"_qXuOaoVTe\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"At8zW2AKHs\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Reports <br></b></span>\",\"col\":12}},{\"id\":\"b_JWatGDnr\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Asset Replacement Request\",\"col\":3}},{\"id\":\"cs3HXUpB_D\",\"type\":\"spacer\",\"data\":{\"col\":12}}]",
   "custom_blocks": [],
   "docstatus": 0,
   "doctype": "Workspace",
@@ -211,7 +219,7 @@
   "is_hidden": 0,
   "label": "ICL Supervisor",
   "links": [],
-  "modified": "2025-05-21 12:07:15.854525",
+  "modified": "2026-02-05 07:07:43.068263",
   "module": "ICL Corporate Services",
   "name": "ICL Supervisor",
   "number_cards": [],
