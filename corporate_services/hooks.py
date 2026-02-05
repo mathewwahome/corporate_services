@@ -339,7 +339,6 @@ override_doctype_dashboards = {
 # }
 
 fixtures = [
-    # "Leave Type",
     "Workflow",
     "Workflow State",
     "Workflow Action Master",
@@ -348,7 +347,6 @@ fixtures = [
     "Navbar Settings",
     "HR Settings",
     "Designation",
-    # "Department",
     "Client Script",
     "Number Card",
     "Letter Head",

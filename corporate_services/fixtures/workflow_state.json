@@ -219,19 +219,19 @@
   "docstatus": 0,
   "doctype": "Workflow State",
   "icon": "",
-  "modified": "2024-06-03 15:39:43.484027",
-  "name": "Draft",
+  "modified": "2024-12-03 10:20:26.249204",
+  "name": "Submitted to CEO",
   "style": "",
-  "workflow_state_name": "Draft"
+  "workflow_state_name": "Submitted to CEO"
  },
  {
   "docstatus": 0,
   "doctype": "Workflow State",
   "icon": "",
-  "modified": "2024-12-03 10:20:26.249204",
-  "name": "Submitted to CEO",
+  "modified": "2024-06-03 15:39:43.484027",
+  "name": "Draft",
   "style": "",
-  "workflow_state_name": "Submitted to CEO"
+  "workflow_state_name": "Draft"
  },
  {
   "docstatus": 0,
