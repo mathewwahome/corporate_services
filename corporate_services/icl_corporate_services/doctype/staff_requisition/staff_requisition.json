@@ -195,7 +195,7 @@
   {
    "description": "Total and relevant experience required.",
    "fieldname": "years_of_experience",
-   "fieldtype": "Int",
+   "fieldtype": "Data",
    "label": "Years of Experience",
    "non_negative": 1,
    "reqd": 1
@@ -260,7 +260,7 @@
  ],
  "grid_page_length": 50,
  "links": [],
- "modified": "2026-02-04 06:10:45.365347",
+ "modified": "2026-02-05 09:59:25.045705",
  "modified_by": "Administrator",
  "module": "ICL Corporate Services",
  "name": "Staff Requisition",
