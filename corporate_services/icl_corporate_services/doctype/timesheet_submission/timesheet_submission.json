@@ -8,6 +8,7 @@
   "naming_series",
   "employee",
   "employee_name",
+  "column_break_ghwq",
   "month_year",
   "download_template",
   "timesheet",
@@ -17,7 +18,9 @@
   "column_break_fbtd",
   "timesheet_per_project",
   "total_working_hours",
-  "status"
+  "status",
+  "project_loes_section",
+  "table_exsq"
  ],
  "fields": [
   {
@@ -109,11 +112,27 @@
    "in_standard_filter": 1,
    "label": "Employee Name",
    "read_only": 1
+  },
+  {
+   "fieldname": "column_break_ghwq",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "project_loes_section",
+   "fieldtype": "Section Break",
+   "label": "Project LOEs"
+  },
+  {
+   "description": "Used up and Remaining LOEs per project",
+   "fieldname": "table_exsq",
+   "fieldtype": "Table",
+   "options": "Project LOEs",
+   "read_only": 1
   }
  ],
  "is_submittable": 1,
  "links": [],
- "modified": "2024-12-11 12:02:53.434872",
+ "modified": "2026-02-08 15:22:20.878093",
  "modified_by": "Administrator",
  "module": "ICL Corporate Services",
  "name": "Timesheet Submission",
@@ -170,6 +189,7 @@
    "write": 1
   }
  ],
+ "row_format": "Dynamic",
  "sort_field": "modified",
  "sort_order": "DESC",
  "states": []

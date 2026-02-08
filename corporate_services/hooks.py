@@ -29,6 +29,18 @@ app_license = "mit"
 # ]
 # home_page = "welcome"
 
+# include js in page
+page_js = {
+    "timesheet-workflow": "public/js/timesheet_workflow.js"
+}
+
+# Custom Pages
+page = [
+    "corporate_services.icl_corporate_services.page.timesheet_workflow.timesheet_workflow"
+]
+
+
+
 # after_login = "your_app_name.auth.after_login"
 
 # # Boot session - add custom settings
