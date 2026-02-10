@@ -1,25 +1,25 @@
 import React, { useEffect, useState } from "react";
 
-function TimesheetSubmissions({ employee = null, onBack }) {
+function TimesheetSubmissions({ employee = null, onBack, onEmployeeClick }) {
   const [submissions, setSubmissions] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    console.log('TimesheetSubmissions - Employee prop:', employee);
-    
+    console.log("TimesheetSubmissions - Employee prop:", employee);
+
     const method = employee
       ? "corporate_services.icl_corporate_services.page.timesheet_workflow.timesheet_workflow.get_timesheet_submissions_by_employee"
       : "corporate_services.icl_corporate_services.page.timesheet_workflow.timesheet_workflow.get_all_timesheet_submissions";
 
     const args = employee ? { employee_name: employee.employee_name } : {};
-    
-    console.log('Making API call with method:', method, 'and args:', args);
+
+    console.log("Making API call with method:", method, "and args:", args);
 
     frappe.call({
       method: method,
       args: args,
       callback: (r) => {
-        console.log('API response:', r.message);
+        console.log("API response:", r.message);
         setSubmissions(r.message || []);
         setLoading(false);
       },
@@ -31,6 +31,12 @@ function TimesheetSubmissions({ employee = null, onBack }) {
       renderCharts();
     }
   }, [submissions]);
+
+  const handleEmployeeClick = (employeeName) => {
+    if (!employee && onEmployeeClick) {
+      onEmployeeClick(employeeName);
+    }
+  };
 
   const renderCharts = () => {
     if (typeof window.Chart === "undefined") {
@@ -378,30 +384,48 @@ function TimesheetSubmissions({ employee = null, onBack }) {
             </tr>
           </thead>
           <tbody>
-            {submissions.map((ts, index) => (
-              <tr key={ts.name}>
-                <td>{index + 1}</td>
-                <td>{ts.employee_name || ts.employee}</td>
-                <td>{ts.month_year}</td>
-                <td>{ts.total_working_hours}</td>
-                <td>
-                  <span
-                    className={`badge ${
-                      ts.status === "Approved"
-                        ? "bg-success"
-                        : ts.status === "Rejected"
-                          ? "bg-danger"
-                          : ts.status === "Cancelled"
-                            ? "bg-secondary"
-                            : "bg-warning"
-                    }`}
-                  >
-                    {ts.status}
-                  </span>
-                </td>
-                <td>{new Date(ts.creation).toLocaleDateString()}</td>
-              </tr>
-            ))}
+            {submissions.map((ts, index) => {
+              const employeeName = ts.employee_name || ts.employee;
+              return (
+                <tr key={ts.name}>
+                  <td>{index + 1}</td>
+                  <td>
+                    {!employee ? (
+                      <span
+                        className="text-primary"
+                        style={{
+                          cursor: "pointer",
+                          textDecoration: "underline",
+                        }}
+                        onClick={() => handleEmployeeClick(employeeName)}
+                      >
+                        {employeeName}
+                      </span>
+                    ) : (
+                      employeeName
+                    )}
+                  </td>
+                  <td>{ts.month_year}</td>
+                  <td>{ts.total_working_hours}</td>
+                  <td>
+                    <span
+                      className={`badge ${
+                        ts.status === "Approved"
+                          ? "bg-success"
+                          : ts.status === "Rejected"
+                            ? "bg-danger"
+                            : ts.status === "Cancelled"
+                              ? "bg-secondary"
+                              : "bg-warning"
+                      }`}
+                    >
+                      {ts.status}
+                    </span>
+                  </td>
+                  <td>{new Date(ts.creation).toLocaleDateString()}</td>
+                </tr>
+              );
+            })}
           </tbody>
         </table>
       </div>

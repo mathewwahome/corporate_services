@@ -2,164 +2,170 @@ import React, { useEffect, useState } from "react";
 import TimesheetSubmissions from "./TimesheetSubmissions";
 
 function TimesheetWorkflowApp() {
-    const [employees, setEmployees] = useState([]);
-    const [loading, setLoading] = useState(true);
-    const [selectedEmployee, setSelectedEmployee] = useState(null);
-    const [showAllSubmissions, setShowAllSubmissions] = useState(false);
+  const [employees, setEmployees] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [selectedEmployee, setSelectedEmployee] = useState(null);
+  const [showAllSubmissions, setShowAllSubmissions] = useState(false);
 
-    useEffect(() => {
-        frappe.call({
-            method: "corporate_services.icl_corporate_services.page.timesheet_workflow.timesheet_workflow.get_all_employees",
-            callback: (r) => {
-                setEmployees(r.message || []);
-                setLoading(false);
-            }
-        });
-    }, []);
+  useEffect(() => {
+    frappe.call({
+      method:
+        "corporate_services.icl_corporate_services.page.timesheet_workflow.timesheet_workflow.get_all_employees",
+      callback: (r) => {
+        setEmployees(r.message || []);
+        setLoading(false);
+      },
+    });
+  }, []);
 
-    useEffect(() => {
-        let isHandling = false;
-        
-        const handleRouteChange = () => {
-            if (isHandling) {
-                console.log('Already handling route change, skipping...');
-                return;
-            }
-            
-            isHandling = true;
-            const route = frappe.get_route();
-            console.log('Route changed:', route);
-            
-            if (route.length > 1 && route[0] === 'timesheet_workflow') {
-                if (route[1] === 'all-submissions') {
-                    console.log('Setting all submissions view');
-                    setShowAllSubmissions(true);
-                    setSelectedEmployee(null);
-                } else if (route[1] === 'employee' && route[2]) {
-                    const employeeId = decodeURIComponent(route[2]);
-                    console.log('Looking for employee ID:', employeeId);
-                    const emp = employees.find(e => 
-                        e.name === employeeId || 
-                        e.employee_name === employeeId
-                    );
-                    if (emp) {
-                        console.log('Found employee:', emp);
-                        setSelectedEmployee(emp);
-                        setShowAllSubmissions(false);
-                    } else {
-                        console.log('Employee not found, available employees:', employees);
-                    }
-                } else {
-                    setShowAllSubmissions(false);
-                    setSelectedEmployee(null);
-                }
-            } else if (route[0] === 'timesheet_workflow' && route.length === 1) {
-                console.log('Setting default view');
-                setShowAllSubmissions(false);
-                setSelectedEmployee(null);
-            }
-            
-            setTimeout(() => {
-                isHandling = false;
-            }, 100);
-        };
+  useEffect(() => {
+    let isHandling = false;
 
-        if (!loading && employees.length > 0) {
-            handleRouteChange();
+    const handleRouteChange = () => {
+      if (isHandling) {
+        console.log("Already handling route change, skipping...");
+        return;
+      }
+
+      isHandling = true;
+      const route = frappe.get_route();
+      console.log("Route changed:", route);
+
+      if (route.length > 1 && route[0] === "timesheet_workflow") {
+        if (route[1] === "all-submissions") {
+          console.log("Setting all submissions view");
+          setShowAllSubmissions(true);
+          setSelectedEmployee(null);
+        } else if (route[1] === "employee" && route[2]) {
+          const employeeId = decodeURIComponent(route[2]);
+          console.log("Looking for employee ID:", employeeId);
+          const emp = employees.find(
+            (e) => e.name === employeeId || e.employee_name === employeeId,
+          );
+          if (emp) {
+            console.log("Found employee:", emp);
+            setSelectedEmployee(emp);
+            setShowAllSubmissions(false);
+          } else {
+            console.log("Employee not found, available employees:", employees);
+          }
+        } else {
+          setShowAllSubmissions(false);
+          setSelectedEmployee(null);
         }
+      } else if (route[0] === "timesheet_workflow" && route.length === 1) {
+        console.log("Setting default view");
+        setShowAllSubmissions(false);
+        setSelectedEmployee(null);
+      }
 
-        frappe.router.on('change', handleRouteChange);
-
-        return () => {
-            frappe.router.off('change', handleRouteChange);
-        };
-    }, [employees, loading]);
-
-    const navigateToAllSubmissions = () => {
-        frappe.set_route('timesheet_workflow', 'all-submissions');
+      setTimeout(() => {
+        isHandling = false;
+      }, 100);
     };
 
-    const navigateToEmployeeSubmissions = (employee) => {
-        console.log('Navigating to employee:', employee);
-        const employeeName = employee.employee_name || employee.name;
-        console.log('Employee name:', employeeName);
-        frappe.set_route('timesheet_workflow', 'employee', employee.name);
+    if (!loading && employees.length > 0) {
+      handleRouteChange();
+    }
+
+    frappe.router.on("change", handleRouteChange);
+
+    return () => {
+      frappe.router.off("change", handleRouteChange);
     };
+  }, [employees, loading]);
 
-    const navigateToHome = () => {
-        frappe.set_route('timesheet_workflow');
-    };
+  const navigateToAllSubmissions = () => {
+    frappe.set_route("timesheet_workflow", "all-submissions");
+  };
 
-    if (loading) {
-        return (
-            <div className="d-flex justify-content-center align-items-center vh-100">
-                <div className="spinner-border text-primary" role="status">
-                    <span className="visually-hidden">Loading...</span>
-                </div>
-            </div>
-        );
-    }
+  const navigateToEmployeeSubmissions = (employee) => {
+    console.log("Navigating to employee:", employee);
+    const employeeName = employee.employee_name || employee.name;
+    console.log("Employee name:", employeeName);
+    frappe.set_route("timesheet_workflow", "employee", employee.name);
+  };
 
-    if (showAllSubmissions) {
-        return (
-            <TimesheetSubmissions
-                onBack={navigateToHome}
-            />
-        );
-    }
+  const navigateToHome = () => {
+    frappe.set_route("timesheet_workflow");
+  };
 
-    if (selectedEmployee) {
-        return (
-            <TimesheetSubmissions
-                employee={selectedEmployee}
-                onBack={navigateToHome}
-            />
-        );
-    }
-
+  if (loading) {
     return (
-        <div className="container py-5">
-            <div className="mb-3 text-end">
-                <button
-                    className="btn btn-primary"
-                    onClick={navigateToAllSubmissions}
-                >
-                    View All Timesheet Submissions
-                </button>
-            </div>
-            <div className="table-responsive">
-                <table className="table table-striped table-bordered">
-                    <thead className="table-dark">
-                        <tr>
-                            <th>#</th>
-                            <th>Employee Name</th>
-                            <th>Department</th>
-                            <th>Designation</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {employees.map((emp, index) => (
-                            <tr key={emp.name}>
-                                <td>{index + 1}</td>
-                                <td>{emp.employee_name || emp.name}</td>
-                                <td>{emp.department || "-"}</td>
-                                <td>{emp.designation || "-"}</td>
-                                <td>
-                                    <button
-                                        className="btn btn-sm btn-primary me-2"
-                                        onClick={() => navigateToEmployeeSubmissions(emp)}
-                                    >
-                                        View Timesheet Submissions
-                                    </button>
-                                </td>
-                            </tr>
-                        ))}
-                    </tbody>
-                </table>
-            </div>
+      <div className="d-flex justify-content-center align-items-center vh-100">
+        <div className="spinner-border text-primary" role="status">
+          <span className="visually-hidden">Loading...</span>
         </div>
+      </div>
     );
+  }
+
+  if (showAllSubmissions) {
+    return (
+      <TimesheetSubmissions
+        onBack={navigateToHome}
+        onEmployeeClick={(employeeName) => {
+          // Find the employee by name
+          const emp = employees.find(
+            (e) => e.employee_name === employeeName || e.name === employeeName,
+          );
+          if (emp) {
+            navigateToEmployeeSubmissions(emp);
+          }
+        }}
+      />
+    );
+  }
+
+  if (selectedEmployee) {
+    return (
+      <TimesheetSubmissions
+        employee={selectedEmployee}
+        onBack={navigateToHome}
+      />
+    );
+  }
+
+  return (
+    <div className="container py-5">
+      <div className="mb-3 text-end">
+        <button className="btn btn-primary" onClick={navigateToAllSubmissions}>
+          View All Timesheet Submissions
+        </button>
+      </div>
+      <div className="table-responsive">
+        <table className="table table-striped table-bordered">
+          <thead className="table-dark">
+            <tr>
+              <th>#</th>
+              <th>Employee Name</th>
+              <th>Department</th>
+              <th>Designation</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {employees.map((emp, index) => (
+              <tr key={emp.name}>
+                <td>{index + 1}</td>
+                <td>{emp.employee_name || emp.name}</td>
+                <td>{emp.department || "-"}</td>
+                <td>{emp.designation || "-"}</td>
+                <td>
+                  <button
+                    className="btn btn-sm btn-primary me-2"
+                    onClick={() => navigateToEmployeeSubmissions(emp)}
+                  >
+                    View Timesheet Submissions
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  );
 }
 
 export default TimesheetWorkflowApp;
