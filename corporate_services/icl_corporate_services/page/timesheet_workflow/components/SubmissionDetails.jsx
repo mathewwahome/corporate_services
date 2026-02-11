@@ -227,7 +227,6 @@ function SubmissionDetails({ submission, employee, onBack }) {
                   <th>Task</th>
                   <th>Activity</th>
                   <th>Hours</th>
-                  <th>Description</th>
                 </tr>
               </thead>
               <tbody>
@@ -239,7 +238,6 @@ function SubmissionDetails({ submission, employee, onBack }) {
                     <td>{ts.task || "-"}</td>
                     <td>{ts.activity_type || "-"}</td>
                     <td>{ts.hours.toFixed(2)}</td>
-                    <td>{ts.description || "-"}</td>
                   </tr>
                 ))}
               </tbody>

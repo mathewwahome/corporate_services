@@ -136,7 +136,6 @@ def get_timesheet_submission_details(submission_name):
                         "activity_type": time_log.get("activity_type"),
                         "project": time_log.get("project"),
                         "task": time_log.get("custom_tasks"),
-                        "description": time_log.get("description") or time_log.get("remarks")
                     }
                     timesheets.append(ts_entry)
                     
