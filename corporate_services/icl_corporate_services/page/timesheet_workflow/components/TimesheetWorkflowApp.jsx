@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 import TimesheetSubmissions from "./TimesheetSubmissions";
+import SubmissionDetails from "./SubmissionDetails";
 
 function TimesheetWorkflowApp() {
   const [employees, setEmployees] = useState([]);
   const [loading, setLoading] = useState(true);
   const [selectedEmployee, setSelectedEmployee] = useState(null);
   const [showAllSubmissions, setShowAllSubmissions] = useState(false);
+  const [selectedSubmission, setSelectedSubmission] = useState(null);
 
   useEffect(() => {
     frappe.call({
@@ -36,27 +38,45 @@ function TimesheetWorkflowApp() {
           console.log("Setting all submissions view");
           setShowAllSubmissions(true);
           setSelectedEmployee(null);
+          setSelectedSubmission(null);
         } else if (route[1] === "employee" && route[2]) {
           const employeeId = decodeURIComponent(route[2]);
-          console.log("Looking for employee ID:", employeeId);
-          const emp = employees.find(
-            (e) => e.name === employeeId || e.employee_name === employeeId,
-          );
-          if (emp) {
-            console.log("Found employee:", emp);
-            setSelectedEmployee(emp);
-            setShowAllSubmissions(false);
+          
+          // Check if it's a submission detail route
+          if (route[3] === "submission" && route[4]) {
+            const submissionId = decodeURIComponent(route[4]);
+            const emp = employees.find(
+              (e) => e.name === employeeId || e.employee_name === employeeId
+            );
+            if (emp) {
+              setSelectedEmployee(emp);
+              setSelectedSubmission({ name: submissionId });
+              setShowAllSubmissions(false);
+            }
           } else {
-            console.log("Employee not found, available employees:", employees);
+            // Regular employee view
+            const emp = employees.find(
+              (e) => e.name === employeeId || e.employee_name === employeeId
+            );
+            if (emp) {
+              console.log("Found employee:", emp);
+              setSelectedEmployee(emp);
+              setSelectedSubmission(null);
+              setShowAllSubmissions(false);
+            } else {
+              console.log("Employee not found, available employees:", employees);
+            }
           }
         } else {
           setShowAllSubmissions(false);
           setSelectedEmployee(null);
+          setSelectedSubmission(null);
         }
       } else if (route[0] === "timesheet_workflow" && route.length === 1) {
         console.log("Setting default view");
         setShowAllSubmissions(false);
         setSelectedEmployee(null);
+        setSelectedSubmission(null);
       }
 
       setTimeout(() => {
@@ -81,9 +101,11 @@ function TimesheetWorkflowApp() {
 
   const navigateToEmployeeSubmissions = (employee) => {
     console.log("Navigating to employee:", employee);
-    const employeeName = employee.employee_name || employee.name;
-    console.log("Employee name:", employeeName);
     frappe.set_route("timesheet_workflow", "employee", employee.name);
+  };
+
+  const navigateToSubmissionDetails = (employee, submission) => {
+    frappe.set_route("timesheet_workflow", "employee", employee.name, "submission", submission.name);
   };
 
   const navigateToHome = () => {
@@ -100,32 +122,56 @@ function TimesheetWorkflowApp() {
     );
   }
 
+  // Show submission details
+  if (selectedSubmission && selectedEmployee) {
+    return (
+      <SubmissionDetails
+        submission={selectedSubmission}
+        employee={selectedEmployee}
+        onBack={() => navigateToEmployeeSubmissions(selectedEmployee)}
+      />
+    );
+  }
+
+  // Show all submissions
   if (showAllSubmissions) {
     return (
       <TimesheetSubmissions
         onBack={navigateToHome}
         onEmployeeClick={(employeeName) => {
-          // Find the employee by name
           const emp = employees.find(
-            (e) => e.employee_name === employeeName || e.name === employeeName,
+            (e) => e.employee_name === employeeName || e.name === employeeName
           );
           if (emp) {
             navigateToEmployeeSubmissions(emp);
+          }
+        }}
+        onSubmissionClick={(submission) => {
+          const emp = employees.find(
+            (e) => e.name === submission.employee || e.employee_name === submission.employee_name
+          );
+          if (emp) {
+            navigateToSubmissionDetails(emp, submission);
           }
         }}
       />
     );
   }
 
+  // Show employee submissions
   if (selectedEmployee) {
     return (
       <TimesheetSubmissions
         employee={selectedEmployee}
         onBack={navigateToHome}
+        onSubmissionClick={(submission) => {
+          navigateToSubmissionDetails(selectedEmployee, submission);
+        }}
       />
     );
   }
 
+  // Show employee list (home)
   return (
     <div className="container py-5">
       <div className="mb-3 text-end">

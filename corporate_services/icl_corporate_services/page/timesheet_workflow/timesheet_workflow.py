@@ -83,3 +83,118 @@ def get_all_timesheet_submissions():
         order_by="creation desc"
     )
     return timesheets
+
+
+@frappe.whitelist()
+def get_timesheet_submission_details(submission_name):
+    """
+    Get detailed breakdown of a specific timesheet submission
+    including all related timesheets, projects, and tasks by fetching linked Timesheet documents
+    """
+    # Get the submission document with child table
+    submission = frappe.get_doc("Timesheet Submission", submission_name)
+    
+    # Check if timesheet_per_project exists and has data
+    if not hasattr(submission, 'timesheet_per_project') or not submission.timesheet_per_project:
+        return {
+            "submission": {
+                "name": submission.name,
+                "employee": submission.employee,
+                "employee_name": submission.employee_name,
+                "month_year": submission.month_year,
+                "total_working_hours": submission.total_working_hours or 0,
+                "status": submission.status,
+                "creation": submission.creation
+            },
+            "projects": [],
+            "tasks": [],
+            "timesheets": [],
+            "total_entries": 0
+        }
+    
+    # Get all timesheet details by fetching linked Timesheet documents
+    timesheets = []
+    projects = {}
+    tasks = {}
+    
+    timesheet_names = set()
+    for row in submission.timesheet_per_project:
+        if row.get("timesheet"):
+            timesheet_names.add(row.get("timesheet"))
+    
+    # Fetch each Timesheet document and extract time_logs
+    for timesheet_name in timesheet_names:
+        try:
+            timesheet_doc = frappe.get_doc("Timesheet", timesheet_name)
+            
+            if hasattr(timesheet_doc, 'time_logs') and timesheet_doc.time_logs:
+                for time_log in timesheet_doc.time_logs:
+                    ts_entry = {
+                        "parent": timesheet_name,
+                        "date": time_log.get("custom_date"),
+                        "hours": time_log.get("hours") or 0,
+                        "activity_type": time_log.get("activity_type"),
+                        "project": time_log.get("project"),
+                        "task": time_log.get("custom_tasks"),
+                        "description": time_log.get("description") or time_log.get("remarks")
+                    }
+                    timesheets.append(ts_entry)
+                    
+                    # Group by project
+                    project = time_log.get("project") or "No Project"
+                    if project not in projects:
+                        projects[project] = {
+                            "project": project,
+                            "hours": 0,
+                            "tasks": set(),
+                            "entries": 0
+                        }
+                    projects[project]["hours"] += (time_log.get("hours") or 0)
+                    if time_log.get("custom_tasks"):
+                        projects[project]["tasks"].add(time_log.get("custom_tasks"))
+                    projects[project]["entries"] += 1
+                    
+                    # Group by task
+                    task = time_log.get("custom_tasks") or "No Task"
+                    task_key = f"{task}|{project}"
+                    if task_key not in tasks:
+                        tasks[task_key] = {
+                            "task": task,
+                            "project": project,
+                            "hours": 0,
+                            "entries": 0
+                        }
+                    tasks[task_key]["hours"] += (time_log.get("hours") or 0)
+                    tasks[task_key]["entries"] += 1
+        except Exception as e:
+            frappe.log_error(f"Error fetching timesheet {timesheet_name}: {str(e)}")
+            continue
+    
+    project_list = [
+        {
+            "project": k,
+            "hours": v["hours"],
+            "task_count": len(v["tasks"]),
+            "entries": v["entries"]
+        }
+        for k, v in projects.items()
+    ]
+    project_list.sort(key=lambda x: x["hours"], reverse=True)
+    
+    task_list = sorted(tasks.values(), key=lambda x: x["hours"], reverse=True)
+    
+    return {
+        "submission": {
+            "name": submission.name,
+            "employee": submission.employee,
+            "employee_name": submission.employee_name,
+            "month_year": submission.month_year,
+            "total_working_hours": submission.total_working_hours or 0,
+            "status": submission.status,
+            "creation": submission.creation
+        },
+        "projects": project_list,
+        "tasks": task_list,
+        "timesheets": timesheets,
+        "total_entries": len(timesheets)
+    }

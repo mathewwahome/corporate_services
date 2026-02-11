@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-function TimesheetSubmissions({ employee = null, onBack, onEmployeeClick }) {
+function TimesheetSubmissions({ employee = null, onBack, onEmployeeClick, onSubmissionClick }) {
   const [submissions, setSubmissions] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -35,6 +35,12 @@ function TimesheetSubmissions({ employee = null, onBack, onEmployeeClick }) {
   const handleEmployeeClick = (employeeName) => {
     if (!employee && onEmployeeClick) {
       onEmployeeClick(employeeName);
+    }
+  };
+
+  const handleSubmissionClick = (submission) => {
+    if (onSubmissionClick) {
+      onSubmissionClick(submission);
     }
   };
 
@@ -275,6 +281,43 @@ function TimesheetSubmissions({ employee = null, onBack, onEmployeeClick }) {
     );
   }
 
+  if (submissions.length === 0) {
+    return (
+      <div className="container py-5">
+        {employee && (
+          <button className="btn btn-secondary mb-3" onClick={onBack}>
+            ← Back to Employees
+          </button>
+        )}
+        <h1 className="mb-4 text-center">
+          {employee
+            ? `${employee.employee_name}'s Timesheet Submissions`
+            : "All Timesheet Submissions"}
+        </h1>
+
+        <div className="card">
+          <div className="card-body text-center py-5">
+            <i
+              className="fa fa-inbox text-muted"
+              style={{ fontSize: "4rem" }}
+            ></i>
+            <h4 className="mt-3 text-muted">No Timesheet Submissions Found</h4>
+            <p className="text-muted">
+              {employee
+                ? "This employee has not submitted any timesheets yet."
+                : "There are no timesheet submissions in the system."}
+            </p>
+            {employee && (
+              <button className="btn btn-primary mt-3" onClick={onBack}>
+                Back to Employees
+              </button>
+            )}
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="container py-5">
       {employee && (
@@ -381,6 +424,7 @@ function TimesheetSubmissions({ employee = null, onBack, onEmployeeClick }) {
               <th>Total Hours</th>
               <th>Status</th>
               <th>Submitted On</th>
+              <th>Actions</th>
             </tr>
           </thead>
           <tbody>
@@ -423,6 +467,14 @@ function TimesheetSubmissions({ employee = null, onBack, onEmployeeClick }) {
                     </span>
                   </td>
                   <td>{new Date(ts.creation).toLocaleDateString()}</td>
+                  <td>
+                    <button
+                      className="btn btn-sm btn-info"
+                      onClick={() => handleSubmissionClick(ts)}
+                    >
+                      <i className="fa fa-eye"></i> View Details
+                    </button>
+                  </td>
                 </tr>
               );
             })}
