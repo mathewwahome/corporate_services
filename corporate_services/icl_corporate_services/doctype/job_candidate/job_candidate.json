@@ -19,7 +19,9 @@
   "minimum_requirements",
   "preferred_attributes",
   "section_break_ybhm",
-  "role_description"
+  "role_description",
+  "candidate_pipeline_stages_section",
+  "stage"
  ],
  "fields": [
   {
@@ -99,12 +101,23 @@
    "fieldname": "role_description",
    "fieldtype": "Text",
    "label": "Role Description"
+  },
+  {
+   "fieldname": "candidate_pipeline_stages_section",
+   "fieldtype": "Section Break",
+   "label": "Candidate Pipeline Stages"
+  },
+  {
+   "fieldname": "stage",
+   "fieldtype": "Select",
+   "label": "Stage",
+   "options": "\nAPPLICATION_RECEIVED\nHR_SCREENING\nSHORTLISTED\nINTERVIEW_SCHEDULED\nINTERVIEWED\nREFERENCE_CHECK\nFINALIST\nOFFER_PREP\nOFFER_SENT\nOFFER_ACCEPTED\nOFFER_DECLINED\nREJECTED_EARLY\nREJECTED_LATE\nWITHDRAWN"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-11-14 04:47:45.511533",
+ "modified": "2026-02-12 06:37:23.554704",
  "modified_by": "Administrator",
  "module": "ICL Corporate Services",
  "name": "Job Candidate",
@@ -148,7 +161,6 @@
   }
  ],
  "row_format": "Dynamic",
- "rows_threshold_for_grid_search": 20,
  "sort_field": "modified",
  "sort_order": "DESC",
  "states": []

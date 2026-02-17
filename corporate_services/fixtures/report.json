@@ -6439,44 +6439,6 @@
   "filters": [],
   "is_standard": "Yes",
   "javascript": null,
-  "json": "{}",
-  "letter_head": null,
-  "modified": "2024-06-07 12:24:35.777631",
-  "module": "ICL Corporate Services",
-  "name": "Asset Replacement Request",
-  "prepared_report": 0,
-  "query": null,
-  "ref_doctype": "Asset replacement request",
-  "reference_report": null,
-  "report_name": "Asset Replacement Request",
-  "report_script": null,
-  "report_type": "Report Builder",
-  "roles": [
-   {
-    "parent": "Asset Replacement Request",
-    "parentfield": "roles",
-    "parenttype": "Report",
-    "role": "Supervisor"
-   },
-   {
-    "parent": "Asset Replacement Request",
-    "parentfield": "roles",
-    "parenttype": "Report",
-    "role": "Accounts Manager"
-   }
-  ],
-  "timeout": 0
- },
- {
-  "add_total_row": 0,
-  "add_translate_data": 0,
-  "columns": [],
-  "disabled": 0,
-  "docstatus": 0,
-  "doctype": "Report",
-  "filters": [],
-  "is_standard": "Yes",
-  "javascript": null,
   "json": null,
   "letter_head": null,
   "modified": "2014-06-29 08:18:17.144598",
@@ -9940,68 +9902,6 @@
   "docstatus": 0,
   "doctype": "Report",
   "filters": [],
-  "is_standard": "No",
-  "javascript": null,
-  "json": null,
-  "letter_head": "IntelliSOFT Consulting Limited",
-  "modified": "2026-02-04 19:58:52.538874",
-  "module": "ICL Corporate Services",
-  "name": "Employee Timesheet Analytics",
-  "prepared_report": 0,
-  "query": null,
-  "ref_doctype": "Timesheet",
-  "reference_report": null,
-  "report_name": "Employee Timesheet Analytics",
-  "report_script": null,
-  "report_type": "Script Report",
-  "roles": [
-   {
-    "parent": "Employee Timesheet Analytics",
-    "parentfield": "roles",
-    "parenttype": "Report",
-    "role": "Manufacturing User"
-   },
-   {
-    "parent": "Employee Timesheet Analytics",
-    "parentfield": "roles",
-    "parenttype": "Report",
-    "role": "Accounts User"
-   },
-   {
-    "parent": "Employee Timesheet Analytics",
-    "parentfield": "roles",
-    "parenttype": "Report",
-    "role": "HR User"
-   },
-   {
-    "parent": "Employee Timesheet Analytics",
-    "parentfield": "roles",
-    "parenttype": "Report",
-    "role": "Employee"
-   },
-   {
-    "parent": "Employee Timesheet Analytics",
-    "parentfield": "roles",
-    "parenttype": "Report",
-    "role": "Projects User"
-   },
-   {
-    "parent": "Employee Timesheet Analytics",
-    "parentfield": "roles",
-    "parenttype": "Report",
-    "role": "Employee Self Service"
-   }
-  ],
-  "timeout": 0
- },
- {
-  "add_total_row": 0,
-  "add_translate_data": 0,
-  "columns": [],
-  "disabled": 0,
-  "docstatus": 0,
-  "doctype": "Report",
-  "filters": [],
   "is_standard": "Yes",
   "javascript": null,
   "json": null,
@@ -10028,6 +9928,76 @@
     "parentfield": "roles",
     "parenttype": "Report",
     "role": "Projects Manager"
+   }
+  ],
+  "timeout": 0
+ },
+ {
+  "add_total_row": 0,
+  "add_translate_data": 0,
+  "columns": [],
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [],
+  "is_standard": "Yes",
+  "javascript": null,
+  "json": "{}",
+  "letter_head": null,
+  "modified": "2024-06-07 12:24:35.777631",
+  "module": "ICL Corporate Services",
+  "name": "Asset Replacement Request",
+  "prepared_report": 0,
+  "query": null,
+  "ref_doctype": "Asset replacement request",
+  "reference_report": null,
+  "report_name": "Asset Replacement Request",
+  "report_script": null,
+  "report_type": "Report Builder",
+  "roles": [
+   {
+    "parent": "Asset Replacement Request",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Supervisor"
+   },
+   {
+    "parent": "Asset Replacement Request",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Accounts Manager"
+   }
+  ],
+  "timeout": 0
+ },
+ {
+  "add_total_row": 0,
+  "add_translate_data": 0,
+  "columns": [],
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [],
+  "is_standard": "Yes",
+  "javascript": null,
+  "json": "{}",
+  "letter_head": null,
+  "modified": "2024-05-16 05:40:36.266299",
+  "module": "ICL Corporate Services",
+  "name": "Job Applicants Report",
+  "prepared_report": 0,
+  "query": null,
+  "ref_doctype": "Job Applicant",
+  "reference_report": null,
+  "report_name": "Job Applicants Report",
+  "report_script": null,
+  "report_type": "Report Builder",
+  "roles": [
+   {
+    "parent": "Job Applicants Report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "HR User"
    }
   ],
   "timeout": 0
@@ -10160,38 +10130,6 @@
     "parentfield": "roles",
     "parenttype": "Report",
     "role": "Employee"
-   }
-  ],
-  "timeout": 0
- },
- {
-  "add_total_row": 0,
-  "add_translate_data": 0,
-  "columns": [],
-  "disabled": 0,
-  "docstatus": 0,
-  "doctype": "Report",
-  "filters": [],
-  "is_standard": "Yes",
-  "javascript": null,
-  "json": "{}",
-  "letter_head": null,
-  "modified": "2024-05-16 05:40:36.266299",
-  "module": "ICL Corporate Services",
-  "name": "Job Applicants Report",
-  "prepared_report": 0,
-  "query": null,
-  "ref_doctype": "Job Applicant",
-  "reference_report": null,
-  "report_name": "Job Applicants Report",
-  "report_script": null,
-  "report_type": "Report Builder",
-  "roles": [
-   {
-    "parent": "Job Applicants Report",
-    "parentfield": "roles",
-    "parenttype": "Report",
-    "role": "HR User"
    }
   ],
   "timeout": 0

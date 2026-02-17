@@ -1,5 +1,8 @@
 import frappe
 
+from frappe import _
+from frappe.utils import today, get_first_day, get_last_day, add_months
+
 @frappe.whitelist()
 def say_hello():
     """Simple hello function"""
@@ -197,3 +200,52 @@ def get_timesheet_submission_details(submission_name):
         "timesheets": timesheets,
         "total_entries": len(timesheets)
     }
+    
+@frappe.whitelist()
+def create_salary_slip_from_timesheet(submission_name, employee):
+    """
+    Prepare data for creating a Salary Slip from a Timesheet Submission
+    """
+    try:
+        submission = frappe.get_doc("Timesheet Submission", submission_name)
+        
+        if submission.status != "Approved":
+            frappe.throw(_("Only approved timesheet submissions can be used to create salary slips"))
+        
+        existing_slip = frappe.db.exists("Salary Slip", {
+            "custom_timesheet_submission": submission_name,
+            "docstatus": ["<", 2]
+        })
+        
+        if existing_slip:
+            frappe.throw(_("A Salary Slip already exists for this timesheet submission: {0}").format(existing_slip))
+        
+        employee_doc = frappe.get_doc("Employee", employee)
+        
+        # Parse month_year to get start and end date
+        try:
+            from dateutil import parser
+            month_date = parser.parse(submission.month_year)
+            start_date = get_first_day(month_date)
+            end_date = get_last_day(month_date)
+        except:
+            start_date = get_first_day(today())
+            end_date = get_last_day(today())
+        
+        # Return data to pre-fill the form
+        return {
+            "employee": employee,
+            "employee_name": employee_doc.employee_name,
+            "company": employee_doc.company,
+            "posting_date": today(),
+            "start_date": start_date,
+            "end_date": end_date,
+            "salary_slip_based_on_timesheet": 1,
+            "custom_timesheet_submission": submission_name,
+            "custom_total_working_hours": submission.total_working_hours,
+            "custom_month_year": submission.month_year
+        }
+        
+    except Exception as e:
+        frappe.log_error(frappe.get_traceback(), _("Prepare Salary Slip Data Error"))
+        frappe.throw(_("Error: {0}").format(str(e)))

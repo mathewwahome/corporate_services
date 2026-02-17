@@ -350,5 +350,16 @@
   "name": "Staff Requisition Needs Clarification",
   "script": "frappe.ui.form.on('Staff Requisition', {\n\trefresh(frm) {\n\n\t\tif (frm.is_new()) return;\n\n\t\tconst allowed_states = [\n\t\t\t\"Submitted to HR\",\n\t\t\t\"Submitted to Finance\",\n\t\t\t\"Submitted to CEO\"\n\t\t];\n\n\t\tif (allowed_states.includes(frm.doc.workflow_state)) {\n\n\t\t\tfrm.add_custom_button(\"Needs Clarification\", function () {\n\n\t\t\t\tfrappe.prompt(\n\t\t\t\t\t[\n\t\t\t\t\t\t{\n\t\t\t\t\t\t\tlabel: \"Clarification Message\",\n\t\t\t\t\t\t\tfieldname: \"message\",\n\t\t\t\t\t\t\tfieldtype: \"Small Text\",\n\t\t\t\t\t\t\treqd: 1\n\t\t\t\t\t\t}\n\t\t\t\t\t],\n\t\t\t\t\tfunction(values) {\n\n\t\t\t\t\t\tfrappe.call({\n\t\t\t\t\t\t\tmethod: \"corporate_services.api.staff_requisition.staff_requisition.send_clarification_email\",\n\t\t\t\t\t\t\targs: {\n\t\t\t\t\t\t\t\tdocname: frm.doc.name,\n\t\t\t\t\t\t\t\tmessage: values.message\n\t\t\t\t\t\t\t}\n\t\t\t\t\t\t});\n\n\t\t\t\t\t},\n\t\t\t\t\t\"Request Clarification\",\n\t\t\t\t\t\"Send\"\n\t\t\t\t);\n\n\t\t\t});\n\t\t}\n\t}\n});\n",
   "view": "Form"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
+  "dt": "Timesheet Submission",
+  "enabled": 1,
+  "modified": "2026-02-11 14:49:58.294340",
+  "module": "ICL Corporate Services",
+  "name": "Timesheet Submission Invoice",
+  "script": "frappe.ui.form.on('Timesheet Submission', {\nrefresh(frm) {\n\n\t\tif (frm.is_new()) return;\n\n\t\tconst allowed_states = [\n\t\t    \"Draft\",\n\t\t\t\"Submitted to HR\",\n\t\t\t\"Submitted to Finance\",\n\t\t\t\"Submitted to CEO\"\n\t\t];\n\n\t\tif (allowed_states.includes(frm.doc.workflow_state)) {\n\t\t\tfrm.add_custom_button(\"Needs Clarification\", function () {\n\t\t\t\t\t\tfrappe.call({\n\t\t\t\t\t\t\tmethod: \"corporate_services.api.staff_requisition.staff_requisition.send_clarification_email\",\n\t\t\t\t\t\t\targs: {\n\t\t\t\t\t\t\t\tdocname: frm.doc.name,\n\t\t\t\t\t\t\t\tmessage: values.message\n\t\t\t\t\t\t\t}\n\t\t\t\t\t\t});\n\n\t\t\t});\n\t\t}\n\t}\n})",
+  "view": "Form"
  }
 ]
