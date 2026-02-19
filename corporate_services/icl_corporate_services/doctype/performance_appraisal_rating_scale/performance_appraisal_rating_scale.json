@@ -1,0 +1,43 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2026-02-18 22:04:55.819214",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "rating_scale"
+ ],
+ "fields": [
+  {
+   "fieldname": "rating_scale",
+   "fieldtype": "Table",
+   "label": "Rating Scale",
+   "options": "Rating scale"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "issingle": 1,
+ "links": [],
+ "modified": "2026-02-19 04:50:06.262657",
+ "modified_by": "Administrator",
+ "module": "ICL Corporate Services",
+ "name": "Performance Appraisal Rating scale",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

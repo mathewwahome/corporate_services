@@ -1,34 +1,36 @@
 {
  "actions": [],
  "allow_rename": 1,
- "creation": "2026-02-18 22:08:19.956285",
+ "creation": "2026-02-19 05:00:48.620101",
  "doctype": "DocType",
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
-  "score",
-  "column_break_tvxm",
-  "description"
+  "performance_area",
+  "criteria",
+  "rating"
  ],
  "fields": [
   {
-   "columns": 2,
-   "fieldname": "score",
+   "fieldname": "performance_area",
    "fieldtype": "Data",
    "in_list_view": 1,
-   "label": "Score",
+   "label": "Performance Area",
    "reqd": 1
   },
   {
-   "fieldname": "column_break_tvxm",
-   "fieldtype": "Column Break"
+   "fieldname": "criteria",
+   "fieldtype": "Text Editor",
+   "in_list_view": 1,
+   "label": "Criteria",
+   "reqd": 1
   },
   {
-   "columns": 8,
-   "fieldname": "description",
-   "fieldtype": "Small Text",
+   "fieldname": "rating",
+   "fieldtype": "Select",
    "in_list_view": 1,
-   "label": "Description",
+   "label": "Rating",
+   "options": "No Rating\nUnsatisfactory\nRequires Improvement\nSatisfactory\nMeets Expectations\nOutstanding",
    "reqd": 1
   }
  ],
@@ -36,10 +38,10 @@
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2026-02-19 04:53:25.167800",
+ "modified": "2026-02-19 05:04:00.974961",
  "modified_by": "Administrator",
  "module": "ICL Corporate Services",
- "name": "Rating scale",
+ "name": "Current Performance Expectations",
  "owner": "Administrator",
  "permissions": [],
  "row_format": "Dynamic",

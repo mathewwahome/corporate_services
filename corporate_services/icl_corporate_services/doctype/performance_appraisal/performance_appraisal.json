@@ -1,0 +1,236 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "naming_series:",
+ "creation": "2026-02-18 21:58:45.058103",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "agreement_section",
+  "naming_series",
+  "column_break_mfff",
+  "date",
+  "employee_information_section",
+  "first__name",
+  "last_name",
+  "column_break_ymwj",
+  "department",
+  "job_title",
+  "column_break_rgca",
+  "supervisor",
+  "job_title_____is_this_person_a_supervisor",
+  "evaluation_period_section",
+  "evaluation_type",
+  "column_break_wirx",
+  "from_start_date",
+  "column_break_ysmv",
+  "to__end_date",
+  "rating_scale_section",
+  "table_bqjz",
+  "current_performance_expectations_section",
+  "table_fcgt",
+  "total",
+  "supervisor_comments_section",
+  "highlights_of_performance",
+  "key_development_needs",
+  "behavioral_observations",
+  "column_break_tipo",
+  "readiness_for_additional_responsibility",
+  "support_or_resources_needed"
+ ],
+ "fields": [
+  {
+   "fieldname": "employee_information_section",
+   "fieldtype": "Section Break",
+   "label": "Employee Information"
+  },
+  {
+   "fieldname": "first__name",
+   "fieldtype": "Data",
+   "label": "First  Name"
+  },
+  {
+   "fieldname": "last_name",
+   "fieldtype": "Data",
+   "label": "Last Name"
+  },
+  {
+   "fieldname": "department",
+   "fieldtype": "Link",
+   "label": "Department",
+   "options": "Department"
+  },
+  {
+   "fieldname": "job_title",
+   "fieldtype": "Data",
+   "label": "Job Title "
+  },
+  {
+   "fieldname": "supervisor",
+   "fieldtype": "Data",
+   "label": "Supervisor"
+  },
+  {
+   "fieldname": "job_title_____is_this_person_a_supervisor",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Job Title     Is this person a supervisor        ",
+   "options": "\nYes\nNo",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_ymwj",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_rgca",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "evaluation_period_section",
+   "fieldtype": "Section Break",
+   "label": "Evaluation Period "
+  },
+  {
+   "fieldname": "from_start_date",
+   "fieldtype": "Date",
+   "label": "From (Start Date)"
+  },
+  {
+   "fieldname": "column_break_wirx",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "to__end_date",
+   "fieldtype": "Date",
+   "label": "To ( End Date)"
+  },
+  {
+   "fieldname": "evaluation_type",
+   "fieldtype": "Select",
+   "label": "Evaluation Type",
+   "options": "\nProbation ( 90 days)\nQuarterly\nAnnual"
+  },
+  {
+   "fieldname": "column_break_ysmv",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "rating_scale_section",
+   "fieldtype": "Section Break",
+   "label": "Rating scale"
+  },
+  {
+   "fieldname": "table_bqjz",
+   "fieldtype": "Table",
+   "options": "Rating scale"
+  },
+  {
+   "fieldname": "current_performance_expectations_section",
+   "fieldtype": "Section Break",
+   "label": "Current Performance Expectations"
+  },
+  {
+   "fieldname": "table_fcgt",
+   "fieldtype": "Table",
+   "options": "Current Performance Expectations"
+  },
+  {
+   "fieldname": "total",
+   "fieldtype": "Data",
+   "label": "Total"
+  },
+  {
+   "fieldname": "supervisor_comments_section",
+   "fieldtype": "Section Break",
+   "label": "Supervisor Comments"
+  },
+  {
+   "description": "What are the employee\u2019s most notable achievements, strengths, or contributions this period?",
+   "fieldname": "highlights_of_performance",
+   "fieldtype": "Small Text",
+   "label": "1. Highlights of Performance"
+  },
+  {
+   "description": "Which areas require improvement, upskilling, or closer attention?",
+   "fieldname": "key_development_needs",
+   "fieldtype": "Small Text",
+   "label": "2. Key Development Needs"
+  },
+  {
+   "description": "Any comments on attitude, collaboration, adaptability, or professionalism?",
+   "fieldname": "behavioral_observations",
+   "fieldtype": "Small Text",
+   "label": "3. Behavioral Observations"
+  },
+  {
+   "description": "Is the employee ready to take on more responsibility, leadership, or stretch assignments",
+   "fieldname": "readiness_for_additional_responsibility",
+   "fieldtype": "Small Text",
+   "label": "4. Readiness for Additional Responsibility"
+  },
+  {
+   "description": "What support (tools, training, mentorship) would help the employee perform even better?",
+   "fieldname": "support_or_resources_needed",
+   "fieldtype": "Small Text",
+   "label": "5. Support or Resources Needed"
+  },
+  {
+   "fieldname": "column_break_tipo",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "date",
+   "fieldtype": "Date",
+   "label": "Date",
+   "reqd": 1
+  },
+  {
+   "default": "PA.-YYYY-.",
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "hidden": 1,
+   "in_list_view": 1,
+   "label": "Series",
+   "options": "PA.-YYYY-.",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_mfff",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "agreement_section",
+   "fieldtype": "Section Break",
+   "label": "Agreement"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-02-19 05:17:40.929512",
+ "modified_by": "Administrator",
+ "module": "ICL Corporate Services",
+ "name": "Performance Appraisal",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

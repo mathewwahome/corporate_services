@@ -1,0 +1,60 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2026-02-19 05:16:00.542598",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "score_range",
+  "percentage",
+  "performance_rating",
+  "recommended_action"
+ ],
+ "fields": [
+  {
+   "description": "Score Range (out of 55)\n",
+   "fieldname": "score_range",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Score Range",
+   "reqd": 1
+  },
+  {
+   "fieldname": "percentage",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Percentage",
+   "reqd": 1
+  },
+  {
+   "fieldname": "performance_rating",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Performance Rating",
+   "reqd": 1
+  },
+  {
+   "description": "Recommended action(annual)",
+   "fieldname": "recommended_action",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Recommended action",
+   "reqd": 1
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2026-02-19 05:17:16.936681",
+ "modified_by": "Administrator",
+ "module": "ICL Corporate Services",
+ "name": "Performance Score",
+ "owner": "Administrator",
+ "permissions": [],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
