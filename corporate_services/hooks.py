@@ -268,6 +268,11 @@ scheduler_events = {
 		"corporate_services.api.leave.update_annual_leave_allocations.process_leave_allocations"
 		# "corporate_services.api.leave.update_annual_leave_allocations.update_annual_leave_allocations"
 	],
+    "cron": {
+        "0 8,10,12,14,16,17 * * *": [
+            "corporate_services.api.notification.staff_requisition.staff_requisition.send_approval_overdue_reminders"
+        ]
+    }
 }
 
 # Testing
@@ -372,5 +377,7 @@ fixtures = [
     # "Dashboard",
     "Website Settings",
     "Website Theme",
-    "Portal Settings"
+    "Portal Settings",
+    "Performance Score Bands",
+    "Performance Appraisal Rating scale"
 ]

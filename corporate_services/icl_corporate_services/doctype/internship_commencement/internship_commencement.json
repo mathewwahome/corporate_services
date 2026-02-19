@@ -1,0 +1,212 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2026-02-17 08:51:42.200762",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "section_break_y5bq",
+  "amended_from",
+  "personal_information_section",
+  "full_name",
+  "date_of_birth",
+  "column_break_mehr",
+  "email_address",
+  "phone_number",
+  "internship_details_section",
+  "internship_start_date",
+  "internship_end_date",
+  "departmentteam",
+  "column_break_pygo",
+  "supervisorteam_lead",
+  "internship_title",
+  "date",
+  "tab_2_tab",
+  "educational_background_section",
+  "universityinstitution_name",
+  "majorfield_of_study",
+  "expected_graduation_date",
+  "more_info_tab",
+  "internship_objectives_section",
+  "what_are_your_specific_goals_and_objectives_for_this_internship",
+  "column_break_qpzk",
+  "what_are_your_expectations_for_this_internship",
+  "professional_development_section",
+  "text_editor_mixc"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_break_y5bq",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Internship Commencement",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "internship_details_section",
+   "fieldtype": "Section Break",
+   "label": "INTERNSHIP DETAILS"
+  },
+  {
+   "fieldname": "internship_start_date",
+   "fieldtype": "Date",
+   "label": "Internship Start Date"
+  },
+  {
+   "fieldname": "internship_end_date",
+   "fieldtype": "Date",
+   "label": "Internship End Date"
+  },
+  {
+   "fieldname": "departmentteam",
+   "fieldtype": "Link",
+   "label": "Department/Team",
+   "options": "Department"
+  },
+  {
+   "fieldname": "supervisorteam_lead",
+   "fieldtype": "Link",
+   "label": "Supervisor/Team Lead",
+   "options": "Employee"
+  },
+  {
+   "fieldname": "tab_2_tab",
+   "fieldtype": "Tab Break",
+   "label": "Personal Info"
+  },
+  {
+   "fieldname": "internship_title",
+   "fieldtype": "Link",
+   "label": "Internship Title",
+   "options": "Contract Type"
+  },
+  {
+   "fieldname": "column_break_pygo",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "full_name",
+   "fieldtype": "Data",
+   "label": "Full Name"
+  },
+  {
+   "fieldname": "personal_information_section",
+   "fieldtype": "Section Break",
+   "label": "PERSONAL INFORMATION"
+  },
+  {
+   "fieldname": "date_of_birth",
+   "fieldtype": "Date",
+   "label": "Date of Birth"
+  },
+  {
+   "fieldname": "email_address",
+   "fieldtype": "Data",
+   "label": "Email Address"
+  },
+  {
+   "fieldname": "phone_number",
+   "fieldtype": "Data",
+   "label": "Phone Number"
+  },
+  {
+   "fieldname": "column_break_mehr",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "educational_background_section",
+   "fieldtype": "Section Break",
+   "label": "EDUCATIONAL BACKGROUND"
+  },
+  {
+   "fieldname": "universityinstitution_name",
+   "fieldtype": "Data",
+   "label": "University/Institution Name"
+  },
+  {
+   "fieldname": "majorfield_of_study",
+   "fieldtype": "Data",
+   "label": "Major/Field of Study"
+  },
+  {
+   "fieldname": "expected_graduation_date",
+   "fieldtype": "Data",
+   "label": "Expected Graduation Date"
+  },
+  {
+   "fieldname": "more_info_tab",
+   "fieldtype": "Tab Break",
+   "label": "More Info"
+  },
+  {
+   "fieldname": "internship_objectives_section",
+   "fieldtype": "Section Break",
+   "label": "INTERNSHIP OBJECTIVES"
+  },
+  {
+   "fieldname": "what_are_your_specific_goals_and_objectives_for_this_internship",
+   "fieldtype": "Text Editor",
+   "label": "What are your specific goals and objectives for this internship?"
+  },
+  {
+   "fieldname": "column_break_qpzk",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "what_are_your_expectations_for_this_internship",
+   "fieldtype": "Text Editor",
+   "label": "What are your expectations for this internship?"
+  },
+  {
+   "fieldname": "professional_development_section",
+   "fieldtype": "Section Break",
+   "label": "PROFESSIONAL DEVELOPMENT"
+  },
+  {
+   "description": "Are there any specific skills or knowledge you hope to gain during your internship?",
+   "fieldname": "text_editor_mixc",
+   "fieldtype": "Text Editor",
+   "label": "specific skills or knowledge you hope to gain"
+  },
+  {
+   "fieldname": "date",
+   "fieldtype": "Date",
+   "label": "Date"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2026-02-17 09:11:02.983649",
+ "modified_by": "Administrator",
+ "module": "ICL Corporate Services",
+ "name": "Internship Commencement",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "queue_in_background": 1,
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

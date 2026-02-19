@@ -1,5 +1,5 @@
 import frappe
-from frappe.utils import get_url_to_form, now_datetime
+from frappe.utils import get_url_to_form, now_datetime, add_days, get_datetime
 
 def send_email(recipients, subject, message, pdf_content, doc_name):
     frappe.sendmail(
@@ -121,8 +121,243 @@ def alert(doc, method):
             doc_name=doc.name
         )
 
+
+def send_approval_overdue_reminders():
+    """
+    Scheduled function to send overdue approval reminders.
+    Checks for Staff Requisitions pending approval beyond 12 hours.
+    Sends email and ERP inbox notifications to current approver and HR.
+    
+    ONLY sends during business hours (8 AM - 6 PM).
+    If overdue time falls outside business hours, waits until 8 AM to send.
+    """
+    from datetime import time as dt_time
+    
+    # Check if current time is within business hours (8 AM - 5 PM)
+    current_time = now_datetime()
+    current_hour = current_time.hour
+    
+    # Define business hours
+    BUSINESS_START = 8
+    BUSINESS_END = 17
+    
+    if current_hour < BUSINESS_START or current_hour >= BUSINESS_END:
+        # Outside business hours, skip sending
+        frappe.logger().info("Skipping overdue reminders - outside business hours")
+        return {
+            "success": True,
+            "message": "Skipped - outside business hours (8 AM - 6 PM)",
+            "reminders_sent": 0
+        }
+    
+    # Define SLA hours for each workflow state (12 hours for all stages)
+    sla_hours = 12  # 12 hours from submission to each stage
+    
+    # Get all pending staff requisitions
+    pending_requisitions = frappe.get_all(
+        "Staff Requisition",
+        filters={
+            "workflow_state": ["in", ["Submitted to HR", "Submitted to Finance", "Submitted to CEO"]],
+            "docstatus": ["!=", 2]
+        },
+        fields=["name", "workflow_state", "modified", "requestor"]
+    )
+    
+    reminders_sent = 0
+    
+    for req in pending_requisitions:
+        try:
+            # Get the document
+            doc = frappe.get_doc("Staff Requisition", req.name)
+            
+            # Calculate deadline (12 hours from modified time)
+            from datetime import timedelta
+            deadline = get_datetime(doc.modified) + timedelta(hours=sla_hours)
+            current_time = now_datetime()
+            
+            # Check if overdue
+            if current_time <= deadline:
+                continue  # Not overdue yet
+            
+            # Calculate hours overdue
+            time_diff = current_time - deadline
+            hours_overdue = int(time_diff.total_seconds() / 3600)
+            
+            # Format overdue time display
+            if hours_overdue < 24:
+                overdue_display = f"{hours_overdue} hour(s)"
+            else:
+                days = hours_overdue // 24
+                remaining_hours = hours_overdue % 24
+                overdue_display = f"{days} day(s) and {remaining_hours} hour(s)"
+            
+            # Get current approver based on workflow state
+            if doc.workflow_state == "Submitted to HR":
+                approver_role = "HR Manager"
+                approver_title = "HR Manager"
+            elif doc.workflow_state == "Submitted to Finance":
+                approver_role = "Finance"
+                approver_title = "Finance Manager"
+            elif doc.workflow_state == "Submitted to CEO":
+                approver_role = "CEO"
+                approver_title = "CEO"
+            else:
+                continue
+            
+            # Get approver emails
+            approver_emails = get_users_with_role(approver_role)
+            hr_emails = get_users_with_role('HR Manager')
+            
+            # Combine and remove duplicates
+            all_recipients = list(set(approver_emails + hr_emails))
+            
+            if not all_recipients:
+                frappe.log_error(
+                    message=f"No approvers found for {doc.name} in state {doc.workflow_state}",
+                    title="Approval Overdue - No Recipients"
+                )
+                continue
+            
+            # Get requestor details
+            requestor = frappe.get_doc("Employee", doc.requestor)
+            requestor_name = requestor.employee_name
+            
+            # Generate document URL
+            doctype_url = get_url_to_form(doc.doctype, doc.name)
+            
+            # Send email to each recipient
+            for recipient_email in all_recipients:
+                recipient_name = get_user_full_name(recipient_email)
+                
+                email_message = """
+                    <p><strong style="color: red;">APPROVAL OVERDUE REMINDER</strong></p>
+                    
+                    <p>Dear {},</p>
+                    
+                    <p>The following Staff Requisition is awaiting your approval and is now 
+                    <strong style="color: red;">{} overdue</strong>:</p>
+                    
+                    <p><strong>Requisition Details:</strong><br>
+                    Document: <a href="{}">{}</a><br>
+                    Requestor: {}<br>
+                    Status: {}<br>
+                    Submitted On: {}<br>
+                    SLA: {} hours<br>
+                    Time Overdue: <strong style="color: red;">{}</strong></p>
+                    
+                    <p><strong>Action Required:</strong><br>
+                    Please review and approve/reject this requisition as soon as possible.</p>
+                    
+                    <p>Click here to review: <a href="{}" style="background-color: #FF5722; color: white; 
+                    padding: 10px 20px; text-decoration: none; border-radius: 5px; display: inline-block;">
+                    Review Now</a></p>
+                    
+                    <p>Kind regards,<br>
+                    System</p>
+                """.format(
+                    recipient_name,
+                    overdue_display,
+                    doctype_url,
+                    doc.name,
+                    requestor_name,
+                    doc.workflow_state,
+                    doc.modified.strftime('%Y-%m-%d %H:%M'),
+                    sla_hours,
+                    overdue_display,
+                    doctype_url
+                )
+                
+                # Send email notification
+                frappe.sendmail(
+                    recipients=[recipient_email],
+                    subject=f"OVERDUE: Staff Requisition Approval Required - {doc.name}",
+                    message=email_message,
+                    priority=1
+                )
+                
+                # Create ERP inbox notification
+                create_notification_log(
+                    recipient_email,
+                    doc,
+                    f"Staff Requisition {doc.name} is {overdue_display} overdue for approval",
+                    approver_title
+                )
+            
+            # Add comment to document
+            doc.add_comment(
+                "Comment",
+                f"Overdue reminder sent to {approver_title} and HR ({overdue_display} overdue)"
+            )
+            
+            reminders_sent += 1
+            
+        except Exception as e:
+            frappe.log_error(
+                message=f"Failed to send overdue reminder for {req.name}: {str(e)}",
+                title=f"Approval Overdue Reminder Failed - {req.name}"
+            )
+    
+    return {
+        "success": True,
+        "message": f"{reminders_sent} approval overdue reminders sent.",
+        "reminders_sent": reminders_sent
+    }
+
+
+def create_notification_log(recipient_email, doc, message, approver_title):
+    """
+    Creates a notification in the ERP inbox (Notification Log).
+    
+    Args:
+        recipient_email (str): Email of the recipient.
+        doc (Document): Staff Requisition document.
+        message (str): Notification message.
+        approver_title (str): Title of the approver role.
+    """
+    try:
+        notification = frappe.get_doc({
+            "doctype": "Notification Log",
+            "subject": f"Approval Overdue: {doc.name}",
+            "email_content": message,
+            "for_user": recipient_email,
+            "type": "Alert",
+            "document_type": doc.doctype,
+            "document_name": doc.name,
+            "from_user": frappe.session.user
+        })
+        notification.insert(ignore_permissions=True)
+        
+    except Exception as e:
+        frappe.log_error(
+            message=f"Failed to create notification log for {recipient_email}: {str(e)}",
+            title="Notification Log Creation Failed"
+        )
+
+
+@frappe.whitelist()
+def manual_send_overdue_reminders():
+    """
+    Manual trigger for sending overdue reminders (can be called from UI).
+    
+    Returns:
+        dict: Summary of reminders sent.
+    """
+    return send_approval_overdue_reminders()
+
+
+def check_and_alert_on_submission(doc, method):
+    """
+    Check if requisition is being submitted and set initial SLA tracking.
+    This can be used to track when the approval process started.
+    """
+    if doc.workflow_state in ["Submitted to HR", "Submitted to Finance", "Submitted to CEO"]:
+        if not doc.get("sla_start_time"):
+            doc.db_set("sla_start_time", now_datetime(), update_modified=False)
+
+
 doc_events = {
     "Staff Requisition": {
-        "on_update": alert
+        "on_update": alert,
+        "before_save": check_and_alert_on_submission
     }
 }

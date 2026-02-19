@@ -16,6 +16,33 @@ function SubmissionDetails({ submission, employee, onBack }) {
     });
   }, [submission]);
 
+  const handleCreateSalarySlip = () => {
+    frappe.call({
+      method:
+        "corporate_services.icl_corporate_services.page.timesheet_workflow.timesheet_workflow.create_salary_slip_from_timesheet",
+      args: {
+        submission_name: details.submission.name,
+        employee: details.submission.employee,
+      },
+      callback: (r) => {
+        if (r.message) {
+          frappe.new_doc("Salary Slip", r.message);
+
+          frappe.show_alert({
+            message: __("Opening Salary Slip form..."),
+            indicator: "green",
+          });
+        }
+      },
+      error: (r) => {
+        frappe.show_alert({
+          message: __("Error preparing Salary Slip data"),
+          indicator: "red",
+        });
+      },
+    });
+  };
+
   if (loading) {
     return (
       <div className="d-flex justify-content-center align-items-center vh-100">
@@ -49,9 +76,14 @@ function SubmissionDetails({ submission, employee, onBack }) {
 
   return (
     <div className="container py-5">
-      <button className="btn btn-secondary mb-4" onClick={onBack}>
-        <i className="fa fa-arrow-left"></i> Back to Submissions
-      </button>
+      <div className="d-flex justify-content-between mb-4">
+        <button className="btn btn-secondary" onClick={onBack}>
+          <i className="fa fa-arrow-left"></i> Back to Submissions
+        </button>
+        <button className="btn btn-secondary" onClick={handleCreateSalarySlip}>
+          <i className="fa fa-file-text"></i> Create Salary Slip
+        </button>
+      </div>
 
       <div className="card mb-4">
         <div className="card-body">
