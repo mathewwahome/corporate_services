@@ -1,0 +1,30 @@
+{
+ "attach_print": 0,
+ "channel": "Email",
+ "creation": "2026-02-18 08:51:32.402222",
+ "days_in_advance": 0,
+ "docstatus": 0,
+ "doctype": "Notification",
+ "document_type": "Quiz Submission",
+ "enabled": 1,
+ "event": "Submit",
+ "idx": 0,
+ "is_standard": 1,
+ "message": "Dear {{ doc.employee_name }},\n\nThank you for completing: {{ doc.quiz }}\n\nYour Results\n----------------------------\nScore:           {{ doc.score }}%\nCorrect Answers: {{ doc.correct_answers }} / {{ doc.total_questions }}\nResult:          {{ doc.result }}\n----------------------------\n\n{% if doc.passed %}\nCongratulations! You have successfully passed this quiz.\n{% else %}\nYou did not meet the passing score. Please review the material and try again.\n{% endif %}\n\nRegards,\nHR Department",
+ "message_type": "Markdown",
+ "modified": "2026-02-18 08:52:31.871063",
+ "modified_by": "Administrator",
+ "module": "ICL Corporate Services",
+ "name": "Result Email Notification",
+ "owner": "Administrator",
+ "recipients": [
+  {
+   "receiver_by_document_field": "owner"
+  }
+ ],
+ "send_system_notification": 1,
+ "send_to_all_assignees": 0,
+ "sender": "Notifications",
+ "sender_email": "methewwahome@gmail.com",
+ "subject": "Your Quiz Results - {quiz}"
+}
