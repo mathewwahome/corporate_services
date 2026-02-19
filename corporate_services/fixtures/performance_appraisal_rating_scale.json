@@ -1,0 +1,45 @@
+[
+ {
+  "docstatus": 0,
+  "doctype": "Performance Appraisal Rating scale",
+  "modified": "2026-02-19 07:06:06.839009",
+  "name": "Performance Appraisal Rating scale",
+  "table_rating_scale": [
+   {
+    "description": "The employee's performance in this area is significantly below the expected standards and is unacceptable. Immediate action is required",
+    "parent": "Performance Appraisal Rating scale",
+    "parentfield": "table_rating_scale",
+    "parenttype": "Performance Appraisal Rating scale",
+    "score": "1 =  Unsatisfactory"
+   },
+   {
+    "description": "The employee's performance in this area is below the expected standards and requires improvement.",
+    "parent": "Performance Appraisal Rating scale",
+    "parentfield": "table_rating_scale",
+    "parenttype": "Performance Appraisal Rating scale",
+    "score": "2 = Requires improvement"
+   },
+   {
+    "description": "The employee is performing adequately in this area, however there may be areas for improvement or refinement.",
+    "parent": "Performance Appraisal Rating scale",
+    "parentfield": "table_rating_scale",
+    "parenttype": "Performance Appraisal Rating scale",
+    "score": "3 = Satisfactory "
+   },
+   {
+    "description": "The employee consistently meets the established performance standards and expectations for this area. ",
+    "parent": "Performance Appraisal Rating scale",
+    "parentfield": "table_rating_scale",
+    "parenttype": "Performance Appraisal Rating scale",
+    "score": "4 = Meets expectations "
+   },
+   {
+    "description": "The employee consistently demonstrates exceptional performance, surpassing the set standards and expectations. They go above and beyond what is required.",
+    "parent": "Performance Appraisal Rating scale",
+    "parentfield": "table_rating_scale",
+    "parenttype": "Performance Appraisal Rating scale",
+    "score": "5 =  Outstanding "
+   }
+  ]
+ }
+]

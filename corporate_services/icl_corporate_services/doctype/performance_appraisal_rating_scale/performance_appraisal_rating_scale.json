@@ -5,11 +5,11 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
-  "rating_scale"
+  "table_rating_scale"
  ],
  "fields": [
   {
-   "fieldname": "rating_scale",
+   "fieldname": "table_rating_scale",
    "fieldtype": "Table",
    "label": "Rating Scale",
    "options": "Rating scale"
@@ -19,7 +19,7 @@
  "index_web_pages_for_search": 1,
  "issingle": 1,
  "links": [],
- "modified": "2026-02-19 04:50:06.262657",
+ "modified": "2026-02-19 06:58:31.543317",
  "modified_by": "Administrator",
  "module": "ICL Corporate Services",
  "name": "Performance Appraisal Rating scale",

@@ -378,5 +378,6 @@ fixtures = [
     "Website Settings",
     "Website Theme",
     "Portal Settings",
-    "Performance Score Bands"
+    "Performance Score Bands",
+    "Performance Appraisal Rating scale"
 ]

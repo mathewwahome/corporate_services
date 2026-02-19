@@ -5,11 +5,11 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
-  "table_wify"
+  "table_rating_scale"
  ],
  "fields": [
   {
-   "fieldname": "table_wify",
+   "fieldname": "table_rating_scale",
    "fieldtype": "Table",
    "options": "Performance Score"
   }
@@ -18,7 +18,7 @@
  "index_web_pages_for_search": 1,
  "issingle": 1,
  "links": [],
- "modified": "2026-02-19 05:35:08.107343",
+ "modified": "2026-02-19 06:52:42.642886",
  "modified_by": "Administrator",
  "module": "ICL Corporate Services",
  "name": "Performance Score Bands",
