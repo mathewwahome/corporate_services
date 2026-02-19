@@ -13,6 +13,7 @@
  ],
  "fields": [
   {
+   "columns": 1,
    "description": "Score Range (out of 55)\n",
    "fieldname": "score_range",
    "fieldtype": "Data",
@@ -21,6 +22,7 @@
    "reqd": 1
   },
   {
+   "columns": 1,
    "fieldname": "percentage",
    "fieldtype": "Data",
    "in_list_view": 1,
@@ -28,6 +30,7 @@
    "reqd": 1
   },
   {
+   "columns": 2,
    "fieldname": "performance_rating",
    "fieldtype": "Data",
    "in_list_view": 1,
@@ -35,6 +38,7 @@
    "reqd": 1
   },
   {
+   "columns": 6,
    "description": "Recommended action(annual)",
    "fieldname": "recommended_action",
    "fieldtype": "Data",
@@ -47,7 +51,7 @@
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2026-02-19 05:17:16.936681",
+ "modified": "2026-02-19 05:40:22.535113",
  "modified_by": "Administrator",
  "module": "ICL Corporate Services",
  "name": "Performance Score",

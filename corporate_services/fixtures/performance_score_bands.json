@@ -1,0 +1,73 @@
+[
+ {
+  "docstatus": 0,
+  "doctype": "Performance Score Bands",
+  "modified": "2026-02-19 05:38:07.019024",
+  "name": "Performance Score Bands",
+  "table_wify": [
+   {
+    "parent": "Performance Score Bands",
+    "parentfield": "table_wify",
+    "parenttype": "Performance Score Bands",
+    "percentage": "93% – 100%",
+    "performance_rating": "Exceptional",
+    "recommended_action": "Eligible for promotion and up to 15% salary increase or bonus consideration.",
+    "score_range": "51–55"
+   },
+   {
+    "parent": "Performance Score Bands",
+    "parentfield": "table_wify",
+    "parenttype": "Performance Score Bands",
+    "percentage": "84% – 91%",
+    "performance_rating": "Strong Performer",
+    "recommended_action": "Eligible for up to 10% salary increase or bonus; consider for promotion",
+    "score_range": "46–50"
+   },
+   {
+    "parent": "Performance Score Bands",
+    "parentfield": "table_wify",
+    "parenttype": "Performance Score Bands",
+    "percentage": "75% – 82%",
+    "performance_rating": "Consistently Effective",
+    "recommended_action": "Maintain role; encourage continued growth and skill development",
+    "score_range": "41–45"
+   },
+   {
+    "parent": "Performance Score Bands",
+    "parentfield": "table_wify",
+    "parenttype": "Performance Score Bands",
+    "percentage": "65% – 73%",
+    "performance_rating": "Meets Expectation",
+    "recommended_action": "Acceptable performance;recommend moderate support or training ",
+    "score_range": "36–40"
+   },
+   {
+    "parent": "Performance Score Bands",
+    "parentfield": "table_wify",
+    "parenttype": "Performance Score Bands",
+    "percentage": "56% – 64%",
+    "performance_rating": "Below Expectation",
+    "recommended_action": "Initiate a 3-month Performance Improvement Plan (PIP)",
+    "score_range": "31–35"
+   },
+   {
+    "parent": "Performance Score Bands",
+    "parentfield": "table_wify",
+    "parenttype": "Performance Score Bands",
+    "percentage": "47% – 55%",
+    "performance_rating": "Poor",
+    "recommended_action": "Issue formal warning; monitor closely for short-term improvement",
+    "score_range": "26–30"
+   },
+   {
+    "parent": "Performance Score Bands",
+    "parentfield": "table_wify",
+    "parenttype": "Performance Score Bands",
+    "percentage": "0% – 45%",
+    "performance_rating": "Unacceptable",
+    "recommended_action": "Consider separation, reassignment, or other disciplinary measures.",
+    "score_range": "0–25"
+   }
+  ]
+ }
+]

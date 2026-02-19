@@ -377,5 +377,6 @@ fixtures = [
     # "Dashboard",
     "Website Settings",
     "Website Theme",
-    "Portal Settings"
+    "Portal Settings",
+    "Performance Score Bands"
 ]
