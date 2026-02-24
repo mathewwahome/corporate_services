@@ -209,11 +209,16 @@ before_workflow_action_map = {
     "Timesheet Submission":"corporate_services.api.timesheet.before_workflow_action.before_workflow_action_timesheet_submission",
 } 
 
+job_applications_map = {
+    "Job Applicant": "corporate_services.api.notification.recruitment.notification.send_application_received_email"
+}
+
 event_maps = {
     "on_update": {
         **on_update_map,
         **before_workflow_action_map,
         **timesheet_notifications,
+        **job_applications_map,
         "Timesheet Submission": [
             on_update_map["Timesheet Submission"],
             before_workflow_action_map["Timesheet Submission"],
