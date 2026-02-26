@@ -1,6 +1,7 @@
 {
  "actions": [],
  "allow_rename": 1,
+ "autoname": "naming_series:",
  "creation": "2026-02-17 08:51:42.200762",
  "doctype": "DocType",
  "engine": "InnoDB",
@@ -8,19 +9,21 @@
   "section_break_y5bq",
   "amended_from",
   "personal_information_section",
+  "naming_series",
+  "intern",
   "full_name",
   "date_of_birth",
   "column_break_mehr",
   "email_address",
   "phone_number",
   "internship_details_section",
+  "date",
   "internship_start_date",
   "internship_end_date",
-  "departmentteam",
   "column_break_pygo",
-  "supervisorteam_lead",
   "internship_title",
-  "date",
+  "departmentteam",
+  "supervisorteam_lead",
   "tab_2_tab",
   "educational_background_section",
   "universityinstitution_name",
@@ -84,6 +87,7 @@
   {
    "fieldname": "internship_title",
    "fieldtype": "Link",
+   "in_list_view": 1,
    "label": "Internship Title",
    "options": "Contract Type"
   },
@@ -92,9 +96,13 @@
    "fieldtype": "Column Break"
   },
   {
+   "fetch_from": "intern.employee_name",
    "fieldname": "full_name",
    "fieldtype": "Data",
-   "label": "Full Name"
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Full Name",
+   "read_only": 1
   },
   {
    "fieldname": "personal_information_section",
@@ -107,14 +115,21 @@
    "label": "Date of Birth"
   },
   {
+   "fetch_from": "intern.prefered_email",
    "fieldname": "email_address",
    "fieldtype": "Data",
-   "label": "Email Address"
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Email Address",
+   "read_only": 1
   },
   {
+   "fetch_from": "intern.cell_number",
    "fieldname": "phone_number",
    "fieldtype": "Data",
-   "label": "Phone Number"
+   "label": "Phone Number",
+   "read_only": 1,
+   "reqd": 1
   },
   {
    "fieldname": "column_break_mehr",
@@ -179,16 +194,35 @@
    "fieldname": "date",
    "fieldtype": "Date",
    "label": "Date"
+  },
+  {
+   "fieldname": "intern",
+   "fieldtype": "Link",
+   "label": "Intern",
+   "options": "Employee",
+   "reqd": 1
+  },
+  {
+   "default": "IC-.YYYY.-",
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "hidden": 1,
+   "label": "Series",
+   "options": "IC-.YYYY.-",
+   "print_hide": 1,
+   "read_only": 1,
+   "reqd": 1
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2026-02-17 09:11:02.983649",
+ "modified": "2026-02-24 14:31:17.418611",
  "modified_by": "Administrator",
  "module": "ICL Corporate Services",
  "name": "Internship Commencement",
+ "naming_rule": "By \"Naming Series\" field",
  "owner": "Administrator",
  "permissions": [
   {

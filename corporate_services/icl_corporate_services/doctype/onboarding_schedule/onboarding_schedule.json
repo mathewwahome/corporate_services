@@ -11,18 +11,16 @@
   "column_break_ujln",
   "employee_name",
   "employee_email",
-  "section_break_gwrx",
-  "onboarding_schedule_table",
   "section_break_esbq",
   "description",
   "onboarding_schedule_tab",
   "1_month_before_start_date_section",
-  "inform_the_chosen_staff_that_they_were_successful",
+  "inform_chosen_staff",
   "column_break_ykrl",
   "conduct_background_checks_if_applicable",
   "complete_the_week_before_official__start_date_section",
-  "send_kyc_for_information_gathering",
-  "send_official_contract_and_nda_for_signing",
+  "send_kyc",
+  "send_contract_nda",
   "create_an_erp_profile",
   "column_break_iqgh",
   "create_official_company_email_address",
@@ -32,7 +30,7 @@
   "day_1_tab",
   "day_1_section",
   "send_welcome_email",
-  "send_company_wide_email_introducing_the_new_hire",
+  "send_company_wide_email_intro",
   "for_interns_send_internship_commencement_form",
   "provide_necessary_stationery_and_equipment",
   "conduct_in_person_onboarding_meeting",
@@ -43,7 +41,10 @@
   "officially_hand_them_over_to_their_supervisor",
   "month_1_section",
   "30_day_feedback_survey",
+  "30_day_feedback_survey_file",
+  "column_break_zsiv",
   "policy_quiz_to_ensure_policies_are_well_grasped",
+  "policy_quiz",
   "month_3_section",
   "formal_supervisory_end_of_probationary_review"
  ],
@@ -54,34 +55,35 @@
    "label": "Description"
   },
   {
-   "fieldname": "onboarding_schedule_table",
-   "fieldtype": "Table",
-   "label": "Onboarding Schedule Table",
-   "options": "Onboarding Schedule Table"
-  },
-  {
    "fieldname": "employee",
    "fieldtype": "Link",
    "label": "Employee",
-   "options": "Employee"
+   "options": "Employee",
+   "reqd": 1
   },
   {
    "fieldname": "column_break_ujln",
    "fieldtype": "Column Break"
   },
   {
+   "fetch_from": "employee.employee_name",
    "fieldname": "employee_name",
    "fieldtype": "Data",
-   "label": "Employee Name"
+   "in_list_view": 1,
+   "in_preview": 1,
+   "in_standard_filter": 1,
+   "label": "Employee Name",
+   "read_only": 1,
+   "reqd": 1
   },
   {
+   "fetch_from": "employee.prefered_email",
    "fieldname": "employee_email",
    "fieldtype": "Data",
-   "label": "Employee Email"
-  },
-  {
-   "fieldname": "section_break_gwrx",
-   "fieldtype": "Section Break"
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Employee Email",
+   "read_only": 1
   },
   {
    "fieldname": "section_break_esbq",
@@ -91,6 +93,7 @@
    "default": "OS-.YYYY.-",
    "fieldname": "naming_series",
    "fieldtype": "Select",
+   "hidden": 1,
    "in_list_view": 1,
    "label": "Series",
    "options": "OS-.YYYY.-",
@@ -101,12 +104,6 @@
    "fieldname": "onboarding_schedule_tab",
    "fieldtype": "Tab Break",
    "label": "Onboarding Schedule"
-  },
-  {
-   "default": "0",
-   "fieldname": "inform_the_chosen_staff_that_they_were_successful",
-   "fieldtype": "Check",
-   "label": "Inform the chosen staff that they were successful"
   },
   {
    "default": "0",
@@ -123,19 +120,6 @@
    "fieldname": "complete_the_week_before_official__start_date_section",
    "fieldtype": "Section Break",
    "label": "Complete the week before official  start date"
-  },
-  {
-   "default": "0",
-   "description": "Plus, collection of all necessary documents (ID, academic certificates, bank details, Statutory documents etc.)\n",
-   "fieldname": "send_kyc_for_information_gathering",
-   "fieldtype": "Check",
-   "label": "Send KYC for information gathering"
-  },
-  {
-   "default": "0",
-   "fieldname": "send_official_contract_and_nda_for_signing",
-   "fieldtype": "Check",
-   "label": "Send official contract, and NDA for signing"
   },
   {
    "default": "0",
@@ -184,12 +168,6 @@
    "fieldname": "send_welcome_email",
    "fieldtype": "Check",
    "label": "Send welcome email"
-  },
-  {
-   "default": "0",
-   "fieldname": "send_company_wide_email_introducing_the_new_hire",
-   "fieldtype": "Check",
-   "label": "Send company wide email introducing the new hire"
   },
   {
    "default": "0",
@@ -274,12 +252,59 @@
    "fieldname": "formal_supervisory_end_of_probationary_review",
    "fieldtype": "Check",
    "label": "Formal supervisory end of probationary review"
+  },
+  {
+   "default": "1",
+   "fieldname": "inform_chosen_staff",
+   "fieldtype": "Check",
+   "label": "Inform the chosen staff that they were successful"
+  },
+  {
+   "default": "0",
+   "description": "Plus, collection of all necessary documents (ID, academic certificates, bank details, Statutory documents etc.)\n",
+   "fieldname": "send_kyc",
+   "fieldtype": "Check",
+   "label": "Send KYC for information gathering"
+  },
+  {
+   "default": "0",
+   "fieldname": "send_contract_nda",
+   "fieldtype": "Check",
+   "label": "Send official contract, and NDA for signing"
+  },
+  {
+   "default": "0",
+   "fieldname": "send_company_wide_email_intro",
+   "fieldtype": "Check",
+   "label": "Send company wide email introducing the new hire"
+  },
+  {
+   "fieldname": "30_day_feedback_survey_file",
+   "fieldtype": "Link",
+   "label": "30 day Feedback survey File",
+   "options": "New Hire Feedback Survey 30-Day",
+   "print_hide": 1,
+   "read_only": 1,
+   "report_hide": 1
+  },
+  {
+   "fieldname": "column_break_zsiv",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "policy_quiz",
+   "fieldtype": "Link",
+   "label": "Policy Quiz",
+   "options": "Quiz Submission",
+   "print_hide": 1,
+   "read_only": 1,
+   "report_hide": 1
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-02-17 09:50:41.752038",
+ "modified": "2026-02-24 21:15:13.775550",
  "modified_by": "Administrator",
  "module": "ICL Corporate Services",
  "name": "Onboarding Schedule",
