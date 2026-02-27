@@ -2,6 +2,17 @@
  {
   "docstatus": 0,
   "doctype": "Client Script",
+  "dt": "KPI Template Instructions",
+  "enabled": 1,
+  "modified": "2026-02-25 08:41:08.012765",
+  "module": "ICL Corporate Services",
+  "name": "KPI Template Instructions",
+  "script": "frappe.ui.form.on('KPI Template Instructions', {\n\trefresh(frm) {\n\t\t// your code here\n\t}\n})",
+  "view": "Form"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
   "dt": "Onboarding Schedule",
   "enabled": 1,
   "modified": "2026-02-24 20:30:02.147162",

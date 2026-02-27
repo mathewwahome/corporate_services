@@ -271,7 +271,7 @@
  ],
  "grid_page_length": 50,
  "links": [],
- "modified": "2026-02-09 07:16:23.578525",
+ "modified": "2026-02-26 19:20:19.121147",
  "modified_by": "Administrator",
  "module": "ICL Corporate Services",
  "name": "Staff Requisition",
@@ -294,5 +294,6 @@
  "row_format": "Dynamic",
  "sort_field": "modified",
  "sort_order": "DESC",
- "states": []
+ "states": [],
+ "track_changes": 1
 }
