@@ -128,7 +128,7 @@ def send_approval_overdue_reminders():
     Checks for Staff Requisitions pending approval beyond 12 hours.
     Sends email and ERP inbox notifications to current approver and HR.
     
-    ONLY sends during business hours (8 AM - 6 PM).
+    ONLY sends during business hours (8 AM - 5 PM).
     If overdue time falls outside business hours, waits until 8 AM to send.
     """
     from datetime import time as dt_time
@@ -146,7 +146,7 @@ def send_approval_overdue_reminders():
         frappe.logger().info("Skipping overdue reminders - outside business hours")
         return {
             "success": True,
-            "message": "Skipped - outside business hours (8 AM - 6 PM)",
+            "message": "Skipped - outside business hours (8 AM - 5 PM)",
             "reminders_sent": 0
         }
     
