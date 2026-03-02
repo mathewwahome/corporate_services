@@ -1,0 +1,32 @@
+[
+ {
+  "docstatus": 0,
+  "doctype": "Custom HTML Block",
+  "html": "<!DOCTYPE html>\n<html>\n<head>\n\n</head>\n<body class=\"p-4\">\n  <div class=\"container-fluid px-0\">\n\n    <!-- Header -->\n    <div class=\"border-bottom pb-3 mb-4\">\n      <h1 class=\"fs-3 fw-bold text-dark mb-0\">IntelliSOFT Consulting Limited</h1>\n    </div>\n\n    <!-- Welcome Message -->\n    <div class=\"row mb-4\">\n      <div class=\"col-md-8\">\n        <h5 class=\"fw-semibold text-dark mb-1\" id=\"greeting-text\">Welcome 👋</h5>\n        <p class=\"text-muted mb-0\">\n          Welcome to your ICL Staff Portal. This is your central hub for everything you need to stay\n          connected, organised, and productive as part of the IntelliSOFT Consulting team.\n        </p>\n      </div>\n    </div>\n\n    <!-- Description -->\n    <div class=\"row mb-4\">\n      <div class=\"col-md-8\">\n        <p class=\"text-muted mb-0\">\n          This platform is designed to streamline and simplify various administrative and operational\n          processes, ensuring a more efficient and organized work environment.\n        </p>\n      </div>\n    </div>\n\n    <!-- What the platform helps you do -->\n    <div class=\"row mb-4\">\n      <div class=\"col-12\">\n        <h6 class=\"fw-semibold text-dark mb-3\">Here's what you can do on this platform:</h6>\n        <div class=\"row g-3\">\n\n          <div class=\"col-md-4\">\n            <div class=\"border rounded-2 p-3 h-100\">\n              <i class=\"bi bi-person-vcard text-primary fs-5 mb-2 d-block\"></i>\n              <div class=\"fw-semibold text-dark small mb-1\">HR & People Management</div>\n              <div class=\"text-muted\" style=\"font-size: 0.82rem;\">Manage employee records, leave requests, and HR processes seamlessly.</div>\n            </div>\n          </div>\n\n          <div class=\"col-md-4\">\n            <div class=\"border rounded-2 p-3 h-100\">\n              <i class=\"bi bi-receipt text-primary fs-5 mb-2 d-block\"></i>\n              <div class=\"fw-semibold text-dark small mb-1\">Finance & Expenses</div>\n              <div class=\"text-muted\" style=\"font-size: 0.82rem;\">Submit and track expense claims, approvals, and financial requests with ease.</div>\n            </div>\n          </div>\n\n          <div class=\"col-md-4\">\n            <div class=\"border rounded-2 p-3 h-100\">\n              <i class=\"bi bi-kanban text-primary fs-5 mb-2 d-block\"></i>\n              <div class=\"fw-semibold text-dark small mb-1\">Project & Task Tracking</div>\n              <div class=\"text-muted\" style=\"font-size: 0.82rem;\">Stay on top of your deliverables, deadlines, and project milestones.</div>\n            </div>\n          </div>\n\n          <div class=\"col-md-4\">\n            <div class=\"border rounded-2 p-3 h-100\">\n              <i class=\"bi bi-megaphone text-primary fs-5 mb-2 d-block\"></i>\n              <div class=\"fw-semibold text-dark small mb-1\">Internal Communication</div>\n              <div class=\"text-muted\" style=\"font-size: 0.82rem;\">Access company announcements, updates, and important notices all in one place.</div>\n            </div>\n          </div>\n\n          <div class=\"col-md-4\">\n            <div class=\"border rounded-2 p-3 h-100\">\n              <i class=\"bi bi-bar-chart-line text-primary fs-5 mb-2 d-block\"></i>\n              <div class=\"fw-semibold text-dark small mb-1\">Reports & Analytics</div>\n              <div class=\"text-muted\" style=\"font-size: 0.82rem;\">Generate and view reports to support data-driven decisions across teams.</div>\n            </div>\n          </div>\n\n          <div class=\"col-md-4\">\n            <div class=\"border rounded-2 p-3 h-100\">\n              <i class=\"bi bi-shield-check text-primary fs-5 mb-2 d-block\"></i>\n              <div class=\"fw-semibold text-dark small mb-1\">Compliance & Administration</div>\n              <div class=\"text-muted\" style=\"font-size: 0.82rem;\">Handle administrative tasks and ensure organisational compliance effortlessly.</div>\n            </div>\n          </div>\n\n        </div>\n      </div>\n    </div>\n\n    <!-- CTA Notice -->\n    <div class=\"d-flex align-items-center gap-2 border rounded-2 p-3\">\n      <i class=\"bi bi-arrow-right-circle text-primary fs-5\"></i>\n      <span class=\"text-muted\">Head over to your <strong class=\"text-dark\">ICL Staff workspace</strong> on the sidebar to get started</span>\n    </div>\n\n  </div>\n\n\n</body>\n</html>",
+  "modified": "2026-03-01 09:22:47.672894",
+  "name": "Welcome",
+  "private": 0,
+  "roles": [
+   {
+    "parent": "Welcome",
+    "parentfield": "roles",
+    "parenttype": "Custom HTML Block",
+    "role": "Employee"
+   },
+   {
+    "parent": "Welcome",
+    "parentfield": "roles",
+    "parenttype": "Custom HTML Block",
+    "role": "Employee Self Service"
+   },
+   {
+    "parent": "Welcome",
+    "parentfield": "roles",
+    "parenttype": "Custom HTML Block",
+    "role": "Workspace Manager"
+   }
+  ],
+  "script": "(function () {\n  function setGreeting(fullName) {\n    const hour = new Date().getHours();\n    let timeOfDay = \"\";\n    let emoji = \"\";\n\n    if (hour >= 5 && hour < 12) {\n      timeOfDay = \"Good Morning\";\n      emoji = \"☀️\";\n    } else if (hour >= 12 && hour < 17) {\n      timeOfDay = \"Good Afternoon\";\n      emoji = \"🌤️\";\n    } else if (hour >= 17 && hour < 21) {\n      timeOfDay = \"Good Evening\";\n      emoji = \"🌇\";\n    } else {\n      timeOfDay = \"Good Night\";\n      emoji = \"🌙\";\n    }\n\n    const firstName = (fullName || \"there\").split(\" \")[0];\n\n    const el = root_element.querySelector(\"#greeting-text\");\n    if (el) {\n      el.innerHTML = `${timeOfDay}, ${firstName} ${emoji}`;\n    }\n  }\n\n  const bootName =\n    frappe?.boot?.full_name ||\n    frappe?.boot?.user?.fullname ||\n    frappe?.session?.user_fullname ||\n    null;\n\n  if (bootName && bootName !== \"Guest\") {\n    setGreeting(bootName);\n  } else {\n    frappe.call({\n      method: \"frappe.client.get_value\",\n      args: {\n        doctype: \"User\",\n        filters: { name: frappe.session.user },\n        fieldname: \"full_name\"\n      },\n      callback: function (r) {\n        const name = r?.message?.full_name || \"there\";\n        setGreeting(name);\n      }\n    });\n  }\n})();",
+  "style": ""
+ }
+]
