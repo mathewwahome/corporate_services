@@ -381,5 +381,7 @@ fixtures = [
     "Website Theme",
     "Portal Settings",
     "Performance Score Bands",
-    "Performance Appraisal Rating scale"
+    "Performance Appraisal Rating scale",
+    "Custom HTML Block",
+    "KPI Template Instructions",
 ]

@@ -1,0 +1,177 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "naming_series:",
+ "creation": "2026-03-01 16:55:40.060141",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "section_break_8bqk",
+  "amended_from",
+  "naming_series",
+  "employee",
+  "column_break_tmzn",
+  "full_name",
+  "designation",
+  "standard_duties_section",
+  "daily_responsibilities",
+  "weekly_responsibilities",
+  "column_break_wife",
+  "monthly_responsibilities",
+  "annual_responsibilities",
+  "duties_section",
+  "main_role",
+  "table_lpeu",
+  "general_duties_section",
+  "data_nina",
+  "project_duties",
+  "data_eqiz"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_break_8bqk",
+   "fieldtype": "Section Break",
+   "label": "Info"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Transition Plan",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "employee",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Employee",
+   "options": "Employee",
+   "reqd": 1
+  },
+  {
+   "fieldname": "full_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Full Name",
+   "reqd": 1
+  },
+  {
+   "fieldname": "designation",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Designation",
+   "reqd": 1
+  },
+  {
+   "default": "TP-.YYYY.-.MM.-",
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Series",
+   "no_copy": 1,
+   "options": "TP-.YYYY.-.MM.-",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "standard_duties_section",
+   "fieldtype": "Section Break",
+   "label": "Standard duties"
+  },
+  {
+   "fieldname": "daily_responsibilities",
+   "fieldtype": "Text Editor",
+   "label": "Daily responsibilities"
+  },
+  {
+   "fieldname": "weekly_responsibilities",
+   "fieldtype": "Text Editor",
+   "label": "Weekly responsibilities"
+  },
+  {
+   "fieldname": "column_break_wife",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "monthly_responsibilities",
+   "fieldtype": "Text Editor",
+   "label": "Monthly responsibilities"
+  },
+  {
+   "fieldname": "annual_responsibilities",
+   "fieldtype": "Text Editor",
+   "label": "Annual responsibilities"
+  },
+  {
+   "fieldname": "duties_section",
+   "fieldtype": "Section Break",
+   "label": "Duties"
+  },
+  {
+   "fieldname": "main_role",
+   "fieldtype": "Small Text",
+   "label": "My main role was"
+  },
+  {
+   "fieldname": "table_lpeu",
+   "fieldtype": "Table",
+   "options": "Transition Plan Link Resources"
+  },
+  {
+   "description": "[Include important links including project folder & doc links]",
+   "fieldname": "general_duties_section",
+   "fieldtype": "Section Break",
+   "label": "General duties"
+  },
+  {
+   "fieldname": "data_nina",
+   "fieldtype": "Data"
+  },
+  {
+   "description": "[Include important links including project folder & doc links]",
+   "fieldname": "project_duties",
+   "fieldtype": "Section Break",
+   "label": "Project Duties to be completed before departure and incomplete duties for follow-up:"
+  },
+  {
+   "fieldname": "data_eqiz",
+   "fieldtype": "Data"
+  },
+  {
+   "fieldname": "column_break_tmzn",
+   "fieldtype": "Column Break"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2026-03-01 17:09:34.549741",
+ "modified_by": "Administrator",
+ "module": "ICL Corporate Services",
+ "name": "Transition Plan",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

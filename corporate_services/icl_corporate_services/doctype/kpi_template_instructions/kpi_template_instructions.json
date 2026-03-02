@@ -1,0 +1,45 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2026-02-25 08:39:37.085399",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "kpi_template_instructions"
+ ],
+ "fields": [
+  {
+   "fieldname": "kpi_template_instructions",
+   "fieldtype": "HTML",
+   "ignore_user_permissions": 1,
+   "label": "KPI Template Instructions",
+   "options": "<div class=\"container-fluid px-0\">\n\n  <!-- Section 1 -->\n  <div class=\"mb-4\">\n    <h6 class=\"fw-bold text-dark mb-2\">1. KPI Template</h6>\n    <p class=\"text-muted mb-1\">This workbook records the agreed Key Performance Indicators (KPIs) for each employee.</p>\n    <p class=\"text-muted mb-0\">The KPI Template defines <strong>WHAT</strong> the employee is expected to deliver. The appraisal tools (monthly reflection and quarterly appraisals) later assess <strong>HOW WELL</strong> this was done.</p>\n  </div>\n\n  <hr class=\"mb-4\">\n\n  <!-- Section 2 -->\n  <div class=\"mb-4\">\n    <h6 class=\"fw-bold text-dark mb-3\">2. Link of the KPI Document to Performance Reviews</h6>\n    <div class=\"d-flex gap-3 mb-2\">\n      <span class=\"badge bg-primary rounded-circle d-flex align-items-center justify-content-center\" style=\"width:24px;height:24px;min-width:24px;\">1</span>\n      <p class=\"text-muted mb-0\">At the beginning of the contract or year, the employee and supervisor agree on KPIs and capture them in the <strong>KPI Template</strong> sheet.</p>\n    </div>\n    <div class=\"d-flex gap-3 mb-2\">\n      <span class=\"badge bg-primary rounded-circle d-flex align-items-center justify-content-center\" style=\"width:24px;height:24px;min-width:24px;\">2</span>\n      <p class=\"text-muted mb-0\">Every month, the employee completes the <strong>ICL Monthly Reflection Form</strong> using the same KPIs as a guide for reporting progress, challenges and support needed.</p>\n    </div>\n    <div class=\"d-flex gap-3 mb-2\">\n      <span class=\"badge bg-primary rounded-circle d-flex align-items-center justify-content-center\" style=\"width:24px;height:24px;min-width:24px;\">3</span>\n      <p class=\"text-muted mb-0\">At the end of every quarter, the supervisor completes the <strong>Supervisor's Appraisal Form</strong> and rates performance against these KPIs and other competencies.</p>\n    </div>\n  </div>\n\n  <hr class=\"mb-4\">\n\n  <!-- Section 4 -->\n  <div class=\"mb-4\">\n    <h6 class=\"fw-bold text-dark mb-3\">3. Structure of the KPI Template Sheet</h6>\n    <div class=\"mb-2\">\n      <span class=\"fw-semibold text-dark small\">Section A \u2013 Employee Information</span>\n      <p class=\"text-muted small mb-0\">A vertical block with fields such as Employee Name, Job Title, Department, Supervisor, Review Period, etc. This should mirror the information in the employee's contract and HR records.</p>\n    </div>\n    <div class=\"mb-2\">\n      <span class=\"fw-semibold text-dark small\">Section B \u2013 KPI Table</span>\n      <p class=\"text-muted small mb-0\">A table listing each KPI, how it will be measured, the target, weight (%) and data source. An example is provided for <em>Jane Doe (Technical Project Manager)</em>.</p>\n    </div>\n  </div>\n\n  <hr class=\"mb-4\">\n\n  <!-- Section 5 -->\n  <div class=\"mb-4\">\n    <h6 class=\"fw-bold text-dark mb-3\">4. How to Draft KPIs from a Contract / Job Description</h6>\n    <ol class=\"text-muted ps-3\" style=\"font-size: 0.88rem; line-height: 1.8;\">\n      <li>Read the employee's contract and Job Description carefully and highlight the key responsibilities and outputs.</li>\n      <li>Group similar responsibilities together into 4\u20138 main result areas (e.g. project delivery, documentation, client communication, invoicing, reporting).</li>\n      <li>For each result area, write one clear KPI that describes the expected result, not just the activity.</li>\n      <li>For each KPI, define the <strong>Measure</strong> (how it will be checked), the <strong>Target</strong> (what success looks like) and the <strong>Weight (%)</strong>.</li>\n      <li>Ensure the total weight for all KPIs adds up to <strong>100%</strong>. Adjust if needed so that the most important areas carry the highest weight.</li>\n    </ol>\n  </div>\n\n  <hr class=\"mb-4\">\n\n  <!-- Section 6 -->\n  <div class=\"mb-4\">\n    <h6 class=\"fw-bold text-dark mb-3\">5. KPI Quality Checklist</h6>\n    <p class=\"text-muted small mb-3\">Each KPI should be:</p>\n    <div class=\"row g-2\">\n\n      <div class=\"col-md-4\">\n        <div class=\"border rounded-2 p-3 h-100\">\n          <div class=\"fw-semibold text-dark small mb-1\">\u2705 Specific</div>\n          <div class=\"text-muted\" style=\"font-size: 0.82rem;\">Clearly states what should be achieved.</div>\n        </div>\n      </div>\n\n      <div class=\"col-md-4\">\n        <div class=\"border rounded-2 p-3 h-100\">\n          <div class=\"fw-semibold text-dark small mb-1\">\ud83d\udccf Measurable</div>\n          <div class=\"text-muted\" style=\"font-size: 0.82rem;\">Includes a number, percentage, rating or deadline that can be checked.</div>\n        </div>\n      </div>\n\n      <div class=\"col-md-4\">\n        <div class=\"border rounded-2 p-3 h-100\">\n          <div class=\"fw-semibold text-dark small mb-1\">\ud83c\udfaf Achievable</div>\n          <div class=\"text-muted\" style=\"font-size: 0.82rem;\">Realistic given the time frame and resources available.</div>\n        </div>\n      </div>\n\n      <div class=\"col-md-4\">\n        <div class=\"border rounded-2 p-3 h-100\">\n          <div class=\"fw-semibold text-dark small mb-1\">\ud83d\udd17 Relevant</div>\n          <div class=\"text-muted\" style=\"font-size: 0.82rem;\">Linked to the role, department and organizational goals.</div>\n        </div>\n      </div>\n\n      <div class=\"col-md-4\">\n        <div class=\"border rounded-2 p-3 h-100\">\n          <div class=\"fw-semibold text-dark small mb-1\">\u23f1\ufe0f Time-bound</div>\n          <div class=\"text-muted\" style=\"font-size: 0.82rem;\">Has a clear period (monthly, quarterly, annual, or for the specific contract period).</div>\n        </div>\n      </div>\n\n    </div>\n  </div>\n\n</div>",
+   "read_only": 1
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "issingle": 1,
+ "links": [],
+ "modified": "2026-03-01 09:48:00.110003",
+ "modified_by": "Administrator",
+ "module": "ICL Corporate Services",
+ "name": "KPI Template Instructions",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
