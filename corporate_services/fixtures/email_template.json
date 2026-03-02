@@ -98,5 +98,15 @@
   "response_html": null,
   "subject": "Exit Questionnaire Notification",
   "use_html": 0
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Email Template",
+  "modified": "2026-03-01 17:12:29.975553",
+  "name": "Farewell Email Template",
+  "response": "<div class=\"ql-editor read-mode\"><p><br></p></div>",
+  "response_html": "Dear Team,\n\nThis is to inform you that {{employee_name}} ({{job_title}}) will be leaving {{company_name}}, with their last working day being {{last_day_date}}.\n\nWe appreciate {{employee_name}}'s contribution and commitment during their time with us and wish them success in their next chapter.\n\nPlease join us in wishing {{employee_name}} all the very best.\n\nKind regards,\n{{signature_name}}\nHuman Resources\n{{company_name}}",
+  "subject": "Farewell to {{employee_name}}",
+  "use_html": 1
  }
 ]
