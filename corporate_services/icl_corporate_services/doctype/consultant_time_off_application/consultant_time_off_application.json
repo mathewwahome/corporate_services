@@ -23,7 +23,7 @@
   "column_break_qteo",
   "reason",
   "approval_section",
-  "reliever",
+  "reliever_name",
   "approver_name",
   "column_break_wvof",
   "work_continuity_plan"
@@ -80,7 +80,6 @@
    "default": "TOA-.YYYY.-.MM.-",
    "fieldname": "naming_series",
    "fieldtype": "Select",
-   "in_list_view": 1,
    "label": "Series",
    "options": "TOA-.YYYY.-.MM.-",
    "read_only": 1,
@@ -129,18 +128,14 @@
    "options": "Work Continuity Plan"
   },
   {
-   "fieldname": "reliever",
-   "fieldtype": "Data",
-   "label": "Reliever"
-  },
-  {
    "fieldname": "column_break_wvof",
    "fieldtype": "Column Break"
   },
   {
    "fieldname": "approver_name",
    "fieldtype": "Data",
-   "label": "Approver Name"
+   "label": "Approver Name",
+   "reqd": 1
   },
   {
    "fieldname": "total_leave_days",
@@ -159,13 +154,19 @@
    "label": "Half Day Date",
    "no_copy": 1,
    "read_only": 1
+  },
+  {
+   "fieldname": "reliever_name",
+   "fieldtype": "Data",
+   "label": "Reliever`s Name",
+   "reqd": 1
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2026-03-02 10:49:35.891173",
+ "modified": "2026-03-02 11:17:24.251696",
  "modified_by": "Administrator",
  "module": "ICL Corporate Services",
  "name": "Consultant Time Off Application",

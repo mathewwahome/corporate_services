@@ -1,11 +1,6 @@
 import frappe
 from frappe.utils import get_url_to_form
 
-
-   
-
-    
-
 def employee_grievance(doc, method):
     if doc.workflow_state == "Approved by HR":
 
