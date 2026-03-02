@@ -1,8 +1,13 @@
 {
  "charts": [],
- "content": "[{\"id\":\"kb3XPLg8lb\",\"type\":\"header\",\"data\":{\"text\":\"<span style=\\\"font-size: 18px; letter-spacing: 0.18px;\\\"><b>IntelliSOFT Consulting Limited</b></span>\",\"col\":12}},{\"id\":\"k7SM_ab1j3\",\"type\":\"paragraph\",\"data\":{\"text\":\"This platform is designed to streamline and simplify various administrative and operational processes, ensuring a more efficient and organized work environment.&nbsp;\",\"col\":12}},{\"id\":\"tqNxO30sCx\",\"type\":\"paragraph\",\"data\":{\"text\":\"Head over to your ICL Staff workspace on the sidebar to get started\",\"col\":12}},{\"id\":\"d_KVM1gsf9\",\"type\":\"spacer\",\"data\":{\"col\":12}}]",
- "creation": "2024-07-09 11:36:24.951973",
- "custom_blocks": [],
+ "content": "[{\"id\":\"GNWkxjGMdi\",\"type\":\"custom_block\",\"data\":{\"custom_block_name\":\"Welcome\",\"col\":12}}]",
+ "creation": "2026-02-26 20:18:17.577875",
+ "custom_blocks": [
+  {
+   "custom_block_name": "Welcome",
+   "label": "Welcome"
+  }
+ ],
  "docstatus": 0,
  "doctype": "Workspace",
  "for_user": "",
@@ -12,7 +17,7 @@
  "is_hidden": 0,
  "label": "Home",
  "links": [],
- "modified": "2024-07-09 15:16:44.297122",
+ "modified": "2026-03-01 09:00:48.408996",
  "modified_by": "Administrator",
  "module": "ICL Corporate Services",
  "name": "Home",
