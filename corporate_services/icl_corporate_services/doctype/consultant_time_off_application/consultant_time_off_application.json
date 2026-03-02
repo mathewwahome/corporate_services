@@ -18,6 +18,7 @@
   "from_date",
   "to_date",
   "half_day",
+  "half_day_date",
   "total_leave_days",
   "column_break_qteo",
   "reason",
@@ -38,7 +39,7 @@
    "fieldtype": "Link",
    "label": "Amended From",
    "no_copy": 1,
-   "options": "Time Off Application",
+   "options": "Consultant Time Off Application",
    "print_hide": 1,
    "read_only": 1,
    "search_index": 1
@@ -147,6 +148,16 @@
    "in_list_view": 1,
    "label": "Total Leave Days",
    "no_copy": 1,
+   "precision": "1",
+   "read_only": 1
+  },
+  {
+   "depends_on": "eval:doc.half_day && doc.from_date && doc.to_date && (doc.from_date != doc.to_date)",
+   "fieldname": "half_day_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Half Day Date",
+   "no_copy": 1,
    "read_only": 1
   }
  ],
@@ -154,10 +165,10 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2026-03-02 09:29:53.142714",
+ "modified": "2026-03-02 10:49:35.891173",
  "modified_by": "Administrator",
  "module": "ICL Corporate Services",
- "name": "Time Off Application",
+ "name": "Consultant Time Off Application",
  "naming_rule": "By \"Naming Series\" field",
  "owner": "Administrator",
  "permissions": [
@@ -204,5 +215,6 @@
  "row_format": "Dynamic",
  "sort_field": "modified",
  "sort_order": "DESC",
- "states": []
+ "states": [],
+ "track_changes": 1
 }
