@@ -5,5 +5,5 @@
 from frappe.model.document import Document
 
 
-class TimeOffApplication(Document):
+class QuarterlyLeaveNotification(Document):
 	pass

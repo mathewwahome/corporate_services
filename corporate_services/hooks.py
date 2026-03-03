@@ -194,7 +194,7 @@ on_update_map = {
     "Task":"corporate_services.api.notification.project.project_task.task_on_update",
     "Supplier Quote Submission":"corporate_services.api.supplier.finance_alert.alert",
     "Staff Requisition":"corporate_services.api.notification.staff_requisition.staff_requisition.alert",
-    
+    "Consultant Time Off Application":"corporate_services.api.notification.consultant_time_off.time_off_application.alert",
     # "Supplier Quote Submission": [
     #     "corporate_services.api.supplier.finance_alert.alert",
     #     "corporate_services.api.supplier.vat_calc.calc"

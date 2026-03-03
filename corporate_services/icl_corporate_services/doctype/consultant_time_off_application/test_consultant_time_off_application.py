@@ -5,5 +5,5 @@
 from frappe.tests.utils import FrappeTestCase
 
 
-class TestTimeOffApplication(FrappeTestCase):
+class TestConsultantTimeOffApplication(FrappeTestCase):
 	pass

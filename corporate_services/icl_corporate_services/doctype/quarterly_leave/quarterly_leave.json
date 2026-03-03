@@ -1,0 +1,62 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2026-03-03 11:27:15.321746",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "quarter_name",
+  "start_month",
+  "end_date",
+  "notification_date",
+  "last_sent_year"
+ ],
+ "fields": [
+  {
+   "fieldname": "quarter_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Quarter Name",
+   "reqd": 1
+  },
+  {
+   "fieldname": "end_date",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "End Month",
+   "reqd": 1
+  },
+  {
+   "fieldname": "notification_date",
+   "fieldtype": "Int",
+   "label": "Notification Day"
+  },
+  {
+   "fieldname": "start_month",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Start Month",
+   "reqd": 1
+  },
+  {
+   "fieldname": "last_sent_year",
+   "fieldtype": "Int",
+   "label": "Last Sent Year"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2026-03-03 11:34:14.958856",
+ "modified_by": "Administrator",
+ "module": "ICL Corporate Services",
+ "name": "Quarterly Leave",
+ "owner": "Administrator",
+ "permissions": [],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

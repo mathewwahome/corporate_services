@@ -183,15 +183,6 @@
   "docstatus": 0,
   "doctype": "Workflow State",
   "icon": "",
-  "modified": "2024-06-03 15:39:43.630727",
-  "name": "Approved by Supervisor",
-  "style": "",
-  "workflow_state_name": "Approved by Supervisor"
- },
- {
-  "docstatus": 0,
-  "doctype": "Workflow State",
-  "icon": "",
   "modified": "2024-06-03 15:39:43.619304",
   "name": "Submitted to Finance",
   "style": "",
@@ -201,9 +192,9 @@
   "docstatus": 0,
   "doctype": "Workflow State",
   "icon": "",
-  "modified": "2024-07-20 16:05:01.476090",
+  "modified": "2026-03-02 11:13:29.292532",
   "name": "Rejected By Supervisor",
-  "style": "",
+  "style": "Danger",
   "workflow_state_name": "Rejected By Supervisor"
  },
  {
@@ -223,6 +214,15 @@
   "name": "Approved by HR",
   "style": "Success",
   "workflow_state_name": "Approved by HR"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": "",
+  "modified": "2026-03-02 11:13:15.892659",
+  "name": "Approved by Supervisor",
+  "style": "Success",
+  "workflow_state_name": "Approved by Supervisor"
  },
  {
   "docstatus": 0,

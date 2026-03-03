@@ -108,5 +108,15 @@
   "response_html": "Dear Team,\n\nThis is to inform you that {{employee_name}} ({{job_title}}) will be leaving {{company_name}}, with their last working day being {{last_day_date}}.\n\nWe appreciate {{employee_name}}'s contribution and commitment during their time with us and wish them success in their next chapter.\n\nPlease join us in wishing {{employee_name}} all the very best.\n\nKind regards,\n{{signature_name}}\nHuman Resources\n{{company_name}}",
   "subject": "Farewell to {{employee_name}}",
   "use_html": 1
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Email Template",
+  "modified": "2026-03-02 09:54:12.775171",
+  "name": "Quarterly Annual Leave accrual notifications",
+  "response": "<div class=\"ql-editor read-mode\"><p><br></p></div>",
+  "response_html": "Hi [Employee Name],\nThis is your quarterly annual leave balance update.\nAs at [Date], your Annual Leave balance is [Y] days.\nPlease plan to take your leave to rest and recharge, and to help prevent burnout. If you would like support planning your leave dates, kindly speak with your supervisor or reach out to HR.\n",
+  "subject": "Quarterly Annual Leave accrual notifications",
+  "use_html": 1
  }
 ]
