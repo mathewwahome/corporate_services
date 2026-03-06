@@ -258,6 +258,7 @@ scheduler_events = {
 		# "corporate_services.tasks.daily"
         "corporate_services.api.notification.project.scheduled_tasks.send_deliverable_notifications",
         "corporate_services.api.notification.onboarding.onboarding_.send_30day_onboarding_surveys",
+        "corporate_services.api.quarterly_leave.quarterly_leave.send_quarterly_notifications",
         # "corporate_services.api.notification.onboarding.onboarding_notifications.send_policy_comprehension_quiz"
 	],
 	# "hourly": [
