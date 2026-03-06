@@ -8,7 +8,7 @@
   "company",
   "leave_type",
   "enabled",
-  "table_ivye"
+  "quarterly_leave"
  ],
  "fields": [
   {
@@ -32,8 +32,9 @@
    "label": "Enabled"
   },
   {
-   "fieldname": "table_ivye",
+   "fieldname": "quarterly_leave",
    "fieldtype": "Table",
+   "label": "Quarterly Leave",
    "options": "Quarterly Leave"
   }
  ],
@@ -41,7 +42,7 @@
  "index_web_pages_for_search": 1,
  "issingle": 1,
  "links": [],
- "modified": "2026-03-03 11:42:52.656431",
+ "modified": "2026-03-03 12:07:18.092937",
  "modified_by": "Administrator",
  "module": "ICL Corporate Services",
  "name": "Quarterly Leave Notification",
