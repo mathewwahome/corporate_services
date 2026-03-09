@@ -147,15 +147,6 @@
   "docstatus": 0,
   "doctype": "Workflow State",
   "icon": "",
-  "modified": "2024-12-03 10:25:29.534157",
-  "name": "Approved by CEO",
-  "style": "Success",
-  "workflow_state_name": "Approved by CEO"
- },
- {
-  "docstatus": 0,
-  "doctype": "Workflow State",
-  "icon": "",
   "modified": "2024-07-21 16:46:57.207082",
   "name": "Rejected by Finance",
   "style": "",
@@ -169,6 +160,15 @@
   "name": "Approved by Finance",
   "style": "Success",
   "workflow_state_name": "Approved by Finance"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": "",
+  "modified": "2024-12-03 10:25:29.534157",
+  "name": "Approved by CEO",
+  "style": "Success",
+  "workflow_state_name": "Approved by CEO"
  },
  {
   "docstatus": 0,
