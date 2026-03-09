@@ -12,6 +12,7 @@
   "naming_series",
   "title",
   "department",
+  "designation",
   "requestor",
   "requestor_name",
   "supervisor_reporting_to",
@@ -267,11 +268,18 @@
    "fieldtype": "Data",
    "in_list_view": 1,
    "label": "Requestor Name"
+  },
+  {
+   "fieldname": "designation",
+   "fieldtype": "Link",
+   "label": "Designation",
+   "options": "Designation",
+   "reqd": 1
   }
  ],
  "grid_page_length": 50,
  "links": [],
- "modified": "2026-02-26 19:20:19.121147",
+ "modified": "2026-03-09 07:55:41.983842",
  "modified_by": "Administrator",
  "module": "ICL Corporate Services",
  "name": "Staff Requisition",
