@@ -165,19 +165,19 @@
   "docstatus": 0,
   "doctype": "Workflow State",
   "icon": "",
-  "modified": "2024-12-03 10:20:26.249204",
-  "name": "Submitted to CEO",
-  "style": "",
-  "workflow_state_name": "Submitted to CEO"
+  "modified": "2024-08-18 05:19:04.575989",
+  "name": "Approved by Finance",
+  "style": "Success",
+  "workflow_state_name": "Approved by Finance"
  },
  {
   "docstatus": 0,
   "doctype": "Workflow State",
   "icon": "",
-  "modified": "2024-08-18 05:19:04.575989",
-  "name": "Approved by Finance",
-  "style": "Success",
-  "workflow_state_name": "Approved by Finance"
+  "modified": "2024-12-03 10:20:26.249204",
+  "name": "Submitted to CEO",
+  "style": "",
+  "workflow_state_name": "Submitted to CEO"
  },
  {
   "docstatus": 0,

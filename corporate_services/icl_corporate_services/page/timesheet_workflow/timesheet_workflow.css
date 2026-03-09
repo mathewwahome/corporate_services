@@ -1,0 +1,120 @@
+/* ── Sidebar container ─────────────────────────────────────── */
+.layout-side-section {
+    padding: 8px 0 16px !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    min-width: 220px !important;
+    width: 220px !important;
+    border-right: 1px solid var(--border-color) !important;
+}
+
+.ts-sidebar-group-label {
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.09em;
+    padding: 10px 16px 4px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    user-select: none;
+    cursor: pointer;
+}
+.ts-sidebar-group-label .ts-chevron {
+    margin-left: auto;
+    font-size: 10px;
+    transition: transform 0.2s;
+    color: var(--text-muted);
+}
+.ts-sidebar-group-label.collapsed .ts-chevron {
+    transform: rotate(-90deg);
+}
+
+.ts-sidebar-item {
+    display: flex;
+    align-items: center;
+    padding: 6px 12px 6px 10px;
+    margin: 1px 6px;
+    font-size: 13px;
+    color: var(--text-color);
+    border-radius: 6px;
+    cursor: pointer;
+    text-decoration: none !important;
+    transition: background 0.12s;
+    white-space: nowrap;
+    overflow: hidden;
+    position: relative;
+}
+.ts-sidebar-item:hover {
+    background: var(--fg-hover-color, #f4f5f6);
+    color: var(--text-color);
+    text-decoration: none !important;
+}
+.ts-sidebar-item.active {
+    background: var(--fg-hover-color, #f4f5f6);
+    font-weight: 600;
+    color: var(--text-color);
+}
+.ts-sidebar-item.active::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 20%;
+    height: 60%;
+    width: 3px;
+    border-radius: 0 3px 3px 0;
+    background: var(--primary);
+}
+
+.ts-sidebar-item .ts-item-icon {
+    width: 16px;
+    height: 16px;
+    margin-right: 9px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.7;
+}
+.ts-sidebar-item .ts-item-icon svg {
+    width: 14px;
+    height: 14px;
+}
+.ts-sidebar-item.active .ts-item-icon {
+    opacity: 1;
+}
+
+.ts-sidebar-item .ts-item-label {
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    line-height: 1.4;
+}
+
+.ts-sidebar-item .ts-item-arrow {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-left: 4px;
+    flex-shrink: 0;
+    transition: transform 0.2s;
+}
+.ts-sidebar-item.open .ts-item-arrow {
+    transform: rotate(90deg);
+}
+
+.ts-sidebar-children {
+    overflow: hidden;
+    transition: max-height 0.2s ease;
+}
+.ts-sidebar-children .ts-sidebar-item {
+    padding-left: 32px;
+    font-size: 12.5px;
+}
+
+.ts-sidebar-divider {
+    height: 1px;
+    background: var(--border-color);
+    margin: 6px 12px;
+}

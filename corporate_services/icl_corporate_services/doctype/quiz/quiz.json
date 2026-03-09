@@ -1,6 +1,7 @@
 {
  "actions": [],
  "allow_rename": 1,
+ "autoname": "format:{quiz_title}",
  "creation": "2026-02-18 08:37:17.522048",
  "doctype": "DocType",
  "engine": "InnoDB",
@@ -41,10 +42,11 @@
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-02-18 08:38:45.342916",
+ "modified": "2026-03-09 07:23:40.630387",
  "modified_by": "Administrator",
  "module": "ICL Corporate Services",
  "name": "Quiz",
+ "naming_rule": "Expression",
  "owner": "Administrator",
  "permissions": [
   {
