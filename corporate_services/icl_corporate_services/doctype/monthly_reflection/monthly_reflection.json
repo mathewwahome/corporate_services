@@ -181,12 +181,12 @@
    "label": "Include any other feedback, reflections, or information not already covered:"
   },
   {
-   "default": "MR-.YYYY.-.M.-",
+   "default": "MR-.YYYY.-.MM.-",
    "fieldname": "naming_series",
    "fieldtype": "Select",
    "hidden": 1,
    "label": "Series",
-   "options": "MR-.YYYY.-.M.-",
+   "options": "MR-.YYYY.-.MM.-",
    "print_hide": 1,
    "read_only": 1,
    "report_hide": 1,
@@ -206,7 +206,7 @@
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-02-27 09:48:29.385334",
+ "modified": "2026-03-10 09:12:47.220557",
  "modified_by": "Administrator",
  "module": "ICL Corporate Services",
  "name": "Monthly Reflection",
