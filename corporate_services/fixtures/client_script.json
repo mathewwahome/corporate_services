@@ -411,10 +411,10 @@
   "doctype": "Client Script",
   "dt": "Staff Requisition",
   "enabled": 1,
-  "modified": "2026-03-09 07:56:03.642458",
+  "modified": "2026-03-11 09:07:55.878755",
   "module": "ICL Corporate Services",
   "name": "APPROVED FOR RECRUITMENT",
-  "script": "frappe.ui.form.on('Staff Requisition', {\n    refresh(frm) {\n\n        if (!frm.is_new() && frm.doc.status === \"APPROVED FOR RECRUITMENT\") {\n\n            frm.add_custom_button('Create Job Posting', function () {\n\n                frappe.new_doc('Job Opening', {\n                    custom_staff_requisition: frm.doc.name,\n                    job_title: frm.doc.title,\n                    department: frm.doc.department,\n                    designation: frm.doc.designation,\n                });\n\n            }, 'Create');\n\n        }\n\n    }\n});",
+  "script": "frappe.ui.form.on('Staff Requisition', {\n    refresh(frm) {\n        // Dashboard connections\n        frm.dashboard.add_transactions([{\n            'label': 'Recruitment',\n            'items': ['Job Opening']\n        }]);\n\n        // Create Job Posting button (HR Manager + Approved only)\n        if (\n            !frm.is_new() &&\n            frm.doc.status === \"APPROVED FOR RECRUITMENT\" &&\n            frappe.user.has_role('HR Manager')\n        ) {\n            frm.add_custom_button('Create Job Posting', function () {\n                frappe.new_doc('Job Opening', {\n                    custom_staff_requisition: frm.doc.name,\n                    job_title: frm.doc.title,\n                    department: frm.doc.department,\n                    designation: frm.doc.designation,\n                });\n            }, 'Create');\n        }\n    }\n});",
   "view": "Form"
  }
 ]

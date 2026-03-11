@@ -1,3 +1,4 @@
+from pydoc import doc
 import frappe
 from frappe.utils import get_url_to_form, now_datetime, add_days, get_datetime
 
@@ -80,7 +81,17 @@ def alert(doc, method):
     requestor = frappe.get_doc("Employee", doc.requestor)
     requestor_name = requestor.employee_name
     
-    pdf_content = frappe.get_print(doc.doctype, doc.name, "Standard", as_pdf=True)
+    
+    default_print_format = frappe.db.get_value(
+        "Property Setter",
+        {"doc_type": doc.doctype, "property": "default_print_format"},
+        "value"
+    ) or frappe.db.get_value(
+        "DocType", doc.doctype, "default_print_format"
+    ) or "Standard"
+
+    pdf_content = frappe.get_print(doc.doctype, doc.name, default_print_format, as_pdf=True)
+    
     
     workflow_config = {
         "Submitted to HR": {

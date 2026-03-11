@@ -195,6 +195,8 @@ on_update_map = {
     "Supplier Quote Submission":"corporate_services.api.supplier.finance_alert.alert",
     "Staff Requisition":"corporate_services.api.notification.staff_requisition.staff_requisition.alert",
     "Consultant Time Off Application":"corporate_services.api.notification.consultant_time_off.time_off_application.alert",
+    "Job Applicant": "corporate_services.api.job_applicant.v1.application_received",
+    "Monthly Reflection":"corporate_services.api.notification.monthly_reflection.monthly_reflection.alert",
     # "Supplier Quote Submission": [
     #     "corporate_services.api.supplier.finance_alert.alert",
     #     "corporate_services.api.supplier.vat_calc.calc"
@@ -385,4 +387,5 @@ fixtures = [
     "Performance Appraisal Rating scale",
     "Custom HTML Block",
     "KPI Template Instructions",
+    "Custom DocPerm",
 ]

@@ -37,6 +37,13 @@
  {
   "docstatus": 0,
   "doctype": "Workflow Action Master",
+  "modified": "2026-03-11 08:52:35.173755",
+  "name": "Needs Clarification",
+  "workflow_action_name": "Needs Clarification"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow Action Master",
   "modified": "2024-07-12 15:02:17.346668",
   "name": "Submit To supervisor",
   "workflow_action_name": "Submit To supervisor"
