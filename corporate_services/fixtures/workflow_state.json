@@ -156,6 +156,15 @@
   "docstatus": 0,
   "doctype": "Workflow State",
   "icon": "",
+  "modified": "2026-03-11 08:48:25.249001",
+  "name": "Needs Clarification",
+  "style": "Warning",
+  "workflow_state_name": "Needs Clarification"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": "",
   "modified": "2024-12-03 10:25:29.534157",
   "name": "Approved by CEO",
   "style": "Success",

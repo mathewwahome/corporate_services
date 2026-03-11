@@ -3,7 +3,6 @@
  "allow_import": 1,
  "allow_rename": 1,
  "autoname": "naming_series:",
- "beta": 1,
  "creation": "2026-02-02 12:52:56.454474",
  "doctype": "DocType",
  "engine": "InnoDB",
@@ -288,8 +287,14 @@
   }
  ],
  "grid_page_length": 50,
- "links": [],
- "modified": "2026-03-11 08:11:59.889014",
+ "links": [
+  {
+   "group": "Recruitment",
+   "link_doctype": "Job Opening",
+   "link_fieldname": "custom_staff_requisition"
+  }
+ ],
+ "modified": "2026-03-11 09:15:59.476027",
  "modified_by": "Administrator",
  "module": "ICL Corporate Services",
  "name": "Staff Requisition",
