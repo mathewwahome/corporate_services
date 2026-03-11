@@ -5,15 +5,7 @@ from frappe.utils import get_fullname, get_url_to_form
 def send_clarification_email(docname, message):
     """
     Sends a clarification request email to the requester of a Staff Requisition.
-    
-    Args:
-        docname (str): Name of the Staff Requisition document.
-        message (str): Clarification message to send.
-    
-    Returns:
-        str: Status message.
     """
-    # Fetch the Staff Requisition document
     doc = frappe.get_doc("Staff Requisition", docname)
 
     if not doc.requestor:
@@ -27,7 +19,6 @@ def send_clarification_email(docname, message):
 
     approver_name = get_fullname(frappe.session.user)
 
-    # Build the email message
     doc_url = get_url_to_form(doc.doctype, doc.name)
     email_message = f"""
     Hello {requestor.employee_name},<br><br>
