@@ -75,7 +75,11 @@ def alert(doc, method):
     employee = frappe.get_doc("Employee", doc.employee)
     employee_email = employee.company_email or employee.personal_email
 
-    print_format = "Standard"
+    print_format = frappe.db.get_value(
+        "Print Format",
+        {"doc_type": doc.doctype, "default_print_format": 1},
+        "name"
+    ) or "Standard"
     pdf_content = frappe.get_print(doc.doctype, doc.name, print_format, as_pdf=True)
 
     if doc.workflow_state == "Submitted to Supervisor":
