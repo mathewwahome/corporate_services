@@ -11,12 +11,17 @@
   "naming_series",
   "employee",
   "full_name",
+  "column_break_lvjb",
+  "relieving_date",
+  "supervisor",
   "notification_week_section",
   "formal_communication",
+  "supervisor_notification",
   "acknowledgement",
   "tab_week_1_2",
   "week_1_2",
   "transition_plan",
+  "handovertransition_plan_link",
   "handover_plan",
   "column_break_zytc",
   "submission_of_the_handover_plan",
@@ -298,13 +303,43 @@
   {
    "fieldname": "column_break_xmas",
    "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_lvjb",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "employee.relieving_date",
+   "fieldname": "relieving_date",
+   "fieldtype": "Date",
+   "label": "Relieving Date",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fetch_from": "employee.custom_reports_to_name",
+   "fieldname": "supervisor",
+   "fieldtype": "Data",
+   "label": "Supervisor"
+  },
+  {
+   "default": "0",
+   "fieldname": "supervisor_notification",
+   "fieldtype": "Check",
+   "label": "Supervisor Notification"
+  },
+  {
+   "fieldname": "handovertransition_plan_link",
+   "fieldtype": "Link",
+   "label": "Handover/Transition Plan Link",
+   "options": "Transition Plan"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2026-03-13 08:09:35.965991",
+ "modified": "2026-03-13 09:53:27.640476",
  "modified_by": "Administrator",
  "module": "ICL Corporate Services",
  "name": "OffBoarding Schedule",
