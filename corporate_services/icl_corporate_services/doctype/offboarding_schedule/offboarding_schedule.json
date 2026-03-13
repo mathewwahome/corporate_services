@@ -304,6 +304,7 @@
    "fieldtype": "Column Break"
   },
   {
+   "description": "This should be prefilled on the specific employee (exit).",
    "fetch_from": "employee.relieving_date",
    "fieldname": "relieving_date",
    "fieldtype": "Date",
@@ -315,7 +316,9 @@
    "fetch_from": "employee.custom_reports_to_name",
    "fieldname": "supervisor",
    "fieldtype": "Data",
-   "label": "Supervisor"
+   "label": "Supervisor",
+   "read_only": 1,
+   "reqd": 1
   },
   {
    "default": "0",
@@ -353,7 +356,7 @@
    "link_fieldname": "offboarding_schedule"
   }
  ],
- "modified": "2026-03-13 10:54:32.995670",
+ "modified": "2026-03-13 11:51:56.561465",
  "modified_by": "Administrator",
  "module": "ICL Corporate Services",
  "name": "OffBoarding Schedule",

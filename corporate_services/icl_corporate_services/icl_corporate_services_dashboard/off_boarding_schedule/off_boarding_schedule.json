@@ -6,7 +6,7 @@
  ],
  "charts": [
   {
-   "chart": "Department Wise Employee Count",
+   "chart": "OffBoarding Schedule",
    "width": "Half"
   }
  ],
@@ -17,7 +17,7 @@
  "idx": 0,
  "is_default": 1,
  "is_standard": 1,
- "modified": "2026-03-13 10:46:55.785273",
+ "modified": "2026-03-13 11:59:14.184002",
  "modified_by": "Administrator",
  "module": "ICL Corporate Services",
  "name": "OFF BOARDING SCHEDULE",
