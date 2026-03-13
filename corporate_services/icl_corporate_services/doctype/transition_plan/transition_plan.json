@@ -13,6 +13,7 @@
   "column_break_tmzn",
   "full_name",
   "designation",
+  "offboarding_schedule",
   "standard_duties_section",
   "daily_responsibilities",
   "weekly_responsibilities",
@@ -23,9 +24,14 @@
   "main_role",
   "table_lpeu",
   "general_duties_section",
-  "data_nina",
+  "table_rmnc",
+  "table_uhya",
+  "table_sgxn",
   "project_duties",
-  "data_eqiz"
+  "column_break_scti",
+  "description_of_project",
+  "table_hanm",
+  "next_steps"
  ],
  "fields": [
   {
@@ -88,12 +94,14 @@
   {
    "fieldname": "daily_responsibilities",
    "fieldtype": "Text Editor",
-   "label": "Daily responsibilities"
+   "label": "Daily responsibilities",
+   "reqd": 1
   },
   {
    "fieldname": "weekly_responsibilities",
    "fieldtype": "Text Editor",
-   "label": "Weekly responsibilities"
+   "label": "Weekly responsibilities",
+   "reqd": 1
   },
   {
    "fieldname": "column_break_wife",
@@ -102,12 +110,14 @@
   {
    "fieldname": "monthly_responsibilities",
    "fieldtype": "Text Editor",
-   "label": "Monthly responsibilities"
+   "label": "Monthly responsibilities",
+   "reqd": 1
   },
   {
    "fieldname": "annual_responsibilities",
    "fieldtype": "Text Editor",
-   "label": "Annual responsibilities"
+   "label": "Annual responsibilities",
+   "reqd": 1
   },
   {
    "fieldname": "duties_section",
@@ -132,29 +142,69 @@
    "label": "General duties"
   },
   {
-   "fieldname": "data_nina",
-   "fieldtype": "Data"
-  },
-  {
-   "description": "[Include important links including project folder & doc links]",
    "fieldname": "project_duties",
    "fieldtype": "Section Break",
    "label": "Project Duties to be completed before departure and incomplete duties for follow-up:"
   },
   {
-   "fieldname": "data_eqiz",
-   "fieldtype": "Data"
-  },
-  {
    "fieldname": "column_break_tmzn",
    "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "offboarding_schedule",
+   "fieldtype": "Link",
+   "hidden": 1,
+   "label": "Offboarding Schedule",
+   "options": "OffBoarding Schedule",
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "description": "Summary of what I was responsible for:",
+   "fieldname": "table_rmnc",
+   "fieldtype": "Table",
+   "label": "[General task/initiative] |  Status: [Ongoing/Stalled/Closing Out) | Priority: (Low/High/Medium)",
+   "options": "Transition Plan General Taks"
+  },
+  {
+   "fieldname": "table_uhya",
+   "fieldtype": "Table",
+   "label": "Key Deadlines/Milestones & Status (Highlight any key blockers)",
+   "options": "Transition Plan Key Deadlines"
+  },
+  {
+   "fieldname": "table_sgxn",
+   "fieldtype": "Table",
+   "label": "Tasks & associated timelines (for both self & the person to hand over to)",
+   "options": "Transition Plan associated timelines"
+  },
+  {
+   "fieldname": "table_hanm",
+   "fieldtype": "Table",
+   "options": "Transition Plan Project Duties Key Deadlines",
+   "search_index": 1
+  },
+  {
+   "fieldname": "next_steps",
+   "fieldtype": "Small Text",
+   "label": "Next steps & Recommendations:"
+  },
+  {
+   "fieldname": "column_break_scti",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "(include brief & contacts of client & stakeholders)",
+   "fieldname": "description_of_project",
+   "fieldtype": "Text Editor",
+   "label": "Description of project"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2026-03-12 08:28:57.722415",
+ "modified": "2026-03-13 10:38:22.260512",
  "modified_by": "Administrator",
  "module": "ICL Corporate Services",
  "name": "Transition Plan",

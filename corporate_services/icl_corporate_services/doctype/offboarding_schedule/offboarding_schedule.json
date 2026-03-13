@@ -20,8 +20,8 @@
   "acknowledgement",
   "tab_week_1_2",
   "week_1_2",
-  "transition_plan",
-  "handovertransition_plan_link",
+  "handover_transition_plan",
+  "transition_plans",
   "handover_plan",
   "column_break_zytc",
   "submission_of_the_handover_plan",
@@ -98,12 +98,6 @@
    "fieldname": "week_1_2",
    "fieldtype": "Section Break",
    "label": "Handover Process"
-  },
-  {
-   "default": "0",
-   "fieldname": "transition_plan",
-   "fieldtype": "Check",
-   "label": "Create a handover/transition plan"
   },
   {
    "default": "0",
@@ -329,7 +323,13 @@
    "label": "Supervisor Notification"
   },
   {
-   "fieldname": "handovertransition_plan_link",
+   "default": "0",
+   "fieldname": "handover_transition_plan",
+   "fieldtype": "Check",
+   "label": "Create a handover/transition plan"
+  },
+  {
+   "fieldname": "transition_plans",
    "fieldtype": "Link",
    "label": "Handover/Transition Plan Link",
    "options": "Transition Plan"
@@ -338,8 +338,15 @@
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
- "links": [],
- "modified": "2026-03-13 09:53:27.640476",
+ "links": [
+  {
+   "group": "offboarding_schedule",
+   "hidden": 1,
+   "link_doctype": "Transition Plan",
+   "link_fieldname": "offboarding_schedule"
+  }
+ ],
+ "modified": "2026-03-13 10:09:32.070022",
  "modified_by": "Administrator",
  "module": "ICL Corporate Services",
  "name": "OffBoarding Schedule",
