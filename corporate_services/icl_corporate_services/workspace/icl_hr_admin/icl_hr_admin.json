@@ -173,7 +173,7 @@
    "hidden": 0,
    "is_query_report": 0,
    "label": "Offboarding Process",
-   "link_count": 1,
+   "link_count": 3,
    "link_type": "DocType",
    "onboard": 0,
    "type": "Card Break"
@@ -187,9 +187,29 @@
    "link_type": "DocType",
    "onboard": 0,
    "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Exit Interview",
+   "link_count": 0,
+   "link_to": "Exit Interview",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Transition Plan",
+   "link_count": 0,
+   "link_to": "Transition Plan",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
   }
  ],
- "modified": "2026-03-12 07:57:42.156578",
+ "modified": "2026-03-13 10:43:03.798517",
  "modified_by": "Administrator",
  "module": "ICL Corporate Services",
  "name": "ICL HR Admin",

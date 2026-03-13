@@ -5,5 +5,5 @@
 from frappe.model.document import Document
 
 
-class TransactionPlanProjectDuties(Document):
+class TransitionPlanProjectDuties(Document):
 	pass

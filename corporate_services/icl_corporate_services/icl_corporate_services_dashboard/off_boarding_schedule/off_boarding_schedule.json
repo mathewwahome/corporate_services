@@ -1,0 +1,25 @@
+{
+ "cards": [
+  {
+   "card": "Employee Exits (This Year)"
+  }
+ ],
+ "charts": [
+  {
+   "chart": "Department Wise Employee Count",
+   "width": "Half"
+  }
+ ],
+ "creation": "2026-03-13 10:46:12.885432",
+ "dashboard_name": "OFF BOARDING SCHEDULE",
+ "docstatus": 0,
+ "doctype": "Dashboard",
+ "idx": 0,
+ "is_default": 1,
+ "is_standard": 1,
+ "modified": "2026-03-13 10:46:55.785273",
+ "modified_by": "Administrator",
+ "module": "ICL Corporate Services",
+ "name": "OFF BOARDING SCHEDULE",
+ "owner": "Administrator"
+}

@@ -30,6 +30,7 @@
   "exit_interview_with_supervisor",
   "exit_interview_link",
   "finalize_any_pending_handover",
+  "farewell_email",
   "section_break_qggo",
   "transfer_ownership_of_column",
   "calendar_invites",
@@ -333,6 +334,12 @@
    "fieldtype": "Link",
    "label": "Handover/Transition Plan Link",
    "options": "Transition Plan"
+  },
+  {
+   "default": "0",
+   "fieldname": "farewell_email",
+   "fieldtype": "Check",
+   "label": "Farewell Email"
   }
  ],
  "grid_page_length": 50,
@@ -346,7 +353,7 @@
    "link_fieldname": "offboarding_schedule"
   }
  ],
- "modified": "2026-03-13 10:09:32.070022",
+ "modified": "2026-03-13 10:54:32.995670",
  "modified_by": "Administrator",
  "module": "ICL Corporate Services",
  "name": "OffBoarding Schedule",
