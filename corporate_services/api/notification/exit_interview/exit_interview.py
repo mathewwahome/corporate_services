@@ -2,6 +2,21 @@ import frappe
 from frappe.utils import get_url_to_form
 
 
+def get_default_print_format(doctype):
+    return (
+        frappe.db.get_value(
+            "Property Setter",
+            {"doc_type": doctype, "property": "default_print_format"},
+            "value",
+        )
+        or frappe.db.get_value(
+            "Print Format",
+            {"doc_type": doctype},
+            "name",
+        )
+        or "Standard"
+    )
+
 def send_email(recipients, subject, message, pdf_content, doc_name):
     frappe.sendmail(
         recipients=recipients,
@@ -18,6 +33,7 @@ def send_email(recipients, subject, message, pdf_content, doc_name):
 def generate_message(doc, employee_name, email_type):
     doctype_url = get_url_to_form(doc.doctype, doc.name)
     messages = {
+        # Employee submits → Supervisor receives
         "supervisor": """
             Dear {},<br><br>
             {} has submitted an {} for your review and approval.
@@ -26,6 +42,7 @@ def generate_message(doc, employee_name, email_type):
             {}
         """.format(doc.custom_supervisor_name or "Supervisor", employee_name, doc.doctype, doctype_url, employee_name),
 
+        # Supervisor approves → HR receives
         "hr": """
             Dear HR Manager,<br><br>
             You have a new {} for <b>{}</b>, approved by the Supervisor and submitted for your
@@ -34,6 +51,7 @@ def generate_message(doc, employee_name, email_type):
             {}
         """.format(doc.doctype, employee_name, doctype_url, employee_name),
 
+        # Supervisor rejects → Employee receives
         "employee_rejected_supervisor": """
             Dear {},<br><br>
             Your {} has been reviewed and unfortunately rejected by your Supervisor.
@@ -42,6 +60,7 @@ def generate_message(doc, employee_name, email_type):
             Supervisor
         """.format(employee_name, doc.doctype, doctype_url),
 
+        # HR rejects → Employee receives
         "employee_rejected_hr": """
             Dear {},<br><br>
             Your {} has been reviewed and unfortunately rejected by the HR Department.
@@ -50,6 +69,7 @@ def generate_message(doc, employee_name, email_type):
             HR Department
         """.format(employee_name, doc.doctype, doctype_url),
 
+        # HR approves → Employee receives
         "employee_approved_hr": """
             Dear {},<br><br>
             Your {} has been reviewed and approved by the HR Department.
@@ -75,11 +95,7 @@ def alert(doc, method):
     employee = frappe.get_doc("Employee", doc.employee)
     employee_email = employee.company_email or employee.personal_email
 
-    print_format = frappe.db.get_value(
-        "Print Format",
-        {"doc_type": doc.doctype, "default_print_format": 1},
-        "name"
-    ) or "Standard"
+    print_format = get_default_print_format(doc.doctype)
     pdf_content = frappe.get_print(doc.doctype, doc.name, print_format, as_pdf=True)
 
     if doc.workflow_state == "Submitted to Supervisor":
@@ -123,6 +139,23 @@ def alert(doc, method):
             pdf_content=pdf_content,
             doc_name=doc.name,
         )
+
+        # Tick the exit interview checkbox and set the link on the employee's OffBoarding Schedule
+        offboarding = frappe.db.get_value(
+            "OffBoarding Schedule",
+            {"employee": doc.employee},
+            "name"
+        )
+        if offboarding:
+            frappe.db.set_value(
+                "OffBoarding Schedule",
+                offboarding,
+                {
+                    "exit_interview_with_supervisor": 1,
+                    "exit_interview_link": doc.name,
+                }
+            )
+            frappe.db.commit()
 
     elif doc.workflow_state == "Rejected By HR":
         message = generate_message(doc, employee.employee_name, "employee_rejected_hr")
