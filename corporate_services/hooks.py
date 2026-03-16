@@ -29,14 +29,14 @@ app_license = "mit"
 # ]
 # home_page = "welcome"
 
+# include js in page
 page_js = {
-    "timesheet-workflow": "public/js/timesheet_workflow.js",
-    "survey-manager": "public/js/survey_admin.js",
+    "timesheet-workflow": "public/js/timesheet_workflow.js"
 }
 
+# Custom Pages
 page = [
-    "corporate_services.icl_corporate_services.page.timesheet_workflow.timesheet_workflow",
-    "corporate_services.icl_corporate_services.page.survey_manager.survey_manager",
+    "corporate_services.icl_corporate_services.page.timesheet_workflow.timesheet_workflow"
 ]
 
 
@@ -66,7 +66,10 @@ web_include_js = [
 # include js in page
 # page_js = {"page" : "public/js/file.js"}
 
-doctype_js = {}
+doctype_js = {
+    # Desk React page for managing surveys
+    "survey-manager": "public/js/survey_admin.js",
+}
 # doctype_list_js = {"doctype" : "public/js/doctype_list.js"}
 # doctype_tree_js = {"doctype" : "public/js/doctype_tree.js"}
 # doctype_calendar_js = {"doctype" : "public/js/doctype_calendar.js"}
