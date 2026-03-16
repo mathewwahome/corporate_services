@@ -1,0 +1,59 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2026-03-13 10:15:38.379975",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "general_task_initiative",
+  "general_taskinitiative",
+  "status",
+  "priority"
+ ],
+ "fields": [
+  {
+   "fieldname": "general_taskinitiative",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "[General task/initiative]",
+   "reqd": 1
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Status",
+   "options": "\nOngoing\nStalled\nClosing Out",
+   "reqd": 1
+  },
+  {
+   "fieldname": "priority",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Priority",
+   "options": "\nLow\nHigh\nMedium",
+   "reqd": 1
+  },
+  {
+   "description": "Summary of what I was responsible for:",
+   "fieldname": "general_task_initiative",
+   "fieldtype": "Section Break",
+   "label": "[General task/initiative] |  Status: [Ongoing/Stalled/Closing Out) | Priority: (Low/High/Medium)"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2026-03-13 10:21:41.935432",
+ "modified_by": "Administrator",
+ "module": "ICL Corporate Services",
+ "name": "Transition Plan General Taks",
+ "owner": "Administrator",
+ "permissions": [],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

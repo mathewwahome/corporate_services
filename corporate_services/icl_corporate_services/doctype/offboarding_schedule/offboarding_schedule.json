@@ -11,18 +11,26 @@
   "naming_series",
   "employee",
   "full_name",
+  "column_break_lvjb",
+  "relieving_date",
+  "supervisor",
   "notification_week_section",
   "formal_communication",
+  "supervisor_notification",
   "acknowledgement",
   "tab_week_1_2",
   "week_1_2",
-  "transition_plan",
+  "handover_transition_plan",
+  "transition_plans",
   "handover_plan",
   "column_break_zytc",
   "submission_of_the_handover_plan",
   "signing_of_the_separation_agreement",
+  "column_break_xmas",
   "exit_interview_with_supervisor",
+  "exit_interview_link",
   "finalize_any_pending_handover",
+  "farewell_email",
   "section_break_qggo",
   "transfer_ownership_of_column",
   "calendar_invites",
@@ -91,12 +99,6 @@
    "fieldname": "week_1_2",
    "fieldtype": "Section Break",
    "label": "Handover Process"
-  },
-  {
-   "default": "0",
-   "fieldname": "transition_plan",
-   "fieldtype": "Check",
-   "label": "Create a handover/transition plan"
   },
   {
    "default": "0",
@@ -286,13 +288,75 @@
    "label": "Full Name",
    "read_only": 1,
    "reqd": 1
+  },
+  {
+   "fieldname": "exit_interview_link",
+   "fieldtype": "Link",
+   "label": "Exit interview link",
+   "options": "Exit Interview"
+  },
+  {
+   "fieldname": "column_break_xmas",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_lvjb",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "This should be prefilled on the specific employee (exit).",
+   "fetch_from": "employee.relieving_date",
+   "fieldname": "relieving_date",
+   "fieldtype": "Date",
+   "label": "Relieving Date",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fetch_from": "employee.custom_reports_to_name",
+   "fieldname": "supervisor",
+   "fieldtype": "Data",
+   "label": "Supervisor",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "supervisor_notification",
+   "fieldtype": "Check",
+   "label": "Supervisor Notification"
+  },
+  {
+   "default": "0",
+   "fieldname": "handover_transition_plan",
+   "fieldtype": "Check",
+   "label": "Create a handover/transition plan"
+  },
+  {
+   "fieldname": "transition_plans",
+   "fieldtype": "Link",
+   "label": "Handover/Transition Plan Link",
+   "options": "Transition Plan"
+  },
+  {
+   "default": "0",
+   "fieldname": "farewell_email",
+   "fieldtype": "Check",
+   "label": "Farewell Email"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
- "links": [],
- "modified": "2026-03-01 16:52:10.607985",
+ "links": [
+  {
+   "group": "offboarding_schedule",
+   "hidden": 1,
+   "link_doctype": "Transition Plan",
+   "link_fieldname": "offboarding_schedule"
+  }
+ ],
+ "modified": "2026-03-13 11:51:56.561465",
  "modified_by": "Administrator",
  "module": "ICL Corporate Services",
  "name": "OffBoarding Schedule",

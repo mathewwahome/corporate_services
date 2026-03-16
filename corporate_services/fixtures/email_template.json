@@ -102,10 +102,10 @@
  {
   "docstatus": 0,
   "doctype": "Email Template",
-  "modified": "2026-03-01 17:12:29.975553",
+  "modified": "2026-03-13 11:15:39.633981",
   "name": "Farewell Email Template",
   "response": "<div class=\"ql-editor read-mode\"><p><br></p></div>",
-  "response_html": "Dear Team,\n\nThis is to inform you that {{employee_name}} ({{job_title}}) will be leaving {{company_name}}, with their last working day being {{last_day_date}}.\n\nWe appreciate {{employee_name}}'s contribution and commitment during their time with us and wish them success in their next chapter.\n\nPlease join us in wishing {{employee_name}} all the very best.\n\nKind regards,\n{{signature_name}}\nHuman Resources\n{{company_name}}",
+  "response_html": "  <div style=\"font-family: 'Segoe UI', Arial, sans-serif; font-size: 11pt; color: #1a1a1a;\n                max-width: 600px; margin: 0 auto; line-height: 1.8;\">\n \n      <p>Dear Team,</p>\n \n      <p>\n        This is to inform you that <strong>{{employee_name}}</strong> ({{job_title}}) will be\n        leaving <strong>{{company_name}}</strong>, with their last working day being\n        <strong>{{last_day_date}}</strong>.\n      </p>\n \n      <p>\n        We appreciate <strong>{{employee_name}}</strong>'s contribution and commitment during\n        their time with us and wish them success in their next chapter.\n      </p>\n \n      <p>\n        Please join us in wishing <strong>{{employee_name}}</strong> all the very best.\n      </p>\n \n      <br/>\n      <p style=\"margin-bottom: 2px;\">Kind regards,</p>\n      <p style=\"margin: 0;\"><strong>{{signature_name}}</strong></p>\n      <p style=\"margin: 0; color: #555;\">Human Resources</p>\n    </div>",
   "subject": "Farewell to {{employee_name}}",
   "use_html": 1
  },

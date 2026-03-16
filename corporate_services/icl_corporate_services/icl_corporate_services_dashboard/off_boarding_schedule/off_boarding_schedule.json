@@ -1,0 +1,25 @@
+{
+ "cards": [
+  {
+   "card": "Employee Exits (This Year)"
+  }
+ ],
+ "charts": [
+  {
+   "chart": "OffBoarding Schedule",
+   "width": "Half"
+  }
+ ],
+ "creation": "2026-03-13 10:46:12.885432",
+ "dashboard_name": "OFF BOARDING SCHEDULE",
+ "docstatus": 0,
+ "doctype": "Dashboard",
+ "idx": 0,
+ "is_default": 1,
+ "is_standard": 1,
+ "modified": "2026-03-13 11:59:14.184002",
+ "modified_by": "Administrator",
+ "module": "ICL Corporate Services",
+ "name": "OFF BOARDING SCHEDULE",
+ "owner": "Administrator"
+}

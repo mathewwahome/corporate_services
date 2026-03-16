@@ -138,6 +138,15 @@
   "docstatus": 0,
   "doctype": "Workflow State",
   "icon": "",
+  "modified": "2024-08-18 05:19:04.575989",
+  "name": "Approved by Finance",
+  "style": "Success",
+  "workflow_state_name": "Approved by Finance"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": "",
   "modified": "2024-12-03 10:25:45.725844",
   "name": "Rejected by CEO",
   "style": "Danger",
@@ -156,15 +165,6 @@
   "docstatus": 0,
   "doctype": "Workflow State",
   "icon": "",
-  "modified": "2026-03-11 08:48:25.249001",
-  "name": "Needs Clarification",
-  "style": "Warning",
-  "workflow_state_name": "Needs Clarification"
- },
- {
-  "docstatus": 0,
-  "doctype": "Workflow State",
-  "icon": "",
   "modified": "2024-12-03 10:25:29.534157",
   "name": "Approved by CEO",
   "style": "Success",
@@ -174,28 +174,10 @@
   "docstatus": 0,
   "doctype": "Workflow State",
   "icon": "",
-  "modified": "2024-12-03 10:20:26.249204",
-  "name": "Submitted to CEO",
-  "style": "",
-  "workflow_state_name": "Submitted to CEO"
- },
- {
-  "docstatus": 0,
-  "doctype": "Workflow State",
-  "icon": "",
-  "modified": "2024-08-18 05:19:04.575989",
-  "name": "Approved by Finance",
-  "style": "Success",
-  "workflow_state_name": "Approved by Finance"
- },
- {
-  "docstatus": 0,
-  "doctype": "Workflow State",
-  "icon": "",
-  "modified": "2024-06-03 15:39:43.619304",
-  "name": "Submitted to Finance",
-  "style": "",
-  "workflow_state_name": "Submitted to Finance"
+  "modified": "2026-03-11 08:48:25.249001",
+  "name": "Needs Clarification",
+  "style": "Warning",
+  "workflow_state_name": "Needs Clarification"
  },
  {
   "docstatus": 0,
@@ -210,19 +192,10 @@
   "docstatus": 0,
   "doctype": "Workflow State",
   "icon": "",
-  "modified": "2024-07-20 16:03:57.998161",
-  "name": "Rejected By HR",
+  "modified": "2024-12-03 10:20:26.249204",
+  "name": "Submitted to CEO",
   "style": "",
-  "workflow_state_name": "Rejected By HR"
- },
- {
-  "docstatus": 0,
-  "doctype": "Workflow State",
-  "icon": "",
-  "modified": "2024-12-16 11:52:03.744944",
-  "name": "Approved by HR",
-  "style": "Success",
-  "workflow_state_name": "Approved by HR"
+  "workflow_state_name": "Submitted to CEO"
  },
  {
   "docstatus": 0,
@@ -237,6 +210,33 @@
   "docstatus": 0,
   "doctype": "Workflow State",
   "icon": "",
+  "modified": "2024-06-03 15:39:43.619304",
+  "name": "Submitted to Finance",
+  "style": "",
+  "workflow_state_name": "Submitted to Finance"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": "",
+  "modified": "2024-12-16 11:52:03.744944",
+  "name": "Approved by HR",
+  "style": "Success",
+  "workflow_state_name": "Approved by HR"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": "",
+  "modified": "2024-07-20 16:03:57.998161",
+  "name": "Rejected By HR",
+  "style": "",
+  "workflow_state_name": "Rejected By HR"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": "",
   "modified": "2024-06-03 15:39:43.484027",
   "name": "Draft",
   "style": "",
@@ -246,18 +246,18 @@
   "docstatus": 0,
   "doctype": "Workflow State",
   "icon": "",
-  "modified": "2024-06-03 15:39:43.608146",
-  "name": "Submitted to HR",
+  "modified": "2024-06-03 15:39:43.643271",
+  "name": "Submitted to Supervisor",
   "style": "",
-  "workflow_state_name": "Submitted to HR"
+  "workflow_state_name": "Submitted to Supervisor"
  },
  {
   "docstatus": 0,
   "doctype": "Workflow State",
   "icon": "",
-  "modified": "2024-06-03 15:39:43.643271",
-  "name": "Submitted to Supervisor",
+  "modified": "2024-06-03 15:39:43.608146",
+  "name": "Submitted to HR",
   "style": "",
-  "workflow_state_name": "Submitted to Supervisor"
+  "workflow_state_name": "Submitted to HR"
  }
 ]

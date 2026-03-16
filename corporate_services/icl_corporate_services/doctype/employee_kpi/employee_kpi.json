@@ -101,7 +101,6 @@
   {
    "fieldname": "naming_series",
    "fieldtype": "Select",
-   "in_list_view": 1,
    "label": "Series",
    "options": "E-KPI-.YYYY.-.MM.-",
    "read_only": 1,
@@ -111,7 +110,7 @@
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-03-01 16:21:05.474962",
+ "modified": "2026-03-12 08:00:49.190415",
  "modified_by": "Administrator",
  "module": "ICL Corporate Services",
  "name": "Employee KPI",

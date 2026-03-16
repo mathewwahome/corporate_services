@@ -592,11 +592,11 @@
  {
   "appraisal_template": null,
   "description": null,
-  "designation_name": "Software Engineer",
+  "designation_name": "Accountant",
   "docstatus": 0,
   "doctype": "Designation",
-  "modified": "2024-06-09 13:09:04.847203",
-  "name": "Software Engineer",
+  "modified": "2024-04-23 11:01:58.880286",
+  "name": "Accountant",
   "skills": []
  },
  {
@@ -612,11 +612,11 @@
  {
   "appraisal_template": null,
   "description": null,
-  "designation_name": "Accountant",
+  "designation_name": "Software Engineer",
   "docstatus": 0,
   "doctype": "Designation",
-  "modified": "2024-04-23 11:01:58.880286",
-  "name": "Accountant",
+  "modified": "2024-06-09 13:09:04.847203",
+  "name": "Software Engineer",
   "skills": []
  }
 ]

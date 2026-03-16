@@ -197,6 +197,7 @@ on_update_map = {
     "Consultant Time Off Application":"corporate_services.api.notification.consultant_time_off.time_off_application.alert",
     "Job Applicant": "corporate_services.api.job_applicant.v1.application_received",
     "Monthly Reflection":"corporate_services.api.notification.monthly_reflection.monthly_reflection.alert",
+    "Exit Interview":"corporate_services.api.notification.exit_interview.exit_interview.alert",
     # "Supplier Quote Submission": [
     #     "corporate_services.api.supplier.finance_alert.alert",
     #     "corporate_services.api.supplier.vat_calc.calc"
