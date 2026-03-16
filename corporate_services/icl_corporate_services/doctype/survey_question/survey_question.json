@@ -1,0 +1,68 @@
+{
+ "doctype": "DocType",
+ "name": "Survey Question",
+ "module": "ICL Corporate Services",
+ "custom": 1,
+ "is_submittable": 0,
+ "is_child_table": 1,
+ "track_changes": 0,
+ "engine": "InnoDB",
+ "field_order": [
+  "question_text",
+  "question_type",
+  "options",
+  "max_selections",
+  "follow_up_text",
+  "is_required",
+  "order"
+ ],
+ "fields": [
+  {
+   "fieldname": "question_text",
+   "fieldtype": "Small Text",
+   "label": "Question Text",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "question_type",
+   "fieldtype": "Select",
+   "label": "Question Type",
+   "options": "MULTI_SELECT\nRATING\nSINGLE_SELECT\nTEXT",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "options",
+   "fieldtype": "Small Text",
+   "label": "Options (one per line)",
+   "description": "Used for MULTI_SELECT and SINGLE_SELECT"
+  },
+  {
+   "fieldname": "max_selections",
+   "fieldtype": "Int",
+   "label": "Max Selections"
+  },
+  {
+   "fieldname": "follow_up_text",
+   "fieldtype": "Small Text",
+   "label": "Follow-up Question Text"
+  },
+  {
+   "fieldname": "is_required",
+   "fieldtype": "Check",
+   "label": "Is Required",
+   "default": "0"
+  },
+  {
+   "fieldname": "order",
+   "fieldtype": "Int",
+   "label": "Order",
+   "reqd": 1
+  }
+ ],
+ "permissions": [],
+ "sort_field": "idx",
+ "sort_order": "ASC"
+}
+
