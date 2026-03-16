@@ -11,7 +11,7 @@ def _require_admin() -> None:
 
 @frappe.whitelist()
 def get_surveys():
-    \"\"\"List all surveys for the admin UI (including unpublished).\"\"\"
+    """List all surveys for the admin UI (including unpublished)."""
     _require_admin()
     return frappe.get_all(
         "Survey",
@@ -30,10 +30,10 @@ def get_surveys():
 
 @frappe.whitelist(allow_guest=True)
 def get_survey_detail(survey: str):
-    \"\"\"Load full survey structure (sections + questions).
+    """Load full survey structure (sections + questions).
 
     For guests, only return data if the survey is published.
-    \"\"\"
+    """
     doc = frappe.get_doc("Survey", survey)
 
     if frappe.session.user == "Guest" and not doc.is_published:
@@ -53,7 +53,7 @@ def get_survey_detail(survey: str):
 
 @frappe.whitelist()
 def set_survey_published(survey: str, is_published: int | str):
-    \"\"\"Toggle publish / hide for a survey (admin only).\"\"\"
+    """Toggle publish / hide for a survey (admin only)."""
     _require_admin()
     value = 1 if str(is_published) in {"1", "true", "True"} else 0
     doc = frappe.get_doc("Survey", survey)
@@ -65,7 +65,7 @@ def set_survey_published(survey: str, is_published: int | str):
 
 @frappe.whitelist(allow_guest=True)
 def get_public_surveys():
-    \"\"\"List only published surveys (for public index or preview).\"\"\"
+    """List only published surveys (for public index or preview)."""
     return frappe.get_all(
         "Survey",
         filters={"is_published": 1},
@@ -76,10 +76,10 @@ def get_public_surveys():
 
 @frappe.whitelist(allow_guest=True)
 def submit_survey_response(survey: str, department: str | None = None, answers: list | None = None):
-    \"\"\"Create Survey Response + Survey Answer docs for a public submission.
+    """Create Survey Response + Survey Answer docs for a public submission.
 
     `answers` should be a list of objects: { question: str, value: str, follow_up: str | null }.
-    \"\"\"  # noqa: E501
+    """  # noqa: E501
     survey_doc = frappe.get_doc("Survey", survey)
     if not survey_doc.is_published:
         frappe.throw(_("Survey is not accepting responses"), frappe.PermissionError)
@@ -106,7 +106,7 @@ def submit_survey_response(survey: str, department: str | None = None, answers: 
 
 @frappe.whitelist()
 def get_survey_responses(survey: str):
-    \"\"\"List responses for a given survey (admin/HR only).\"\"\"
+    """List responses for a given survey (admin/HR only)."""
     _require_admin()
     return frappe.get_all(
         "Survey Response",
