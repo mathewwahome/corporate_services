@@ -1,0 +1,100 @@
+{
+ "doctype": "DocType",
+ "name": "Survey",
+ "module": "ICL Corporate Services",
+ "custom": 1,
+ "is_submittable": 0,
+ "is_child_table": 0,
+ "track_changes": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "title",
+  "description",
+  "year",
+  "is_published",
+  "departments",
+  "sections",
+  "total_submissions"
+ ],
+ "fields": [
+  {
+   "fieldname": "title",
+   "fieldtype": "Data",
+   "label": "Title",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Small Text",
+   "label": "Description"
+  },
+  {
+   "fieldname": "year",
+   "fieldtype": "Int",
+   "label": "Year",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "is_published",
+   "fieldtype": "Check",
+   "label": "Is Published",
+   "default": "0",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "departments",
+   "fieldtype": "MultiSelect",
+   "label": "Departments"
+  },
+  {
+   "fieldname": "sections",
+   "fieldtype": "Table",
+   "label": "Sections",
+   "options": "Survey Section",
+   "reqd": 1
+  },
+  {
+   "fieldname": "total_submissions",
+   "fieldtype": "Int",
+   "label": "Total Submissions",
+   "read_only": 1
+  }
+ ],
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "HR Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}
+

@@ -1,0 +1,40 @@
+{
+ "doctype": "DocType",
+ "name": "Survey Answer",
+ "module": "ICL Corporate Services",
+ "custom": 1,
+ "is_submittable": 0,
+ "is_child_table": 1,
+ "track_changes": 0,
+ "engine": "InnoDB",
+ "field_order": [
+  "question",
+  "value",
+  "follow_up"
+ ],
+ "fields": [
+  {
+   "fieldname": "question",
+   "fieldtype": "Link",
+   "label": "Question",
+   "options": "Survey Question",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "value",
+   "fieldtype": "Text",
+   "label": "Answer Value",
+   "reqd": 1
+  },
+  {
+   "fieldname": "follow_up",
+   "fieldtype": "Text",
+   "label": "Follow-up Answer"
+  }
+ ],
+ "permissions": [],
+ "sort_field": "idx",
+ "sort_order": "ASC"
+}
+

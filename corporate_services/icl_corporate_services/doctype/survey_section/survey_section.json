@@ -1,0 +1,41 @@
+{
+ "doctype": "DocType",
+ "name": "Survey Section",
+ "module": "ICL Corporate Services",
+ "custom": 1,
+ "is_submittable": 0,
+ "is_child_table": 1,
+ "track_changes": 0,
+ "engine": "InnoDB",
+ "field_order": [
+  "title",
+  "order",
+  "questions"
+ ],
+ "fields": [
+  {
+   "fieldname": "title",
+   "fieldtype": "Data",
+   "label": "Title",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "order",
+   "fieldtype": "Int",
+   "label": "Order",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "questions",
+   "fieldtype": "Table",
+   "label": "Questions",
+   "options": "Survey Question"
+  }
+ ],
+ "permissions": [],
+ "sort_field": "idx",
+ "sort_order": "ASC"
+}
+

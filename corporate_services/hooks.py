@@ -39,7 +39,10 @@ app_license = "mit"
 
 # include js, css files in header of web template
 # web_include_css = "/assets/corporate_services/css/corporate_services.css"
-# web_include_js = "/assets/corporate_services/js/corporate_services.js"
+web_include_js = [
+    # React public survey page bundle (built to public/js)
+    "/assets/corporate_services/js/survey_public.js",
+]
 
 # include custom scss in every website theme (without file extension ".scss")
 # website_theme_scss = "corporate_services/public/scss/website"
@@ -51,8 +54,10 @@ app_license = "mit"
 # include js in page
 # page_js = {"page" : "public/js/file.js"}
 
-# include js in doctype views
-# doctype_js = {"doctype" : "public/js/doctype.js"}
+doctype_js = {
+    # Desk React page for managing surveys
+    "survey-manager": "public/js/survey_admin.js",
+}
 # doctype_list_js = {"doctype" : "public/js/doctype_list.js"}
 # doctype_tree_js = {"doctype" : "public/js/doctype_tree.js"}
 # doctype_calendar_js = {"doctype" : "public/js/doctype_calendar.js"}
