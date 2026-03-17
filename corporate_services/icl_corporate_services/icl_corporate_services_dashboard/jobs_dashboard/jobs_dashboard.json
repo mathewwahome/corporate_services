@@ -60,16 +60,20 @@
   {
    "chart": "Job Candidates",
    "width": "Half"
+  },
+  {
+   "chart": "Requisitions by Status Report",
+   "width": "Half"
   }
  ],
  "creation": "2026-01-29 13:45:25.402220",
  "dashboard_name": "Jobs Dashboard",
  "docstatus": 0,
  "doctype": "Dashboard",
- "idx": 0,
+ "idx": 11,
  "is_default": 0,
  "is_standard": 1,
- "modified": "2026-03-12 07:42:23.821212",
+ "modified": "2026-03-17 20:44:01.003124",
  "modified_by": "Administrator",
  "module": "ICL Corporate Services",
  "name": "Jobs Dashboard",

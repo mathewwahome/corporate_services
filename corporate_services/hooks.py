@@ -195,13 +195,20 @@ on_update_map = {
     "Supplier Quote Submission":"corporate_services.api.supplier.finance_alert.alert",
     "Staff Requisition":"corporate_services.api.notification.staff_requisition.staff_requisition.alert",
     "Consultant Time Off Application":"corporate_services.api.notification.consultant_time_off.time_off_application.alert",
-    "Job Applicant": "corporate_services.api.job_applicant.v1.application_received",
+    # "Job Applicant": "corporate_services.api.job_applicant.v1.application_received",
     "Monthly Reflection":"corporate_services.api.notification.monthly_reflection.monthly_reflection.alert",
     "Exit Interview":"corporate_services.api.notification.exit_interview.exit_interview.alert",
     # "Supplier Quote Submission": [
     #     "corporate_services.api.supplier.finance_alert.alert",
     #     "corporate_services.api.supplier.vat_calc.calc"
     # ]
+}
+
+job_applicant_on_update_map = {
+    "Job Applicant": [
+        "corporate_services.api.job_applicant.v1.application_received",
+        "corporate_services.api.notification.job_applicant.rejection_after_interview.alert"
+    ]
 }
 
 timesheet_notifications ={
@@ -221,7 +228,8 @@ event_maps = {
             on_update_map["Timesheet Submission"],
             before_workflow_action_map["Timesheet Submission"],
             timesheet_notifications["Timesheet Submission"]
-        ]
+        ],
+        **job_applicant_on_update_map
     },
     # "onload": {
     #     "Project": "corporate_services.api.project.payment_entry.fetch_payments"
