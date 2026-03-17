@@ -13,11 +13,13 @@
   {
    "fieldname": "requirement",
    "fieldtype": "Small Text",
+   "in_list_view": 1,
    "label": "Requirement"
   },
   {
    "fieldname": "response",
    "fieldtype": "Data",
+   "in_list_view": 1,
    "label": "Response"
   }
  ],
@@ -25,14 +27,13 @@
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2025-11-14 03:06:20.793749",
+ "modified": "2026-03-17 16:20:09.172261",
  "modified_by": "Administrator",
  "module": "ICL Corporate Services",
  "name": "Job Candidate Minimum Requirements",
  "owner": "Administrator",
  "permissions": [],
  "row_format": "Dynamic",
- "rows_threshold_for_grid_search": 20,
  "sort_field": "modified",
  "sort_order": "DESC",
  "states": []

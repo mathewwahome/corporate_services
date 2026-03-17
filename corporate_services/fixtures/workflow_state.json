@@ -165,6 +165,42 @@
   "docstatus": 0,
   "doctype": "Workflow State",
   "icon": "",
+  "modified": "2026-03-02 11:13:29.292532",
+  "name": "Rejected By Supervisor",
+  "style": "Danger",
+  "workflow_state_name": "Rejected By Supervisor"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": "",
+  "modified": "2026-03-02 11:13:15.892659",
+  "name": "Approved by Supervisor",
+  "style": "Success",
+  "workflow_state_name": "Approved by Supervisor"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": "",
+  "modified": "2024-12-16 11:52:03.744944",
+  "name": "Approved by HR",
+  "style": "Success",
+  "workflow_state_name": "Approved by HR"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": "",
+  "modified": "2024-06-03 15:39:43.643271",
+  "name": "Submitted to Supervisor",
+  "style": "",
+  "workflow_state_name": "Submitted to Supervisor"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": "",
   "modified": "2024-12-03 10:25:29.534157",
   "name": "Approved by CEO",
   "style": "Success",
@@ -183,46 +219,10 @@
   "docstatus": 0,
   "doctype": "Workflow State",
   "icon": "",
-  "modified": "2026-03-02 11:13:29.292532",
-  "name": "Rejected By Supervisor",
-  "style": "Danger",
-  "workflow_state_name": "Rejected By Supervisor"
- },
- {
-  "docstatus": 0,
-  "doctype": "Workflow State",
-  "icon": "",
   "modified": "2024-12-03 10:20:26.249204",
   "name": "Submitted to CEO",
   "style": "",
   "workflow_state_name": "Submitted to CEO"
- },
- {
-  "docstatus": 0,
-  "doctype": "Workflow State",
-  "icon": "",
-  "modified": "2026-03-02 11:13:15.892659",
-  "name": "Approved by Supervisor",
-  "style": "Success",
-  "workflow_state_name": "Approved by Supervisor"
- },
- {
-  "docstatus": 0,
-  "doctype": "Workflow State",
-  "icon": "",
-  "modified": "2024-06-03 15:39:43.619304",
-  "name": "Submitted to Finance",
-  "style": "",
-  "workflow_state_name": "Submitted to Finance"
- },
- {
-  "docstatus": 0,
-  "doctype": "Workflow State",
-  "icon": "",
-  "modified": "2024-12-16 11:52:03.744944",
-  "name": "Approved by HR",
-  "style": "Success",
-  "workflow_state_name": "Approved by HR"
  },
  {
   "docstatus": 0,
@@ -246,10 +246,10 @@
   "docstatus": 0,
   "doctype": "Workflow State",
   "icon": "",
-  "modified": "2024-06-03 15:39:43.643271",
-  "name": "Submitted to Supervisor",
+  "modified": "2024-06-03 15:39:43.619304",
+  "name": "Submitted to Finance",
   "style": "",
-  "workflow_state_name": "Submitted to Supervisor"
+  "workflow_state_name": "Submitted to Finance"
  },
  {
   "docstatus": 0,

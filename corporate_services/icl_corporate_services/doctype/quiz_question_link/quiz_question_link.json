@@ -21,7 +21,8 @@
   {
    "fetch_from": "question.question",
    "fieldname": "question_text",
-   "fieldtype": "Data",
+   "fieldtype": "Small Text",
+   "in_list_view": 1,
    "label": "Question Text",
    "read_only": 1
   }
@@ -30,7 +31,7 @@
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2026-02-18 08:36:28.598063",
+ "modified": "2026-03-17 14:58:45.666038",
  "modified_by": "Administrator",
  "module": "ICL Corporate Services",
  "name": "Quiz Question Link",
