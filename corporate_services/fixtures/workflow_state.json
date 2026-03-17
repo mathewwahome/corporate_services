@@ -84,9 +84,9 @@
   "docstatus": 0,
   "doctype": "Workflow State",
   "icon": "",
-  "modified": "2024-12-03 11:51:22.017458",
+  "modified": "2026-03-17 20:04:38.434795",
   "name": "Rejected by Opportunity Owner",
-  "style": "",
+  "style": "Danger",
   "workflow_state_name": "Rejected by Opportunity Owner"
  },
  {
@@ -156,9 +156,9 @@
   "docstatus": 0,
   "doctype": "Workflow State",
   "icon": "",
-  "modified": "2024-07-21 16:46:57.207082",
+  "modified": "2026-03-17 20:04:24.614247",
   "name": "Rejected by Finance",
-  "style": "",
+  "style": "Danger",
   "workflow_state_name": "Rejected by Finance"
  },
  {
@@ -228,9 +228,9 @@
   "docstatus": 0,
   "doctype": "Workflow State",
   "icon": "",
-  "modified": "2024-07-20 16:03:57.998161",
+  "modified": "2026-03-17 20:04:50.947355",
   "name": "Rejected By HR",
-  "style": "",
+  "style": "Danger",
   "workflow_state_name": "Rejected By HR"
  },
  {
