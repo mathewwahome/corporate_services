@@ -232,6 +232,10 @@ event_maps = {
     # },
     "after_insert": {
         "Opportunity": "corporate_services.api.project.opportunity_handlers.create_folder_for_opportunity",
+        "Survey Response": "corporate_services.api.survey.on_survey_response_insert",
+    },
+    "on_trash": {
+        "Survey Response": "corporate_services.api.survey.on_survey_response_delete",
     },
     "before_save": {
         "Opportunity": "corporate_services.api.project.opportunity_handlers.save_bid_document_to_opportunity_folder"
