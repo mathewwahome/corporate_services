@@ -31,7 +31,9 @@ app_license = "mit"
 
 # include js in page
 page_js = {
-    "timesheet-workflow": "public/js/timesheet_workflow.js"
+    "timesheet-workflow": "public/js/timesheet_workflow.js",
+    # Desk React page for managing surveys (loaded on /app/survey-manager)
+    "survey-manager": "public/js/survey_admin.js",
 }
 
 # Custom Pages
@@ -66,10 +68,7 @@ web_include_js = [
 # include js in page
 # page_js = {"page" : "public/js/file.js"}
 
-doctype_js = {
-    # Desk React page for managing surveys
-    "survey-manager": "public/js/survey_admin.js",
-}
+doctype_js = {}
 # doctype_list_js = {"doctype" : "public/js/doctype_list.js"}
 # doctype_tree_js = {"doctype" : "public/js/doctype_tree.js"}
 # doctype_calendar_js = {"doctype" : "public/js/doctype_calendar.js"}

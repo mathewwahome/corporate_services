@@ -7,9 +7,9 @@
  "modified": "2026-03-16 00:00:00",
  "modified_by": "Administrator",
  "module": "ICL Corporate Services",
- "name": "survey-manager",
+ "name": "survey_manager",
  "owner": "Administrator",
- "page_name": "survey-manager",
+ "page_name": "survey_manager",
  "roles": [
   {
    "role": "System Manager"
