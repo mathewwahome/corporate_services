@@ -213,18 +213,19 @@ function SurveyManagerApp({ page }: { page: any }) {
     [surveys, selectedName],
   );
 
-  const loadList = () => {
+  const loadList = async () => {
     setListLoading(true);
     setListError(null);
-    frappe
-      .call<{ message: SurveyRow[] }>({ method: "corporate_services.api.survey.get_surveys" })
-      .then((r: any) => {
-        const data = (r?.message || []) as SurveyRow[];
-        setSurveys(data);
-        if (!selectedName && data.length) setSelectedName(data[0].name || null);
-      })
-      .catch((e: any) => setListError(e?.message || "Failed to load surveys."))
-      .finally(() => setListLoading(false));
+    try {
+      const r = await frappe.call({ method: "corporate_services.api.survey.get_surveys" });
+      const data = (r?.message || []) as SurveyRow[];
+      setSurveys(data);
+      if (!selectedName && data.length) setSelectedName(data[0].name || null);
+    } catch (e: any) {
+      setListError(e?.message || "Failed to load surveys.");
+    } finally {
+      setListLoading(false);
+    }
   };
 
   const loadDoc = async (name: string) => {
