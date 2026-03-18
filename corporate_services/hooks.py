@@ -29,14 +29,16 @@ app_license = "mit"
 # ]
 # home_page = "welcome"
 
+# include js in page
 page_js = {
     "timesheet-workflow": "public/js/timesheet_workflow.js",
+    # Desk React page for managing surveys (loaded on /app/survey-manager)
     "survey-manager": "public/js/survey_admin.js",
 }
 
+# Custom Pages
 page = [
-    "corporate_services.icl_corporate_services.page.timesheet_workflow.timesheet_workflow",
-    "corporate_services.icl_corporate_services.page.survey_manager.survey_manager",
+    "corporate_services.icl_corporate_services.page.timesheet_workflow.timesheet_workflow"
 ]
 
 
