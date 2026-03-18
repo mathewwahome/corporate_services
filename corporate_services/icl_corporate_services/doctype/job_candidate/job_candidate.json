@@ -1,11 +1,13 @@
 {
  "actions": [],
  "allow_rename": 1,
+ "autoname": "naming_series:",
  "creation": "2025-11-14 02:54:58.072616",
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
   "candidate_information_section",
+  "naming_series",
   "names",
   "email_address",
   "column_break_sdyg",
@@ -99,7 +101,7 @@
   },
   {
    "fieldname": "role_description",
-   "fieldtype": "Text",
+   "fieldtype": "Text Editor",
    "label": "Role Description"
   },
   {
@@ -112,15 +114,25 @@
    "fieldtype": "Select",
    "label": "Stage",
    "options": "\nAPPLICATION_RECEIVED\nHR_SCREENING\nSHORTLISTED\nINTERVIEW_SCHEDULED\nINTERVIEWED\nREFERENCE_CHECK\nFINALIST\nOFFER_PREP\nOFFER_SENT\nOFFER_ACCEPTED\nOFFER_DECLINED\nREJECTED_EARLY\nREJECTED_LATE\nWITHDRAWN"
+  },
+  {
+   "default": "JC-.YYYY.-.MM.-",
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Series",
+   "options": "JC-.YYYY.-.MM.-",
+   "read_only": 1,
+   "reqd": 1
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-02-12 06:37:23.554704",
+ "modified": "2026-03-17 16:23:27.343328",
  "modified_by": "Administrator",
  "module": "ICL Corporate Services",
  "name": "Job Candidate",
+ "naming_rule": "By \"Naming Series\" field",
  "owner": "Administrator",
  "permissions": [
   {

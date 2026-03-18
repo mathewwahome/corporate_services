@@ -379,6 +379,7 @@ fixtures = [
     "HR Settings",
     "Designation",
     "Client Script",
+    "Server Script",
     "Number Card",
     "Letter Head",
     "Workspace",
