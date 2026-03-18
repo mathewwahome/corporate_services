@@ -75,6 +75,21 @@ function SurveyPublicApp() {
 
   const handleSubmit = async () => {
     if (!survey) return;
+
+    // Validate required questions
+    const allQuestions = survey.sections.flatMap((s) => s.questions);
+    const unanswered = allQuestions.filter((q) => {
+      if (!q.is_required) return false;
+      const val = answers[q.name] || "";
+      return val.trim() === "";
+    });
+    if (unanswered.length > 0) {
+      setError(
+        `Please answer all required questions (*): ${unanswered.map((q) => q.question_text).join(", ")}`,
+      );
+      return;
+    }
+
     setSubmitting(true);
     setError(null);
     const payload = Object.entries(answers)
@@ -102,7 +117,7 @@ function SurveyPublicApp() {
   };
 
   if (loading) return <div style={{ padding: 16 }}>Loading survey…</div>;
-  if (error) return <div style={{ padding: 16 }}>{error}</div>;
+  if (error && !survey) return <div style={{ padding: 16 }}>{error}</div>;
   if (!survey) return <div style={{ padding: 16 }}>Survey not available.</div>;
 
   if (submitted) {
@@ -302,4 +317,3 @@ function mount() {
 }
 
 document.addEventListener("DOMContentLoaded", mount);
-

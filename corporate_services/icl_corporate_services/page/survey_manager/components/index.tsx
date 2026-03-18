@@ -57,6 +57,21 @@ type SurveyRow = Pick<
   "name" | "title" | "year" | "is_published" | "departments" | "total_submissions" | "modified"
 >;
 
+type AnalyticsQuestion = {
+  name: string;
+  section: string;
+  question_text: string;
+  question_type: QuestionType;
+  response_count: number;
+  aggregation: Record<string, number>;
+  text_responses: string[];
+};
+
+type Analytics = {
+  total_responses: number;
+  questions: AnalyticsQuestion[];
+};
+
 declare global {
   interface Window {
     frappe: any;
@@ -126,6 +141,56 @@ function validateSurvey(doc: SurveyDoc): string[] {
   return errs;
 }
 
+// ---------------------------------------------------------------------------
+// Analytics panel
+// ---------------------------------------------------------------------------
+
+function AnalyticsPanel({ analytics }: { analytics: Analytics }) {
+  return (
+    <div>
+      <p style={{ marginBottom: 16 }}>
+        <strong>Total responses:</strong> {analytics.total_responses}
+      </p>
+      {analytics.questions.map((q) => (
+        <div key={q.name} style={{ marginBottom: 20, borderLeft: "3px solid var(--border-color)", paddingLeft: 12 }}>
+          <div style={{ fontWeight: 600 }}>{q.question_text}</div>
+          <div style={{ fontSize: 12, color: "var(--text-muted)", marginBottom: 6 }}>
+            {q.section} · {q.question_type} · {q.response_count} response{q.response_count !== 1 ? "s" : ""}
+          </div>
+
+          {(q.question_type === "SINGLE_SELECT" || q.question_type === "MULTI_SELECT" || q.question_type === "RATING") &&
+            Object.keys(q.aggregation).length > 0 && (
+              <table className="table table-bordered table-condensed" style={{ fontSize: 13, maxWidth: 400 }}>
+                <tbody>
+                  {Object.entries(q.aggregation)
+                    .sort((a, b) => b[1] - a[1])
+                    .map(([option, count]) => (
+                      <tr key={option}>
+                        <td>{option}</td>
+                        <td style={{ textAlign: "right", width: 60 }}>{count}</td>
+                      </tr>
+                    ))}
+                </tbody>
+              </table>
+            )}
+
+          {q.question_type === "TEXT" && q.text_responses.length > 0 && (
+            <ul style={{ fontSize: 13, paddingLeft: 18, maxHeight: 120, overflowY: "auto" }}>
+              {q.text_responses.map((r, i) => (
+                <li key={i}>{r}</li>
+              ))}
+            </ul>
+          )}
+        </div>
+      ))}
+    </div>
+  );
+}
+
+// ---------------------------------------------------------------------------
+// Main app
+// ---------------------------------------------------------------------------
+
 function SurveyManagerApp({ page }: { page: any }) {
   const frappe = (globalThis as any).frappe;
   const [listLoading, setListLoading] = useState(true);
@@ -137,6 +202,11 @@ function SurveyManagerApp({ page }: { page: any }) {
   const [docError, setDocError] = useState<string | null>(null);
   const [doc, setDoc] = useState<SurveyDoc | null>(null);
   const [dirty, setDirty] = useState(false);
+
+  const [analytics, setAnalytics] = useState<Analytics | null>(null);
+  const [analyticsLoading, setAnalyticsLoading] = useState(false);
+  const [showAnalytics, setShowAnalytics] = useState(false);
+  const [linkCopied, setLinkCopied] = useState(false);
 
   const selectedRow = useMemo(
     () => surveys.find((s) => s.name === selectedName) || null,
@@ -161,6 +231,8 @@ function SurveyManagerApp({ page }: { page: any }) {
     setDocLoading(true);
     setDocError(null);
     setDirty(false);
+    setShowAnalytics(false);
+    setAnalytics(null);
     try {
       const r = await frappe.call({
         method: "frappe.client.get",
@@ -191,8 +263,7 @@ function SurveyManagerApp({ page }: { page: any }) {
   const updateDoc = (updater: (d: SurveyDoc) => SurveyDoc) => {
     setDoc((prev) => {
       if (!prev) return prev;
-      const next = updater(prev);
-      return next;
+      return updater(prev);
     });
     setDirty(true);
   };
@@ -298,10 +369,13 @@ function SurveyManagerApp({ page }: { page: any }) {
   const togglePublish = async () => {
     const row = selectedRow;
     if (!row?.name) return;
+    const newPublished: 0 | 1 = row.is_published ? 0 : 1;
     await frappe.call({
       method: "corporate_services.api.survey.set_survey_published",
-      args: { survey: row.name, is_published: row.is_published ? 0 : 1 },
+      args: { survey: row.name, is_published: newPublished },
     });
+    // Keep local doc in sync so a subsequent Save doesn't overwrite the toggle
+    setDoc((prev) => (prev ? { ...prev, is_published: newPublished } : prev));
     loadList();
   };
 
@@ -311,14 +385,43 @@ function SurveyManagerApp({ page }: { page: any }) {
     frappe.set_route("List", "Survey Response", { survey: row.name });
   };
 
+  const loadAnalytics = async () => {
+    const row = selectedRow;
+    if (!row?.name) return;
+    setAnalyticsLoading(true);
+    setShowAnalytics(true);
+    try {
+      const r = await frappe.call({
+        method: "corporate_services.api.survey.get_survey_analytics",
+        args: { survey: row.name },
+      });
+      setAnalytics(r?.message || null);
+    } catch (e: any) {
+      frappe.show_alert({ message: e?.message || "Failed to load analytics.", indicator: "red" });
+      setShowAnalytics(false);
+    } finally {
+      setAnalyticsLoading(false);
+    }
+  };
+
   const publicUrl = () => {
     if (!selectedRow?.name) return "";
     const base = globalThis.location?.origin || "";
     return `${base}/survey-public?survey=${encodeURIComponent(selectedRow.name)}`;
   };
 
+  const copyPublicLink = () => {
+    const url = publicUrl();
+    if (!url) return;
+    navigator.clipboard.writeText(url).then(() => {
+      setLinkCopied(true);
+      setTimeout(() => setLinkCopied(false), 2000);
+    });
+  };
+
   return (
     <div style={{ padding: 16, display: "flex", gap: 16 }}>
+      {/* ---- Left: Survey list ---- */}
       <div style={{ width: 380 }}>
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
           <h3 style={{ margin: 0 }}>Surveys</h3>
@@ -370,10 +473,12 @@ function SurveyManagerApp({ page }: { page: any }) {
         )}
       </div>
 
+      {/* ---- Right: Detail / Analytics ---- */}
       <div style={{ flex: 1, minWidth: 600 }}>
+        {/* Toolbar */}
         <div style={{ display: "flex", justifyContent: "space-between", gap: 12, alignItems: "center" }}>
           <div>
-            <h3 style={{ margin: 0 }}>Workflow</h3>
+            <h3 style={{ margin: 0 }}>{showAnalytics ? "Analytics" : "Workflow"}</h3>
             {selectedRow?.name && (
               <div style={{ marginTop: 4, opacity: 0.75 }}>
                 <small>
@@ -383,7 +488,7 @@ function SurveyManagerApp({ page }: { page: any }) {
               </div>
             )}
           </div>
-          <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
+          <div style={{ display: "flex", gap: 8, alignItems: "center", flexWrap: "wrap" }}>
             <button className="btn btn-sm btn-default" onClick={loadList} type="button">
               Refresh
             </button>
@@ -403,258 +508,307 @@ function SurveyManagerApp({ page }: { page: any }) {
             >
               Responses
             </button>
-            <button className="btn btn-sm btn-primary" onClick={save} type="button" disabled={!dirty || docLoading}>
-              Save
+            <button
+              className="btn btn-sm btn-secondary"
+              onClick={showAnalytics ? () => setShowAnalytics(false) : loadAnalytics}
+              type="button"
+              disabled={!selectedRow?.name || analyticsLoading}
+            >
+              {analyticsLoading ? "Loading…" : showAnalytics ? "Edit" : "Analytics"}
             </button>
+            {!showAnalytics && (
+              <button
+                className="btn btn-sm btn-primary"
+                onClick={save}
+                type="button"
+                disabled={!dirty || docLoading}
+              >
+                Save
+              </button>
+            )}
           </div>
         </div>
 
         {docError && <div className="text-danger" style={{ marginTop: 8 }}>{docError}</div>}
 
-        <div style={{ marginTop: 12, display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }}>
-          <div>
-            <label className="control-label" htmlFor="survey_manager_title">
-              Title
-            </label>
-            <input
-              id="survey_manager_title"
-              className="form-control"
-              value={doc?.title || ""}
-              onChange={(e) => updateDoc((d) => ({ ...d, title: e.target.value }))}
-              disabled={!doc}
-            />
+        {/* Analytics view */}
+        {showAnalytics && (
+          <div style={{ marginTop: 16 }}>
+            {analyticsLoading ? (
+              <div>Loading analytics…</div>
+            ) : analytics ? (
+              <AnalyticsPanel analytics={analytics} />
+            ) : (
+              <div>No data.</div>
+            )}
           </div>
-          <div>
-            <label className="control-label" htmlFor="survey_manager_year">
-              Year
-            </label>
-            <input
-              id="survey_manager_year"
-              className="form-control"
-              type="number"
-              value={doc?.year ?? ""}
-              onChange={(e) => updateDoc((d) => ({ ...d, year: Number(e.target.value) }))}
-              disabled={!doc}
-            />
-          </div>
-          <div style={{ gridColumn: "1 / span 2" }}>
-            <label className="control-label" htmlFor="survey_manager_description">
-              Description
-            </label>
-            <textarea
-              id="survey_manager_description"
-              className="form-control"
-              value={doc?.description || ""}
-              onChange={(e) => updateDoc((d) => ({ ...d, description: e.target.value }))}
-              disabled={!doc}
-            />
-          </div>
-          <div style={{ gridColumn: "1 / span 2" }}>
-            <label className="control-label" htmlFor="survey_manager_departments">
-              Departments
-            </label>
-            <input
-              id="survey_manager_departments"
-              className="form-control"
-              value={doc?.departments || ""}
-              onChange={(e) => updateDoc((d) => ({ ...d, departments: e.target.value }))}
-              disabled={!doc}
-              placeholder="MultiSelect values (as stored by Frappe)"
-            />
-          </div>
-          <div style={{ gridColumn: "1 / span 2" }}>
-            <label className="control-label" htmlFor="survey_manager_public_link">
-              Public Link
-            </label>
-            <input id="survey_manager_public_link" className="form-control" readOnly value={publicUrl()} />
-          </div>
-        </div>
+        )}
 
-        <div style={{ marginTop: 16, display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-          <h4 style={{ margin: 0 }}>Sections & Questions</h4>
-          <button className="btn btn-sm btn-default" onClick={addSection} type="button" disabled={!doc}>
-            Add section
-          </button>
-        </div>
-
-        {!doc ? (
-          <div style={{ marginTop: 12 }}>Select a survey to edit.</div>
-        ) : (
-          <div style={{ marginTop: 12, display: "flex", flexDirection: "column", gap: 12 }}>
-            {doc.sections.map((s, si) => (
-              <div key={s.name || s.__temporary_name || `${si}`} className="panel panel-default">
-                <div className="panel-heading" style={{ display: "flex", justifyContent: "space-between", gap: 8 }}>
-                  <div style={{ display: "flex", gap: 8, flex: 1 }}>
-                    <input
-                      className="form-control"
-                      style={{ maxWidth: 420 }}
-                      value={s.title}
-                      onChange={(e) =>
-                        updateDoc((d) => ({
-                          ...d,
-                          sections: d.sections.map((x, i) => (i === si ? { ...x, title: e.target.value } : x)),
-                        }))
-                      }
-                    />
-                    <input
-                      className="form-control"
-                      style={{ width: 120 }}
-                      type="number"
-                      value={s.order}
-                      onChange={(e) =>
-                        updateDoc((d) => ({
-                          ...d,
-                          sections: d.sections.map((x, i) =>
-                            i === si ? { ...x, order: Number(e.target.value) } : x,
-                          ),
-                        }))
-                      }
-                    />
-                  </div>
-                  <div style={{ display: "flex", gap: 8 }}>
-                    <button className="btn btn-xs btn-default" type="button" onClick={() => addQuestion(si)}>
-                      Add question
-                    </button>
-                    <button className="btn btn-xs btn-danger" type="button" onClick={() => removeSection(si)}>
-                      Remove
-                    </button>
-                  </div>
-                </div>
-                <div className="panel-body" style={{ display: "flex", flexDirection: "column", gap: 10 }}>
-                  {s.questions.map((q, qi) => (
-                    <div
-                      key={q.name || q.__temporary_name || `${qi}`}
-                      style={{ display: "grid", gridTemplateColumns: "1fr 180px 120px 100px 80px", gap: 8 }}
-                    >
-                      <input
-                        className="form-control"
-                        value={q.question_text}
-                        onChange={(e) =>
-                          updateDoc((d) => ({
-                            ...d,
-                            sections: d.sections.map((sec, i) => {
-                              if (i !== si) return sec;
-                              return {
-                                ...sec,
-                                questions: sec.questions.map((qq, j) =>
-                                  j === qi ? { ...qq, question_text: e.target.value } : qq,
-                                ),
-                              };
-                            }),
-                          }))
-                        }
-                      />
-                      <select
-                        className="form-control"
-                        value={q.question_type}
-                        onChange={(e) =>
-                          updateDoc((d) => ({
-                            ...d,
-                            sections: d.sections.map((sec, i) => {
-                              if (i !== si) return sec;
-                              return {
-                                ...sec,
-                                questions: sec.questions.map((qq, j) =>
-                                  j === qi ? { ...qq, question_type: e.target.value as QuestionType } : qq,
-                                ),
-                              };
-                            }),
-                          }))
-                        }
-                      >
-                        <option value="TEXT">TEXT</option>
-                        <option value="SINGLE_SELECT">SINGLE_SELECT</option>
-                        <option value="MULTI_SELECT">MULTI_SELECT</option>
-                        <option value="RATING">RATING</option>
-                      </select>
-                      <input
-                        className="form-control"
-                        type="number"
-                        value={q.order}
-                        onChange={(e) =>
-                          updateDoc((d) => ({
-                            ...d,
-                            sections: d.sections.map((sec, i) => {
-                              if (i !== si) return sec;
-                              return {
-                                ...sec,
-                                questions: sec.questions.map((qq, j) => (j === qi ? { ...qq, order: Number(e.target.value) } : qq)),
-                              };
-                            }),
-                          }))
-                        }
-                      />
-                      <label style={{ display: "flex", gap: 6, alignItems: "center", margin: 0 }}>
-                        <input
-                          type="checkbox"
-                          checked={!!q.is_required}
-                          onChange={(e) =>
-                            updateDoc((d) => ({
-                              ...d,
-                              sections: d.sections.map((sec, i) => {
-                                if (i !== si) return sec;
-                                return {
-                                  ...sec,
-                                  questions: sec.questions.map((qq, j) =>
-                                    j === qi ? { ...qq, is_required: e.target.checked ? 1 : 0 } : qq,
-                                  ),
-                                };
-                              }),
-                            }))
-                          }
-                        />
-                        Required
-                      </label>
-                      <button className="btn btn-xs btn-danger" type="button" onClick={() => removeQuestion(si, qi)}>
-                        Remove
-                      </button>
-
-                      {(q.question_type === "SINGLE_SELECT" || q.question_type === "MULTI_SELECT") && (
-                        <textarea
-                          className="form-control"
-                          style={{ gridColumn: "1 / span 5" }}
-                          placeholder="Options (one per line)"
-                          value={q.options || ""}
-                          onChange={(e) =>
-                            updateDoc((d) => ({
-                              ...d,
-                              sections: d.sections.map((sec, i) => {
-                                if (i !== si) return sec;
-                                return {
-                                  ...sec,
-                                  questions: sec.questions.map((qq, j) => (j === qi ? { ...qq, options: e.target.value } : qq)),
-                                };
-                              }),
-                            }))
-                          }
-                        />
-                      )}
-                      <input
-                        className="form-control"
-                        style={{ gridColumn: "1 / span 5" }}
-                        placeholder="Follow-up question text (optional)"
-                        value={q.follow_up_text || ""}
-                        onChange={(e) =>
-                          updateDoc((d) => ({
-                            ...d,
-                            sections: d.sections.map((sec, i) => {
-                              if (i !== si) return sec;
-                              return {
-                                ...sec,
-                                questions: sec.questions.map((qq, j) =>
-                                  j === qi ? { ...qq, follow_up_text: e.target.value } : qq,
-                                ),
-                              };
-                            }),
-                          }))
-                        }
-                      />
-                    </div>
-                  ))}
+        {/* Edit view */}
+        {!showAnalytics && (
+          <>
+            <div style={{ marginTop: 12, display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }}>
+              <div>
+                <label className="control-label" htmlFor="survey_manager_title">
+                  Title
+                </label>
+                <input
+                  id="survey_manager_title"
+                  className="form-control"
+                  value={doc?.title || ""}
+                  onChange={(e) => updateDoc((d) => ({ ...d, title: e.target.value }))}
+                  disabled={!doc}
+                />
+              </div>
+              <div>
+                <label className="control-label" htmlFor="survey_manager_year">
+                  Year
+                </label>
+                <input
+                  id="survey_manager_year"
+                  className="form-control"
+                  type="number"
+                  value={doc?.year ?? ""}
+                  onChange={(e) => updateDoc((d) => ({ ...d, year: Number(e.target.value) }))}
+                  disabled={!doc}
+                />
+              </div>
+              <div style={{ gridColumn: "1 / span 2" }}>
+                <label className="control-label" htmlFor="survey_manager_description">
+                  Description
+                </label>
+                <textarea
+                  id="survey_manager_description"
+                  className="form-control"
+                  value={doc?.description || ""}
+                  onChange={(e) => updateDoc((d) => ({ ...d, description: e.target.value }))}
+                  disabled={!doc}
+                />
+              </div>
+              <div style={{ gridColumn: "1 / span 2" }}>
+                <label className="control-label" htmlFor="survey_manager_departments">
+                  Departments
+                </label>
+                <input
+                  id="survey_manager_departments"
+                  className="form-control"
+                  value={doc?.departments || ""}
+                  onChange={(e) => updateDoc((d) => ({ ...d, departments: e.target.value }))}
+                  disabled={!doc}
+                  placeholder="MultiSelect values (as stored by Frappe)"
+                />
+              </div>
+              <div style={{ gridColumn: "1 / span 2" }}>
+                <label className="control-label" htmlFor="survey_manager_public_link">
+                  Public Link
+                </label>
+                <div style={{ display: "flex", gap: 8 }}>
+                  <input
+                    id="survey_manager_public_link"
+                    className="form-control"
+                    readOnly
+                    value={publicUrl()}
+                  />
+                  <button
+                    type="button"
+                    className="btn btn-sm btn-default"
+                    onClick={copyPublicLink}
+                    disabled={!selectedRow?.name}
+                    style={{ whiteSpace: "nowrap" }}
+                  >
+                    {linkCopied ? "Copied!" : "Copy"}
+                  </button>
                 </div>
               </div>
-            ))}
-          </div>
+            </div>
+
+            <div style={{ marginTop: 16, display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+              <h4 style={{ margin: 0 }}>Sections & Questions</h4>
+              <button className="btn btn-sm btn-default" onClick={addSection} type="button" disabled={!doc}>
+                Add section
+              </button>
+            </div>
+
+            {!doc ? (
+              <div style={{ marginTop: 12 }}>Select a survey to edit.</div>
+            ) : (
+              <div style={{ marginTop: 12, display: "flex", flexDirection: "column", gap: 12 }}>
+                {doc.sections.map((s, si) => (
+                  <div key={s.name || s.__temporary_name || `${si}`} className="panel panel-default">
+                    <div className="panel-heading" style={{ display: "flex", justifyContent: "space-between", gap: 8 }}>
+                      <div style={{ display: "flex", gap: 8, flex: 1 }}>
+                        <input
+                          className="form-control"
+                          style={{ maxWidth: 420 }}
+                          value={s.title}
+                          onChange={(e) =>
+                            updateDoc((d) => ({
+                              ...d,
+                              sections: d.sections.map((x, i) => (i === si ? { ...x, title: e.target.value } : x)),
+                            }))
+                          }
+                        />
+                        <input
+                          className="form-control"
+                          style={{ width: 120 }}
+                          type="number"
+                          value={s.order}
+                          onChange={(e) =>
+                            updateDoc((d) => ({
+                              ...d,
+                              sections: d.sections.map((x, i) =>
+                                i === si ? { ...x, order: Number(e.target.value) } : x,
+                              ),
+                            }))
+                          }
+                        />
+                      </div>
+                      <div style={{ display: "flex", gap: 8 }}>
+                        <button className="btn btn-xs btn-default" type="button" onClick={() => addQuestion(si)}>
+                          Add question
+                        </button>
+                        <button className="btn btn-xs btn-danger" type="button" onClick={() => removeSection(si)}>
+                          Remove
+                        </button>
+                      </div>
+                    </div>
+                    <div className="panel-body" style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+                      {s.questions.map((q, qi) => (
+                        <div
+                          key={q.name || q.__temporary_name || `${qi}`}
+                          style={{ display: "grid", gridTemplateColumns: "1fr 180px 120px 100px 80px", gap: 8 }}
+                        >
+                          <input
+                            className="form-control"
+                            value={q.question_text}
+                            onChange={(e) =>
+                              updateDoc((d) => ({
+                                ...d,
+                                sections: d.sections.map((sec, i) => {
+                                  if (i !== si) return sec;
+                                  return {
+                                    ...sec,
+                                    questions: sec.questions.map((qq, j) =>
+                                      j === qi ? { ...qq, question_text: e.target.value } : qq,
+                                    ),
+                                  };
+                                }),
+                              }))
+                            }
+                          />
+                          <select
+                            className="form-control"
+                            value={q.question_type}
+                            onChange={(e) =>
+                              updateDoc((d) => ({
+                                ...d,
+                                sections: d.sections.map((sec, i) => {
+                                  if (i !== si) return sec;
+                                  return {
+                                    ...sec,
+                                    questions: sec.questions.map((qq, j) =>
+                                      j === qi ? { ...qq, question_type: e.target.value as QuestionType } : qq,
+                                    ),
+                                  };
+                                }),
+                              }))
+                            }
+                          >
+                            <option value="TEXT">TEXT</option>
+                            <option value="SINGLE_SELECT">SINGLE_SELECT</option>
+                            <option value="MULTI_SELECT">MULTI_SELECT</option>
+                            <option value="RATING">RATING</option>
+                          </select>
+                          <input
+                            className="form-control"
+                            type="number"
+                            value={q.order}
+                            onChange={(e) =>
+                              updateDoc((d) => ({
+                                ...d,
+                                sections: d.sections.map((sec, i) => {
+                                  if (i !== si) return sec;
+                                  return {
+                                    ...sec,
+                                    questions: sec.questions.map((qq, j) => (j === qi ? { ...qq, order: Number(e.target.value) } : qq)),
+                                  };
+                                }),
+                              }))
+                            }
+                          />
+                          <label style={{ display: "flex", gap: 6, alignItems: "center", margin: 0 }}>
+                            <input
+                              type="checkbox"
+                              checked={!!q.is_required}
+                              onChange={(e) =>
+                                updateDoc((d) => ({
+                                  ...d,
+                                  sections: d.sections.map((sec, i) => {
+                                    if (i !== si) return sec;
+                                    return {
+                                      ...sec,
+                                      questions: sec.questions.map((qq, j) =>
+                                        j === qi ? { ...qq, is_required: e.target.checked ? 1 : 0 } : qq,
+                                      ),
+                                    };
+                                  }),
+                                }))
+                              }
+                            />
+                            Required
+                          </label>
+                          <button className="btn btn-xs btn-danger" type="button" onClick={() => removeQuestion(si, qi)}>
+                            Remove
+                          </button>
+
+                          {(q.question_type === "SINGLE_SELECT" || q.question_type === "MULTI_SELECT") && (
+                            <textarea
+                              className="form-control"
+                              style={{ gridColumn: "1 / span 5" }}
+                              placeholder="Options (one per line)"
+                              value={q.options || ""}
+                              onChange={(e) =>
+                                updateDoc((d) => ({
+                                  ...d,
+                                  sections: d.sections.map((sec, i) => {
+                                    if (i !== si) return sec;
+                                    return {
+                                      ...sec,
+                                      questions: sec.questions.map((qq, j) => (j === qi ? { ...qq, options: e.target.value } : qq)),
+                                    };
+                                  }),
+                                }))
+                              }
+                            />
+                          )}
+                          <input
+                            className="form-control"
+                            style={{ gridColumn: "1 / span 5" }}
+                            placeholder="Follow-up question text (optional)"
+                            value={q.follow_up_text || ""}
+                            onChange={(e) =>
+                              updateDoc((d) => ({
+                                ...d,
+                                sections: d.sections.map((sec, i) => {
+                                  if (i !== si) return sec;
+                                  return {
+                                    ...sec,
+                                    questions: sec.questions.map((qq, j) =>
+                                      j === qi ? { ...qq, follow_up_text: e.target.value } : qq,
+                                    ),
+                                  };
+                                }),
+                              }))
+                            }
+                          />
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+          </>
         )}
       </div>
     </div>
@@ -670,4 +824,3 @@ function mount(page: any) {
 (globalThis as any).initSurveyManager = function initSurveyManager(page: any) {
   mount(page);
 };
-
