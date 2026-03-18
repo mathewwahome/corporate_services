@@ -4,7 +4,7 @@ import json
 import re
 
 # Constants
-DOCTYPE_JOB_CANDIDATE = 'Job Candidate'
+DOCTYPE_JOB_CANDIDATE = 'Job Applicant'
 
 
 @frappe.whitelist()
@@ -85,75 +85,82 @@ def create_job_candidate():
         
         # Return validation errors if any
         if validation_errors:
-            return {
-                'success': False,
-                'errors': validation_errors
-            }
-        
-        # Create the Job Candidate document
+            return {'success': False, 'errors': validation_errors}
+
+        # Create the Job Applicant document
         candidate_doc = frappe.get_doc({
             'doctype': DOCTYPE_JOB_CANDIDATE,
-            'names': names,
-            'email_address': email_address,
-            'phone': phone if phone else None,
-            'role': role if role else None,
-            'role_description': role_description if role_description else None
+            'applicant_name': names,
+            'email_id': email_address,
+            'phone_number': phone if phone else None,
+            'custom_role': role if role else None,
+            'custom_role_description': role_description if role_description else None,
         })
-        
+
         # Save CV file
+        cv_file_doc = None
         if cv_file:
             cv_file_doc = save_file(
                 file=cv_file,
                 doctype=DOCTYPE_JOB_CANDIDATE,
-                docname=None,  # Will be updated after insert
-                fieldname='cv'
+                docname=None,
+                fieldname='resume_attachment',
             )
-            candidate_doc.cv = cv_file_doc.file_url
-        
-        # Save cover letter file if provided
+            candidate_doc.resume_attachment = cv_file_doc.file_url  
+
+        # Save cover letter file
+        cover_letter_file_doc = None
         if cover_letter_file:
-            cover_letter_doc = save_file(
+            cover_letter_file_doc = save_file(
                 file=cover_letter_file,
                 doctype=DOCTYPE_JOB_CANDIDATE,
                 docname=None,
-                fieldname='cover_letter'
+                fieldname='custom_cover_letter_attachment',
             )
-            candidate_doc.cover_letter = cover_letter_doc.file_url
-        
+            candidate_doc.custom_cover_letter_attachment = cover_letter_file_doc.file_url  
+
         # Add minimum requirements child table entries
         for req in minimum_requirements:
             if isinstance(req, dict):
-                candidate_doc.append('minimum_requirements', req)
-        
+                candidate_doc.append('custom_minimum_requirements', req)
+
         # Add preferred attributes child table entries
         for attr in preferred_attributes:
             if isinstance(attr, dict):
-                candidate_doc.append('preferred_attributes', attr)
-        
+                candidate_doc.append('custom_preferred_attributes', attr)
+
         # Insert the document
         candidate_doc.insert(ignore_permissions=True)
-        
+
         # Update file attachments to link to the created document
-        if cv_file:
-            update_file_attachment(cv_file_doc.name, candidate_doc.name, DOCTYPE_JOB_CANDIDATE, 'cv')
-        if cover_letter_file:
-            update_file_attachment(cover_letter_doc.name, candidate_doc.name, DOCTYPE_JOB_CANDIDATE, 'cover_letter')
-        
-        # Commit the transaction
+        if cv_file_doc:
+            update_file_attachment(
+                cv_file_doc.name,
+                candidate_doc.name,
+                DOCTYPE_JOB_CANDIDATE,
+                'resume_attachment',
+            )
+        if cover_letter_file_doc:
+            update_file_attachment(
+                cover_letter_file_doc.name,
+                candidate_doc.name,
+                DOCTYPE_JOB_CANDIDATE,
+                'custom_cover_letter_attachment',
+            )
+
         frappe.db.commit()
-        
-        # Return success response
+
         return {
             'success': True,
             'data': {
                 'name': candidate_doc.name,
-                'names': candidate_doc.names,
-                'email_address': candidate_doc.email_address,
-                'phone': candidate_doc.phone,
-                'role': candidate_doc.role,
-                'role_description': candidate_doc.role_description,
-                'cv': candidate_doc.cv,
-                'cover_letter': candidate_doc.cover_letter
+                'applicant_name': candidate_doc.applicant_name,
+                'email_id': candidate_doc.email_id,
+                'phone_number': candidate_doc.phone_number or None,
+                'custom_role': candidate_doc.custom_role or None,
+                'custom_role_description': candidate_doc.custom_role_description or None,
+                'resume_attachment': candidate_doc.resume_attachment or None,
+                'custom_cover_letter_attachment': candidate_doc.custom_cover_letter_attachment or None,
             }
         }
         
@@ -199,7 +206,7 @@ def save_file(file, doctype, docname, fieldname):
         'doctype': 'File',
         'file_name': file.filename,
         'is_private': 1,
-        'content': file.read()
+        'content': file.read(),
     }
     
     # Only set attachment fields if docname is provided
@@ -227,6 +234,6 @@ def update_file_attachment(file_name, docname, doctype, fieldname):
     frappe.db.set_value('File', file_name, {
         'attached_to_doctype': doctype,
         'attached_to_name': docname,
-        'attached_to_field': fieldname
+        'attached_to_field': fieldname,
     })
 

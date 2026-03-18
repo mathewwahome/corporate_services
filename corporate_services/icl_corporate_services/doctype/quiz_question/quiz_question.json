@@ -1,7 +1,7 @@
 {
  "actions": [],
  "allow_rename": 1,
- "autoname": "format:{question}",
+ "autoname": "format:{id}",
  "creation": "2026-02-18 08:27:03.612138",
  "doctype": "DocType",
  "engine": "InnoDB",
@@ -67,8 +67,11 @@
   },
   {
    "fieldname": "category",
-   "fieldtype": "Data",
-   "label": "Category"
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Category",
+   "options": "Quiz Question Category"
   },
   {
    "fieldname": "questions_section",
@@ -92,7 +95,7 @@
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-03-09 07:25:07.435765",
+ "modified": "2026-03-17 12:50:20.687308",
  "modified_by": "Administrator",
  "module": "ICL Corporate Services",
  "name": "Quiz Question",

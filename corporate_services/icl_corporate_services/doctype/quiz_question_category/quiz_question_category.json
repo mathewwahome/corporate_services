@@ -1,51 +1,29 @@
 {
  "actions": [],
  "allow_rename": 1,
- "autoname": "format:{id}",
- "creation": "2026-02-18 08:37:17.522048",
+ "autoname": "format:{name1}",
+ "creation": "2026-03-17 12:48:06.019345",
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
-  "quiz_title",
-  "description",
-  "passing_score_",
-  "questions"
+  "name1"
  ],
  "fields": [
   {
-   "fieldname": "quiz_title",
+   "fieldname": "name1",
    "fieldtype": "Data",
    "in_list_view": 1,
-   "label": "Quiz Title",
-   "reqd": 1
-  },
-  {
-   "fieldname": "description",
-   "fieldtype": "Small Text",
-   "label": "Description"
-  },
-  {
-   "fieldname": "passing_score_",
-   "fieldtype": "Percent",
-   "in_list_view": 1,
-   "label": "Passing Score (%)",
-   "reqd": 1
-  },
-  {
-   "fieldname": "questions",
-   "fieldtype": "Table",
-   "label": "Questions",
-   "options": "Quiz Question Link",
+   "label": "Name",
    "reqd": 1
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-03-17 12:40:09.117420",
+ "modified": "2026-03-17 12:48:58.424577",
  "modified_by": "Administrator",
  "module": "ICL Corporate Services",
- "name": "Quiz",
+ "name": "Quiz Question Category",
  "naming_rule": "Expression",
  "owner": "Administrator",
  "permissions": [
