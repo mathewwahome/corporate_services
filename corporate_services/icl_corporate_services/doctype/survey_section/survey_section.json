@@ -2,7 +2,7 @@
  "doctype": "DocType",
  "name": "Survey Section",
  "module": "ICL Corporate Services",
- "custom": 1,
+ "custom": 0,
  "is_submittable": 0,
  "is_child_table": 1,
  "track_changes": 0,
