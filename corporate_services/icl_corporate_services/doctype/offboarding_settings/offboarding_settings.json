@@ -1,0 +1,62 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2026-03-13 14:58:59.612138",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "handover_plan_reminder_section",
+  "send_handover_plan_reminder",
+  "column_break_hfvg",
+  "handover_reminder_days"
+ ],
+ "fields": [
+  {
+   "fieldname": "handover_plan_reminder_section",
+   "fieldtype": "Section Break",
+   "label": "Handover Plan Reminder"
+  },
+  {
+   "default": "0",
+   "description": "Send reminder if handover plan not yet created",
+   "fieldname": "send_handover_plan_reminder",
+   "fieldtype": "Check",
+   "label": "Send Handover Plan Due Reminder"
+  },
+  {
+   "fieldname": "column_break_hfvg",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "How many days before relieving date to send reminder",
+   "fieldname": "handover_reminder_days",
+   "fieldtype": "Int",
+   "label": "Days Before Relieving Date"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "issingle": 1,
+ "links": [],
+ "modified": "2026-03-13 15:00:26.666213",
+ "modified_by": "Administrator",
+ "module": "ICL Corporate Services",
+ "name": "Offboarding Settings",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

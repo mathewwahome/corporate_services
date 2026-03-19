@@ -1,0 +1,81 @@
+{
+ "cards": [
+  {
+   "card": "Staff Requisition"
+  },
+  {
+   "card": "Job Offer Acceptance Rate"
+  },
+  {
+   "card": "Job Offers (This Month)"
+  },
+  {
+   "card": "Job Openings"
+  },
+  {
+   "card": "Accepted Job Applicants"
+  },
+  {
+   "card": "Ongoing Job Card"
+  },
+  {
+   "card": "Rejected Job Applicants"
+  },
+  {
+   "card": "Total Applicants (This month)"
+  },
+  {
+   "card": "Job Candidates"
+  }
+ ],
+ "charts": [
+  {
+   "chart": "Job Applicant Pipeline",
+   "width": "Half"
+  },
+  {
+   "chart": "Job Applicant Source",
+   "width": "Half"
+  },
+  {
+   "chart": "Job Applicants by Country",
+   "width": "Half"
+  },
+  {
+   "chart": "Job Application Frequency",
+   "width": "Half"
+  },
+  {
+   "chart": "Job Application Status",
+   "width": "Half"
+  },
+  {
+   "chart": "Job Card Analysis",
+   "width": "Half"
+  },
+  {
+   "chart": "Job Offer Status",
+   "width": "Half"
+  },
+  {
+   "chart": "Job Candidates",
+   "width": "Half"
+  },
+  {
+   "chart": "Requisitions by Status Report",
+   "width": "Half"
+  }
+ ],
+ "creation": "2026-01-29 13:45:25.402220",
+ "dashboard_name": "Jobs Dashboard",
+ "docstatus": 0,
+ "doctype": "Dashboard",
+ "idx": 11,
+ "is_default": 0,
+ "is_standard": 1,
+ "modified": "2026-03-17 20:44:01.003124",
+ "modified_by": "Administrator",
+ "module": "ICL Corporate Services",
+ "name": "Jobs Dashboard",
+ "owner": "Administrator"
+}

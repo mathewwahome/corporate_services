@@ -1,0 +1,65 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2026-03-13 10:18:39.838792",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "key_deadlines",
+  "tasks",
+  "sub_tasks",
+  "status",
+  "due_date"
+ ],
+ "fields": [
+  {
+   "fieldname": "key_deadlines",
+   "fieldtype": "Section Break",
+   "label": "Key Deadlines/Milestones & Status (Highlight any key blockers)"
+  },
+  {
+   "fieldname": "tasks",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Tasks",
+   "reqd": 1
+  },
+  {
+   "fieldname": "sub_tasks",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Sub Tasks",
+   "reqd": 1
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Status",
+   "options": "\nOngoing\nDone\nBlocked\nDropped",
+   "reqd": 1
+  },
+  {
+   "fieldname": "due_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Due Date",
+   "reqd": 1
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2026-03-13 10:20:25.965036",
+ "modified_by": "Administrator",
+ "module": "ICL Corporate Services",
+ "name": "Transition Plan Key Deadlines",
+ "owner": "Administrator",
+ "permissions": [],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

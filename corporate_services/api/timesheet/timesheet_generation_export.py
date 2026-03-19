@@ -59,8 +59,8 @@ def timesheet_generation_export(docname):
         ws = wb.active
         ws.title = "Timesheet"
 
-        week = ["", ""] + days
-        header = ["Projects", "Tasks"] + dates
+        week = ["", ""] + days + ["Total Hours"]
+        header = ["Projects", "Tasks"] + dates + ["Total Hours"]
         ws.append(week)
         ws.append(header)
         
@@ -119,6 +119,20 @@ def timesheet_generation_export(docname):
         
         max_row = ws.max_row
         
+        # Calculate the Total Hours
+        total_hours_col = len(header)
+        
+        # Add SUM formulas for Total Hours column for each task row (starting from row 3)
+        start_col = 3
+        end_col = len(dates) + 2
+        
+        for row_num in range(3, max_row + 1):
+            start_col_letter = ws.cell(row=row_num, column=start_col).column_letter
+            end_col_letter = ws.cell(row=row_num, column=end_col).column_letter
+            formula = f"=SUM({start_col_letter}{row_num}:{end_col_letter}{row_num})"
+            ws.cell(row=row_num, column=total_hours_col, value=formula)
+            ws.cell(row=row_num, column=total_hours_col).border = thin_border
+        
         # Apply blue fill to weekend columns
         for col_num, day in enumerate(days, start=3):
             if day in ('Saturday', 'Sunday'):
@@ -146,7 +160,7 @@ def timesheet_generation_export(docname):
         ws.cell(row=total_row, column=2).fill = blue_fill
         
         # Add SUM formulas for each day column
-        for col_num in range(3, len(header) + 1):
+        for col_num in range(3, len(dates) + 3):
             col_letter = ws.cell(row=1, column=col_num).column_letter
             # Formula to sum all numeric values in the column excluding headers and the total row itself
             formula = f"=SUM({col_letter}3:{col_letter}{max_row})"
@@ -154,25 +168,14 @@ def timesheet_generation_export(docname):
             ws.cell(row=total_row, column=col_num).fill = blue_fill
             ws.cell(row=total_row, column=col_num).border = thin_border
         
-        # Add total hours row at the bottom
-        total_hours_row = total_row + 1
-        ws.cell(row=total_hours_row, column=1, value="TOTAL HRS")
-        ws.cell(row=total_hours_row, column=1).fill = blue_fill
-        ws.cell(row=total_hours_row, column=2).fill = blue_fill
-        ws.cell(row=total_hours_row, column=2).border = thin_border
-        
-        # Calculate sum of all daily totals
+        # Add formula for Total Hours column in the TOTAL row
         start_col_letter = ws.cell(row=1, column=3).column_letter
-        end_col_letter = ws.cell(row=1, column=len(header)).column_letter
-        total_hours_formula = f"=SUM({start_col_letter}{total_row}:{end_col_letter}{total_row})"
-        ws.cell(row=total_hours_row, column=3, value=total_hours_formula)
-        ws.cell(row=total_hours_row, column=3).fill = blue_fill
-        ws.cell(row=total_hours_row, column=3).border = thin_border
+        end_col_letter = ws.cell(row=1, column=len(dates) + 2).column_letter
+        total_hours_total_formula = f"=SUM({start_col_letter}{total_row}:{end_col_letter}{total_row})"
+        ws.cell(row=total_row, column=total_hours_col, value=total_hours_total_formula)
+        ws.cell(row=total_row, column=total_hours_col).fill = blue_fill
+        ws.cell(row=total_row, column=total_hours_col).border = thin_border
         
-        # Apply borders to total hours row
-        for col_num in range(1, len(header) + 1):
-            ws.cell(row=total_hours_row, column=col_num).border = thin_border
-
         output = BytesIO()
         wb.save(output)
         output.seek(0)

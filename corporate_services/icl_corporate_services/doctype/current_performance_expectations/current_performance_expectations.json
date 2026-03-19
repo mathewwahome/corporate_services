@@ -1,0 +1,51 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2026-02-19 05:00:48.620101",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "performance_area",
+  "criteria",
+  "rating"
+ ],
+ "fields": [
+  {
+   "fieldname": "performance_area",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Performance Area",
+   "reqd": 1
+  },
+  {
+   "fieldname": "criteria",
+   "fieldtype": "Text",
+   "in_list_view": 1,
+   "label": "Criteria",
+   "reqd": 1
+  },
+  {
+   "fieldname": "rating",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Rating",
+   "options": "No Rating\nUnsatisfactory\nRequires Improvement\nSatisfactory\nMeets Expectations\nOutstanding",
+   "reqd": 1
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2026-02-19 06:05:21.954957",
+ "modified_by": "Administrator",
+ "module": "ICL Corporate Services",
+ "name": "Current Performance Expectations",
+ "owner": "Administrator",
+ "permissions": [],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

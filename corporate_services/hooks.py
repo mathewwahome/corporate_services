@@ -29,6 +29,20 @@ app_license = "mit"
 # ]
 # home_page = "welcome"
 
+# include js in page
+page_js = {
+    "timesheet-workflow": "public/js/timesheet_workflow.js",
+    # Desk React page for managing surveys (loaded on /app/survey-manager)
+    "survey-manager": "public/js/survey_admin.js",
+}
+
+# Custom Pages
+page = [
+    "corporate_services.icl_corporate_services.page.timesheet_workflow.timesheet_workflow"
+]
+
+
+
 # after_login = "your_app_name.auth.after_login"
 
 # # Boot session - add custom settings
@@ -39,7 +53,10 @@ app_license = "mit"
 
 # include js, css files in header of web template
 # web_include_css = "/assets/corporate_services/css/corporate_services.css"
-# web_include_js = "/assets/corporate_services/js/corporate_services.js"
+web_include_js = [
+    # React public survey page bundle (built to public/js)
+    "/assets/corporate_services/js/survey_public.js",
+]
 
 # include custom scss in every website theme (without file extension ".scss")
 # website_theme_scss = "corporate_services/public/scss/website"
@@ -51,8 +68,7 @@ app_license = "mit"
 # include js in page
 # page_js = {"page" : "public/js/file.js"}
 
-# include js in doctype views
-# doctype_js = {"doctype" : "public/js/doctype.js"}
+doctype_js = {}
 # doctype_list_js = {"doctype" : "public/js/doctype_list.js"}
 # doctype_tree_js = {"doctype" : "public/js/doctype_tree.js"}
 # doctype_calendar_js = {"doctype" : "public/js/doctype_calendar.js"}
@@ -181,11 +197,22 @@ on_update_map = {
     "Asset Movement": "corporate_services.api.notification.assets.asset_handover.alert",
     "Task":"corporate_services.api.notification.project.project_task.task_on_update",
     "Supplier Quote Submission":"corporate_services.api.supplier.finance_alert.alert",
-    
+    "Staff Requisition":"corporate_services.api.notification.staff_requisition.staff_requisition.alert",
+    "Consultant Time Off Application":"corporate_services.api.notification.consultant_time_off.time_off_application.alert",
+    # "Job Applicant": "corporate_services.api.job_applicant.v1.application_received",
+    "Monthly Reflection":"corporate_services.api.notification.monthly_reflection.monthly_reflection.alert",
+    "Exit Interview":"corporate_services.api.notification.exit_interview.exit_interview.alert",
     # "Supplier Quote Submission": [
     #     "corporate_services.api.supplier.finance_alert.alert",
     #     "corporate_services.api.supplier.vat_calc.calc"
     # ]
+}
+
+job_applicant_on_update_map = {
+    "Job Applicant": [
+        "corporate_services.api.job_applicant.v1.application_received",
+        "corporate_services.api.notification.job_applicant.rejection_after_interview.alert"
+    ]
 }
 
 timesheet_notifications ={
@@ -205,13 +232,18 @@ event_maps = {
             on_update_map["Timesheet Submission"],
             before_workflow_action_map["Timesheet Submission"],
             timesheet_notifications["Timesheet Submission"]
-        ]
+        ],
+        **job_applicant_on_update_map
     },
     # "onload": {
     #     "Project": "corporate_services.api.project.payment_entry.fetch_payments"
     # },
     "after_insert": {
         "Opportunity": "corporate_services.api.project.opportunity_handlers.create_folder_for_opportunity",
+        "Survey Response": "corporate_services.api.survey.on_survey_response_insert",
+    },
+    "on_trash": {
+        "Survey Response": "corporate_services.api.survey.on_survey_response_delete",
     },
     "before_save": {
         "Opportunity": "corporate_services.api.project.opportunity_handlers.save_bid_document_to_opportunity_folder"
@@ -243,7 +275,10 @@ scheduler_events = {
 	# ],
 	"daily": [
 		# "corporate_services.tasks.daily"
-        "corporate_services.api.notification.project.scheduled_tasks.send_deliverable_notifications"
+        "corporate_services.api.notification.project.scheduled_tasks.send_deliverable_notifications",
+        "corporate_services.api.notification.onboarding.onboarding_.send_30day_onboarding_surveys",
+        "corporate_services.api.quarterly_leave.quarterly_leave.send_quarterly_notifications",
+        # "corporate_services.api.notification.onboarding.onboarding_notifications.send_policy_comprehension_quiz"
 	],
 	# "hourly": [
 	# 	"corporate_services.tasks.hourly"
@@ -255,6 +290,11 @@ scheduler_events = {
 		"corporate_services.api.leave.update_annual_leave_allocations.process_leave_allocations"
 		# "corporate_services.api.leave.update_annual_leave_allocations.update_annual_leave_allocations"
 	],
+    "cron": {
+        "0 8,10,12,14,16,17 * * *": [
+            "corporate_services.api.notification.staff_requisition.staff_requisition.send_approval_overdue_reminders"
+        ]
+    }
 }
 
 # Testing
@@ -338,7 +378,6 @@ override_doctype_dashboards = {
 # }
 
 fixtures = [
-    # "Leave Type",
     "Workflow",
     "Workflow State",
     "Workflow Action Master",
@@ -347,8 +386,8 @@ fixtures = [
     "Navbar Settings",
     "HR Settings",
     "Designation",
-    # "Department",
     "Client Script",
+    "Server Script",
     "Number Card",
     "Letter Head",
     "Workspace",
@@ -361,5 +400,10 @@ fixtures = [
     # "Dashboard",
     "Website Settings",
     "Website Theme",
-    "Portal Settings"
+    "Portal Settings",
+    "Performance Score Bands",
+    "Performance Appraisal Rating scale",
+    "Custom HTML Block",
+    "KPI Template Instructions",
+    "Custom DocPerm",
 ]

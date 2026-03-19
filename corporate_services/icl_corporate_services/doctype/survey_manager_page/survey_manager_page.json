@@ -1,0 +1,10 @@
+{
+ "doctype": "Page",
+ "name": "survey-manager",
+ "module": "ICL Corporate Services",
+ "content": "<div id=\"survey-manager-root\"></div>",
+ "title": "Survey Manager",
+ "standard": 1,
+ "developer_mode_only": 0
+}
+

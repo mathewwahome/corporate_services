@@ -1,0 +1,65 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2026-03-13 10:27:51.105476",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "associated_timelines",
+  "tasks",
+  "sub_tasks",
+  "status",
+  "due_date"
+ ],
+ "fields": [
+  {
+   "fieldname": "tasks",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Tasks",
+   "reqd": 1
+  },
+  {
+   "fieldname": "sub_tasks",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Sub Tasks",
+   "reqd": 1
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Status",
+   "options": "\nOngoing\nDone\nBlocked\nDropped",
+   "reqd": 1
+  },
+  {
+   "fieldname": "due_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Due Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "associated_timelines",
+   "fieldtype": "Section Break",
+   "label": "Tasks & associated timelines (for both self & the person to hand over to)"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2026-03-13 10:28:13.984360",
+ "modified_by": "Administrator",
+ "module": "ICL Corporate Services",
+ "name": "Transition Plan associated timelines",
+ "owner": "Administrator",
+ "permissions": [],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

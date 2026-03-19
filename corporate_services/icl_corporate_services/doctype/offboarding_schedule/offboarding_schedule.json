@@ -1,0 +1,384 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "naming_series:",
+ "creation": "2026-03-01 16:33:33.830801",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "section_break_qaer",
+  "amended_from",
+  "naming_series",
+  "employee",
+  "full_name",
+  "column_break_lvjb",
+  "relieving_date",
+  "supervisor",
+  "notification_week_section",
+  "formal_communication",
+  "supervisor_notification",
+  "acknowledgement",
+  "tab_week_1_2",
+  "week_1_2",
+  "handover_transition_plan",
+  "transition_plans",
+  "handover_plan",
+  "column_break_zytc",
+  "submission_of_the_handover_plan",
+  "signing_of_the_separation_agreement",
+  "column_break_xmas",
+  "exit_interview_with_supervisor",
+  "exit_interview_link",
+  "finalize_any_pending_handover",
+  "farewell_email",
+  "section_break_qggo",
+  "transfer_ownership_of_column",
+  "calendar_invites",
+  "project_trackers",
+  "any_other_relevant_documents",
+  "handover_co_assets_column",
+  "office_phone",
+  "office_key",
+  "laptop",
+  "timesheet_process_section",
+  "submit_final_timesheet",
+  "submit_final_invoice",
+  "approval_of_timesheet_invoice",
+  "column_break_xgqw",
+  "after_the_final_day_tab",
+  "remove_from_section",
+  "chat_rooms",
+  "little_cab",
+  "column_break_pfle",
+  "bio_icl_website",
+  "bio_company_profile",
+  "column_break_haxi",
+  "archive_hires_folder",
+  "disablearchive_icl_official_email_account"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_break_qaer",
+   "fieldtype": "Section Break",
+   "label": "Info"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "OffBoarding Schedule",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Series",
+   "options": "OBS-.YYYY.-.MM.-"
+  },
+  {
+   "fieldname": "notification_week_section",
+   "fieldtype": "Section Break",
+   "label": "Notification Week"
+  },
+  {
+   "default": "0",
+   "fieldname": "formal_communication",
+   "fieldtype": "Check",
+   "label": "Formal communication on when the last day will be"
+  },
+  {
+   "default": "0",
+   "fieldname": "acknowledgement",
+   "fieldtype": "Check",
+   "label": "Acknowledgement"
+  },
+  {
+   "fieldname": "week_1_2",
+   "fieldtype": "Section Break",
+   "label": "Handover Process"
+  },
+  {
+   "default": "0",
+   "fieldname": "handover_plan",
+   "fieldtype": "Check",
+   "label": "Begin implementing the handover plan"
+  },
+  {
+   "fieldname": "transfer_ownership_of_column",
+   "fieldtype": "Column Break",
+   "label": "Transfer ownership of"
+  },
+  {
+   "default": "0",
+   "fieldname": "calendar_invites",
+   "fieldtype": "Check",
+   "label": "Calendar invites"
+  },
+  {
+   "default": "0",
+   "fieldname": "project_trackers",
+   "fieldtype": "Check",
+   "label": "Project Trackers"
+  },
+  {
+   "default": "0",
+   "fieldname": "any_other_relevant_documents",
+   "fieldtype": "Check",
+   "label": "Any other relevant documents"
+  },
+  {
+   "fieldname": "column_break_zytc",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "submission_of_the_handover_plan",
+   "fieldtype": "Check",
+   "label": "Submission of the Handover plan"
+  },
+  {
+   "default": "0",
+   "fieldname": "signing_of_the_separation_agreement",
+   "fieldtype": "Check",
+   "label": "Signing of the separation agreement."
+  },
+  {
+   "default": "0",
+   "fieldname": "exit_interview_with_supervisor",
+   "fieldtype": "Check",
+   "label": "Exit interview with supervisor"
+  },
+  {
+   "default": "0",
+   "fieldname": "finalize_any_pending_handover",
+   "fieldtype": "Check",
+   "label": "Finalize any pending handover"
+  },
+  {
+   "fieldname": "handover_co_assets_column",
+   "fieldtype": "Column Break",
+   "label": "Handover co. assets"
+  },
+  {
+   "default": "0",
+   "fieldname": "office_phone",
+   "fieldtype": "Check",
+   "label": "Office phone"
+  },
+  {
+   "default": "0",
+   "fieldname": "office_key",
+   "fieldtype": "Check",
+   "label": "Office Key"
+  },
+  {
+   "default": "0",
+   "fieldname": "laptop",
+   "fieldtype": "Check",
+   "label": "Laptop"
+  },
+  {
+   "fieldname": "section_break_qggo",
+   "fieldtype": "Section Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "submit_final_timesheet",
+   "fieldtype": "Check",
+   "label": "Submit final timesheet "
+  },
+  {
+   "default": "0",
+   "fieldname": "submit_final_invoice",
+   "fieldtype": "Check",
+   "label": "Submit final invoice"
+  },
+  {
+   "default": "0",
+   "fieldname": "approval_of_timesheet_invoice",
+   "fieldtype": "Check",
+   "label": "Approval of timesheet & Invoice"
+  },
+  {
+   "fieldname": "tab_week_1_2",
+   "fieldtype": "Tab Break",
+   "label": "WEEK 1 & 2"
+  },
+  {
+   "fieldname": "timesheet_process_section",
+   "fieldtype": "Section Break",
+   "label": "Timesheet Process"
+  },
+  {
+   "fieldname": "column_break_xgqw",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "after_the_final_day_tab",
+   "fieldtype": "Tab Break",
+   "label": "AFTER THE FINAL DAY"
+  },
+  {
+   "fieldname": "remove_from_section",
+   "fieldtype": "Section Break",
+   "label": "Remove from "
+  },
+  {
+   "default": "0",
+   "fieldname": "chat_rooms",
+   "fieldtype": "Check",
+   "label": "Chat rooms"
+  },
+  {
+   "default": "0",
+   "fieldname": "little_cab",
+   "fieldtype": "Check",
+   "label": "Little Cab"
+  },
+  {
+   "fieldname": "column_break_pfle",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "bio_icl_website",
+   "fieldtype": "Check",
+   "label": "(Bio) ICL Website "
+  },
+  {
+   "default": "0",
+   "fieldname": "bio_company_profile",
+   "fieldtype": "Check",
+   "label": "(Bio) company profile"
+  },
+  {
+   "fieldname": "column_break_haxi",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "archive_hires_folder",
+   "fieldtype": "Check",
+   "label": "Archive hire`s Folder"
+  },
+  {
+   "default": "0",
+   "fieldname": "disablearchive_icl_official_email_account",
+   "fieldtype": "Check",
+   "label": "Disable/Archive ICL Official Email account"
+  },
+  {
+   "fieldname": "employee",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Employee",
+   "options": "Employee",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "employee.employee_name",
+   "fieldname": "full_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "in_standard_filter": 1,
+   "label": "Full Name",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "exit_interview_link",
+   "fieldtype": "Link",
+   "label": "Exit interview link",
+   "options": "Exit Interview"
+  },
+  {
+   "fieldname": "column_break_xmas",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_lvjb",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "This should be prefilled on the specific employee (exit).",
+   "fetch_from": "employee.relieving_date",
+   "fieldname": "relieving_date",
+   "fieldtype": "Date",
+   "label": "Relieving Date",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fetch_from": "employee.custom_reports_to_name",
+   "fieldname": "supervisor",
+   "fieldtype": "Data",
+   "label": "Supervisor",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "supervisor_notification",
+   "fieldtype": "Check",
+   "label": "Supervisor Notification"
+  },
+  {
+   "default": "0",
+   "fieldname": "handover_transition_plan",
+   "fieldtype": "Check",
+   "label": "Create a handover/transition plan"
+  },
+  {
+   "fieldname": "transition_plans",
+   "fieldtype": "Link",
+   "label": "Handover/Transition Plan Link",
+   "options": "Transition Plan"
+  },
+  {
+   "default": "0",
+   "fieldname": "farewell_email",
+   "fieldtype": "Check",
+   "label": "Farewell Email"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [
+  {
+   "group": "offboarding_schedule",
+   "hidden": 1,
+   "link_doctype": "Transition Plan",
+   "link_fieldname": "offboarding_schedule"
+  }
+ ],
+ "modified": "2026-03-13 11:51:56.561465",
+ "modified_by": "Administrator",
+ "module": "ICL Corporate Services",
+ "name": "OffBoarding Schedule",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
