@@ -2,6 +2,16 @@
  {
   "docstatus": 0,
   "doctype": "Email Template",
+  "modified": "2026-03-17 21:09:20.267605",
+  "name": "Rejection After Interview",
+  "response": null,
+  "response_html": "\n<div class=\"py-4\">\n  <div class=\"row justify-content-center\">\n    <div class=\"col-12 col-md-8\">\n\n      <p>Dear {{ candidate_name }},</p>\n\n      <p>\n        Thank you for taking the time to interview for the role of\n        <strong>{{ role_title }}</strong> at <strong>{{ company_name }}</strong>.\n      </p>\n\n      <p>\n        After careful consideration, we will not be progressing with your application\n        at this time. This decision was difficult given the high quality of candidates.\n      </p>\n\n      <p>\n        We appreciate your interest in {{ company_name }} and encourage you to apply\n        for future opportunities.\n      </p>\n\n      <p class=\"mb-0\">Kind regards,</p>\n      <p class=\"mb-0\"><strong>{{ signature_name }}</strong></p>\n      <p class=\"mb-0\">Human Resources</p>\n      <p>{{ company_name }}</p>\n\n    </div>\n  </div>\n</div>",
+  "subject": "Application Outcome - {{role_title}} at {{company_name}}",
+  "use_html": 1
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Email Template",
   "modified": "2026-02-24 13:57:09.488980",
   "name": "Employee Welcome Email",
   "response": null,
@@ -117,16 +127,6 @@
   "response": "<div class=\"ql-editor read-mode\"><p><br></p></div>",
   "response_html": "<div style=\"font-family: Arial, sans-serif; font-size: 14px; color: #333;\">\n    \n    <p>Hi {{ doc.employee_name }},</p>\n\n    <p>\n        This is your quarterly annual leave balance update.\n    </p>\n\n    <p>\n        As at <strong>{{ frappe.utils.formatdate(frappe.utils.nowdate()) }}</strong>, \n        your Annual Leave balance is \n        <strong>{{ doc.leave_balance }}</strong> days.\n    </p>\n\n    <p>\n        Please plan to take your leave to rest and recharge, and to help prevent burnout.\n    </p>\n\n    <p>\n        If you would like support planning your leave dates, kindly speak with your supervisor \n        or reach out to HR.\n    </p>\n\n    <br>\n\n    <p>\n        Kind regards,<br>\n        <strong>HR Department</strong>\n    </p>\n\n</div>",
   "subject": "Quarterly Annual Leave accrual notifications",
-  "use_html": 1
- },
- {
-  "docstatus": 0,
-  "doctype": "Email Template",
-  "modified": "2026-03-17 21:09:20.267605",
-  "name": "Rejection After Interview",
-  "response": null,
-  "response_html": "\n<div class=\"py-4\">\n  <div class=\"row justify-content-center\">\n    <div class=\"col-12 col-md-8\">\n\n      <p>Dear {{ candidate_name }},</p>\n\n      <p>\n        Thank you for taking the time to interview for the role of\n        <strong>{{ role_title }}</strong> at <strong>{{ company_name }}</strong>.\n      </p>\n\n      <p>\n        After careful consideration, we will not be progressing with your application\n        at this time. This decision was difficult given the high quality of candidates.\n      </p>\n\n      <p>\n        We appreciate your interest in {{ company_name }} and encourage you to apply\n        for future opportunities.\n      </p>\n\n      <p class=\"mb-0\">Kind regards,</p>\n      <p class=\"mb-0\"><strong>{{ signature_name }}</strong></p>\n      <p class=\"mb-0\">Human Resources</p>\n      <p>{{ company_name }}</p>\n\n    </div>\n  </div>\n</div>",
-  "subject": "Application Outcome - {{role_title}} at {{company_name}}",
   "use_html": 1
  }
 ]
