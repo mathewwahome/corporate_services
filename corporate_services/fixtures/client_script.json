@@ -2,6 +2,17 @@
  {
   "docstatus": 0,
   "doctype": "Client Script",
+  "dt": "Job Applicant",
+  "enabled": 1,
+  "modified": "2026-03-17 21:51:14.851311",
+  "module": "ICL Corporate Services",
+  "name": "Send Rejection Email",
+  "script": "frappe.ui.form.on(\"Job Applicant\", {\n    refresh(frm) {\n        frm.add_custom_button(__(\"Send Rejection Email\"), function() {\n            frappe.call({\n                method: \"corporate_services.api.notification.job_applicant.rejection_after_interview.send_rejection_email\",\n                args: {\n                    applicant_name: frm.doc.name,\n                    email_template: \"Rejection After Interview\",\n                },\n                callback: function(r) {\n                    if (r.message.status === \"success\") {\n                        frappe.msgprint(__(\"Rejection email sent successfully.\"));\n                        frm.reload_doc();\n                    }\n                }\n            });\n        }, __(\"Action\"));\n    }\n});",
+  "view": "Form"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
   "dt": "KPI Template Instructions",
   "enabled": 1,
   "modified": "2026-02-25 08:41:08.012765",

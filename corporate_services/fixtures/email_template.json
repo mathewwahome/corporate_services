@@ -2,6 +2,16 @@
  {
   "docstatus": 0,
   "doctype": "Email Template",
+  "modified": "2026-03-17 21:09:20.267605",
+  "name": "Rejection After Interview",
+  "response": null,
+  "response_html": "\n<div class=\"py-4\">\n  <div class=\"row justify-content-center\">\n    <div class=\"col-12 col-md-8\">\n\n      <p>Dear {{ candidate_name }},</p>\n\n      <p>\n        Thank you for taking the time to interview for the role of\n        <strong>{{ role_title }}</strong> at <strong>{{ company_name }}</strong>.\n      </p>\n\n      <p>\n        After careful consideration, we will not be progressing with your application\n        at this time. This decision was difficult given the high quality of candidates.\n      </p>\n\n      <p>\n        We appreciate your interest in {{ company_name }} and encourage you to apply\n        for future opportunities.\n      </p>\n\n      <p class=\"mb-0\">Kind regards,</p>\n      <p class=\"mb-0\"><strong>{{ signature_name }}</strong></p>\n      <p class=\"mb-0\">Human Resources</p>\n      <p>{{ company_name }}</p>\n\n    </div>\n  </div>\n</div>",
+  "subject": "Application Outcome - {{role_title}} at {{company_name}}",
+  "use_html": 1
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Email Template",
   "modified": "2026-02-24 13:57:09.488980",
   "name": "Employee Welcome Email",
   "response": null,

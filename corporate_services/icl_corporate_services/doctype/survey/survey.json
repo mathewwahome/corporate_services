@@ -1,11 +1,7 @@
 {
+ "actions": [],
+ "creation": "2026-03-19 14:14:31.828559",
  "doctype": "DocType",
- "name": "Survey",
- "module": "ICL Corporate Services",
- "custom": 0,
- "is_submittable": 0,
- "is_child_table": 0,
- "track_changes": 1,
  "engine": "InnoDB",
  "field_order": [
   "title",
@@ -20,9 +16,9 @@
   {
    "fieldname": "title",
    "fieldtype": "Data",
+   "in_list_view": 1,
    "label": "Title",
-   "reqd": 1,
-   "in_list_view": 1
+   "reqd": 1
   },
   {
    "fieldname": "description",
@@ -32,21 +28,22 @@
   {
    "fieldname": "year",
    "fieldtype": "Int",
+   "in_list_view": 1,
    "label": "Year",
-   "reqd": 1,
-   "in_list_view": 1
+   "reqd": 1
   },
   {
+   "default": "0",
    "fieldname": "is_published",
    "fieldtype": "Check",
-   "label": "Is Published",
-   "default": "0",
-   "in_list_view": 1
+   "in_list_view": 1,
+   "label": "Is Published"
   },
   {
    "fieldname": "departments",
-   "fieldtype": "MultiSelect",
-   "label": "Departments"
+   "fieldtype": "Link",
+   "label": "Departments",
+   "options": "Department"
   },
   {
    "fieldname": "sections",
@@ -62,39 +59,40 @@
    "read_only": 1
   }
  ],
+ "links": [],
+ "modified": "2026-03-19 14:42:53.161536",
+ "modified_by": "Administrator",
+ "module": "ICL Corporate Services",
+ "name": "Survey",
+ "owner": "Administrator",
  "permissions": [
   {
-   "role": "System Manager",
-   "read": 1,
-   "write": 1,
    "create": 1,
    "delete": 1,
-   "submit": 0,
-   "cancel": 0,
-   "amend": 0,
-   "print": 1,
    "email": 1,
    "export": 1,
+   "print": 1,
+   "read": 1,
    "report": 1,
-   "share": 1
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
   },
   {
-   "role": "HR Manager",
-   "read": 1,
-   "write": 1,
    "create": 1,
-   "delete": 0,
-   "submit": 0,
-   "cancel": 0,
-   "amend": 0,
-   "print": 1,
    "email": 1,
    "export": 1,
+   "print": 1,
+   "read": 1,
    "report": 1,
-   "share": 1
+   "role": "HR Manager",
+   "share": 1,
+   "write": 1
   }
  ],
+ "row_format": "Dynamic",
  "sort_field": "modified",
- "sort_order": "DESC"
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
 }
-
