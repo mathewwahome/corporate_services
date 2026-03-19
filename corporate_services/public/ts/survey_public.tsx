@@ -59,11 +59,13 @@ function SurveyPublicApp() {
       setLoading(false);
       return;
     }
-    window.frappe
-      .call<{ message: Survey }>({
+    const frappeCall = window.frappe.call as <T,>(opts: any) => PromiseLike<T>;
+    Promise.resolve(
+      frappeCall<{ message: Survey }>({
         method: "corporate_services.api.survey.get_survey_detail",
         args: { survey: surveyName },
-      })
+      }),
+    )
       .then((r: any) => {
         setSurvey(r.message);
       })

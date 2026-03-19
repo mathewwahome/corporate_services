@@ -31,7 +31,8 @@
    "fieldname": "questions",
    "fieldtype": "Table",
    "label": "Questions",
-   "options": "Survey Question"
+   "options": "Survey Question",
+   "hidden": 1
   }
  ],
  "permissions": [],

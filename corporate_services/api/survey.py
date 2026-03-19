@@ -66,6 +66,96 @@ def set_survey_published(survey: str, is_published: int | str):
 
 
 @frappe.whitelist()
+def save_survey(doc):
+    """Save a Survey with its sections and nested Survey Questions.
+
+    frappe.client.save only persists one level of child tables; Survey Questions
+    (children of Survey Sections) are silently dropped. This endpoint handles the
+    full three-level hierarchy explicitly.
+    """
+    _require_admin()
+    if isinstance(doc, str):
+        import json
+        doc = json.loads(doc)
+
+    # Pull questions out of each section before passing to frappe.get_doc so
+    # Frappe doesn't try to handle the nested child tables itself.
+    sections_input = [dict(s) for s in (doc.get("sections") or [])]
+    per_section_questions = []
+    for s in sections_input:
+        per_section_questions.append([dict(q) for q in s.pop("questions", [])])
+        for f in ("__temporary_name", "__islocal", "__unsaved"):
+            s.pop(f, None)
+
+    # Load the doc fresh from DB (bypasses stale modified timestamp / TimestampMismatchError).
+    # For new surveys use the payload directly; for existing ones load then update.
+    is_new = not doc.get("name") or doc.get("__islocal")
+    if is_new:
+        doc_payload = dict(doc)
+        doc_payload["sections"] = sections_input
+        survey_doc = frappe.get_doc(doc_payload)
+    else:
+        survey_doc = frappe.get_doc("Survey", doc["name"])
+        for field in ("title", "description", "year", "is_published", "departments"):
+            if field in doc:
+                survey_doc.set(field, doc[field])
+        survey_doc.set("sections", sections_input)
+
+    # Save Survey + Survey Sections (standard Frappe child-table handling).
+    survey_doc.save()
+
+    # survey_doc.sections is now ordered by idx with real DB names.
+    # Persist Survey Questions for each section manually.
+    for i, section_row in enumerate(survey_doc.sections):
+        section_name = section_row.name
+        questions_data = per_section_questions[i] if i < len(per_section_questions) else []
+
+        existing = {
+            r.name
+            for r in frappe.get_all(
+                "Survey Question",
+                filters={
+                    "parent": section_name,
+                    "parenttype": "Survey Section",
+                    "parentfield": "questions",
+                },
+                fields=["name"],
+            )
+        }
+
+        kept = set()
+        for qi, q in enumerate(questions_data):
+            q_name = q.get("name") if not q.get("__islocal") else None
+            for f in ("__islocal", "__unsaved", "__temporary_name"):
+                q.pop(f, None)
+            q.update(
+                doctype="Survey Question",
+                parent=section_name,
+                parenttype="Survey Section",
+                parentfield="questions",
+                idx=qi + 1,
+            )
+            if q_name and q_name in existing:
+                q_doc = frappe.get_doc("Survey Question", q_name)
+                q_doc.update(q)
+                q_doc.db_update()
+                kept.add(q_name)
+            else:
+                q.pop("name", None)
+                q_doc = frappe.new_doc("Survey Question")
+                q_doc.update(q)
+                q_doc.db_insert()
+                kept.add(q_doc.name)
+
+        # Delete questions removed by the user.
+        for removed in existing - kept:
+            frappe.delete_doc("Survey Question", removed, ignore_permissions=True, force=1)
+
+    frappe.db.commit()
+    return get_survey_detail(survey_doc.name)
+
+
+@frappe.whitelist()
 def get_survey_responses(survey: str):
     """List responses for a given survey (admin/HR only)."""
     _require_admin()
@@ -103,7 +193,14 @@ def get_survey_analytics(survey: str):
     survey_doc = frappe.get_doc("Survey", survey)
     questions = []
     for section in sorted(survey_doc.sections, key=lambda s: s.order or 0):
-        for q in sorted(section.questions, key=lambda x: x.order or 0):
+        # Frappe does not auto-load nested child tables; fetch questions manually
+        section_questions = frappe.get_all(
+            "Survey Question",
+            filters={"parent": section.name, "parenttype": "Survey Section", "parentfield": "questions"},
+            fields="*",
+            order_by="idx asc",
+        )
+        for q in sorted(section_questions, key=lambda x: x.get("order") or 0):
             values = answer_map.get(q.name, [])
             non_empty = [v for v in values if v]
 
@@ -159,21 +256,28 @@ def get_survey_detail(survey: str):
         frappe.throw(_("Survey is not published"), frappe.PermissionError)
 
     doc_dict = doc.as_dict()
-    doc_dict["sections"] = [
-        {
-            **section.as_dict(),
-            "questions": sorted(
-                [q.as_dict() for q in section.questions],
-                key=lambda q: q.get("order") or 0,
-            ),
-        }
-        for section in sorted(doc.sections, key=lambda s: s.order or 0)
-    ]
+    sections = []
+    for section in sorted(doc.sections, key=lambda s: s.order or 0):
+        # Frappe does not auto-load nested child tables; fetch questions manually
+        questions = frappe.get_all(
+            "Survey Question",
+            filters={"parent": section.name, "parenttype": "Survey Section", "parentfield": "questions"},
+            fields="*",
+            order_by="idx asc",
+        )
+        section_dict = section.as_dict()
+        section_dict["questions"] = sorted(questions, key=lambda q: q.get("order") or 0)
+        sections.append(section_dict)
+    doc_dict["sections"] = sections
     return doc_dict
 
 
 @frappe.whitelist(allow_guest=True)
-def submit_survey_response(survey: str, department: str | None = None, answers: list | None = None):
+def submit_survey_response(
+    survey: str,
+    department: str | None = None,
+    answers: list | str | None = None,
+):
     """Create Survey Response + Survey Answer docs for a public submission.
 
     `answers` should be a list of objects: { question: str, value: str, follow_up: str | null }.
@@ -181,6 +285,11 @@ def submit_survey_response(survey: str, department: str | None = None, answers: 
     survey_doc = frappe.get_doc("Survey", survey)
     if not survey_doc.is_published:
         frappe.throw(_("Survey is not accepting responses"), frappe.PermissionError)
+
+    if isinstance(answers, str):
+        import json
+
+        answers = json.loads(answers)
 
     if answers is None:
         answers = []
