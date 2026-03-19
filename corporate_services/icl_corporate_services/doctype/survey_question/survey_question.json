@@ -1,11 +1,7 @@
 {
+ "actions": [],
+ "creation": "2026-03-19 14:14:31.453053",
  "doctype": "DocType",
- "name": "Survey Question",
- "module": "ICL Corporate Services",
- "custom": 0,
- "is_submittable": 0,
- "is_child_table": 1,
- "track_changes": 0,
  "engine": "InnoDB",
  "field_order": [
   "question_text",
@@ -20,23 +16,23 @@
   {
    "fieldname": "question_text",
    "fieldtype": "Small Text",
+   "in_list_view": 1,
    "label": "Question Text",
-   "reqd": 1,
-   "in_list_view": 1
+   "reqd": 1
   },
   {
    "fieldname": "question_type",
    "fieldtype": "Select",
+   "in_list_view": 1,
    "label": "Question Type",
    "options": "MULTI_SELECT\nRATING\nSINGLE_SELECT\nTEXT",
-   "reqd": 1,
-   "in_list_view": 1
+   "reqd": 1
   },
   {
+   "description": "Used for MULTI_SELECT and SINGLE_SELECT",
    "fieldname": "options",
    "fieldtype": "Small Text",
-   "label": "Options (one per line)",
-   "description": "Used for MULTI_SELECT and SINGLE_SELECT"
+   "label": "Options (one per line)"
   },
   {
    "fieldname": "max_selections",
@@ -49,10 +45,10 @@
    "label": "Follow-up Question Text"
   },
   {
+   "default": "0",
    "fieldname": "is_required",
    "fieldtype": "Check",
-   "label": "Is Required",
-   "default": "0"
+   "label": "Is Required"
   },
   {
    "fieldname": "order",
@@ -61,8 +57,16 @@
    "reqd": 1
   }
  ],
+ "istable": 1,
+ "links": [],
+ "modified": "2026-03-19 14:42:14.332868",
+ "modified_by": "Administrator",
+ "module": "ICL Corporate Services",
+ "name": "Survey Question",
+ "owner": "Administrator",
  "permissions": [],
+ "row_format": "Dynamic",
  "sort_field": "idx",
- "sort_order": "ASC"
+ "sort_order": "ASC",
+ "states": []
 }
-
