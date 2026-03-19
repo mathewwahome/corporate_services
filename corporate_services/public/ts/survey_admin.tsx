@@ -14,6 +14,7 @@ type SurveyRow = {
 declare global {
   interface Window {
     frappe: any;
+    initSurveyManager?: (page?: any) => void;
   }
 }
 
@@ -26,10 +27,12 @@ function SurveyManagerApp() {
   const load = () => {
     setLoading(true);
     setError(null);
-    window.frappe
-      .call<{ message: SurveyRow[] }>({
+    const frappeCall = window.frappe.call as <T,>(opts: any) => PromiseLike<T>;
+    Promise.resolve(
+      frappeCall<{ message: SurveyRow[] }>({
         method: "corporate_services.api.survey.get_surveys",
-      })
+      }),
+    )
       .then((r: any) => {
         const data = r?.message || [];
         setSurveys(data);
@@ -181,5 +184,32 @@ function mount() {
   root.render(<SurveyManagerApp />);
 }
 
-document.addEventListener("DOMContentLoaded", mount);
+function ensureRootEl(page?: any) {
+  const existing = document.getElementById("survey-manager-root");
+  if (existing) return existing;
+
+  const parent: HTMLElement | null =
+    page?.body instanceof HTMLElement
+      ? page.body
+      : typeof page?.body?.get === "function"
+        ? page.body.get(0)
+        : null;
+
+  if (!parent) return null;
+  const div = document.createElement("div");
+  div.id = "survey-manager-root";
+  parent.appendChild(div);
+  return div;
+}
+
+window.initSurveyManager = (page?: any) => {
+  ensureRootEl(page);
+  mount();
+};
+
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", () => mount());
+} else {
+  mount();
+}
 
