@@ -237,3 +237,58 @@ def update_file_attachment(file_name, docname, doctype, fieldname):
         'attached_to_field': fieldname,
     })
 
+
+@frappe.whitelist()
+def send_rejection_email():
+    """
+    Send a rejection email to a candidate who did not meet minimum requirements.
+    Accepts JSON body with candidate_name, candidate_email, and role_title.
+    """
+    try:
+        data = frappe.local.form_dict
+
+        candidate_name = data.get("candidate_name", "").strip()
+        candidate_email = data.get("candidate_email", "").strip()
+        role_title = data.get("role_title", "").strip()
+
+        validation_errors = {}
+        if not candidate_name:
+            validation_errors["candidate_name"] = "Candidate name is required"
+        if not candidate_email:
+            validation_errors["candidate_email"] = "Candidate email is required"
+        elif not is_valid_email(candidate_email):
+            validation_errors["candidate_email"] = "Invalid email address format"
+
+        if validation_errors:
+            return {"success": False, "errors": validation_errors}
+
+        company_name = frappe.get_value("Global Defaults", None, "default_company") or "Our Company"
+        signature_name = frappe.get_value("User", frappe.session.user, "full_name") or "The HR Team"
+
+        subject = f"Application Update - {role_title} at {company_name}"
+
+        message = f"""Dear {candidate_name},
+
+Thank you for your interest in the role of {role_title} at {company_name}.
+
+Based on the minimum requirements indicated in your application, we will not be progressing with your application at this time. We encourage you to apply again in future if your experience aligns with the requirements of a role.
+
+We appreciate the time you took to apply and wish you the best in your career journey.
+
+Kind regards,
+{signature_name}
+Human Resources
+{company_name}"""
+
+        frappe.sendmail(
+            recipients=[candidate_email],
+            subject=subject,
+            message=message,
+            now=True,
+        )
+
+        return {"success": True, "data": {"email_sent_to": candidate_email}}
+
+    except Exception as e:
+        frappe.log_error(frappe.get_traceback(), "Rejection Email API Error")
+        return {"success": False, "errors": {"general": str(e)}}

@@ -1,8 +1,12 @@
 {
  "charts": [],
- "content": "[{\"id\":\"nAmT0Ic0YG\",\"type\":\"custom_block\",\"data\":{\"custom_block_name\":\"Business Development\",\"col\":12}},{\"id\":\"keZGpQWkGv\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"6au60Aefwf\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Lead\",\"col\":3}},{\"id\":\"-iRgxoP8j1\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"1h06nZ73qk\",\"type\":\"card\",\"data\":{\"card_name\":\"Bidding\",\"col\":4}},{\"id\":\"OGCHj8PGpk\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"HN5ZS0OZGu\",\"type\":\"card\",\"data\":{\"card_name\":\"Bid Preparation\",\"col\":4}}]",
+ "content": "[{\"id\":\"nAmT0Ic0YG\",\"type\":\"custom_block\",\"data\":{\"custom_block_name\":\"Business Development\",\"col\":12}},{\"id\":\"keZGpQWkGv\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"kYIASuwyGZ\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Master Boat Analysis\",\"col\":3}},{\"id\":\"UFRVHufRCd\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Leads\",\"col\":3}},{\"id\":\"SDFltSsHpi\",\"type\":\"custom_block\",\"data\":{\"custom_block_name\":\"HR\",\"col\":12}}]",
  "creation": "2026-03-16 11:58:49.663374",
  "custom_blocks": [
+  {
+   "custom_block_name": "HR",
+   "label": "HR"
+  },
   {
    "custom_block_name": "Business Development",
    "label": "Business Development"
@@ -17,77 +21,8 @@
  "indicator_color": "green",
  "is_hidden": 0,
  "label": "ICL Business Development",
- "links": [
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Bidding",
-   "link_count": 3,
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Card Break"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Bidding",
-   "link_count": 0,
-   "link_to": "Opportunity",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Bidding Type",
-   "link_count": 0,
-   "link_to": "Opportunity Type",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Opportunity Lost Reason",
-   "link_count": 0,
-   "link_to": "Opportunity Lost Reason",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Bid Preparation",
-   "link_count": 2,
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Card Break"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Lead",
-   "link_count": 0,
-   "link_to": "Lead",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Customer/Client",
-   "link_count": 0,
-   "link_to": "Customer",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  }
- ],
- "modified": "2026-03-18 08:37:52.425050",
+ "links": [],
+ "modified": "2026-03-19 11:55:03.662466",
  "modified_by": "Administrator",
  "module": "ICL Corporate Services",
  "name": "ICL Business Development",
@@ -106,10 +41,16 @@
   {
    "color": "Grey",
    "doc_view": "List",
-   "label": "Lead",
-   "link_to": "Lead",
-   "stats_filter": "[]",
-   "type": "DocType"
+   "label": "Master Boat Analysis",
+   "link_to": "master_boat_analysis",
+   "type": "Page"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Leads",
+   "link_to": "leads",
+   "type": "Page"
   }
  ],
  "title": "ICL Business Development"
