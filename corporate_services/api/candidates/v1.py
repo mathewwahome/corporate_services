@@ -7,6 +7,33 @@ import re
 DOCTYPE_JOB_CANDIDATE = 'Job Applicant'
 
 
+def get_initial_workflow_state(doctype):
+    workflow_name = frappe.db.get_value(
+        'Workflow',
+        {'document_type': doctype, 'is_active': 1},
+        'name',
+    )
+    if not workflow_name:
+        return None
+
+    initial_state = frappe.db.get_value(
+        'Workflow Document State',
+        {'parent': workflow_name, 'is_initial_state': 1},
+        'state',
+    )
+    if initial_state:
+        return initial_state
+
+    # Fallback: first state defined in the workflow
+    first_state = frappe.db.get_value(
+        'Workflow Document State',
+        {'parent': workflow_name},
+        'state',
+        order_by='idx asc',
+    )
+    return first_state
+
+
 def get_job_opening(role):
     if not role:
         return None
@@ -128,16 +155,31 @@ def create_job_candidate():
         # ------------------------------------------------------------------ #
         job_opening_name = get_job_opening(role)
 
+        # ------------------------------------------------------------------ #
+        # Resolve the initial workflow state for Job Applicant (if a workflow
+        # is active). Without this, Frappe raises:
+        #   'JobApplicant' object has no attribute 'workflow_state'
+        # ------------------------------------------------------------------ #
+        initial_workflow_state = get_initial_workflow_state(DOCTYPE_JOB_CANDIDATE)
+
         # Create the Job Applicant document
-        candidate_doc = frappe.get_doc({
+        doc_data = {
             'doctype': DOCTYPE_JOB_CANDIDATE,
             'applicant_name': names,
             'email_id': email_address,
             'phone_number': phone if phone else None,
+            # Standard Link field → enables dashboard grouping & pipeline
             'job_title': job_opening_name,
+            # Custom plain-text field → preserves what the applicant typed
             'custom_role': role if role else None,
             'custom_role_description': role_description if role_description else None,
-        })
+        }
+
+        # Inject workflow_state only when a workflow is present
+        if initial_workflow_state:
+            doc_data['workflow_state'] = initial_workflow_state
+
+        candidate_doc = frappe.get_doc(doc_data)
 
         # Save CV file
         cv_file_doc = None
