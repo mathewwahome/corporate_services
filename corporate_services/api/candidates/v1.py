@@ -7,6 +7,34 @@ import re
 DOCTYPE_JOB_CANDIDATE = 'Job Applicant'
 
 
+def get_job_opening(role):
+    if not role:
+        return None
+
+    opening = frappe.db.get_value(
+        'Job Opening',
+        {'job_title': role, 'status': 'Open'},
+        'name',
+    )
+    if opening:
+        return opening
+
+    opening = frappe.db.get_value(
+        'Job Opening',
+        {'job_title': role},
+        'name',
+    )
+    if opening:
+        return opening
+
+    opening = frappe.db.get_value(
+        'Job Opening',
+        {'job_title': ['like', role]},
+        'name',
+    )
+    return opening
+
+
 @frappe.whitelist()
 def create_job_candidate():
     """
@@ -20,7 +48,9 @@ def create_job_candidate():
     
     Optional fields:
     - phone: Phone number
-    - role: Role/position name the candidate is applying for
+    - role: Role/position name the candidate is applying for.
+            Matched against Job Opening.job_title to populate the
+            standard job_title Link field automatically.
     - role_description: Description of the role
     - cover_letter: Cover letter file (attached)
     - minimum_requirements: JSON array of minimum requirements
@@ -87,12 +117,24 @@ def create_job_candidate():
         if validation_errors:
             return {'success': False, 'errors': validation_errors}
 
+        # ------------------------------------------------------------------ #
+        # Resolve role → Job Opening Link
+        # job_opening_name  = the Job Opening `name` (e.g. HR-JOB-2026-00001)
+        # This populates the standard `job_title` Link field so that:
+        #   • Dashboard charts grouped by job_title show real labels
+        #   • ERPNext recruitment pipeline works correctly
+        # We also store the human-readable label in custom_role so the
+        # application form still displays the role name to the user.
+        # ------------------------------------------------------------------ #
+        job_opening_name = get_job_opening(role)
+
         # Create the Job Applicant document
         candidate_doc = frappe.get_doc({
             'doctype': DOCTYPE_JOB_CANDIDATE,
             'applicant_name': names,
             'email_id': email_address,
             'phone_number': phone if phone else None,
+            'job_title': job_opening_name,
             'custom_role': role if role else None,
             'custom_role_description': role_description if role_description else None,
         })
@@ -157,10 +199,12 @@ def create_job_candidate():
                 'applicant_name': candidate_doc.applicant_name,
                 'email_id': candidate_doc.email_id,
                 'phone_number': candidate_doc.phone_number or None,
+                'job_title': candidate_doc.job_title or None,
                 'custom_role': candidate_doc.custom_role or None,
                 'custom_role_description': candidate_doc.custom_role_description or None,
                 'resume_attachment': candidate_doc.resume_attachment or None,
                 'custom_cover_letter_attachment': candidate_doc.custom_cover_letter_attachment or None,
+                '_job_opening_matched': bool(job_opening_name),
             }
         }
         
