@@ -1,0 +1,17 @@
+{
+  "doctype": "Dashboard Chart",
+  "name": "Job Applications By Opening",
+  "document_type": "Job Applicant",
+  "chart_type": "Group By",
+  "group_by_type": "Count",
+  "group_by_based_on": "job_title",
+  "aggregate_function_based_on": "",
+  "number_of_groups": 10,
+  "type": "Bar",
+  "timeseries": 0,
+  "filters_json": "[]",
+  "dynamic_filters_json": "[]",
+  "is_public": 1,
+  "is_standard": 1,
+  "module": "ICL Corporate Services"
+}

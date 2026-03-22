@@ -55,6 +55,44 @@
   "javascript": null,
   "json": null,
   "letter_head": "IntelliSOFT Consulting Limited",
+  "modified": "2026-02-26 19:55:35.880181",
+  "module": "ICL Corporate Services",
+  "name": "Requisitions by Status Report",
+  "prepared_report": 0,
+  "query": null,
+  "ref_doctype": "Staff Requisition",
+  "reference_report": null,
+  "report_name": "Requisitions by Status Report",
+  "report_script": null,
+  "report_type": "Script Report",
+  "roles": [
+   {
+    "parent": "Requisitions by Status Report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "System Manager"
+   },
+   {
+    "parent": "Requisitions by Status Report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Department Head"
+   }
+  ],
+  "timeout": 0
+ },
+ {
+  "add_total_row": 0,
+  "add_translate_data": 0,
+  "columns": [],
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [],
+  "is_standard": "Yes",
+  "javascript": null,
+  "json": null,
+  "letter_head": "IntelliSOFT Consulting Limited",
   "modified": "2026-02-05 06:35:31.204143",
   "module": "ICL Corporate Services",
   "name": "Timesheet Submission Report",
@@ -4019,44 +4057,6 @@
     "parentfield": "roles",
     "parenttype": "Report",
     "role": "HR Manager"
-   }
-  ],
-  "timeout": 0
- },
- {
-  "add_total_row": 0,
-  "add_translate_data": 0,
-  "columns": [],
-  "disabled": 0,
-  "docstatus": 0,
-  "doctype": "Report",
-  "filters": [],
-  "is_standard": "Yes",
-  "javascript": null,
-  "json": null,
-  "letter_head": null,
-  "modified": "2020-05-14 16:28:45.743869",
-  "module": "HR",
-  "name": "Recruitment Analytics",
-  "prepared_report": 0,
-  "query": null,
-  "ref_doctype": "Staffing Plan",
-  "reference_report": null,
-  "report_name": "Recruitment Analytics",
-  "report_script": null,
-  "report_type": "Script Report",
-  "roles": [
-   {
-    "parent": "Recruitment Analytics",
-    "parentfield": "roles",
-    "parenttype": "Report",
-    "role": "HR Manager"
-   },
-   {
-    "parent": "Recruitment Analytics",
-    "parentfield": "roles",
-    "parenttype": "Report",
-    "role": "HR User"
    }
   ],
   "timeout": 0
@@ -10185,44 +10185,6 @@
   "timeout": 0
  },
  {
-  "add_total_row": 0,
-  "add_translate_data": 0,
-  "columns": [],
-  "disabled": 0,
-  "docstatus": 0,
-  "doctype": "Report",
-  "filters": [],
-  "is_standard": "Yes",
-  "javascript": null,
-  "json": null,
-  "letter_head": "IntelliSOFT Consulting Limited",
-  "modified": "2026-02-26 19:55:35.880181",
-  "module": "ICL Corporate Services",
-  "name": "Requisitions by Status Report",
-  "prepared_report": 0,
-  "query": null,
-  "ref_doctype": "Staff Requisition",
-  "reference_report": null,
-  "report_name": "Requisitions by Status Report",
-  "report_script": null,
-  "report_type": "Script Report",
-  "roles": [
-   {
-    "parent": "Requisitions by Status Report",
-    "parentfield": "roles",
-    "parenttype": "Report",
-    "role": "System Manager"
-   },
-   {
-    "parent": "Requisitions by Status Report",
-    "parentfield": "roles",
-    "parenttype": "Report",
-    "role": "Department Head"
-   }
-  ],
-  "timeout": 0
- },
- {
   "add_total_row": 1,
   "add_translate_data": 0,
   "columns": [],
@@ -10432,6 +10394,44 @@
     "parentfield": "roles",
     "parenttype": "Report",
     "role": "HR Manager"
+   }
+  ],
+  "timeout": 0
+ },
+ {
+  "add_total_row": 0,
+  "add_translate_data": 0,
+  "columns": [],
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [],
+  "is_standard": "Yes",
+  "javascript": null,
+  "json": null,
+  "letter_head": null,
+  "modified": "2020-05-14 16:28:45.743869",
+  "module": "HR",
+  "name": "Recruitment Analytics",
+  "prepared_report": 0,
+  "query": null,
+  "ref_doctype": "Staffing Plan",
+  "reference_report": null,
+  "report_name": "Recruitment Analytics",
+  "report_script": null,
+  "report_type": "Script Report",
+  "roles": [
+   {
+    "parent": "Recruitment Analytics",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "HR Manager"
+   },
+   {
+    "parent": "Recruitment Analytics",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "HR User"
    }
   ],
   "timeout": 0

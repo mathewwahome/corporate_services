@@ -147,6 +147,24 @@
   "docstatus": 0,
   "doctype": "Workflow State",
   "icon": "",
+  "modified": "2024-12-03 10:25:45.725844",
+  "name": "Rejected by CEO",
+  "style": "Danger",
+  "workflow_state_name": "Rejected by CEO"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": "",
+  "modified": "2026-03-17 20:04:24.614247",
+  "name": "Rejected by Finance",
+  "style": "Danger",
+  "workflow_state_name": "Rejected by Finance"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": "",
   "modified": "2026-03-02 11:13:29.292532",
   "name": "Rejected By Supervisor",
   "style": "Danger",
@@ -183,24 +201,6 @@
   "docstatus": 0,
   "doctype": "Workflow State",
   "icon": "",
-  "modified": "2024-12-03 10:25:45.725844",
-  "name": "Rejected by CEO",
-  "style": "Danger",
-  "workflow_state_name": "Rejected by CEO"
- },
- {
-  "docstatus": 0,
-  "doctype": "Workflow State",
-  "icon": "",
-  "modified": "2026-03-17 20:04:24.614247",
-  "name": "Rejected by Finance",
-  "style": "Danger",
-  "workflow_state_name": "Rejected by Finance"
- },
- {
-  "docstatus": 0,
-  "doctype": "Workflow State",
-  "icon": "",
   "modified": "2024-12-03 10:25:29.534157",
   "name": "Approved by CEO",
   "style": "Success",
@@ -210,10 +210,28 @@
   "docstatus": 0,
   "doctype": "Workflow State",
   "icon": "",
+  "modified": "2024-12-03 10:20:26.249204",
+  "name": "Submitted to CEO",
+  "style": "",
+  "workflow_state_name": "Submitted to CEO"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": "",
   "modified": "2026-03-17 20:04:50.947355",
   "name": "Rejected By HR",
   "style": "Danger",
   "workflow_state_name": "Rejected By HR"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": "",
+  "modified": "2024-06-03 15:39:43.619304",
+  "name": "Submitted to Finance",
+  "style": "",
+  "workflow_state_name": "Submitted to Finance"
  },
  {
   "docstatus": 0,
@@ -232,24 +250,6 @@
   "name": "Needs Clarification",
   "style": "Warning",
   "workflow_state_name": "Needs Clarification"
- },
- {
-  "docstatus": 0,
-  "doctype": "Workflow State",
-  "icon": "",
-  "modified": "2024-12-03 10:20:26.249204",
-  "name": "Submitted to CEO",
-  "style": "",
-  "workflow_state_name": "Submitted to CEO"
- },
- {
-  "docstatus": 0,
-  "doctype": "Workflow State",
-  "icon": "",
-  "modified": "2024-06-03 15:39:43.619304",
-  "name": "Submitted to Finance",
-  "style": "",
-  "workflow_state_name": "Submitted to Finance"
  },
  {
   "docstatus": 0,
