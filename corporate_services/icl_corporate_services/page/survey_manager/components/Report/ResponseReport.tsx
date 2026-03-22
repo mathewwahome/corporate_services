@@ -17,31 +17,51 @@ export function ResponseReport({
   onLoad,
   totalSubmissions,
 }: ResponseReportProps) {
+  // ── Loading ────────────────────────────────────────────────────────────
   if (loading) {
     return (
-      <div className="d-flex justify-content-center align-items-center gap-2 py-5 text-muted">
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          gap: 8,
+          padding: "48px 0",
+          color: "var(--text-muted)",
+          fontSize: 13,
+        }}
+      >
         <Spinner />
         <span>Loading report…</span>
       </div>
     );
   }
 
+  // ── Empty / not yet loaded ─────────────────────────────────────────────
   if (!analytics) {
     return (
-      <div className="text-center py-5">
+      <div style={{ textAlign: "center", padding: "48px 24px" }}>
         <div style={{ fontSize: 44, lineHeight: 1, marginBottom: 12 }}>📊</div>
-        <div className="fw-semibold mb-1" style={{ fontSize: 16 }}>
+        <p style={{ fontSize: 15, fontWeight: 600, marginBottom: 6, color: "var(--text-color)" }}>
           Response Report
-        </div>
-        <div className="text-muted small mb-4" style={{ maxWidth: 340, margin: "0 auto 20px" }}>
+        </p>
+        <p
+          style={{
+            fontSize: 13,
+            color: "var(--text-muted)",
+            maxWidth: 340,
+            margin: "0 auto 20px",
+          }}
+        >
           View per-question grouped results across all{" "}
           <strong>{totalSubmissions}</strong> submission
           {totalSubmissions !== 1 ? "s" : ""}.
-        </div>
+        </p>
         <button
-          className="btn btn-primary btn-sm px-4"
+          className="btn btn-primary btn-sm"
           type="button"
           onClick={onLoad}
+          style={{ padding: "5px 20px" }}
         >
           Load Report
         </button>
@@ -49,7 +69,7 @@ export function ResponseReport({
     );
   }
 
-  // Derived stats
+  // ── Derived stats ──────────────────────────────────────────────────────
   const avgRate =
     analytics.questions.length > 0
       ? Math.round(
@@ -69,86 +89,142 @@ export function ResponseReport({
 
   const stats = [
     {
-      icon: "📬",
       num: analytics.total_responses,
       label: "Total Responses",
       color: "var(--primary, #5e64ff)",
     },
     {
-      icon: "❓",
       num: analytics.questions.length,
       label: "Questions",
       color: "#0d6efd",
     },
     {
-      icon: "✍️",
       num: openEndedCount,
       label: "Open-ended",
       color: "#6610f2",
     },
     {
-      icon: "✅",
       num: `${avgRate}%`,
       label: "Avg. Response Rate",
-      color: avgRate >= 75 ? "#28a745" : avgRate >= 50 ? "#fd7e14" : "#dc3545",
+      color:
+        avgRate >= 75 ? "#36b37e" : avgRate >= 50 ? "#ff8b00" : "#e24c4c",
     },
   ];
 
   return (
     <Fade>
-      {/* ── Summary strip ─────────────────────────────────────────────────── */}
+      {/* ── Summary stat strip ──────────────────────────────────────────── */}
       <div
-        className="d-flex mb-4 rounded overflow-hidden"
+        className="frappe-card"
         style={{
-          border: "1px solid var(--border-color, #e2e6ea)",
-          background: "var(--subtle-fg, #f8f9fa)",
+          display: "flex",
+          marginBottom: 20,
+          padding: 0,
+          overflow: "hidden",
         }}
       >
         {stats.map((s, i) => (
           <React.Fragment key={s.label}>
-            {i > 0 && <div className="sm-vr" />}
-            <div className="sm-stat-card">
-              <span className="sm-stat-icon">{s.icon}</span>
+            {/* Vertical divider between cells */}
+            {i > 0 && (
               <div
-                className="sm-stat-num"
-                style={{ color: s.color }}
+                style={{
+                  width: 1,
+                  background: "var(--border-color)",
+                  flexShrink: 0,
+                  alignSelf: "stretch",
+                }}
+              />
+            )}
+
+            {/* Stat cell */}
+            <div
+              style={{
+                flex: 1,
+                textAlign: "center",
+                padding: "14px 8px",
+                background: "var(--subtle-accent)",
+              }}
+            >
+             
+              <div
+                style={{
+                  fontSize: 22,
+                  fontWeight: 700,
+                  color: s.color,
+                  lineHeight: 1.1,
+                  marginBottom: 2,
+                }}
               >
                 {s.num}
               </div>
-              <div className="sm-stat-label">{s.label}</div>
+              <div
+                style={{
+                  fontSize: 11,
+                  color: "var(--text-muted)",
+                  fontWeight: 500,
+                }}
+              >
+                {s.label}
+              </div>
             </div>
           </React.Fragment>
         ))}
       </div>
 
-      {/* ── Refresh + section heading ───────────────────────────────────── */}
-      <div className="d-flex align-items-center justify-content-between mb-3">
-        <h6 className="fw-bold mb-0" style={{ fontSize: 14 }}>
+      {/* ── Section heading + refresh ────────────────────────────────────── */}
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          marginBottom: 12,
+        }}
+      >
+        <span
+          style={{
+            fontSize: 11,
+            fontWeight: 600,
+            textTransform: "uppercase",
+            letterSpacing: "0.06em",
+            color: "var(--text-muted)",
+          }}
+        >
           Per-question Results
-        </h6>
+        </span>
         <button
-          className="btn btn-sm btn-outline-secondary"
+          className="btn btn-xs btn-default"
           type="button"
           onClick={onLoad}
-          style={{ fontSize: 12 }}
           title="Refresh report data"
         >
           ↻ Refresh
         </button>
       </div>
 
-      {/* ── Per-question cards ─────────────────────────────────────────────── */}
+      {/* ── Per-question cards ───────────────────────────────────────────── */}
       {analytics.questions.length === 0 ? (
-        <div className="text-muted text-center py-4">No questions found.</div>
+        <div
+          style={{
+            textAlign: "center",
+            padding: "32px 0",
+            fontSize: 13,
+            color: "var(--text-muted)",
+          }}
+        >
+          No questions found.
+        </div>
       ) : (
-        analytics.questions.map((q, i) => (
-          <QuestionReportCard
-            key={q.name}
-            question={q}
-            totalResponses={analytics.total_responses}
-            questionNumber={i + 1}
-          />
-        ))
+        <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+          {analytics.questions.map((q, i) => (
+            <QuestionReportCard
+              key={q.name}
+              question={q}
+              totalResponses={analytics.total_responses}
+              questionNumber={i + 1}
+            />
+          ))}
+        </div>
       )}
     </Fade>
   );
