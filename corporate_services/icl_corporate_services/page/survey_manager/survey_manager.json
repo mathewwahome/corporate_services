@@ -1,0 +1,26 @@
+{
+ "content": null,
+ "creation": "2026-03-16 00:00:00",
+ "docstatus": 0,
+ "doctype": "Page",
+ "idx": 0,
+ "modified": "2026-03-16 00:00:00",
+ "modified_by": "Administrator",
+ "module": "ICL Corporate Services",
+ "name": "survey_manager",
+ "owner": "Administrator",
+ "page_name": "survey_manager",
+ "roles": [
+  {
+   "role": "System Manager"
+  },
+  {
+   "role": "HR Manager"
+  }
+ ],
+ "script": null,
+ "standard": "Yes",
+ "style": null,
+ "system_page": 1,
+ "title": "Survey Manager"
+}
