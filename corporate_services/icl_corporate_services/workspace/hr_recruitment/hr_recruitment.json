@@ -1,0 +1,304 @@
+{
+ "charts": [
+  {
+   "chart_name": "Job Applications By Opening",
+   "label": "Job Applications By Opening"
+  },
+  {
+   "chart_name": "Department Wise Openings",
+   "label": "Department Wise Openings"
+  }
+ ],
+ "content": "[{\"id\":\"hxK3meutcD\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Staff Requisition\",\"col\":3}},{\"id\":\"LMnFL-FVNb\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Job Opening\",\"col\":3}},{\"id\":\"BOczA5gAXn\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Job Applicant\",\"col\":3}},{\"id\":\"h6LkcOPQpV\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Job Offer\",\"col\":3}},{\"id\":\"2k-AtsqHMd\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Interview\",\"col\":3}},{\"id\":\"toRzLNcvic\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"RUgqCvBcmB\",\"type\":\"custom_block\",\"data\":{\"custom_block_name\":\"HR\",\"col\":12}},{\"id\":\"TrRgFLeATn\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Recruitment Dashboard\",\"col\":3}},{\"id\":\"OEotFV4Q4N\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Job Opening Dashboard\",\"col\":3}},{\"id\":\"nyDb738yeU\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"AeSm6vxHnG\",\"type\":\"custom_block\",\"data\":{\"custom_block_name\":\"HR\",\"col\":12}},{\"id\":\"ZEoAw35RfK\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"5vtWWuFVl5\",\"type\":\"chart\",\"data\":{\"chart_name\":\"Department Wise Openings\",\"col\":6}},{\"id\":\"bDrAEdppEc\",\"type\":\"chart\",\"data\":{\"chart_name\":\"Job Applications By Opening\",\"col\":6}},{\"id\":\"VqqHZk5Ymw\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"oSv_YHVrts\",\"type\":\"quick_list\",\"data\":{\"quick_list_name\":\"Staff Requisition\",\"col\":4}},{\"id\":\"CEIbb5JydQ\",\"type\":\"quick_list\",\"data\":{\"quick_list_name\":\"Job Opening\",\"col\":4}},{\"id\":\"RNDrQHWL4f\",\"type\":\"quick_list\",\"data\":{\"quick_list_name\":\"Job Applicant\",\"col\":4}},{\"id\":\"B0A1wqOP8R\",\"type\":\"quick_list\",\"data\":{\"quick_list_name\":\"Interviews (This Week)\",\"col\":4}},{\"id\":\"i-eSYrg4pp\",\"type\":\"quick_list\",\"data\":{\"quick_list_name\":\"Job Offer\",\"col\":4}},{\"id\":\"BSfCSxeOZN\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"ouzRaGAJJl\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Masters &amp; Reports</b></span>\",\"col\":12}},{\"id\":\"0akZyj1E4k\",\"type\":\"card\",\"data\":{\"card_name\":\"Jobs\",\"col\":4}},{\"id\":\"3Q-ITUYR-W\",\"type\":\"card\",\"data\":{\"card_name\":\"Interviews\",\"col\":4}},{\"id\":\"06gIuB5svR\",\"type\":\"card\",\"data\":{\"card_name\":\"Appointment\",\"col\":4}},{\"id\":\"Q4msp7F8vF\",\"type\":\"card\",\"data\":{\"card_name\":\"Reports\",\"col\":4}}]",
+ "creation": "2026-03-21 09:58:41.862317",
+ "custom_blocks": [
+  {
+   "custom_block_name": "HR",
+   "label": "HR"
+  }
+ ],
+ "docstatus": 0,
+ "doctype": "Workspace",
+ "for_user": "",
+ "hide_custom": 0,
+ "icon": "users",
+ "idx": 0,
+ "indicator_color": "green",
+ "is_hidden": 0,
+ "label": "HR Recruitment",
+ "links": [
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Interviews",
+   "link_count": 4,
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Interview Type",
+   "link_count": 0,
+   "link_to": "Interview Type",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Interview Round",
+   "link_count": 0,
+   "link_to": "Interview Round",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "dependencies": "Interview Type, Interview Round",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Interview",
+   "link_count": 0,
+   "link_to": "Interview",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "dependencies": "Interview",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Interview Feedback",
+   "link_count": 0,
+   "link_to": "Interview Feedback",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Appointment",
+   "link_count": 2,
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Appointment Letter Template",
+   "link_count": 0,
+   "link_to": "Appointment Letter Template",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "dependencies": "Job Applicant",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Appointment Letter",
+   "link_count": 0,
+   "link_to": "Appointment Letter",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Reports",
+   "link_count": 1,
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Recruitment Analytics",
+   "link_count": 0,
+   "link_to": "Recruitment Analytics",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Jobs",
+   "link_count": 6,
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Staffing Plan",
+   "link_count": 0,
+   "link_to": "Staffing Plan",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Job Requisition",
+   "link_count": 0,
+   "link_to": "Job Requisition",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Job Opening",
+   "link_count": 0,
+   "link_to": "Job Opening",
+   "link_type": "DocType",
+   "onboard": 1,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Job Applicant",
+   "link_count": 0,
+   "link_to": "Job Applicant",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Job Offer",
+   "link_count": 0,
+   "link_to": "Job Offer",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Employee Referral",
+   "link_count": 0,
+   "link_to": "Employee Referral",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  }
+ ],
+ "modified": "2026-03-22 08:08:02.077483",
+ "modified_by": "Administrator",
+ "module": "ICL Corporate Services",
+ "name": "HR Recruitment",
+ "number_cards": [],
+ "owner": "Administrator",
+ "parent_page": "ICL HR Admin",
+ "public": 1,
+ "quick_lists": [
+  {
+   "document_type": "Staff Requisition",
+   "label": "Staff Requisition",
+   "quick_list_filter": "[]"
+  },
+  {
+   "document_type": "Job Opening",
+   "label": "Job Opening",
+   "quick_list_filter": "[]"
+  },
+  {
+   "document_type": "Job Offer",
+   "label": "Job Offer",
+   "quick_list_filter": "[]"
+  },
+  {
+   "document_type": "Interview",
+   "label": "Interviews (This Week)",
+   "quick_list_filter": "{\"scheduled_on\":[\"Timespan\",\"this week\"],\"docstatus\":[\"!=\",\"2\"]}"
+  },
+  {
+   "document_type": "Job Applicant",
+   "label": "Job Applicant",
+   "quick_list_filter": "[]"
+  }
+ ],
+ "roles": [
+  {
+   "role": "HR Manager"
+  },
+  {
+   "role": "System Manager"
+  }
+ ],
+ "sequence_id": 3.0,
+ "shortcuts": [
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Interview",
+   "link_to": "Interview",
+   "stats_filter": "[]",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Recruitment Dashboard",
+   "link_to": "Recruitment",
+   "type": "Dashboard"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Job Opening Dashboard",
+   "link_to": "job-opening-dashboard",
+   "type": "Page"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Staff Requisition",
+   "link_to": "Staff Requisition",
+   "stats_filter": "[]",
+   "type": "DocType"
+  },
+  {
+   "color": "Red",
+   "doc_view": "List",
+   "format": "{} Open",
+   "label": "Job Applicant",
+   "link_to": "Job Applicant",
+   "stats_filter": "{\"status\":[\"=\",\"Open\"]}",
+   "type": "DocType"
+  },
+  {
+   "color": "Orange",
+   "doc_view": "List",
+   "format": "{} Open",
+   "label": "Job Opening",
+   "link_to": "Job Opening",
+   "stats_filter": "{\"status\":[\"=\",\"Open\"]}",
+   "type": "DocType"
+  },
+  {
+   "color": "Green",
+   "doc_view": "List",
+   "format": "{} Accepted",
+   "label": "Job Offer",
+   "link_to": "Job Offer",
+   "stats_filter": "{\"status\":[\"=\",\"Accepted\"]}",
+   "type": "DocType"
+  }
+ ],
+ "title": "HR Recruitment"
+}

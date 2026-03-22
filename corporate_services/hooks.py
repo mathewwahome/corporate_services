@@ -398,7 +398,7 @@ fixtures = [
     # "Dashboard Chart",
     # "Notification",
     # "Dashboard",
-    "Website Settings",
+    # "Website Settings",
     "Website Theme",
     "Portal Settings",
     "Performance Score Bands",

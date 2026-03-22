@@ -1,0 +1,140 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2026-03-19 11:16:24.777429",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "opportunity",
+  "opportunity_name",
+  "opportunity_description",
+  "submission_due_date",
+  "technical_jutisfication",
+  "operational_readiness_to_execute",
+  "financial_significance__reveiw",
+  "subimission_requirements",
+  "risk_level_and_contextual_description",
+  "risk_mitigation_strategies",
+  "response_capacity_section",
+  "technical",
+  "administrative",
+  "section_break_trvt",
+  "implementation_capacity",
+  "comments",
+  "decision_gono_go"
+ ],
+ "fields": [
+  {
+   "fieldname": "opportunity",
+   "fieldtype": "Link",
+   "label": "Opportunity",
+   "options": "Opportunity"
+  },
+  {
+   "fieldname": "opportunity_name",
+   "fieldtype": "Data",
+   "label": "Opportunity Name"
+  },
+  {
+   "fieldname": "opportunity_description",
+   "fieldtype": "Text",
+   "label": "Opportunity Description"
+  },
+  {
+   "fieldname": "submission_due_date",
+   "fieldtype": "Date",
+   "label": "Submission Due Date"
+  },
+  {
+   "fieldname": "technical_jutisfication",
+   "fieldtype": "Text",
+   "label": "Technical Jutisfication"
+  },
+  {
+   "fieldname": "operational_readiness_to_execute",
+   "fieldtype": "Small Text",
+   "label": "Operational Readiness to execute "
+  },
+  {
+   "fieldname": "financial_significance__reveiw",
+   "fieldtype": "Data",
+   "label": "Financial Significance  Reveiw"
+  },
+  {
+   "fieldname": "subimission_requirements",
+   "fieldtype": "Data",
+   "label": "Subimission Requirements "
+  },
+  {
+   "fieldname": "risk_level_and_contextual_description",
+   "fieldtype": "Small Text",
+   "label": "Risk Level and Contextual Description"
+  },
+  {
+   "fieldname": "risk_mitigation_strategies",
+   "fieldtype": "Small Text",
+   "label": "Risk Mitigation strategies"
+  },
+  {
+   "fieldname": "response_capacity_section",
+   "fieldtype": "Section Break",
+   "label": "Response Capacity"
+  },
+  {
+   "fieldname": "technical",
+   "fieldtype": "Data",
+   "label": "Technical"
+  },
+  {
+   "fieldname": "administrative",
+   "fieldtype": "Data",
+   "label": "Administrative"
+  },
+  {
+   "fieldname": "section_break_trvt",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "implementation_capacity",
+   "fieldtype": "Data",
+   "label": "Implementation Capacity"
+  },
+  {
+   "fieldname": "comments",
+   "fieldtype": "Small Text",
+   "label": "Comments"
+  },
+  {
+   "fieldname": "decision_gono_go",
+   "fieldtype": "Select",
+   "label": "Decision (Go/No Go)",
+   "options": "GO\nNO GO"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-03-19 11:23:10.802065",
+ "modified_by": "Administrator",
+ "module": "ICL Corporate Services",
+ "name": "Master BOAT Analysis",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
