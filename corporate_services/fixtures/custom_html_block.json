@@ -99,10 +99,23 @@
   "docstatus": 0,
   "doctype": "Custom HTML Block",
   "html": "<div style=\"\n    flex: 1;\n    height: 1px;\n    background-color: #171717;\n  \"></div>\n",
-  "modified": "2026-03-12 07:55:28.417795",
+  "modified": "2026-03-22 13:06:33.526824",
   "name": "HR",
   "private": 0,
-  "roles": [],
+  "roles": [
+   {
+    "parent": "HR",
+    "parentfield": "roles",
+    "parenttype": "Custom HTML Block",
+    "role": "Employee"
+   },
+   {
+    "parent": "HR",
+    "parentfield": "roles",
+    "parenttype": "Custom HTML Block",
+    "role": "System Manager"
+   }
+  ],
   "script": null,
   "style": null
  }

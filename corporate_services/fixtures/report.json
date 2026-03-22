@@ -4072,44 +4072,6 @@
   "is_standard": "Yes",
   "javascript": null,
   "json": null,
-  "letter_head": null,
-  "modified": "2020-05-14 16:28:45.743869",
-  "module": "HR",
-  "name": "Recruitment Analytics",
-  "prepared_report": 0,
-  "query": null,
-  "ref_doctype": "Staffing Plan",
-  "reference_report": null,
-  "report_name": "Recruitment Analytics",
-  "report_script": null,
-  "report_type": "Script Report",
-  "roles": [
-   {
-    "parent": "Recruitment Analytics",
-    "parentfield": "roles",
-    "parenttype": "Report",
-    "role": "HR Manager"
-   },
-   {
-    "parent": "Recruitment Analytics",
-    "parentfield": "roles",
-    "parenttype": "Report",
-    "role": "HR User"
-   }
-  ],
-  "timeout": 0
- },
- {
-  "add_total_row": 0,
-  "add_translate_data": 0,
-  "columns": [],
-  "disabled": 0,
-  "docstatus": 0,
-  "doctype": "Report",
-  "filters": [],
-  "is_standard": "Yes",
-  "javascript": null,
-  "json": null,
   "letter_head": "",
   "modified": "2020-05-15 05:18:55.838030",
   "module": "Manufacturing",
@@ -10432,6 +10394,44 @@
     "parentfield": "roles",
     "parenttype": "Report",
     "role": "HR Manager"
+   }
+  ],
+  "timeout": 0
+ },
+ {
+  "add_total_row": 0,
+  "add_translate_data": 0,
+  "columns": [],
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [],
+  "is_standard": "Yes",
+  "javascript": null,
+  "json": null,
+  "letter_head": null,
+  "modified": "2020-05-14 16:28:45.743869",
+  "module": "HR",
+  "name": "Recruitment Analytics",
+  "prepared_report": 0,
+  "query": null,
+  "ref_doctype": "Staffing Plan",
+  "reference_report": null,
+  "report_name": "Recruitment Analytics",
+  "report_script": null,
+  "report_type": "Script Report",
+  "roles": [
+   {
+    "parent": "Recruitment Analytics",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "HR Manager"
+   },
+   {
+    "parent": "Recruitment Analytics",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "HR User"
    }
   ],
   "timeout": 0
