@@ -31,7 +31,9 @@ app_license = "mit"
 
 # include js in page
 page_js = {
-    "timesheet-workflow": "public/js/timesheet_workflow.js"
+    "timesheet-workflow": "public/js/timesheet_workflow.js",
+    # Desk React page for managing surveys (loaded on /app/survey-manager)
+    "survey-manager": "public/js/survey_admin.js",
 }
 
 # Custom Pages
@@ -51,7 +53,10 @@ page = [
 
 # include js, css files in header of web template
 # web_include_css = "/assets/corporate_services/css/corporate_services.css"
-# web_include_js = "/assets/corporate_services/js/corporate_services.js"
+web_include_js = [
+    # React public survey page bundle (built to public/js)
+    "/assets/corporate_services/js/survey_public.js",
+]
 
 # include custom scss in every website theme (without file extension ".scss")
 # website_theme_scss = "corporate_services/public/scss/website"
@@ -63,8 +68,7 @@ page = [
 # include js in page
 # page_js = {"page" : "public/js/file.js"}
 
-# include js in doctype views
-# doctype_js = {"doctype" : "public/js/doctype.js"}
+doctype_js = {}
 # doctype_list_js = {"doctype" : "public/js/doctype_list.js"}
 # doctype_tree_js = {"doctype" : "public/js/doctype_tree.js"}
 # doctype_calendar_js = {"doctype" : "public/js/doctype_calendar.js"}
@@ -236,6 +240,10 @@ event_maps = {
     # },
     "after_insert": {
         "Opportunity": "corporate_services.api.project.opportunity_handlers.create_folder_for_opportunity",
+        "Survey Response": "corporate_services.api.survey.on_survey_response_insert",
+    },
+    "on_trash": {
+        "Survey Response": "corporate_services.api.survey.on_survey_response_delete",
     },
     "before_save": {
         "Opportunity": "corporate_services.api.project.opportunity_handlers.save_bid_document_to_opportunity_folder"
