@@ -32,13 +32,17 @@ export function BarChart({ items, total, colorVar }: BarChartProps) {
   }, []);
 
   if (items.length === 0) {
-    return <div className="text-muted small">No data yet.</div>;
+    return (
+      <div style={{ fontSize: 12, color: "var(--text-muted)" }}>
+        No data yet.
+      </div>
+    );
   }
 
   const maxCount = Math.max(...items.map((i) => i.count), 1);
 
   return (
-    <div className="d-flex flex-column gap-3 mt-2">
+    <div style={{ display: "flex", flexDirection: "column", gap: 10, marginTop: 8 }}>
       {items.map((item, i) => {
         const pct = total > 0 ? Math.round((item.count / total) * 100) : 0;
         const relPct = Math.round((item.count / maxCount) * 100);
@@ -48,8 +52,13 @@ export function BarChart({ items, total, colorVar }: BarChartProps) {
           <div key={item.label}>
             {/* Label row */}
             <div
-              className="d-flex justify-content-between align-items-baseline mb-1"
-              style={{ fontSize: 12 }}
+              style={{
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "baseline",
+                fontSize: 12,
+                marginBottom: 4,
+              }}
             >
               <span
                 style={{
@@ -58,36 +67,45 @@ export function BarChart({ items, total, colorVar }: BarChartProps) {
                   textOverflow: "ellipsis",
                   whiteSpace: "nowrap",
                   fontWeight: 500,
+                  color: "var(--text-color)",
                 }}
                 title={item.label}
               >
                 {item.label}
               </span>
               <span style={{ flexShrink: 0 }}>
-                <span className="fw-semibold">{item.count}</span>
-                <span className="text-muted ms-1" style={{ fontSize: 11 }}>
+                <span style={{ fontWeight: 600, color: "var(--text-color)" }}>
+                  {item.count}
+                </span>
+                <span
+                  style={{
+                    fontSize: 11,
+                    color: "var(--text-muted)",
+                    marginLeft: 4,
+                  }}
+                >
                   ({pct}%)
                 </span>
               </span>
             </div>
 
-            {/* Track — relative to highest bar for visual impact */}
+            {/* Bar track */}
             <div
               style={{
                 background: "var(--border-color, #eaecef)",
-                borderRadius: 6,
-                height: 14,
+                borderRadius: 4,
+                height: 12,
                 overflow: "hidden",
               }}
             >
               <div
-                className="sm-bar-fill"
                 style={{
                   width: mounted ? `${relPct}%` : "0%",
                   height: "100%",
                   background: color,
-                  borderRadius: 6,
+                  borderRadius: 4,
                   minWidth: item.count > 0 ? 6 : 0,
+                  transition: "width 0.4s ease",
                 }}
               />
             </div>
@@ -95,9 +113,15 @@ export function BarChart({ items, total, colorVar }: BarChartProps) {
         );
       })}
 
-      {/* Legend note when relative scale is used */}
+      {/* Scale note */}
       {items.length > 1 && (
-        <div className="text-muted" style={{ fontSize: 10, marginTop: -4 }}>
+        <div
+          style={{
+            fontSize: 10,
+            color: "var(--text-muted)",
+            marginTop: -2,
+          }}
+        >
           Bar length is relative to the highest response. Percentages show share of respondents.
         </div>
       )}

@@ -28,43 +28,50 @@ export function SectionEditor({
 
   return (
     <div
-      className="card border mb-3"
-      style={{ borderRadius: 8, overflow: "hidden" }}
+      className="frappe-card"
+      style={{ overflow: "hidden", padding: 0 }}
     >
-      {/* ── Header ─────────────────────────────────────────────────────────── */}
+      {/* ── Section header ─────────────────────────────────────────────── */}
       <div
-        className="card-header d-flex align-items-center gap-2 py-2 px-3"
         style={{
-          background: "var(--subtle-fg, #f8f9fa)",
-          borderBottom: "1px solid var(--border-color, #e2e6ea)",
+          display: "flex",
+          alignItems: "center",
+          gap: 8,
+          padding: "8px 12px",
+          background: "var(--subtle-accent)",
+          borderBottom: open ? "1px solid var(--border-color)" : "none",
           minHeight: 44,
         }}
       >
-        {/* Animated caret */}
+        {/* Collapse toggle */}
         <button
-          className="btn btn-sm btn-link p-0 text-decoration-none d-flex align-items-center justify-content-center"
+          className="btn btn-xs btn-default"
           type="button"
           onClick={() => setOpen((o) => !o)}
-          style={{ width: 20, height: 20, flexShrink: 0 }}
           aria-expanded={open}
-          aria-label={open ? "Collapse section" : "Expand section"}
+          style={{
+            padding: "2px 6px",
+            fontSize: 11,
+            flexShrink: 0,
+            minWidth: 26,
+          }}
         >
-          <span className={`sm-caret${open ? " open" : ""}`}>▶</span>
+          {open ? "▾" : "▸"}
         </button>
 
-        {/* Section number badge */}
+        {/* Section badge */}
         <span
-          className="badge bg-secondary flex-shrink-0"
-          style={{ fontSize: 10 }}
+          className="indicator-pill gray"
+          style={{ fontSize: 10, fontWeight: 700, flexShrink: 0 }}
         >
           S{sectionIdx + 1}
         </span>
 
         {/* Section title */}
         <input
-          className="form-control form-control-sm flex-grow-1"
-          style={{ maxWidth: 340, fontSize: 13 }}
-          placeholder="Section title"
+          className="form-control"
+          style={{ maxWidth: 320, fontSize: 13, height: 28 }}
+          placeholder="Section title…"
           value={section.title}
           onClick={(e) => e.stopPropagation()}
           onChange={(e) =>
@@ -72,49 +79,59 @@ export function SectionEditor({
           }
         />
 
-        {/* Order number */}
+        {/* Order input */}
         <div
-          className="d-flex align-items-center gap-1 flex-shrink-0"
-          title="Section order"
+          style={{
+            display: "flex",
+            alignItems: "center",
+            gap: 4,
+            flexShrink: 0,
+          }}
         >
-          <span className="text-muted" style={{ fontSize: 11 }}>
-            #
+          <span style={{ fontSize: 11, color: "var(--text-muted)" }}>
+            Order
           </span>
           <input
-            className="form-control form-control-sm"
-            style={{ width: 52, fontSize: 12, textAlign: "center" }}
+            className="form-control"
+            style={{ width: 52, fontSize: 12, height: 28, textAlign: "center" }}
             type="number"
             min={1}
             value={section.order}
             onClick={(e) => e.stopPropagation()}
             onChange={(e) =>
-              onUpdateSection((s) => ({ ...s, order: Number(e.target.value) }))
+              onUpdateSection((s) => ({
+                ...s,
+                order: Number(e.target.value),
+              }))
             }
           />
         </div>
 
-        {/* Collapsed question count hint */}
+        {/* Collapsed question count */}
         {!open && section.questions.length > 0 && (
-          <span className="text-muted ms-1" style={{ fontSize: 11, flexShrink: 0 }}>
+          <span
+            className="indicator-pill gray"
+            style={{ fontSize: 10, flexShrink: 0 }}
+          >
             {section.questions.length}Q
           </span>
         )}
 
-        {/* Action buttons */}
-        <div className="d-flex gap-2 ms-auto flex-shrink-0">
+        {/* Action buttons — pushed right */}
+        <div style={{ marginLeft: "auto", display: "flex", gap: 6, flexShrink: 0 }}>
           <button
-            className="btn btn-sm btn-outline-primary"
+            className="btn btn-xs btn-default"
             type="button"
             onClick={onAddQuestion}
-            style={{ fontSize: 12 }}
+            style={{ color: "var(--blue-500, #2490ef)" }}
           >
             + Question
           </button>
           <button
-            className="btn btn-sm btn-outline-danger"
+            className="btn btn-xs btn-default"
             type="button"
             onClick={onRemove}
-            style={{ fontSize: 12 }}
+            style={{ color: "var(--red-500, #e24c4c)" }}
             title="Remove section"
           >
             Remove
@@ -122,39 +139,49 @@ export function SectionEditor({
         </div>
       </div>
 
-      {/* ── Questions body — smooth CSS collapse ────────────────────────── */}
-      <div className={`sm-section-body ${open ? "open" : "closed"}`}>
-        <div className="card-body p-3">
+      {/* ── Questions body ─────────────────────────────────────────────── */}
+      {open && (
+        <div style={{ padding: 12, background: "var(--card-bg)" }}>
           {section.questions.length === 0 ? (
             <div
-              className="text-center text-muted py-3 rounded"
               style={{
+                textAlign: "center",
+                padding: "20px 16px",
+                border: "1px dashed var(--border-color)",
+                borderRadius: 4,
                 fontSize: 13,
-                border: "1px dashed var(--border-color, #dee2e6)",
+                color: "var(--text-muted)",
               }}
             >
               No questions yet.{" "}
               <button
-                className="btn btn-link btn-sm p-0"
+                className="btn btn-link btn-xs"
                 type="button"
                 onClick={onAddQuestion}
+                style={{ fontSize: 13 }}
               >
                 Add the first question
               </button>
             </div>
           ) : (
-            section.questions.map((q, qi) => (
-              <QuestionEditor
-                key={q.name || q.__temporary_name || `q-${sectionIdx}-${qi}`}
-                question={q}
-                qIdx={qi}
-                onUpdate={(updater) => onUpdateQuestion(qi, updater)}
-                onRemove={() => onRemoveQuestion(qi)}
-              />
-            ))
+            <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+              {section.questions.map((q, qi) => (
+                <QuestionEditor
+                  key={
+                    q.name ||
+                    q.__temporary_name ||
+                    `q-${sectionIdx}-${qi}`
+                  }
+                  question={q}
+                  qIdx={qi}
+                  onUpdate={(updater) => onUpdateQuestion(qi, updater)}
+                  onRemove={() => onRemoveQuestion(qi)}
+                />
+              ))}
+            </div>
           )}
         </div>
-      </div>
+      )}
     </div>
   );
 }
