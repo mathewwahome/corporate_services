@@ -1,0 +1,48 @@
+/* ============================================================
+   Survey Manager — minimal glue CSS
+   Uses ERPNext/Frappe CSS variables throughout.
+   ============================================================ */
+
+/* Tab active indicator — mimics Frappe's form tab style */
+.btn-tab {
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  border-radius: 0;
+  padding: 6px 14px 8px;
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: color 0.15s, border-color 0.15s;
+  margin-bottom: -1px;
+}
+
+.btn-tab:hover {
+  color: var(--text-color);
+}
+
+.btn-tab.active {
+  color: var(--primary);
+  font-weight: 600;
+  border-bottom: 2px solid var(--primary);
+}
+
+.btn-tab.disabled {
+  pointer-events: none;
+}
+
+/* frappe-loading spinner (matches Frappe's native loading dots) */
+.frappe-loading {
+  width: 18px;
+  height: 18px;
+  border: 2px solid var(--border-color);
+  border-top-color: var(--primary);
+  border-radius: 50%;
+  animation: sm-spin 0.6s linear infinite;
+  flex-shrink: 0;
+}
+
+@keyframes sm-spin {
+  to { transform: rotate(360deg); }
+}

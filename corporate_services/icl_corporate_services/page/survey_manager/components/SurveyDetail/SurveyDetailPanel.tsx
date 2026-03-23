@@ -56,12 +56,10 @@ export function SurveyDetailPanel({
 }: SurveyDetailPanelProps) {
   const [activeTab, setActiveTab] = useState<TabId>("edit");
 
-  // Reset to edit tab and auto-load analytics when switching surveys
   useEffect(() => {
     setActiveTab("edit");
   }, [selectedRow?.name]);
 
-  // Auto-trigger analytics load when switching to the report tab
   useEffect(() => {
     if (activeTab === "report" && !analytics && !analyticsLoading) {
       onLoadAnalytics();
@@ -74,57 +72,108 @@ export function SurveyDetailPanel({
   // ── Empty state ──────────────────────────────────────────────────────────
   if (!doc && !docLoading) {
     return (
-      <div className="flex-grow-1 d-flex flex-column align-items-center justify-content-center text-muted">
-        <div style={{ fontSize: 48, lineHeight: 1, marginBottom: 12 }}>📋</div>
-        <div className="fw-semibold">Select a survey</div>
-        <div className="small mt-1">
+      <div
+        style={{
+          flex: 1,
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+          padding: "48px 24px",
+          color: "var(--text-muted)",
+        }}
+      >
+        <div style={{ fontSize: 40, marginBottom: 12 }}>📋</div>
+        <p style={{ fontWeight: 600, marginBottom: 4, fontSize: 14 }}>
+          Select a survey
+        </p>
+        <p style={{ fontSize: 13, margin: 0, color: "var(--text-muted)" }}>
           Choose a survey from the list, or create a new one.
-        </div>
+        </p>
       </div>
     );
   }
 
-  // ── Initial load spinner ─────────────────────────────────────────────────
+  // ── Loading spinner ──────────────────────────────────────────────────────
   if (docLoading && !doc) {
     return (
-      <div className="flex-grow-1 d-flex align-items-center justify-content-center gap-2 text-muted">
-        <Spinner />
-        <span>Loading survey…</span>
+      <div
+        style={{
+          flex: 1,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          gap: 8,
+          color: "var(--text-muted)",
+        }}
+      >
+        <div className="frappe-loading" />
+        <span style={{ fontSize: 13 }}>Loading survey…</span>
       </div>
     );
   }
 
   return (
-    <div className="flex-grow-1 d-flex flex-column overflow-hidden">
-      {/* ── Page header ────────────────────────────────────────────────────── */}
+    <div style={{ flex: 1, display: "flex", flexDirection: "column", overflow: "hidden" }}>
+
+      {/* ── Page header ───────────────────────────────────────────────────── */}
       <div
-        className="px-4 pt-3 pb-0"
-        style={{ borderBottom: "1px solid var(--border-color, #e2e6ea)" }}
+        style={{
+          background: "var(--card-bg)",
+          borderBottom: "1px solid var(--border-color)",
+          padding: "12px 20px 0",
+        }}
       >
-        <div className="d-flex align-items-start justify-content-between mb-2 gap-3">
-          {/* Title + meta */}
+        {/* Title + toolbar row */}
+        <div
+          style={{
+            display: "flex",
+            alignItems: "flex-start",
+            justifyContent: "space-between",
+            gap: 12,
+            flexWrap: "wrap",
+            marginBottom: 10,
+          }}
+        >
+          {/* Left: title + meta */}
           <div style={{ minWidth: 0 }}>
             <h5
-              className="mb-1 fw-bold text-truncate"
-              style={{ fontSize: 18 }}
+              style={{
+                fontSize: 16,
+                fontWeight: 600,
+                margin: "0 0 4px",
+                color: "var(--heading-color)",
+                whiteSpace: "nowrap",
+                overflow: "hidden",
+                textOverflow: "ellipsis",
+              }}
             >
               {isNew
                 ? "New Survey"
                 : doc?.title || selectedRow?.title || "Untitled Survey"}
             </h5>
+
             {!isNew && selectedRow && (
               <div
-                className="d-flex align-items-center gap-2 flex-wrap"
-                style={{ fontSize: 12 }}
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 8,
+                  flexWrap: "wrap",
+                  fontSize: 12,
+                  color: "var(--text-muted)",
+                }}
               >
                 <Badge published={!!selectedRow.is_published} />
-                <span className="text-muted">
-                  {selectedRow.total_submissions ?? 0} response
-                  {(selectedRow.total_submissions ?? 0) !== 1 ? "s" : ""}
+                <span>
+                  {selectedRow.total_submissions ?? 0}{" "}
+                  {(selectedRow.total_submissions ?? 0) === 1
+                    ? "response"
+                    : "responses"}
                 </span>
                 {selectedRow.modified && (
-                  <span className="text-muted">
-                    · Last modified{" "}
+                  <span>
+                    · Modified{" "}
                     {new Date(selectedRow.modified).toLocaleDateString()}
                   </span>
                 )}
@@ -132,40 +181,20 @@ export function SurveyDetailPanel({
             )}
           </div>
 
-          {/* Toolbar */}
-          <div
-            className="d-flex align-items-center gap-2 flex-wrap flex-shrink-0"
-          >
+          {/* Right: action buttons */}
+          <div style={{ display: "flex", alignItems: "center", gap: 8, flexShrink: 0, flexWrap: "wrap" }}>
             {dirty && (
               <span
-                className="badge bg-warning text-dark sm-unsaved-badge"
+                className="indicator-pill orange"
                 style={{ fontSize: 11 }}
               >
-                ● Unsaved changes
+                Unsaved changes
               </span>
             )}
 
-            {/* Publish toggle (existing surveys only) */}
-            {!isNew && (
-              <button
-                className={`btn btn-sm ${
-                  selectedRow?.is_published
-                    ? "btn-outline-secondary"
-                    : "btn-success"
-                }`}
-                type="button"
-                onClick={onTogglePublish}
-                disabled={!selectedRow?.name || docLoading}
-                style={{ transition: "all 0.2s ease" }}
-              >
-                {selectedRow?.is_published ? "Unpublish" : "Publish"}
-              </button>
-            )}
-
-            {/* Cancel (new surveys only) */}
             {isNew && (
               <button
-                className="btn btn-sm btn-outline-secondary"
+                className="btn btn-default btn-sm"
                 type="button"
                 onClick={onCancelNew}
               >
@@ -173,74 +202,91 @@ export function SurveyDetailPanel({
               </button>
             )}
 
-            {/* Save */}
+            {!isNew && (
+              <button
+                className={`btn btn-sm ${
+                  selectedRow?.is_published ? "btn-default" : "btn-secondary"
+                }`}
+                type="button"
+                onClick={onTogglePublish}
+                disabled={!selectedRow?.name || docLoading}
+              >
+                {selectedRow?.is_published ? "Unpublish" : "Publish"}
+              </button>
+            )}
+
             <button
-              className="btn btn-sm btn-primary"
+              className="btn btn-primary btn-sm"
               type="button"
               onClick={onSave}
               disabled={!dirty || docLoading}
             >
-              {docLoading ? (
-                <>
-                  <Spinner size="sm" />
-                  <span className="ms-1">Saving…</span>
-                </>
-              ) : (
-                "Save"
-              )}
+              {docLoading ? "Saving…" : "Save"}
             </button>
           </div>
         </div>
 
-        {/* ── Tab navigation ──────────────────────────────────────────────── */}
-        <ul className="nav" style={{ gap: 4, marginBottom: -1 }}>
-          <li className="nav-item">
-            <button
-              type="button"
-              className={`sm-nav-tab nav-link px-3 py-2${activeTab === "edit" ? " active" : ""}`}
-              style={{ fontSize: 13 }}
-              onClick={() => setActiveTab("edit")}
-            >
-              Edit
-            </button>
-          </li>
-          <li className="nav-item">
-            <button
-              type="button"
-              className={`sm-nav-tab nav-link px-3 py-2${activeTab === "report" ? " active" : ""}${
-                !hasSubmissions || isNew ? " disabled text-muted" : ""
-              }`}
-              style={{ fontSize: 13 }}
-              onClick={() => {
-                if (hasSubmissions && !isNew) setActiveTab("report");
-              }}
-              title={
-                isNew
-                  ? "Save the survey first"
-                  : !hasSubmissions
-                  ? "No responses yet"
-                  : undefined
-              }
-            >
-              Report
-              {hasSubmissions && !isNew && (
-                <span
-                  className="badge bg-primary ms-1"
-                  style={{ fontSize: 10, verticalAlign: "middle" }}
-                >
-                  {selectedRow?.total_submissions}
-                </span>
-              )}
-            </button>
-          </li>
-        </ul>
+        {/* ── Tabs ──────────────────────────────────────────────────────── */}
+        <div className="form-tabs-list" style={{ display: "flex", gap: 0, marginBottom: -1 }}>
+          <button
+            type="button"
+            className={`btn btn-tab${activeTab === "edit" ? " active" : ""}`}
+            style={{ fontSize: 13 }}
+            onClick={() => setActiveTab("edit")}
+          >
+            Edit
+          </button>
+          <button
+            type="button"
+            className={`btn btn-tab${activeTab === "report" ? " active" : ""}${
+              !hasSubmissions || isNew ? " disabled" : ""
+            }`}
+            style={{ fontSize: 13, opacity: !hasSubmissions || isNew ? 0.45 : 1 }}
+            onClick={() => {
+              if (hasSubmissions && !isNew) setActiveTab("report");
+            }}
+            title={
+              isNew
+                ? "Save the survey first"
+                : !hasSubmissions
+                ? "No responses yet"
+                : undefined
+            }
+          >
+            Report
+            {hasSubmissions && !isNew && (
+              <span
+                className="count-badge"
+                style={{
+                  marginLeft: 5,
+                  background: "var(--blue-500, #2490ef)",
+                  color: "#fff",
+                  borderRadius: "10px",
+                  padding: "0 6px",
+                  fontSize: 10,
+                  fontWeight: 600,
+                  verticalAlign: "middle",
+                }}
+              >
+                {selectedRow?.total_submissions}
+              </span>
+            )}
+          </button>
+        </div>
       </div>
 
-      {/* ── Tab content ─────────────────────────────────────────────────────── */}
-      <div className="flex-grow-1 overflow-auto px-4 py-4">
-        {/* Error banner */}
+      {/* ── Tab content ───────────────────────────────────────────────────── */}
+      <div
+        style={{
+          flex: 1,
+          overflow: "auto",
+          padding: "20px",
+          background: "var(--bg-color)",
+        }}
+      >
+        {/* Error */}
         {docError && (
-          <div className="alert alert-danger mb-3 py-2 small">
+          <div className="alert alert-danger" style={{ fontSize: 13, marginBottom: 16 }}>
             <strong>Error:</strong> {docError}
           </div>
         )}
@@ -248,24 +294,42 @@ export function SurveyDetailPanel({
         {/* Edit tab */}
         {activeTab === "edit" && doc && (
           <Fade key={`edit-${selectedRow?.name ?? "new"}`}>
-            <MetaFields
-              doc={doc}
-              publicUrl={publicUrl}
-              linkCopied={linkCopied}
-              onUpdate={onUpdateDoc}
-              onCopyLink={onCopyLink}
-            />
+
+            {/* Meta fields — Frappe form card */}
+            <div className="frappe-card" style={{ marginBottom: 20, padding: 16 }}>
+              <MetaFields
+                doc={doc}
+                publicUrl={publicUrl}
+                linkCopied={linkCopied}
+                onUpdate={onUpdateDoc}
+                onCopyLink={onCopyLink}
+              />
+            </div>
 
             {/* Sections header */}
-            <div className="d-flex align-items-center justify-content-between mt-4 mb-3">
-              <h6 className="fw-bold mb-0" style={{ fontSize: 14 }}>
-                Sections & Questions
-              </h6>
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "space-between",
+                marginBottom: 12,
+              }}
+            >
+              <span
+                style={{
+                  fontSize: 11,
+                  fontWeight: 600,
+                  textTransform: "uppercase",
+                  letterSpacing: "0.06em",
+                  color: "var(--text-muted)",
+                }}
+              >
+                Sections &amp; Questions
+              </span>
               <button
-                className="btn btn-sm btn-outline-primary"
+                className="btn btn-xs btn-default"
                 type="button"
                 onClick={onAddSection}
-                style={{ fontSize: 12 }}
               >
                 + Add Section
               </button>
@@ -274,19 +338,22 @@ export function SurveyDetailPanel({
             {/* Sections list */}
             {doc.sections.length === 0 ? (
               <div
-                className="text-center py-5 rounded"
+                className="frappe-card"
                 style={{
-                  border: "2px dashed var(--border-color, #dee2e6)",
+                  padding: "40px 24px",
+                  textAlign: "center",
                   color: "var(--text-muted)",
                 }}
               >
                 <div style={{ fontSize: 32, marginBottom: 8 }}>📝</div>
-                <div className="fw-semibold mb-1">No sections yet</div>
-                <div className="small text-muted mb-3">
+                <p style={{ fontWeight: 600, marginBottom: 4, fontSize: 14 }}>
+                  No sections yet
+                </p>
+                <p style={{ fontSize: 13, marginBottom: 16 }}>
                   Surveys are organised into sections, each containing questions.
-                </div>
+                </p>
                 <button
-                  className="btn btn-sm btn-primary"
+                  className="btn btn-primary btn-sm"
                   type="button"
                   onClick={onAddSection}
                 >
@@ -294,45 +361,47 @@ export function SurveyDetailPanel({
                 </button>
               </div>
             ) : (
-              doc.sections.map((section, si) => (
-                <SectionEditor
-                  key={
-                    section.name ||
-                    section.__temporary_name ||
-                    `section-${si}`
-                  }
-                  section={section}
-                  sectionIdx={si}
-                  onUpdateSection={(updater) =>
-                    onUpdateDoc((d) => ({
-                      ...d,
-                      sections: d.sections.map((s, i) =>
-                        i === si ? updater(s) : s
-                      ),
-                    }))
-                  }
-                  onRemove={() => onRemoveSection(si)}
-                  onAddQuestion={() => onAddQuestion(si)}
-                  onRemoveQuestion={(qi) => onRemoveQuestion(si, qi)}
-                  onUpdateQuestion={(
-                    qi: number,
-                    updater: (q: SurveyQuestionRow) => SurveyQuestionRow
-                  ) =>
-                    onUpdateDoc((d) => ({
-                      ...d,
-                      sections: d.sections.map((s, i) => {
-                        if (i !== si) return s;
-                        return {
-                          ...s,
-                          questions: s.questions.map((q, j) =>
-                            j === qi ? updater(q) : q
-                          ),
-                        };
-                      }),
-                    }))
-                  }
-                />
-              ))
+              <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+                {doc.sections.map((section, si) => (
+                  <SectionEditor
+                    key={
+                      section.name ||
+                      section.__temporary_name ||
+                      `section-${si}`
+                    }
+                    section={section}
+                    sectionIdx={si}
+                    onUpdateSection={(updater) =>
+                      onUpdateDoc((d) => ({
+                        ...d,
+                        sections: d.sections.map((s, i) =>
+                          i === si ? updater(s) : s
+                        ),
+                      }))
+                    }
+                    onRemove={() => onRemoveSection(si)}
+                    onAddQuestion={() => onAddQuestion(si)}
+                    onRemoveQuestion={(qi) => onRemoveQuestion(si, qi)}
+                    onUpdateQuestion={(
+                      qi: number,
+                      updater: (q: SurveyQuestionRow) => SurveyQuestionRow
+                    ) =>
+                      onUpdateDoc((d) => ({
+                        ...d,
+                        sections: d.sections.map((s, i) => {
+                          if (i !== si) return s;
+                          return {
+                            ...s,
+                            questions: s.questions.map((q, j) =>
+                              j === qi ? updater(q) : q
+                            ),
+                          };
+                        }),
+                      }))
+                    }
+                  />
+                ))}
+              </div>
             )}
           </Fade>
         )}

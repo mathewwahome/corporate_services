@@ -9,37 +9,47 @@ interface TextResponseListProps {
 export function TextResponseList({ responses }: TextResponseListProps) {
   const [page, setPage] = useState(0);
 
-  const total = responses.length;
-  const pages = Math.ceil(total / PAGE_SIZE);
-  const slice = responses.slice(page * PAGE_SIZE, (page + 1) * PAGE_SIZE);
+  const total  = responses.length;
+  const pages  = Math.ceil(total / PAGE_SIZE);
+  const slice  = responses.slice(page * PAGE_SIZE, (page + 1) * PAGE_SIZE);
 
   if (total === 0) {
-    return <div className="text-muted small">No text responses yet.</div>;
+    return (
+      <div style={{ fontSize: 12, color: "var(--text-muted)" }}>
+        No text responses yet.
+      </div>
+    );
   }
 
   return (
     <div>
+      {/* ── Response list ──────────────────────────────────────────────── */}
       <div
-        className="border rounded overflow-hidden"
-        style={{ background: "var(--bg-color, #fff)" }}
+        style={{
+          border: "1px solid var(--border-color)",
+          borderRadius: 5,
+          overflow: "hidden",
+          background: "var(--card-bg, #fff)",
+        }}
       >
         {slice.map((r, i) => (
           <div
             key={i}
-            className="px-3 py-2"
             style={{
+              padding: "8px 12px",
               fontSize: 13,
+              lineHeight: 1.5,
+              color: "var(--text-color)",
               borderBottom:
                 i < slice.length - 1
-                  ? "1px solid var(--border-color, #e9ecef)"
+                  ? "1px solid var(--border-color)"
                   : "none",
-              lineHeight: 1.5,
             }}
           >
             {r ? (
               <span>{r}</span>
             ) : (
-              <em className="text-muted" style={{ fontSize: 12 }}>
+              <em style={{ fontSize: 12, color: "var(--text-muted)" }}>
                 — (blank)
               </em>
             )}
@@ -47,25 +57,32 @@ export function TextResponseList({ responses }: TextResponseListProps) {
         ))}
       </div>
 
-      {/* Pagination */}
+      {/* ── Pagination ─────────────────────────────────────────────────── */}
       {pages > 1 && (
         <div
-          className="d-flex align-items-center justify-content-between mt-2"
-          style={{ fontSize: 12 }}
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+            marginTop: 8,
+            fontSize: 12,
+          }}
         >
           <button
-            className="btn btn-sm btn-outline-secondary"
+            className="btn btn-xs btn-default"
             type="button"
             disabled={page === 0}
             onClick={() => setPage((p) => p - 1)}
           >
             ← Prev
           </button>
-          <span className="text-muted">
+
+          <span style={{ color: "var(--text-muted)" }}>
             {page * PAGE_SIZE + 1}–{Math.min((page + 1) * PAGE_SIZE, total)} of {total}
           </span>
+
           <button
-            className="btn btn-sm btn-outline-secondary"
+            className="btn btn-xs btn-default"
             type="button"
             disabled={page >= pages - 1}
             onClick={() => setPage((p) => p + 1)}
@@ -75,8 +92,9 @@ export function TextResponseList({ responses }: TextResponseListProps) {
         </div>
       )}
 
+      {/* ── Total count (single page) ───────────────────────────────────── */}
       {pages <= 1 && total > 0 && (
-        <div className="text-muted mt-1" style={{ fontSize: 11 }}>
+        <div style={{ fontSize: 11, color: "var(--text-muted)", marginTop: 4 }}>
           {total} response{total !== 1 ? "s" : ""}
         </div>
       )}

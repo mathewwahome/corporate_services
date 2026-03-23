@@ -11,7 +11,9 @@ app_license = "mit"
 
 # include js, css files in header of desk.html
 # app_include_css = ["/assets/corporate_services/css/modern_ui_theme.css"]
-
+app_include_css = [
+    "/assets/corporate_services/css/survey_manager.css"
+]
 # app_include_js = [
 #     "/assets/corporate_services/js/custom.js",
 #     "/assets/corporate_services/js/theme.js"
