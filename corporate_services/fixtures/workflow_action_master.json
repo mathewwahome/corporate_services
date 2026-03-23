@@ -61,5 +61,19 @@
   "modified": "2024-07-03 14:55:44.736613",
   "name": "Approve",
   "workflow_action_name": "Approve"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow Action Master",
+  "modified": "2026-03-23 08:55:50.087485",
+  "name": "GO",
+  "workflow_action_name": "GO"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow Action Master",
+  "modified": "2026-03-23 08:56:14.011336",
+  "name": "NO/GO",
+  "workflow_action_name": "NO/GO"
  }
 ]
