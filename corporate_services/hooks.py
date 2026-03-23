@@ -127,7 +127,10 @@ doctype_js = {}
 # after_app_install = "corporate_services.utils.after_app_install"
 
 
-after_migrate = "corporate_services.api.setup_utils.post_install"
+after_migrate = [ 
+    "corporate_services.api.setup_utils.post_install",
+    "corporate_services.api.setup_utils.force_sync_fixtures"
+]
 
 
 # Integration Cleanup
@@ -384,6 +387,7 @@ fixtures = [
     "Workflow State",
     "Workflow Action Master",
     "Role",
+	"Role Profile",
     "Report",
     "Navbar Settings",
     "HR Settings",
