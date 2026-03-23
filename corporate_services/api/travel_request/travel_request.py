@@ -15,8 +15,8 @@ def get_local_per_diem_rates(place):
     if not frappe.has_permission("Local Per Diem Rates", "read"):
         frappe.throw("You do not have permission to access this resource.")
     return frappe.get_all("Local Per Diem Rates",
-                             filters={"to_countries": place}, 
-                             fields=["from", "to_countries", "province", 
+                             filters={"to": place}, 
+                             fields=["from", "to", "province", 
                                      "transport_means_of_travel", "fares", 
                                      "m_i", "accommodation"])
 

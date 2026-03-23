@@ -98,6 +98,41 @@
  {
   "docstatus": 0,
   "doctype": "Custom HTML Block",
+  "html": "An Opportunity is a qualified lead or a potential deal where there is evident interest in a product or service. It can be created from a lead or customer, and multiple opportunities can be collected against one lead or customer.\n\nOpportunity is a qualified lead.\n\nWhen you get a hint that lead is looking for a product/service that you offer, you can convert that lead into an opportunity. You can also create an opportunity against an existing customer. Multiple Opportunities can be collected against a lead or a customer.",
+  "modified": "2026-03-23 12:05:25.796094",
+  "name": "Opportunity Guide",
+  "private": 0,
+  "roles": [
+   {
+    "parent": "Opportunity Guide",
+    "parentfield": "roles",
+    "parenttype": "Custom HTML Block",
+    "role": "BD coordinator"
+   },
+   {
+    "parent": "Opportunity Guide",
+    "parentfield": "roles",
+    "parenttype": "Custom HTML Block",
+    "role": "System Manager"
+   }
+  ],
+  "script": null,
+  "style": null
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Custom HTML Block",
+  "html": "A lead is a potential customer who might be interested in your products or services.\n\nHow to Create a Lead\nGo to the Lead list and click on New.\n\nIf the person represents an organization, check the 'Lead is an Organization' checkbox. Notice that when you check, the 'Company Name ' field becomes mandatory. Enter the Company Name.\n\nIf the person is an individual, leave the checkbox unchecked and enter Person Name and Gender.\n\nEnter the 'Email Address'.\n\nStatus is the important field in the Lead. You can set the status manually and also it will be updated automatically based on your actions against the lead.\n\nLead: This is the default status assigned when a Lead is created and it indicates an action is needed against this Lead.\nOpen: Sales executive needs to contact the Lead.\nReplied: A sales executive has provided the information needed and response from Lead is awaited.\nOpportunity: If an Opportunity is created against the Lead, the status is set to Opportunity. It indicates that the Lead is qualified and may lead to sales.\nQuotation: If a quotation is created against a Lead, then the status is set to Quotation.\nLost Quotation: If the quotation given to the lead has been marked as lost, then the status is set to 'Lost Quotation'.\nInterested: The lead is interested in the products or services.\nConverted: If the quotation given to the Lead has resulted in confirmation of an order and if the Sales Order has been created against the quotation, then the status is set to Converted.\nDo Not Contact: Lead is not interested and no further communication is needed.\nYou can set the Lead Source in Source field.\n\nEnter email ID for communication.\n\nClick on 'Save'.\n\n",
+  "modified": "2026-03-23 12:18:38.390449",
+  "name": "Lead Intro",
+  "private": 0,
+  "roles": [],
+  "script": null,
+  "style": null
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Custom HTML Block",
   "html": "<div style=\"\n    flex: 1;\n    height: 1px;\n    background-color: #171717;\n  \"></div>\n",
   "modified": "2026-03-22 13:06:33.526824",
   "name": "HR",

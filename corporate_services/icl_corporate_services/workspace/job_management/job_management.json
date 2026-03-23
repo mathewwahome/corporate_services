@@ -1,16 +1,7 @@
 {
- "charts": [
-  {
-   "chart_name": "Staff Requisition by status",
-   "label": "Staff Requisition by status"
-  },
-  {
-   "chart_name": "Requisitions by Status Report",
-   "label": "Requisitions by Status Report"
-  }
- ],
- "content": "[{\"id\":\"YJG6x8NJBV\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Job Management</span>\",\"col\":12}},{\"id\":\"COiI288cB1\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Staff Requisition\",\"col\":3}},{\"id\":\"imrA5cmFgV\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Job Opening\",\"col\":3}},{\"id\":\"eZOOHBGRix\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Job Applicant\",\"col\":3}},{\"id\":\"GowZwuOEvl\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Job Candidate\",\"col\":3}},{\"id\":\"LvS9TwwW27\",\"type\":\"custom_block\",\"data\":{\"custom_block_name\":\"HR\",\"col\":12}},{\"id\":\"4S0Nxnvx3q\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"XhzQpwBDXt\",\"type\":\"chart\",\"data\":{\"chart_name\":\"Staff Requisition by status\",\"col\":12}},{\"id\":\"ZCPdbQadsq\",\"type\":\"chart\",\"data\":{\"chart_name\":\"Requisitions by Status Report\",\"col\":6}},{\"id\":\"LbXyhWydBn\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"ewxlK6wHnh\",\"type\":\"quick_list\",\"data\":{\"quick_list_name\":\"Staff Requisition\",\"col\":4}},{\"id\":\"eRIse17lL4\",\"type\":\"quick_list\",\"data\":{\"quick_list_name\":\"Job Applicant\",\"col\":4}},{\"id\":\"WfNgFSs_xM\",\"type\":\"quick_list\",\"data\":{\"quick_list_name\":\"Interview\",\"col\":4}},{\"id\":\"2Ch0QJ6h-u\",\"type\":\"quick_list\",\"data\":{\"quick_list_name\":\"Employee Onboarding\",\"col\":4}},{\"id\":\"sxeE5zNCMH\",\"type\":\"quick_list\",\"data\":{\"quick_list_name\":\"Onboarding Schedule\",\"col\":4}}]",
- "creation": "2026-03-17 11:27:10.333823",
+ "charts": [],
+ "content": "[{\"id\":\"YJG6x8NJBV\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Job Management</span>\",\"col\":12}},{\"id\":\"COiI288cB1\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Staff Requisition\",\"col\":3}},{\"id\":\"imrA5cmFgV\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Job Opening\",\"col\":3}},{\"id\":\"eZOOHBGRix\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Job Applicant\",\"col\":3}},{\"id\":\"GowZwuOEvl\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Job Candidate\",\"col\":3}},{\"id\":\"LvS9TwwW27\",\"type\":\"custom_block\",\"data\":{\"custom_block_name\":\"HR\",\"col\":12}},{\"id\":\"4S0Nxnvx3q\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"ewxlK6wHnh\",\"type\":\"quick_list\",\"data\":{\"quick_list_name\":\"Staff Requisition\",\"col\":4}},{\"id\":\"eRIse17lL4\",\"type\":\"quick_list\",\"data\":{\"quick_list_name\":\"Job Applicant\",\"col\":4}},{\"id\":\"WfNgFSs_xM\",\"type\":\"quick_list\",\"data\":{\"quick_list_name\":\"Interview\",\"col\":4}},{\"id\":\"2Ch0QJ6h-u\",\"type\":\"quick_list\",\"data\":{\"quick_list_name\":\"Employee Onboarding\",\"col\":4}},{\"id\":\"sxeE5zNCMH\",\"type\":\"quick_list\",\"data\":{\"quick_list_name\":\"Onboarding Schedule\",\"col\":4}}]",
+ "creation": "2026-03-22 20:03:25.816687",
  "custom_blocks": [
   {
    "custom_block_name": "HR",
@@ -27,7 +18,7 @@
  "is_hidden": 0,
  "label": "Job Management",
  "links": [],
- "modified": "2026-03-17 20:46:43.587701",
+ "modified": "2026-03-23 12:24:13.764420",
  "modified_by": "Administrator",
  "module": "ICL Corporate Services",
  "name": "Job Management",
@@ -70,7 +61,7 @@
    "role": "System Manager"
   }
  ],
- "sequence_id": 25.0,
+ "sequence_id": 14.0,
  "shortcuts": [
   {
    "color": "Grey",
