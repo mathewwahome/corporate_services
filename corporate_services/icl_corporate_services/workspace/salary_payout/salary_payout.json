@@ -1,7 +1,7 @@
 {
  "charts": [],
  "content": "[{\"id\":\"jvTZ8RvO42\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Your Shortcuts</b></span>\",\"col\":12}},{\"id\":\"hNVIisuaFR\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Salary Slip\",\"col\":3}},{\"id\":\"6XUIWHJ3jI\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Payroll Entry\",\"col\":3}},{\"id\":\"yjIBi3GMoo\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Salary Register\",\"col\":3}},{\"id\":\"ORKhwX-uqw\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"gGURwviUAZ\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Transactions &amp; Reports</b></span>\",\"col\":12}},{\"id\":\"m7ibJXxzpl\",\"type\":\"card\",\"data\":{\"card_name\":\"Masters\",\"col\":4}},{\"id\":\"U-jv2v4nCv\",\"type\":\"card\",\"data\":{\"card_name\":\"Payroll\",\"col\":4}},{\"id\":\"LG69O3ku4y\",\"type\":\"card\",\"data\":{\"card_name\":\"Incentives\",\"col\":4}},{\"id\":\"kOuItimoNm\",\"type\":\"card\",\"data\":{\"card_name\":\"Accounting\",\"col\":4}},{\"id\":\"UJqBhPqNZd\",\"type\":\"card\",\"data\":{\"card_name\":\"Accounting Reports\",\"col\":4}},{\"id\":\"eNZuk6i-jy\",\"type\":\"card\",\"data\":{\"card_name\":\"Payroll Reports\",\"col\":4}},{\"id\":\"ll91Zs2cbx\",\"type\":\"card\",\"data\":{\"card_name\":\"Deduction Reports\",\"col\":4}}]",
- "creation": "2024-09-27 07:26:03.339218",
+ "creation": "2026-03-22 20:03:25.443590",
  "custom_blocks": [],
  "docstatus": 0,
  "doctype": "Workspace",
@@ -324,6 +324,7 @@
    "link_type": "Report",
    "onboard": 0,
    "only_for": "Kenya",
+   "report_ref_doctype": "GL Entry",
    "type": "Link"
   },
   {
@@ -335,6 +336,7 @@
    "link_type": "Report",
    "onboard": 0,
    "only_for": "Kenya",
+   "report_ref_doctype": "Purchase Invoice",
    "type": "Link"
   },
   {
@@ -346,6 +348,7 @@
    "link_type": "Report",
    "onboard": 0,
    "only_for": "Kenya",
+   "report_ref_doctype": "Sales Invoice",
    "type": "Link"
   },
   {
@@ -403,7 +406,7 @@
    "type": "Link"
   }
  ],
- "modified": "2024-09-30 09:05:46.834717",
+ "modified": "2026-03-23 12:24:11.954023",
  "modified_by": "Administrator",
  "module": "ICL Corporate Services",
  "name": "Salary Payout",
@@ -417,7 +420,7 @@
    "role": "Finance"
   }
  ],
- "sequence_id": 10.0,
+ "sequence_id": 7.0,
  "shortcuts": [
   {
    "color": "Red",
@@ -433,6 +436,7 @@
    "doc_view": "List",
    "label": "Salary Register",
    "link_to": "Salary Register",
+   "report_ref_doctype": "Salary Slip",
    "type": "Report"
   },
   {

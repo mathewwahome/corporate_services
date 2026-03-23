@@ -2,7 +2,7 @@
  "actions": [],
  "allow_import": 1,
  "allow_rename": 1,
- "autoname": "field:to_countries",
+ "autoname": "field:to",
  "creation": "2024-11-13 18:48:50.192563",
  "doctype": "DocType",
  "engine": "InnoDB",
@@ -10,7 +10,7 @@
   "naming_series",
   "currency",
   "from",
-  "to_countries",
+  "to",
   "province",
   "column_break_pjzx",
   "transport_means_of_travel",
@@ -54,14 +54,6 @@
   },
   {
    "columns": 1,
-   "fieldname": "to_countries",
-   "fieldtype": "Data",
-   "in_list_view": 1,
-   "label": "To (Counties)",
-   "unique": 1
-  },
-  {
-   "columns": 1,
    "fieldname": "accommodation",
    "fieldtype": "Currency",
    "label": "Accommodation"
@@ -73,7 +65,6 @@
   {
    "fieldname": "naming_series",
    "fieldtype": "Select",
-   "in_list_view": 1,
    "label": "Series",
    "options": "LP-R-.YYYY.-",
    "reqd": 1
@@ -83,14 +74,24 @@
    "fieldname": "currency",
    "fieldtype": "Link",
    "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Currency",
    "options": "Currency",
    "reqd": 1
+  },
+  {
+   "columns": 1,
+   "fieldname": "to",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "in_standard_filter": 1,
+   "label": "To (Counties)",
+   "unique": 1
   }
  ],
- "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-05-20 09:28:14.232825",
+ "modified": "2026-03-23 18:09:11.765571",
  "modified_by": "Administrator",
  "module": "ICL Corporate Services",
  "name": "Local Per Diem Rates",
