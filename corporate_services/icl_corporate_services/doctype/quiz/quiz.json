@@ -9,8 +9,10 @@
   "quiz_title",
   "column_break_edjf",
   "status",
+  "question_import_file",
   "section_break_lufa",
   "questions",
+  "import_help",
   "section_break_agrz",
   "passing_score_",
   "column_break_osho",
@@ -40,6 +42,12 @@
    "reqd": 1
   },
   {
+   "description": "Upload a CSV or Excel file, then use the import button to create and attach questions to this quiz.",
+   "fieldname": "question_import_file",
+   "fieldtype": "Attach",
+   "label": "Question Import File"
+  },
+  {
    "fieldname": "passing_score_",
    "fieldtype": "Percent",
    "in_list_view": 1,
@@ -61,6 +69,10 @@
    "description": "Please select all the questions you would like to be displayed on the quiz.",
    "fieldname": "section_break_lufa",
    "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "import_help",
+   "fieldtype": "HTML"
   },
   {
    "fieldname": "section_break_agrz",
