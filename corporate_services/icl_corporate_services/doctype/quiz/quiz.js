@@ -1,12 +1,6 @@
 // Copyright (c) 2026, IntelliSOFT Consulting and contributors
 // For license information, please see license.txt
 
-const QUIZ_IMPORT_TEMPLATE = `question,question_type,answer_options,correct_answer,explanation,category
-What is the main purpose of the policy?,Single Select,"Promote ethics|Replace contracts|Marketing guidance",A,Pick the best answer,Policy
-Which of the following apply?,Multi Select,"Option one|Option two|Option three|Option four","A|C",Select all correct choices,Policy
-Describe the escalation process,Open Ended,,,Free text response,Policy
-`;
-
 function render_import_help(frm) {
 	const wrapper = frm.fields_dict.import_help && frm.fields_dict.import_help.$wrapper;
 	if (!wrapper) {
@@ -27,24 +21,49 @@ function render_import_help(frm) {
 	`);
 }
 
-function download_import_template() {
-	const blob = new Blob([QUIZ_IMPORT_TEMPLATE], { type: "text/csv;charset=utf-8;" });
-	const url = URL.createObjectURL(blob);
-	const link = document.createElement("a");
-	link.href = url;
-	link.download = "quiz_question_import_template.csv";
-	document.body.appendChild(link);
-	link.click();
-	document.body.removeChild(link);
-	URL.revokeObjectURL(url);
+function build_import_summary(summary) {
+	const categories = summary.categories_created || [];
+
+	return `
+		<div style="line-height: 1.7;">
+			<div><strong>Quiz Import Complete</strong></div>
+			<div>Created questions: ${summary.created_count || 0}</div>
+			<div>Updated questions: ${summary.updated_count || 0}</div>
+			<div>Skipped unchanged questions: ${summary.skipped_count || 0}</div>
+			<div>Linked to this quiz: ${summary.linked_count || 0}</div>
+			<div>New categories created: ${categories.length}</div>
+			${categories.length ? `<div>Categories: ${frappe.utils.escape_html(categories.join(", "))}</div>` : ""}
+			<div style="margin-top: 10px;">Confirm that everything looks correct on the quiz.</div>
+		</div>
+	`;
+}
+
+async function download_import_template(fileType) {
+	const response = await frappe.call({
+		method: "corporate_services.icl_corporate_services.doctype.quiz.quiz.download_quiz_import_template",
+		args: {
+			file_type: fileType,
+		},
+		freeze: true,
+		freeze_message: `Preparing ${fileType.toUpperCase()} template...`,
+	});
+
+	const fileUrl = response.message && response.message.file_url;
+	if (fileUrl) {
+		window.open(fileUrl, "_blank");
+	}
 }
 
 frappe.ui.form.on("Quiz", {
 	refresh(frm) {
 		render_import_help(frm);
 
-		frm.add_custom_button("Download Import Template", () => {
-			download_import_template();
+		frm.add_custom_button("Download CSV Template", async () => {
+			await download_import_template("csv");
+		});
+
+		frm.add_custom_button("Download Excel Template", async () => {
+			await download_import_template("xlsx");
 		});
 
 		if (frm.is_new()) {
@@ -57,7 +76,7 @@ frappe.ui.form.on("Quiz", {
 				return;
 			}
 
-			await frappe.call({
+			const response = await frappe.call({
 				method: "corporate_services.icl_corporate_services.doctype.quiz.quiz.import_questions_to_quiz",
 				args: {
 					docname: frm.doc.name,
@@ -67,9 +86,10 @@ frappe.ui.form.on("Quiz", {
 			});
 
 			await frm.reload_doc();
-			frappe.show_alert({
-				message: "Questions imported into the quiz.",
+			frappe.msgprint({
+				title: "Import Summary",
 				indicator: "green",
+				message: build_import_summary(response.message || {}),
 			});
 		});
 	},
