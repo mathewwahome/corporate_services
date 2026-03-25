@@ -1,6 +1,7 @@
 import frappe
 from frappe.utils import get_fullname, add_days, now_datetime, getdate, nowdate, get_datetime, today
 from datetime import datetime, time
+from corporate_services.api.notification.notification_contacts import get_hr_manager_emails, get_supervisor_contact
 
 @frappe.whitelist()
 def send_task_list_notification_to_hr(employee, task_list):
@@ -186,10 +187,10 @@ def send_probation_review_tasks(employee_name):
     supervisor_email = None
     supervisor_name = "Your Supervisor"
     
-    if employee.reports_to:
-        supervisor = frappe.get_doc("Employee", employee.reports_to)
-        supervisor_email = supervisor.company_email
-        supervisor_name = supervisor.employee_name
+    supervisor_contact = get_supervisor_contact(employee)
+    if supervisor_contact:
+        supervisor_email = supervisor_contact.email
+        supervisor_name = supervisor_contact.name
     
     # Email to new hire
     employee_message = f"""
@@ -384,29 +385,7 @@ def get_hr_emails():
     Returns:
         list: List of HR email addresses.
     """
-    # Get users with HR role
-    hr_users = frappe.get_all(
-        "Has Role",
-        filters={"role": "HR Manager"},
-        fields=["parent"]
-    )
-    
-    hr_emails = []
-    for user in hr_users:
-        email = frappe.db.get_value("User", user.parent, "email")
-        if email:
-            hr_emails.append(email)
-    
-    # Fallback: get HR department employees
-    if not hr_emails:
-        hr_employees = frappe.get_all(
-            "Employee",
-            filters={"department": "Human Resources", "status": "Active"},
-            fields=["company_email"]
-        )
-        hr_emails = [emp.company_email for emp in hr_employees if emp.company_email]
-    
-    return list(set(hr_emails))  # Remove duplicates
+    return get_hr_manager_emails()
 
 
 # Scheduled job functions (to be added to Frappe scheduler)

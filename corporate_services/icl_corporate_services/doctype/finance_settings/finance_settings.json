@@ -1,0 +1,84 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2026-03-25 09:05:56.979864",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "finance_settings_section",
+  "finance_email",
+  "finance_team_members_section",
+  "table_finance_team_members"
+ ],
+ "fields": [
+  {
+   "fieldname": "finance_settings_section",
+   "fieldtype": "Section Break",
+   "label": "Finance Settings"
+  },
+  {
+   "description": "This is the Main finance email",
+   "fieldname": "finance_email",
+   "fieldtype": "Data",
+   "label": "Finance Email",
+   "placeholder": "accounts@intellisoftkenya.com"
+  },
+  {
+   "fieldname": "finance_team_members_section",
+   "fieldtype": "Section Break",
+   "label": "Finance Team Members"
+  },
+  {
+   "description": "By default, these members will be receiving all the relating finance notifications.",
+   "fieldname": "table_finance_team_members",
+   "fieldtype": "Table",
+   "label": "Finance Team Members",
+   "options": "Finance Department"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "issingle": 1,
+ "links": [],
+ "modified": "2026-03-25 09:27:36.562754",
+ "modified_by": "Administrator",
+ "module": "ICL Corporate Services",
+ "name": "Finance Settings",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "Finance",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "HR Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

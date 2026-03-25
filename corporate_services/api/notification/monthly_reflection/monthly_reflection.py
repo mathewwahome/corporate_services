@@ -1,21 +1,10 @@
 import frappe
 from frappe.utils import get_url_to_form
-
-
-def get_default_print_format(doctype):
-    return (
-        frappe.db.get_value(
-            "Property Setter",
-            {"doc_type": doctype, "property": "default_print_format"},
-            "value",
-        )
-        or frappe.db.get_value(
-            "Print Format",
-            {"doc_type": doctype},
-            "name",
-        )
-        or "Standard"
-    )
+from corporate_services.api.helpers.print_formats import get_default_print_format
+from corporate_services.api.notification.notification_contacts import (
+    get_hr_manager_emails,
+    get_supervisor_contact,
+)
 
 
 def build_email_body(greeting, intro, action_line, link_url, sign_off, signer):
@@ -148,12 +137,7 @@ def alert(doc, method):
     employee = frappe.get_doc("Employee", doc.employee)
     employee_email = employee.company_email or employee.personal_email
 
-    hr_managers = frappe.get_all(
-        "Has Role",
-        filters={"role": "HR Manager", "parenttype": "User"},
-        fields=["parent"],
-    )
-    hr_emails = [u["parent"] for u in hr_managers if u["parent"] != "Administrator"]
+    hr_emails = get_hr_manager_emails()
 
     print_format = get_default_print_format(doc.doctype)
     pdf_content = frappe.get_print(doc.doctype, doc.name, print_format, as_pdf=True)
@@ -166,9 +150,9 @@ def alert(doc, method):
             )
             return
 
-        supervisor = frappe.get_doc("Employee", employee.reports_to)
-        supervisor_email = supervisor.company_email or supervisor.personal_email
-        supervisor_user = supervisor.user_id
+        supervisor_contact = get_supervisor_contact(employee)
+        supervisor_email = supervisor_contact.email
+        supervisor_user = supervisor_contact.user_id
 
         # Grant supervisor access via User Permission
         add_user_permission(supervisor_user, doc.employee)
@@ -176,7 +160,7 @@ def alert(doc, method):
         send_email(
             recipients=[supervisor_email],
             subject=frappe._("Monthly Reflection from {}".format(employee.employee_name)),
-            message=generate_message(doc, employee.employee_name, supervisor.employee_name, "supervisor"),
+            message=generate_message(doc, employee.employee_name, supervisor_contact.name, "supervisor"),
             pdf_content=pdf_content,
             doc_name=doc.name,
         )

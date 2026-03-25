@@ -1,21 +1,10 @@
 import frappe
 from frappe.utils import get_url_to_form
-
-
-def get_default_print_format(doctype):
-    return (
-        frappe.db.get_value(
-            "Property Setter",
-            {"doc_type": doctype, "property": "default_print_format"},
-            "value",
-        )
-        or frappe.db.get_value(
-            "Print Format",
-            {"doc_type": doctype},
-            "name",
-        )
-        or "Standard"
-    )
+from corporate_services.api.helpers.print_formats import get_default_print_format
+from corporate_services.api.notification.notification_contacts import (
+    get_hr_manager_emails,
+    get_supervisor_contact,
+)
 
 def send_email(recipients, subject, message, pdf_content, doc_name):
     frappe.sendmail(
@@ -99,14 +88,13 @@ def alert(doc, method):
     pdf_content = frappe.get_print(doc.doctype, doc.name, print_format, as_pdf=True)
 
     if doc.workflow_state == "Submitted to Supervisor":
-        if not employee.reports_to:
+        supervisor_contact = get_supervisor_contact(employee)
+        if not supervisor_contact:
             return
-        supervisor = frappe.get_doc("Employee", employee.reports_to)
-        supervisor_email = supervisor.company_email or supervisor.personal_email
 
         message = generate_message(doc, employee.employee_name, "supervisor")
         send_email(
-            recipients=[supervisor_email],
+            recipients=[supervisor_contact.email],
             subject=frappe._("Exit Interview Submitted – {}".format(employee.employee_name)),
             message=message,
             pdf_content=pdf_content,
@@ -124,12 +112,7 @@ def alert(doc, method):
         )
 
     elif doc.workflow_state == "Submitted to HR":
-        hr_managers = frappe.get_all("Has Role", filters={"role": "HR Manager"}, fields=["parent"])
-        hr_manager_emails = [
-            frappe.get_value("User", hm.parent, "email")
-            for hm in hr_managers
-            if frappe.get_value("User", hm.parent, "email")
-        ]
+        hr_manager_emails = get_hr_manager_emails()
 
         message = generate_message(doc, employee.employee_name, "hr")
         send_email(

@@ -72,13 +72,13 @@
    "type": "Link"
   }
  ],
- "modified": "2026-03-24 13:16:30.354339",
+ "modified": "2026-03-25 09:52:02.539570",
  "modified_by": "Administrator",
  "module": "ICL Corporate Services",
  "name": "Payroll",
  "number_cards": [],
  "owner": "Administrator",
- "parent_page": "",
+ "parent_page": "ICL Finance",
  "public": 1,
  "quick_lists": [],
  "restrict_to_domain": "",
@@ -87,7 +87,7 @@
    "role": "Finance"
   }
  ],
- "sequence_id": 6.0,
+ "sequence_id": 12.0,
  "shortcuts": [
   {
    "doc_view": "",

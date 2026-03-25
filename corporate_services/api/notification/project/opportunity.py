@@ -1,5 +1,6 @@
 import frappe
 from frappe.utils import get_url_to_form
+from corporate_services.api.helpers.print_formats import get_default_print_format
 
 def send_email(recipients, subject, message, pdf_content, doc_name):
     frappe.sendmail(
@@ -100,8 +101,9 @@ def alert(doc, method):
         else:
             approver_employee_name = None
 
-        print_format = "Standard"
-        pdf_content = frappe.get_print(doc.doctype, doc.name, print_format, as_pdf=True)
+        pdf_content = frappe.get_print(
+            doc.doctype, doc.name, get_default_print_format(doc.doctype), as_pdf=True
+        )
 
         if doc.workflow_state == "Submitted to CEO":
             if employee:
@@ -145,5 +147,4 @@ doc_events = {
         "on_update": alert
     }
 }
-
 
