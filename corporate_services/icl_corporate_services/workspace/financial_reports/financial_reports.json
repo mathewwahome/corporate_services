@@ -1,7 +1,7 @@
 {
  "charts": [],
  "content": "[{\"id\":\"nKKr6fjgjb\",\"type\":\"card\",\"data\":{\"card_name\":\"Ledgers\",\"col\":4}},{\"id\":\"p7NY6MHe2Y\",\"type\":\"card\",\"data\":{\"card_name\":\"Financial Statements\",\"col\":4}},{\"id\":\"3AK1Zf0oew\",\"type\":\"card\",\"data\":{\"card_name\":\"Profitability\",\"col\":4}},{\"id\":\"Q_hBCnSeJY\",\"type\":\"card\",\"data\":{\"card_name\":\"Other Reports\",\"col\":4}}]",
- "creation": "2026-03-22 20:03:24.681442",
+ "creation": "2026-03-24 11:02:20.334487",
  "custom_blocks": [],
  "docstatus": 0,
  "doctype": "Workspace",
@@ -282,7 +282,7 @@
    "type": "Link"
   }
  ],
- "modified": "2026-03-23 12:24:11.575648",
+ "modified": "2026-03-24 13:16:30.200634",
  "modified_by": "Administrator",
  "module": "ICL Corporate Services",
  "name": "Financial Reports",

@@ -78,6 +78,11 @@ function SurveyPublicApp() {
   const handleSubmit = async () => {
     if (!survey) return;
 
+    if (!department.trim()) {
+      setError("Please enter Department.");
+      return;
+    }
+
     const allQuestions = survey.sections.flatMap((s) => s.questions);
     const unanswered = allQuestions.filter((q) => {
       if (!q.is_required) return false;
@@ -105,7 +110,7 @@ function SurveyPublicApp() {
         method: "corporate_services.api.survey.submit_survey_response",
         args: {
           survey: survey.name,
-          department: department || null,
+          department: department.trim(),
           answers: payload,
         },
       });
@@ -279,7 +284,7 @@ function SurveyPublicApp() {
       <h2>{survey.title}</h2>
       {survey.description && <p>{survey.description}</p>}
       <div style={{ marginBottom: 16 }}>
-        <label className="form-label">Department (optional)</label>
+        <label className="form-label">Department *</label>
         <input
           className="form-control"
           value={department}
