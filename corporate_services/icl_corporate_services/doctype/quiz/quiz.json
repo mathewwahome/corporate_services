@@ -7,9 +7,14 @@
  "engine": "InnoDB",
  "field_order": [
   "quiz_title",
-  "description",
+  "column_break_edjf",
+  "status",
+  "section_break_lufa",
+  "questions",
+  "section_break_agrz",
   "passing_score_",
-  "questions"
+  "column_break_osho",
+  "description"
  ],
  "fields": [
   {
@@ -22,7 +27,17 @@
   {
    "fieldname": "description",
    "fieldtype": "Small Text",
-   "label": "Description"
+   "label": "Quiz Description",
+   "reqd": 1
+  },
+  {
+   "default": "Active",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Status",
+   "options": "Active\nInactive",
+   "reqd": 1
   },
   {
    "fieldname": "passing_score_",
@@ -37,12 +52,29 @@
    "label": "Questions",
    "options": "Quiz Question Link",
    "reqd": 1
+  },
+  {
+   "fieldname": "column_break_edjf",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "Please select all the questions you would like to be displayed on the quiz.",
+   "fieldname": "section_break_lufa",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "section_break_agrz",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_osho",
+   "fieldtype": "Column Break"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-03-17 12:40:09.117420",
+ "modified": "2026-03-25 15:18:21.104898",
  "modified_by": "Administrator",
  "module": "ICL Corporate Services",
  "name": "Quiz",
