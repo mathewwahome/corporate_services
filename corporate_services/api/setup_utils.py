@@ -1,9 +1,6 @@
 import frappe
 import os
 import json
-from frappe.utils.fixtures import sync_fixtures
-
-
 
 
 def clear_workspaces():
@@ -27,18 +24,16 @@ def clear_workspaces():
     except Exception as e:
         frappe.logger().error(f"An error occurred while deleting workspaces: {e}")
         frappe.db.rollback()  # Rollback in case of error
-    return
+ 
 
 
 def force_sync_fixtures():
-    """Force sync all fixtures on every migrate"""
     frappe.logger().info("=" * 60)
-    frappe.logger().info("Force syncing ICL Corporate Servises fixtures...")
+    frappe.logger().info("Force syncing ICL Corporate Services fixtures...")
     frappe.logger().info("=" * 60)
 
     fixture_path = frappe.get_app_path("corporate_services", "fixtures")
 
-    # List of fixture files to sync
     fixture_files = {
         "workflow.json": "Workflow",
         "workflow_state.json": "Workflow State",
@@ -49,7 +44,7 @@ def force_sync_fixtures():
         "role_profile.json": "Role Profile",
         "print_format.json": "Print Format",
         "workspace.json": "Workspace",
-        "custom_docperm.json":"Custom DocPerm",
+        "custom_docperm.json": "Custom DocPerm",
     }
 
     for filename, doctype in fixture_files.items():
@@ -96,13 +91,58 @@ def force_sync_fixtures():
     frappe.logger().info("=" * 60)
     frappe.logger().info("Fixture sync completed!")
     frappe.logger().info("=" * 60)
-    
+
+
+def clear_doctype_customizations(doctypes: list):
+    """
+    Removes all Customize Form overrides (Custom Fields + Property Setters)
+    for any custom doctype owned by this app.
+    Skips workflow_state custom field as it is required by workflows.
+    """
+    frappe.logger().info("Clearing doctype customizations...")
+
+    for doctype in doctypes:
+        try:
+            # Remove Custom Fields - skip workflow_state as workflow depends on it
+            custom_fields = frappe.get_all(
+                "Custom Field",
+                filters={
+                    "dt": doctype,
+                    "fieldname": ["!=", "workflow_state"]
+                },
+                fields=["name", "fieldname"]
+            )
+            for cf in custom_fields:
+                frappe.delete_doc("Custom Field", cf["name"], force=True)
+                frappe.logger().info(f"Deleted Custom Field: {cf['name']} ({cf['fieldname']})")
+
+            # Remove Property Setters
+            property_setters = frappe.get_all(
+                "Property Setter",
+                filters={"doc_type": doctype},
+                fields=["name", "field_name", "property"]
+            )
+            for ps in property_setters:
+                frappe.delete_doc("Property Setter", ps["name"], force=True)
+                frappe.logger().info(f"Deleted Property Setter: {ps['name']}")
+
+            frappe.db.commit()
+            frappe.logger().info(f"✓ Cleaned customizations for: {doctype}")
+
+        except Exception as e:
+            frappe.logger().error(f"Error cleaning {doctype}: {str(e)}")
+            frappe.db.rollback()
+
+
+def before_migrate_cleanup():
+    clear_doctype_customizations([
+        "Work Continuity Plan",
+    ])
+
 
 def post_install():
+    clear_doctype_customizations([
+        "Work Continuity Plan",
+    ])
     force_sync_fixtures()
     clear_workspaces()
-    return
-
-
-
-    

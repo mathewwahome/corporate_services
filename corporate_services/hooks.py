@@ -126,10 +126,12 @@ doctype_js = {}
 # before_app_install = "corporate_services.utils.before_app_install"
 # after_app_install = "corporate_services.utils.after_app_install"
 
+before_migrate = [
+    "corporate_services.api.setup_utils.before_migrate_cleanup"
+]
 
-after_migrate = [ 
-    "corporate_services.api.setup_utils.post_install",
-    "corporate_services.api.setup_utils.force_sync_fixtures"
+after_migrate = [
+    "corporate_services.api.setup_utils.post_install"
 ]
 
 

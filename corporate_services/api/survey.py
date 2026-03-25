@@ -286,6 +286,9 @@ def submit_survey_response(
     if not survey_doc.is_published:
         frappe.throw(_("Survey is not accepting responses"), frappe.PermissionError)
 
+    if not (department or "").strip():
+        frappe.throw(_("Department is required"))
+
     if isinstance(answers, str):
         import json
 
@@ -296,7 +299,7 @@ def submit_survey_response(
 
     resp = frappe.new_doc("Survey Response")
     resp.survey = survey_doc.name
-    resp.department = department or None
+    resp.department = department.strip()
 
     for item in answers:
         if not item:
