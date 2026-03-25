@@ -10,7 +10,7 @@
   }
  ],
  "content": "[{\"id\":\"HOrs48oc3_\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Opportunity Module</b></span>\",\"col\":12}},{\"id\":\"h9ruacd7CD\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Opportunity\",\"col\":3}},{\"id\":\"L5bE7TZ6bf\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Opportunity Type\",\"col\":3}},{\"id\":\"iMlFwoBP-9\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Opportunity Lost Reason\",\"col\":3}},{\"id\":\"_630XE-ptZ\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Master Boat Analysis\",\"col\":3}},{\"id\":\"W0ETUzBtpP\",\"type\":\"custom_block\",\"data\":{\"custom_block_name\":\"HR\",\"col\":12}},{\"id\":\"sSqxry03cZ\",\"type\":\"custom_block\",\"data\":{\"custom_block_name\":\"Opportunity Guide\",\"col\":12}},{\"id\":\"Ov1mPFk5JD\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"77THh8j08G\",\"type\":\"chart\",\"data\":{\"chart_name\":\"Opportunity Trends\",\"col\":12}},{\"id\":\"JUK7s4D4dj\",\"type\":\"chart\",\"data\":{\"chart_name\":\"Won Opportunities\",\"col\":12}}]",
- "creation": "2026-03-24 11:02:21.365972",
+ "creation": "2026-03-25 15:46:24.798169",
  "custom_blocks": [
   {
    "custom_block_name": "Opportunity Guide",
@@ -31,7 +31,7 @@
  "is_hidden": 0,
  "label": "ICL Opportunity",
  "links": [],
- "modified": "2026-03-25 09:52:03.556295",
+ "modified": "2026-03-25 22:31:00.507706",
  "modified_by": "Administrator",
  "module": "ICL Corporate Services",
  "name": "ICL Opportunity",
@@ -45,7 +45,7 @@
    "role": "BD coordinator"
   }
  ],
- "sequence_id": 20.0,
+ "sequence_id": 21.0,
  "shortcuts": [
   {
    "color": "Grey",

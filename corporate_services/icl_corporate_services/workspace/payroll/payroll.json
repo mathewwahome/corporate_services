@@ -6,7 +6,7 @@
   }
  ],
  "content": "[{\"type\":\"onboarding\",\"data\":{\"onboarding_name\":\"Payroll\",\"col\":12}},{\"type\":\"chart\",\"data\":{\"chart_name\":\"Outgoing Salary\",\"col\":12}},{\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Your Shortcuts</b></span>\",\"col\":12}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Dashboard\",\"col\":3}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Salary Register\",\"col\":3}},{\"type\":\"spacer\",\"data\":{\"col\":12}},{\"type\":\"card\",\"data\":{\"card_name\":\"Quick Links\",\"col\":4}},{\"type\":\"card\",\"data\":{\"card_name\":\"Settings\",\"col\":4}}]",
- "creation": "2026-03-24 11:02:21.078900",
+ "creation": "2026-03-25 15:46:24.555615",
  "custom_blocks": [],
  "docstatus": 0,
  "doctype": "Workspace",
@@ -72,7 +72,7 @@
    "type": "Link"
   }
  ],
- "modified": "2026-03-25 09:52:02.539570",
+ "modified": "2026-03-25 22:30:59.613375",
  "modified_by": "Administrator",
  "module": "ICL Corporate Services",
  "name": "Payroll",
@@ -87,7 +87,7 @@
    "role": "Finance"
   }
  ],
- "sequence_id": 12.0,
+ "sequence_id": 13.0,
  "shortcuts": [
   {
    "doc_view": "",
