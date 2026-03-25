@@ -11,10 +11,10 @@ const TYPE_LABELS: Record<string, string> = {
 };
 
 const TYPE_BADGE_COLOR: Record<string, string> = {
-  TEXT: "#6c757d",
+  TEXT:          "#6c757d",
   SINGLE_SELECT: "#0d6efd",
-  MULTI_SELECT: "#6610f2",
-  RATING: "#fd7e14",
+  MULTI_SELECT:  "#6610f2",
+  RATING:        "#fd7e14",
 };
 
 interface QuestionReportCardProps {
@@ -48,35 +48,44 @@ export function QuestionReportCard({
         .sort((a, b) => b.count - a.count)
     : [];
 
-  const skipCount = totalResponses - question.response_count;
+  const skipCount    = totalResponses - question.response_count;
   const responseRate =
     totalResponses > 0
       ? Math.round((question.response_count / totalResponses) * 100)
       : 0;
 
+  const rateColor =
+    responseRate >= 80 ? "#36b37e"
+    : responseRate >= 50 ? "var(--primary, #5e64ff)"
+    : "#ff8b00";
+
   const badgeColor = TYPE_BADGE_COLOR[question.question_type] ?? "#6c757d";
 
   return (
     <div
-      className="card border mb-3"
-      style={{ borderRadius: 8, overflow: "hidden" }}
+      className="frappe-card"
+      style={{ overflow: "hidden", marginBottom: 12, padding: 0 }}
     >
       {/* ── Card header ─────────────────────────────────────────────────── */}
       <div
-        className="card-header px-3 py-2"
         style={{
-          background: "var(--subtle-fg, #f8f9fa)",
+          background: "var(--subtle-accent)",
+          borderBottom: expanded ? "1px solid var(--border-color)" : "none",
+          padding: "10px 14px",
           cursor: "pointer",
+          userSelect: "none",
         }}
         onClick={() => setExpanded((e) => !e)}
       >
-        <div className="d-flex align-items-start gap-3">
-          {/* Question number */}
+        <div style={{ display: "flex", alignItems: "flex-start", gap: 12 }}>
+
+          {/* Q number */}
           <span
-            className="fw-bold flex-shrink-0"
             style={{
               fontSize: 13,
+              fontWeight: 700,
               color: "var(--primary, #5e64ff)",
+              flexShrink: 0,
               minWidth: 28,
               paddingTop: 1,
             }}
@@ -85,71 +94,109 @@ export function QuestionReportCard({
           </span>
 
           {/* Question text + type badge + section */}
-          <div className="flex-grow-1" style={{ minWidth: 0 }}>
+          <div style={{ flex: 1, minWidth: 0 }}>
             <div
-              className="fw-semibold"
-              style={{ fontSize: 13, lineHeight: 1.45 }}
+              style={{
+                fontSize: 13,
+                fontWeight: 600,
+                lineHeight: 1.45,
+                color: "var(--text-color)",
+              }}
             >
               {question.question_text}
             </div>
-            <div className="d-flex align-items-center gap-2 mt-1 flex-wrap">
+
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: 8,
+                marginTop: 4,
+                flexWrap: "wrap",
+              }}
+            >
+              {/* Type badge */}
               <span
-                className="badge"
-                style={{ background: badgeColor, color: "#fff", fontSize: 10 }}
+                style={{
+                  display: "inline-block",
+                  background: badgeColor,
+                  color: "#fff",
+                  fontSize: 10,
+                  fontWeight: 600,
+                  padding: "1px 7px",
+                  borderRadius: 3,
+                  lineHeight: 1.6,
+                }}
               >
                 {TYPE_LABELS[question.question_type] ?? question.question_type}
               </span>
-              <span className="text-muted" style={{ fontSize: 11 }}>
+
+              {/* Section name */}
+              <span style={{ fontSize: 11, color: "var(--text-muted)" }}>
                 {question.section}
               </span>
             </div>
           </div>
 
           {/* Response stats + mini rate bar */}
-          <div
-            className="text-end flex-shrink-0"
-            style={{ minWidth: 90 }}
-          >
+          <div style={{ textAlign: "right", flexShrink: 0, minWidth: 90 }}>
             <div style={{ fontSize: 13 }}>
-              <span className="fw-semibold">{question.response_count}</span>
-              <span className="text-muted fw-normal" style={{ fontSize: 11 }}>
+              <span style={{ fontWeight: 600, color: "var(--text-color)" }}>
+                {question.response_count}
+              </span>
+              <span style={{ fontSize: 11, color: "var(--text-muted)" }}>
                 /{totalResponses}
               </span>
             </div>
-            <div className="text-muted" style={{ fontSize: 10, whiteSpace: "nowrap" }}>
+
+            <div style={{ fontSize: 10, color: "var(--text-muted)", whiteSpace: "nowrap" }}>
               {responseRate}% answered
               {skipCount > 0 && ` · ${skipCount} skipped`}
             </div>
+
             {/* Mini progress bar */}
-            <div className="sm-rate-track" style={{ minWidth: 80 }}>
+            <div
+              style={{
+                marginTop: 5,
+                height: 4,
+                borderRadius: 4,
+                background: "var(--border-color, #eaecef)",
+                overflow: "hidden",
+                minWidth: 80,
+              }}
+            >
               <div
-                className="sm-rate-fill"
                 style={{
+                  height: "100%",
+                  borderRadius: 4,
+                  background: rateColor,
                   width: rateMounted ? `${responseRate}%` : "0%",
-                  background:
-                    responseRate >= 80
-                      ? "#28a745"
-                      : responseRate >= 50
-                      ? "var(--primary, #5e64ff)"
-                      : "#fd7e14",
+                  transition: "width 0.5s ease",
                 }}
               />
             </div>
           </div>
 
-          {/* Caret */}
+          {/* Expand / collapse caret */}
           <span
-            className={`sm-caret flex-shrink-0${expanded ? " open" : ""}`}
-            style={{ marginTop: 3 }}
+            style={{
+              flexShrink: 0,
+              marginTop: 3,
+              fontSize: 11,
+              color: "var(--text-muted)",
+              transform: expanded ? "rotate(90deg)" : "rotate(0deg)",
+              transition: "transform 0.2s ease",
+              display: "inline-block",
+            }}
           >
             ▶
           </span>
         </div>
       </div>
 
-      {/* ── Card body — smooth collapse ──────────────────────────────────── */}
-      <div className={`sm-section-body ${expanded ? "open" : "closed"}`}>
-        <div className="card-body p-3">
+      {/* ── Card body ───────────────────────────────────────────────────── */}
+      {expanded && (
+        <div style={{ padding: 14, background: "var(--card-bg)" }}>
           {hasAggregation && (
             <BarChart items={barItems} total={question.response_count} />
           )}
@@ -159,10 +206,12 @@ export function QuestionReportCard({
           )}
 
           {!hasAggregation && question.question_type !== "TEXT" && (
-            <div className="text-muted small">No responses recorded.</div>
+            <div style={{ fontSize: 12, color: "var(--text-muted)" }}>
+              No responses recorded.
+            </div>
           )}
         </div>
-      </div>
+      )}
     </div>
   );
 }

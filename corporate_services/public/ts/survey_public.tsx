@@ -59,7 +59,7 @@ function SurveyPublicApp() {
       setLoading(false);
       return;
     }
-    const frappeCall = window.frappe.call as <T,>(opts: any) => PromiseLike<T>;
+    const frappeCall = window.frappe.call as <T>(opts: any) => PromiseLike<T>;
     Promise.resolve(
       frappeCall<{ message: Survey }>({
         method: "corporate_services.api.survey.get_survey_detail",
@@ -78,7 +78,11 @@ function SurveyPublicApp() {
   const handleSubmit = async () => {
     if (!survey) return;
 
-    // Validate required questions
+    if (!department.trim()) {
+      setError("Please enter Department.");
+      return;
+    }
+
     const allQuestions = survey.sections.flatMap((s) => s.questions);
     const unanswered = allQuestions.filter((q) => {
       if (!q.is_required) return false;
@@ -106,7 +110,7 @@ function SurveyPublicApp() {
         method: "corporate_services.api.survey.submit_survey_response",
         args: {
           survey: survey.name,
-          department: department || null,
+          department: department.trim(),
           answers: payload,
         },
       });
@@ -136,8 +140,10 @@ function SurveyPublicApp() {
     const follow = followUps[q.name] || "";
     const opts = (q.options || "").split("\n").filter(Boolean);
 
-    const setVal = (v: string) => setAnswers((prev) => ({ ...prev, [q.name]: v }));
-    const setFollow = (v: string) => setFollowUps((prev) => ({ ...prev, [q.name]: v }));
+    const setVal = (v: string) =>
+      setAnswers((prev) => ({ ...prev, [q.name]: v }));
+    const setFollow = (v: string) =>
+      setFollowUps((prev) => ({ ...prev, [q.name]: v }));
 
     if (q.question_type === "TEXT") {
       return (
@@ -194,15 +200,22 @@ function SurveyPublicApp() {
     }
 
     if (q.question_type === "MULTI_SELECT") {
-      const selected = val ? val.split("|||") : [];
-      const max = q.max_selections ?? Infinity;
+      const max = q.max_selections || Infinity;
       const toggle = (o: string) => {
-        if (selected.includes(o)) {
-          setVal(selected.filter((v) => v !== o).join("|||"));
-        } else if (selected.length < max) {
-          setVal([...selected, o].join("|||"));
-        }
+        setAnswers((prev) => {
+          const currentVal = prev[q.name] || "";
+          const currentSelected = currentVal ? currentVal.split("|||") : [];
+          if (currentSelected.includes(o)) {
+            const next = currentSelected.filter((v) => v !== o).join("|||");
+            return { ...prev, [q.name]: next };
+          } else if (currentSelected.length < max) {
+            const next = [...currentSelected, o].join("|||");
+            return { ...prev, [q.name]: next };
+          }
+          return prev;
+        });
       };
+      const selected = val ? val.split("|||") : [];
       return (
         <>
           {opts.map((o) => (
@@ -271,7 +284,7 @@ function SurveyPublicApp() {
       <h2>{survey.title}</h2>
       {survey.description && <p>{survey.description}</p>}
       <div style={{ marginBottom: 16 }}>
-        <label className="form-label">Department (optional)</label>
+        <label className="form-label">Department *</label>
         <input
           className="form-control"
           value={department}
@@ -298,7 +311,11 @@ function SurveyPublicApp() {
               ))}
           </div>
         ))}
-      {error && <div className="text-danger" style={{ marginBottom: 8 }}>{error}</div>}
+      {error && (
+        <div className="text-danger" style={{ marginBottom: 8 }}>
+          {error}
+        </div>
+      )}
       <button
         type="button"
         className="btn btn-primary"

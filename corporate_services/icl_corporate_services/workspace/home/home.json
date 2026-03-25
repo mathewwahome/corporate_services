@@ -1,11 +1,15 @@
 {
  "charts": [],
- "content": "[{\"id\":\"GNWkxjGMdi\",\"type\":\"custom_block\",\"data\":{\"custom_block_name\":\"Welcome\",\"col\":12}}]",
- "creation": "2026-02-26 20:18:17.577875",
+ "content": "[{\"id\":\"GNWkxjGMdi\",\"type\":\"custom_block\",\"data\":{\"custom_block_name\":\"Welcome\",\"col\":12}},{\"id\":\"lUK9IUIGuR\",\"type\":\"custom_block\",\"data\":{\"custom_block_name\":\"HR\",\"col\":12}},{\"id\":\"D4iuiH6oX4\",\"type\":\"quick_list\",\"data\":{\"quick_list_name\":\"Notification Log\",\"col\":6}},{\"id\":\"KSj8Cg07nw\",\"type\":\"quick_list\",\"data\":{\"quick_list_name\":\"ToDo\",\"col\":6}}]",
+ "creation": "2026-03-24 11:02:19.709205",
  "custom_blocks": [
   {
    "custom_block_name": "Welcome",
    "label": "Welcome"
+  },
+  {
+   "custom_block_name": "HR",
+   "label": "HR"
   }
  ],
  "docstatus": 0,
@@ -17,7 +21,7 @@
  "is_hidden": 0,
  "label": "Home",
  "links": [],
- "modified": "2026-03-01 09:00:48.408996",
+ "modified": "2026-03-24 13:16:29.434239",
  "modified_by": "Administrator",
  "module": "ICL Corporate Services",
  "name": "Home",
@@ -25,7 +29,18 @@
  "owner": "Administrator",
  "parent_page": "",
  "public": 1,
- "quick_lists": [],
+ "quick_lists": [
+  {
+   "document_type": "ToDo",
+   "label": "ToDo",
+   "quick_list_filter": "[]"
+  },
+  {
+   "document_type": "Notification Log",
+   "label": "Notification Log",
+   "quick_list_filter": "[[\"Notification Log\",\"read\",\"=\",0,false]]"
+  }
+ ],
  "restrict_to_domain": "",
  "roles": [],
  "sequence_id": 1.0,

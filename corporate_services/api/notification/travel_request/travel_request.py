@@ -39,9 +39,8 @@ def generate_message(doc, employee_name, email_type, supervisor_name=None):
 
         "submitted_to_finance": """
             Dear Finance,<br><br>
-            {}, {} has been reviewed and, it has been Approved by HR. You can view the details <a href="{}">here</a>.<br><br>
-            Kind regards,<br>
-            HR
+            {}, {} has been reviewed and, it has been Approved by their Supervisor. You can view the details <a href="{}">here</a>.<br><br>
+            
         """.format(employee_name, doc.doctype, doctype_url ),
 
         "finance_approved": """

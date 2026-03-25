@@ -144,22 +144,10 @@ def create_job_candidate():
         if validation_errors:
             return {'success': False, 'errors': validation_errors}
 
-        # ------------------------------------------------------------------ #
-        # Resolve role → Job Opening Link
-        # job_opening_name  = the Job Opening `name` (e.g. HR-JOB-2026-00001)
-        # This populates the standard `job_title` Link field so that:
-        #   • Dashboard charts grouped by job_title show real labels
-        #   • ERPNext recruitment pipeline works correctly
-        # We also store the human-readable label in custom_role so the
-        # application form still displays the role name to the user.
-        # ------------------------------------------------------------------ #
+
         job_opening_name = get_job_opening(role)
 
-        # ------------------------------------------------------------------ #
-        # Resolve the initial workflow state for Job Applicant (if a workflow
-        # is active). Without this, Frappe raises:
-        #   'JobApplicant' object has no attribute 'workflow_state'
-        # ------------------------------------------------------------------ #
+ 
         initial_workflow_state = get_initial_workflow_state(DOCTYPE_JOB_CANDIDATE)
 
         # Create the Job Applicant document
@@ -168,14 +156,11 @@ def create_job_candidate():
             'applicant_name': names,
             'email_id': email_address,
             'phone_number': phone if phone else None,
-            # Standard Link field → enables dashboard grouping & pipeline
             'job_title': job_opening_name,
-            # Custom plain-text field → preserves what the applicant typed
             'custom_role': role if role else None,
             'custom_role_description': role_description if role_description else None,
         }
 
-        # Inject workflow_state only when a workflow is present
         if initial_workflow_state:
             doc_data['workflow_state'] = initial_workflow_state
 

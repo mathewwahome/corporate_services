@@ -21,126 +21,176 @@ export function QuestionEditor({ question, qIdx, onUpdate, onRemove }: QuestionE
     question.question_type === "MULTI_SELECT";
 
   return (
-    <div className="sm-question-card card border mb-2">
-      <div className="card-body p-3">
-        {/* Top row: number + text + type + required + remove */}
-        <div className="d-flex gap-2 align-items-start">
-          <span
-            className="badge bg-light text-secondary border mt-1 flex-shrink-0"
-            style={{ fontSize: 11, minWidth: 26, textAlign: "center" }}
+    <div
+      className="frappe-card"
+      style={{ padding: 12, marginBottom: 0 }}
+    >
+      {/* ── Top row: badge + question text + remove ──────────────────── */}
+      <div style={{ display: "flex", gap: 8, alignItems: "flex-start" }}>
+
+        {/* Q number badge */}
+        <span
+          className="indicator-pill gray"
+          style={{
+            fontSize: 10,
+            fontWeight: 700,
+            flexShrink: 0,
+            marginTop: 5,
+            minWidth: 28,
+            textAlign: "center",
+          }}
+        >
+          Q{qIdx + 1}
+        </span>
+
+        {/* Main body */}
+        <div style={{ flex: 1, minWidth: 0 }}>
+
+          {/* Question text input */}
+          <input
+            className="form-control"
+            style={{ fontSize: 13, marginBottom: 8, height: 30 }}
+            placeholder="Question text…"
+            value={question.question_text}
+            onChange={(e) =>
+              onUpdate((q) => ({ ...q, question_text: e.target.value }))
+            }
+          />
+
+          {/* Type + Required + Order row */}
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: 10,
+              flexWrap: "wrap",
+            }}
           >
-            Q{qIdx + 1}
-          </span>
-
-          <div className="flex-grow-1">
-            <input
-              className="form-control form-control-sm mb-2"
-              placeholder="Question text…"
-              value={question.question_text}
+            {/* Question type */}
+            <select
+              className="form-control"
+              style={{ width: 150, fontSize: 12, height: 28, padding: "3px 8px" }}
+              value={question.question_type}
               onChange={(e) =>
-                onUpdate((q) => ({ ...q, question_text: e.target.value }))
+                onUpdate((q) => ({
+                  ...q,
+                  question_type: e.target.value as QuestionType,
+                  options: "",
+                }))
               }
-            />
+            >
+              {QUESTION_TYPES.map((t) => (
+                <option key={t.value} value={t.value}>
+                  {t.label}
+                </option>
+              ))}
+            </select>
 
-            {/* Type + Required + Order on one line */}
-            <div className="d-flex gap-2 align-items-center flex-wrap">
-              <select
-                className="form-select form-select-sm"
-                style={{ width: 160, fontSize: 12 }}
-                value={question.question_type}
+            {/* Required checkbox */}
+            <label
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: 5,
+                fontSize: 12,
+                cursor: "pointer",
+                color: "var(--text-color)",
+                margin: 0,
+                userSelect: "none",
+              }}
+            >
+              <input
+                type="checkbox"
+                checked={!!question.is_required}
                 onChange={(e) =>
                   onUpdate((q) => ({
                     ...q,
-                    question_type: e.target.value as QuestionType,
-                    options: "",
+                    is_required: e.target.checked ? 1 : 0,
                   }))
                 }
-              >
-                {QUESTION_TYPES.map((t) => (
-                  <option key={t.value} value={t.value}>
-                    {t.label}
-                  </option>
-                ))}
-              </select>
+                style={{ cursor: "pointer" }}
+              />
+              Required
+            </label>
 
-              <label
-                className="d-flex align-items-center gap-1 mb-0"
-                style={{ fontSize: 12, cursor: "pointer" }}
-              >
-                <input
-                  type="checkbox"
-                  className="form-check-input mt-0"
-                  checked={!!question.is_required}
-                  onChange={(e) =>
-                    onUpdate((q) => ({
-                      ...q,
-                      is_required: e.target.checked ? 1 : 0,
-                    }))
-                  }
-                />
-                Required
-              </label>
-
-              <div className="d-flex align-items-center gap-1 ms-auto">
-                <span className="text-muted" style={{ fontSize: 11 }}>
-                  Order:
-                </span>
-                <input
-                  className="form-control form-control-sm"
-                  style={{ width: 60, fontSize: 12 }}
-                  type="number"
-                  min={1}
-                  value={question.order}
-                  onChange={(e) =>
-                    onUpdate((q) => ({ ...q, order: Number(e.target.value) }))
-                  }
-                />
-              </div>
+            {/* Order */}
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: 4,
+                marginLeft: "auto",
+              }}
+            >
+              <span style={{ fontSize: 11, color: "var(--text-muted)" }}>
+                Order:
+              </span>
+              <input
+                className="form-control"
+                style={{ width: 54, fontSize: 12, height: 28, textAlign: "center", padding: "3px 6px" }}
+                type="number"
+                min={1}
+                value={question.order}
+                onChange={(e) =>
+                  onUpdate((q) => ({ ...q, order: Number(e.target.value) }))
+                }
+              />
             </div>
           </div>
-
-          <button
-            className="btn btn-sm btn-outline-danger flex-shrink-0"
-            type="button"
-            onClick={onRemove}
-            title="Remove question"
-            style={{ fontSize: 12 }}
-          >
-            ✕
-          </button>
         </div>
 
-        {/* Options textarea (shown for SINGLE_SELECT / MULTI_SELECT) */}
-        {hasOptions && (
-          <div className="mt-2">
-            <label className="form-label mb-1" style={{ fontSize: 11, color: "var(--text-muted)" }}>
-              Options (one per line)
-            </label>
-            <textarea
-              className="form-control form-control-sm"
-              rows={3}
-              placeholder={"Option A\nOption B\nOption C"}
-              value={question.options ?? ""}
-              onChange={(e) =>
-                onUpdate((q) => ({ ...q, options: e.target.value }))
-              }
-              style={{ fontFamily: "monospace", fontSize: 12, resize: "vertical" }}
-            />
-          </div>
-        )}
+        {/* Remove button */}
+        <button
+          className="btn btn-xs btn-default"
+          type="button"
+          onClick={onRemove}
+          title="Remove question"
+          style={{ color: "var(--red-500, #e24c4c)", flexShrink: 0 }}
+        >
+          ✕
+        </button>
+      </div>
 
-        {/* Follow-up text */}
-        <div className="mt-2">
-          <input
-            className="form-control form-control-sm"
-            placeholder="Follow-up question text (optional)"
-            value={question.follow_up_text ?? ""}
+      {/* ── Options textarea (SINGLE_SELECT / MULTI_SELECT) ──────────── */}
+      {hasOptions && (
+        <div style={{ marginTop: 10 }}>
+          <label
+            style={{
+              display: "block",
+              fontSize: 11,
+              fontWeight: 600,
+              textTransform: "uppercase",
+              letterSpacing: "0.05em",
+              color: "var(--text-muted)",
+              marginBottom: 4,
+            }}
+          >
+            Options (one per line)
+          </label>
+          <textarea
+            className="form-control"
+            rows={3}
+            placeholder={"Option A\nOption B\nOption C"}
+            value={question.options ?? ""}
             onChange={(e) =>
-              onUpdate((q) => ({ ...q, follow_up_text: e.target.value }))
+              onUpdate((q) => ({ ...q, options: e.target.value }))
             }
-            style={{ fontSize: 12 }}
+            style={{ fontFamily: "monospace", fontSize: 12, resize: "vertical" }}
           />
         </div>
+      )}
+
+      {/* ── Follow-up text ────────────────────────────────────────────── */}
+      <div style={{ marginTop: 8 }}>
+        <input
+          className="form-control"
+          style={{ fontSize: 12, height: 28 }}
+          placeholder="Follow-up question text (optional)"
+          value={question.follow_up_text ?? ""}
+          onChange={(e) =>
+            onUpdate((q) => ({ ...q, follow_up_text: e.target.value }))
+          }
+        />
       </div>
     </div>
   );

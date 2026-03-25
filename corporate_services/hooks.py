@@ -11,7 +11,9 @@ app_license = "mit"
 
 # include js, css files in header of desk.html
 # app_include_css = ["/assets/corporate_services/css/modern_ui_theme.css"]
-
+app_include_css = [
+    "/assets/corporate_services/css/survey_manager.css"
+]
 # app_include_js = [
 #     "/assets/corporate_services/js/custom.js",
 #     "/assets/corporate_services/js/theme.js"
@@ -124,8 +126,13 @@ doctype_js = {}
 # before_app_install = "corporate_services.utils.before_app_install"
 # after_app_install = "corporate_services.utils.after_app_install"
 
+before_migrate = [
+    "corporate_services.api.setup_utils.before_migrate_cleanup"
+]
 
-after_migrate = "corporate_services.api.setup_utils.post_install"
+after_migrate = [
+    "corporate_services.api.setup_utils.post_install"
+]
 
 
 # Integration Cleanup
@@ -191,7 +198,7 @@ on_update_map = {
     "Supplier Quote Submission": "corporate_services.api.supplier.vat_calc.calc",
     "Asset Damage Loss Theft Report Form": "corporate_services.api.notification.assets.loss_damage_loss_report.alert",
     "Chart of Accounts Utilities": "corporate_services.api.import_coa.import_accounts_v2",
-    "Opportunity": "corporate_services.api.notification.project.bidding.alert",
+    "Opportunity": "corporate_services.api.notification.project.opportunity.alert",
     "General Requisition Form": "corporate_services.api.notification.requisition.general_requisition.alert",
     "Appraisal": "corporate_services.api.notification.appraisal.appraisal.alert",
     "Asset Movement": "corporate_services.api.notification.assets.asset_handover.alert",
@@ -382,6 +389,7 @@ fixtures = [
     "Workflow State",
     "Workflow Action Master",
     "Role",
+	"Role Profile",
     "Report",
     "Navbar Settings",
     "HR Settings",
@@ -398,7 +406,7 @@ fixtures = [
     # "Dashboard Chart",
     # "Notification",
     # "Dashboard",
-    "Website Settings",
+    # "Website Settings",
     "Website Theme",
     "Portal Settings",
     "Performance Score Bands",

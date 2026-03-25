@@ -11,6 +11,7 @@
   "actual_arrival_time",
   "date_advance_taken",
   "date_of_reconciliation",
+  "employee",
   "column_break_pfyo",
   "project_budget_codes",
   "activity_description",
@@ -182,12 +183,21 @@
    "print_hide": 1,
    "read_only": 1,
    "search_index": 1
+  },
+  {
+   "fetch_from": "travel_request.employee",
+   "fieldname": "employee",
+   "fieldtype": "Link",
+   "hidden": 1,
+   "label": "Employee",
+   "options": "Employee",
+   "print_hide": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2026-03-10 08:31:01.972689",
+ "modified": "2026-03-23 07:46:55.599663",
  "modified_by": "Administrator",
  "module": "ICL Corporate Services",
  "name": "Travel Request Reconciliation",
@@ -207,6 +217,7 @@
    "write": 1
   }
  ],
+ "queue_in_background": 1,
  "row_format": "Dynamic",
  "sort_field": "modified",
  "sort_order": "DESC",

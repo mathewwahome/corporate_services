@@ -1,7 +1,7 @@
 {
  "charts": [],
  "content": "[{\"id\":\"rMMsfn2eB4\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Shortcuts</b></span>\",\"col\":12}},{\"id\":\"G984SgVRJN\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Purchase Invoice\",\"col\":3}},{\"id\":\"F9f4I1viNr\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Payment Entry\",\"col\":3}},{\"id\":\"1ArNvt9qhz\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Journal Entry\",\"col\":3}},{\"id\":\"4IBBOIxfqW\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Accounts Payable\",\"col\":3}},{\"id\":\"B7-uxs8tkU\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"jAcOH-cC-Q\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Reports &amp; Masters</b></span>\",\"col\":12}},{\"id\":\"7dj93PEUjW\",\"type\":\"card\",\"data\":{\"card_name\":\"Invoicing\",\"col\":4}},{\"id\":\"_Cb7C8XdJJ\",\"type\":\"card\",\"data\":{\"card_name\":\"Payments\",\"col\":4}},{\"id\":\"9yseIkdG50\",\"type\":\"card\",\"data\":{\"card_name\":\"Reports\",\"col\":4}}]",
- "creation": "2024-09-27 07:26:02.443372",
+ "creation": "2026-03-24 11:02:20.562777",
  "custom_blocks": [],
  "docstatus": 0,
  "doctype": "Workspace",
@@ -99,6 +99,7 @@
    "link_to": "Accounts Payable",
    "link_type": "Report",
    "onboard": 0,
+   "report_ref_doctype": "Purchase Invoice",
    "type": "Link"
   },
   {
@@ -109,6 +110,7 @@
    "link_to": "Accounts Payable Summary",
    "link_type": "Report",
    "onboard": 0,
+   "report_ref_doctype": "Purchase Invoice",
    "type": "Link"
   },
   {
@@ -119,6 +121,7 @@
    "link_to": "Purchase Register",
    "link_type": "Report",
    "onboard": 0,
+   "report_ref_doctype": "Purchase Invoice",
    "type": "Link"
   },
   {
@@ -129,6 +132,7 @@
    "link_to": "Item-wise Purchase Register",
    "link_type": "Report",
    "onboard": 0,
+   "report_ref_doctype": "Purchase Invoice",
    "type": "Link"
   },
   {
@@ -139,6 +143,7 @@
    "link_to": "Purchase Order Analysis",
    "link_type": "Report",
    "onboard": 0,
+   "report_ref_doctype": "Purchase Order",
    "type": "Link"
   },
   {
@@ -149,6 +154,7 @@
    "link_to": "Received Items To Be Billed",
    "link_type": "Report",
    "onboard": 0,
+   "report_ref_doctype": "Purchase Invoice",
    "type": "Link"
   },
   {
@@ -159,10 +165,11 @@
    "link_to": "Supplier Ledger Summary",
    "link_type": "Report",
    "onboard": 0,
+   "report_ref_doctype": "Purchase Invoice",
    "type": "Link"
   }
  ],
- "modified": "2024-09-30 09:05:06.595144",
+ "modified": "2026-03-24 13:16:29.857885",
  "modified_by": "Administrator",
  "module": "ICL Corporate Services",
  "name": "Payables",
@@ -183,6 +190,7 @@
    "doc_view": "",
    "label": "Accounts Payable",
    "link_to": "Accounts Payable",
+   "report_ref_doctype": "Purchase Invoice",
    "type": "Report"
   },
   {
