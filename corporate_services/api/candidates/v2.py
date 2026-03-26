@@ -4,7 +4,62 @@ import json
 import re
 
 # Constants
-DOCTYPE_JOB_CANDIDATE = 'Job Candidate'
+DOCTYPE_JOB_CANDIDATE = 'Job Applicant'
+
+
+def get_initial_workflow_state(doctype):
+    workflow_name = frappe.db.get_value(
+        'Workflow',
+        {'document_type': doctype, 'is_active': 1},
+        'name',
+    )
+    if not workflow_name:
+        return None
+
+    initial_state = frappe.db.get_value(
+        'Workflow Document State',
+        {'parent': workflow_name, 'is_initial_state': 1},
+        'state',
+    )
+    if initial_state:
+        return initial_state
+
+    # Fallback: first state defined in the workflow
+    first_state = frappe.db.get_value(
+        'Workflow Document State',
+        {'parent': workflow_name},
+        'state',
+        order_by='idx asc',
+    )
+    return first_state
+
+
+def get_job_opening(role):
+    if not role:
+        return None
+
+    opening = frappe.db.get_value(
+        'Job Opening',
+        {'job_title': role, 'status': 'Open'},
+        'name',
+    )
+    if opening:
+        return opening
+
+    opening = frappe.db.get_value(
+        'Job Opening',
+        {'job_title': role},
+        'name',
+    )
+    if opening:
+        return opening
+
+    opening = frappe.db.get_value(
+        'Job Opening',
+        {'job_title': ['like', role]},
+        'name',
+    )
+    return opening
 
 
 @frappe.whitelist()
@@ -20,7 +75,9 @@ def create_job_candidate():
     
     Optional fields:
     - phone: Phone number
-    - role: Role/position name the candidate is applying for
+    - role: Role/position name the candidate is applying for.
+            Matched against Job Opening.job_title to populate the
+            standard job_title Link field automatically.
     - role_description: Description of the role
     - cover_letter: Cover letter file (attached)
     - minimum_requirements: JSON array of minimum requirements
@@ -85,75 +142,96 @@ def create_job_candidate():
         
         # Return validation errors if any
         if validation_errors:
-            return {
-                'success': False,
-                'errors': validation_errors
-            }
-        
-        # Create the Job Candidate document
-        candidate_doc = frappe.get_doc({
+            return {'success': False, 'errors': validation_errors}
+
+
+        job_opening_name = get_job_opening(role)
+
+ 
+        initial_workflow_state = get_initial_workflow_state(DOCTYPE_JOB_CANDIDATE)
+
+        # Create the Job Applicant document
+        doc_data = {
             'doctype': DOCTYPE_JOB_CANDIDATE,
-            'names': names,
-            'email_address': email_address,
-            'phone': phone if phone else None,
-            'role': role if role else None,
-            'role_description': role_description if role_description else None
-        })
-        
+            'applicant_name': names,
+            'email_id': email_address,
+            'phone_number': phone if phone else None,
+            'job_title': job_opening_name,
+            'custom_role': role if role else None,
+            'custom_role_description': role_description if role_description else None,
+        }
+
+        if initial_workflow_state:
+            doc_data['workflow_state'] = initial_workflow_state
+
+        candidate_doc = frappe.get_doc(doc_data)
+
         # Save CV file
+        cv_file_doc = None
         if cv_file:
             cv_file_doc = save_file(
                 file=cv_file,
                 doctype=DOCTYPE_JOB_CANDIDATE,
-                docname=None,  # Will be updated after insert
-                fieldname='cv'
+                docname=None,
+                fieldname='resume_attachment',
             )
-            candidate_doc.cv = cv_file_doc.file_url
-        
-        # Save cover letter file if provided
+            candidate_doc.resume_attachment = cv_file_doc.file_url  
+
+        # Save cover letter file
+        cover_letter_file_doc = None
         if cover_letter_file:
-            cover_letter_doc = save_file(
+            cover_letter_file_doc = save_file(
                 file=cover_letter_file,
                 doctype=DOCTYPE_JOB_CANDIDATE,
                 docname=None,
-                fieldname='cover_letter'
+                fieldname='custom_cover_letter_attachment',
             )
-            candidate_doc.cover_letter = cover_letter_doc.file_url
-        
+            candidate_doc.custom_cover_letter_attachment = cover_letter_file_doc.file_url  
+
         # Add minimum requirements child table entries
         for req in minimum_requirements:
             if isinstance(req, dict):
-                candidate_doc.append('minimum_requirements', req)
-        
+                candidate_doc.append('custom_minimum_requirements', req)
+
         # Add preferred attributes child table entries
         for attr in preferred_attributes:
             if isinstance(attr, dict):
-                candidate_doc.append('preferred_attributes', attr)
-        
+                candidate_doc.append('custom_preferred_attributes', attr)
+
         # Insert the document
         candidate_doc.insert(ignore_permissions=True)
-        
+
         # Update file attachments to link to the created document
-        if cv_file:
-            update_file_attachment(cv_file_doc.name, candidate_doc.name, DOCTYPE_JOB_CANDIDATE, 'cv')
-        if cover_letter_file:
-            update_file_attachment(cover_letter_doc.name, candidate_doc.name, DOCTYPE_JOB_CANDIDATE, 'cover_letter')
-        
-        # Commit the transaction
+        if cv_file_doc:
+            update_file_attachment(
+                cv_file_doc.name,
+                candidate_doc.name,
+                DOCTYPE_JOB_CANDIDATE,
+                'resume_attachment',
+            )
+        if cover_letter_file_doc:
+            update_file_attachment(
+                cover_letter_file_doc.name,
+                candidate_doc.name,
+                DOCTYPE_JOB_CANDIDATE,
+                'custom_cover_letter_attachment',
+            )
+
         frappe.db.commit()
-        
-        # Return success response
+
         return {
             'success': True,
             'data': {
                 'name': candidate_doc.name,
-                'names': candidate_doc.names,
-                'email_address': candidate_doc.email_address,
-                'phone': candidate_doc.phone,
-                'role': candidate_doc.role,
-                'role_description': candidate_doc.role_description,
-                'cv': candidate_doc.cv,
-                'cover_letter': candidate_doc.cover_letter
+                'applicant_name': candidate_doc.applicant_name,
+                'email_id': candidate_doc.email_id,
+                'phone_number': candidate_doc.phone_number or None,
+                'job_title': candidate_doc.job_title or None,
+                'custom_role': candidate_doc.custom_role or None,
+                'custom_role_description': candidate_doc.custom_role_description or None,
+                'resume_attachment': candidate_doc.resume_attachment or None,
+                'custom_cover_letter_attachment': candidate_doc.custom_cover_letter_attachment or None,
+                '_job_opening_matched': bool(job_opening_name),
             }
         }
         
@@ -199,7 +277,7 @@ def save_file(file, doctype, docname, fieldname):
         'doctype': 'File',
         'file_name': file.filename,
         'is_private': 1,
-        'content': file.read()
+        'content': file.read(),
     }
     
     # Only set attachment fields if docname is provided
@@ -227,5 +305,61 @@ def update_file_attachment(file_name, docname, doctype, fieldname):
     frappe.db.set_value('File', file_name, {
         'attached_to_doctype': doctype,
         'attached_to_name': docname,
-        'attached_to_field': fieldname
+        'attached_to_field': fieldname,
     })
+
+
+@frappe.whitelist()
+def send_rejection_email():
+    """
+    Send a rejection email to a candidate who did not meet minimum requirements.
+    Accepts JSON body with candidate_name, candidate_email, and role_title.
+    """
+    try:
+        data = frappe.local.form_dict
+
+        candidate_name = data.get("candidate_name", "").strip()
+        candidate_email = data.get("candidate_email", "").strip()
+        role_title = data.get("role_title", "").strip()
+
+        validation_errors = {}
+        if not candidate_name:
+            validation_errors["candidate_name"] = "Candidate name is required"
+        if not candidate_email:
+            validation_errors["candidate_email"] = "Candidate email is required"
+        elif not is_valid_email(candidate_email):
+            validation_errors["candidate_email"] = "Invalid email address format"
+
+        if validation_errors:
+            return {"success": False, "errors": validation_errors}
+
+        company_name = frappe.get_value("Global Defaults", None, "default_company") or "Our Company"
+        signature_name = frappe.get_value("User", frappe.session.user, "full_name") or "The HR Team"
+
+        subject = f"Application Update - {role_title} at {company_name}"
+
+        message = f"""Dear {candidate_name},
+
+Thank you for your interest in the role of {role_title} at {company_name}.
+
+Based on the minimum requirements indicated in your application, we will not be progressing with your application at this time. We encourage you to apply again in future if your experience aligns with the requirements of a role.
+
+We appreciate the time you took to apply and wish you the best in your career journey.
+
+Kind regards,
+{signature_name}
+Human Resources
+{company_name}"""
+
+        frappe.sendmail(
+            recipients=[candidate_email],
+            subject=subject,
+            message=message,
+            now=True,
+        )
+
+        return {"success": True, "data": {"email_sent_to": candidate_email}}
+
+    except Exception as e:
+        frappe.log_error(frappe.get_traceback(), "Rejection Email API Error")
+        return {"success": False, "errors": {"general": str(e)}}
