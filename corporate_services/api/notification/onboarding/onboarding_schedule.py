@@ -1,5 +1,6 @@
 import frappe
-from frappe.utils import today, add_days, getdate
+from frappe import _
+from frappe.utils import today, add_days, getdate, get_fullname
 
 
 def send_30day_onboarding_surveys():
@@ -120,7 +121,7 @@ def send_30day_feedback_survey(employee_name, docname=None):
         message=email_message,
     )
 
-    # Tick the checkbox only — no survey doc to link yet since employee creates it themselves
+    # Tick the checkbox only - no survey doc to link yet since employee creates it themselves
     if onboarding_doc_name:
         frappe.db.set_value(
             "Onboarding Schedule",
@@ -133,3 +134,116 @@ def send_30day_feedback_survey(employee_name, docname=None):
     employee.add_comment("Comment", "30-day feedback survey link sent.")
 
     return f"30-day feedback survey sent to {employee.employee_name}"
+
+
+@frappe.whitelist()
+def send_welcome_email(docname, email_template, custom_message):
+    doc = frappe.get_doc("Onboarding Schedule", docname)
+    employee = frappe.get_doc("Employee", doc.employee)
+
+    recipient = employee.company_email or employee.personal_email or doc.employee_email
+    if not recipient:
+        frappe.throw(_("No email address found for employee {0}.").format(employee.employee_name))
+
+    subject, message = _render_email_template(doc, employee, email_template, custom_message)
+
+    frappe.sendmail(
+        recipients=[recipient],
+        subject=subject,
+        message=message,
+        now=True,
+    )
+
+    frappe.db.set_value("Onboarding Schedule", doc.name, "send_welcome_email", 1)
+    frappe.db.commit()
+
+    doc.add_comment(
+        "Comment",
+        _("Welcome email sent to {0} by {1}.").format(
+            recipient, get_fullname(frappe.session.user)
+        ),
+    )
+
+    return _("Welcome email sent to {0}.").format(employee.employee_name)
+
+
+@frappe.whitelist()
+def send_global_email_invite(docname, email_template, custom_message):
+    doc = frappe.get_doc("Onboarding Schedule", docname)
+    employee = frappe.get_doc("Employee", doc.employee)
+
+    recipients = _get_global_recipients(employee.name)
+    if not recipients:
+        frappe.throw(_("No active employee email addresses found."))
+
+    subject, message = _render_email_template(doc, employee, email_template, custom_message)
+
+    frappe.sendmail(
+        recipients=recipients,
+        subject=subject,
+        message=message,
+        now=True,
+    )
+
+    frappe.db.set_value("Onboarding Schedule", doc.name, "send_company_wide_email_intro", 1)
+    frappe.db.commit()
+
+    doc.add_comment(
+        "Comment",
+        _("Global onboarding introduction sent for {0} to {1} recipients by {2}.").format(
+            employee.employee_name,
+            len(recipients),
+            get_fullname(frappe.session.user),
+        ),
+    )
+
+    return _("Global onboarding introduction sent for {0}.").format(employee.employee_name)
+
+
+def _render_email_template(doc, employee, email_template, custom_message):
+    if not frappe.db.exists("Email Template", email_template):
+        frappe.throw(_("Email Template {0} was not found.").format(email_template))
+
+    template = frappe.get_doc("Email Template", email_template)
+    company_name = employee.company or frappe.db.get_single_value("Global Defaults", "default_company")
+
+    context = {
+        "doc": doc,
+        "employee": employee,
+        "employee_name": employee.employee_name,
+        "employee_id": employee.name,
+        "department": employee.department,
+        "designation": employee.designation,
+        "company_name": company_name,
+        "custom_message": custom_message,
+        "signature_name": get_fullname(frappe.session.user),
+    }
+
+    raw_subject = template.subject or ""
+    raw_body = template.response_html or template.response or ""
+
+    subject = frappe.render_template(raw_subject, context)
+    message = frappe.render_template(raw_body, context)
+    return subject, message
+
+
+def _get_global_recipients(exclude_employee=None):
+    employees = frappe.get_all(
+        "Employee",
+        filters={"status": "Active"},
+        fields=["name", "company_email", "personal_email"],
+    )
+
+    recipients = []
+    seen = set()
+
+    for emp in employees:
+        if exclude_employee and emp.name == exclude_employee:
+            continue
+
+        email = emp.company_email or emp.personal_email
+        if email and email not in seen:
+            recipients.append(email)
+            seen.add(email)
+
+    return recipients

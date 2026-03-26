@@ -8,6 +8,13 @@
  "field_order": [
   "hr_settings_section",
   "hr_email",
+  "monthly_reflection_notification_section",
+  "enable_monthly_reflection_reminder",
+  "monthly_reflection_reminder_day",
+  "monthly_reflection_last_sent_period",
+  "monthly_reflection_overdue_notification_section",
+  "enable_monthly_reflection_overdue_reminder",
+  "monthly_reflection_overdue_weekday",
   "hr_team_members_section",
   "table_xqbd"
  ],
@@ -21,6 +28,51 @@
    "fieldname": "hr_email",
    "fieldtype": "Data",
    "label": "HR Email"
+  },
+  {
+   "fieldname": "monthly_reflection_notification_section",
+   "fieldtype": "Section Break",
+   "label": "Monthly Reflection Notification"
+  },
+  {
+   "default": "0",
+   "description": "Send monthly reflection reminder emails to all active employees.",
+   "fieldname": "enable_monthly_reflection_reminder",
+   "fieldtype": "Check",
+   "label": "Enable Monthly Reflection Reminder"
+  },
+  {
+   "default": "1",
+   "description": "Choose the day of the month to send the reminder. Use 1 to 7 for the first week of the month.",
+   "fieldname": "monthly_reflection_reminder_day",
+   "fieldtype": "Int",
+   "label": "Reminder Day of Month"
+  },
+  {
+   "fieldname": "monthly_reflection_last_sent_period",
+   "fieldtype": "Data",
+   "label": "Last Sent Review Period",
+   "read_only": 1
+  },
+  {
+   "fieldname": "monthly_reflection_overdue_notification_section",
+   "fieldtype": "Section Break",
+   "label": "Monthly Reflection Overdue Notification"
+  },
+  {
+   "default": "0",
+   "description": "Send overdue reminders weekly for employees who have not submitted their Monthly Reflection.",
+   "fieldname": "enable_monthly_reflection_overdue_reminder",
+   "fieldtype": "Check",
+   "label": "Enable Monthly Reflection Overdue Reminder"
+  },
+  {
+   "default": "Monday",
+   "description": "System checks overdue Monthly Reflection reminders on this weekday after the first week of the month.",
+   "fieldname": "monthly_reflection_overdue_weekday",
+   "fieldtype": "Select",
+   "label": "Overdue Reminder Weekday",
+   "options": "\nMonday\nTuesday\nWednesday\nThursday\nFriday\nSaturday\nSunday"
   },
   {
    "fieldname": "hr_team_members_section",

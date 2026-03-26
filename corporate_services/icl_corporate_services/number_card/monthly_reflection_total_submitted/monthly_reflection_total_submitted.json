@@ -1,0 +1,23 @@
+{
+ "creation": "2026-03-26 13:10:00.000000",
+ "currency": "",
+ "docstatus": 0,
+ "doctype": "Number Card",
+ "filters_json": "{}",
+ "function": "Count",
+ "idx": 0,
+ "is_public": 1,
+ "is_standard": 1,
+ "label": "Monthly Reflection Total Submitted",
+ "modified": "2026-03-26 13:10:00.000000",
+ "modified_by": "Administrator",
+ "module": "ICL Corporate Services",
+ "name": "Monthly Reflection Total Submitted",
+ "owner": "Administrator",
+ "report_field": "submitted",
+ "report_function": "Sum",
+ "report_name": "Monthly Reflection Summary",
+ "show_percentage_stats": 1,
+ "stats_time_interval": "Daily",
+ "type": "Report"
+}

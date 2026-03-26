@@ -73,7 +73,7 @@ def _render_template(docname, user, signature_name=None):
 
     context = {
         "employee_name": employee.employee_name,
-        "job_title": employee.designation or "—",
+        "job_title": employee.designation or "-",
         "company_name": (
             doc.get("company")
             or frappe.defaults.get_user_default("company")
@@ -82,7 +82,7 @@ def _render_template(docname, user, signature_name=None):
         "last_day_date": (
             formatdate(employee.relieving_date)
             if employee.relieving_date
-            else "—"
+            else "-"
         ),
         "signature_name": signature_name or get_fullname(user),
     }

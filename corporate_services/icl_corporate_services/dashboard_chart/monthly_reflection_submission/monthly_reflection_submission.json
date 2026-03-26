@@ -1,0 +1,38 @@
+{
+ "chart_name": "Monthly Reflection Submission",
+ "chart_type": "Report",
+ "creation": "2026-03-26 13:10:00.000000",
+ "currency": "",
+ "custom_options": "{\"x_field\":\"month\",\"chart_type\":\"Bar\",\"y_axis_fields\":[{\"idx\":1,\"__islocal\":true,\"y_field\":\"submitted\",\"color\":\"#1D9E75\",\"name\":\"row 1\"},{\"idx\":2,\"__islocal\":true,\"y_field\":\"missing\",\"color\":\"#E24B4A\",\"name\":\"row 2\"}],\"y_fields\":[\"submitted\",\"missing\"],\"colors\":[\"#1D9E75\",\"#E24B4A\"]}",
+ "docstatus": 0,
+ "doctype": "Dashboard Chart",
+ "filters_json": "{}",
+ "group_by_type": "Count",
+ "idx": 0,
+ "is_public": 1,
+ "is_standard": 1,
+ "modified": "2026-03-26 13:10:00.000000",
+ "modified_by": "Administrator",
+ "module": "ICL Corporate Services",
+ "name": "Monthly Reflection Submission",
+ "number_of_groups": 0,
+ "owner": "Administrator",
+ "report_name": "Monthly Reflection Summary",
+ "roles": [],
+ "time_interval": "Yearly",
+ "timeseries": 0,
+ "timespan": "Last Year",
+ "type": "Bar",
+ "use_report_chart": 0,
+ "x_field": "month",
+ "y_axis": [
+  {
+   "color": "#1D9E75",
+   "y_field": "submitted"
+  },
+  {
+   "color": "#E24B4A",
+   "y_field": "missing"
+  }
+ ]
+}

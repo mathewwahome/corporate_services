@@ -117,7 +117,7 @@ export function SectionEditor({
           </span>
         )}
 
-        {/* Action buttons — pushed right */}
+        {/* Action buttons - pushed right */}
         <div style={{ marginLeft: "auto", display: "flex", gap: 6, flexShrink: 0 }}>
           <button
             className="btn btn-xs btn-default"

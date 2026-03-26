@@ -285,6 +285,8 @@ scheduler_events = {
         "corporate_services.api.notification.project.scheduled_tasks.send_deliverable_notifications",
         "corporate_services.api.notification.onboarding.onboarding_.send_30day_onboarding_surveys",
         "corporate_services.api.quarterly_leave.quarterly_leave.send_quarterly_notifications",
+        "corporate_services.api.notification.monthly_reflection.monthly_reflection.send_monthly_reflection_reminder_if_due",
+        "corporate_services.api.notification.monthly_reflection.monthly_reflection.send_monthly_reflection_overdue_reminders_if_due",
         # "corporate_services.api.notification.onboarding.onboarding_notifications.send_policy_comprehension_quiz"
 	],
 	# "hourly": [

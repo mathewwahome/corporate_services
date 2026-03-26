@@ -48,7 +48,7 @@ frappe.pages["master_boat_analysis"].on_page_load = function (wrapper) {
 					<div class="card h-100 shadow-sm stat-card-top-blue">
 						<div class="card-body">
 							<p class="text-muted text-uppercase fw-semibold small mb-1">Total Opportunities</p>
-							<div class="stat-value text-dark" id="stat-total">—</div>
+							<div class="stat-value text-dark" id="stat-total">-</div>
 							<p class="text-muted small mb-0 mt-1">All records</p>
 						</div>
 					</div>
@@ -57,7 +57,7 @@ frappe.pages["master_boat_analysis"].on_page_load = function (wrapper) {
 					<div class="card h-100 shadow-sm stat-card-top-green">
 						<div class="card-body">
 							<p class="text-muted text-uppercase fw-semibold small mb-1">Open</p>
-							<div class="stat-value text-dark" id="stat-open">—</div>
+							<div class="stat-value text-dark" id="stat-open">-</div>
 							<p class="text-muted small mb-0 mt-1">Active pipeline</p>
 						</div>
 					</div>
@@ -67,7 +67,7 @@ frappe.pages["master_boat_analysis"].on_page_load = function (wrapper) {
 					<div class="card h-100 shadow-sm stat-card-top-red">
 						<div class="card-body">
 							<p class="text-muted text-uppercase fw-semibold small mb-1">Converted</p>
-							<div class="stat-value text-dark" id="stat-converted">—</div>
+							<div class="stat-value text-dark" id="stat-converted">-</div>
 							<p class="text-muted small mb-0 mt-1">Won deals</p>
 						</div>
 					</div>
@@ -127,15 +127,15 @@ frappe.pages["master_boat_analysis"].on_page_load = function (wrapper) {
 
         let amount = d.opportunity_amount
           ? frappe.format(d.opportunity_amount, { fieldtype: "Currency" })
-          : "—";
+          : "-";
 
         let date = d.transaction_date
           ? frappe.datetime.str_to_user(d.transaction_date)
-          : "—";
+          : "-";
 
-        let assignee = "—";
+        let assignee = "-";
         try {
-          assignee = d._assign ? JSON.parse(d._assign)[0] || "—" : "—";
+          assignee = d._assign ? JSON.parse(d._assign)[0] || "-" : "-";
         } catch (e) {}
 
         return `
@@ -147,15 +147,15 @@ frappe.pages["master_boat_analysis"].on_page_load = function (wrapper) {
 							${frappe.utils.escape_html(d.name)}
 						</a>
 					</td>
-					<td>${frappe.utils.escape_html(d.opportunity_from || "—")}</td>
-					<td>${frappe.utils.escape_html(d.party_name || "—")}</td>
+					<td>${frappe.utils.escape_html(d.opportunity_from || "-")}</td>
+					<td>${frappe.utils.escape_html(d.party_name || "-")}</td>
 					<td>
 						<span class="badge rounded-pill ${badge_cls}">
-							${frappe.utils.escape_html(d.status || "—")}
+							${frappe.utils.escape_html(d.status || "-")}
 						</span>
 					</td>
-					<td>${frappe.utils.escape_html(d.opportunity_type || "—")}</td>
-					<td>${frappe.utils.escape_html(d.sales_stage || "—")}</td>
+					<td>${frappe.utils.escape_html(d.opportunity_type || "-")}</td>
+					<td>${frappe.utils.escape_html(d.sales_stage || "-")}</td>
 					<td>${frappe.utils.escape_html(assignee)}</td>
 					<td class="text-nowrap text-muted small">${date}</td>
 				</tr>

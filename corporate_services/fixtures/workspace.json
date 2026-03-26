@@ -342,7 +342,7 @@
     "type": "Link"
    }
   ],
-  "modified": "2026-03-25 22:31:48.522817",
+  "modified": "2026-03-26 08:33:45.815111",
   "module": "ICL Corporate Services",
   "name": "HR Recruitment",
   "number_cards": [],
@@ -656,7 +656,7 @@
     "type": "Link"
    }
   ],
-  "modified": "2026-03-25 22:31:00.214187",
+  "modified": "2026-03-26 08:33:45.990466",
   "module": "ICL Corporate Services",
   "name": "ICL Project Manager",
   "number_cards": [],
@@ -863,7 +863,7 @@
     "type": "Link"
    }
   ],
-  "modified": "2026-03-25 22:31:00.112385",
+  "modified": "2026-03-26 08:33:46.116591",
   "module": "ICL Corporate Services",
   "name": "ICL Supervisor",
   "number_cards": [],
@@ -1090,7 +1090,7 @@
   "is_hidden": 0,
   "label": "Home",
   "links": [],
-  "modified": "2026-03-25 22:30:57.943158",
+  "modified": "2026-03-26 08:33:46.206242",
   "module": "ICL Corporate Services",
   "name": "Home",
   "number_cards": [],
@@ -1488,7 +1488,7 @@
     "type": "Link"
    }
   ],
-  "modified": "2026-03-25 22:30:58.059853",
+  "modified": "2026-03-26 08:33:46.357354",
   "module": "ICL Corporate Services",
   "name": "ICL HR Admin",
   "number_cards": [
@@ -2140,7 +2140,7 @@
   "is_hidden": 0,
   "label": "Welcome Workspace",
   "links": [],
-  "modified": "2026-03-25 15:46:51.419491",
+  "modified": "2026-03-26 08:33:46.571277",
   "module": "ICL Corporate Services",
   "name": "Welcome Workspace",
   "number_cards": [],
@@ -2759,7 +2759,7 @@
     "type": "Link"
    }
   ],
-  "modified": "2026-03-25 22:30:58.795622",
+  "modified": "2026-03-26 08:33:46.681248",
   "module": "ICL Corporate Services",
   "name": "ICL Finance",
   "number_cards": [],
@@ -3197,7 +3197,7 @@
     "type": "Link"
    }
   ],
-  "modified": "2026-03-25 22:30:59.960600",
+  "modified": "2026-03-26 08:33:46.874230",
   "module": "ICL Corporate Services",
   "name": "ICL Staff",
   "number_cards": [],
@@ -3822,7 +3822,7 @@
     "type": "Link"
    }
   ],
-  "modified": "2026-03-25 22:30:59.518639",
+  "modified": "2026-03-26 08:33:47.025307",
   "module": "ICL Corporate Services",
   "name": "Financial Reports",
   "number_cards": [],
@@ -4180,7 +4180,7 @@
     "type": "Link"
    }
   ],
-  "modified": "2026-03-25 22:30:59.410859",
+  "modified": "2026-03-26 08:33:47.178171",
   "module": "ICL Corporate Services",
   "name": "Receivables",
   "number_cards": [],
@@ -4587,7 +4587,7 @@
     "type": "Link"
    }
   ],
-  "modified": "2026-03-25 22:30:59.289795",
+  "modified": "2026-03-26 08:33:47.329237",
   "module": "ICL Corporate Services",
   "name": "Payables",
   "number_cards": [],
@@ -5670,7 +5670,7 @@
     "type": "Link"
    }
   ],
-  "modified": "2026-03-25 22:30:59.042291",
+  "modified": "2026-03-26 08:33:47.523513",
   "module": "ICL Corporate Services",
   "name": "Accounting",
   "number_cards": [
@@ -6138,7 +6138,7 @@
     "type": "Link"
    }
   ],
-  "modified": "2026-03-25 22:30:59.846099",
+  "modified": "2026-03-26 08:33:47.717806",
   "module": "ICL Corporate Services",
   "name": "Tax & Benefits",
   "number_cards": [],
@@ -6872,7 +6872,7 @@
     "type": "Link"
    }
   ],
-  "modified": "2026-03-25 22:30:59.710685",
+  "modified": "2026-03-26 08:33:47.828571",
   "module": "ICL Corporate Services",
   "name": "Salary Payout",
   "number_cards": [],
@@ -7056,7 +7056,7 @@
     "type": "Link"
    }
   ],
-  "modified": "2026-03-25 22:30:59.613375",
+  "modified": "2026-03-26 08:33:47.923761",
   "module": "ICL Corporate Services",
   "name": "Payroll",
   "number_cards": [],
@@ -7251,7 +7251,7 @@
     "type": "Link"
    }
   ],
-  "modified": "2026-03-25 22:31:00.327893",
+  "modified": "2026-03-26 08:33:47.982485",
   "module": "ICL Corporate Services",
   "name": "ICL Business Development",
   "number_cards": [],
@@ -7352,7 +7352,7 @@
   "is_hidden": 0,
   "label": "Employee Timesheet Submission",
   "links": [],
-  "modified": "2026-03-25 22:30:58.484943",
+  "modified": "2026-03-26 08:33:48.045675",
   "module": "ICL Corporate Services",
   "name": "Employee Timesheet Submission",
   "number_cards": [],
@@ -7380,17 +7380,25 @@
     "role": "Finance"
    }
   ],
-  "sequence_id": 5.0,
+  "sequence_id": 6.0,
   "shortcuts": [],
   "title": "Employee Timesheet Submission"
  },
  {
-  "charts": [],
-  "content": "[{\"id\":\"nYU4H5dWqq\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Employee Monthly Reflection</span>\",\"col\":12}},{\"id\":\"d-oNtKRhTx\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Monthly Reflection Dashboard\",\"col\":3}},{\"id\":\"66eyLt7UA4\",\"type\":\"custom_block\",\"data\":{\"custom_block_name\":\"Employee Monthly Reflection\",\"col\":12}},{\"id\":\"AguijzbgxU\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"IX8JfmnX4p\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Monthly Reflection\",\"col\":3}},{\"id\":\"Tz3FWUjoq8\",\"type\":\"quick_list\",\"data\":{\"quick_list_name\":\"Monthly Reflection\",\"col\":4}}]",
+  "charts": [
+   {
+    "chart_name": "Monthly Reflection Submission",
+    "label": "Monthly Reflection Submission",
+    "parent": "Employee Monthly Reflection",
+    "parentfield": "charts",
+    "parenttype": "Workspace"
+   }
+  ],
+  "content": "[{\"id\":\"nYU4H5dWqq\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Employee Monthly Reflection</span>\",\"col\":12}},{\"id\":\"d-oNtKRhTx\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Monthly Reflection Dashboard\",\"col\":3}},{\"id\":\"2kFsbgFBYI\",\"type\":\"custom_block\",\"data\":{\"custom_block_name\":\"HR\",\"col\":12}},{\"id\":\"LZOVpXnVyQ\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Monthly Reflection Total Submitted\",\"col\":4}},{\"id\":\"J4EZmbjpwf\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Monthly Reflection Total Missing\",\"col\":4}},{\"id\":\"AguijzbgxU\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"zqYZEwJ8f8\",\"type\":\"chart\",\"data\":{\"chart_name\":\"Monthly Reflection Submission\",\"col\":12}},{\"id\":\"Tz3FWUjoq8\",\"type\":\"quick_list\",\"data\":{\"quick_list_name\":\"Monthly Reflection\",\"col\":12}}]",
   "custom_blocks": [
    {
-    "custom_block_name": "Employee Monthly Reflection",
-    "label": "Employee Monthly Reflection",
+    "custom_block_name": "HR",
+    "label": "HR",
     "parent": "Employee Monthly Reflection",
     "parentfield": "custom_blocks",
     "parenttype": "Workspace"
@@ -7400,15 +7408,30 @@
   "doctype": "Workspace",
   "for_user": "",
   "hide_custom": 0,
-  "icon": null,
-  "indicator_color": "green",
+  "icon": "clap",
+  "indicator_color": "",
   "is_hidden": 0,
   "label": "Employee Monthly Reflection",
   "links": [],
-  "modified": "2026-03-25 22:30:58.572346",
+  "modified": "2026-03-26 08:33:48.094627",
   "module": "ICL Corporate Services",
   "name": "Employee Monthly Reflection",
-  "number_cards": [],
+  "number_cards": [
+   {
+    "label": "Monthly Reflection Total Submitted",
+    "number_card_name": "Monthly Reflection Total Submitted",
+    "parent": "Employee Monthly Reflection",
+    "parentfield": "number_cards",
+    "parenttype": "Workspace"
+   },
+   {
+    "label": "Monthly Reflection Total Missing",
+    "number_card_name": "Monthly Reflection Total Missing",
+    "parent": "Employee Monthly Reflection",
+    "parentfield": "number_cards",
+    "parenttype": "Workspace"
+   }
+  ],
   "parent_page": "ICL HR Admin",
   "public": 1,
   "quick_lists": [
@@ -7436,7 +7459,7 @@
     "role": "Supervisor"
    }
   ],
-  "sequence_id": 6.0,
+  "sequence_id": 5.0,
   "shortcuts": [
    {
     "color": "Grey",
@@ -7453,23 +7476,6 @@
     "restrict_to_domain": null,
     "stats_filter": null,
     "type": "Page",
-    "url": null
-   },
-   {
-    "color": "Grey",
-    "doc_view": "List",
-    "format": null,
-    "icon": null,
-    "kanban_board": null,
-    "label": "Monthly Reflection",
-    "link_to": "Monthly Reflection",
-    "parent": "Employee Monthly Reflection",
-    "parentfield": "shortcuts",
-    "parenttype": "Workspace",
-    "report_ref_doctype": null,
-    "restrict_to_domain": null,
-    "stats_filter": "[]",
-    "type": "DocType",
     "url": null
    }
   ],
@@ -7496,7 +7502,7 @@
   "is_hidden": 0,
   "label": "Job Management",
   "links": [],
-  "modified": "2026-03-25 22:30:58.669714",
+  "modified": "2026-03-26 08:33:48.162772",
   "module": "ICL Corporate Services",
   "name": "Job Management",
   "number_cards": [],
@@ -7675,7 +7681,7 @@
   "is_hidden": 0,
   "label": "ICL Opportunity",
   "links": [],
-  "modified": "2026-03-25 22:31:00.507706",
+  "modified": "2026-03-26 08:33:48.224170",
   "module": "ICL Corporate Services",
   "name": "ICL Opportunity",
   "number_cards": [],
@@ -7800,7 +7806,7 @@
   "is_hidden": 0,
   "label": "ICL Clients",
   "links": [],
-  "modified": "2026-03-25 22:31:00.423113",
+  "modified": "2026-03-26 08:33:48.275322",
   "module": "ICL Corporate Services",
   "name": "ICL Clients",
   "number_cards": [],
@@ -7842,7 +7848,7 @@
  },
  {
   "charts": [],
-  "content": "[{\"id\":\"UINlqBwn4M\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Employee Management</span>\",\"col\":12}},{\"id\":\"kEnd6sRLkF\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Onboarding Schedule\",\"col\":3}},{\"id\":\"nxlTpvlAA9\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"New Hire Feedback Survey 30 Day\",\"col\":3}},{\"id\":\"Jrvf2Xs832\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Internship Commencement\",\"col\":3}},{\"id\":\"iR8IJOEKet\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Employee\",\"col\":3}},{\"id\":\"piDkNhiPu5\",\"type\":\"custom_block\",\"data\":{\"custom_block_name\":\"HR\",\"col\":12}},{\"id\":\"CCwFaXnWwc\",\"type\":\"quick_list\",\"data\":{\"quick_list_name\":\"Onboarding Schedule\",\"col\":4}}]",
+  "content": "[{\"id\":\"UINlqBwn4M\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Employee Management</span>\",\"col\":12}},{\"id\":\"kEnd6sRLkF\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Onboarding Schedule\",\"col\":3}},{\"id\":\"nxlTpvlAA9\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"New Hire Feedback Survey 30 Day\",\"col\":3}},{\"id\":\"Jrvf2Xs832\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Internship Commencement\",\"col\":3}},{\"id\":\"iR8IJOEKet\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Employee\",\"col\":3}},{\"id\":\"piDkNhiPu5\",\"type\":\"custom_block\",\"data\":{\"custom_block_name\":\"HR\",\"col\":12}},{\"id\":\"BPDW4ISUZK\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Onboarding Reports\",\"col\":3}},{\"id\":\"2lwoCr9uoe\",\"type\":\"custom_block\",\"data\":{\"custom_block_name\":\"HR\",\"col\":12}},{\"id\":\"bdpvE4KWaE\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"Uxr4MyIgEn\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Total Employees\",\"col\":4}},{\"id\":\"fpu4zuXvMc\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"-ADHG5Kmyo\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"CCwFaXnWwc\",\"type\":\"quick_list\",\"data\":{\"quick_list_name\":\"Onboarding Schedule\",\"col\":4}}]",
   "custom_blocks": [
    {
     "custom_block_name": "HR",
@@ -7861,10 +7867,18 @@
   "is_hidden": 0,
   "label": "Employee Management",
   "links": [],
-  "modified": "2026-03-25 22:45:38.954917",
+  "modified": "2026-03-26 09:02:58.283598",
   "module": "ICL Corporate Services",
   "name": "Employee Management",
-  "number_cards": [],
+  "number_cards": [
+   {
+    "label": "Total Employees",
+    "number_card_name": "Total Employees",
+    "parent": "Employee Management",
+    "parentfield": "number_cards",
+    "parenttype": "Workspace"
+   }
+  ],
   "parent_page": "ICL HR Admin",
   "public": 1,
   "quick_lists": [
@@ -7896,6 +7910,23 @@
     "restrict_to_domain": null,
     "stats_filter": "[]",
     "type": "DocType",
+    "url": null
+   },
+   {
+    "color": "Grey",
+    "doc_view": "List",
+    "format": null,
+    "icon": null,
+    "kanban_board": null,
+    "label": "Onboarding Reports",
+    "link_to": "onboarding-reports",
+    "parent": "Employee Management",
+    "parentfield": "shortcuts",
+    "parenttype": "Workspace",
+    "report_ref_doctype": null,
+    "restrict_to_domain": null,
+    "stats_filter": null,
+    "type": "Page",
     "url": null
    },
    {

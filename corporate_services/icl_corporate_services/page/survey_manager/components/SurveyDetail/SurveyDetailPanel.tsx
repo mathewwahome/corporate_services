@@ -295,7 +295,7 @@ export function SurveyDetailPanel({
         {activeTab === "edit" && doc && (
           <Fade key={`edit-${selectedRow?.name ?? "new"}`}>
 
-            {/* Meta fields — Frappe form card */}
+            {/* Meta fields - Frappe form card */}
             <div className="frappe-card" style={{ marginBottom: 20, padding: 16 }}>
               <MetaFields
                 doc={doc}
