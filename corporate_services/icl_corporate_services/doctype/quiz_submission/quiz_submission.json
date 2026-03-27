@@ -11,14 +11,21 @@
   "section_break_eryp",
   "employee",
   "employee_name",
-  "quiz",
+  "column_break_rmrl",
   "date_taken",
+  "department",
+  "quiz_information_section",
+  "quiz",
+  "quiz_questions_section",
+  "quiz_questions_html",
   "answers",
   "total_questions",
+  "section_break_iiem",
   "correct_answers",
   "score_",
-  "passed",
-  "result"
+  "column_break_grzx",
+  "result",
+  "passed"
  ],
  "fields": [
   {
@@ -39,19 +46,22 @@
    "fieldname": "employee",
    "fieldtype": "Link",
    "label": "Employee",
-   "options": "Employee"
+   "options": "Employee",
+   "reqd": 1
   },
   {
    "fetch_from": "employee.employee_name",
    "fieldname": "employee_name",
    "fieldtype": "Data",
-   "label": "Employee Name"
+   "label": "Employee Name",
+   "read_only": 1
   },
   {
    "fieldname": "quiz",
    "fieldtype": "Link",
    "label": "Quiz",
-   "options": "Quiz"
+   "options": "Quiz",
+   "reqd": 1
   },
   {
    "fieldname": "date_taken",
@@ -59,36 +69,52 @@
    "label": "Date Taken"
   },
   {
+   "description": "Please attempt the questions as per the instructions provided",
+   "fieldname": "quiz_questions_section",
+   "fieldtype": "Section Break",
+   "label": "Questions"
+  },
+  {
+   "fieldname": "quiz_questions_html",
+   "fieldtype": "HTML"
+  },
+  {
    "fieldname": "answers",
    "fieldtype": "Table",
+   "hidden": 1,
    "label": "Answers",
    "options": "Quiz Answer"
   },
   {
    "fieldname": "total_questions",
    "fieldtype": "Int",
-   "label": "Total Questions"
+   "label": "Total Questions",
+   "read_only": 1
   },
   {
    "fieldname": "correct_answers",
    "fieldtype": "Int",
-   "label": "Correct Answers"
+   "label": "Correct Answers",
+   "read_only": 1
   },
   {
    "fieldname": "score_",
    "fieldtype": "Float",
-   "label": "Score (%)"
+   "label": "Score (%)",
+   "read_only": 1
   },
   {
    "default": "0",
    "fieldname": "passed",
    "fieldtype": "Check",
-   "label": "Passed"
+   "label": "Passed",
+   "read_only": 1
   },
   {
    "fieldname": "result",
    "fieldtype": "Data",
-   "label": "Result"
+   "label": "Result",
+   "read_only": 1
   },
   {
    "default": "QS-.YYYY.-.MM.-",
@@ -99,13 +125,39 @@
    "options": "QS-.YYYY.-.MM.-",
    "read_only": 1,
    "reqd": 1
+  },
+  {
+   "fieldname": "column_break_rmrl",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "employee.department",
+   "fieldname": "department",
+   "fieldtype": "Data",
+   "label": "Department",
+   "read_only": 1
+  },
+  {
+   "description": "Please select the Quiz you need to attempt if not already provided.",
+   "fieldname": "quiz_information_section",
+   "fieldtype": "Section Break",
+   "label": "Quiz Information"
+  },
+  {
+   "fieldname": "section_break_iiem",
+   "fieldtype": "Section Break",
+   "label": "Results"
+  },
+  {
+   "fieldname": "column_break_grzx",
+   "fieldtype": "Column Break"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2026-03-09 07:29:14.608141",
+ "modified": "2026-03-25 15:14:42.493942",
  "modified_by": "Administrator",
  "module": "ICL Corporate Services",
  "name": "Quiz Submission",

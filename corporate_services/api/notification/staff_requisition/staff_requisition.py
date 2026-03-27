@@ -1,6 +1,11 @@
 from pydoc import doc
 import frappe
 from frappe.utils import get_url_to_form, now_datetime, add_days, get_datetime
+from corporate_services.api.helpers.print_formats import get_default_print_format
+from corporate_services.api.notification.notification_contacts import (
+    get_finance_team_emails,
+    get_hr_manager_emails,
+)
 
 def send_email(recipients, subject, message, pdf_content, doc_name):
     frappe.sendmail(
@@ -55,6 +60,11 @@ def generate_message(doc, employee_name, email_type, recipient_email):
 
 def get_users_with_role(role):
     """Get email addresses of all users with a specific role"""
+    if role == "HR Manager":
+        return get_hr_manager_emails()
+    if role == "Finance":
+        return get_finance_team_emails()
+
     users = frappe.get_all('Has Role', filters={'role': role}, fields=['parent'])
     return [frappe.get_value('User', user.parent, 'email') for user in users]
 
@@ -82,15 +92,12 @@ def alert(doc, method):
     requestor_name = requestor.employee_name
     
     
-    default_print_format = frappe.db.get_value(
-        "Property Setter",
-        {"doc_type": doc.doctype, "property": "default_print_format"},
-        "value"
-    ) or frappe.db.get_value(
-        "DocType", doc.doctype, "default_print_format"
-    ) or "Standard"
-
-    pdf_content = frappe.get_print(doc.doctype, doc.name, default_print_format, as_pdf=True)
+    pdf_content = frappe.get_print(
+        doc.doctype,
+        doc.name,
+        get_default_print_format(doc.doctype),
+        as_pdf=True,
+    )
     
     
     workflow_config = {

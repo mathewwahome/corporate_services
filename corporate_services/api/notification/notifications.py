@@ -1,5 +1,6 @@
 import frappe
 from frappe.utils import get_url_to_form
+from corporate_services.api.notification.notification_contacts import get_supervisor_contact
 
 def employee_grievance(doc, method):
     if doc.workflow_state == "Approved by HR":
@@ -24,10 +25,7 @@ def alert_supervisor_asset_requisition(doc, method):
         employee = frappe.get_doc("Employee", employee_id)
         
         if employee.reports_to:
-            supervisor_id = employee.reports_to
-            supervisor = frappe.get_doc("Employee", supervisor_id)
-            
-            supervisor_email = supervisor.company_email or supervisor.personal_email
+            supervisor_contact = get_supervisor_contact(employee)
             message = """
                 Dear {},\n\n
     
@@ -36,10 +34,10 @@ def alert_supervisor_asset_requisition(doc, method):
                 Kind regards,
                 
                 {}
-                """.format(supervisor.employee_name, doc.doctype, employee.employee_name)
+                """.format(supervisor_contact.name, doc.doctype, employee.employee_name)
             
             frappe.sendmail(
-                recipients=[supervisor_email],
+                recipients=[supervisor_contact.email],
                 subject=frappe._('Asset Custodianship Requisition Submission from {}'.format(employee.employee_name)),
                 message=message,
             )

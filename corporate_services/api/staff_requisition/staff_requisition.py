@@ -67,7 +67,7 @@ def send_clarification_email(docname, message):
 
     frappe.sendmail(
         recipients=[recipient_email],
-        subject=f"Clarification Required — {doc.name}",
+        subject=f"Clarification Required - {doc.name}",
         message=email_body
     )
 

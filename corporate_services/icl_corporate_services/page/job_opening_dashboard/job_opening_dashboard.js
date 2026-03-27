@@ -1,5 +1,5 @@
 /* ============================================================
- * SECTION 1 — NUMBER CARDS
+ * SECTION 1 - NUMBER CARDS
  * ============================================================ */
 frappe.provide('JobDashboard.NumberCards');
 
@@ -76,7 +76,7 @@ JobDashboard.NumberCards = {
 			callback: function(res) {
 				const val = (res.message !== undefined && res.message !== null)
 					? Number(res.message).toLocaleString()
-					: '—';
+					: '-';
 				self._set_value(doc.name, val);
 			},
 			error: function() { self._set_error(doc.name, 'Error'); }
@@ -105,7 +105,7 @@ JobDashboard.NumberCards = {
 
 
 /* ============================================================
- * SECTION 2 — CHART
+ * SECTION 2 - CHART
  * ============================================================ */
 frappe.provide('JobDashboard.Chart');
 
@@ -227,7 +227,7 @@ JobDashboard.Chart = {
 
 
 /* ============================================================
- * SECTION 3 — JOB TABLE
+ * SECTION 3 - JOB TABLE
  * ============================================================ */
 frappe.provide('JobDashboard.JobTable');
 
@@ -331,9 +331,9 @@ JobDashboard.JobTable = {
 			const status_badge = JobDashboard.JobTable._status_badge(job.status);
 			const mode_badge   = JobDashboard.JobTable._mode_badge(job.custom_work_mode);
 			const posted       = job.posted_on
-				? frappe.datetime.str_to_user(job.posted_on) : '—';
+				? frappe.datetime.str_to_user(job.posted_on) : '-';
 			const closes       = job.closes_on
-				? frappe.datetime.str_to_user(job.closes_on) : '—';
+				? frappe.datetime.str_to_user(job.closes_on) : '-';
 			const count        = self.app_counts[job.name];
 			const safe_id      = self._safe_id(job.name);
 
@@ -354,7 +354,7 @@ JobDashboard.JobTable = {
 				+ '<td>'
 				+   '<a href="/app/job-opening/' + encodeURIComponent(job.name)
 				+   '" class="text-primary font-weight-medium">'
-				+     frappe.utils.escape_html(job.job_title || '—')
+				+     frappe.utils.escape_html(job.job_title || '-')
 				+   '</a>'
 				+   (job.custom_staff_requisition
 					? '<br><small class="text-muted">Req: '
@@ -363,23 +363,23 @@ JobDashboard.JobTable = {
 				+ '</td>'
 
 				// Department
-				+ '<td>' + frappe.utils.escape_html(job.department || '—') + '</td>'
+				+ '<td>' + frappe.utils.escape_html(job.department || '-') + '</td>'
 
 				// Designation
-				+ '<td>' + frappe.utils.escape_html(job.designation || '—') + '</td>'
+				+ '<td>' + frappe.utils.escape_html(job.designation || '-') + '</td>'
 
 				// Company / Location
 				+ '<td>'
-				+   '<div>' + frappe.utils.escape_html(job.company || '—') + '</div>'
+				+   '<div>' + frappe.utils.escape_html(job.company || '-') + '</div>'
 				+   '<small class="text-muted">'
 				+     '<i class="fa fa-map-marker mr-1"></i>'
-				+     frappe.utils.escape_html(job.location || '—')
+				+     frappe.utils.escape_html(job.location || '-')
 				+   '</small>'
 				+ '</td>'
 
 				// Employment Type + Work Mode
 				+ '<td>'
-				+   '<div>' + frappe.utils.escape_html(job.employment_type || '—') + '</div>'
+				+   '<div>' + frappe.utils.escape_html(job.employment_type || '-') + '</div>'
 				+   (job.custom_work_mode ? '<div>' + mode_badge + '</div>' : '')
 				+ '</td>'
 
@@ -387,12 +387,12 @@ JobDashboard.JobTable = {
 				+ '<td class="text-center">'
 				+   (job.vacancies
 					? '<span class="badge badge-info">' + job.vacancies + '</span>'
-					: '<span class="text-muted">—</span>')
+					: '<span class="text-muted">-</span>')
 				+ '</td>'
 
 				// Status
 				+ '<td><span class="badge ' + status_badge + '">'
-				+   frappe.utils.escape_html(job.status || '—') + '</span>'
+				+   frappe.utils.escape_html(job.status || '-') + '</span>'
 				+ '</td>'
 
 				// Posted On / Closes On

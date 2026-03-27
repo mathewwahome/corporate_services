@@ -32,10 +32,11 @@ def get_current_employee():
 @frappe.whitelist()
 def get_all_employees():
     """
-    Returns a list of all employees with their name, employee_name, department, and designation
+    Returns a list of active employees with their name, employee_name, department, and designation
     """
     employees = frappe.get_all(
         "Employee",
+        filters={"status": "Active"},
         fields=["name", "employee_name", "department", "designation"]
     )
     return employees

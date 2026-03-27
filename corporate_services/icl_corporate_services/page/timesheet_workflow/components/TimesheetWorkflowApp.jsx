@@ -212,8 +212,8 @@ function TimesheetWorkflowApp() {
                     <div className="ts-emp-name">{emp.employee_name || emp.name}</div>
                     <div className="ts-emp-id">{emp.name}</div>
                   </td>
-                  <td style={{ fontSize: 13 }}>{emp.department || <span className="text-muted">—</span>}</td>
-                  <td style={{ fontSize: 13 }}>{emp.designation || <span className="text-muted">—</span>}</td>
+                  <td style={{ fontSize: 13 }}>{emp.department || <span className="text-muted">-</span>}</td>
+                  <td style={{ fontSize: 13 }}>{emp.designation || <span className="text-muted">-</span>}</td>
                   <td>
                     <button
                       className="btn btn-sm btn-outline-primary"

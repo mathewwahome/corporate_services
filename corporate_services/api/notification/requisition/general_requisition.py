@@ -1,5 +1,11 @@
 import frappe
 from frappe.utils import get_url_to_form
+from corporate_services.api.helpers.print_formats import get_default_print_format
+from corporate_services.api.notification.notification_contacts import (
+    get_finance_team_emails,
+    get_hr_manager_emails,
+    get_supervisor_contact,
+)
 
 def send_email(recipients, subject, message, pdf_content, doc_name):
     frappe.sendmail(
@@ -101,14 +107,14 @@ def alert(doc, method):
         employee_email = employee.company_email or employee.personal_email
 
 
-        supervisor_id = employee.reports_to
-        supervisor = frappe.get_doc("Employee", supervisor_id)
-        supervisor_email = supervisor.company_email or supervisor.personal_email
-        supervisor_name = supervisor.employee_name
+        supervisor_contact = get_supervisor_contact(employee)
+        supervisor_email = supervisor_contact.email if supervisor_contact else None
+        supervisor_name = supervisor_contact.name if supervisor_contact else None
 
 
-        print_format = "Standard"
-        pdf_content = frappe.get_print(doc.doctype, doc.name, print_format, as_pdf=True)
+        pdf_content = frappe.get_print(
+            doc.doctype, doc.name, get_default_print_format(doc.doctype), as_pdf=True
+        )
 
         if doc.workflow_state == "Submitted to Supervisor":
             if employee.reports_to:
@@ -142,8 +148,7 @@ def alert(doc, method):
                 doc_name=doc.name
             )
         elif doc.workflow_state == "Submitted to HR":
-            hr_managers = frappe.get_all('Has Role', filters={'role': 'HR Manager'}, fields=['parent'])
-            hr_manager_emails = [frappe.get_value('User', hr_manager.parent, 'email') for hr_manager in hr_managers]
+            hr_manager_emails = get_hr_manager_emails()
 
             message = generate_message(doc, employee.employee_name, "hr")
             send_email(
@@ -174,8 +179,7 @@ def alert(doc, method):
             )
    
         elif doc.workflow_state == "Submitted to Finance":
-            finance_team = frappe.get_all('Has Role', filters={'role': 'Finance'}, fields=['parent'])
-            finance_team_emails = [frappe.get_value('User', finance_manager.parent, 'email') for finance_manager in finance_team]
+            finance_team_emails = get_finance_team_emails()
             message_to_finance = generate_message(doc, employee.employee_name, "submitted_to_finance", supervisor_name)
             send_email(
                 recipients=finance_team_emails,
@@ -205,8 +209,7 @@ def alert(doc, method):
                 doc_name=doc.name
             )
 
-            hr_managers = frappe.get_all('Has Role', filters={'role': 'HR Manager'}, fields=['parent'])
-            hr_manager_emails = [frappe.get_value('User', hr_manager.parent, 'email') for hr_manager in hr_managers]
+            hr_manager_emails = get_hr_manager_emails()
             message_to_hr = generate_message(doc, employee.employee_name, "hr_finance_rejected")
             send_email(
                 recipients= hr_manager_emails,

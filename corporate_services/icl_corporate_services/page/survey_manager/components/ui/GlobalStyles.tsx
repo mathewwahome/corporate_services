@@ -87,7 +87,7 @@ const CSS = `
   to   { transform: translateX(110%); opacity: 0; }
 }
 
-/* Nav tab tweaks — smooth underline transition */
+/* Nav tab tweaks - smooth underline transition */
 .sm-nav-tab {
   border: none !important;
   background: none !important;

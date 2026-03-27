@@ -1,5 +1,6 @@
 import frappe
 from frappe.utils import get_url_to_form, get_fullname
+from corporate_services.api.notification.notification_contacts import get_supervisor_contact
 
 
 @frappe.whitelist()
@@ -16,8 +17,9 @@ def notify_supervisor_for_exit_interview(docname):
             f"Employee <b>{employee.employee_name}</b> has no supervisor (Reports To) set."
         )
 
-    supervisor = frappe.get_doc("Employee", employee.reports_to)
-    supervisor_email = supervisor.company_email or supervisor.personal_email
+    supervisor_contact = get_supervisor_contact(employee)
+    supervisor = supervisor_contact.employee
+    supervisor_email = supervisor_contact.email
 
     if not supervisor_email:
         frappe.throw(

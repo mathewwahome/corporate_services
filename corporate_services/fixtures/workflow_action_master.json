@@ -2,77 +2,77 @@
  {
   "docstatus": 0,
   "doctype": "Workflow Action Master",
-  "modified": "2026-03-23 18:27:49.551616",
+  "modified": "2026-03-26 08:33:42.024679",
   "name": "Save",
   "workflow_action_name": "Save"
  },
  {
   "docstatus": 0,
   "doctype": "Workflow Action Master",
-  "modified": "2026-03-23 18:27:49.566560",
+  "modified": "2026-03-26 08:33:42.037005",
   "name": "Review",
   "workflow_action_name": "Review"
  },
  {
   "docstatus": 0,
   "doctype": "Workflow Action Master",
-  "modified": "2026-03-23 18:27:49.576273",
+  "modified": "2026-03-26 08:33:42.044446",
   "name": "Submit to Finance",
   "workflow_action_name": "Submit to Finance"
  },
  {
   "docstatus": 0,
   "doctype": "Workflow Action Master",
-  "modified": "2026-03-23 18:27:49.585584",
+  "modified": "2026-03-26 08:33:42.053274",
   "name": "Needs Clarification",
   "workflow_action_name": "Needs Clarification"
  },
  {
   "docstatus": 0,
   "doctype": "Workflow Action Master",
-  "modified": "2026-03-23 18:27:49.595973",
+  "modified": "2026-03-26 08:33:42.061093",
   "name": "Submit to HR",
   "workflow_action_name": "Submit to HR"
  },
  {
   "docstatus": 0,
   "doctype": "Workflow Action Master",
-  "modified": "2026-03-23 18:27:49.605484",
+  "modified": "2026-03-26 08:33:42.068639",
   "name": "Submit To supervisor",
   "workflow_action_name": "Submit To supervisor"
  },
  {
   "docstatus": 0,
   "doctype": "Workflow Action Master",
-  "modified": "2026-03-23 18:27:49.615030",
+  "modified": "2026-03-26 08:33:42.076533",
   "name": "submit",
   "workflow_action_name": "submit"
  },
  {
   "docstatus": 0,
   "doctype": "Workflow Action Master",
-  "modified": "2026-03-23 18:27:49.624483",
+  "modified": "2026-03-26 08:33:42.084569",
   "name": "Approve",
   "workflow_action_name": "Approve"
  },
  {
   "docstatus": 0,
   "doctype": "Workflow Action Master",
-  "modified": "2026-03-23 18:27:49.634075",
+  "modified": "2026-03-26 08:33:42.092106",
   "name": "Reject",
   "workflow_action_name": "Reject"
  },
  {
   "docstatus": 0,
   "doctype": "Workflow Action Master",
-  "modified": "2026-03-23 18:27:49.643102",
+  "modified": "2026-03-26 08:33:42.100040",
   "name": "NO/GO",
   "workflow_action_name": "NO/GO"
  },
  {
   "docstatus": 0,
   "doctype": "Workflow Action Master",
-  "modified": "2026-03-23 18:27:49.652582",
+  "modified": "2026-03-26 08:33:42.107373",
   "name": "GO",
   "workflow_action_name": "GO"
  }

@@ -1,27 +1,42 @@
 {
- "charts": [],
- "content": "[{\"id\":\"nYU4H5dWqq\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Employee Monthly Reflection</span>\",\"col\":12}},{\"id\":\"d-oNtKRhTx\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Monthly Reflection Dashboard\",\"col\":3}},{\"id\":\"66eyLt7UA4\",\"type\":\"custom_block\",\"data\":{\"custom_block_name\":\"Employee Monthly Reflection\",\"col\":12}},{\"id\":\"AguijzbgxU\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"IX8JfmnX4p\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Monthly Reflection\",\"col\":3}},{\"id\":\"Tz3FWUjoq8\",\"type\":\"quick_list\",\"data\":{\"quick_list_name\":\"Monthly Reflection\",\"col\":4}}]",
- "creation": "2026-03-24 11:02:21.234699",
+ "charts": [
+  {
+   "chart_name": "Monthly Reflection Submission",
+   "label": "Monthly Reflection Submission"
+  }
+ ],
+ "content": "[{\"id\":\"nYU4H5dWqq\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Employee Monthly Reflection</span>\",\"col\":12}},{\"id\":\"d-oNtKRhTx\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Monthly Reflection Dashboard\",\"col\":3}},{\"id\":\"2kFsbgFBYI\",\"type\":\"custom_block\",\"data\":{\"custom_block_name\":\"HR\",\"col\":12}},{\"id\":\"LZOVpXnVyQ\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Monthly Reflection Total Submitted\",\"col\":4}},{\"id\":\"J4EZmbjpwf\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Monthly Reflection Total Missing\",\"col\":4}},{\"id\":\"AguijzbgxU\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"zqYZEwJ8f8\",\"type\":\"chart\",\"data\":{\"chart_name\":\"Monthly Reflection Submission\",\"col\":12}},{\"id\":\"Tz3FWUjoq8\",\"type\":\"quick_list\",\"data\":{\"quick_list_name\":\"Monthly Reflection\",\"col\":12}}]",
+ "creation": "2026-03-26 08:12:19.700843",
  "custom_blocks": [
   {
-   "custom_block_name": "Employee Monthly Reflection",
-   "label": "Employee Monthly Reflection"
+   "custom_block_name": "HR",
+   "label": "HR"
   }
  ],
  "docstatus": 0,
  "doctype": "Workspace",
  "for_user": "",
  "hide_custom": 0,
+ "icon": "clap",
  "idx": 0,
- "indicator_color": "green",
+ "indicator_color": "",
  "is_hidden": 0,
  "label": "Employee Monthly Reflection",
  "links": [],
- "modified": "2026-03-24 13:16:31.505648",
+ "modified": "2026-03-26 08:17:49.610363",
  "modified_by": "Administrator",
  "module": "ICL Corporate Services",
  "name": "Employee Monthly Reflection",
- "number_cards": [],
+ "number_cards": [
+  {
+   "label": "Monthly Reflection Total Submitted",
+   "number_card_name": "Monthly Reflection Total Submitted"
+  },
+  {
+   "label": "Monthly Reflection Total Missing",
+   "number_card_name": "Monthly Reflection Total Missing"
+  }
+ ],
  "owner": "Administrator",
  "parent_page": "ICL HR Admin",
  "public": 1,
@@ -40,7 +55,7 @@
    "role": "Supervisor"
   }
  ],
- "sequence_id": 13.0,
+ "sequence_id": 5.0,
  "shortcuts": [
   {
    "color": "Grey",
@@ -48,14 +63,6 @@
    "label": "Monthly Reflection Dashboard",
    "link_to": "monthly-reflection-dashboard",
    "type": "Page"
-  },
-  {
-   "color": "Grey",
-   "doc_view": "List",
-   "label": "Monthly Reflection",
-   "link_to": "Monthly Reflection",
-   "stats_filter": "[]",
-   "type": "DocType"
   }
  ],
  "title": "Employee Monthly Reflection"

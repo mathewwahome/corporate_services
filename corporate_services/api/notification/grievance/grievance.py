@@ -1,5 +1,7 @@
 import frappe
 from frappe.utils import get_url_to_form
+from corporate_services.api.helpers.print_formats import get_default_print_format
+from corporate_services.api.notification.notification_contacts import get_hr_manager_emails
 
 def send_email(recipients, subject, message, pdf_content, doc_name):
     frappe.sendmail(
@@ -48,12 +50,12 @@ def alert(doc, method):
         employee = frappe.get_doc("Employee", employee_id)
         employee_email = employee.company_email or employee.personal_email
 
-        print_format = "Standard"
-        pdf_content = frappe.get_print(doc.doctype, doc.name, print_format, as_pdf=True)
+        pdf_content = frappe.get_print(
+            doc.doctype, doc.name, get_default_print_format(doc.doctype), as_pdf=True
+        )
              
         if doc.workflow_state == "Submitted to HR":
-            hr_managers = frappe.get_all('Has Role', filters={'role': 'HR Manager'}, fields=['parent'])
-            hr_manager_emails = [frappe.get_value('User', hr_manager.parent, 'email') for hr_manager in hr_managers]
+            hr_manager_emails = get_hr_manager_emails()
 
             message = generate_message(doc, employee.employee_name, "hr")
             send_email(
