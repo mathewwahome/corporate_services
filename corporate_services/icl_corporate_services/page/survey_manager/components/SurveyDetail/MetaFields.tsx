@@ -74,7 +74,7 @@ export function MetaFields({
         />
       </div>
 
-      {/* Public link — only shown for saved surveys */}
+      {/* Public link - only shown for saved surveys */}
       {!doc.__islocal && publicUrl && (
         <div className="col-12">
           <label className="form-label fw-semibold" style={{ fontSize: 13 }}>

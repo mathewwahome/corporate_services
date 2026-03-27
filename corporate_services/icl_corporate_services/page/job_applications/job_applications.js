@@ -332,7 +332,7 @@ frappe.pages['job-applications'].on_page_load = function(wrapper) {
 	});
 
 	function stars(rating) {
-		if (!rating) return '<span class="text-muted">—</span>';
+		if (!rating) return '<span class="text-muted">-</span>';
 		const filled = Math.round(rating * 5);
 		return '<span class="star-rating">'
 			+ '★'.repeat(filled) + '☆'.repeat(5 - filled)
@@ -352,7 +352,7 @@ frappe.pages['job-applications'].on_page_load = function(wrapper) {
 	}
 
 	function stage_badge(stage) {
-		if (!stage) return '<span class="text-muted">—</span>';
+		if (!stage) return '<span class="text-muted">-</span>';
 		const positive = ['SHORTLISTED','FINALIST','OFFER ACCEPTED','OFFER SENT',
 		                  'OFFER_PREP','INTERVIEWED','REFERENCE CHECK',
 		                  'INTERVIEW SCHEDULED'];
@@ -381,7 +381,7 @@ frappe.pages['job-applications'].on_page_load = function(wrapper) {
 
 		apps.forEach(function(app, idx) {
 			const date = app.creation
-				? frappe.datetime.str_to_user(app.creation) : '—';
+				? frappe.datetime.str_to_user(app.creation) : '-';
 
 			$tbody.append(
 				'<tr data-name="' + frappe.utils.escape_html(app.name) + '">'
@@ -390,7 +390,7 @@ frappe.pages['job-applications'].on_page_load = function(wrapper) {
 
 				+ '<td>'
 				+   '<div class="font-weight-medium">'
-				+     frappe.utils.escape_html(app.applicant_name || '—')
+				+     frappe.utils.escape_html(app.applicant_name || '-')
 				+   '</div>'
 				+   (app.custom_role
 					? '<small class="text-muted">'
@@ -403,10 +403,10 @@ frappe.pages['job-applications'].on_page_load = function(wrapper) {
 
 				// Status
 				+ '<td><span class="badge ' + status_badge(app.status) + '">'
-				+   frappe.utils.escape_html(app.status || '—') + '</span></td>'
+				+   frappe.utils.escape_html(app.status || '-') + '</span></td>'
 
 				// Designation
-				+ '<td>' + frappe.utils.escape_html(app.designation || '—') + '</td>'
+				+ '<td>' + frappe.utils.escape_html(app.designation || '-') + '</td>'
 
 				// Email
 				+ '<td>'
@@ -414,11 +414,11 @@ frappe.pages['job-applications'].on_page_load = function(wrapper) {
 					? '<a href="mailto:' + frappe.utils.escape_html(app.email_id)
 					  + '" class="text-muted">'
 					  + frappe.utils.escape_html(app.email_id) + '</a>'
-					: '—')
+					: '-')
 				+ '</td>'
 
 				// Phone
-				+ '<td>' + frappe.utils.escape_html(app.phone_number || '—') + '</td>'
+				+ '<td>' + frappe.utils.escape_html(app.phone_number || '-') + '</td>'
 
 				// Rating
 				+ '<td>' + stars(app.applicant_rating) + '</td>'
@@ -703,7 +703,7 @@ frappe.pages['job-applications'].on_page_show = function(wrapper) {
 		return;
 	}
 
-	page.set_title('Applications — ' + (job_title || job_opening));
+	page.set_title('Applications - ' + (job_title || job_opening));
 	if (wrapper._load_applications) {
 		wrapper._load_applications(job_opening, job_title || job_opening);
 	}

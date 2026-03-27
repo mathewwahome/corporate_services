@@ -57,7 +57,7 @@ frappe.pages['leads'].on_page_load = function(wrapper) {
 					<div class="card h-100 shadow-sm stat-top-blue">
 						<div class="card-body">
 							<p class="text-muted text-uppercase fw-semibold small mb-1">Total Leads</p>
-							<div class="stat-value text-dark" id="stat-total">—</div>
+							<div class="stat-value text-dark" id="stat-total">-</div>
 							<p class="text-muted small mb-0 mt-1">All records</p>
 						</div>
 					</div>
@@ -66,7 +66,7 @@ frappe.pages['leads'].on_page_load = function(wrapper) {
 					<div class="card h-100 shadow-sm stat-top-green">
 						<div class="card-body">
 							<p class="text-muted text-uppercase fw-semibold small mb-1">Open</p>
-							<div class="stat-value text-dark" id="stat-open">—</div>
+							<div class="stat-value text-dark" id="stat-open">-</div>
 							<p class="text-muted small mb-0 mt-1">Active leads</p>
 						</div>
 					</div>
@@ -75,7 +75,7 @@ frappe.pages['leads'].on_page_load = function(wrapper) {
 					<div class="card h-100 shadow-sm stat-top-amber">
 						<div class="card-body">
 							<p class="text-muted text-uppercase fw-semibold small mb-1">Converted</p>
-							<div class="stat-value text-dark" id="stat-converted">—</div>
+							<div class="stat-value text-dark" id="stat-converted">-</div>
 							<p class="text-muted small mb-0 mt-1">Won leads</p>
 						</div>
 					</div>
@@ -84,7 +84,7 @@ frappe.pages['leads'].on_page_load = function(wrapper) {
 					<div class="card h-100 shadow-sm stat-top-teal">
 						<div class="card-body">
 							<p class="text-muted text-uppercase fw-semibold small mb-1">Opportunities</p>
-							<div class="stat-value text-dark" id="stat-opportunity">—</div>
+							<div class="stat-value text-dark" id="stat-opportunity">-</div>
 							<p class="text-muted small mb-0 mt-1">In pipeline</p>
 						</div>
 					</div>
@@ -144,8 +144,8 @@ frappe.pages['leads'].on_page_load = function(wrapper) {
 
 		let rows = data.map(d => {
 			let badge_cls = badge_map[d.status] || 'text-bg-secondary';
-			let date = d.creation ? frappe.datetime.str_to_user(d.creation) : '—';
-			let full_name = frappe.utils.escape_html(d.lead_name || '—');
+			let date = d.creation ? frappe.datetime.str_to_user(d.creation) : '-';
+			let full_name = frappe.utils.escape_html(d.lead_name || '-');
 			let initials = (d.lead_name || '?').split(' ').map(w => w[0]).slice(0, 2).join('').toUpperCase();
 
 			return `
@@ -159,20 +159,20 @@ frappe.pages['leads'].on_page_load = function(wrapper) {
 							</div>
 						</div>
 					</td>
-					<td>${frappe.utils.escape_html(d.company_name || '—')}</td>
+					<td>${frappe.utils.escape_html(d.company_name || '-')}</td>
 					<td>
 						${d.email_id
 							? `<a href="mailto:${frappe.utils.escape_html(d.email_id)}" class="text-decoration-none small" onclick="event.stopPropagation()">${frappe.utils.escape_html(d.email_id)}</a>`
-							: '<span class="text-muted">—</span>'}
+							: '<span class="text-muted">-</span>'}
 					</td>
 					<td>
 						${d.mobile_no
 							? `<a href="tel:${frappe.utils.escape_html(d.mobile_no)}" class="text-decoration-none small" onclick="event.stopPropagation()">${frappe.utils.escape_html(d.mobile_no)}</a>`
-							: '<span class="text-muted">—</span>'}
+							: '<span class="text-muted">-</span>'}
 					</td>
-					<td><span class="badge rounded-pill ${badge_cls}">${frappe.utils.escape_html(d.status || '—')}</span></td>
-					<td class="small">${frappe.utils.escape_html(d.source || '—')}</td>
-					<td class="small">${frappe.utils.escape_html(d.lead_owner || '—')}</td>
+					<td><span class="badge rounded-pill ${badge_cls}">${frappe.utils.escape_html(d.status || '-')}</span></td>
+					<td class="small">${frappe.utils.escape_html(d.source || '-')}</td>
+					<td class="small">${frappe.utils.escape_html(d.lead_owner || '-')}</td>
 					<td class="text-nowrap text-muted small">${date}</td>
 				</tr>
 			`;

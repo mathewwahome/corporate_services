@@ -37,6 +37,12 @@ var MRDashboard = {
         var self = this;
         $(page.body).on("change", "#mr-year-filter",   function () { self.loadReport(); });
         $(page.body).on("change", "#mr-period-filter", function () { self.filterPeriod(); });
+        $(page.body).on("click", ".mr-send-reminder", function () {
+            self.sendReminder(this.getAttribute("data-employee"), this.getAttribute("data-period"));
+        });
+        $(page.body).on("click", "#mr-send-all-reminders", function () {
+            self.sendAllReminders();
+        });
     },
 
     // ── HTML template ─────────────────────────────────────────────────────
@@ -80,7 +86,7 @@ var MRDashboard = {
                                 Total Active Staff
                             </div>
                             <div id="mr-total" class="fw-semibold mt-2"
-                                 style="font-size:32px;">—</div>
+                                 style="font-size:32px;">-</div>
                         </div>
                     </div>
                     <div class="col-md-4">
@@ -90,7 +96,7 @@ var MRDashboard = {
                                 Submitted
                             </div>
                             <div id="mr-submitted" class="fw-semibold mt-2"
-                                 style="font-size:32px;color:#1D9E75;">—</div>
+                                 style="font-size:32px;color:#1D9E75;">-</div>
                         </div>
                     </div>
                     <div class="col-md-4">
@@ -100,7 +106,7 @@ var MRDashboard = {
                                 Missing
                             </div>
                             <div id="mr-missing" class="fw-semibold mt-2"
-                                 style="font-size:32px;color:#E24B4A;">—</div>
+                                 style="font-size:32px;color:#E24B4A;">-</div>
                         </div>
                     </div>
                 </div>
@@ -132,7 +138,7 @@ var MRDashboard = {
                     </div>
                 </div>
 
-                <!-- Missing employees -->
+                <!-- Submission status -->
                 <div class="card border">
                     <div class="card-body">
                         <div class="d-flex align-items-center
@@ -140,7 +146,7 @@ var MRDashboard = {
                             <div class="text-muted fw-500"
                                  style="font-size:12px;text-transform:uppercase;
                                         letter-spacing:.4px;">
-                                Employees yet to submit
+                                Employee Submission Status
                             </div>
                             <span id="mr-period-label"
                                   class="badge rounded-pill px-3 py-2"
@@ -149,8 +155,13 @@ var MRDashboard = {
                                 Select a period above
                             </span>
                         </div>
+                        <div class="mb-3">
+                            <button id="mr-send-all-reminders" class="btn btn-sm btn-primary" style="display:none;">
+                                Send Reminder To All Missing
+                            </button>
+                        </div>
                         <div id="mr-missing-table"
-                             class="text-center text-muted py-3"
+                             class="text-start text-muted py-3"
                              style="font-size:13px;">
                             Select a review period from the dropdown above.
                         </div>
@@ -200,7 +211,7 @@ var MRDashboard = {
                     return;
                 }
 
-                // rows come back as OBJECTS — use fieldnames directly
+                // rows come back as OBJECTS - use fieldnames directly
                 self.reportRows = r.message.result.map(function (row) {
                     return {
                         month     : row.month,
@@ -266,7 +277,7 @@ var MRDashboard = {
             document.getElementById("mr-submitted").textContent = row.submitted;
             document.getElementById("mr-missing").textContent   = row.missing;
             document.getElementById("mr-period-label").textContent = period;
-            self.renderMissingTable(period);
+            self.renderStatusTable(period);
 
         } else {
             var totalStaff     = self.reportRows.length ? self.reportRows[0].total : 0;
@@ -276,7 +287,7 @@ var MRDashboard = {
 
             document.getElementById("mr-total").textContent     = totalStaff;
             document.getElementById("mr-submitted").textContent = totalSubmitted;
-            document.getElementById("mr-missing").textContent   = "—";
+            document.getElementById("mr-missing").textContent   = "-";
             document.getElementById("mr-period-label").textContent = "Select a period above";
             document.getElementById("mr-missing-table").innerHTML =
                 "<div class='text-center text-muted py-3' style='font-size:13px;'>" +
@@ -354,30 +365,33 @@ var MRDashboard = {
         );
     },
 
-    // ── Render missing employees table ────────────────────────────────────
-    renderMissingTable: function (period) {
+    // ── Render submitted + missing employees table ───────────────────────
+    renderStatusTable: function (period) {
         var self      = this;
         var container = document.getElementById("mr-missing-table");
+        var bulkBtn   = document.getElementById("mr-send-all-reminders");
 
         container.innerHTML =
             "<div class='text-center text-muted py-3'>" +
             "<div class='spinner-border spinner-border-sm me-2'></div>Loading...</div>";
 
         frappe.call({
-            method: "frappe.client.get_list",
+            method: "corporate_services.api.notification.monthly_reflection.monthly_reflection.get_monthly_reflection_period_status",
             args: {
-                doctype          : "Monthly Reflection",
-                filters          : { review_period: period },
-                fields           : ["employee"],
-                limit_page_length: 500
+                review_period: period
             },
             callback: function (r) {
-                var done = {};
-                (r.message || []).forEach(function (x) { done[x.employee] = true; });
-
-                var missing = self.allEmployees.filter(function (e) {
-                    return !done[e.name];
+                var rows = r.message || [];
+                var missing = rows.filter(function (row) {
+                    return !row.submitted;
                 });
+                bulkBtn.style.display = missing.length ? "inline-block" : "none";
+
+                if (!rows.length) {
+                    container.innerHTML =
+                        "<div class='text-center py-3 text-muted'>No employees found.</div>";
+                    return;
+                }
 
                 if (!missing.length) {
                     container.innerHTML =
@@ -401,21 +415,40 @@ var MRDashboard = {
                     "<thead class='table-light'><tr>" +
                     "<th style='width:40px;'>#</th>" +
                     "<th>Employee</th>" +
+                    "<th>Status</th>" +
                     "<th>Department</th>" +
                     "<th>Job Title</th>" +
                     "<th>Supervisor</th>" +
+                    "<th>Last Reminder</th>" +
+                    "<th style='width:120px;'>Action</th>" +
                     "</tr></thead><tbody>";
 
-                missing.forEach(function (e, i) {
+                rows.forEach(function (e, i) {
+                    var statusBadge = e.submitted
+                        ? "<span class='badge bg-success'>Submitted</span>"
+                        : "<span class='badge bg-danger'>" + (e.status || "Pending") + "</span>";
+                    var reminderInfo = e.last_notification_type
+                        ? (e.last_notification_type + (e.last_notification_sent_on ? " · " + e.last_notification_sent_on : ""))
+                        : "-";
+                    var actionHtml = e.can_remind
+                        ? "<button class='btn btn-sm btn-primary mr-send-reminder' data-employee='" + e.employee + "' data-period='" + period + "'>Send Reminder</button>"
+                        : "-";
+                    var employeeLink = e.docname
+                        ? "/app/monthly-reflection/" + e.docname
+                        : "/app/employee/" + e.employee;
+
                     html +=
                         "<tr>" +
                         "<td class='text-muted'>" + (i + 1) + "</td>" +
-                        "<td><a href='/app/employee/" + e.name +
+                        "<td><a href='" + employeeLink +
                         "' target='_blank' class='text-decoration-none'>" +
-                        (e.employee_name || e.name) + "</a></td>" +
-                        "<td class='text-muted'>" + (e.department             || "—") + "</td>" +
-                        "<td class='text-muted'>" + (e.designation            || "—") + "</td>" +
-                        "<td class='text-muted'>" + (e.custom_reports_to_name || "—") + "</td>" +
+                        (e.employee_name || e.employee) + "</a></td>" +
+                        "<td>" + statusBadge + "</td>" +
+                        "<td class='text-muted'>" + (e.department  || "-") + "</td>" +
+                        "<td class='text-muted'>" + (e.designation || "-") + "</td>" +
+                        "<td class='text-muted'>" + (e.supervisor  || "-") + "</td>" +
+                        "<td class='text-muted' style='font-size:12px;'>" + reminderInfo + "</td>" +
+                        "<td>" + actionHtml + "</td>" +
                         "</tr>";
                 });
 
@@ -423,5 +456,57 @@ var MRDashboard = {
                 container.innerHTML = html;
             }
         });
+    },
+
+    sendReminder: function (employee, period) {
+        frappe.call({
+            method: "corporate_services.api.notification.monthly_reflection.monthly_reflection.send_manual_monthly_reflection_overdue_reminder",
+            args: {
+                employee: employee,
+                review_period: period
+            },
+            freeze: true,
+            freeze_message: "Sending reminder...",
+            callback: function (r) {
+                if (!r.exc) {
+                    frappe.show_alert({
+                        message: (r.message && r.message.message) || "Reminder sent.",
+                        indicator: "green"
+                    });
+                    MRDashboard.renderStatusTable(period);
+                }
+            }
+        });
+    },
+
+    sendAllReminders: function () {
+        var period = document.getElementById("mr-period-filter").value;
+        if (!period) return;
+
+        var buttons = Array.from(document.querySelectorAll(".mr-send-reminder"));
+        if (!buttons.length) {
+            frappe.show_alert({ message: "No pending reminders.", indicator: "orange" });
+            return;
+        }
+
+        frappe.confirm(
+            "Send reminders to all employees missing Monthly Reflection for " + period + "?",
+            function () {
+                (async function () {
+                    for (const btn of buttons) {
+                        await frappe.call({
+                            method: "corporate_services.api.notification.monthly_reflection.monthly_reflection.send_manual_monthly_reflection_overdue_reminder",
+                            args: {
+                                employee: btn.getAttribute("data-employee"),
+                                review_period: period
+                            }
+                        });
+                    }
+
+                    frappe.show_alert({ message: "Manual reminders sent.", indicator: "green" });
+                    MRDashboard.renderStatusTable(period);
+                })();
+            }
+        );
     }
 };

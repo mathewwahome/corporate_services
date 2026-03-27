@@ -150,7 +150,7 @@ function SurveyManagerApp() {
                 <div><strong>Title:</strong> {selected.title}</div>
                 <div><strong>Year:</strong> {selected.year}</div>
                 <div><strong>Published:</strong> {selected.is_published ? "Yes" : "No"}</div>
-                <div><strong>Departments:</strong> {selected.departments || "—"}</div>
+                <div><strong>Departments:</strong> {selected.departments || "-"}</div>
               </div>
               <div>
                 <div><strong>Public link:</strong></div>

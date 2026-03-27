@@ -56,13 +56,13 @@ frappe.query_reports["Approval Cycle Time Report"] = {
 		// Add a helper button to explain the report
 		report.page.add_inner_button(__("How to Read This Report"), function () {
 			frappe.msgprint({
-				title: __("Approval Cycle Time Report — Guide"),
+				title: __("Approval Cycle Time Report - Guide"),
 				message: `
 					<p><strong>What this report shows:</strong></p>
 					<ul>
 						<li>Each row = one status transition step in the approval workflow</li>
 						<li><strong>Avg Days</strong> = average calendar days a requisition spent in that status before moving on</li>
-						<li><strong>Bottleneck</strong> = steps taking longer than the overall average — these need attention</li>
+						<li><strong>Bottleneck</strong> = steps taking longer than the overall average - these need attention</li>
 						<li><strong>Pending</strong> = requisitions currently sitting in that status</li>
 					</ul>
 					<p><em>Note: Days are calendar days (including weekends).</em></p>

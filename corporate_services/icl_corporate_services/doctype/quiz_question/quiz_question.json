@@ -9,12 +9,15 @@
   "questions_section",
   "question",
   "category",
+  "question_type",
+  "answer_options",
   "answer_section",
   "option_a",
   "option_b",
   "option_c",
   "option_d",
   "column_break_tyox",
+  "correct_answer_selector",
   "correct_answer",
   "section_break_rere",
   "explanation"
@@ -29,36 +32,64 @@
    "reqd": 1
   },
   {
+   "default": "Single Select",
+   "fieldname": "question_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Question Type",
+   "options": "Single Select\nMulti Select\nOpen Ended",
+   "reqd": 1
+  },
+  {
+   "depends_on": "eval:[\"Single Select\", \"Multi Select\"].includes(doc.question_type)",
+   "description": "Enter one answer choice per line to support any number of options.",
+   "fieldname": "answer_options",
+   "fieldtype": "Small Text",
+   "label": "Answer Options",
+   "mandatory_depends_on": "eval:[\"Single Select\", \"Multi Select\"].includes(doc.question_type)"
+  },
+  {
    "fieldname": "option_a",
    "fieldtype": "Data",
+   "hidden": 1,
    "in_list_view": 1,
    "label": "Option A"
   },
   {
    "fieldname": "option_b",
    "fieldtype": "Data",
+   "hidden": 1,
    "in_list_view": 1,
    "label": "Option B"
   },
   {
    "fieldname": "option_c",
    "fieldtype": "Data",
+   "hidden": 1,
    "in_list_view": 1,
    "label": "Option C"
   },
   {
    "fieldname": "option_d",
    "fieldtype": "Data",
+   "hidden": 1,
    "in_list_view": 1,
    "label": "Option D"
   },
   {
-   "description": "Options: A, B, C, D (one per line in Options field)",
+   "depends_on": "eval:[\"Single Select\", \"Multi Select\"].includes(doc.question_type)",
+   "fieldname": "correct_answer_selector",
+   "fieldtype": "HTML",
+   "label": "Correct Answer Selector"
+  },
+  {
+   "depends_on": "eval:[\"Single Select\", \"Multi Select\"].includes(doc.question_type)",
+   "description": "Stored internally as option letters such as A or A and C.",
    "fieldname": "correct_answer",
-   "fieldtype": "Select",
-   "label": "Correct Answer",
-   "options": "A\nB\nC\nD",
-   "reqd": 1
+   "fieldtype": "Small Text",
+   "hidden": 1,
+   "label": "Correct Answer / Accepted Answers",
+   "mandatory_depends_on": "eval:[\"Single Select\", \"Multi Select\"].includes(doc.question_type)"
   },
   {
    "fieldname": "explanation",

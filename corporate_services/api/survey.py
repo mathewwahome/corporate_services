@@ -179,7 +179,8 @@ def get_survey_analytics(survey: str):
         """
         SELECT sa.question, sa.value
         FROM `tabSurvey Answer` sa
-        JOIN `tabSurvey Response` sr 
+        INNER JOIN `tabSurvey Response` sr
+            ON sr.name = sa.parent
         WHERE sr.survey = %s
         """,
         survey,

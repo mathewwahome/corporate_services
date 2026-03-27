@@ -32,6 +32,7 @@
   "send_welcome_email",
   "send_company_wide_email_intro",
   "for_interns_send_internship_commencement_form",
+  "internship_commencement",
   "provide_necessary_stationery_and_equipment",
   "conduct_in_person_onboarding_meeting",
   "column_break_jurt",
@@ -94,7 +95,6 @@
    "fieldname": "naming_series",
    "fieldtype": "Select",
    "hidden": 1,
-   "in_list_view": 1,
    "label": "Series",
    "options": "OS-.YYYY.-",
    "read_only": 1,
@@ -174,6 +174,13 @@
    "fieldname": "for_interns_send_internship_commencement_form",
    "fieldtype": "Check",
    "label": "For interns send internship commencement form"
+  },
+  {
+   "depends_on": "eval:doc.for_interns_send_internship_commencement_form == 1",
+   "fieldname": "internship_commencement",
+   "fieldtype": "Link",
+   "label": "Internship Commencement",
+   "options": "Internship Commencement"
   },
   {
    "default": "0",
@@ -304,7 +311,7 @@
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-02-24 21:15:13.775550",
+ "modified": "2026-03-26 08:44:56.034286",
  "modified_by": "Administrator",
  "module": "ICL Corporate Services",
  "name": "Onboarding Schedule",

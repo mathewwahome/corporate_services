@@ -13,7 +13,6 @@
   "employee_name",
   "supervisor_email",
   "work_continuity",
-  "status",
   "amended_from"
  ],
  "fields": [
@@ -74,22 +73,13 @@
    "in_standard_filter": 1,
    "label": "Employee Name",
    "read_only": 1
-  },
-  {
-   "default": "Open",
-   "fieldname": "status",
-   "fieldtype": "Select",
-   "label": "Status",
-   "options": "Open\nApproved\nRejected\nCancelled",
-   "permlevel": 3,
-   "reqd": 1
   }
  ],
  "icon": "fa fa-calendar",
  "is_submittable": 1,
  "links": [],
  "max_attachments": 3,
- "modified": "2025-07-07 09:06:04.134643",
+ "modified": "2026-03-25 22:52:56.863286",
  "modified_by": "Administrator",
  "module": "ICL Corporate Services",
  "name": "Work Continuity Plan",

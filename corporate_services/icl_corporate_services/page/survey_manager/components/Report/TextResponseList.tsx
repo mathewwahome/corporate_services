@@ -50,7 +50,7 @@ export function TextResponseList({ responses }: TextResponseListProps) {
               <span>{r}</span>
             ) : (
               <em style={{ fontSize: 12, color: "var(--text-muted)" }}>
-                — (blank)
+                - (blank)
               </em>
             )}
           </div>

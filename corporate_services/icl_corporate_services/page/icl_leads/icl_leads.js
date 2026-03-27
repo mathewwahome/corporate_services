@@ -266,7 +266,7 @@ frappe.pages["icl-leads"].on_page_load = function (wrapper) {
         });
         oppLinks = oppRes.message || [];
       } catch (e) {
-        console.warn("ICL Leads: could not fetch Opportunities —", e.message || e);
+        console.warn("ICL Leads: could not fetch Opportunities -", e.message || e);
       }
 
       // Build a map: lead name → [{ opp, status, amount }]
@@ -365,26 +365,26 @@ frappe.pages["icl-leads"].on_page_load = function (wrapper) {
               return `<span class="icl-badge opp-badge ${oppStatusKey}" title="${frappe.utils.escape_html(o.opp)}">${frappe.utils.escape_html(o.opp)}</span> `;
             })
             .join("")
-        : `<span class="text-muted">—</span>`;
+        : `<span class="text-muted">-</span>`;
 
       const statusKey = (lead.status || "").toLowerCase().replace(/\s+/g, "-");
-      const statusBadge = `<span class="icl-badge ${statusKey} default">${frappe.utils.escape_html(lead.status || "—")}</span>`;
+      const statusBadge = `<span class="icl-badge ${statusKey} default">${frappe.utils.escape_html(lead.status || "-")}</span>`;
 
       const created = lead.creation
         ? frappe.datetime.str_to_user(lead.creation)
-        : "—";
+        : "-";
 
       tbody.append(`
         <tr data-name="${frappe.utils.escape_html(lead.name)}">
           <td class="text-muted">${start + idx + 1}</td>
-          <td class="font-weight-semibold">${frappe.utils.escape_html(lead.lead_name || "—")}</td>
-          <td>${frappe.utils.escape_html(lead.company_name || "—")}</td>
+          <td class="font-weight-semibold">${frappe.utils.escape_html(lead.lead_name || "-")}</td>
+          <td>${frappe.utils.escape_html(lead.company_name || "-")}</td>
           <td>${statusBadge}</td>
-          <td>${frappe.utils.escape_html(lead.source || "—")}</td>
-          <td>${frappe.utils.escape_html(lead.mobile_no || "—")}</td>
-          <td>${frappe.utils.escape_html(lead.email_id || "—")}</td>
+          <td>${frappe.utils.escape_html(lead.source || "-")}</td>
+          <td>${frappe.utils.escape_html(lead.mobile_no || "-")}</td>
+          <td>${frappe.utils.escape_html(lead.email_id || "-")}</td>
           <td>${oppBadges}</td>
-          <td>${frappe.utils.escape_html(lead.lead_owner || "—")}</td>
+          <td>${frappe.utils.escape_html(lead.lead_owner || "-")}</td>
           <td class="text-muted">${created}</td>
           <td>
             <a href="/crm/leads/${frappe.utils.escape_html(lead.name)}"

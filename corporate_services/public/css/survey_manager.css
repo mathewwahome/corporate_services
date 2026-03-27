@@ -1,9 +1,9 @@
 /* ============================================================
-   Survey Manager — minimal glue CSS
+   Survey Manager - minimal glue CSS
    Uses ERPNext/Frappe CSS variables throughout.
    ============================================================ */
 
-/* Tab active indicator — mimics Frappe's form tab style */
+/* Tab active indicator - mimics Frappe's form tab style */
 .btn-tab {
   background: none;
   border: none;

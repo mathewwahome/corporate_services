@@ -2775,62 +2775,6 @@
   "javascript": null,
   "json": null,
   "letter_head": null,
-  "modified": "2019-06-13 15:54:55.255947",
-  "module": "Projects",
-  "name": "Project Billing Summary",
-  "prepared_report": 0,
-  "query": null,
-  "ref_doctype": "Timesheet",
-  "reference_report": null,
-  "report_name": "Project Billing Summary",
-  "report_script": null,
-  "report_type": "Script Report",
-  "roles": [
-   {
-    "parent": "Project Billing Summary",
-    "parentfield": "roles",
-    "parenttype": "Report",
-    "role": "Projects User"
-   },
-   {
-    "parent": "Project Billing Summary",
-    "parentfield": "roles",
-    "parenttype": "Report",
-    "role": "HR User"
-   },
-   {
-    "parent": "Project Billing Summary",
-    "parentfield": "roles",
-    "parenttype": "Report",
-    "role": "Manufacturing User"
-   },
-   {
-    "parent": "Project Billing Summary",
-    "parentfield": "roles",
-    "parenttype": "Report",
-    "role": "Employee"
-   },
-   {
-    "parent": "Project Billing Summary",
-    "parentfield": "roles",
-    "parenttype": "Report",
-    "role": "Accounts User"
-   }
-  ],
-  "timeout": 0
- },
- {
-  "add_total_row": 1,
-  "add_translate_data": 0,
-  "columns": [],
-  "disabled": 0,
-  "docstatus": 0,
-  "doctype": "Report",
-  "filters": [],
-  "is_standard": "Yes",
-  "javascript": null,
-  "json": null,
-  "letter_head": null,
   "modified": "2019-04-15 15:22:15.012318",
   "module": "Selling",
   "name": "Sales Partner Commission Summary",
@@ -7082,56 +7026,6 @@
   "javascript": null,
   "json": null,
   "letter_head": null,
-  "modified": "2017-02-24 20:05:46.782115",
-  "module": "Projects",
-  "name": "Daily Timesheet Summary",
-  "prepared_report": 0,
-  "query": null,
-  "ref_doctype": "Timesheet",
-  "reference_report": null,
-  "report_name": "Daily Timesheet Summary",
-  "report_script": null,
-  "report_type": "Script Report",
-  "roles": [
-   {
-    "parent": "Daily Timesheet Summary",
-    "parentfield": "roles",
-    "parenttype": "Report",
-    "role": "Projects User"
-   },
-   {
-    "parent": "Daily Timesheet Summary",
-    "parentfield": "roles",
-    "parenttype": "Report",
-    "role": "HR User"
-   },
-   {
-    "parent": "Daily Timesheet Summary",
-    "parentfield": "roles",
-    "parenttype": "Report",
-    "role": "Manufacturing User"
-   },
-   {
-    "parent": "Daily Timesheet Summary",
-    "parentfield": "roles",
-    "parenttype": "Report",
-    "role": "Accounts User"
-   }
-  ],
-  "timeout": 0
- },
- {
-  "add_total_row": 0,
-  "add_translate_data": 0,
-  "columns": [],
-  "disabled": 0,
-  "docstatus": 0,
-  "doctype": "Report",
-  "filters": [],
-  "is_standard": "Yes",
-  "javascript": null,
-  "json": null,
-  "letter_head": null,
   "modified": "2017-02-24 20:05:17.833885",
   "module": "HR",
   "name": "Employees working on a holiday",
@@ -8286,44 +8180,6 @@
     "parentfield": "roles",
     "parenttype": "Report",
     "role": "Stock User"
-   }
-  ],
-  "timeout": 0
- },
- {
-  "add_total_row": 0,
-  "add_translate_data": 0,
-  "columns": [],
-  "disabled": 0,
-  "docstatus": 0,
-  "doctype": "Report",
-  "filters": [],
-  "is_standard": "Yes",
-  "javascript": null,
-  "json": null,
-  "letter_head": null,
-  "modified": "2017-02-24 20:20:07.593667",
-  "module": "Projects",
-  "name": "Project wise Stock Tracking",
-  "prepared_report": 0,
-  "query": null,
-  "ref_doctype": "Project",
-  "reference_report": null,
-  "report_name": "Project wise Stock Tracking",
-  "report_script": null,
-  "report_type": "Script Report",
-  "roles": [
-   {
-    "parent": "Project wise Stock Tracking",
-    "parentfield": "roles",
-    "parenttype": "Report",
-    "role": "Projects User"
-   },
-   {
-    "parent": "Project wise Stock Tracking",
-    "parentfield": "roles",
-    "parenttype": "Report",
-    "role": "Projects Manager"
    }
   ],
   "timeout": 0
@@ -10185,6 +10041,188 @@
   "timeout": 0
  },
  {
+  "add_total_row": 0,
+  "add_translate_data": 0,
+  "columns": [],
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [],
+  "is_standard": "Yes",
+  "javascript": null,
+  "json": null,
+  "letter_head": null,
+  "modified": "2020-05-14 16:28:45.743869",
+  "module": "HR",
+  "name": "Recruitment Analytics",
+  "prepared_report": 0,
+  "query": null,
+  "ref_doctype": "Staffing Plan",
+  "reference_report": null,
+  "report_name": "Recruitment Analytics",
+  "report_script": null,
+  "report_type": "Script Report",
+  "roles": [
+   {
+    "parent": "Recruitment Analytics",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "HR Manager"
+   },
+   {
+    "parent": "Recruitment Analytics",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "HR User"
+   }
+  ],
+  "timeout": 0
+ },
+ {
+  "add_total_row": 1,
+  "add_translate_data": 0,
+  "columns": [],
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [],
+  "is_standard": "Yes",
+  "javascript": null,
+  "json": null,
+  "letter_head": null,
+  "modified": "2019-06-13 15:54:55.255947",
+  "module": "Projects",
+  "name": "Project Billing Summary",
+  "prepared_report": 0,
+  "query": null,
+  "ref_doctype": "Timesheet",
+  "reference_report": null,
+  "report_name": "Project Billing Summary",
+  "report_script": null,
+  "report_type": "Script Report",
+  "roles": [
+   {
+    "parent": "Project Billing Summary",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Projects User"
+   },
+   {
+    "parent": "Project Billing Summary",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "HR User"
+   },
+   {
+    "parent": "Project Billing Summary",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Manufacturing User"
+   },
+   {
+    "parent": "Project Billing Summary",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Employee"
+   },
+   {
+    "parent": "Project Billing Summary",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Accounts User"
+   }
+  ],
+  "timeout": 0
+ },
+ {
+  "add_total_row": 0,
+  "add_translate_data": 0,
+  "columns": [],
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [],
+  "is_standard": "Yes",
+  "javascript": null,
+  "json": null,
+  "letter_head": null,
+  "modified": "2017-02-24 20:05:46.782115",
+  "module": "Projects",
+  "name": "Daily Timesheet Summary",
+  "prepared_report": 0,
+  "query": null,
+  "ref_doctype": "Timesheet",
+  "reference_report": null,
+  "report_name": "Daily Timesheet Summary",
+  "report_script": null,
+  "report_type": "Script Report",
+  "roles": [
+   {
+    "parent": "Daily Timesheet Summary",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Projects User"
+   },
+   {
+    "parent": "Daily Timesheet Summary",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "HR User"
+   },
+   {
+    "parent": "Daily Timesheet Summary",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Manufacturing User"
+   },
+   {
+    "parent": "Daily Timesheet Summary",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Accounts User"
+   }
+  ],
+  "timeout": 0
+ },
+ {
+  "add_total_row": 0,
+  "add_translate_data": 0,
+  "columns": [],
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [],
+  "is_standard": "Yes",
+  "javascript": null,
+  "json": null,
+  "letter_head": null,
+  "modified": "2017-02-24 20:20:07.593667",
+  "module": "Projects",
+  "name": "Project wise Stock Tracking",
+  "prepared_report": 0,
+  "query": null,
+  "ref_doctype": "Project",
+  "reference_report": null,
+  "report_name": "Project wise Stock Tracking",
+  "report_script": null,
+  "report_type": "Script Report",
+  "roles": [
+   {
+    "parent": "Project wise Stock Tracking",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Projects User"
+   },
+   {
+    "parent": "Project wise Stock Tracking",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Projects Manager"
+   }
+  ],
+  "timeout": 0
+ },
+ {
   "add_total_row": 1,
   "add_translate_data": 0,
   "columns": [],
@@ -10394,44 +10432,6 @@
     "parentfield": "roles",
     "parenttype": "Report",
     "role": "HR Manager"
-   }
-  ],
-  "timeout": 0
- },
- {
-  "add_total_row": 0,
-  "add_translate_data": 0,
-  "columns": [],
-  "disabled": 0,
-  "docstatus": 0,
-  "doctype": "Report",
-  "filters": [],
-  "is_standard": "Yes",
-  "javascript": null,
-  "json": null,
-  "letter_head": null,
-  "modified": "2020-05-14 16:28:45.743869",
-  "module": "HR",
-  "name": "Recruitment Analytics",
-  "prepared_report": 0,
-  "query": null,
-  "ref_doctype": "Staffing Plan",
-  "reference_report": null,
-  "report_name": "Recruitment Analytics",
-  "report_script": null,
-  "report_type": "Script Report",
-  "roles": [
-   {
-    "parent": "Recruitment Analytics",
-    "parentfield": "roles",
-    "parenttype": "Report",
-    "role": "HR Manager"
-   },
-   {
-    "parent": "Recruitment Analytics",
-    "parentfield": "roles",
-    "parenttype": "Report",
-    "role": "HR User"
    }
   ],
   "timeout": 0

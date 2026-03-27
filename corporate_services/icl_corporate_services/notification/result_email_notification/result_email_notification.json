@@ -10,7 +10,7 @@
  "event": "Submit",
  "idx": 0,
  "is_standard": 1,
- "message": "Dear {{ doc.employee_name }},\n\nThank you for completing: {{ doc.quiz }}\n\nYour Results\n----------------------------\nScore:           {{ doc.score }}%\nCorrect Answers: {{ doc.correct_answers }} / {{ doc.total_questions }}\nResult:          {{ doc.result }}\n----------------------------\n\n{% if doc.passed %}\nCongratulations! You have successfully passed this quiz.\n{% else %}\nYou did not meet the passing score. Please review the material and try again.\n{% endif %}\n\nRegards,\nHR Department",
+ "message": "Dear {{ doc.employee_name }},\n\nThank you for completing: {{ doc.quiz }}\n\nYour Results\n----------------------------\nScore:           {{ doc.score_ }}%\nCorrect Answers: {{ doc.correct_answers }} / {{ doc.total_questions }}\nResult:          {{ doc.result }}\n----------------------------\n\n{% if doc.result == \"Pending Review\" %}\nYour submission includes open-ended question(s) and is pending manual review. Final grading will be shared after review.\n{% elif doc.passed %}\nCongratulations! You have successfully passed this quiz.\n{% else %}\nYou did not meet the passing score. Please review the material and try again.\n{% endif %}\n\nRegards,\nHR Department",
  "message_type": "Markdown",
  "modified": "2026-02-18 08:52:31.871063",
  "modified_by": "Administrator",

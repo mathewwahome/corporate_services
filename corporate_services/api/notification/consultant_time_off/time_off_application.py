@@ -1,22 +1,9 @@
 import frappe
 from frappe.utils import get_url_to_form
-
-
-def get_default_print_format(doctype):
-    """Return the default print format for a DocType, falling back to 'Standard'."""
-    return (
-        frappe.db.get_value(
-            "Property Setter",
-            {"doc_type": doctype, "property": "default_print_format"},
-            "value",
-        )
-        or frappe.db.get_value(
-            "Print Format",
-            {"doc_type": doctype},
-            "name",
-        )
-        or "Standard"
-    )
+from corporate_services.api.helpers.print_formats import get_default_print_format
+from corporate_services.api.notification.notification_contacts import (
+    get_supervisor_contact,
+)
 
 
 def build_email_body(greeting, intro, action_line, link_url, sign_off, signer):
@@ -104,13 +91,12 @@ def alert(doc, method):
         if not employee.reports_to:
             return
 
-        supervisor = frappe.get_doc("Employee", employee.reports_to)
-        supervisor_email = supervisor.company_email or supervisor.personal_email
+        supervisor_contact = get_supervisor_contact(employee)
 
         send_email(
-            recipients=[supervisor_email],
+            recipients=[supervisor_contact.email],
             subject=frappe._("Time Off Application from {}".format(employee.employee_name)),
-            message=generate_message(doc, employee.employee_name, supervisor.employee_name, "supervisor"),
+            message=generate_message(doc, employee.employee_name, supervisor_contact.name, "supervisor"),
             pdf_content=pdf_content,
             doc_name=doc.name,
         )

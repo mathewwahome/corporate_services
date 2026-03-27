@@ -1,0 +1,104 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "hash",
+ "creation": "2026-03-26 12:30:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "employee",
+  "employee_name",
+  "review_period",
+  "first_email_sent_on",
+  "last_notification_type",
+  "last_notification_sent_on",
+  "total_reminders_sent"
+ ],
+ "fields": [
+  {
+   "fieldname": "employee",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Employee",
+   "options": "Employee",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "employee.employee_name",
+   "fieldname": "employee_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Employee Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "review_period",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Review Period",
+   "reqd": 1
+  },
+  {
+   "fieldname": "first_email_sent_on",
+   "fieldtype": "Datetime",
+   "label": "First Email Sent On",
+   "read_only": 1
+  },
+  {
+   "fieldname": "last_notification_type",
+   "fieldtype": "Select",
+   "label": "Last Notification Type",
+   "options": "\nEmail\nSystem",
+   "read_only": 1
+  },
+  {
+   "fieldname": "last_notification_sent_on",
+   "fieldtype": "Datetime",
+   "label": "Last Notification Sent On",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "total_reminders_sent",
+   "fieldtype": "Int",
+   "label": "Total Reminders Sent",
+   "read_only": 1
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-03-26 12:30:00.000000",
+ "modified_by": "Administrator",
+ "module": "ICL Corporate Services",
+ "name": "Monthly Reflection Reminder Log",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "HR Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
