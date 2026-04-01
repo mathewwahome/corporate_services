@@ -210,6 +210,31 @@ export function QuestionReportCard({
               No responses recorded.
             </div>
           )}
+
+          {/* ── Follow-up responses ──────────────────────────────────────── */}
+          {question.follow_up_text && question.follow_up_responses.length > 0 && (
+            <div
+              style={{
+                marginTop: 16,
+                paddingTop: 14,
+                borderTop: "1px dashed var(--border-color)",
+              }}
+            >
+              <div
+                style={{
+                  fontSize: 11,
+                  fontWeight: 600,
+                  textTransform: "uppercase",
+                  letterSpacing: "0.06em",
+                  color: "var(--text-muted)",
+                  marginBottom: 6,
+                }}
+              >
+                Follow-up: {question.follow_up_text}
+              </div>
+              <TextResponseList responses={question.follow_up_responses} />
+            </div>
+          )}
         </div>
       )}
     </div>

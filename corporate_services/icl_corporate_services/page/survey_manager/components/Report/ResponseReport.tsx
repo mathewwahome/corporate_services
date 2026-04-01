@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Analytics } from "../types";
 import { QuestionReportCard } from "./QuestionReportCard";
 import { Spinner } from "../ui/Spinner";
@@ -7,7 +7,7 @@ import { Fade } from "../ui/Fade";
 interface ResponseReportProps {
   analytics: Analytics | null;
   loading: boolean;
-  onLoad: () => void;
+  onLoad: (department?: string) => void;
   totalSubmissions: number;
 }
 
@@ -17,6 +17,12 @@ export function ResponseReport({
   onLoad,
   totalSubmissions,
 }: ResponseReportProps) {
+  const [selectedDept, setSelectedDept] = useState<string>("");
+
+  const handleDeptChange = (dept: string) => {
+    setSelectedDept(dept);
+    onLoad(dept || undefined);
+  };
   // ── Loading ────────────────────────────────────────────────────────────
   if (loading) {
     return (
@@ -172,13 +178,15 @@ export function ResponseReport({
         ))}
       </div>
 
-      {/* ── Section heading + refresh ────────────────────────────────────── */}
+      {/* ── Section heading + department filter + refresh ───────────────── */}
       <div
         style={{
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
           marginBottom: 12,
+          gap: 8,
+          flexWrap: "wrap",
         }}
       >
         <span
@@ -192,14 +200,33 @@ export function ResponseReport({
         >
           Per-question Results
         </span>
-        <button
-          className="btn btn-xs btn-default"
-          type="button"
-          onClick={onLoad}
-          title="Refresh report data"
-        >
-          ↻ Refresh
-        </button>
+
+        <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+          {/* Department filter */}
+          {analytics.departments.length > 0 && (
+            <select
+              className="form-control form-control-sm"
+              style={{ fontSize: 12, height: 26, padding: "2px 8px", minWidth: 160 }}
+              value={selectedDept}
+              onChange={(e) => handleDeptChange(e.target.value)}
+              disabled={loading}
+            >
+              <option value="">All Departments</option>
+              {analytics.departments.map((d) => (
+                <option key={d} value={d}>{d}</option>
+              ))}
+            </select>
+          )}
+
+          <button
+            className="btn btn-xs btn-default"
+            type="button"
+            onClick={() => onLoad(selectedDept || undefined)}
+            title="Refresh report data"
+          >
+            ↻ Refresh
+          </button>
+        </div>
       </div>
 
       {/* ── Per-question cards ───────────────────────────────────────────── */}
