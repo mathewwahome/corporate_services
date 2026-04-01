@@ -67,14 +67,17 @@ export type AnalyticsQuestion = {
   section: string;
   question_text: string;
   question_type: QuestionType;
+  follow_up_text?: string | null;
   response_count: number;
   aggregation: Record<string, number>;
   text_responses: string[];
+  follow_up_responses: string[];
 };
 
 export type Analytics = {
   total_responses: number;
   questions: AnalyticsQuestion[];
+  departments: string[];
 };
 
 export type ToastMessage = {

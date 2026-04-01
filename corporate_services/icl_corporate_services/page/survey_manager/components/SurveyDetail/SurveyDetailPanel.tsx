@@ -24,7 +24,7 @@ interface SurveyDetailPanelProps {
   onSave: () => void;
   onCancelNew: () => void;
   onTogglePublish: () => void;
-  onLoadAnalytics: () => void;
+  onLoadAnalytics: (department?: string) => void;
   onAddSection: () => void;
   onRemoveSection: (idx: number) => void;
   onAddQuestion: (sectionIdx: number) => void;

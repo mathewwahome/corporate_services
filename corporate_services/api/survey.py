@@ -168,28 +168,45 @@ def get_survey_responses(survey: str):
 
 
 @frappe.whitelist()
-def get_survey_analytics(survey: str):
+def get_survey_analytics(survey: str, department: str | None = None):
     """Return aggregated answer data per question for a survey (admin only)."""
     _require_admin()
 
-    total = frappe.db.count("Survey Response", {"survey": survey})
+    # All departments that have submitted responses for this survey
+    dept_rows = frappe.db.sql(
+        "SELECT DISTINCT department FROM `tabSurvey Response` WHERE survey = %s AND department IS NOT NULL AND department != '' ORDER BY department",
+        survey,
+    )
+    departments = [r[0] for r in dept_rows]
 
-    # All answers for responses in this survey
+    response_filters = {"survey": survey}
+    if department:
+        response_filters["department"] = department
+
+    total = frappe.db.count("Survey Response", response_filters)
+
+    dept_condition = "AND sr.department = %s" if department else ""
+    query_params = [survey, department] if department else [survey]
+
+    # All answers for responses in this survey (optionally filtered by department)
     answers = frappe.db.sql(
-        """
-        SELECT sa.question, sa.value
+        f"""
+        SELECT sa.question, sa.value, sa.follow_up
         FROM `tabSurvey Answer` sa
         INNER JOIN `tabSurvey Response` sr
             ON sr.name = sa.parent
-        WHERE sr.survey = %s
+        WHERE sr.survey = %s {dept_condition}
         """,
-        survey,
+        query_params,
         as_dict=True,
     )
 
     answer_map: dict[str, list[str]] = {}
+    follow_up_map: dict[str, list[str]] = {}
     for a in answers:
         answer_map.setdefault(a.question, []).append(a.value or "")
+        if a.follow_up:
+            follow_up_map.setdefault(a.question, []).append(a.follow_up)
 
     survey_doc = frappe.get_doc("Survey", survey)
     questions = []
@@ -221,13 +238,15 @@ def get_survey_analytics(survey: str):
                     "section": section.title,
                     "question_text": q.question_text,
                     "question_type": q.question_type,
+                    "follow_up_text": q.follow_up_text or None,
                     "response_count": len(non_empty),
                     "aggregation": aggregation,
                     "text_responses": non_empty if q.question_type == "TEXT" else [],
+                    "follow_up_responses": follow_up_map.get(q.name, []),
                 }
             )
 
-    return {"total_responses": total, "questions": questions}
+    return {"total_responses": total, "questions": questions, "departments": departments}
 
 
 # ---------------------------------------------------------------------------
