@@ -190,13 +190,13 @@ export function useSurveys({ addToast }: UseSurveysOptions) {
     }
   };
 
-  const loadAnalytics = async () => {
+  const loadAnalytics = async (department?: string) => {
     if (!selectedRow?.name) return;
     setAnalyticsLoading(true);
     try {
       const r = await frappe.call({
         method: "corporate_services.api.survey.get_survey_analytics",
-        args: { survey: selectedRow.name },
+        args: { survey: selectedRow.name, department: department || null },
       });
       setAnalytics(r?.message ?? null);
     } catch (e: any) {
