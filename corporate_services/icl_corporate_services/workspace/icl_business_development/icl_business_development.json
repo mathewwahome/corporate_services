@@ -95,23 +95,7 @@
  "owner": "Administrator",
  "parent_page": "",
  "public": 1,
- "quick_lists": [
-  {
-   "document_type": "Lead",
-   "label": "Lead",
-   "quick_list_filter": "[]"
-  },
-  {
-   "document_type": "Opportunity",
-   "label": "Bidding",
-   "quick_list_filter": "[]"
-  },
-  {
-   "document_type": "Customer",
-   "label": "Customer",
-   "quick_list_filter": "[]"
-  }
- ],
+ "quick_lists": [],
  "roles": [
   {
    "role": "Business Development"
@@ -122,37 +106,15 @@
   {
    "color": "Grey",
    "doc_view": "List",
-   "label": "Bidding Dashboard",
-   "link_to": "Bidding",
-   "type": "Dashboard"
-  },
-  {
-   "color": "Grey",
-   "doc_view": "List",
-   "label": "Icl Leads",
-   "link_to": "icl-leads",
+   "label": "Master Boat Analysis",
+   "link_to": "master_boat_analysis",
    "type": "Page"
   },
   {
    "color": "Grey",
    "doc_view": "List",
-   "label": "Opportunity Settings",
-   "link_to": "Opportunity Settings",
-   "type": "DocType"
-  },
-  {
-   "color": "Grey",
-   "doc_view": "List",
-   "label": "Lead",
-   "link_to": "Lead",
-   "stats_filter": "[]",
-   "type": "DocType"
-  },
-  {
-   "color": "Grey",
-   "doc_view": "List",
-   "label": "Icl Opportunity Module",
-   "link_to": "icl-opportunity-module",
+   "label": "Leads",
+   "link_to": "leads",
    "type": "Page"
   }
  ],
