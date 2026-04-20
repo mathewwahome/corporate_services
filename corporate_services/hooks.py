@@ -79,6 +79,7 @@ web_include_js = [
 doctype_js = {
     "Job Opening": "public/js/job_opening.js",
     "Opportunity": "public/js/opportunity.js",
+    "Employee": "public/js/employee_leave_balance.js",
 }
 # doctype_list_js = {"doctype" : "public/js/doctype_list.js"}
 # doctype_tree_js = {"doctype" : "public/js/doctype_tree.js"}
