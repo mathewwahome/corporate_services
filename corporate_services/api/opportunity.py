@@ -21,6 +21,22 @@ def get_opportunity(name):
         LIMIT 1
     """, name, as_dict=True)
     data["opportunity_folder"] = folders[0] if folders else None
+
+    reminder_activities = frappe.db.sql(
+        """
+        SELECT name, owner, creation, content
+        FROM `tabComment`
+        WHERE reference_doctype = 'Opportunity'
+          AND reference_name = %s
+          AND comment_type = 'Info'
+          AND content LIKE 'Opportunity Due Reminder sent%%'
+        ORDER BY creation DESC
+        LIMIT 50
+        """,
+        name,
+        as_dict=True,
+    )
+    data["reminder_activities"] = reminder_activities
     return data
 
 

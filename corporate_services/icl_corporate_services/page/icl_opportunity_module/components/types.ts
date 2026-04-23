@@ -52,6 +52,12 @@ export type OpportunityDetail = OpportunityRow & {
   creation?: string;
   modified?: string;
   owner?: string;
+  reminder_activities?: Array<{
+    name: string;
+    owner?: string;
+    creation?: string;
+    content?: string;
+  }>;
 };
 
 export type OpportunityListResult = {
