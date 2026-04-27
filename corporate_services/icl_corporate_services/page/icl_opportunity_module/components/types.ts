@@ -64,3 +64,20 @@ export type OpportunityListResult = {
   opportunities: OpportunityRow[];
   total: number;
 };
+
+export type ChecklistItem = {
+  name: string;
+  proposal_section?: string;
+  description: string;
+  status: string;
+  employee?: string;
+  employee_name?: string;
+};
+
+export type OpportunityChecklist = {
+  name: string;
+  title: string;
+  status: string;
+  description?: string;
+  items: ChecklistItem[];
+};

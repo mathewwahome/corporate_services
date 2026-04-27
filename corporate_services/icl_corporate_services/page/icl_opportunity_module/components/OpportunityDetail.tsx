@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { useOpportunityDetail } from "./hooks/useOpportunityDetail";
 import { WorkflowStatus } from "./WorkflowStatus";
 import { FileBrowser } from "./FileBrowser";
+import { ChecklistTab } from "./ChecklistTab";
+import { CreateChecklistForm } from "./CreateChecklistForm";
 
 const STATUS_INDICATOR: Record<string, string> = {
   Open: "blue",
@@ -79,7 +81,8 @@ export function OpportunityDetail({ opportunityId, onBack }: Props) {
   const [awarding, setAwarding] = useState(false);
   const [sendingReminder, setSendingReminder] = useState(false);
   const [awardedProject, setAwardedProject] = useState<string | null>(null);
-  const [activeTab, setActiveTab] = useState<"overview" | "finance">("overview");
+  const [activeTab, setActiveTab] = useState<"overview" | "finance" | "checklist">("overview");
+  const [subView, setSubView] = useState<"create-checklist" | null>(null);
 
   const isAwarded = doc?.custom_bid_status === "Awarded";
   const linkedProject = awardedProject || doc?.linked_project || null;
@@ -183,9 +186,23 @@ export function OpportunityDetail({ opportunityId, onBack }: Props) {
     }
   }
 
+  if (subView === "create-checklist") {
+    return (
+      <CreateChecklistForm
+        opportunityId={opportunityId}
+        onBack={() => setSubView(null)}
+        onCreated={() => {
+          setSubView(null);
+          setActiveTab("checklist");
+          reload();
+        }}
+      />
+    );
+  }
+
   return (
     <div className="om-fade-in">
-      {/* ── Header ── */}
+      {/* -- Header -- */}
       <div className="om-detail-header">
         <button type="button" className="om-detail-back" onClick={onBack} title="Back to list">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
@@ -239,7 +256,7 @@ export function OpportunityDetail({ opportunityId, onBack }: Props) {
         </div>
       </div>
 
-      {/* ── Loading ── */}
+      {/* -- Loading -- */}
       {loading && (
         <div className="text-center text-muted" style={{ padding: "48px 0" }}>
           <div className="spinner-border spinner-border-sm" role="status" />
@@ -247,14 +264,14 @@ export function OpportunityDetail({ opportunityId, onBack }: Props) {
         </div>
       )}
 
-      {/* ── Error ── */}
+      {/* -- Error -- */}
       {error && (
         <div className="alert alert-danger" style={{ fontSize: 13 }}>
           {error}
         </div>
       )}
 
-      {/* ── Content ── */}
+      {/* -- Content -- */}
       {doc && !loading && (
         <div className="row">
           <div className="col-md-8">
@@ -279,6 +296,13 @@ export function OpportunityDetail({ opportunityId, onBack }: Props) {
                     Finance
                   </button>
                 )}
+                <button
+                  type="button"
+                  className={`btn btn-sm ${activeTab === "checklist" ? "btn-primary" : "btn-default"}`}
+                  onClick={() => setActiveTab("checklist")}
+                >
+                  Task Checklist
+                </button>
               </div>
             </div>
 
@@ -312,6 +336,13 @@ export function OpportunityDetail({ opportunityId, onBack }: Props) {
               </div>
             )}
               </>
+            )}
+
+            {activeTab === "checklist" && (
+              <ChecklistTab
+                opportunityId={opportunityId}
+                onCreateChecklist={() => setSubView("create-checklist")}
+              />
             )}
 
             {canViewFinanceTab && activeTab === "finance" && (
