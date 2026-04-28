@@ -129,24 +129,6 @@
   "docstatus": 0,
   "doctype": "Workflow State",
   "icon": "",
-  "modified": "2026-04-27 22:23:30.514910",
-  "name": "Approved by HR",
-  "style": "Success",
-  "workflow_state_name": "Approved by HR"
- },
- {
-  "docstatus": 0,
-  "doctype": "Workflow State",
-  "icon": "",
-  "modified": "2026-04-27 22:23:30.523484",
-  "name": "Rejected By HR",
-  "style": "Danger",
-  "workflow_state_name": "Rejected By HR"
- },
- {
-  "docstatus": 0,
-  "doctype": "Workflow State",
-  "icon": "",
   "modified": "2026-04-27 22:23:30.532016",
   "name": "Needs Clarification",
   "style": "Warning",
@@ -201,15 +183,6 @@
   "docstatus": 0,
   "doctype": "Workflow State",
   "icon": "",
-  "modified": "2026-04-27 22:23:30.576874",
-  "name": "Submitted to HR",
-  "style": "",
-  "workflow_state_name": "Submitted to HR"
- },
- {
-  "docstatus": 0,
-  "doctype": "Workflow State",
-  "icon": "",
   "modified": "2026-04-27 22:23:30.583198",
   "name": "Approved by Finance",
   "style": "Success",
@@ -255,10 +228,19 @@
   "docstatus": 0,
   "doctype": "Workflow State",
   "icon": "",
-  "modified": "2026-04-27 22:23:30.616064",
-  "name": "Draft",
-  "style": "",
-  "workflow_state_name": "Draft"
+  "modified": "2026-04-27 22:23:30.514910",
+  "name": "Approved by HR",
+  "style": "Success",
+  "workflow_state_name": "Approved by HR"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": "",
+  "modified": "2026-04-27 22:23:30.523484",
+  "name": "Rejected By HR",
+  "style": "Danger",
+  "workflow_state_name": "Rejected By HR"
  },
  {
   "docstatus": 0,
@@ -268,5 +250,23 @@
   "name": "Submitted to Supervisor",
   "style": "",
   "workflow_state_name": "Submitted to Supervisor"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": "",
+  "modified": "2026-04-27 22:23:30.576874",
+  "name": "Submitted to HR",
+  "style": "",
+  "workflow_state_name": "Submitted to HR"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": "",
+  "modified": "2026-04-27 22:23:30.616064",
+  "name": "Draft",
+  "style": "",
+  "workflow_state_name": "Draft"
  }
 ]

@@ -30,20 +30,6 @@
  {
   "docstatus": 0,
   "doctype": "Workflow Action Master",
-  "modified": "2026-04-27 22:23:30.676746",
-  "name": "Submit to HR",
-  "workflow_action_name": "Submit to HR"
- },
- {
-  "docstatus": 0,
-  "doctype": "Workflow Action Master",
-  "modified": "2026-04-27 22:23:30.682278",
-  "name": "submit",
-  "workflow_action_name": "submit"
- },
- {
-  "docstatus": 0,
-  "doctype": "Workflow Action Master",
   "modified": "2026-04-27 22:23:30.687615",
   "name": "NO/GO",
   "workflow_action_name": "NO/GO"
@@ -58,6 +44,13 @@
  {
   "docstatus": 0,
   "doctype": "Workflow Action Master",
+  "modified": "2026-04-27 22:23:30.721205",
+  "name": "Submit to Project Manager",
+  "workflow_action_name": "Submit to Project Manager"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow Action Master",
   "modified": "2026-04-27 22:23:30.701128",
   "name": "Submit To supervisor",
   "workflow_action_name": "Submit To supervisor"
@@ -65,9 +58,9 @@
  {
   "docstatus": 0,
   "doctype": "Workflow Action Master",
-  "modified": "2026-04-27 22:23:30.709474",
-  "name": "Approve",
-  "workflow_action_name": "Approve"
+  "modified": "2026-04-27 22:23:30.676746",
+  "name": "Submit to HR",
+  "workflow_action_name": "Submit to HR"
  },
  {
   "docstatus": 0,
@@ -79,8 +72,15 @@
  {
   "docstatus": 0,
   "doctype": "Workflow Action Master",
-  "modified": "2026-04-27 22:23:30.721205",
-  "name": "Submit to Project Manager",
-  "workflow_action_name": "Submit to Project Manager"
+  "modified": "2026-04-27 22:23:30.682278",
+  "name": "submit",
+  "workflow_action_name": "submit"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow Action Master",
+  "modified": "2026-04-27 22:23:30.709474",
+  "name": "Approve",
+  "workflow_action_name": "Approve"
  }
 ]
