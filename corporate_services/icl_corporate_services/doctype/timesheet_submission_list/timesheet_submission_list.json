@@ -61,14 +61,12 @@
   {
    "fieldname": "pay",
    "fieldtype": "Currency",
-   "in_list_view": 1,
    "label": "Pay",
    "read_only": 1
   },
   {
    "fieldname": "percent",
    "fieldtype": "Percent",
-   "in_list_view": 1,
    "label": "Percent",
    "read_only": 1
   },
