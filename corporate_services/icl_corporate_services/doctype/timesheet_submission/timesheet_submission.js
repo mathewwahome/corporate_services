@@ -2,51 +2,44 @@
 // For license information, please see license.txt
 
 frappe.ui.form.on("Timesheet Submission", {
+	onload(frm) {
+		toggle_finance_tab(frm);
+	},
+
 	refresh(frm) {
-		hide_finance_tab(frm);
+		const can_view_finance =
+			frappe.user.has_role("System Manager") || frappe.user.has_role("Finance");
 
-		frappe.call({
-			method: "frappe.client.get",
-			args: { doctype: "Finance Settings", name: "Finance Settings" },
-			callback(r) {
-				const is_system_manager = frappe.user.has_role("System Manager");
-				const is_finance_role = frappe.user.has_role("Finance");
-				let is_finance_member = false;
+		toggle_finance_tab(frm);
 
-				if (!r.exc && r.message) {
-					const members = (r.message.table_finance_team_members || []).map(
-						(m) => (m.employee_email || "").toLowerCase()
-					);
-					is_finance_member = members.includes(
-						(frappe.session.user || "").toLowerCase()
-					);
-				}
-
-				if (is_system_manager || is_finance_role || is_finance_member) {
-					show_finance_tab(frm);
-					compute_finance(frm);
-				}
-			},
-		});
+		if (can_view_finance) {
+			compute_finance(frm);
+		}
 	},
 });
 
-function hide_finance_tab(frm) {
-	frm.fields_dict["finance_tab"] &&
-		$(frm.fields_dict["finance_tab"].tab_link_container).hide();
-}
+function toggle_finance_tab(frm) {
+	const can_view_finance =
+		frappe.user.has_role("System Manager") || frappe.user.has_role("Finance");
 
-function show_finance_tab(frm) {
-	frm.fields_dict["finance_tab"] &&
-		$(frm.fields_dict["finance_tab"].tab_link_container).show();
+	frm.set_df_property("finance_tab", "hidden", can_view_finance ? 0 : 1);
+
+	if (!can_view_finance) {
+		frm.set_df_property("finance_section", "hidden", 1);
+		frm.set_df_property("finance_breakdown_section", "hidden", 1);
+		frm.set_df_property("finance_breakdown_note", "hidden", 1);
+	}
 }
 
 function compute_finance(frm) {
-	const salary = frm.doc.employee_salary || 0;
+	const ctc = frm.doc.employee_salary || 0;
 	const total_hours = frm.doc.total_working_hours || 0;
+	const per_hour = ctc && total_hours ? ctc / (22 * 8) : 0;
 
-	if (salary && total_hours) {
-		const per_hour = salary / (22 * 8);
+	frm.doc.total_billable_hours = total_hours;
+	frm.refresh_field("total_billable_hours");
+
+	if (per_hour) {
 		frm.doc.salary_per_hour = per_hour;
 		frm.refresh_field("salary_per_hour");
 	}
@@ -58,18 +51,34 @@ function compute_finance(frm) {
 		'<table class="table table-bordered table-sm">' +
 		"<thead><tr><th>Timesheet</th><th>Project</th><th>Month</th><th>Hours</th><th>Pay</th><th>%</th></tr></thead><tbody>";
 
+	let total_row_hours = 0;
+
 	rows.forEach((row) => {
+		const row_hours = flt(row.total_hours);
+		const row_pay = total_hours ? (row_hours / total_hours) * ctc : 0;
+		const row_percent = total_hours ? (row_hours / total_hours) * 100 : 0;
+		const row_project_or_activity = row.project_name || row.timesheet_type || "";
+
+		total_row_hours += row_hours;
+
 		html += `<tr>
 			<td>${row.timesheet || ""}</td>
-			<td>${row.project_name || ""}</td>
+			<td>${row_project_or_activity}</td>
 			<td>${row.month || ""}</td>
-			<td>${row.total_hours || 0}</td>
-			<td>${frappe.format(row.pay || 0, { fieldtype: "Currency" })}</td>
-			<td>${row.percent || 0}%</td>
+			<td>${row_hours}</td>
+			<td>${frappe.format(row_pay || 0, { fieldtype: "Currency" })}</td>
+			<td>${row_percent.toFixed(2)}%</td>
 		</tr>`;
 	});
 
-	html += "</tbody></table>";
+	html += `
+		<tr>
+			<td colspan="3"><strong>Total</strong></td>
+			<td><strong>${total_row_hours}</strong></td>
+			<td><strong>${frappe.format(ctc || 0, { fieldtype: "Currency" })}</strong></td>
+			<td><strong>100.00%</strong></td>
+		</tr>
+	</tbody></table>`;
 	frm.set_df_property("finance_breakdown_note", "options", html);
 	frm.refresh_field("finance_breakdown_note");
 }

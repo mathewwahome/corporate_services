@@ -27,6 +27,7 @@
   "employee_salary",
   "column_break_finance",
   "salary_per_hour",
+  "total_billable_hours",
   "finance_breakdown_section",
   "finance_breakdown_note"
  ],
@@ -79,14 +80,14 @@
    "read_only": 1
   },
   {
-   "fieldname": "total_working_hours",
-   "fieldtype": "Float",
-   "label": "Total Working Hours",
-   "read_only": 1
+    "fieldname": "total_working_hours",
+    "fieldtype": "Float",
+    "label": "Total Working Hours",
+    "read_only": 1
   },
   {
-   "fieldname": "column_break_fbtd",
-   "fieldtype": "Column Break"
+    "fieldname": "column_break_fbtd",
+    "fieldtype": "Column Break"
   },
   {
    "default": "0",
@@ -167,14 +168,20 @@
    "fieldtype": "Column Break"
   },
   {
-   "fieldname": "salary_per_hour",
-   "fieldtype": "Currency",
-   "label": "Salary Per Hour",
-   "read_only": 1
+    "fieldname": "salary_per_hour",
+    "fieldtype": "Currency",
+    "label": "Salary Per Hour",
+    "read_only": 1
   },
   {
-   "fieldname": "finance_breakdown_section",
-   "fieldtype": "Section Break",
+    "fieldname": "total_billable_hours",
+    "fieldtype": "Float",
+    "label": "Total Billable Hours",
+    "read_only": 1
+  },
+  {
+    "fieldname": "finance_breakdown_section",
+    "fieldtype": "Section Break",
    "label": "Pay Breakdown"
   },
   {
