@@ -235,7 +235,8 @@ on_update_map = {
 job_applicant_on_update_map = {
     "Job Applicant": [
         "corporate_services.api.job_applicant.v2.application_received",
-        "corporate_services.api.notification.job_applicant.rejection_after_interview.alert"
+        "corporate_services.api.notification.job_applicant.rejection_after_interview.alert",
+        "corporate_services.api.job_applicant.recruitment_flow.handle_job_offer_stage_updates",
     ]
 }
 
@@ -283,7 +284,8 @@ event_maps = {
     },
     "validate": {
         "Timesheet Submission": "corporate_services.api.timesheet.overrides.timesheet_submission.override_link_validation",
-        "Timesheet": "corporate_services.api.timesheet.overrides.timesheet_submission.override_link_validation"
+        "Timesheet": "corporate_services.api.timesheet.overrides.timesheet_submission.override_link_validation",
+        "Job Applicant": "corporate_services.api.job_applicant.recruitment_flow.validate_job_offer_stage",
     },
 }
 

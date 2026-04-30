@@ -16,7 +16,9 @@
   "enable_monthly_reflection_overdue_reminder",
   "monthly_reflection_overdue_weekday",
   "hr_team_members_section",
-  "table_xqbd"
+  "table_xqbd",
+  "contract_settings_tab",
+  "consultant_contract"
  ],
  "fields": [
   {
@@ -84,13 +86,24 @@
    "fieldtype": "Table",
    "label": "HR Team Members",
    "options": "HR Department"
+  },
+  {
+   "fieldname": "contract_settings_tab",
+   "fieldtype": "Tab Break",
+   "label": "Contract Settings"
+  },
+  {
+   "fieldname": "consultant_contract",
+   "fieldtype": "Table",
+   "label": "Consultant Contracts",
+   "options": "HR Config Consultant Contract"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "issingle": 1,
  "links": [],
- "modified": "2026-03-25 09:32:29.480561",
+ "modified": "2026-04-29 10:10:21.481134",
  "modified_by": "Administrator",
  "module": "ICL Corporate Services",
  "name": "HR Config",
