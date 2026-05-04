@@ -14,7 +14,11 @@
   "timesheet_submission_section",
   "start_date",
   "column_break_ttmp",
-  "end_date"
+  "end_date",
+  "timesheet_reminder_section_section",
+  "timesheet_reminder",
+  "days_before_start_date",
+  "column_break_fobi"
  ],
  "fields": [
   {
@@ -54,7 +58,7 @@
   },
   {
    "fieldname": "start_date",
-   "fieldtype": "Date",
+   "fieldtype": "Int",
    "in_list_view": 1,
    "label": "Start Date",
    "reqd": 1
@@ -70,16 +74,39 @@
   },
   {
    "fieldname": "end_date",
-   "fieldtype": "Date",
+   "fieldtype": "Int",
    "label": "To Date",
    "reqd": 1
+  },
+  {
+   "fieldname": "timesheet_reminder_section_section",
+   "fieldtype": "Section Break",
+   "label": "Timesheet reminder section"
+  },
+  {
+   "default": "0",
+   "fieldname": "timesheet_reminder",
+   "fieldtype": "Check",
+   "label": "Timesheet Reminder"
+  },
+  {
+   "description": "Number of days before start date",
+   "depends_on": "eval:doc.timesheet_reminder==1",
+   "fieldname": "days_before_start_date",
+   "fieldtype": "Int",
+   "label": "Days Before Start date",
+   "mandatory_depends_on": "eval:doc.timesheet_reminder==1"
+  },
+  {
+   "fieldname": "column_break_fobi",
+   "fieldtype": "Column Break"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "issingle": 1,
  "links": [],
- "modified": "2026-04-30 15:24:24.088727",
+ "modified": "2026-05-01 18:36:02.955169",
  "modified_by": "Administrator",
  "module": "ICL Corporate Services",
  "name": "Finance Settings",

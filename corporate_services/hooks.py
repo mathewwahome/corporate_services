@@ -83,7 +83,9 @@ doctype_js = {
     "Payment Entry": "public/js/payment_entry_budget_defaults.js",
     "Payment Entry Budget Line": "public/js/payment_entry_budget_defaults.js",
 }
-# doctype_list_js = {"doctype" : "public/js/doctype_list.js"}
+doctype_list_js = {
+    "Timesheet Submission": "public/js/timesheet_submission_list.js",
+}
 # doctype_tree_js = {"doctype" : "public/js/doctype_tree.js"}
 # doctype_calendar_js = {"doctype" : "public/js/doctype_calendar.js"}
 
