@@ -249,7 +249,7 @@
   "modified": "2026-04-30 11:41:14.520290",
   "module": "ICL Corporate Services",
   "name": "Annual Leave allocation - HR Settings",
-  "script": "frappe.ui.form.on('HR Settings', {\n    refresh: function(frm) {\n        frm.add_custom_button(__('Annual Leave Allocation'), function() {\n            // Call the function when the button is clicked\n            frappe.call({\n                method: \"corporate_services.api.leave.update_annual_leave_allocations.update_annual_leave_allocations\",\n                args: {\n                    // Pass any necessary arguments here\n                },\n                callback: function(response) {\n                    if(response.message) {\n                        frappe.msgprint(__(response.message));\n                    }\n                }\n            });\n        });\n    }\n});\n",
+  "script": "frappe.ui.form.on('HR Settings', {\n    refresh: function(frm) {\n        frm.add_custom_button(__('Annual Leave Allocation'), function() {\n            frappe.call({\n                method: \"corporate_services.api.leave.update_annual_leave_allocations.process_leave_allocations\",\n                freeze: true,\n                freeze_message: __('Processing annual leave allocations and sending HR report...'),\n                callback: function(response) {\n                    if (response.message) {\n                        frappe.msgprint(__(response.message.message || response.message));\n                    }\n                }\n            });\n        });\n    }\n});\n",
   "view": "Form"
  },
  {
