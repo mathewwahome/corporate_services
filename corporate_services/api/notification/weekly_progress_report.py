@@ -7,7 +7,6 @@ from corporate_services.api.notification.mailer import build_email_body, send_em
 from corporate_services.api.notification.notification_contacts import (
     get_hr_manager_emails,
     get_intern_contract_types,
-    get_internship_program_coordinator_emails,
 )
 from frappe.utils import get_url_to_form, nowdate, getdate
 
@@ -206,7 +205,6 @@ def alert(doc, method):
                 signer="HR Department",
                 cta_text="here",
             ),
-            cc=get_internship_program_coordinator_emails(),
         )
         return
 
