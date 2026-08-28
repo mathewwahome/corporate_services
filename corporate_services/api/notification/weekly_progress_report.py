@@ -48,7 +48,7 @@ def get_dashboard_data(contract_types=None) -> dict:
 
     filters = {"status": "Active"}
     if contract_types:
-        filters["employment_type"] = ["in", contract_types]
+        filters["custom_contract_type"] = ["in", contract_types]
 
     employees = frappe.get_all(
         "Employee",
