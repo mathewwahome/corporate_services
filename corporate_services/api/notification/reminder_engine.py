@@ -4,50 +4,52 @@ import frappe
 from frappe import _
 from frappe.utils import get_datetime, get_url_to_form, now_datetime
 
-from corporate_services.api.notification.notification_contacts import get_supervisor_contact
+from corporate_services.api.notification.notification_contacts import (
+	get_employee_contact,
+	get_supervisor_contact,
+)
 
 LOG_DOCTYPE = "Reminder Log"
 DISPATCH_LOG_DOCTYPE = "Notification Dispatch Log"
 
-
-def _timesheet_submitter_contact(doc):
-	employee = frappe.get_doc("Employee", doc.employee)
-	return frappe._dict(
-		user_id=employee.user_id,
-		email=employee.company_email or employee.personal_email,
-		name=employee.employee_name,
-	)
+SUBMITTER_RESOLVERS = {}
+APPROVER_RESOLVERS = {}
 
 
-def _timesheet_approver_contacts(doc):
-	employee = frappe.get_doc("Employee", doc.employee)
-	contact = get_supervisor_contact(employee)
+def _resolve_fixed_field_contact(value):
+	if not value:
+		return None
+	if frappe.db.exists("Employee", value):
+		return get_employee_contact(value)
+	if frappe.db.exists("User", value):
+		user = frappe.get_doc("User", value)
+		return frappe._dict(user_id=user.name, email=user.email, name=user.full_name or user.name)
+	return None
+
+
+def _generic_submitter_contact(rule, doc):
+	if not rule.employee_field:
+		return None
+	return get_employee_contact(doc.get(rule.employee_field))
+
+
+def _generic_approver_contacts(rule, doc):
+	if rule.approver_type == "Fixed Field on Document":
+		contact = _resolve_fixed_field_contact(doc.get(rule.approver_field)) if rule.approver_field else None
+	else:
+		employee_name = doc.get(rule.employee_field) if rule.employee_field else None
+		contact = get_supervisor_contact(frappe.get_doc("Employee", employee_name)) if employee_name else None
 	return [contact] if contact and contact.email else []
 
 
-def _performance_appraisal_approver_contacts(doc):
-	employee = frappe.get_doc("Employee", doc.employee)
-	contact = get_supervisor_contact(employee)
-	return [contact] if contact and contact.email else []
+def _resolve_submitter(rule, doc):
+	resolver = SUBMITTER_RESOLVERS.get(rule.reference_doctype)
+	return resolver(doc) if resolver else _generic_submitter_contact(rule, doc)
 
 
-SUBMITTER_RESOLVERS = {
-	"Timesheet Submission": _timesheet_submitter_contact,
-}
-APPROVER_RESOLVERS = {
-	"Timesheet Submission": _timesheet_approver_contacts,
-	"Performance Appraisal": _performance_appraisal_approver_contacts,
-}
-
-
-def _resolve_submitter(reference_doctype, doc):
-	resolver = SUBMITTER_RESOLVERS.get(reference_doctype)
-	return resolver(doc) if resolver else None
-
-
-def _resolve_approvers(reference_doctype, doc):
-	resolver = APPROVER_RESOLVERS.get(reference_doctype)
-	return resolver(doc) if resolver else []
+def _resolve_approvers(rule, doc):
+	resolver = APPROVER_RESOLVERS.get(rule.reference_doctype)
+	return resolver(doc) if resolver else _generic_approver_contacts(rule, doc)
 
 
 def get_active_rules():
@@ -132,9 +134,6 @@ def check_overdue_documents():
 	"""Scheduled entrypoint: notify submitters/approvers of pending documents
 	that have breached their configured Reminder Rule SLA."""
 	for rule in get_active_rules():
-		if rule.reference_doctype not in APPROVER_RESOLVERS:
-			continue
-
 		pending_docs = frappe.get_all(
 			rule.reference_doctype,
 			filters={"workflow_state": rule.pending_workflow_state, "docstatus": ["!=", 2]},
@@ -162,7 +161,7 @@ def _process_overdue(rule, name):
 	doctype_url = get_url_to_form(doc.doctype, doc.name)
 
 	if rule.notify_submitter_on_breach:
-		submitter = _resolve_submitter(rule.reference_doctype, doc)
+		submitter = _resolve_submitter(rule, doc)
 		if submitter and submitter.email and not _already_sent(
 			doc, doc.workflow_state, "Breach Notice", submitter.email
 		):
@@ -176,7 +175,7 @@ def _process_overdue(rule, name):
 				_log_event(doc, doc.workflow_state, "Breach Notice", submitter.email)
 
 	if rule.auto_remind_approver:
-		for approver in _resolve_approvers(rule.reference_doctype, doc):
+		for approver in _resolve_approvers(rule, doc):
 			if approver.email and not _already_sent(
 				doc, doc.workflow_state, "Auto Remind Approver", approver.email
 			):
@@ -201,13 +200,13 @@ def nudge_approver(reference_doctype, reference_name):
 	if not rule or not rule.allow_submitter_nudge:
 		frappe.throw(_("Nudging is not enabled for {0} in its current state.").format(reference_doctype))
 
-	submitter = _resolve_submitter(reference_doctype, doc)
+	submitter = _resolve_submitter(rule, doc)
 	if (not submitter or submitter.user_id != frappe.session.user) and not frappe.has_permission(
 		reference_doctype, "write", doc, user=frappe.session.user
 	):
 		frappe.throw(_("Only the submitter can nudge the approver."), frappe.PermissionError)
 
-	approvers = _resolve_approvers(reference_doctype, doc)
+	approvers = _resolve_approvers(rule, doc)
 	if not approvers:
 		frappe.throw(_("No approver could be resolved for this document."))
 

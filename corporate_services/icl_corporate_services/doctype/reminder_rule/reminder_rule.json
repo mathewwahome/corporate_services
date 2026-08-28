@@ -10,9 +10,12 @@
   "reference_doctype",
   "pending_workflow_state",
   "sla_hours",
+  "employee_field",
   "column_break_1",
   "notify_submitter_on_breach",
   "auto_remind_approver",
+  "approver_type",
+  "approver_field",
   "allow_submitter_nudge",
   "nudge_cooldown_hours"
  ],
@@ -25,7 +28,7 @@
    "label": "Enabled"
   },
   {
-   "description": "The reference doctype must have a resolver registered in reminder_engine.py before rules for it take effect.",
+   "description": "The doctype this rule applies to, e.g. Timesheet Submission.",
    "fieldname": "reference_doctype",
    "fieldtype": "Link",
    "in_list_view": 1,
@@ -51,6 +54,13 @@
    "reqd": 1
   },
   {
+   "description": "Fieldname on the Reference Doctype that links to the submitting Employee (e.g. \"employee\").",
+   "fieldname": "employee_field",
+   "fieldtype": "Data",
+   "label": "Employee Field",
+   "reqd": 1
+  },
+  {
    "fieldname": "column_break_1",
    "fieldtype": "Column Break"
   },
@@ -67,6 +77,23 @@
    "fieldname": "auto_remind_approver",
    "fieldtype": "Check",
    "label": "Auto-Remind Approver on Breach"
+  },
+  {
+   "default": "Reports To (Supervisor)",
+   "description": "How to find the approver: the submitting employee's supervisor, or a specific field on the document.",
+   "fieldname": "approver_type",
+   "fieldtype": "Select",
+   "label": "Approver Type",
+   "options": "Reports To (Supervisor)\nFixed Field on Document",
+   "reqd": 1
+  },
+  {
+   "depends_on": "eval:doc.approver_type==\"Fixed Field on Document\"",
+   "description": "Fieldname on the Reference Doctype holding the approver's User or Employee link.",
+   "fieldname": "approver_field",
+   "fieldtype": "Data",
+   "label": "Approver Field",
+   "mandatory_depends_on": "eval:doc.approver_type==\"Fixed Field on Document\""
   },
   {
    "default": "1",
