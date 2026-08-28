@@ -3,7 +3,7 @@
  "allow_rename": 0,
  "creation": "2026-07-09 10:00:00.000000",
  "doctype": "DocType",
- "editable_grid": 1,
+ "editable_grid": 0,
  "engine": "InnoDB",
  "field_order": [
   "enabled",
@@ -16,8 +16,8 @@
   "auto_remind_approver",
   "approver_type",
   "approver_field",
-  "allow_submitter_nudge",
-  "nudge_cooldown_hours"
+  "allow_submitter_resurface",
+  "resurface_cooldown_hours"
  ],
  "fields": [
   {
@@ -47,6 +47,7 @@
   },
   {
    "default": "24",
+   "description": "How long a document can sit in the Pending Workflow State before it's considered overdue and breach notices/reminders fire.",
    "fieldname": "sla_hours",
    "fieldtype": "Int",
    "in_list_view": 1,
@@ -54,9 +55,9 @@
    "reqd": 1
   },
   {
-   "description": "Fieldname on the Reference Doctype that links to the submitting Employee (e.g. \"employee\").",
+   "description": "Fieldname on the Reference Doctype that links to the submitting Employee. Options are populated once Reference Doctype is set.",
    "fieldname": "employee_field",
-   "fieldtype": "Data",
+   "fieldtype": "Select",
    "label": "Employee Field",
    "reqd": 1
   },
@@ -73,7 +74,7 @@
   },
   {
    "default": "0",
-   "description": "Automatically remind the approver once the SLA is breached, without waiting for the submitter to nudge.",
+   "description": "Automatically remind the approver once the SLA is breached, without waiting for the submitter to resurface it.",
    "fieldname": "auto_remind_approver",
    "fieldtype": "Check",
    "label": "Auto-Remind Approver on Breach"
@@ -89,32 +90,32 @@
   },
   {
    "depends_on": "eval:doc.approver_type==\"Fixed Field on Document\"",
-   "description": "Fieldname on the Reference Doctype holding the approver's User or Employee link.",
+   "description": "Fieldname on the Reference Doctype holding the approver's User or Employee link. Options are populated once Reference Doctype is set.",
    "fieldname": "approver_field",
-   "fieldtype": "Data",
+   "fieldtype": "Select",
    "label": "Approver Field",
    "mandatory_depends_on": "eval:doc.approver_type==\"Fixed Field on Document\""
   },
   {
    "default": "1",
-   "description": "Let the submitter manually nudge the approver while the document is pending.",
-   "fieldname": "allow_submitter_nudge",
+   "description": "Let the submitter manually resurface the document to the approver while it is pending.",
+   "fieldname": "allow_submitter_resurface",
    "fieldtype": "Check",
-   "label": "Allow Submitter to Nudge Approver"
+   "label": "Allow Submitter to Resurface to Approver"
   },
   {
    "default": "4",
-   "depends_on": "allow_submitter_nudge",
-   "fieldname": "nudge_cooldown_hours",
+   "depends_on": "allow_submitter_resurface",
+   "fieldname": "resurface_cooldown_hours",
    "fieldtype": "Int",
-   "label": "Nudge Cooldown (Hours)"
+   "label": "Resurface Cooldown (Hours)"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2026-07-09 00:10:00.000000",
+ "modified": "2026-08-28 09:55:02.000000",
  "modified_by": "Administrator",
  "module": "ICL Corporate Services",
  "name": "Reminder Rule",

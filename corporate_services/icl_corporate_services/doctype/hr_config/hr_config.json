@@ -225,7 +225,7 @@
    "label": "Reminder Rules"
   },
   {
-   "description": "Per-doctype SLA reminder rules: notify the submitter and/or approver when a document has been pending too long, and control whether the submitter can manually nudge the approver.",
+   "description": "Per-doctype SLA reminder rules: notify the submitter and/or approver when a document has been pending too long, and control whether the submitter can manually resurface it to the approver.",
    "fieldname": "reminder_rules",
    "fieldtype": "Table",
    "label": "Reminder Rules",

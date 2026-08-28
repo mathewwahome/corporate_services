@@ -13,7 +13,7 @@ frappe.ui.form.on("Timesheet Submission", {
 		toggle_finance_tab(frm);
 		add_insert_tasks_action(frm);
 		add_download_excel_action(frm);
-		add_nudge_supervisor_action(frm);
+		add_resurface_supervisor_action(frm);
 
 		if (can_view_finance) {
 			compute_finance(frm);
@@ -72,14 +72,14 @@ function add_download_excel_action(frm) {
 	});
 }
 
-function add_nudge_supervisor_action(frm) {
+function add_resurface_supervisor_action(frm) {
 	const can_show = !frm.is_new() && frm.doc.workflow_state === "Submitted to Supervisor";
 	if (!can_show) return;
 
 	frappe.workflow.get_transitions(frm.doc).then(() => {
-		frm.page.add_action_item(__("Nudge Supervisor"), function () {
+		frm.page.add_action_item(__("Resurface to Supervisor"), function () {
 			frappe.call({
-				method: "corporate_services.api.notification.reminder_engine.nudge_approver",
+				method: "corporate_services.api.notification.reminder_engine.resurface_approver",
 				args: {
 					reference_doctype: frm.doc.doctype,
 					reference_name: frm.doc.name,

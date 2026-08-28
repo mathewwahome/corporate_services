@@ -168,7 +168,7 @@ def _process_overdue(rule, name):
 			message = (
 				f"Dear {submitter.name},<br><br>"
 				f"Your {doc.doctype} ({doc.name}) has not yet been reviewed by your approver. "
-				f'You can view it <a href="{doctype_url}">here</a> and nudge them for a review.<br><br>'
+				f'You can view it <a href="{doctype_url}">here</a> and resurface it to them for a review.<br><br>'
 				"Kind regards,<br>System"
 			)
 			if _send(doc, submitter, _("Your {0} is awaiting review").format(doc.doctype), message):
@@ -192,44 +192,44 @@ def _process_overdue(rule, name):
 
 
 @frappe.whitelist()
-def nudge_approver(reference_doctype, reference_name):
+def resurface_approver(reference_doctype, reference_name):
 	doc = frappe.get_doc(reference_doctype, reference_name)
 	doc.check_permission("read")
 
 	rule = get_rule(reference_doctype, doc.workflow_state)
-	if not rule or not rule.allow_submitter_nudge:
-		frappe.throw(_("Nudging is not enabled for {0} in its current state.").format(reference_doctype))
+	if not rule or not rule.allow_submitter_resurface:
+		frappe.throw(_("Resurfacing is not enabled for {0} in its current state.").format(reference_doctype))
 
 	submitter = _resolve_submitter(rule, doc)
 	if (not submitter or submitter.user_id != frappe.session.user) and not frappe.has_permission(
 		reference_doctype, "write", doc, user=frappe.session.user
 	):
-		frappe.throw(_("Only the submitter can nudge the approver."), frappe.PermissionError)
+		frappe.throw(_("Only the submitter can resurface this to the approver."), frappe.PermissionError)
 
 	approvers = _resolve_approvers(rule, doc)
 	if not approvers:
 		frappe.throw(_("No approver could be resolved for this document."))
 
-	cooldown_hours = rule.nudge_cooldown_hours or 0
-	last_nudge = frappe.db.get_value(
+	cooldown_hours = rule.resurface_cooldown_hours or 0
+	last_resurfaced = frappe.db.get_value(
 		LOG_DOCTYPE,
 		{
 			"reference_doctype": reference_doctype,
 			"reference_name": reference_name,
 			"workflow_state": doc.workflow_state,
-			"event_type": "Employee Nudge",
+			"event_type": "Employee Resurface",
 		},
 		"max(sent_on)",
 	)
-	if last_nudge and cooldown_hours:
-		next_allowed = get_datetime(last_nudge) + timedelta(hours=cooldown_hours)
+	if last_resurfaced and cooldown_hours:
+		next_allowed = get_datetime(last_resurfaced) + timedelta(hours=cooldown_hours)
 		if now_datetime() < next_allowed:
 			remaining = next_allowed - now_datetime()
 			hours, remainder = divmod(int(remaining.total_seconds()), 3600)
 			minutes = remainder // 60
 			return {
 				"success": False,
-				"message": _("You can nudge again in {0}h {1}m.").format(hours, minutes),
+				"message": _("You can resurface this again in {0}h {1}m.").format(hours, minutes),
 			}
 
 	doctype_url = get_url_to_form(doc.doctype, doc.name)
@@ -238,13 +238,13 @@ def nudge_approver(reference_doctype, reference_name):
 	for approver in approvers:
 		message = (
 			f"Dear {approver.name},<br><br>"
-			f"{submitter_name} is nudging you to review their {doc.doctype} ({doc.name}). "
+			f"{submitter_name} is resurfacing their {doc.doctype} ({doc.name}) for your review. "
 			f'You can view it <a href="{doctype_url}">here</a>.<br><br>'
 			f"Kind regards,<br>{submitter_name}"
 		)
 		if _send(doc, approver, _("Reminder: please review {0}").format(doc.name), message):
 			_log_event(
-				doc, doc.workflow_state, "Employee Nudge", approver.email, triggered_by=frappe.session.user
+				doc, doc.workflow_state, "Employee Resurface", approver.email, triggered_by=frappe.session.user
 			)
 			sent_to.append(approver.name)
 
