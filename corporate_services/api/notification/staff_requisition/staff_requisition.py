@@ -203,7 +203,14 @@ def send_approval_overdue_reminders():
     If overdue time falls outside business hours, waits until 8 AM to send.
     """
     from datetime import time as dt_time
-    
+
+    if not frappe.db.get_single_value("HR Config", "enable_staff_requisition_overdue_reminder"):
+        return {
+            "success": True,
+            "message": "Skipped - Staff Requisition Overdue Reminder is disabled in HR Config",
+            "reminders_sent": 0
+        }
+
     # Check if current time is within business hours (8 AM - 5 PM)
     current_time = now_datetime()
     current_hour = current_time.hour

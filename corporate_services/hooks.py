@@ -380,7 +380,9 @@ scheduler_events = {
 	],
     "cron": {
         "0 8 * * *": [
-            "corporate_services.api.notification.onboarding.onboarding_schedule.send_month_1_hr_check_in_reminders"
+            "corporate_services.api.notification.onboarding.onboarding_schedule.send_month_1_hr_check_in_reminders",
+            "corporate_services.api.notification.onboarding.onboarding_schedule.send_mid_probation_check_in_reminders",
+            "corporate_services.api.notification.onboarding.onboarding_schedule.send_end_of_probation_assessment_reminders"
         ],
         "0 8,10,12,14,16,17 * * *": [
             "corporate_services.api.notification.staff_requisition.staff_requisition.send_approval_overdue_reminders",

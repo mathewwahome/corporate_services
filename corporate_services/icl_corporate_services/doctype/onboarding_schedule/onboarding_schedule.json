@@ -46,8 +46,11 @@
   "column_break_zsiv",
   "policy_quiz_to_ensure_policies_are_well_grasped",
   "policy_quiz",
+  "mid_probation_section",
+  "mid_probation_check_in_reminder_sent",
   "month_3_section",
-  "formal_supervisory_end_of_probationary_review"
+  "formal_supervisory_end_of_probationary_review",
+  "end_of_probation_assessment_reminder_sent"
  ],
  "fields": [
   {
@@ -257,6 +260,18 @@
    "label": "Policy quiz to ensure policies are well grasped"
   },
   {
+   "fieldname": "mid_probation_section",
+   "fieldtype": "Section Break",
+   "label": "Mid-Probation"
+  },
+  {
+   "default": "0",
+   "description": "Ticked automatically once the Mid-Probation Check-In reminder email has been sent to the supervisor.",
+   "fieldname": "mid_probation_check_in_reminder_sent",
+   "fieldtype": "Check",
+   "label": "Mid-Probation Check-In Reminder Sent"
+  },
+  {
    "fieldname": "month_3_section",
    "fieldtype": "Section Break",
    "label": "Month 3"
@@ -267,6 +282,13 @@
    "fieldname": "formal_supervisory_end_of_probationary_review",
    "fieldtype": "Check",
    "label": "Formal supervisory end of probationary review"
+  },
+  {
+   "default": "0",
+   "description": "Ticked automatically once the End of Probation Assessment reminder email has been sent to the supervisor.",
+   "fieldname": "end_of_probation_assessment_reminder_sent",
+   "fieldtype": "Check",
+   "label": "End of Probation Assessment Reminder Sent"
   },
   {
    "default": "1",

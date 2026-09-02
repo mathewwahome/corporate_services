@@ -1,7 +1,7 @@
 import frappe
 from frappe import _
 from frappe.utils import today, add_days, add_months, getdate, get_fullname, get_url
-from corporate_services.api.notification.notification_contacts import get_hr_manager_emails
+from corporate_services.api.notification.notification_contacts import get_hr_manager_emails, get_supervisor_contact
 
 MAX_BACKWARD_SHIFT_DAYS = 14
 
@@ -32,6 +32,9 @@ def _effective_reminder_date(employee, calculated_date):
 
 
 def send_month_1_hr_check_in_reminders():
+    if not frappe.db.get_single_value("HR Config", "enable_1_month_hr_check_in_reminder"):
+        return
+
     reference_today = getdate(today())
 
     employees = frappe.get_all(
@@ -147,6 +150,202 @@ def send_month_1_hr_check_in_reminder(employee_name, docname=None):
     employee.add_comment("Comment", "Month 1 HR Check-In reminder sent to HR and employee.")
 
     return f"Month 1 HR Check-In reminder sent for {employee.employee_name}"
+
+
+def send_mid_probation_check_in_reminders():
+    if not frappe.db.get_single_value("HR Config", "enable_mid_probation_check_in_reminder"):
+        return
+
+    reference_today = getdate(today())
+
+    employees = frappe.get_all(
+        "Employee",
+        filters={
+            "date_of_joining": ["between", [add_days(reference_today, -55), add_days(reference_today, -40)]],
+            "status": "Active",
+        },
+        fields=["name", "employee_name", "date_of_joining"],
+    )
+
+    if not employees:
+        return
+
+    for emp in employees:
+        due_date = add_days(getdate(emp.date_of_joining), 45)
+        if _effective_reminder_date(emp.name, due_date) != reference_today:
+            continue
+
+        onboarding_doc = frappe.db.get_value(
+            "Onboarding Schedule",
+            {"employee": emp.name},
+            ["name", "mid_probation_check_in_reminder_sent"],
+            as_dict=True,
+        )
+
+        if not onboarding_doc:
+            frappe.logger().warning(
+                f"No Onboarding Schedule found for {emp.employee_name} ({emp.name}), "
+                "skipping Mid-Probation Check-In reminder."
+            )
+            continue
+
+        if onboarding_doc.get("mid_probation_check_in_reminder_sent"):
+            continue
+
+        try:
+            send_mid_probation_check_in_reminder(
+                employee_name=emp.name,
+                docname=onboarding_doc.name,
+            )
+            frappe.logger().info(f"Mid-Probation Check-In reminder sent for {emp.employee_name}")
+
+        except Exception:
+            frappe.logger().error(f"Failed to send Mid-Probation Check-In reminder for {emp.employee_name}")
+            frappe.log_error(
+                title=f"Mid-Probation Check-In Reminder Error: {emp.employee_name}",
+                message=frappe.get_traceback(),
+            )
+
+
+@frappe.whitelist()
+def send_mid_probation_check_in_reminder(employee_name, docname=None):
+    employee = frappe.get_doc("Employee", employee_name)
+
+    onboarding_doc_name = docname or frappe.db.get_value(
+        "Onboarding Schedule", {"employee": employee_name}, "name"
+    )
+
+    supervisor_contact = get_supervisor_contact(employee)
+    if not supervisor_contact or not supervisor_contact.email:
+        frappe.throw(_("No supervisor email found for {0}. Please contact System Admin.").format(employee.employee_name))
+
+    check_in_link = f"{get_url()}/app/mid-probation-check-in/new?employee={employee.name}"
+
+    supervisor_message = f"""
+        <p>Dear {supervisor_contact.name},</p>
+        <p><strong>{employee.employee_name}</strong> reached the mid-probation mark today.
+        Please complete their Mid-Probation Check-In.</p>
+        <p><a href="{check_in_link}" style="background-color: #4CAF50; color: white; padding: 10px 20px;
+        text-decoration: none; border-radius: 5px; display: inline-block; margin: 10px 0;">
+        Start Mid-Probation Check-In</a></p>
+    """
+    recipients = [supervisor_contact.email] + get_hr_manager_emails()
+    frappe.sendmail(
+        recipients=list(dict.fromkeys(recipients)),
+        subject=f"Action required: Mid-Probation Check-In for {employee.employee_name}",
+        message=supervisor_message,
+    )
+
+    if onboarding_doc_name:
+        frappe.db.set_value(
+            "Onboarding Schedule",
+            onboarding_doc_name,
+            "mid_probation_check_in_reminder_sent",
+            1,
+        )
+        frappe.db.commit()
+
+    employee.add_comment("Comment", "Mid-Probation Check-In reminder sent to supervisor and HR.")
+
+    return f"Mid-Probation Check-In reminder sent for {employee.employee_name}"
+
+
+def send_end_of_probation_assessment_reminders():
+    if not frappe.db.get_single_value("HR Config", "enable_end_of_probation_assessment_reminder"):
+        return
+
+    reference_today = getdate(today())
+
+    employees = frappe.get_all(
+        "Employee",
+        filters={
+            "date_of_joining": ["between", [add_days(reference_today, -100), add_days(reference_today, -85)]],
+            "status": "Active",
+        },
+        fields=["name", "employee_name", "date_of_joining"],
+    )
+
+    if not employees:
+        return
+
+    for emp in employees:
+        due_date = add_months(getdate(emp.date_of_joining), 3)
+        if _effective_reminder_date(emp.name, due_date) != reference_today:
+            continue
+
+        onboarding_doc = frappe.db.get_value(
+            "Onboarding Schedule",
+            {"employee": emp.name},
+            ["name", "end_of_probation_assessment_reminder_sent"],
+            as_dict=True,
+        )
+
+        if not onboarding_doc:
+            frappe.logger().warning(
+                f"No Onboarding Schedule found for {emp.employee_name} ({emp.name}), "
+                "skipping End of Probation Assessment reminder."
+            )
+            continue
+
+        if onboarding_doc.get("end_of_probation_assessment_reminder_sent"):
+            continue
+
+        try:
+            send_end_of_probation_assessment_reminder(
+                employee_name=emp.name,
+                docname=onboarding_doc.name,
+            )
+            frappe.logger().info(f"End of Probation Assessment reminder sent for {emp.employee_name}")
+
+        except Exception:
+            frappe.logger().error(f"Failed to send End of Probation Assessment reminder for {emp.employee_name}")
+            frappe.log_error(
+                title=f"End of Probation Assessment Reminder Error: {emp.employee_name}",
+                message=frappe.get_traceback(),
+            )
+
+
+@frappe.whitelist()
+def send_end_of_probation_assessment_reminder(employee_name, docname=None):
+    employee = frappe.get_doc("Employee", employee_name)
+
+    onboarding_doc_name = docname or frappe.db.get_value(
+        "Onboarding Schedule", {"employee": employee_name}, "name"
+    )
+
+    supervisor_contact = get_supervisor_contact(employee)
+    if not supervisor_contact or not supervisor_contact.email:
+        frappe.throw(_("No supervisor email found for {0}. Please contact System Admin.").format(employee.employee_name))
+
+    assessment_link = f"{get_url()}/app/end-of-probation-assessment/new?employee={employee.name}"
+
+    supervisor_message = f"""
+        <p>Dear {supervisor_contact.name},</p>
+        <p><strong>{employee.employee_name}</strong>'s 3-month probation period ends today.
+        Please complete their End of Probation Assessment.</p>
+        <p><a href="{assessment_link}" style="background-color: #4CAF50; color: white; padding: 10px 20px;
+        text-decoration: none; border-radius: 5px; display: inline-block; margin: 10px 0;">
+        Start End of Probation Assessment</a></p>
+    """
+    recipients = [supervisor_contact.email] + get_hr_manager_emails()
+    frappe.sendmail(
+        recipients=list(dict.fromkeys(recipients)),
+        subject=f"Action required: End of Probation Assessment for {employee.employee_name}",
+        message=supervisor_message,
+    )
+
+    if onboarding_doc_name:
+        frappe.db.set_value(
+            "Onboarding Schedule",
+            onboarding_doc_name,
+            "end_of_probation_assessment_reminder_sent",
+            1,
+        )
+        frappe.db.commit()
+
+    employee.add_comment("Comment", "End of Probation Assessment reminder sent to supervisor and HR.")
+
+    return f"End of Probation Assessment reminder sent for {employee.employee_name}"
 
 
 @frappe.whitelist()
