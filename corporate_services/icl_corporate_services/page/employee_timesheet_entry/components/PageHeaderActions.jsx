@@ -116,6 +116,7 @@ export default function PageHeaderActions({
     runWorkflowAction,
     persistTimesheet,
     onPullJiraTasks,
+    onPullLastMonthTasks,
 }) {
     return (
         <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
@@ -185,6 +186,19 @@ export default function PageHeaderActions({
                         >
                             <i className="fa fa-cloud-download ts-actions-icon" aria-hidden="true"></i>
                             <span>{__("Pull Jira Tasks")}</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a
+                            className="ts-actions-link"
+                            href="#"
+                            onClick={(e) => {
+                                e.preventDefault();
+                                onPullLastMonthTasks();
+                            }}
+                        >
+                            <i className="fa fa-history ts-actions-icon" aria-hidden="true"></i>
+                            <span>{__("Pull Last Month's Tasks")}</span>
                         </a>
                     </li>
                     {workflowActions.length > 0 && <li className="divider"></li>}

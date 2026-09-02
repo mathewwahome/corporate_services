@@ -4,6 +4,7 @@
 import frappe
 from frappe.model.document import Document
 from frappe import _
+from frappe.utils import flt
 
 from corporate_services.api.timesheet.project_manager_approval import (
 	get_approval_comment_owners,
@@ -43,6 +44,8 @@ class TimesheetSubmission(Document):
 			return
 
 		if current_state in ["Submitted to Supervisor", "Submitted to Project Manager"]:
+			self.cleanup_empty_task_rows()
+
 			total_hours = float(self.total_working_hours or 0)
 			if total_hours <= 0:
 				frappe.throw(
@@ -94,6 +97,41 @@ class TimesheetSubmission(Document):
 	def set_timesheet_template(self):
 		if self.employee and self.meta.has_field("timesheet_template"):
 			self.timesheet_template = get_submission_timesheet_template(self)
+
+	def cleanup_empty_task_rows(self):
+		"""Drop task rows with no hours entered before handing off to the
+		supervisor, so a blank placeholder task never trips the "Hours value
+		must be greater than zero" check when the underlying Timesheet is
+		later submitted at Finance approval."""
+		linked_names = [row.timesheet for row in (self.timesheet_per_project or []) if row.timesheet]
+		if not linked_names:
+			return
+
+		removed_timesheets = []
+		for ts_name in linked_names:
+			if not frappe.db.exists("Timesheet", ts_name):
+				continue
+
+			ts = frappe.get_doc("Timesheet", ts_name)
+			if ts.docstatus != 0:
+				continue
+
+			kept_logs = [row for row in ts.time_logs if flt(row.hours) > 0]
+			if len(kept_logs) == len(ts.time_logs):
+				continue
+
+			ts.set("time_logs", kept_logs)
+			if ts.time_logs:
+				ts.save(ignore_permissions=True)
+			else:
+				frappe.delete_doc("Timesheet", ts.name, force=True, ignore_permissions=True)
+				removed_timesheets.append(ts.name)
+
+		if removed_timesheets:
+			self.set(
+				"timesheet_per_project",
+				[row for row in self.timesheet_per_project if row.timesheet not in removed_timesheets],
+			)
 
 	def validate_project_managers_configured(self):
 		project_ids = get_submission_project_ids(self)

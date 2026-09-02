@@ -172,6 +172,38 @@ def _get_submission_sections(submission_name):
     return payload
 
 
+def _previous_month_year(month_year):
+    month, year = (int(p) for p in month_year.split("-"))
+    if month == 1:
+        return f"12-{year - 1}"
+    return f"{month - 1:02d}-{year}"
+
+
+def _get_carried_over_sections(employee, month_year):
+    """Projects/tasks from the employee's most recent prior Timesheet
+    Submission, with hours cleared so they read as a blank starting point
+    for the new month rather than a copy of last month's actuals."""
+    previous_submission_name = frappe.db.get_value(
+        "Timesheet Submission",
+        {"employee": employee, "month_year": _previous_month_year(month_year), "docstatus": ["!=", 2]},
+        "name",
+        order_by="creation desc",
+    )
+    if not previous_submission_name:
+        return []
+
+    carried_over = []
+    for section in _get_submission_sections(previous_submission_name):
+        carried_over.append(
+            {
+                "type": section["type"],
+                "name": section["name"],
+                "tasks": [{"task": t["task"], "hours": {}} for t in section["tasks"]],
+            }
+        )
+    return carried_over
+
+
 @frappe.whitelist()
 def get_timesheet_context(submission_name):
     doc = frappe.get_doc("Timesheet Submission", submission_name)
@@ -264,6 +296,7 @@ def get_timesheet_context(submission_name):
     )
 
     existing_sections = _get_submission_sections(submission_name)
+    carried_over_sections = _get_carried_over_sections(employee, month_year)
 
     submissions = frappe.get_all(
         "Timesheet Submission",
@@ -291,6 +324,7 @@ def get_timesheet_context(submission_name):
         "activity_types": activity_types,
         "already_imported": already_imported,
         "existing_sections": existing_sections,
+        "carried_over_sections": carried_over_sections,
         "submissions": submissions,
     }
 

@@ -345,6 +345,52 @@ export default function TimesheetEntryApp({ submissionName, onContextChange }) {
         frappe.show_alert({ message: __("Pulled Jira tasks into {0}.", [projectName]), indicator: "green" }, 5);
     }, [markDirty]);
 
+    const pullLastMonthTasks = useCallback(() => {
+        const carriedOver = ctx?.carried_over_sections || [];
+        if (!carriedOver.length) {
+            frappe.show_alert({ message: __("No tasks found on last month's timesheet."), indicator: "orange" });
+            return;
+        }
+
+        let next = [...sections];
+        let addedAny = false;
+
+        for (const carriedSection of carriedOver) {
+            const secIdx = next.findIndex(
+                (sec) => sec.type === carriedSection.type && sec.name === carriedSection.name
+            );
+            const existingLabels = secIdx >= 0
+                ? new Set(next[secIdx].tasks.map((t) => t.task))
+                : new Set();
+
+            const newRows = (carriedSection.tasks || [])
+                .map((t) => ({ id: makeRowId(), task: t.task || "", hours: {} }))
+                .filter((row) => row.task && !existingLabels.has(row.task));
+
+            if (!newRows.length) continue;
+            addedAny = true;
+
+            if (secIdx >= 0) {
+                next = next.map((sec, si) => {
+                    if (si !== secIdx) return sec;
+                    const keptTasks = sec.tasks.filter((t) => t.task.trim() !== "");
+                    return { ...sec, tasks: [...keptTasks, ...newRows] };
+                });
+            } else {
+                next = [...next, { type: carriedSection.type, name: carriedSection.name, tasks: newRows }];
+            }
+        }
+
+        if (!addedAny) {
+            frappe.show_alert({ message: __("Last month's tasks are already in this timesheet."), indicator: "orange" });
+            return;
+        }
+
+        markDirty();
+        setSections(next);
+        frappe.show_alert({ message: __("Pulled last month's projects and tasks."), indicator: "green" }, 5);
+    }, [ctx, sections, markDirty]);
+
     const addActivity = useCallback((activityName) => {
         markDirty();
         setSections((prev) => [...prev, makeSection("activity", activityName)]);
@@ -483,6 +529,7 @@ export default function TimesheetEntryApp({ submissionName, onContextChange }) {
             runWorkflowAction={runWorkflowAction}
             persistTimesheet={persistTimesheet}
             onPullJiraTasks={pullJiraTasks}
+            onPullLastMonthTasks={pullLastMonthTasks}
         />
     );
     const pageHeaderContext = (
@@ -731,6 +778,9 @@ export default function TimesheetEntryApp({ submissionName, onContextChange }) {
                             </tr>
                         </tbody>
                     </table>
+                    <p className="ts-empty-rows-note" style={{ marginTop: 8, fontSize: 12, color: "#888" }}>
+                        Task rows with no hours entered are cleared automatically when you submit to your supervisor.
+                    </p>
                 </div>}
             </div>
         </>
