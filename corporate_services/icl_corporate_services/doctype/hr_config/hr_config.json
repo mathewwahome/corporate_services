@@ -6,28 +6,83 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
+  "hr_settings_details_tab",
   "hr_settings_section",
   "hr_email",
+  "head_of_corporate_services_email",
+  "column_break_hremail",
+  "enable_staff_requisition_overdue_reminder",
+  "overdue_reminder_email_priority",
+  "hr_team_members_section",
+  "table_xqbd",
+  "onboarding_process_tab",
+  "month_1_hr_check_in_section",
+  "enable_1_month_hr_check_in_reminder",
+  "mid_probation_check_in_section",
+  "enable_mid_probation_check_in_reminder",
+  "end_of_probation_assessment_section",
+  "enable_end_of_probation_assessment_reminder",
+  "reflection_settings_tab",
   "monthly_reflection_notification_section",
   "enable_monthly_reflection_reminder",
+  "monthly_reflection_contract_type",
+  "column_break_cguv",
   "monthly_reflection_reminder_day",
   "monthly_reflection_last_sent_period",
   "monthly_reflection_overdue_notification_section",
   "enable_monthly_reflection_overdue_reminder",
+  "column_break_bljq",
   "monthly_reflection_overdue_weekday",
-  "hr_team_members_section",
-  "table_xqbd"
+  "weekly_progress_report_settings_section",
+  "enable_weekly_progress_reminder",
+  "weekly_progress_contract_type",
+  "column_break_ttlp",
+  "weekly_progress_reminder_weekday",
+  "weekly_progress_reminder_time",
+  "weekly_progress_last_reminder_sent_on",
+  "contract_settings_tab",
+  "column_break_extr",
+  "consultant_contract",
+  "table_bvpi",
+  "intern_contract",
+  "reminder_rules_tab",
+  "reminder_rules"
  ],
  "fields": [
   {
    "fieldname": "hr_settings_section",
    "fieldtype": "Section Break",
-   "label": "HR Settings"
+   "label": "Main HR Email"
   },
   {
    "fieldname": "hr_email",
    "fieldtype": "Data",
    "label": "HR Email"
+  },
+  {
+   "description": "Recipient for Employee Grievance notifications.",
+   "fieldname": "head_of_corporate_services_email",
+   "fieldtype": "Data",
+   "label": "Head of Corporate Services Email"
+  },
+  {
+   "fieldname": "column_break_hremail",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "description": "Send overdue approval reminder emails for Staff Requisitions pending too long. Off by default - must be explicitly enabled.",
+   "fieldname": "enable_staff_requisition_overdue_reminder",
+   "fieldtype": "Check",
+   "label": "Enable Staff Requisition Overdue Reminder"
+  },
+  {
+   "default": "3",
+   "description": "Queue priority used when sending overdue approval reminder emails (e.g. Staff Requisition). 1 = High, 3 = Normal, 5 = Low.",
+   "fieldname": "overdue_reminder_email_priority",
+   "fieldtype": "Select",
+   "label": "Overdue Reminder Email Priority",
+   "options": "1\n3\n5"
   },
   {
    "fieldname": "monthly_reflection_notification_section",
@@ -40,6 +95,13 @@
    "fieldname": "enable_monthly_reflection_reminder",
    "fieldtype": "Check",
    "label": "Enable Monthly Reflection Reminder"
+  },
+  {
+   "description": "Only active employees with this contract type will be included. Leave blank to include all active employees.",
+   "fieldname": "monthly_reflection_contract_type",
+   "fieldtype": "Link",
+   "label": "Monthly Reflection Contract Type",
+   "options": "Contract Type"
   },
   {
    "default": "1",
@@ -75,6 +137,43 @@
    "options": "\nMonday\nTuesday\nWednesday\nThursday\nFriday\nSaturday\nSunday"
   },
   {
+   "fieldname": "weekly_progress_report_settings_section",
+   "fieldtype": "Section Break",
+   "label": "Weekly Progress Report Settings"
+  },
+  {
+   "default": "0",
+   "description": "Send weekly progress reminders to active interns missing this week's report.",
+   "fieldname": "enable_weekly_progress_reminder",
+   "fieldtype": "Check",
+   "label": "Enable Weekly Progress Reminder"
+  },
+  {
+   "description": "Only active employees with this contract type will be included. Leave blank to include all active intern contracts.",
+   "fieldname": "weekly_progress_contract_type",
+   "fieldtype": "Link",
+   "label": "Weekly Progress Contract Type",
+   "options": "Contract Type"
+  },
+  {
+   "default": "Friday",
+   "fieldname": "weekly_progress_reminder_weekday",
+   "fieldtype": "Select",
+   "label": "Reminder Weekday",
+   "options": "\nMonday\nTuesday\nWednesday\nThursday\nFriday\nSaturday\nSunday"
+  },
+  {
+   "fieldname": "weekly_progress_reminder_time",
+   "fieldtype": "Time",
+   "label": "Reminder Time"
+  },
+  {
+   "fieldname": "weekly_progress_last_reminder_sent_on",
+   "fieldtype": "Date",
+   "label": "Last Weekly Reminder Sent On",
+   "read_only": 1
+  },
+  {
    "fieldname": "hr_team_members_section",
    "fieldtype": "Section Break",
    "label": "HR Team Members"
@@ -84,13 +183,116 @@
    "fieldtype": "Table",
    "label": "HR Team Members",
    "options": "HR Department"
+  },
+  {
+   "fieldname": "contract_settings_tab",
+   "fieldtype": "Tab Break",
+   "label": "Contract Settings"
+  },
+  {
+   "fieldname": "consultant_contract",
+   "fieldtype": "Table",
+   "label": "Consultant Contracts",
+   "options": "HR Config Consultant Contract"
+  },
+  {
+   "fieldname": "table_bvpi",
+   "fieldtype": "Table",
+   "label": "Employee Contracts",
+   "options": "HR Config Employee Contracts"
+  },
+  {
+   "fieldname": "intern_contract",
+   "fieldtype": "Table",
+   "label": "Intern Contracts",
+   "options": "HR Config Intern Contract"
+  },
+  {
+   "description": "These Contracts determines the timesheet templates a user will be allocated.",
+   "fieldname": "column_break_extr",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_cguv",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_bljq",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_ttlp",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "hr_settings_details_tab",
+   "fieldtype": "Tab Break",
+   "label": "HR Settings Details"
+  },
+  {
+   "fieldname": "reflection_settings_tab",
+   "fieldtype": "Tab Break",
+   "label": "Reflection Settings"
+  },
+  {
+   "fieldname": "reminder_rules_tab",
+   "fieldtype": "Tab Break",
+   "label": "Reminder Rules"
+  },
+  {
+   "description": "Per-doctype SLA reminder rules: notify the submitter and/or approver when a document has been pending too long, and control whether the submitter can manually nudge the approver.",
+   "fieldname": "reminder_rules",
+   "fieldtype": "Table",
+   "label": "Reminder Rules",
+   "options": "Reminder Rule"
+  },
+  {
+   "fieldname": "onboarding_process_tab",
+   "fieldtype": "Tab Break",
+   "label": "OnBoarding Process"
+  },
+  {
+   "fieldname": "month_1_hr_check_in_section",
+   "fieldtype": "Section Break",
+   "label": "Month 1 Hr Check In"
+  },
+  {
+   "default": "0",
+   "description": "Send 1 month HR Check In reminder emails to the new employee.",
+   "fieldname": "enable_1_month_hr_check_in_reminder",
+   "fieldtype": "Check",
+   "label": "Enable 1 Month HR Check In Reminder"
+  },
+  {
+   "fieldname": "mid_probation_check_in_section",
+   "fieldtype": "Section Break",
+   "label": "Mid-Probation Check-In"
+  },
+  {
+   "default": "0",
+   "description": "Send Mid-Probation Check-In reminder emails to the employee's supervisor (around 1.5 months after joining).",
+   "fieldname": "enable_mid_probation_check_in_reminder",
+   "fieldtype": "Check",
+   "label": "Enable Mid-Probation Check-In Reminder"
+  },
+  {
+   "fieldname": "end_of_probation_assessment_section",
+   "fieldtype": "Section Break",
+   "label": "End of Probation Assessment"
+  },
+  {
+   "default": "0",
+   "description": "Send End of Probation Assessment reminder emails to the employee's supervisor (around 3 months after joining).",
+   "fieldname": "enable_end_of_probation_assessment_reminder",
+   "fieldtype": "Check",
+   "label": "Enable End of Probation Assessment Reminder"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "issingle": 1,
  "links": [],
- "modified": "2026-03-25 09:32:29.480561",
+ "modified": "2026-09-02 09:36:03.788461",
  "modified_by": "Administrator",
  "module": "ICL Corporate Services",
  "name": "HR Config",
@@ -113,6 +315,16 @@
    "print": 1,
    "read": 1,
    "role": "HR Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "Head of Corporate Services",
    "share": 1,
    "write": 1
   }

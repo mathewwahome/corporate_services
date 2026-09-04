@@ -1,0 +1,179 @@
+import React, { useState } from "react";
+import { useProjectDetail } from "./hooks/useProjectDetail";
+import WorkPlanPage from "../work_plan";
+import { ProjectDetailHeader } from "./components/ProjectDetailHeader";
+import { OverviewTab } from "./tabs/OverviewTab";
+import { StatusReportsTab } from "./tabs/StatusReportsTab";
+import { TasksTab } from "./tabs/TasksTab";
+import { TeamTab } from "./tabs/TeamTab";
+import { TimesheetsTab } from "./tabs/TimesheetsTab";
+import { LifecycleTab } from "./tabs/LifecycleTab";
+import { GanttTab } from "./tabs/GanttTab";
+import { RiskAssessmentLog } from "./tabs/RiskAssessmentLog";
+import { MeetingsTab } from "./tabs/MeetingsTab";
+import { frappeCall, showAlert } from "./utils/frappe";
+
+interface Props {
+  projectId: string;
+  onBack: () => void;
+  onGoToDashboard: () => void;
+}
+
+type TabKey =
+  | "overview"
+  | "status_reports"
+  | "tasks"
+  | "team"
+  | "timesheets"
+  | "lifecycle"
+  | "work_plan"
+  | "gantt"
+  | "risk_assessment"
+  | "meetings";
+
+const TABS: { key: TabKey; label: string }[] = [
+  { key: "overview", label: "Overview" },
+  { key: "status_reports", label: "Status Reports" },
+  { key: "tasks", label: "Tasks" },
+  { key: "team", label: "Team" },
+  { key: "timesheets", label: "Timesheets" },
+  { key: "lifecycle", label: "Lifecycle" },
+  { key: "work_plan", label: "Work Plan" },
+  { key: "gantt", label: "Gantt" },
+  { key: "risk_assessment", label: "Risk Assessment Log" },
+  { key: "meetings", label: "Meetings" },
+];
+
+export function ProjectDetail({ projectId, onBack, onGoToDashboard }: Props) {
+  const { doc, loading, error, refetch } = useProjectDetail(projectId);
+  const [activeTab, setActiveTab] = useState<TabKey>("overview");
+  const [pullingJira, setPullingJira] = useState(false);
+
+  const pullJiraTasks = async () => {
+    if (!projectId || pullingJira) return;
+    setPullingJira(true);
+    try {
+      const r = await frappeCall(
+        "corporate_services.api.project.pull_project_jira_tasks",
+        { project_name: projectId },
+      );
+      const res = r?.message ?? {};
+      const t = res?.tasks ?? {};
+      showAlert(
+        `Synced ${res.count ?? 0} Jira issue${(res.count ?? 0) === 1 ? "" : "s"} (${t.created ?? 0} new, ${t.updated ?? 0} updated)`,
+        "green",
+        7,
+      );
+      refetch();
+    } catch (e: any) {
+      showAlert(e?.message || "Failed to pull Jira tasks.", "red", 7);
+    } finally {
+      setPullingJira(false);
+    }
+  };
+
+  return (
+    <div className="pm-fade-in">
+      <ProjectDetailHeader
+        projectId={projectId}
+        doc={doc}
+        loading={loading}
+        onBack={onBack}
+        onGoToDashboard={onGoToDashboard}
+      />
+
+      {loading && (
+        <div className="text-center text-muted" style={{ padding: "48px 0" }}>
+          <div className="spinner-border spinner-border-sm" role="status" />
+          <div style={{ marginTop: 10 }}>Loading project…</div>
+        </div>
+      )}
+
+      {error && (
+        <div className="alert alert-danger" style={{ fontSize: 13 }}>
+          {error}
+        </div>
+      )}
+
+      {doc && !loading && (
+        <>
+          {doc.report_overdue && (
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "space-between",
+                gap: 12,
+                background: "#fff3cd",
+                border: "1px solid #ffc107",
+                borderRadius: 6,
+                padding: "10px 16px",
+                marginBottom: 12,
+              }}
+            >
+              <span style={{ fontSize: 13, color: "#664d03", fontWeight: 500 }}>
+                <strong>Status report overdue.</strong> No{" "}
+                {doc.reporting_frequency?.toLowerCase() ?? "regular"} update has
+                been submitted for this project.
+              </span>
+              <button
+                type="button"
+                className="btn btn-warning btn-sm"
+                style={{ whiteSpace: "nowrap" }}
+                onClick={() => {
+                  (globalThis as any).frappe?.set_route("Form", "Project Update", "new-project-update-1");
+                  setTimeout(() => {
+                    const f = (globalThis as any).cur_frm;
+                    if (f && f.doctype === "Project Update") {
+                      f.set_value("project", projectId);
+                    }
+                  }, 800);
+                }}
+              >
+                Create Report Now
+              </button>
+            </div>
+          )}
+
+          <div className="pm-detail-tabs">
+            {TABS.map((tab) => (
+              <button
+                key={tab.key}
+                type="button"
+                className={`pm-detail-tab ${activeTab === tab.key ? "active" : ""}`}
+                onClick={() => setActiveTab(tab.key)}
+              >
+                {tab.label}
+              </button>
+            ))}
+          </div>
+
+          {activeTab === "overview" && (
+            <OverviewTab doc={doc} projectId={projectId} />
+          )}
+          {activeTab === "status_reports" && (
+            <StatusReportsTab projectId={projectId} />
+          )}
+          {activeTab === "tasks" && (
+            <TasksTab
+              doc={doc}
+              pullingJira={pullingJira}
+              onPullJira={pullJiraTasks}
+            />
+          )}
+          {activeTab === "team" && <TeamTab users={doc.linked_users ?? []} />}
+          {activeTab === "timesheets" && <TimesheetsTab doc={doc} />}
+          {activeTab === "lifecycle" && <LifecycleTab projectId={projectId} />}
+          {activeTab === "work_plan" && (
+            <WorkPlanPage projectId={projectId} />
+          )}
+          {activeTab === "gantt" && <GanttTab projectId={projectId} />}
+          {activeTab === "risk_assessment" && (
+            <RiskAssessmentLog projectId={projectId} />
+          )}
+          {activeTab === "meetings" && <MeetingsTab projectId={projectId} />}
+        </>
+      )}
+    </div>
+  );
+}

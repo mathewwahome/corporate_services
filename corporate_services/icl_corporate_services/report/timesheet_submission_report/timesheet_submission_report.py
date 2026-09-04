@@ -189,12 +189,6 @@ def get_columns(ctx):
             "fieldtype": "Date",
             "width": 120,
         },
-        {
-            "fieldname": "timesheet_imported",
-            "label": _("Imported"),
-            "fieldtype": "Check",
-            "width": 80,
-        },
     ]
 
     # HR / Finance see workflow state and submitter
@@ -234,7 +228,6 @@ def get_data(filters, ctx):
             ts.total_working_hours,
             ts.status,
             ts.workflow_state,
-            ts.timesheet_imported,
             ts.creation AS submission_date,
             ts.owner,
             (
@@ -256,7 +249,7 @@ def get_data(filters, ctx):
         row["month_year_display"] = format_month_year(row.get("month_year"))
 
     # Append "Not Submitted" rows when a specific month is selected
-    if filters.get("month_year") and ctx["role"] != "employee":
+    if filters.get("month_year") and ctx["role"] != "employee" and not filters.get("project"):
         rows.extend(get_not_submitted_rows(filters, ctx, rows))
 
     return rows
@@ -269,7 +262,7 @@ def build_conditions(filters, ctx):
     conditions = []
     params = []
 
-    # ── Role-based scope ────────────────────────────────────────────────────
+    # -- Role-based scope ----------------------------------------------------
     if ctx["role"] == "employee":
         if ctx.get("employee"):
             conditions.append("ts.employee = %s")
@@ -283,7 +276,7 @@ def build_conditions(filters, ctx):
         conditions.append(f"ts.employee IN ({placeholders})")
         params.extend(allowed)
 
-    # ── Explicit filter fields ───────────────────────────────────────────────
+    # -- Explicit filter fields -----------------------------------------------
     if filters.get("employee"):
         conditions.append("ts.employee = %s")
         params.append(filters["employee"])
@@ -303,6 +296,17 @@ def build_conditions(filters, ctx):
     if filters.get("designation"):
         conditions.append("emp.designation = %s")
         params.append(filters["designation"])
+
+    if filters.get("project"):
+        conditions.append(
+            """EXISTS (
+                SELECT 1
+                FROM `tabTimesheet Submission List` tsl
+                WHERE tsl.parent = ts.name
+                AND tsl.project = %s
+            )"""
+        )
+        params.append(filters["project"])
 
     # Workflow state filter only meaningful for hr_finance
     if filters.get("workflow_state") and ctx["role"] == "hr_finance":
@@ -350,7 +354,6 @@ def get_not_submitted_rows(filters, ctx, submitted_rows):
                 "status": "Not Submitted",
                 "workflow_state": "",
                 "submission_date": None,
-                "timesheet_imported": 0,
                 "owner": "",
             })
     return result

@@ -1,0 +1,788 @@
+import React, { useState, useEffect, useMemo, useCallback, useRef } from "react";
+import { createPortal } from "react-dom";
+import PageHeaderActions from "./PageHeaderActions";
+import SidebarContent from "./SidebarContent";
+import { formatMonthYearLabel } from "./utils";
+
+let _rowIdCounter = 1;
+function makeRowId() {
+    return "row_" + (_rowIdCounter++);
+}
+
+function makeEmptyTask() {
+    return { id: makeRowId(), task: "", hours: {} };
+}
+
+function makeSection(type, name) {
+    return { type, name, tasks: [makeEmptyTask()] };
+}
+
+function hydrateSections(rawSections) {
+    return (rawSections || []).map((sec) => ({
+        type: sec.type,
+        name: sec.name,
+        tasks: (sec.tasks || []).length
+            ? sec.tasks.map((t) => ({ id: makeRowId(), task: t.task || "", hours: t.hours || {} }))
+            : [makeEmptyTask()],
+    }));
+}
+
+
+export default function TimesheetEntryApp({ submissionName, onContextChange }) {
+    const AUTO_SAVE_ENABLED = true;
+    const [ctx, setCtx] = useState(null);
+    const [activeSubmission, setActiveSubmission] = useState(submissionName || "");
+    const [sections, setSections] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [saving, setSaving] = useState(false);
+    const [manualSaving, setManualSaving] = useState(false);
+    const [addProjectOpen, setAddProjectOpen] = useState(false);
+    const [addActivityOpen, setAddActivityOpen] = useState(false);
+    const [projectSearch, setProjectSearch] = useState("");
+    const [activitySearch, setActivitySearch] = useState("");
+    const [newActivityType, setNewActivityType] = useState("");
+    const [error, setError] = useState("");
+    const [workflowActions, setWorkflowActions] = useState([]);
+    const [workflowBusy, setWorkflowBusy] = useState(false);
+    const isInitialLoadRef = useRef(true);
+    const autosaveRef = useRef(null);
+    const autosaveDirtyRef = useRef(false);
+    const autosaveErrorShownRef = useRef(false);
+    const [isMobile, setIsMobile] = useState(() => window.innerWidth < 768);
+    const [expandedTaskId, setExpandedTaskId] = useState(null);
+
+    useEffect(() => {
+        const handler = () => setIsMobile(window.innerWidth < 768);
+        window.addEventListener("resize", handler);
+        return () => window.removeEventListener("resize", handler);
+    }, []);
+
+    const markDirty = useCallback(() => {
+        autosaveDirtyRef.current = true;
+        autosaveErrorShownRef.current = false;
+    }, []);
+
+    const loadContext = useCallback((targetSubmission) => {
+        if (!targetSubmission) {
+            setLoading(false);
+            setError("No submission specified. Please open this page from a Timesheet Submission.");
+            return;
+        }
+
+        setLoading(true);
+        setError("");
+
+        frappe.call({
+            method: "corporate_services.icl_corporate_services.page.employee_timesheet_entry.employee_timesheet_entry.get_timesheet_context",
+            args: { submission_name: targetSubmission },
+            callback(r) {
+                if (r.message) {
+                    const context = r.message;
+                    setCtx(context);
+                    if (onContextChange) onContextChange(context);
+
+                    const existing = hydrateSections(context.existing_sections || []);
+                    if (existing.length) {
+                        setSections(existing);
+                    } else {
+                        const initialProjects = (context.projects || []).map((p) => makeSection("project", p.project_name));
+                        setSections(initialProjects);
+                    }
+                    setActiveSubmission(targetSubmission);
+                }
+                setLoading(false);
+                isInitialLoadRef.current = false;
+            },
+            error() {
+                setError("Failed to load timesheet context.");
+                setLoading(false);
+                isInitialLoadRef.current = false;
+            },
+        });
+    }, [onContextChange]);
+
+    useEffect(() => {
+        loadContext(submissionName);
+    }, [submissionName, loadContext]);
+
+    const refreshWorkflowActions = useCallback((targetSubmission) => {
+        if (!targetSubmission) {
+            setWorkflowActions([]);
+            return;
+        }
+
+        frappe.call({
+            method: "frappe.client.get",
+            args: {
+                doctype: "Timesheet Submission",
+                name: targetSubmission,
+            },
+            callback(getRes) {
+                const doc = getRes.message;
+                if (!doc) {
+                    setWorkflowActions([]);
+                    return;
+                }
+
+                frappe.call({
+                    method: "frappe.model.workflow.get_transitions",
+                    args: { doc },
+                    callback(trRes) {
+                        const actions = (trRes.message || []).map((row) => row.action).filter(Boolean);
+                        setWorkflowActions(actions);
+                    },
+                    error() {
+                        setWorkflowActions([]);
+                    },
+                });
+            },
+            error() {
+                setWorkflowActions([]);
+            },
+        });
+    }, []);
+
+    useEffect(() => {
+        refreshWorkflowActions(activeSubmission);
+    }, [activeSubmission, refreshWorkflowActions]);
+
+    const persistTimesheet = useCallback((showAlert = false) => {
+        if (saving || !activeSubmission) return;
+
+        const payload = sections.map((sec) => ({
+            type: sec.type,
+            name: sec.name,
+            tasks: sec.tasks.map((t) => ({ task: t.task, hours: t.hours })),
+        }));
+
+        setSaving(true);
+        if (showAlert) setManualSaving(true);
+
+        frappe.call({
+            method: "corporate_services.icl_corporate_services.page.employee_timesheet_entry.employee_timesheet_entry.save_web_timesheet",
+            args: {
+                submission_name: activeSubmission,
+                sections: JSON.stringify(payload),
+            },
+            callback(r) {
+                setSaving(false);
+                setManualSaving(false);
+                autosaveDirtyRef.current = false;
+                const response = r.message || {};
+                const ok = response.status === "success";
+                if (ok) {
+                    autosaveErrorShownRef.current = false;
+                    if (showAlert) {
+                        frappe.show_alert(
+                            {
+                                message: `Timesheet saved. Total hours: ${response.total_hours.toFixed(1)}`,
+                                indicator: "green",
+                            },
+                            5
+                        );
+                    }
+                } else if (showAlert) {
+                    frappe.msgprint({
+                        title: response.status === "locked" ? "Timesheet Locked" : "Save Failed",
+                        message: response.message || "Could not save timesheet.",
+                        indicator: "red",
+                    });
+                } else {
+                    autosaveDirtyRef.current = false;
+                    if (!autosaveErrorShownRef.current) {
+                        autosaveErrorShownRef.current = true;
+                        frappe.msgprint({
+                            title: response.status === "locked" ? "Timesheet Locked" : "Autosave Failed",
+                            message: response.message || "Could not autosave timesheet. Edit the timesheet to try again.",
+                            indicator: "red",
+                        });
+                    }
+                }
+            },
+            error() {
+                setSaving(false);
+                setManualSaving(false);
+                if (showAlert) {
+                    frappe.msgprint({
+                        title: "Save Failed",
+                        message: "Could not save timesheet.",
+                        indicator: "red",
+                    });
+                } else {
+                    autosaveDirtyRef.current = false;
+                    if (!autosaveErrorShownRef.current) {
+                        autosaveErrorShownRef.current = true;
+                        frappe.msgprint({
+                            title: "Autosave Failed",
+                            message: "Could not autosave timesheet. Edit the timesheet to try again.",
+                            indicator: "red",
+                        });
+                    }
+                }
+            },
+        });
+    }, [sections, activeSubmission, saving]);
+
+    useEffect(() => {
+        if (!AUTO_SAVE_ENABLED) return;
+        if (!autosaveDirtyRef.current) return;
+        if (isInitialLoadRef.current || loading) return;
+        if (autosaveRef.current) clearTimeout(autosaveRef.current);
+        autosaveRef.current = setTimeout(() => persistTimesheet(false), 1200);
+        return () => {
+            if (autosaveRef.current) clearTimeout(autosaveRef.current);
+        };
+    }, [sections, loading, persistTimesheet, AUTO_SAVE_ENABLED]);
+
+    const colTotals = useMemo(() => {
+        if (!ctx) return {};
+        const totals = {};
+        for (const d of ctx.dates) totals[d.date] = 0;
+        for (const sec of sections) {
+            for (const task of sec.tasks) {
+                for (const [date, val] of Object.entries(task.hours)) {
+                    const h = parseFloat(val) || 0;
+                    if (h > 0) totals[date] = (totals[date] || 0) + h;
+                }
+            }
+        }
+        return totals;
+    }, [ctx, sections]);
+
+    const grandTotal = useMemo(() => Object.values(colTotals).reduce((s, v) => s + v, 0), [colTotals]);
+    const rowTotal = useCallback((task) => Object.values(task.hours).reduce((s, v) => s + (parseFloat(v) || 0), 0), []);
+    const sectionTotal = useCallback(
+        (sec) => sec.tasks.reduce((s, t) => s + Object.values(t.hours).reduce((a, v) => a + (parseFloat(v) || 0), 0), 0),
+        []
+    );
+
+    const updateHours = useCallback((secIdx, taskId, date, value) => {
+        markDirty();
+        setSections((prev) =>
+            prev.map((sec, si) =>
+                si !== secIdx
+                    ? sec
+                    : {
+                          ...sec,
+                          tasks: sec.tasks.map((t) =>
+                              t.id !== taskId ? t : { ...t, hours: { ...t.hours, [date]: value === "" ? 0 : parseFloat(value) || 0 } }
+                          ),
+                      }
+            )
+        );
+    }, [markDirty]);
+
+    const updateTask = useCallback((secIdx, taskId, value) => {
+        markDirty();
+        setSections((prev) =>
+            prev.map((sec, si) => (si !== secIdx ? sec : { ...sec, tasks: sec.tasks.map((t) => (t.id !== taskId ? t : { ...t, task: value })) }))
+        );
+    }, [markDirty]);
+
+    const addTask = useCallback((secIdx) => {
+        markDirty();
+        setSections((prev) => prev.map((sec, si) => (si !== secIdx ? sec : { ...sec, tasks: [...sec.tasks, makeEmptyTask()] })));
+    }, [markDirty]);
+
+    const removeTask = useCallback((secIdx, taskId) => {
+        markDirty();
+        setSections((prev) =>
+            prev.map((sec, si) => {
+                if (si !== secIdx || sec.tasks.length <= 1) return sec;
+                return { ...sec, tasks: sec.tasks.filter((t) => t.id !== taskId) };
+            })
+        );
+    }, [markDirty]);
+
+    const updateSectionName = useCallback((secIdx, value) => {
+        markDirty();
+        setSections((prev) =>
+            prev.map((sec, si) => (si !== secIdx ? sec : { ...sec, name: value }))
+        );
+    }, [markDirty]);
+
+    const removeSection = useCallback((secIdx) => {
+        markDirty();
+        setSections((prev) => prev.filter((_, si) => si !== secIdx));
+    }, [markDirty]);
+
+    const addProject = useCallback((projectName) => {
+        markDirty();
+        setSections((prev) => [...prev, makeSection("project", projectName)]);
+        setAddProjectOpen(false);
+        setProjectSearch("");
+    }, [markDirty]);
+
+    const pullJiraTasks = useCallback((projectName, tasks) => {
+        markDirty();
+        setSections((prev) => {
+            const secIdx = prev.findIndex((sec) => sec.type === "project" && sec.name === projectName);
+            const existingLabels = secIdx >= 0
+                ? new Set(prev[secIdx].tasks.map((t) => t.task))
+                : new Set();
+
+            const newRows = tasks
+                .map((t) => {
+                    return { id: makeRowId(), task: t.subject, hours: {} };
+                })
+                .filter((row) => row.task && !existingLabels.has(row.task));
+
+            if (!newRows.length) {
+                frappe.show_alert({ message: __("Those Jira tasks are already in the timesheet."), indicator: "orange" });
+                return prev;
+            }
+
+            if (secIdx >= 0) {
+                return prev.map((sec, si) => {
+                    if (si !== secIdx) return sec;
+                    const keptTasks = sec.tasks.filter((t) => t.task.trim() !== "");
+                    return { ...sec, tasks: [...keptTasks, ...newRows] };
+                });
+            }
+
+            return [...prev, { type: "project", name: projectName, tasks: newRows }];
+        });
+        frappe.show_alert({ message: __("Pulled Jira tasks into {0}.", [projectName]), indicator: "green" }, 5);
+    }, [markDirty]);
+
+    const pullLastMonthTasks = useCallback(() => {
+        const carriedOver = ctx?.carried_over_sections || [];
+        if (!carriedOver.length) {
+            frappe.show_alert({ message: __("No tasks found on last month's timesheet."), indicator: "orange" });
+            return;
+        }
+
+        let next = [...sections];
+        let addedAny = false;
+
+        for (const carriedSection of carriedOver) {
+            const secIdx = next.findIndex(
+                (sec) => sec.type === carriedSection.type && sec.name === carriedSection.name
+            );
+            const existingLabels = secIdx >= 0
+                ? new Set(next[secIdx].tasks.map((t) => t.task))
+                : new Set();
+
+            const newRows = (carriedSection.tasks || [])
+                .map((t) => ({ id: makeRowId(), task: t.task || "", hours: {} }))
+                .filter((row) => row.task && !existingLabels.has(row.task));
+
+            if (!newRows.length) continue;
+            addedAny = true;
+
+            if (secIdx >= 0) {
+                next = next.map((sec, si) => {
+                    if (si !== secIdx) return sec;
+                    const keptTasks = sec.tasks.filter((t) => t.task.trim() !== "");
+                    return { ...sec, tasks: [...keptTasks, ...newRows] };
+                });
+            } else {
+                next = [...next, { type: carriedSection.type, name: carriedSection.name, tasks: newRows }];
+            }
+        }
+
+        if (!addedAny) {
+            frappe.show_alert({ message: __("Last month's tasks are already in this timesheet."), indicator: "orange" });
+            return;
+        }
+
+        markDirty();
+        setSections(next);
+        frappe.show_alert({ message: __("Pulled last month's projects and tasks."), indicator: "green" }, 5);
+    }, [ctx, sections, markDirty]);
+
+    const addActivity = useCallback((activityName) => {
+        markDirty();
+        setSections((prev) => [...prev, makeSection("activity", activityName)]);
+        setAddActivityOpen(false);
+        setActivitySearch("");
+    }, [markDirty]);
+
+    const createAndAddActivity = useCallback(() => {
+        const name = (newActivityType || "").trim();
+        if (!name) return;
+        frappe.call({
+            method: "corporate_services.icl_corporate_services.page.employee_timesheet_entry.employee_timesheet_entry.create_activity_type",
+            args: { name },
+            callback: (r) => {
+                const createdName = (r.message && r.message.name) || name;
+                setCtx((prev) => {
+                    const existing = new Set((prev?.activity_types || []).map((a) => a.toLowerCase()));
+                    if (existing.has(createdName.toLowerCase())) return prev;
+                    return { ...prev, activity_types: [...(prev?.activity_types || []), createdName].sort() };
+                });
+                addActivity(createdName);
+                setNewActivityType("");
+            },
+        });
+    }, [newActivityType, addActivity]);
+
+    const runWorkflowAction = useCallback(
+        (action) => {
+            if (!activeSubmission || !action || workflowBusy) return;
+
+            setWorkflowBusy(true);
+            frappe.call({
+                method: "frappe.client.get",
+                args: {
+                    doctype: "Timesheet Submission",
+                    name: activeSubmission,
+                },
+                callback(getRes) {
+                    const doc = getRes.message;
+                    if (!doc) {
+                        setWorkflowBusy(false);
+                        frappe.msgprint(__("Unable to load linked Timesheet Submission."));
+                        return;
+                    }
+
+                    frappe.call({
+                        method: "frappe.model.workflow.apply_workflow",
+                        args: {
+                            doc,
+                            action,
+                        },
+                        callback() {
+                            setWorkflowBusy(false);
+                            frappe.show_alert({ message: __("Workflow action applied: {0}", [action]), indicator: "green" });
+                            refreshWorkflowActions(activeSubmission);
+                            loadContext(activeSubmission);
+                        },
+                        error() {
+                            setWorkflowBusy(false);
+                        },
+                    });
+                },
+                error() {
+                    setWorkflowBusy(false);
+                },
+            });
+        },
+        [activeSubmission, workflowBusy, loadContext, refreshWorkflowActions]
+    );
+
+    const availableProjects = useMemo(() => {
+        if (!ctx) return [];
+        const added = new Set(sections.filter((s) => s.type === "project").map((s) => s.name));
+        return (ctx.all_projects || []).filter((p) => !added.has(p.project_name));
+    }, [ctx, sections]);
+
+    const availableActivities = useMemo(() => {
+        if (!ctx) return [];
+        const added = new Set(sections.filter((s) => s.type === "activity").map((s) => s.name));
+        return (ctx.activity_types || []).filter((a) => !added.has(a));
+    }, [ctx, sections]);
+
+    const filteredProjects = useMemo(() => {
+        const q = projectSearch.toLowerCase();
+        return q ? availableProjects.filter((p) => p.project_name.toLowerCase().includes(q)) : availableProjects;
+    }, [availableProjects, projectSearch]);
+
+    const filteredActivities = useMemo(() => {
+        const q = activitySearch.toLowerCase();
+        return q ? availableActivities.filter((a) => a.toLowerCase().includes(q)) : availableActivities;
+    }, [availableActivities, activitySearch]);
+
+    const workflowIndicatorClass = useMemo(() => {
+        const style = (ctx?.workflow_style || "").toLowerCase();
+        const styleToClass = {
+            success: "green",
+            danger: "red",
+            primary: "blue",
+            warning: "orange",
+            info: "light-blue",
+            inverse: "darkgrey",
+        };
+        return styleToClass[style] || "gray";
+    }, [ctx]);
+    const formattedMonthLabel = useMemo(() => formatMonthYearLabel(ctx?.month_year), [ctx]);
+    const visibleSubmissions = useMemo(() => {
+        const submissions = Array.isArray(ctx?.submissions) ? ctx.submissions : [];
+        return submissions.slice(0, 5);
+    }, [ctx]);
+
+    if (loading) return <div className="ts-loading">Loading timesheet...</div>;
+    if (error) return <div className="alert alert-danger" style={{ margin: 20 }}>{error}</div>;
+    if (!ctx) return null;
+
+    const sidebarRoot = document.getElementById("timesheet-entry-sidebar-root");
+    const contextRoot = document.getElementById("timesheet-entry-context-root");
+    const actionsRoot = document.getElementById("timesheet-entry-actions-root");
+    const sidebarContent = (
+        <SidebarContent
+            visibleSubmissions={visibleSubmissions}
+            activeSubmission={activeSubmission}
+            loadContext={loadContext}
+        />
+    );
+    const pageHeaderActions = (
+        <PageHeaderActions
+            activeSubmission={activeSubmission}
+            ctx={ctx}
+            workflowBusy={workflowBusy}
+            workflowActions={workflowActions}
+            manualSaving={manualSaving}
+            setAddActivityOpen={setAddActivityOpen}
+            setAddProjectOpen={setAddProjectOpen}
+            setProjectSearch={setProjectSearch}
+            setActivitySearch={setActivitySearch}
+            runWorkflowAction={runWorkflowAction}
+            persistTimesheet={persistTimesheet}
+            onPullJiraTasks={pullJiraTasks}
+            onPullLastMonthTasks={pullLastMonthTasks}
+        />
+    );
+    const pageHeaderContext = (
+        <div style={{ display: "inline-flex", alignItems: "center" }}>
+            <span
+                className={`indicator-pill ${workflowIndicatorClass}`}
+                style={{ marginLeft: 12, whiteSpace: "nowrap" }}
+            >
+                {ctx.workflow_state || "Draft"}
+            </span>
+        </div>
+    );
+
+    return (
+        <>
+            {sidebarRoot ? createPortal(sidebarContent, sidebarRoot) : null}
+            {contextRoot ? createPortal(pageHeaderContext, contextRoot) : null}
+            {actionsRoot ? createPortal(pageHeaderActions, actionsRoot) : null}
+            <div className="ts-entry-wrap">
+                <div className="ts-entry-header">
+                </div>
+
+                {addProjectOpen && (
+                    <div className="ts-add-project-panel">
+                        <input className="form-control form-control-sm" placeholder="Search projects..." value={projectSearch} onChange={(e) => setProjectSearch(e.target.value)} autoFocus />
+                        <div style={{ maxHeight: 200, overflowY: "auto", marginTop: 6 }}>
+                            {filteredProjects.length === 0 && <div style={{ padding: "6px 10px", color: "#888", fontSize: 12 }}>No projects available</div>}
+                            {filteredProjects.map((p) => (
+                                <div key={p.name} className="ts-project-item" onClick={() => addProject(p.project_name)}>
+                                    {p.project_name}
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                )}
+
+                {addActivityOpen && (
+                    <div className="ts-add-project-panel">
+                        <input className="form-control form-control-sm" placeholder="Search activity types..." value={activitySearch} onChange={(e) => setActivitySearch(e.target.value)} autoFocus />
+                        <div style={{ maxHeight: 200, overflowY: "auto", marginTop: 6 }}>
+                            {filteredActivities.length === 0 && <div style={{ padding: "6px 10px", color: "#888", fontSize: 12 }}>No activity types available</div>}
+                            {filteredActivities.map((a) => (
+                                <div key={a} className="ts-project-item" onClick={() => addActivity(a)}>
+                                    {a}
+                                </div>
+                            ))}
+                        </div>
+                        <div style={{ marginTop: 8, borderTop: "1px solid #eee", paddingTop: 8 }}>
+                            <input
+                                className="form-control form-control-sm"
+                                placeholder="Create new activity type (e.g. Meetings, Leave, Holiday)"
+                                value={newActivityType}
+                                onChange={(e) => setNewActivityType(e.target.value)}
+                            />
+                            <button className="btn btn-default btn-sm" style={{ marginTop: 6 }} onClick={createAndAddActivity}>
+                                Create & Add
+                            </button>
+                        </div>
+                    </div>
+                )}
+
+                {isMobile && (
+                    <div className="ts-mobile-wrap">
+                        {sections.map((sec, secIdx) => (
+                            <div key={sec.type + "_" + sec.name + "_" + secIdx} className="ts-mobile-section">
+                                <div className={`ts-mobile-section-header ${sec.type === "activity" ? "ts-mobile-header-activity" : ""}`}>
+                                    <div className="ts-mobile-section-title">
+                                        {sec.type === "activity" ? (
+                                            <input
+                                                className="form-control form-control-sm ts-mobile-activity-input"
+                                                value={sec.name}
+                                                onChange={(e) => updateSectionName(secIdx, e.target.value)}
+                                                placeholder="Activity name"
+                                            />
+                                        ) : (
+                                            <span>{sec.name}</span>
+                                        )}
+                                        <span className="ts-section-type-badge">{sec.type === "project" ? "Project" : "Activity"}</span>
+                                    </div>
+                                    <div className="ts-mobile-section-meta">
+                                        <span className="ts-mobile-section-total">{sectionTotal(sec).toFixed(1)}h</span>
+                                        {sec.type === "activity" && (
+                                            <button className="btn btn-default btn-xs ts-mobile-delete-btn" onClick={() => removeSection(secIdx)}>Delete</button>
+                                        )}
+                                    </div>
+                                </div>
+                                {sec.tasks.map((task) => (
+                                    <div key={task.id} className="ts-mobile-task">
+                                        <div className="ts-mobile-task-row">
+                                            <input
+                                                className="ts-task-input ts-mobile-task-name"
+                                                type="text"
+                                                maxLength={500}
+                                                value={task.task}
+                                                onChange={(e) => updateTask(secIdx, task.id, e.target.value)}
+                                                placeholder="Task description"
+                                            />
+                                            <button
+                                                className={`ts-mobile-hours-toggle ${expandedTaskId === task.id ? "active" : ""}`}
+                                                onClick={() => setExpandedTaskId(expandedTaskId === task.id ? null : task.id)}
+                                            >
+                                                {rowTotal(task) > 0 ? rowTotal(task).toFixed(1) : "0"}h ▾
+                                            </button>
+                                            {sec.tasks.length > 1 && (
+                                                <button className="ts-remove-btn" onClick={() => removeTask(secIdx, task.id)} title="Remove row">&times;</button>
+                                            )}
+                                        </div>
+                                        {expandedTaskId === task.id && (
+                                            <div className="ts-mobile-dates">
+                                                {ctx.dates.map((d) => (
+                                                    <div key={d.date} className={`ts-mobile-date-row${d.is_weekend ? " ts-weekend" : ""}`}>
+                                                        <span className="ts-mobile-date-label">{d.day_short} {d.date_num}</span>
+                                                        <input
+                                                            className="ts-mobile-hours-input"
+                                                            type="number"
+                                                            min="0"
+                                                            step="0.5"
+                                                            inputMode="decimal"
+                                                            value={task.hours[d.date] || ""}
+                                                            onChange={(e) => updateHours(secIdx, task.id, d.date, e.target.value)}
+                                                            placeholder="0"
+                                                        />
+                                                    </div>
+                                                ))}
+                                            </div>
+                                        )}
+                                    </div>
+                                ))}
+                                <button className="ts-mobile-addrow-btn" onClick={() => addTask(secIdx)}>+ Add task row</button>
+                            </div>
+                        ))}
+                        <div className="ts-mobile-footer-actions">
+                            <button className="btn btn-default btn-sm ts-mobile-action-btn" onClick={() => { setAddActivityOpen(false); setAddProjectOpen((v) => !v); setProjectSearch(""); }}>
+                                + Add Project
+                            </button>
+                            <button className="btn btn-default btn-sm ts-mobile-action-btn" onClick={() => { setAddProjectOpen(false); setAddActivityOpen((v) => !v); setActivitySearch(""); }}>
+                                + Add Activity
+                            </button>
+                        </div>
+                        <div className="ts-mobile-save-bar">
+                            <div style={{ fontSize: 12, color: "#666" }}>
+                                Total: <strong>{grandTotal > 0 ? grandTotal.toFixed(1) : "0"}h</strong>
+                                {ctx.workflow_state && <span className={`indicator-pill ${workflowIndicatorClass}`} style={{ marginLeft: 10 }}>{ctx.workflow_state}</span>}
+                            </div>
+                            <button className="btn btn-primary" onClick={() => persistTimesheet(true)} disabled={manualSaving}>
+                                {manualSaving ? "Saving..." : "Save Timesheet"}
+                            </button>
+                        </div>
+                    </div>
+                )}
+
+                {!isMobile && <div className="ts-table-wrap">
+                    <table className="ts-table">
+                        <thead>
+                            <tr className="ts-row-dayname">
+                                <th className="ts-col-sticky" style={{ left: 0, minWidth: 180 }}>Projects / Activities</th>
+                                <th className="ts-col-sticky" style={{ left: 180, minWidth: 220 }}>Tasks</th>
+                                {ctx.dates.map((d) => (
+                                    <th key={d.date} className={"ts-col-date" + (d.is_weekend ? " ts-weekend" : "")}>{d.day_short}</th>
+                                ))}
+                                <th className="ts-col-total">Total Hours</th>
+                                <th className="ts-col-total">Ratio %</th>
+                            </tr>
+                            <tr className="ts-row-datenum">
+                                <th className="ts-col-sticky" style={{ left: 0, minWidth: 180, top: 29 }}></th>
+                                <th className="ts-col-sticky" style={{ left: 180, minWidth: 220, top: 29 }}>Hours</th>
+                                {ctx.dates.map((d) => (
+                                    <th key={d.date} className={"ts-col-date" + (d.is_weekend ? " ts-weekend" : "")} style={{ top: 29 }}>{d.date_num}</th>
+                                ))}
+                                <th className="ts-col-total" style={{ top: 29 }}></th>
+                                <th className="ts-col-total" style={{ top: 29 }}></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {sections.map((sec, secIdx) => (
+                                <React.Fragment key={sec.type + "_" + sec.name + "_" + secIdx}>
+                                    <tr className={`ts-section-header ${sec.type === "activity" ? "ts-section-header-activity" : ""}`}>
+                                        <td colSpan={2} className="ts-col-sticky ts-section-name" style={{ left: 0 }}>
+                                            {sec.type === "activity" ? (
+                                                <input
+                                                    className="form-control form-control-sm"
+                                                    style={{ display: "inline-block", width: 220, marginRight: 8, height: 28 }}
+                                                    value={sec.name}
+                                                    onChange={(e) => updateSectionName(secIdx, e.target.value)}
+                                                    placeholder="Activity name"
+                                                />
+                                            ) : (
+                                                sec.name
+                                            )}
+                                            <span className="ts-section-type-badge">{sec.type === "project" ? "Project" : "Activity"}</span>
+                                            {sec.type === "activity" && (
+                                                <button
+                                                    className="btn btn-default btn-xs ts-activity-delete-btn"
+                                                    style={{ marginLeft: 8 }}
+                                                    onClick={() => removeSection(secIdx)}
+                                                    title="Delete activity section"
+                                                >
+                                                    Delete
+                                                </button>
+                                            )}
+                                        </td>
+                                        {ctx.dates.map((d) => <td key={d.date} className={d.is_weekend ? "ts-weekend" : ""}></td>)}
+                                        <td></td>
+                                        <td className="ts-col-total">{grandTotal > 0 ? ((sectionTotal(sec) / grandTotal) * 100).toFixed(1) + "%" : ""}</td>
+                                    </tr>
+                                    {sec.tasks.map((task) => (
+                                        <tr key={task.id}>
+                                            <td className="ts-col-sticky" style={{ left: 0, background: "#fff" }}></td>
+                                            <td className="ts-col-sticky" style={{ left: 180, background: "#fff" }}>
+                                                <div className="ts-task-cell">
+                                                    <input className="ts-task-input" type="text" maxLength={500} value={task.task} onChange={(e) => updateTask(secIdx, task.id, e.target.value)} placeholder="Task description" />
+                                                    {sec.tasks.length > 1 && (
+                                                        <button className="ts-remove-btn" onClick={() => removeTask(secIdx, task.id)} title="Remove row">&times;</button>
+                                                    )}
+                                                </div>
+                                            </td>
+                                            {ctx.dates.map((d) => (
+                                                <td key={d.date} className={"ts-col-date" + (d.is_weekend ? " ts-weekend" : "")}>
+                                                    <input className="ts-hours-input" type="number" min="0" step="0.5" value={task.hours[d.date] || ""} onChange={(e) => updateHours(secIdx, task.id, d.date, e.target.value)} />
+                                                </td>
+                                            ))}
+                                            <td className="ts-col-total">{rowTotal(task) > 0 ? rowTotal(task).toFixed(1) : ""}</td>
+                                            <td className="ts-col-total"></td>
+                                        </tr>
+                                    ))}
+                                    <tr className="ts-row-addtask">
+                                        <td className="ts-col-sticky" style={{ left: 0, background: "#fff" }}></td>
+                                        <td className="ts-col-sticky" style={{ left: 180, background: "#fff" }}>
+                                            <button className="ts-addtask-btn" onClick={() => addTask(secIdx)}>+ Add row</button>
+                                        </td>
+                                        {ctx.dates.map((d) => <td key={d.date} className={d.is_weekend ? "ts-weekend" : ""}></td>)}
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                </React.Fragment>
+                            ))}
+                            <tr className="ts-row-total">
+                                <td colSpan={2} className="ts-col-sticky" style={{ left: 0 }}>TOTAL</td>
+                                {ctx.dates.map((d) => (
+                                    <td key={d.date} className={"ts-col-date" + (d.is_weekend ? " ts-weekend" : "")}>
+                                        {colTotals[d.date] > 0 ? colTotals[d.date].toFixed(1) : ""}
+                                    </td>
+                                ))}
+                                <td className="ts-col-total">{grandTotal > 0 ? grandTotal.toFixed(1) : ""}</td>
+                                <td className="ts-col-total">{grandTotal > 0 ? "100%" : ""}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p className="ts-empty-rows-note" style={{ marginTop: 8, fontSize: 12, color: "#888" }}>
+                        Task rows with no hours entered are cleared automatically when you submit to your supervisor.
+                    </p>
+                </div>}
+            </div>
+        </>
+    );
+}

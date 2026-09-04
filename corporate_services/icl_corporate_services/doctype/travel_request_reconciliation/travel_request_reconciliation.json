@@ -6,29 +6,40 @@
  "engine": "InnoDB",
  "field_order": [
   "travel_request",
-  "travelers_name",
-  "actual_departure_time",
-  "actual_arrival_time",
-  "date_advance_taken",
-  "date_of_reconciliation",
   "employee",
+  "travelers_name",
   "column_break_pfyo",
+  "date_of_reconciliation",
   "project_budget_codes",
+  "reconciliation_information_section",
   "activity_description",
+  "travel_information_section",
   "trip_dates_from",
   "trip_datesto",
+  "column_break_iduv",
+  "date_advance_taken",
+  "actual_departure_time",
+  "actual_arrival_time",
   "section_break_rmbi",
   "currency",
   "activity_participants_reconciliation",
   "section_break_iixw",
   "total_advance",
   "local_total_advance",
+  "column_break_ansh",
+  "allocated_amount_differs",
+  "actual_allocated_amount",
+  "spendings_section_section",
+  "allocated_currency_column",
   "total_spent",
   "total_balance",
-  "column_break_zkad",
+  "column_break_owsz",
   "total_local_amount",
   "section_break_oxho",
   "trip_report",
+  "column_break_cpql",
+  "trip_report_link",
+  "section_break_imiu",
   "amended_from"
  ],
  "fields": [
@@ -97,18 +108,23 @@
   },
   {
    "fieldname": "section_break_rmbi",
-   "fieldtype": "Section Break"
+   "fieldtype": "Section Break",
+   "label": "Expense Information"
   },
   {
+   "description": "This is the total spent in the allocated Currency",
    "fieldname": "total_spent",
-   "fieldtype": "Data",
+   "fieldtype": "Currency",
    "label": "Total Spent",
+   "options": "currency",
    "read_only": 1
   },
   {
+   "description": "Total Balance in the allocated currency",
    "fieldname": "total_balance",
-   "fieldtype": "Data",
+   "fieldtype": "Currency",
    "label": "Total Balance",
+   "options": "currency",
    "read_only": 1
   },
   {
@@ -122,13 +138,13 @@
   },
   {
    "fieldname": "section_break_oxho",
-   "fieldtype": "Section Break"
+   "fieldtype": "Section Break",
+   "label": "Trip Report Section"
   },
   {
    "fieldname": "trip_report",
    "fieldtype": "Attach",
-   "label": "Trip Report",
-   "reqd": 1
+   "label": "Trip Report"
   },
   {
    "fetch_from": "travel_request.custom_expected_support",
@@ -155,16 +171,14 @@
   },
   {
    "fieldname": "section_break_iixw",
-   "fieldtype": "Section Break"
+   "fieldtype": "Section Break",
+   "label": "Advanced Section"
   },
   {
-   "fieldname": "column_break_zkad",
-   "fieldtype": "Column Break"
-  },
-  {
+   "description": "This is the total spent amount in the local currency",
    "fieldname": "total_local_amount",
    "fieldtype": "Currency",
-   "label": "Total Local Amount",
+   "label": "Total Spent ",
    "read_only": 1
   },
   {
@@ -173,6 +187,20 @@
    "fieldtype": "Currency",
    "label": "Local Total Advance",
    "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "allocated_amount_differs",
+   "fieldtype": "Check",
+   "label": "Allocated Amount Differs"
+  },
+  {
+   "depends_on": "eval:doc.allocated_amount_differs",
+   "description": "Used for reconciliation calculations when different from requested amount.",
+   "fieldname": "actual_allocated_amount",
+   "fieldtype": "Currency",
+   "label": "Actual Allocated Amount",
+   "options": "currency"
   },
   {
    "fieldname": "amended_from",
@@ -192,12 +220,59 @@
    "label": "Employee",
    "options": "Employee",
    "print_hide": 1
+  },
+  {
+   "fieldname": "column_break_ansh",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "spendings_section_section",
+   "fieldtype": "Section Break",
+   "label": "Spendings/Balance"
+  },
+  {
+   "fieldname": "column_break_owsz",
+   "fieldtype": "Column Break",
+   "label": "Local Currency"
+  },
+  {
+   "fieldname": "allocated_currency_column",
+   "fieldtype": "Column Break",
+   "label": "Allocated Currency"
+  },
+  {
+   "fieldname": "reconciliation_information_section",
+   "fieldtype": "Section Break",
+   "label": "Reconciliation Information"
+  },
+  {
+   "fieldname": "travel_information_section",
+   "fieldtype": "Section Break",
+   "label": "Travel Information"
+  },
+  {
+   "fieldname": "column_break_iduv",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_cpql",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "trip_report_link",
+   "fieldtype": "Link",
+   "label": "Trip Report Link",
+   "options": "Trip Report"
+  },
+  {
+   "fieldname": "section_break_imiu",
+   "fieldtype": "Section Break"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2026-03-23 07:46:55.599663",
+ "modified": "2026-08-11 11:28:06.467360",
  "modified_by": "Administrator",
  "module": "ICL Corporate Services",
  "name": "Travel Request Reconciliation",
@@ -217,10 +292,11 @@
    "write": 1
   }
  ],
- "queue_in_background": 1,
  "row_format": "Dynamic",
  "sort_field": "modified",
  "sort_order": "DESC",
  "states": [],
- "track_changes": 1
+ "track_changes": 1,
+ "track_seen": 1,
+ "track_views": 1
 }

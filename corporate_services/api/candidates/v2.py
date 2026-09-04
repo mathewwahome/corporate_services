@@ -62,31 +62,181 @@ def get_job_opening(role):
     return opening
 
 
+def _normalize_text(value):
+    return (value or "").strip().lower()
+
+
+def _as_list(value):
+    if value is None:
+        return []
+    if isinstance(value, (list, tuple, set)):
+        return [str(v).strip() for v in value if str(v).strip()]
+    if isinstance(value, str):
+        if "|" in value:
+            parts = value.split("|")
+        elif "," in value:
+            parts = value.split(",")
+        elif "\n" in value:
+            parts = value.split("\n")
+        else:
+            parts = [value]
+        return [p.strip() for p in parts if p.strip()]
+    return [str(value).strip()]
+
+
+def _find_disqualifying_answers(minimum_requirements):
+    """
+    Supports per-question disqualifying rules in incoming payload:
+    {
+      "requirement": "Do you have CPA?",
+      "response": "No",
+      "auto_reject_answers": ["No", "N/A"]
+    }
+    Accepted rule keys: auto_reject_answers, disqualifying_answers, reject_on, blocked_answers
+    """
+    disqualified_items = []
+
+    for item in minimum_requirements:
+        if not isinstance(item, dict):
+            continue
+
+        response = _normalize_text(item.get("response"))
+        if not response:
+            continue
+
+        blocked = []
+        for key in ("auto_reject_answers", "disqualifying_answers", "reject_on", "blocked_answers"):
+            blocked.extend(_as_list(item.get(key)))
+
+        blocked_norm = {_normalize_text(v) for v in blocked if _normalize_text(v)}
+        if response in blocked_norm:
+            disqualified_items.append({
+                "requirement": item.get("requirement") or "Minimum Requirement",
+                "response": item.get("response") or "",
+                "blocked_answers": blocked,
+            })
+
+    return disqualified_items
+
+
+def _split_values(value):
+    if not (value or "").strip():
+        return []
+    normalized = str(value).replace("|||", "\n").replace(",", "\n").replace("|", "\n")
+    return [item.strip() for item in normalized.splitlines() if item.strip()]
+
+
+def _build_option_map(answer_options):
+    options = [value.strip() for value in (answer_options or "").splitlines() if value.strip()]
+    option_map = {}
+    for index, option in enumerate(options):
+        code = chr(ord("A") + index)
+        option_map[_normalize_text(code)] = code
+        option_map[_normalize_text(option)] = code
+    return option_map
+
+
+def _resolve_disqualifying_codes(question):
+    option_map = _build_option_map(question.get("answer_options"))
+    blocked_codes = set()
+    blocked_values = _split_values(question.get("disqualifying_answers"))
+    for value in blocked_values:
+        normalized = _normalize_text(value)
+        code = option_map.get(normalized)
+        if code:
+            blocked_codes.add(code)
+    return blocked_codes
+
+
+def _match_disqualifying_from_quiz(minimum_requirements, job_opening_name):
+    quiz_name = frappe.db.get_value("Job Opening", job_opening_name, "custom_minimum_requirement_quiz")
+    if not quiz_name:
+        return []
+
+    quiz = frappe.get_doc("Quiz", quiz_name)
+    question_names = [row.question for row in (quiz.questions or []) if row.question]
+    if not question_names:
+        return []
+
+    questions = frappe.get_all(
+        "Quiz Question",
+        filters={"name": ["in", question_names]},
+        fields=["name", "question", "answer_options", "disqualifying_answers"],
+    )
+    question_by_name = {q["name"]: q for q in questions}
+    question_by_text = {_normalize_text(q["question"]): q for q in questions if q.get("question")}
+
+    disqualified_items = []
+    for item in minimum_requirements:
+        if not isinstance(item, dict):
+            continue
+
+        response = item.get("response")
+        if not (response or "").strip():
+            continue
+
+        lookup_name = item.get("question") or item.get("question_name")
+        lookup_text = item.get("requirement") or item.get("question_text") or ""
+        question = None
+        if lookup_name and lookup_name in question_by_name:
+            question = question_by_name[lookup_name]
+        elif lookup_text:
+            question = question_by_text.get(_normalize_text(lookup_text))
+
+        if not question:
+            continue
+
+        blocked_codes = _resolve_disqualifying_codes(question)
+        if not blocked_codes:
+            continue
+
+        option_map = _build_option_map(question.get("answer_options"))
+        selected_codes = set()
+        for selected in _split_values(response):
+            code = option_map.get(_normalize_text(selected))
+            if code:
+                selected_codes.add(code)
+
+        if selected_codes.intersection(blocked_codes):
+            disqualified_items.append({
+                "requirement": question.get("question") or item.get("requirement") or "Minimum Requirement",
+                "response": response,
+                "blocked_answers": sorted(blocked_codes),
+            })
+
+    return disqualified_items
+
+
+def _send_minimum_requirements_rejection_email(candidate_name, candidate_email, role_title):
+    company_name = frappe.get_value("Global Defaults", None, "default_company") or "Our Company"
+    signature_name = frappe.get_value("User", frappe.session.user, "full_name") or "The HR Team"
+    safe_role = role_title or "this role"
+
+    subject = f"Application Update - {safe_role} at {company_name}"
+    message = f"""<p>Dear {candidate_name},</p>
+
+<p>Thank you for your interest in the role of {safe_role} at {company_name}.</p>
+
+<p>Based on the minimum requirements indicated in your application, we will not be progressing with your application at this time. We encourage you to apply again in future if your experience aligns with the requirements of a role.</p>
+
+<p>We appreciate the time you took to apply and wish you the best in your career journey.</p>
+
+<p>Kind regards,<br>
+{signature_name}<br>
+Human Resources<br>
+{company_name}</p>"""
+
+    frappe.sendmail(
+        recipients=[candidate_email],
+        subject=subject,
+        message=message,
+        now=True,
+    )
+
+
 @frappe.whitelist()
 def create_job_candidate():
-    """
-    Create a Job Candidate entry from external system.
-    Accepts multipart/form-data with files and JSON data.
-    
-    Required fields:
-    - names: Candidate's full name
-    - email_address: Valid email address
-    - cv: Resume/CV file (attached)
-    
-    Optional fields:
-    - phone: Phone number
-    - role: Role/position name the candidate is applying for.
-            Matched against Job Opening.job_title to populate the
-            standard job_title Link field automatically.
-    - role_description: Description of the role
-    - cover_letter: Cover letter file (attached)
-    - minimum_requirements: JSON array of minimum requirements
-    - preferred_attributes: JSON array of preferred attributes
-    
-    Returns:
-    - Success: {"success": true, "data": {candidate details}}
-    - Error: {"success": false, "errors": {field: error_message}}
-    """
+ 
     try:
         # Parse form data
         form_data = frappe.local.form_dict
@@ -101,6 +251,8 @@ def create_job_candidate():
         phone = form_data.get('phone', '').strip()
         role = form_data.get('role', '').strip()
         role_description = form_data.get('role_description', '').strip()
+        preferred_amount_raw = form_data.get('preferred_amount', '').strip()
+        preferred_amount = None
         
         # Validate names
         if not names:
@@ -116,6 +268,12 @@ def create_job_candidate():
         cv_file = files.get('cv')
         if not cv_file:
             validation_errors['cv'] = 'Resume/CV file is required'
+
+        if preferred_amount_raw:
+            try:
+                preferred_amount = float(preferred_amount_raw)
+            except ValueError:
+                validation_errors['preferred_amount'] = 'Preferred amount must be a valid number'
         
         # Get optional cover letter file
         cover_letter_file = files.get('cover_letter')
@@ -144,8 +302,40 @@ def create_job_candidate():
         if validation_errors:
             return {'success': False, 'errors': validation_errors}
 
-
         job_opening_name = get_job_opening(role)
+
+        # Auto-disqualify before creating Job Applicant (no document saved).
+        disqualified_items = _find_disqualifying_answers(minimum_requirements)
+        if job_opening_name:
+            disqualified_items.extend(
+                _match_disqualifying_from_quiz(minimum_requirements, job_opening_name)
+            )
+        if disqualified_items:
+            _send_minimum_requirements_rejection_email(
+                candidate_name=names,
+                candidate_email=email_address,
+                role_title=role,
+            )
+            return {
+                "success": False,
+                "auto_rejected": True,
+                "message": "Application auto-rejected based on disqualifying answers.",
+                "reasons": disqualified_items,
+            }
+        request_preferred_amount = 0
+        preferred_amount_mandatory = 0
+        if job_opening_name:
+            request_preferred_amount, preferred_amount_mandatory = frappe.db.get_value(
+                'Job Opening',
+                job_opening_name,
+                ['custom_request_preferred_amount', 'custom_preferred_amount_mandatory'],
+            ) or (0, 0)
+
+        if request_preferred_amount and preferred_amount_mandatory and preferred_amount is None:
+            validation_errors['preferred_amount'] = 'Preferred amount is required for this role'
+
+        if validation_errors:
+            return {'success': False, 'errors': validation_errors}
 
  
         initial_workflow_state = get_initial_workflow_state(DOCTYPE_JOB_CANDIDATE)
@@ -159,6 +349,7 @@ def create_job_candidate():
             'job_title': job_opening_name,
             'custom_role': role if role else None,
             'custom_role_description': role_description if role_description else None,
+            'custom_preferred_amount': preferred_amount,
         }
 
         if initial_workflow_state:
@@ -229,6 +420,7 @@ def create_job_candidate():
                 'job_title': candidate_doc.job_title or None,
                 'custom_role': candidate_doc.custom_role or None,
                 'custom_role_description': candidate_doc.custom_role_description or None,
+                'custom_preferred_amount': candidate_doc.custom_preferred_amount,
                 'resume_attachment': candidate_doc.resume_attachment or None,
                 'custom_cover_letter_attachment': candidate_doc.custom_cover_letter_attachment or None,
                 '_job_opening_matched': bool(job_opening_name),
@@ -333,29 +525,10 @@ def send_rejection_email():
         if validation_errors:
             return {"success": False, "errors": validation_errors}
 
-        company_name = frappe.get_value("Global Defaults", None, "default_company") or "Our Company"
-        signature_name = frappe.get_value("User", frappe.session.user, "full_name") or "The HR Team"
-
-        subject = f"Application Update - {role_title} at {company_name}"
-
-        message = f"""Dear {candidate_name},
-
-Thank you for your interest in the role of {role_title} at {company_name}.
-
-Based on the minimum requirements indicated in your application, we will not be progressing with your application at this time. We encourage you to apply again in future if your experience aligns with the requirements of a role.
-
-We appreciate the time you took to apply and wish you the best in your career journey.
-
-Kind regards,
-{signature_name}
-Human Resources
-{company_name}"""
-
-        frappe.sendmail(
-            recipients=[candidate_email],
-            subject=subject,
-            message=message,
-            now=True,
+        _send_minimum_requirements_rejection_email(
+            candidate_name=candidate_name,
+            candidate_email=candidate_email,
+            role_title=role_title,
         )
 
         return {"success": True, "data": {"email_sent_to": candidate_email}}

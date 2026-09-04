@@ -1,0 +1,104 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2026-05-07 08:11:12.326439",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "lead_project_manager",
+  "project_managers_tab",
+  "project_managers",
+  "automation_tab",
+  "finance_escalation_contact"
+ ],
+ "fields": [
+  {
+   "fieldname": "lead_project_manager",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Lead Project Manager",
+   "options": "User",
+   "reqd": 1
+  },
+  {
+   "description": "All Active Project Managers",
+   "fieldname": "project_managers",
+   "fieldtype": "Table",
+   "label": "Project Managers",
+   "options": "Project Manager",
+   "reqd": 1
+  },
+  {
+   "fieldname": "project_managers_tab",
+   "fieldtype": "Tab Break",
+   "label": "Project Managers"
+  },
+  {
+   "fieldname": "automation_tab",
+   "fieldtype": "Tab Break",
+   "label": "Automation"
+  },
+  {
+   "description": "Notified alongside the Project Manager when a project invoice is 7+ days overdue. Leave blank to skip this recipient.",
+   "fieldname": "finance_escalation_contact",
+   "fieldtype": "Link",
+   "label": "Finance Escalation Contact",
+   "options": "User"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "issingle": 1,
+ "links": [],
+ "modified": "2026-05-23 20:05:30.788466",
+ "modified_by": "Administrator",
+ "module": "ICL Corporate Services",
+ "name": "Project Management Settings",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "PM Lead",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "Finance",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "Projects Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

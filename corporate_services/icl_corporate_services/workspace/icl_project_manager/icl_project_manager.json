@@ -3,15 +3,19 @@
   {
    "chart_name": "Project Summary",
    "label": "Project Summary"
+  },
+  {
+   "chart_name": "Projects by Status",
+   "label": "Projects by Status"
+  },
+  {
+   "chart_name": "Projects by Priority",
+   "label": "Projects by Priority"
   }
  ],
- "content": "[{\"id\":\"DEmRsPfh94\",\"type\":\"custom_block\",\"data\":{\"custom_block_name\":\"Project manager Welcome\",\"col\":12}},{\"id\":\"rQUQ_bliVA\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"8V_O1gzVdg\",\"type\":\"chart\",\"data\":{\"chart_name\":\"Project Summary\",\"col\":12}},{\"id\":\"CwNr5cIINA\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"SzDwPXw_TA\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Project\",\"col\":6}},{\"id\":\"jqLKsKxm3P\",\"type\":\"quick_list\",\"data\":{\"quick_list_name\":\"Project\",\"col\":6}},{\"id\":\"1or-o0PVVu\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"cGf56UwBzR\",\"type\":\"card\",\"data\":{\"card_name\":\"Timesheet\",\"col\":6}},{\"id\":\"lZyZGqKs9B\",\"type\":\"quick_list\",\"data\":{\"quick_list_name\":\"Timesheet\",\"col\":6}},{\"id\":\"X2tSHOIC0i\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"E48uKGSj1L\",\"type\":\"card\",\"data\":{\"card_name\":\"Bidding\",\"col\":4}},{\"id\":\"iB6NqAITHC\",\"type\":\"quick_list\",\"data\":{\"quick_list_name\":\"Opportunity\",\"col\":4}},{\"id\":\"-iG2OWMDW1\",\"type\":\"custom_block\",\"data\":{\"custom_block_name\":\"PM-Quick Actions\",\"col\":12}}]",
- "creation": "2026-03-26 08:12:17.943758",
+ "content": "[{\"id\":\"pmWelcome\",\"type\":\"custom_block\",\"data\":{\"custom_block_name\":\"Project manager Welcome\",\"col\":12}},{\"id\":\"pmSpacer2\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"pmOverviewHeader\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>\ud83d\udcca Overview</b></span>\",\"col\":12}},{\"id\":\"pmChart1\",\"type\":\"chart\",\"data\":{\"chart_name\":\"Project Summary\",\"col\":12}},{\"id\":\"pmChart2\",\"type\":\"chart\",\"data\":{\"chart_name\":\"Projects by Status\",\"col\":6}},{\"id\":\"pmChart3\",\"type\":\"chart\",\"data\":{\"chart_name\":\"Projects by Priority\",\"col\":6}},{\"id\":\"pmSpacer3\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"pmProjectQL\",\"type\":\"quick_list\",\"data\":{\"quick_list_name\":\"Project\",\"col\":12}}]",
+ "creation": "2026-09-02 10:30:49.934013",
  "custom_blocks": [
-  {
-   "custom_block_name": "PM-Quick Actions",
-   "label": "PM-Quick Actions"
-  },
   {
    "custom_block_name": "Project manager Welcome",
    "label": "Project manager Welcome"
@@ -30,7 +34,7 @@
   {
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Bidding",
+   "label": "\u2705 Closure",
    "link_count": 2,
    "link_type": "DocType",
    "onboard": 0,
@@ -39,9 +43,9 @@
   {
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Opportunity",
+   "label": "Project Management Lessons Learned",
    "link_count": 0,
-   "link_to": "Opportunity",
+   "link_to": "Project Management Lessons Learned",
    "link_type": "DocType",
    "onboard": 0,
    "type": "Link"
@@ -49,34 +53,15 @@
   {
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Opportunity Type",
+   "label": "Lessons Learned Template",
    "link_count": 0,
-   "link_to": "Opportunity Type",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Timesheet",
-   "link_count": 1,
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Card Break"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Timesheet Submission",
-   "link_count": 0,
-   "link_to": "Timesheet Submission",
+   "link_to": "Lessons Learned Template",
    "link_type": "DocType",
    "onboard": 0,
    "type": "Link"
   }
  ],
- "modified": "2026-03-26 08:17:25.767021",
+ "modified": "2026-09-04 09:03:11.450242",
  "modified_by": "Administrator",
  "module": "ICL Corporate Services",
  "name": "ICL Project Manager",
@@ -86,40 +71,17 @@
  "public": 1,
  "quick_lists": [
   {
-   "document_type": "Timesheet",
-   "label": "Timesheet",
-   "quick_list_filter": "[]"
-  },
-  {
    "document_type": "Project",
    "label": "Project",
-   "quick_list_filter": "[]"
-  },
-  {
-   "document_type": "Opportunity",
-   "label": "Opportunity",
    "quick_list_filter": "[]"
   }
  ],
  "roles": [
   {
    "role": "Projects Manager"
-  },
-  {
-   "role": "Projects User"
   }
  ],
  "sequence_id": 18.0,
- "shortcuts": [
-  {
-   "color": "Grey",
-   "doc_view": "List",
-   "format": "{}",
-   "label": "Project",
-   "link_to": "Project",
-   "stats_filter": "[]",
-   "type": "DocType"
-  }
- ],
+ "shortcuts": [],
  "title": "ICL Project Manager"
 }

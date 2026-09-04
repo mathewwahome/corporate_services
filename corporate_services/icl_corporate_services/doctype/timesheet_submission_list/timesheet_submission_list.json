@@ -13,9 +13,7 @@
   "project_name",
   "month",
   "total_hours",
-  "status",
-  "pay",
-  "percent"
+  "status"
  ],
  "fields": [
   {
@@ -27,6 +25,7 @@
    "read_only": 1
   },
   {
+   "columns": 1,
    "fieldname": "month",
    "fieldtype": "Data",
    "in_list_view": 1,
@@ -40,6 +39,7 @@
    "read_only": 1
   },
   {
+   "columns": 1,
    "fieldname": "total_hours",
    "fieldtype": "Data",
    "in_list_view": 1,
@@ -55,21 +55,7 @@
    "fieldname": "project_name",
    "fieldtype": "Data",
    "in_list_view": 1,
-   "label": "Project Name",
-   "read_only": 1
-  },
-  {
-   "fieldname": "pay",
-   "fieldtype": "Currency",
-   "in_list_view": 1,
-   "label": "Pay",
-   "read_only": 1
-  },
-  {
-   "fieldname": "percent",
-   "fieldtype": "Percent",
-   "in_list_view": 1,
-   "label": "Percent",
+   "label": "Project/Activity Name",
    "read_only": 1
   },
   {
@@ -90,7 +76,7 @@
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2025-05-18 09:13:41.069148",
+ "modified": "2026-05-01 11:14:53.451938",
  "modified_by": "Administrator",
  "module": "ICL Corporate Services",
  "name": "Timesheet Submission List",
