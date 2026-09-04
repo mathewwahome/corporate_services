@@ -10,7 +10,7 @@
   }
  ],
  "content": "[{\"id\":\"HOrs48oc3_\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Opportunity Module</b></span>\",\"col\":12}},{\"id\":\"h9ruacd7CD\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Opportunity\",\"col\":3}},{\"id\":\"L5bE7TZ6bf\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Opportunity Type\",\"col\":3}},{\"id\":\"iMlFwoBP-9\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Opportunity Lost Reason\",\"col\":3}},{\"id\":\"W0ETUzBtpP\",\"type\":\"custom_block\",\"data\":{\"custom_block_name\":\"HR\",\"col\":12}},{\"id\":\"Ov1mPFk5JD\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"77THh8j08G\",\"type\":\"chart\",\"data\":{\"chart_name\":\"Opportunity Trends\",\"col\":12}},{\"id\":\"JUK7s4D4dj\",\"type\":\"chart\",\"data\":{\"chart_name\":\"Won Opportunities\",\"col\":12}}]",
- "creation": "2026-08-21 10:43:56.854278",
+ "creation": "2026-09-02 10:30:51.470555",
  "custom_blocks": [
   {
    "custom_block_name": "HR",
@@ -27,7 +27,7 @@
  "is_hidden": 0,
  "label": "ICL Opportunity",
  "links": [],
- "modified": "2026-08-21 11:06:08.858417",
+ "modified": "2026-09-04 09:03:12.357109",
  "modified_by": "Administrator",
  "module": "ICL Corporate Services",
  "name": "ICL Opportunity",

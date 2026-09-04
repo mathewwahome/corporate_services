@@ -1,7 +1,7 @@
 {
  "charts": [],
  "content": "[{\"id\": \"hdr1\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h4\\\">Internship Program Coordinator</span>\", \"col\": 12}}, {\"id\": \"nc1\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Total Interns\", \"col\": 3}}, {\"id\": \"sp0\", \"type\": \"spacer\", \"data\": {\"col\": 12}}, {\"id\": \"sc1\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Weekly Progress Report\", \"col\": 3}}, {\"id\": \"sp1\", \"type\": \"spacer\", \"data\": {\"col\": 12}}, {\"id\": \"ql1\", \"type\": \"quick_list\", \"data\": {\"quick_list_name\": \"Weekly Progress Report\", \"col\": 4}}, {\"id\": \"sp2\", \"type\": \"spacer\", \"data\": {\"col\": 12}}, {\"id\": \"hdr2\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h4\\\"><b>Reports</b></span>\", \"col\": 12}}, {\"id\": \"card1\", \"type\": \"card\", \"data\": {\"card_name\": \"Weekly Progress Reports\", \"col\": 4}}]",
- "creation": "2026-08-21 10:43:57.115686",
+ "creation": "2026-09-02 10:30:51.704400",
  "custom_blocks": [],
  "docstatus": 0,
  "doctype": "Workspace",
@@ -32,7 +32,7 @@
    "type": "Link"
   }
  ],
- "modified": "2026-08-21 11:06:09.258061",
+ "modified": "2026-09-04 09:03:53.459132",
  "modified_by": "Administrator",
  "module": "ICL Corporate Services",
  "name": "Internship Program Coordinator",
@@ -55,6 +55,12 @@
  "roles": [
   {
    "role": "Internship Program Coordinator"
+  },
+  {
+   "role": "System Manager"
+  },
+  {
+   "role": "HR Manager"
   }
  ],
  "sequence_id": 24.0,
