@@ -1,0 +1,286 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "naming_series:",
+ "creation": "2026-05-11 08:57:06.637344",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "lessons_learned_report_section",
+  "naming_series",
+  "project",
+  "project_title",
+  "column_break_boxf",
+  "date_of_report",
+  "employee",
+  "reporter_name",
+  "column_break_ttue",
+  "client",
+  "project_budget",
+  "designation_of_reporter",
+  "project_timeline_section_section",
+  "expected_start_date",
+  "column_break_jdtt",
+  "expected_end_date",
+  "report_section",
+  "question_template",
+  "dynamic_questions_section",
+  "response_ui",
+  "answers",
+  "root_cause_analysis_section",
+  "root_cause_analysis",
+  "recommendations_section",
+  "recommendations",
+  "next_steps_section",
+  "next_steps",
+  "supporting_documentation_section",
+  "supporting_documentation",
+  "approval_section",
+  "supervisor_name",
+  "date_of_approval",
+  "column_break_appr",
+  "signature",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "lessons_learned_report_section",
+   "fieldtype": "Section Break",
+   "label": "LESSONS LEARNED REPORT"
+  },
+  {
+   "fetch_from": "project.project_name",
+   "fieldname": "project_title",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Project Title",
+   "read_only": 1
+  },
+  {
+   "fieldname": "date_of_report",
+   "fieldtype": "Date",
+   "label": "Date of Report"
+  },
+  {
+   "fetch_from": "employee.employee_name",
+   "fieldname": "reporter_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Reporter Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_ttue",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "project.customer",
+   "fieldname": "client",
+   "fieldtype": "Data",
+   "label": "Client"
+  },
+  {
+   "fieldname": "project_budget",
+   "fieldtype": "Int",
+   "label": "Project Budget"
+  },
+  {
+   "allow_on_submit": 1,
+   "fetch_from": "employee.designation",
+   "fieldname": "designation_of_reporter",
+   "fieldtype": "Data",
+   "label": "Designation of Reporter"
+  },
+  {
+   "fieldname": "report_section",
+   "fieldtype": "Section Break",
+   "label": "REPORT"
+  },
+  {
+   "fieldname": "question_template",
+   "fieldtype": "Link",
+   "hidden": 1,
+   "label": "Question Template",
+   "options": "Lessons Learned Template",
+   "read_only": 1
+  },
+  {
+   "fieldname": "dynamic_questions_section",
+   "fieldtype": "Section Break",
+   "label": "Narrative"
+  },
+  {
+   "fieldname": "response_ui",
+   "fieldtype": "HTML",
+   "label": "Response Form"
+  },
+  {
+   "fieldname": "answers",
+   "fieldtype": "Table",
+   "hidden": 1,
+   "label": "Responses",
+   "options": "Lessons Learned Answer"
+  },
+  {
+   "fieldname": "root_cause_analysis_section",
+   "fieldtype": "Section Break",
+   "label": "Root Cause Analysis"
+  },
+  {
+   "description": "Analyze the underlying reasons for each major issue faced during the project. Go beyond symptoms and explore why the problem happened (e.g. the '5 Whys').",
+   "fieldname": "root_cause_analysis",
+   "fieldtype": "Table",
+   "label": "Root Cause Analysis",
+   "options": "Lessons Learned Root Cause"
+  },
+  {
+   "fieldname": "recommendations_section",
+   "fieldtype": "Section Break",
+   "label": "Recommendations"
+  },
+  {
+   "description": "Provide practical, specific suggestions to address the issues identified.",
+   "fieldname": "recommendations",
+   "fieldtype": "Table",
+   "label": "Recommendations",
+   "options": "Lessons Learned Recommendation"
+  },
+  {
+   "fieldname": "next_steps_section",
+   "fieldtype": "Section Break",
+   "label": "Next Steps / Follow-up"
+  },
+  {
+   "description": "List actions that should be taken based on the findings and recommendations.",
+   "fieldname": "next_steps",
+   "fieldtype": "Table",
+   "label": "Next Steps / Follow-up",
+   "options": "Lessons Learned Next Step"
+  },
+  {
+   "fieldname": "supporting_documentation_section",
+   "fieldtype": "Section Break",
+   "label": "Supporting Documentation"
+  },
+  {
+   "description": "List items, e.g. Stakeholder Feedback Summary, Final Project Report, Narrative Reports, Risk Register Summary, and insert links.",
+   "fieldname": "supporting_documentation",
+   "fieldtype": "Text Editor",
+   "label": "Supporting Documentation"
+  },
+  {
+   "fieldname": "approval_section",
+   "fieldtype": "Section Break",
+   "label": "Approved by Supervisor"
+  },
+  {
+   "fieldname": "supervisor_name",
+   "fieldtype": "Data",
+   "label": "Supervisor Name"
+  },
+  {
+   "fieldname": "date_of_approval",
+   "fieldtype": "Date",
+   "label": "Date of Approval"
+  },
+  {
+   "fieldname": "column_break_appr",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "signature",
+   "fieldtype": "Signature",
+   "label": "Signature"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Project Management Lessons Learned",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "default": "PM-LL-.YYYY.-",
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Series",
+   "options": "PM-LL-.YYYY.-",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "project",
+   "fieldtype": "Link",
+   "label": "Project",
+   "options": "Project",
+   "reqd": 1
+  },
+  {
+   "fieldname": "project_timeline_section_section",
+   "fieldtype": "Section Break",
+   "label": "Project Timeline Section"
+  },
+  {
+   "fetch_from": "project.expected_start_date",
+   "fieldname": "expected_start_date",
+   "fieldtype": "Date",
+   "label": "Expected Start Date"
+  },
+  {
+   "fieldname": "column_break_jdtt",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "project.expected_end_date",
+   "fieldname": "expected_end_date",
+   "fieldtype": "Date",
+   "label": "Expected End Date"
+  },
+  {
+   "fieldname": "column_break_boxf",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "employee",
+   "fieldtype": "Link",
+   "label": "Employee",
+   "options": "Employee",
+   "reqd": 1
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2026-06-23 07:40:04.662749",
+ "modified_by": "Administrator",
+ "module": "ICL Corporate Services",
+ "name": "Project Management Lessons Learned",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "amend": 1,
+   "cancel": 1,
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

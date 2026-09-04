@@ -1,0 +1,128 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "creation": "2026-07-09 10:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 0,
+ "engine": "InnoDB",
+ "field_order": [
+  "enabled",
+  "reference_doctype",
+  "pending_workflow_state",
+  "sla_hours",
+  "employee_field",
+  "column_break_1",
+  "notify_submitter_on_breach",
+  "auto_remind_approver",
+  "approver_type",
+  "approver_field",
+  "allow_submitter_resurface",
+  "resurface_cooldown_hours"
+ ],
+ "fields": [
+  {
+   "default": "1",
+   "fieldname": "enabled",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "Enabled"
+  },
+  {
+   "description": "The doctype this rule applies to, e.g. Timesheet Submission.",
+   "fieldname": "reference_doctype",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Reference Doctype",
+   "options": "DocType",
+   "reqd": 1
+  },
+  {
+   "description": "The workflow_state that means \"awaiting the approver's action\".",
+   "fieldname": "pending_workflow_state",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Pending Workflow State",
+   "options": "Workflow State",
+   "reqd": 1
+  },
+  {
+   "default": "24",
+   "description": "How long a document can sit in the Pending Workflow State before it's considered overdue and breach notices/reminders fire.",
+   "fieldname": "sla_hours",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "SLA (Hours)",
+   "reqd": 1
+  },
+  {
+   "description": "Fieldname on the Reference Doctype that links to the submitting Employee. Options are populated once Reference Doctype is set.",
+   "fieldname": "employee_field",
+   "fieldtype": "Select",
+   "label": "Employee Field",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "1",
+   "description": "Notify the submitter once the SLA is breached that their document has not yet been reviewed.",
+   "fieldname": "notify_submitter_on_breach",
+   "fieldtype": "Check",
+   "label": "Notify Submitter on Breach"
+  },
+  {
+   "default": "0",
+   "description": "Automatically remind the approver once the SLA is breached, without waiting for the submitter to resurface it.",
+   "fieldname": "auto_remind_approver",
+   "fieldtype": "Check",
+   "label": "Auto-Remind Approver on Breach"
+  },
+  {
+   "default": "Reports To (Supervisor)",
+   "description": "How to find the approver: the submitting employee's supervisor, or a specific field on the document.",
+   "fieldname": "approver_type",
+   "fieldtype": "Select",
+   "label": "Approver Type",
+   "options": "Reports To (Supervisor)\nFixed Field on Document",
+   "reqd": 1
+  },
+  {
+   "depends_on": "eval:doc.approver_type==\"Fixed Field on Document\"",
+   "description": "Fieldname on the Reference Doctype holding the approver's User or Employee link. Options are populated once Reference Doctype is set.",
+   "fieldname": "approver_field",
+   "fieldtype": "Select",
+   "label": "Approver Field",
+   "mandatory_depends_on": "eval:doc.approver_type==\"Fixed Field on Document\""
+  },
+  {
+   "default": "1",
+   "description": "Let the submitter manually resurface the document to the approver while it is pending.",
+   "fieldname": "allow_submitter_resurface",
+   "fieldtype": "Check",
+   "label": "Allow Submitter to Resurface to Approver"
+  },
+  {
+   "default": "4",
+   "depends_on": "allow_submitter_resurface",
+   "fieldname": "resurface_cooldown_hours",
+   "fieldtype": "Int",
+   "label": "Resurface Cooldown (Hours)"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2026-08-28 09:55:02.000000",
+ "modified_by": "Administrator",
+ "module": "ICL Corporate Services",
+ "name": "Reminder Rule",
+ "owner": "Administrator",
+ "permissions": [],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

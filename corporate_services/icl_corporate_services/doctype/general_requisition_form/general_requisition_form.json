@@ -14,8 +14,13 @@
   "date",
   "section_break_sovp",
   "request_justification",
+  "currency",
+  "exchange_rate",
   "table_pegz",
-  "total"
+  "total",
+  "total_in_local_currency",
+  "section_break_hgmh",
+  "table_kkvi"
  ],
  "fields": [
   {
@@ -52,14 +57,38 @@
    "label": "Request Justification"
   },
   {
+   "fieldname": "currency",
+   "fieldtype": "Link",
+   "label": "Currency",
+   "options": "Currency",
+   "reqd": 1
+  },
+  {
+   "default": "1",
+   "fieldname": "exchange_rate",
+   "fieldtype": "Float",
+   "label": "Exchange Rate (to Local Currency)",
+   "precision": "9",
+   "reqd": 1
+  },
+  {
    "fieldname": "table_pegz",
    "fieldtype": "Table",
-   "options": "General requisition description form"
+   "label": "General requisition description",
+   "options": "General requisition description form",
+   "reqd": 1
   },
   {
    "fieldname": "total",
    "fieldtype": "Currency",
    "label": "Total",
+   "options": "currency",
+   "read_only": 1
+  },
+  {
+   "fieldname": "total_in_local_currency",
+   "fieldtype": "Currency",
+   "label": "Total in Local Currency",
    "read_only": 1
   },
   {
@@ -77,11 +106,23 @@
    "hidden": 1,
    "label": "Series",
    "options": "GR-.YYYY.-"
+  },
+  {
+   "description": "The attachments should be either invoices, receipts or a PO where applicable.",
+   "fieldname": "section_break_hgmh",
+   "fieldtype": "Section Break",
+   "label": "Requisition Attachment"
+  },
+  {
+   "fieldname": "table_kkvi",
+   "fieldtype": "Table",
+   "label": "Requisition Attachment",
+   "options": "Requisition attachments"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-12-05 10:34:16.785161",
+ "modified": "2026-06-25 13:46:12.398393",
  "modified_by": "Administrator",
  "module": "ICL Corporate Services",
  "name": "General Requisition Form",
@@ -137,6 +178,7 @@
    "write": 1
   }
  ],
+ "row_format": "Dynamic",
  "sort_field": "modified",
  "sort_order": "DESC",
  "states": []

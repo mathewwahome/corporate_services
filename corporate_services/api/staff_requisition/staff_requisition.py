@@ -23,6 +23,9 @@ def send_clarification_email(docname, message):
     doc_url       = get_url_to_form(doc.doctype, doc.name)
 
     doc.workflow_state     = "Needs Clarification"
+    doc.status             = "NEEDS CLARIFICATION"
+    doc.clarification_message = message
+    doc.clarification_response = ""
     doc.flags.ignore_permissions = True
     doc.save(ignore_permissions=True)
     frappe.db.commit()
@@ -34,7 +37,7 @@ def send_clarification_email(docname, message):
                 Clarification Required
             </h2>
             <p style="color:#BDD7EE;margin:4px 0 0;font-size:13px;">
-                Staff Requisition &mdash; {doc.name}
+                Staff Requisition &- {doc.name}
             </p>
         </div>
         <div style="background:#fff;padding:24px 30px;border:1px solid #e0e0e0;
@@ -59,7 +62,7 @@ def send_clarification_email(docname, message):
                 View &amp; Resubmit
             </a>
             <p style="margin:24px 0 0;color:#888;font-size:12px;">
-                Regards &mdash; HR Management
+                Regards &- HR Management
             </p>
         </div>
     </div>

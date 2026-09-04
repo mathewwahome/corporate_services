@@ -1,0 +1,151 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "naming_series:naming_series",
+ "creation": "2026-05-11 08:41:54.562617",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "project",
+  "project_name",
+  "column_break_yeoa",
+  "client",
+  "developer",
+  "intellisoft_project_lead",
+  "column_break_ghko",
+  "project_timeline",
+  "project_start_date",
+  "project_end_date",
+  "entry_type_section",
+  "google_drive_link",
+  "section_break_cory",
+  "detailed_work_plan_table",
+  "loe_tab",
+  "module_solution_development_loes"
+ ],
+ "fields": [
+  {
+   "fetch_from": "project.project_name",
+   "fieldname": "project_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Project Name"
+  },
+  {
+   "fieldname": "client",
+   "fieldtype": "Link",
+   "label": "Client",
+   "options": "Customer"
+  },
+  {
+   "fieldname": "developer",
+   "fieldtype": "Data",
+   "label": "Developer"
+  },
+  {
+   "fieldname": "intellisoft_project_lead",
+   "fieldtype": "Data",
+   "label": "IntelliSOFT Project Lead"
+  },
+  {
+   "fieldname": "column_break_ghko",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "project_timeline",
+   "fieldtype": "Data",
+   "label": "Project Timeline"
+  },
+  {
+   "fieldname": "project_start_date",
+   "fieldtype": "Data",
+   "label": "Project Start date"
+  },
+  {
+   "fieldname": "project_end_date",
+   "fieldtype": "Data",
+   "label": "Project End date"
+  },
+  {
+   "fieldname": "section_break_cory",
+   "fieldtype": "Section Break",
+   "label": "Detailed workplan"
+  },
+  {
+   "fieldname": "entry_type_section",
+   "fieldtype": "Section Break",
+   "label": "Entry Type"
+  },
+  {
+   "description": "For the workplan",
+   "fieldname": "google_drive_link",
+   "fieldtype": "Data",
+   "label": "Google Drive link"
+  },
+  {
+   "fieldname": "detailed_work_plan_table",
+   "fieldtype": "Table",
+   "label": "Detailed workplan",
+   "options": "Detailed Work Plan Table"
+  },
+  {
+   "default": "DWP-.YYYY.-.MM.-",
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "hidden": 1,
+   "label": "Series",
+   "options": "DWP-.YYYY.-.MM.-",
+   "read_only": 1
+  },
+  {
+   "fieldname": "project",
+   "fieldtype": "Link",
+   "label": "Project",
+   "options": "Project",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_yeoa",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "loe_tab",
+   "fieldtype": "Tab Break",
+   "label": "LOE"
+  },
+  {
+   "fieldname": "module_solution_development_loes",
+   "fieldtype": "Table",
+   "label": "Module/Solution Development LOEs",
+   "options": "Solution Development LOEs"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-07-01 16:31:47.010586",
+ "modified_by": "Administrator",
+ "module": "ICL Corporate Services",
+ "name": "Detailed Work Plan",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

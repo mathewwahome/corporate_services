@@ -36,6 +36,13 @@ page_js = {
     "timesheet-workflow": "public/js/timesheet_workflow.js",
     # Desk React page for managing surveys (loaded on /app/survey-manager)
     "survey-manager": "public/js/survey_admin.js",
+    # Desk React page for the opportunity module (loaded on /app/icl-opportunity-module)
+    "icl-opportunity-module": "public/js/opportunity_module.js",
+    # Desk React page for project management dashboard
+    "icl-project-management": "public/js/project_management.js",
+    "employee-turnover": "public/js/employee_turnover.js",
+    "hr-management": "public/js/hr_management.js",
+    "business-development-management": "public/js/business_development_management.js",
 }
 
 # Custom Pages
@@ -58,6 +65,9 @@ page = [
 web_include_js = [
     # React public survey page bundle (built to public/js)
     "/assets/corporate_services/js/survey_public.js",
+    # React public anonymous grievance pages (built to public/js)
+    "/assets/corporate_services/js/report_grievance.js",
+    "/assets/corporate_services/js/grievance_status.js",
 ]
 
 # include custom scss in every website theme (without file extension ".scss")
@@ -70,8 +80,27 @@ web_include_js = [
 # include js in page
 # page_js = {"page" : "public/js/file.js"}
 
-doctype_js = {}
-# doctype_list_js = {"doctype" : "public/js/doctype_list.js"}
+doctype_js = {
+    "Job Opening": "public/js/job_opening.js",
+    "Opportunity": "public/js/opportunity.js",
+    "Employee": "public/js/employee_leave_balance.js",
+    "HR Settings": "public/js/hr_settings_leave_ledger_backfill.js",
+    "Travel Request": "public/js/travel_request.js",
+    "Payment Entry": "public/js/payment_entry_budget_defaults.js",
+    "Payment Entry Budget Line": "public/js/payment_entry_budget_defaults.js",
+    "Project": [
+        "public/js/project_google_drive.js",
+        "public/js/project_lessons_learned_kb.js",
+        "public/js/project_pull_jira_tasks.js",
+    ],
+}
+doctype_list_js = {
+    "Timesheet Submission": "public/js/timesheet_submission_list.js",
+    "Travel Request": "public/js/travel_request_list.js",
+    "SMT Members": "public/js/smt_members_list.js",
+    "Employee KPI": "public/js/employee_kpi_list.js",
+    "Jira Project": "public/js/jira_project_list.js",
+}
 # doctype_tree_js = {"doctype" : "public/js/doctype_tree.js"}
 # doctype_calendar_js = {"doctype" : "public/js/doctype_calendar.js"}
 
@@ -84,7 +113,7 @@ doctype_js = {}
 # ----------
 
 # application home page (will override Website Settings)
-# home_page = "login"
+home_page = "login"
 
 # website user home page (by Role)
 # role_home_page = {
@@ -131,7 +160,8 @@ before_migrate = [
 ]
 
 after_migrate = [
-    "corporate_services.api.setup_utils.post_install"
+    "corporate_services.api.setup_utils.post_install",
+    "corporate_services.api.setup.add_connections",
 ]
 
 
@@ -160,14 +190,27 @@ after_migrate = [
 # has_permission = {
 # 	"Event": "frappe.desk.doctype.event.event.has_permission",
 # }
+permission_query_conditions = {
+    "Weekly Progress Report": "corporate_services.icl_corporate_services.doctype.weekly_progress_report.weekly_progress_report.get_permission_query_conditions",
+    "Employee KPI": "corporate_services.icl_corporate_services.doctype.employee_kpi.employee_kpi.get_permission_query_conditions",
+    "Project": "corporate_services.api.project.permissions.get_permission_query_conditions",
+}
+
+has_permission = {
+    "Weekly Progress Report": "corporate_services.icl_corporate_services.doctype.weekly_progress_report.weekly_progress_report.has_permission",
+    "Employee KPI": "corporate_services.icl_corporate_services.doctype.employee_kpi.employee_kpi.has_permission",
+    "Project": "corporate_services.api.project.permissions.has_permission",
+}
 
 # DocType Class
 # ---------------
 # Override standard doctype classes
 
-# override_doctype_class = {
-# 	"ToDo": "custom_app.overrides.CustomToDo"
-# }
+override_doctype_class = {
+    "Salary Slip": "corporate_services.overrides.salary_slip.CorporateServicesSalarySlip",
+    # "Wiki Page": "corporate_services.overrides.wiki_page.CorporateServicesWikiPage",
+    "Customize Form": "corporate_services.overrides.customize_form.CorporateServicesCustomizeForm",
+}
 
 # Document Events
 # ---------------
@@ -185,30 +228,50 @@ def generate_doc_events(event_maps):
 
 
 on_update_map = {
-    "Employee Grievance": "corporate_services.api.notification.notifications.employee_grievance",
     "Travel Request": "corporate_services.api.notification.travel_request.travel_request.alert",
-    "Travel Request Reconciliation": "corporate_services.api.notification.travel_request.travel_request_reconciliation.alert",
+    "Travel Request Reconciliation": [
+        "corporate_services.api.notification.travel_request.travel_request_reconciliation.alert",
+        "corporate_services.icl_corporate_services.doctype.travel_request_reconciliation.travel_request_reconciliation.sync_travel_request_reconciliation_status",
+    ],
     "Leave Application": "corporate_services.api.notification.leave_application.alert",
     "Work Continuity Plan": "corporate_services.api.notification.work_continuity_plan.alert",
     "Asset Custodianship Requisition": "corporate_services.api.notification.asset_custotianship_requisition.alert",
-    "Asset Requisition": "corporate_services.api.notification.asset_requisition.alert",
+    "Asset Requisition": "corporate_services.api.notification.asset.asset_requisition.alert",
     "Timesheet Submission":"corporate_services.api.timesheet.finance_timesheet_submission.finance_timesheet_submission",
-    "Project":"corporate_services.api.notification.project.project_manager.alert",
+    "Project": [
+        "corporate_services.api.notification.project.project_manager.alert",
+        "corporate_services.api.project.timesheet_submission_sync.sync_timesheet_submission_project_name",
+        "corporate_services.api.project.lessons_learned_closeout.notify_on_closeout",
+        "corporate_services.api.notification.project.closure_checklist.generate_closure_checklist",
+    ],
     "Employee Grievance":"corporate_services.api.notification.grievance.grievance.alert",
     "Supplier Quote Submission": "corporate_services.api.supplier.vat_calc.calc",
     "Asset Damage Loss Theft Report Form": "corporate_services.api.notification.assets.loss_damage_loss_report.alert",
     "Chart of Accounts Utilities": "corporate_services.api.import_coa.import_accounts_v2",
-    "Opportunity": "corporate_services.api.notification.project.opportunity.alert",
+    "Opportunity": [
+        "corporate_services.api.notification.project.opportunity.alert",
+        "corporate_services.api.opportunity_handlers.notify_new_opportunity_owners",
+        "corporate_services.api.notification.opportunity_contributors.v1.notify_contributors",
+    ],
+    "Opportunity Task Checklist": "corporate_services.api.opportunity_checklist_handlers.sync_checklist_to_opportunity",
     "General Requisition Form": "corporate_services.api.notification.requisition.general_requisition.alert",
     "Appraisal": "corporate_services.api.notification.appraisal.appraisal.alert",
+    "Performance Appraisal": "corporate_services.api.notification.performance_appraisal.alert",
     "Asset Movement": "corporate_services.api.notification.assets.asset_handover.alert",
     "Task":"corporate_services.api.notification.project.project_task.task_on_update",
     "Supplier Quote Submission":"corporate_services.api.supplier.finance_alert.alert",
     "Staff Requisition":"corporate_services.api.notification.staff_requisition.staff_requisition.alert",
     "Consultant Time Off Application":"corporate_services.api.notification.consultant_time_off.time_off_application.alert",
-    # "Job Applicant": "corporate_services.api.job_applicant.v1.application_received",
+    # "Job Applicant": "corporate_services.api.job_applicant.v2.application_received",
     "Monthly Reflection":"corporate_services.api.notification.monthly_reflection.monthly_reflection.alert",
     "Exit Interview":"corporate_services.api.notification.exit_interview.exit_interview.alert",
+    "Weekly Progress Report":"corporate_services.api.notification.weekly_progress_report.alert",
+    "Internship Completion Report":"corporate_services.api.notification.internship_completion_report.alert",
+    "Project Status Report":"corporate_services.api.notification.project.status_report.alert",
+    "Employee KPI":"corporate_services.api.notification.employee_kpi.alert",
+    "Month 1 HR Check-In":"corporate_services.api.notification.month_1_hr_check_in.alert",
+    "Mid-Probation Check-In":"corporate_services.api.notification.mid_probation_check_in.alert",
+    "End of Probation Assessment":"corporate_services.api.notification.end_of_probation_assessment.alert",
     # "Supplier Quote Submission": [
     #     "corporate_services.api.supplier.finance_alert.alert",
     #     "corporate_services.api.supplier.vat_calc.calc"
@@ -217,8 +280,9 @@ on_update_map = {
 
 job_applicant_on_update_map = {
     "Job Applicant": [
-        "corporate_services.api.job_applicant.v1.application_received",
-        "corporate_services.api.notification.job_applicant.rejection_after_interview.alert"
+        "corporate_services.api.job_applicant.v2.application_received",
+        "corporate_services.api.notification.job_applicant.rejection_after_interview.alert",
+        "corporate_services.api.job_applicant.recruitment_flow.handle_job_offer_stage_updates",
     ]
 }
 
@@ -228,32 +292,42 @@ timesheet_notifications ={
 
 before_workflow_action_map = {
     "Timesheet Submission":"corporate_services.api.timesheet.before_workflow_action.before_workflow_action_timesheet_submission",
-} 
+}
 
 event_maps = {
     "on_update": {
         **on_update_map,
-        **before_workflow_action_map,
         **timesheet_notifications,
         "Timesheet Submission": [
             on_update_map["Timesheet Submission"],
-            before_workflow_action_map["Timesheet Submission"],
             timesheet_notifications["Timesheet Submission"]
         ],
         **job_applicant_on_update_map
+    },
+    "before_workflow_action": {
+        **before_workflow_action_map,
     },
     # "onload": {
     #     "Project": "corporate_services.api.project.payment_entry.fetch_payments"
     # },
     "after_insert": {
-        "Opportunity": "corporate_services.api.project.opportunity_handlers.create_folder_for_opportunity",
+        "Opportunity": [
+            "corporate_services.api.opportunity_handlers.create_folder_for_opportunity",
+            "corporate_services.api.opportunity_handlers.trigger_google_drive_folder_creation",
+        ],
         "Survey Response": "corporate_services.api.survey.on_survey_response_insert",
+        "Opportunity Task Checklist": "corporate_services.api.opportunity_checklist_handlers.sync_checklist_to_opportunity",
+        "Anonymous Employee Grievance": "corporate_services.api.grievance.anonymous_grievance.alert",
+        "Employee KPI": "corporate_services.api.notification.employee_kpi.send_creation_reminder",
     },
     "on_trash": {
         "Survey Response": "corporate_services.api.survey.on_survey_response_delete",
     },
     "before_save": {
-        "Opportunity": "corporate_services.api.project.opportunity_handlers.save_bid_document_to_opportunity_folder"
+        "Opportunity": [
+            "corporate_services.api.opportunity_handlers.save_bid_document_to_opportunity_folder",
+            "corporate_services.api.opportunity_handlers.enforce_single_active_owner",
+        ]
     },
    "before_delete": {
         "Timesheet Submission": "corporate_services.api.timesheet.overrides.timesheet_submission.prevent_default_delete",
@@ -261,7 +335,8 @@ event_maps = {
     },
     "validate": {
         "Timesheet Submission": "corporate_services.api.timesheet.overrides.timesheet_submission.override_link_validation",
-        "Timesheet": "corporate_services.api.timesheet.overrides.timesheet_submission.override_link_validation"
+        "Timesheet": "corporate_services.api.timesheet.overrides.timesheet_submission.override_link_validation",
+        "Job Applicant": "corporate_services.api.job_applicant.recruitment_flow.validate_job_offer_stage",
     },
 }
 
@@ -282,12 +357,16 @@ scheduler_events = {
 	# ],
 	"daily": [
 		# "corporate_services.tasks.daily"
-        "corporate_services.api.notification.project.scheduled_tasks.send_deliverable_notifications",
-        "corporate_services.api.notification.onboarding.onboarding_.send_30day_onboarding_surveys",
         "corporate_services.api.quarterly_leave.quarterly_leave.send_quarterly_notifications",
         "corporate_services.api.notification.monthly_reflection.monthly_reflection.send_monthly_reflection_reminder_if_due",
         "corporate_services.api.notification.monthly_reflection.monthly_reflection.send_monthly_reflection_overdue_reminders_if_due",
+        "corporate_services.api.notification.weekly_progress_report.send_weekly_progress_report_reminders_if_due",
+        "corporate_services.api.notification.opportunity.v1.send_almost_due_opportunity_reminders",
         # "corporate_services.api.notification.onboarding.onboarding_notifications.send_policy_comprehension_quiz"
+        "corporate_services.api.notification.project.scheduled_tasks.send_status_report_reminders",
+        "corporate_services.api.notification.project.scheduled_tasks.send_milestone_alerts",
+        "corporate_services.api.notification.project.scheduled_tasks.send_my_tasks_due_soon_digest",
+        "corporate_services.api.jira.jira.sync_and_notify_new_projects",
 	],
 	# "hourly": [
 	# 	"corporate_services.tasks.hourly"
@@ -300,8 +379,20 @@ scheduler_events = {
 		# "corporate_services.api.leave.update_annual_leave_allocations.update_annual_leave_allocations"
 	],
     "cron": {
+        "0 8 * * *": [
+            "corporate_services.api.notification.onboarding.onboarding_schedule.send_month_1_hr_check_in_reminders",
+            "corporate_services.api.notification.onboarding.onboarding_schedule.send_mid_probation_check_in_reminders",
+            "corporate_services.api.notification.onboarding.onboarding_schedule.send_end_of_probation_assessment_reminders"
+        ],
         "0 8,10,12,14,16,17 * * *": [
-            "corporate_services.api.notification.staff_requisition.staff_requisition.send_approval_overdue_reminders"
+            "corporate_services.api.notification.staff_requisition.staff_requisition.send_approval_overdue_reminders",
+            "corporate_services.api.notification.reminder_engine.check_overdue_documents"
+        ],
+        "0 7 * * 1": [
+            "corporate_services.api.notification.project.scheduled_tasks.send_weekly_pm_digest"
+        ],
+        "0 8 * * 1": [
+            "corporate_services.api.notification.project.scheduled_tasks.send_overdue_invoice_escalations"
         ]
     }
 }
@@ -326,7 +417,8 @@ scheduler_events = {
 
 override_doctype_dashboards = {
     "Timesheet Submission": "corporate_services.api.timesheet.overrides.timesheet_submission.override_dashboard_data",
-    "Timesheet": "corporate_services.api.timesheet.overrides.timesheet_submission.override_dashboard_data"
+    "Timesheet": "corporate_services.api.timesheet.overrides.timesheet_submission.override_dashboard_data",
+    "Opportunity": "corporate_services.api.opportunity_checklist_handlers.get_opportunity_dashboard_data",
 }
 
 # exempt linked doctypes from being automatically cancelled
@@ -387,9 +479,9 @@ override_doctype_dashboards = {
 # }
 
 fixtures = [
-    "Workflow",
     "Workflow State",
     "Workflow Action Master",
+    "Workflow",
     "Role",
 	"Role Profile",
     "Report",
@@ -416,4 +508,14 @@ fixtures = [
     "Custom HTML Block",
     "KPI Template Instructions",
     "Custom DocPerm",
+    {
+        "dt": "DocType Link",
+        "filters": [["parent", "=", "Travel Request"], ["custom", "=", 1]],
+    },
+    "HIS Project Lifecycle Config",
+    {
+        "dt": "Wiki Page",
+        "filters": [["published", "=", 1]],
+    },
+    "Wiki Space",
 ]
